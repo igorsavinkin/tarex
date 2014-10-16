@@ -1772,3 +1772,271 @@ Stack trace:
 #17 {main}
 REQUEST_URI=/index.php?do=static&page=WINJET
 ---
+2014/10/16 07:23:13 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "optika_hella".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('optika_hella', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('optika_hella')
+#2 [internal function]: SiteController->actionIndex('optika_hella', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=optika_hella
+---
+2014/10/16 07:38:12 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "AUTOPROISVOD".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('AUTOPROISVOD', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('AUTOPROISVOD')
+#2 [internal function]: SiteController->actionIndex('AUTOPROISVOD', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=AUTOPROISVOD
+---
+2014/10/16 09:00:13 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "GLO".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('GLO', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('GLO')
+#2 [internal function]: SiteController->actionIndex('GLO', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=GLO
+---
+2014/10/16 09:07:41 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "truk".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('truk', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('truk')
+#2 [internal function]: SiteController->actionIndex('truk', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=truk
+---
+2014/10/16 09:08:05 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "FEBI".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('FEBI', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('FEBI')
+#2 [internal function]: SiteController->actionIndex('FEBI', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=FEBI
+---
+2014/10/16 09:09:15 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "optika_hella".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('optika_hella', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('optika_hella')
+#2 [internal function]: SiteController->actionIndex('optika_hella', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=optika_hella
+---
+2014/10/16 09:49:03 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "Tong Yang".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('Tong Yang', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('Tong Yang')
+#2 [internal function]: SiteController->actionIndex('Tong Yang', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=Tong+Yang
+HTTP_REFERER=http://astramg.worksection.com/project/33042/2011494/
+---
+2014/10/16 09:49:15 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "Tong Yang".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('Tong Yang', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('Tong Yang')
+#2 [internal function]: SiteController->actionIndex('Tong Yang', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=Tong+Yang
+HTTP_REFERER=http://astramg.worksection.com/project/33042/2011494/
+---
+2014/10/16 09:51:00 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "Tong Yang".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('Tong Yang', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('Tong Yang')
+#2 [internal function]: SiteController->actionIndex('Tong Yang', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=Tong+Yang
+HTTP_REFERER=http://astramg.worksection.com/project/33042/2011494/
+---
+2014/10/16 09:56:39 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "T 4".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('T 4', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('T 4')
+#2 [internal function]: SiteController->actionIndex('T 4', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=T%204
+---
+2014/10/16 10:00:44 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "E36".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('E36', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('E36')
+#2 [internal function]: SiteController->actionIndex('E36', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=E36
+---
+2014/10/16 10:09:15 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "Tong Yang".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('Tong Yang', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('Tong Yang')
+#2 [internal function]: SiteController->actionIndex('Tong Yang', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=Tong+Yang
+HTTP_REFERER=http://yandex.ru/clck/jsredir?from=yandex.ru%3Byandsearch%3Bweb%3B%3B&text=&etext=479.KVB6NyFn1kJxroX8fFzdQ3CLV-vORb3gxsNw9d4IiEmtrlmdPelNayLLQlaL5DYiuy8RbkUDFE-8tdgt8PMbgU4XcAe7D2ftM3Mlr4oLC1nudAkLQpWqguxOZoGXJmz58fcU0nOThOCzdApi0sXiQ7PdGlYTOylEDF3N6svW538.d599f26f9f3b77b904be9f6600f0e823d65d9248&uuid=&state=AiuY0DBWFJ4ePaEse6rgeAjgs2pI3DW99KUdgowt9Xt6QhfZbqdFWRGZepOPkiqBntGWXUo1NTxUXzaipzLTJkDMvfvVO_EqewAz-UKeGl-Y3hh2FvfPYpr41KD_00KhMUYYi9LCOIiHqTiHLF6fFFNQnfmSeQ04GSTMr6X3hGbkGMqPi5fZ2m_stP-6OhzTIHCpMpz3VztT4VEDS_EBxJu68GLnBUojpiRb_rc6cbNVVPSakqJjiGLBji0Jzzf4v2TqyRZ1Zpiz7M6CkUDgX4oW63I_BvgQQrxpSxGkVhE-mXsDXXTcC3xScBjO-Hv1NZkOkJ4eSqZTa8z_oGrTPQ&data=UlNrNmk5WktYejR0eWJFYk1LdmtxbTN0aVlWM3QxdXh2QVZBdHM0Y1FkTjFUTFNESXl2dm40aHQ2Q0E4NTRTbEFwLTdzYXltbmJRdGNfTXdZZWlpMTR2NExxMmhUSkwzeTFGQlMtMVU2bUhVZlREeVJGT2YweVlVZnZOa1ZtRXVhN1dVc3lNbGpXN2d0Zlc2T2lHTE41c0hROXVyVEdyMA&b64e=2&sign=463bda627158d3647ab87071ad9ced8e&keyno=0&l10n=ru&cts=1413439755204&mc=4.407735422096519
+---
