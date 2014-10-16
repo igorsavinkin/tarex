@@ -464,7 +464,7 @@ class Assortment extends CActiveRecord implements IECartPosition
 
 			if (Yii::app()->user->isGuest) {
 				$Discount=$r->Value;
-			//  	echo 'discount (Guest) = ', $Discount , '<br>';
+			  	echo 'discount (Guest) = ', $Discount , '<br>';
 				return $Discount;
 			}
 				
@@ -506,7 +506,10 @@ class Assortment extends CActiveRecord implements IECartPosition
 		}
 		
 		
-	 //	echo 'discount = ', $Discount , '<br>';
+	 	echo 'discount = ', $Discount , '<br>';
+		echo "<script> 
+console.log('Assortmetn model'+'; discount =' + {$discount}); 
+</script>";
 		return $Discount;		
 	}
 	
@@ -808,7 +811,7 @@ class Assortment extends CActiveRecord implements IECartPosition
 		//echo '<br>command params = ',  $command->params;
 	}
 */ 
-}
+} 
 /*
 SELECT event.id, eventType.name, event.totalSum, event.organizationId, 
 round(sum(sum_sign_by_eventtype(eventTypeid,  event.totalSum) ), 2) AS 'TotalSumForPeriod'		
@@ -822,3 +825,5 @@ WHERE Subconto1 > 0
 AND org.id = 7
 GROUP BY Subconto1, event.id, content.cost WITH ROLLUP
 */
+
+?>

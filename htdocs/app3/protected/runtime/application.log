@@ -4490,3 +4490,11 @@ Stack trace:
 REQUEST_URI=/app3/index.php?r=specialOffer/update/id/49
 HTTP_REFERER=http://srv50213.ht-test.ru/app3/index.php?r=SpecialOffer/admin&Subsystem=Settings&Reference=SpecialOffer
 ---
+2014/10/16 13:22:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "Rnp/admin".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('Rnp/admin')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app3/index.php?r=Rnp/admin&Subsystem=Warehouse+automation&Reference=Rnp
+---
