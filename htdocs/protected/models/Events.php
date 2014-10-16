@@ -65,6 +65,7 @@ class Events extends CActiveRecord
 	const TYPE_PRICING = '34'; // Установка цены
 	const TYPE_HIRING = '35'; // Приём на работу
 	const TYPE_LAY_OFF = '36'; // Увольнение с работы
+	const TYPE_ADD_NEW_ASSORTMENT_ITEMS = '37'; // добавление новых запчастей от заказчика
 	 
 	/* Event statuses */
 	const STATUS_NEW = '2';   // новый
