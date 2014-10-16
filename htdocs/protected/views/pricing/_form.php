@@ -3,20 +3,18 @@
 /* @var $model Pricing */
 /* @var $form CActiveForm */
 ?>
-
 <div class="form">
 <table><tr >
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'pricing-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
+	'id'=>'pricing-form', 
 	'enableAjaxValidation'=>false,
 )); ?>
 
 	<p class="note"><?php echo Yii::t('general','Fields with'); ?><span class="required"> * </span><?php echo Yii::t('general','are required') .'.'; ?></p>
 	<p class="note"><?php echo Yii::t('general','You might set several values for a single field - comma or semicolon separated. For example: <b>Toyota, Ford, Sang-Yong</b>.'); //, ' ',  Yii::t('general','For example: <b> Toyota, Ford, Sang-Yong</b>') .'.'; ?></p>
+	<span class="required"><?php echo Yii::t('general','For an input field you need to set up the value with preceeding "=" sign. For example: <b>=922022E000, =Ford, =DEPO, =JAPAN</b>.'); //, ' ',  Yii::t('general','For example: <b> Toyota, Ford, Sang-Yong</b>') .'.'; ?>
+	
+	</span> 
 
 	<?php echo $form->errorSummary($model); ?> 
  
@@ -46,7 +44,7 @@
 	</td>
 
  
-	<td colspan=2>
+	<td colspan='2'  class='padding10side'>
 		<?php echo $form->labelEx($model,'Comment'); ?> 
 		<?php echo $form->textField($model,'Comment', array('size'=>70,'maxlength'=>200)); ?>
 		<?php echo $form->error($model,'Comment'); ?>
@@ -65,7 +63,7 @@
 		<?php echo $form->error($model,'SubgroupFilter'); ?>
 	</td>
 	
-	<td valign='bottom'>
+	<td valign='bottom' class='padding10side'>
 		<?php echo $form->labelEx($model,'TitleFilter'); ?> 
 		<?php echo $form->textField($model,'TitleFilter',array('size'=>40,'maxlength'=>200)); ?>
 		<?php echo $form->error($model,'TitleFilter'); ?>
@@ -90,7 +88,7 @@
 	</td>
 	
 	
-	<td>
+	<td  class='padding10side'>
 		<?php echo $form->labelEx($model,'ArticleFilter'); ?> 
 		<?php echo $form->textField($model,'ArticleFilter',array('size'=>40,'maxlength'=>200)); ?>
 		<?php echo $form->error($model,'ArticleFilter'); ?>
@@ -114,20 +112,20 @@
 		<?php echo $form->error($model,'ManufacturerFilter'); ?>
 	</td>
 	
-	<td>
+	<td class='padding10side'>
 		<?php echo $form->labelEx($model,'CountryFilter'); ?> 
 		<?php echo $form->textField($model,'CountryFilter',array('size'=>40,'maxlength'=>200)); ?>
 		<?php echo $form->error($model,'CountryFilter'); ?>
 	</td>
 </tr><tr>  
-	<td>		
+	<td valign='bottom'>		
 		<?php echo '<b>', Yii::t('general','Filters based on user'), '</b>'; ?>		
 		<?php echo $form->labelEx($model,'UsernameFilter'); ?> 
 		<?php echo $form->textField($model,'UsernameFilter',array('size'=>40,'maxlength'=>200)); ?>
 		<?php echo $form->error($model,'UsernameFilter'); ?>
 	</td>
 
-	<td valign='bottom'>
+	<td  class='padding10side' valign='bottom'>
 		<?php echo $form->labelEx($model,'GroupFilter'); ?> 
 		<?php  $org = User::model()->findByPk(Yii::app()->user->id)->organization;
 					$criteria = new CDbCriteria; 
@@ -136,15 +134,12 @@
 					$this->widget('ext.select2.ESelect2', array(
 						'model'=> $model,
 						'attribute'=> 'GroupFilter',
-						'data' => CHtml::listData(UserGroup::model()->findAll($criteria/*array('order'=>'name ASC', 'condition'=>'organizationId'=>)*/), 'id','name'),
+						'data' => CHtml::listData(UserGroup::model()->findAll($criteria), 'id','name'),
 						'options'=> array('allowClear'=>true, 
 							'width' => '200', 
-							'placeholder' => '',
-							//'minimumInputLength' => 3
+							'placeholder' => '', 
 							),
-					)); 
-		
-		//  echo $form->textField($model,'GroupFilter',array('size'=>40,'maxlength'=>200)); ?>
+					));   ?>
 		<?php echo $form->error($model,'GroupFilter'); ?>
 	</td>
 	<td valign='bottom'>
@@ -157,7 +152,7 @@
 		<?php echo $form->error($model,'Value'); ?>
 	</td>	
 	
-	<td   valign='bottom'>
+	<td  class='padding10side'  valign='bottom'>
 		<?php echo $form->labelEx($model,'isActive'); ?> 
 		<?php echo $form->checkBox($model,'isActive'); ?>
 		<?php echo $form->error($model,'isActive'); ?>

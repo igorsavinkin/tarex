@@ -1169,7 +1169,8 @@ return array(
 	'You cannot print invoice since you as user are not registered with any organization.'=>'Вы не можете распечатать ',
 	'There is no content in the order to print in invoice.'=>'В заказе нет содержимого чтобы напечатать в счёте-фактуре.',
 	 'You cannot print invoice since you have not defined any contractor for this order. Turn to field "Contractor" and save the order.'=>'Вы не можете распечатать счёт фактуру так как Вы не определили никакого контрагента для этого заказа. Обратитесь к полю "Контрагент" и сохраните заказ.',
-	'You might set several values for a single field - comma or semicolon separated. For example: <b>Toyota, Ford, Sang-Yong</b>.'=>'Вы можете поставить несколько величин в отдельное поле - разделённых запятой или точкой с запятой; например: <b>Toyota, Ford, Sang-Yong</b>.', 
+	'You might set several values for a single field - comma or semicolon separated. For example: <b>Toyota, Ford, Sang-Yong</b>.'=>'Вы можете поставить несколько величин в отдельное поле - разделённых запятой или точкой с запятой; например: <b>Toyota, Ford, Sang-Yong</b>.',
+	'For an input field you need to set up the value with preceeding "=" sign. For example: <b>=922022E000, =Ford, =DEPO, =JAPAN</b>.'=>'Для поля ввода Вам нужно задать величину с предстоящим знаком "=", например: <b>=922022E000, =Ford, =DEPO, =JAPAN</b>.',	
 	/* Pricesetting */ 
 	'Pricesetting' => 'Настройка цены',
 	'Price Setting' => 'Настройка цены',

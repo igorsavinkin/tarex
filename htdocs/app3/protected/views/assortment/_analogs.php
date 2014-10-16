@@ -47,7 +47,11 @@
 						'htmlOptions' => array('style' => 'text-align:center; width: 20px'),
 						),*/
 			//'priceS',
-			'currentPrice',
+			//'currentPrice',
+			array(
+				'value'=>'$data->getPrice()',
+				'header' => Yii::t('general', 'Price'),
+			),
 			// new for getting into cart			
 			array('header'=> CHtml::dropDownList('pageSize', 
 				$pageSize,

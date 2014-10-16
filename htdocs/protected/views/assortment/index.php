@@ -169,7 +169,7 @@ if ($dataProvider->itemCount)
 	//echo '<br ><br >$dataProvider->getData() = '; print_r($dataProvider->getData()); //print_r($dataProvider->getData()); 
 	
 	//echo '<h1>' , Yii::t('general','Search item') , '</h1>'; // search element
-	if (isset($_GET['findbyoem-value'])) echo '<h1>' , Yii::t('general','Requested number') , '</h1>'; // search element
+	if (isset($_GET['findbyoem-value'])) echo '<h2>' , Yii::t('general','Requested number') , '</h2>'; // search element
 
 	$url = CController::createUrl('index', array('id'=>isset($_GET['id']) ? $_GET['id'] :''));
 	$findbyoemvalue = isset($_GET['findbyoem-value']) ?  $_GET['findbyoem-value'] : ''; 

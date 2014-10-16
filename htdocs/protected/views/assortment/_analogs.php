@@ -1,4 +1,4 @@
-<h1><?php echo Yii::t('general','Requested number analogues'); ?></h1>
+<h2><?php echo Yii::t('general','Requested number analogues'); ?></h2>
 <?php 
 	echo CHtml::form();
 	$url = CController::createUrl('index', array('id'=>$_GET['id']));
@@ -47,7 +47,11 @@
 						'htmlOptions' => array('style' => 'text-align:center; width: 20px'),
 						),*/
 			//'priceS',
-			'currentPrice',
+			//'currentPrice',
+			array(
+				'value'=>'$data->getPrice()',
+				'header' => Yii::t('general', 'Price'),
+			),
 			// new for getting into cart			
 			array('header'=> CHtml::dropDownList('pageSize', 
 				$pageSize,
