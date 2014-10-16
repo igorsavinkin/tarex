@@ -345,7 +345,8 @@ class Assortment extends CActiveRecord implements IECartPosition
 					$SearchString=Substr($Field, $Pos+1);
 					if(stristr($FieldToCompare, $SearchString)== false ) continue;
 				}
-			}
+			} 
+			
 	/*	$Field=$r->SubgroupFilter;	
 		//	echo '$r->SubgroupFilter = ', $r->SubgroupFilter, '<br>';
 			if($Field!=''){

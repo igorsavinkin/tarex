@@ -177,6 +177,8 @@ class AssortmentController extends Controller
 	// главный справочник номенклатуры
 	public function actionIndex($id = null, $assort=null, $subgroup=null) 
 	{ 	 
+		echo 'GET = '; print_r($_GET);
+		
 		$model=new Assortment('search');
 		$model->unsetAttributes();  // clear any default values
 		if($subgroup) 

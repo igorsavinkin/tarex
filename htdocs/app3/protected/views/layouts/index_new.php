@@ -7,21 +7,21 @@
     <title>
       <?php echo $this->pageTitle; ?>
     </title> 
-    <link href="css/in.css" rel="stylesheet" type="text/css">
-    <link href="css/form.css" rel="stylesheet" type="text/css">
-    <link href="css/reset.css" rel="stylesheet" type="text/css">
-    <link href="css/order.css" rel="stylesheet" type="text/css">
-    <link href="css/media.css" rel="stylesheet" type="text/css">
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="css/bootstrap-theme.css" rel="stylesheet" type="text/css">
-    <link href="css/owl.carousel.css" rel="stylesheet" type="text/css">
-    <link href="css/owl.theme.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo Yii::app()->baseUrl; ?>/css/in.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo Yii::app()->baseUrl; ?>/css/form.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo Yii::app()->baseUrl; ?>/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo Yii::app()->baseUrl; ?>/css/order.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo Yii::app()->baseUrl; ?>/css/media.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo Yii::app()->baseUrl; ?>/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo Yii::app()->baseUrl; ?>/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo Yii::app()->baseUrl; ?>/css/owl.carousel.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo Yii::app()->baseUrl; ?>/css/owl.theme.css" rel="stylesheet" type="text/css">
 	
     <?php Yii::app()->clientScript->registerCoreScript('jquery.ui'); ?>
 	<?php Yii::app()->clientScript->registerCoreScript('jQuery'); ?>
-	<script src="js/owl.carousel.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/tabSlideOut.js"></script>
+	<script src="<?php echo Yii::app()->baseUrl; ?>/js/owl.carousel.min.js"></script>
+    <script src="<?php echo Yii::app()->baseUrl; ?>/js/bootstrap.js"></script>
+    <script src="<?php echo Yii::app()->baseUrl; ?>/js/tabSlideOut.js"></script>
 	
 	<script type="text/javascript">
 	jQuery(function($) {   
