@@ -1,0 +1,14 @@
+	[srv50213@cl10-m ~]$ git push -u origin master
+	Counting objects: 17875, done.
+	Delta compression using up to 2 threads.
+	Compressing objects: 100% (17645/17645), done.
+	Writing objects: 100% (17875/17875), 413.33 MiB | 3.63 MiB/s, done.
+	Total 17875 (delta 5499), reused 0 (delta 0)
+	remote: warning: File 20140924.srv50213_tarex.dump is 82.14 MB; this is larger than GitHub's recommended maximum file size of 50 MB
+	remote: error: GH001: Large files detected.
+	remote: error: Trace: 7abab285207c27988ceddd39f61f25cd
+	remote: error: See http://git.io/iEPt8g for more information.
+	remote: error: File htdocs/2014-10-09-10:40-site-archive.zip is 227.12 MB; this exceeds GitHub's file size limit of 100 MB
+	To git@github.com:igorsavinkin/tarex.git
+	 ! [remote rejected] master -> master (pre-receive hook declined)
+	error: failed to push some refs to 'git@github.com:igorsavinkin/tarex.git'
