@@ -189,6 +189,7 @@ return array(
 	'Sales' => 'Продажи', 
 	'Sales return' => 'Возвраты',
 	'RFQ' => 'Запросы поставщику',
+	'RNP' => 'Запрос новых позиций',
 	'Purchase order' => 'Заказы поставщику',
 	'Purchase' => 'Покупки',
 	'Purchase return' => 'Возвраты поставщику',
@@ -212,7 +213,8 @@ return array(
 	'Drivers load' => 'Загрузка водителей',
 	'Calls'=>'Звонки',
 	'Appointment'=>'Встреча',
-	
+	'New assortment items codes'=>'Коды новых позищий номенклатуры',
+	'comma separated'=>'разделённые запятой',
 	'Salary'=>'Зарплата',
 	'Payment salary'=>'Выплата зарплаты',
 	

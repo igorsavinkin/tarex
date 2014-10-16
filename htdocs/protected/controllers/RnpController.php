@@ -1,8 +1,9 @@
 <?php
 include('EventsController.php'); 
 	
-class BankinController extends EventsController {
-	 	
+class RnpController extends EventsController {
+}
+/*	
 	public function loadModel($id)
 	{
 		$model=Events::model()->findByPk($id);
@@ -72,5 +73,4 @@ class BankinController extends EventsController {
 		$this->render('update', array(
 			'model'=>$model,
 		));
-	}  
-}
+	}  */ 
