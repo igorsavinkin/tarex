@@ -82,7 +82,8 @@ return array(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
-			   '<controller:\w+>/<action:\w+>/<Reference:\w+(\+)?(\w)?>'=>'<controller>/<action>', '<controller:\w+>/<action:\w+>/<Subsystem:\w+(\+)?(\S)?(\+)?(\w)?(\+)?(\w)?>'=>'<controller>/<action>',
+			  // '<controller:\w+>/<action:\w+>/<Reference:\w+(\+)?(\w)? >'=>'<controller>/<action>', '<controller:\w+>/<action:\w+>
+			  //<Subsystem:\w+(\+)?(\S)?(\+)?(\w)?(\+)?(\w)? >'=>'<controller>/<action>',
 				//'<controller:\w+>/<action:\w+>/<project:\d+>'=>'<controller>/<action>',
 				
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',

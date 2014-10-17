@@ -133,8 +133,8 @@ $('input[id^=\"series_\"]').on('change', function() {
 			echo CHtml::checkBox("Body[{$mod->title}]", $checked , array('value'=>$mod->title,'uncheckValue'=>'0',  'id'=>"model_{$mod->title}"));
 			echo "</div>";	 
 		}
-		echo "</div> 
-		<div style='clear:both; margin-bottom:5px; border-top: solid 1px black'></div>"; 	
+		echo "</div>"; 
+		//<div style='clear:both; margin-bottom:5px; border-top: solid 1px black'></div>"; 	
 	}
 ?> 
 	 

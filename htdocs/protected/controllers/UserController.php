@@ -32,7 +32,7 @@ class UserController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create',  'admin', 'sendinvitation'), 
+				'actions'=>array('create',  'admin', 'sendinvitation', 'adminPersonal'), 
 				'roles'=>array(1, 2, 3, 4, 5),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -90,7 +90,10 @@ class UserController extends Controller
 				
 			if($model->save())
 				if (Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
-					$this->redirect(array('admin'));
+					if ($model->role > User::ROLE_MANAGER) 
+						$this->redirect(array('admin'));
+					else 
+						$this->redirect(array('adminPersonal'));
 				else 
 					$this->redirect(array('site/index'));
 		}
@@ -115,7 +118,10 @@ class UserController extends Controller
 			
 			if($model->save()) 
 			 	if (Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
-					$this->redirect(array('admin'));
+					if ($model->role > User::ROLE_MANAGER) 
+						$this->redirect(array('admin'));
+					else 
+						$this->redirect(array('adminPersonal'));
 				else 
 					$this->redirect(array('site/index'));
 		}
@@ -243,13 +249,27 @@ EOF;
 	}
 
 	public function actionAdmin()
-	{
+	{// переход на действие с персоналом если есть $_GET['Subsystem']
+		if (isset($_GET['Subsystem']) && $_GET['Subsystem'] == 'Staff & Salary tools')
+		    $this->redirect(array('adminPersonal'));
+			
 		$model=new User('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['User']))			
 			$model->attributes=$_GET['User'];
 			
 		$this->render('admin',array(
+			'model'=>$model,
+		));
+	}
+	public function actionAdminPersonal()
+	{
+		$model=new User('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['User']))			
+			$model->attributes=$_GET['User'];
+			
+		$this->render('adminPersonal',array(
 			'model'=>$model,
 		));
 	}
