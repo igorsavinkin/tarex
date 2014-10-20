@@ -3,7 +3,6 @@
 /* @var $model SpecialOffer */
 /* @var $form CActiveForm */
 ?>
-
 <div class="form">
 <table><tr>
 <?php $form=$this->beginWidget('CActiveForm', array(

@@ -177,6 +177,8 @@ if ($dataProvider->itemCount)
 	//$_GET['findbyoemvalue'];	// Yii::app()->request->getParam('findbyoem-value');
 	
 	echo CHtml::Form();
+	$url = Yii::app()->user->checkAccess(User::ROLE_MANAGER) ? $this->createUrl('update') : $this->createUrl('view'); 
+	
 	$this->widget('zii.widgets.grid.CGridView', array( 
 		'id'=>'assortment-grid',
 		'dataProvider'=>$dataProvider, /*,/*$model->search()*/
@@ -192,7 +194,7 @@ if ($dataProvider->itemCount)
 		//'rowCssClassExpression' => '$data->color',
 		'selectableRows'=>1,
 		'selectionChanged'=>'function(id){  		
-			location.href = "' . $this->createUrl('update').'/id/"+$.fn.yiiGridView.getSelection(id);	
+			location.href = "' . $url .'/id/"+$.fn.yiiGridView.getSelection(id);	
 		}',
 		'columns'=>array(
 			// 'id',

@@ -8011,3 +8011,41 @@ Stack trace:
 #5 {main}
 REQUEST_URI=/app3/index.php?r=assortment/view&id=7
 ---
+2014/10/20 18:12:18 [error] [exception.CException] exception 'CException' with message 'В классе Assortment и его поведениях не найден метод или замыкание с именем "amountToCartAjax".' in /home/srv50213/htdocs/framework/base/CComponent.php:266
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(227): CComponent->__call('amountToCartAja...', Array)
+#1 /home/srv50213/htdocs/app3/protected/views/assortment/view_adv.php(50): CActiveRecord->__call('amountToCartAja...', Array)
+#2 /home/srv50213/htdocs/app3/protected/views/assortment/view_adv.php(50): Assortment->amountToCartAjax()
+#3 /home/srv50213/htdocs/framework/web/CBaseController.php(126): require('/home/srv50213/...')
+#4 /home/srv50213/htdocs/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/srv50213/...', Array, true)
+#5 /home/srv50213/htdocs/framework/web/CController.php(869): CBaseController->renderFile('/home/srv50213/...', Array, true)
+#6 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('view_adv', Array, true)
+#7 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(37): CController->render('view_adv', Array)
+#8 [internal function]: AssortmentController->actionView('6091')
+#9 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#10 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#11 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#13 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#14 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#15 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#16 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#17 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#18 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#20 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#21 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#22 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#23 {main}
+REQUEST_URI=/app3/index.php?r=assortment/view&id=6091
+---
+2014/10/20 18:18:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "мшуц".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('\xD0\xBC\xD1\x88\xD1\x83\xD1\x86')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('\xD0\xBC\xD1\x88\xD1\x83\xD1\x86')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/\xD0\xBC\xD1\x88...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/app3/index.php?r=assortment/%D0%BC%D1%88%D1%83%D1%86/id/5334
+---
