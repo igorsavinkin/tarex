@@ -61,7 +61,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'pagination'=>array('pageSize'=>Yii::app()->params['defaultPageSize']),  
 		)), */
 	'dataProvider'=> $model->search(),
-	//'filter'=>$model,	
+	 //'filter'=>$model,	
 	'cssFile' => Yii::app()->baseUrl . '/css/gridview.css',
 	//'rowCssClassExpression' => '$data->color',
 	'summaryText' => Yii::t('general','Elements') . " {start} - {end} " . Yii::t('general','out of') . " {count}.",
@@ -79,12 +79,23 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'name'=>'Begin',		
 			'header' => Yii::t('general', 'Date'), 		
 		),  
-		'author.username',
-	/**/	'contractorId' =>array( 
+		array( 
+			'name'=>'author.username', 
+			'header' => Yii::t('general', 'Order\'s author'), 	 
+		),
+	/*    'contractorId' =>array( 
 			'name'=>'contractorId',
-			'value'=>'isset($data->contractorId ) ?  User::model()->findByPk($data->contractorId)->username : "" ',
+			'value'=>'isset($data->contractorId ) ?  User::model()->findByPk($data->contractorId)->username : "" ',	
 			//'filter' => CHtml::listData(Organization::model()->findall(), 'id', 'name'),		
-		), 
+		),  */
+		array( 	
+		    'header' => Yii::t('general', 'Contractor'), 
+			'value'=>'isset($data->contractorId) ?  User::model()->findByPk($data->contractorId)->name : "" ',				
+		),			
+		array('header'=>Yii::t('general','Manager'),
+			 'filter'=>CHtml::listData(User::model()->findAll('role = '. User::ROLE_SENIOR_MANAGER .' OR role = ' . User::ROLE_MANAGER), 'id', 'username'), 
+		   'value'=>'User::model()->findByPk(User::model()->findByPk($data->contractorId)->parentId)->username',
+		 ),	 
 		/*'EventTypeId' =>array( 
 			'name'=>'EventTypeId',
 			'value'=>'Yii::t("general", EventType::model()->findByPk($data->EventTypeId)->name)',

@@ -69,6 +69,8 @@ $('.search-form form').submit(function(){
 			'value'=>'Events::model()->findByPk($data->eventId)->Subject',
 			'filter' => CHtml::listData(Events::model()->findall(), 'id', 'Subject'),		
 		),
+		'assortment.article2',
+		'assortmentId' ,
 		'assortmentId' =>array( 
 			'name'=>'assortmentId',
 			'value'=>'Assortment::model()->findByPk($data->assortmentId)->title',

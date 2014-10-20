@@ -122,7 +122,7 @@ class User extends CActiveRecord
 	}
 	public function phoneNumber($attribute,$params='')
 	{
-		if(preg_match("/^\+?[\d-]{8,}$/", $this->$attribute) === 0)
+		if(preg_match("/^\+?[\d-()\s]{8,}$/", $this->$attribute) === 0)
 		{   
 			$this->addError($attribute,
 				Yii::t('general','Contact phone should be in the following form' ) . ': +7495 1234567 ' . Yii::t('general','or') . ' 495-123-45-67' );  
@@ -189,7 +189,7 @@ class User extends CActiveRecord
 	{
 		return array(
 			'id' => Yii::t('general','ID'),
-			'username' => Yii::t('general','User name'),
+			'username' => Yii::t('general','Client id'),//Yii::t('general','User name'),
 			'password' => Yii::t('general','Password'),
 			'isActive' => Yii::t('general', 'User is active'),
 			'created' => Yii::t('general','Created'),
@@ -216,8 +216,8 @@ class User extends CActiveRecord
 			'KnowingSource' => Yii::t('general', 'How did you hear about us'),
 		//	'scopeOfActivity' =>  Yii::t('general', 'scope of Organization activity' ),
 			'scopeOfActivity' =>  Yii::t('general', 'Scope Of Activity' ),
-			'CEOname' => Yii::t('general', 'CEO Name' ),
-			'AccountantName' => Yii::t('general', 'Accountant Name' ),
+			'CEOname' => Yii::t('general', 'CEO Name' ), //Yii::t('general', 'CEO Name' ),
+			'AccountantName' => Yii::t('general', 'Contact person'), //Yii::t('general', 'Accountant Name' ),
 			'carMakes' => Yii::t('general', 'Car makes'),
 			'priceConfig' => Yii::t('general', 'Price config' ),
 			'file' => 'Загрузить файл c прайсом',
@@ -228,7 +228,7 @@ class User extends CActiveRecord
 			'CorrespondentAccount' => Yii::t('general','Correspondent Account'),
 			'Bank' => Yii::t('general', 'Bank'),
 			'ShablonId' => Yii::t('general','Data Load Template'),
-			'name' => Yii::t('general','Name'),
+			'name' => Yii::t('general','Contractor'), // здесь в этом поле мы храним имя "контрактор" (как бы второе имя для пользователя)
 			'password_repeat'=>Yii::t('general','Repeat Password'),
 			'verifyCode'=>Yii::t('general','Verify code'), 
 			'isEmployee'=>Yii::t('general','is Employee'),

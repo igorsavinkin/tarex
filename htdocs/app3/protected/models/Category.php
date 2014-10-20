@@ -19,7 +19,8 @@ class Category extends CActiveRecord
 		return array(
 			array('name', 'required'),
 			array('name, image', 'length', 'max'=>255), 
-			array('id, name, image', 'safe', 'on'=>'search'),
+			array('isActive', 'numerical', 'integerOnly'=>true), 
+			array('id, name, image, isActive', 'safe', 'on'=>'search'),
 		);
 	}
  
@@ -35,7 +36,7 @@ class Category extends CActiveRecord
 		return array(
 			'id' => Yii::t('general','ID'),
 			'name' => Yii::t('general','Name'),
-			'image' => Yii::t('general','Image Url path'),
+			'image' => Yii::t('general','Image name'),
 			'isActive' => Yii::t('general','is Active'),
 		);
 	}

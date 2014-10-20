@@ -12,7 +12,7 @@
 
 	<p class="note"><?php echo Yii::t('general','Fields with'); ?><span class="required"> * </span><?php echo Yii::t('general','are required') .'.'; ?></p>
 	<p class="note"><?php echo Yii::t('general','You might set several values for a single field - comma or semicolon separated. For example: <b>Toyota, Ford, Sang-Yong</b>.'); //, ' ',  Yii::t('general','For example: <b> Toyota, Ford, Sang-Yong</b>') .'.'; ?></p>
-	<span class="required"><?php echo Yii::t('general','For each field you need to set up the value with preceeding "=" sign. For example: <b>=922022E000, =Ford, =DEPO</b>.'); //, ' ',  Yii::t('general','For example: <b> Toyota, Ford, Sang-Yong</b>') .'.'; ?>
+	<span class="required"><?php echo Yii::t('general','For an input field you need to set up the value with preceeding "=" sign. For example: <b>=922022E000, =Ford, =DEPO, =JAPAN</b>.'); //, ' ',  Yii::t('general','For example: <b> Toyota, Ford, Sang-Yong</b>') .'.'; ?>
 	
 	</span> 
 

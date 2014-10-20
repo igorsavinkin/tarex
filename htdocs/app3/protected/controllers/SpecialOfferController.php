@@ -1,16 +1,7 @@
 <?php
 
 class SpecialOfferController extends Controller
-{
-	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
-	 */
-	//public $layout='//layouts/FrontendLayoutPavel';
-
-	/**
-	 * @return array action filters
-	 */
+{ 
 	public function filters()
 	{
 		return array(
@@ -18,12 +9,7 @@ class SpecialOfferController extends Controller
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
-
-	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
+ 
 	public function accessRules()
 	{
 		return array(
@@ -54,9 +40,14 @@ class SpecialOfferController extends Controller
 			$model->assortmentId = $_GET['assortmentId'];
 			$item = Assortment::model()->findByPk($_GET['assortmentId']);
 			$model->description = $item->title;
-			if (!empty($item->imageUrl)) 
-				$model->photo = $item->imageUrl;
-			$model->price = $item->getPrice();			
+			$model->make = $item->make;
+		// копируем изображение
+			$model->photo = $item->article2 . '.jpg';
+			 
+			$model->price = $item->getPrice();
+			if($model->save()) 
+			    $this->redirect( array('update', 'id'=>$model->id,
+				));			
 		} 
 		
 		if(isset($_POST['SpecialOffer']))
@@ -68,7 +59,7 @@ class SpecialOfferController extends Controller
 				echo '<br>Failue to upload photo'; 
 			else 
 			{  
-				$model->photo =  $uploadedFile->name;  
+				$model->photo = $uploadedFile->name;  
 				echo '<br>uploadedFile name = ', $model->photo; 
 				if ($uploadedFile->saveAs( Yii::app()->basePath .'/../img/foto/'. $uploadedFile->name))
 				{
@@ -97,24 +88,26 @@ class SpecialOfferController extends Controller
 			$model->assortmentId = $_GET['assortmentId'];
 			$item = Assortment::model()->findByPk($_GET['assortmentId']);
 			$model->description = $item->title; 
+			$model->make = $item->make; 
 		
 		// копируем изображение
 			$model->photo = $item->article2 . '.jpg';
  
-			$model->price = $item->getPrice();			
+			$model->price = $item->getPrice();	
+			$model->save();			
 		}
 	 
 		if(isset($_POST['SpecialOffer']))
 		{
 			$_POST['SpecialOffer']['photo'] = $model->photo;
-			
+			//echo "\$_POST['SpecialOffer']['photo'] = ", $_POST['SpecialOffer']['photo'] ;
 			$model->attributes=$_POST['SpecialOffer'];
 			 
 			$uploadedFile=CUploadedFile::getInstance($model,'photo'); 
-			// если старое имя пустое, тогда мы в него кладём то что из загружаемого файла
-			if (empty($model->photo)) 
+			// если 
+		    if ( !empty($uploadedFile->name) && !empty($uploadedFile) ) 
 				$model->photo = $uploadedFile->name;
-				
+			//echo '<br>$model->photo = ', $model->photo;	
 			if($model->save())
 			{
 				if(!empty($uploadedFile))  // check if uploaded file is set or not
@@ -167,11 +160,7 @@ class SpecialOfferController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
-
-	/**
-	 * Performs the AJAX validation.
-	 * @param SpecialOffer $model the model to be validated
-	 */
+ 
 	protected function performAjaxValidation($model)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='special-offer-form')

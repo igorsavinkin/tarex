@@ -146,13 +146,11 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 					),
 			));    
 		} else 
-			echo (User::model()->findByPk($model->parentId)->username) ? User::model()->findByPk($model->parentId)->username : '-';
-	   
-// user group
-  	    echo $form->labelEx($model,'Group');  
+			echo User::model()->findByPk($model->parentId)->username;
+	 
 		if(Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
 		{ 
-			
+			echo $form->labelEx($model,'Group');  
 			$criteria = new CDbCriteria; 
 			$criteria->order = 'name ASC'; 
 			if(!Yii::app()->user->checkAccess(User::ROLE_ADMIN))  
@@ -166,9 +164,8 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 					'placeholder' => '', 
 					),
 			));   
-			echo $form->error($model,'Group'); 
- 	    }
-	?>		 
+		echo $form->error($model,'Group'); 
+	} ?>		 
 	
 		<?php echo $form->labelEx($model,'PaymentMethod'); ?>
 		<?php  $this->widget('ext.select2.ESelect2',array(

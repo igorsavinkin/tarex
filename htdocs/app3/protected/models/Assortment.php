@@ -328,8 +328,8 @@ class Assortment extends CActiveRecord implements IECartPosition
 			$Pricing=Pricing::model()->findall(array('order'=>'Date DESC', 'condition'=>'Date <= :Date AND isActive = 1 ', 'params'=>array(':Date'=>$date) ));
 		}
 		
-		foreach ($Pricing as $r)
-		{			
+		foreach ($Pricing as $r){
+			
 			$Field=$r->SubgroupFilter;	
 		//	echo '$r->SubgroupFilter = ', $r->SubgroupFilter, '<br>';
 			if($Field!=''){
@@ -345,24 +345,7 @@ class Assortment extends CActiveRecord implements IECartPosition
 					$SearchString=Substr($Field, $Pos+1);
 					if(stristr($FieldToCompare, $SearchString)== false ) continue;
 				}
-			} 
-			
-	/*	$Field=$r->SubgroupFilter;	
-		//	echo '$r->SubgroupFilter = ', $r->SubgroupFilter, '<br>';
-			if($Field!=''){
-				$FieldToCompare=mb_strtolower($this->subgroup);
-				if (strstr($Field, "=")!=''){
-					if ($FieldToCompare!=mb_strtolower(Substr($Field,1))){
-						continue;
-					}
-				}elseif (strstr($Field, ",")!='' || strstr($Field, ";")!=''){
-					if(stristr($Field, $FieldToCompare)=='' ) continue;
-				}elseif (stristr ($Field, "Содержит")!='' ){
-					$Pos=strpos ($Field, " ");
-					$SearchString=Substr($Field, $Pos+1);
-					if(stristr($FieldToCompare, $SearchString)== false ) continue;
-				}
-			}*/
+			}
 			
 			$Field=$r->TitleFilter;			
 			if($Field!=''){
@@ -475,16 +458,16 @@ class Assortment extends CActiveRecord implements IECartPosition
 				}
 			}			
 			
+	//Фильтры по пользователю / группе	//echo 'user'.$userId;
+//echo 'Discount2 /'.$Discount.'/';
 
 
-// если пользователь - гость, тогда мы возвращаем то что уже нашли
 			if (Yii::app()->user->isGuest) {
 				$Discount=$r->Value;
-			 //	echo 'discount (Guest) = ', $Discount , '<br>';
+			//	echo 'discount (Guest) = ', $Discount , '<br>';
 				return $Discount;
 			}
-//Фильтры по пользователю / группе	//echo 'user'.$userId;
- 	
+				
 			if (empty($userId) || $userId==0) continue;
 			
 			$Field=$r->UsernameFilter;		
@@ -501,30 +484,34 @@ class Assortment extends CActiveRecord implements IECartPosition
 					$SearchString=Substr($Field, $Pos+1);
 					if(stristr($FieldToCompare, $SearchString)== false ) continue;
 				}
-			}	 
+			}			
+			
+			
 			
 			//Фильтр по группе пользователя
 			$Field=$r->GroupFilter;			
 			if($Field!='' ){ 
 			
 				$FieldToCompare=mb_strtolower( User::model()->findbypk($userId)->Group );
-				// echo 'dDiscount/'.$Discount.'/Field/'.$Field.'/FieldToCompare/'.$FieldToCompare.'/';
+				// echo 'Discount/'.$Discount.'/Field/'.$Field.'/FieldToCompare/'.$FieldToCompare.'/';
 				
 				if ($FieldToCompare!=$Field){
 						continue;
 				}
-			} 
+			}			
+			
+			
+			
 			
 			$Discount=$r->Value;
-			//echo 'dDiscount '.$Discount.'/Comment '.$r->Comment;
+			//echo 'Discount '.$Discount.'/Comment '.$r->Comment;
 			//return;
 			
 			break;
 		}
 		
 		
-	 //	echo 'discount = ', $Discount , '<br>';
-		//echo "<script> console.log('Assortmetn model'+'; discount =' + {$discount}); </script>";
+	//	echo 'discount = ', $Discount , '<br>';
 		return $Discount;		
 	}
 	
@@ -826,7 +813,7 @@ class Assortment extends CActiveRecord implements IECartPosition
 		//echo '<br>command params = ',  $command->params;
 	}
 */ 
-} 
+}
 /*
 SELECT event.id, eventType.name, event.totalSum, event.organizationId, 
 round(sum(sum_sign_by_eventtype(eventTypeid,  event.totalSum) ), 2) AS 'TotalSumForPeriod'		
@@ -840,5 +827,3 @@ WHERE Subconto1 > 0
 AND org.id = 7
 GROUP BY Subconto1, event.id, content.cost WITH ROLLUP
 */
-
-?>

@@ -15,8 +15,8 @@ $('.search-form form').submit(function(){
 ");*/
 ?>
 <h1><?php
-$employees = $_GET['Subsystem'] == 'Staff & Salary tools';
- echo ($employees) ? Yii::t('general','Employees') : Yii::t('general','Users'); ?></h1><br />
+///$employees = $_GET['Subsystem'] == 'Staff & Salary tools';
+ /*echo ($employees) ? Yii::t('general','Employees') :*/  Yii::t('general','Users'); ?></h1><br />
 <?php //echo CHtml::link(Yii::t('general','Advanced Search'),'#',array('class'=>'search-button'));
 echo CHtml::link(Yii::t('general','Create'), array('create'), array('class' => 'btn-win')); ?>
 <div class="search-form" style="display:none">
@@ -28,7 +28,7 @@ $this->renderPartial('_search',array(
 <?php 
  $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'user-grid',
-	'dataProvider'=> $model->search($employees),
+	'dataProvider'=> $model->search(/*$employees*/),
 	'filter'=>$model,
 	'cssFile' => Yii::app()->baseUrl . '/css/gridview.css',
 	'selectableRows'=>1,

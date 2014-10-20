@@ -1,37 +1,19 @@
 <?php
 	$UserRole=Yii::app()->user->role;
 	$UserId=Yii::app()->user->id;
-	$UserName=Yii::app()->user->username;
-
-
-	//echo $UserRole;
-	
-
-echo '<br><br><br>';
-
-	
-
-
-
-
+	$UserName=Yii::app()->user->username; 
+	//echo '<br><br><br><br>'; 
 ?>
-
-
-<table><tr>	
-
+<h1><?php echo Yii::t('general','Financial report'); ?></h1><br>
+<div class='form'>
+<table><tr>	 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'events-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
+	'id'=>'events-form', 
 	'enableAjaxValidation'=>false,
-)); 
-
-?>
+));  ?>
 <td>
 <?php
-	echo '<strong>'.Yii::t('general','Begin').'</strong>'; 
+	echo '<strong>'.Yii::t('general','Begin').' </strong>'; 
 	$this->widget('ext.CJuiDateTimePicker.CJuiDateTimePicker',array(
 	'model'=>$model,
 	'attribute'=>'Begin',
@@ -52,9 +34,9 @@ echo '<br><br><br>';
 		),
 	)); 
 ?>
-</td><td>
+</td><td class='padding10side'>
 <?php	
-	echo '<strong>'.Yii::t('general','End').'</strong>'; 
+	echo ' <strong>'.Yii::t('general','End').' </strong>'; 
 	$this->widget('ext.CJuiDateTimePicker.CJuiDateTimePicker',array(
 	'model'=>$model,
 	'attribute'=>'End',
@@ -76,24 +58,21 @@ echo '<br><br><br>';
 	)); 
 
 ?>
-</td>
-</tr><tr>
-<td>
-<?
-	echo '<strong>'.Yii::t('general','Contractor').'</strong>'; 
-	if($RoleId<=3){
+</td><td class='padding10side'>
+<?	
+	if(Yii::app()->user->role<=3){
+		echo '<label>'.Yii::t('general','Contractor').' </label>'; 
 		$this->widget('ext.select2.ESelect2', array(
 			'model'=> $model,
 			'attribute'=> 'contractorId',
 			'data' => CHtml::listData(User::model()->findAll(array('order'=>'name ASC')), 'id','username'),
 			'options'=> array('allowClear'=>true, 
 				'width' => '200', 
-				'placeholder' => '',
-				//'minimumInputLength' => 3
+				'placeholder' => '', 
 				),
 		)); 
-	}elseif ($RoleId>3 && $RoleId<6){
-	
+	}elseif (Yii::app()->user->role>3 && Yii::app()->user->role<6){
+		echo '<strong>'.Yii::t('general','Contractor').' </strong>'; 
 		$AllowedContractors=CHtml::listData(User::model()->findAll(array(
 			'order'=>'name ASC',
 			'condition'=>'organization=:organization AND isCustomer=1',
@@ -106,34 +85,22 @@ echo '<br><br><br>';
 			'data' => $AllowedContractors,
 			'options'=> array('allowClear'=>true, 
 				'width' => '200', 
-				'placeholder' => '',
-				//'minimumInputLength' => 3
+				'placeholder' => '', 
 				),
 		)); 
-	}else{
-		echo $UserName;
-	
-	
+	}else{ 
+		//echo $UserName;	
 	}
-
-
 ?>
 </td><td>
-<?
-	echo CHtml::submitButton(Yii::t('general','Generate')); 
-	
-
-
-?>
-	
+<?	echo CHtml::submitButton(Yii::t('general','Generate'), array('class'=>'red')); ?>
 </td> 
 </tr></table> 
 <?php $this->endWidget(); ?>
-
+</div> <!-- form --> 
 <?
 	if(isset($_POST['Events']))
-	{
-	
+	{	
 		echo '<table width=100% border=1><tr> 
 		<th>'.Yii::t('general','Date').'</th>
 		<th>'.Yii::t('general','Document').'</th>
@@ -168,15 +135,5 @@ echo '<br><br><br>';
 		//echo '<tr><td></td><td></td><td></td><td>'.$Arrival.'</td><td>'.$Consumption.'</td><td>'.$OpeningBalances.'</td></tr></table>';
 		
 		echo '<tr><td colspan=2 align=right><b>'.Yii::t('general','TOTALLY').'</b></td><td></td><td><b>'.$Arrival.'</b></td><td><b>'.$Consumption.'</b></td><td><b>'.$OpeningBalances.'</b></td></tr></table>';
-			//$model->attributes=$_POST['Events'];
-			
-			
-			//if($model->save()) 
-				//$this->redirect(array('admin'   ));
 	}
-?>		
-		
-
-
-
-
+?>

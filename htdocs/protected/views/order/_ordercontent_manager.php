@@ -75,7 +75,7 @@ echo CHtml::ajaxSubmitButton(Yii::t('general', 'Delete selection') /* 'Удал�
 echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red')); 
 $this->endWidget();?>	
 
-<button class='no-print' 'style'='float:right;' onClick="window.print()"><?php echo Yii::t('general','Print event content');  ?></button>
+<!--button class='no-print' 'style'='float:right;' onClick="window.print()"><?php echo Yii::t('general','Print event content');  ?></button--> 
 	
 <br><br><h3> 
 <?php	

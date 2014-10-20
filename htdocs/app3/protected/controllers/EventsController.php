@@ -931,6 +931,7 @@ class EventsController extends Controller
 				case	'return':
 				case	'order':
 				case	'proforma':
+				case	'rnp':
 				default:
 					return 'isCustomer';
 			}

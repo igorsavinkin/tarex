@@ -44,7 +44,7 @@ class SiteController extends Controller
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}	 
-	public function actionIndex($page=null)
+	public function actionIndex($page=null, $id=null)
 	{		 
 		$this->render($page ? $page : 'index');  
 	}

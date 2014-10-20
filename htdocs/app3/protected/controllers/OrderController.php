@@ -81,7 +81,7 @@ class OrderController extends EventsController
 	
 	public function actionLoadContent()
 	{   
-		$eventId=$_POST['Events']['id'];
+			$eventId=$_POST['Events']['id'];
 		$model=$this->loadModel($eventId);  
 		
 		if (Yii::app()->user->role<=5){ 
@@ -89,10 +89,10 @@ class OrderController extends EventsController
 			$ShablonId=User::model()->findbypk(Yii::app()->user->id)->ShablonId;
 			if ($ShablonId!=0){
 				$LoadDataSettings=LoadDataSettings::model()->findByPk($ShablonId); 
-			}		
+			}
 		
 		} // ???
-		
+					
 		//$LoadDataSettings=LoadDataSettings::model()->findByPk($_POST['LoadDataSettingsID']); 
 		$LoadDataSettings=LoadDataSettings::model()->findByPk($_POST['LoadDataSettings']['id']);  
 		
@@ -284,7 +284,7 @@ class OrderController extends EventsController
 		$contractorId = ($model->contractorId) ? $model->contractorId : Yii::app()->user->id;
 		$user = User::model()->findByPk($contractorId);
 		$loadDataSetting = (LoadDataSettings::model()->findByPk($user->ShablonId)) ? LoadDataSettings::model()->findByPk($user->ShablonId) : LoadDataSettings::model()->findByPk(1); // если всё же не нашли шаблон, то тогда берём первую настройку - findByPk(1)	 
-	 	 
+		
 		if(isset($_POST['Events']))
 		{ 
 			$oldStatus = $model->StatusId;
@@ -301,13 +301,14 @@ class OrderController extends EventsController
 					mail( $user->email, 
 						"Изменение статуса заказа №{$model->id} в компании TAREX на cтатус {$newStatusName}",
 						"Уважаемый {$user->username}.<br> Статус вашего {$orderLink} №{$model->id} был изменён на статус '{$newStatusName}'.", "Content-type: text/html\r\n");				
-				} 
+				}
+
 
 			   if ($user->PaymentMethod) 
 					$model->PaymentType = $user->PaymentMethod;
 				if ($user->ShablonId) 
 			        $loadDataSetting->id = $user->ShablonId;
-			} 
+			}	/**/
 			if($model->save()) 
 			{
 				if (isset($_POST['OK'])) 
@@ -316,13 +317,13 @@ class OrderController extends EventsController
 			else print_r($model->errors);
 		} 
 		
-	/*	if (isset($_GET['pageSize'])) {
+		if (isset($_GET['pageSize'])) {
             $pageSize = $_GET['pageSize'];
             Yii::app()->user->setState('pageSize', (int) $_GET['pageSize']);
             unset($_GET['pageSize']);
         } else 		
 			$pageSize = Yii::app()->user->getState('pageSize') ? Yii::app()->user->getState('pageSize') : Yii::app()->params['defaultPageSize'];	 
-	*/		
+			
 	 	$assortment = new Assortment('search');
 		$assortment->unsetAttributes();  // clear any default values
 		if(isset($_GET['Assortment'])) {					
@@ -360,7 +361,6 @@ class OrderController extends EventsController
 			$this->redirect( array('update' , 'id'=>$id , '#' => 'tab2' )); 
 		}// конец добавления ассортимента в событие		
 		
-		//echo '$loadDataSetting = ', $loadDataSetting->id, '<br>';
 		$this->render('update' ,array(
 			'model'=>$model, 'assortment'=>$assortment,  'pageSize' =>$pageSize, 'loadDataSetting' => $loadDataSetting
 		));

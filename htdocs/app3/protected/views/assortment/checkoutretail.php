@@ -10,8 +10,7 @@ function PaymentMethodChange(paymentMethod)
     if(1 == paymentMethod || $('#legalEntityChbox').is(':checked') ) $('.userbankdata').show(); else $('.userbankdata').hide();
 };    
 ", CClientScript::POS_END);
-if ($orderId)  
-	echo 'New ', Chtml::LInk('order', array('orders/update', 'id'=>$orderId)), ' is created.<br>';
+//if ($orderId) echo 'New ', Chtml::LInk('order', array('orders/update', 'id'=>$orderId)), ' is created.<br>';
 $flashMessages = Yii::app()->user->getFlashes();
 if ($flashMessages) :  
     echo '<ul class="flashes">';

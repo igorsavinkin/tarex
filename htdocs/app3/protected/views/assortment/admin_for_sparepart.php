@@ -34,7 +34,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 				)), 
 			'buttons'=>array(        
 					Yii::t('general','add to spare part') => array( 
-					   'url' =>' Yii::app()->createUrl( (intval($_GET["return"]) == 0) ? "specialOffer/create" : "specialOffer/update", array("assortmentId"=>$data->id, "id"=>intval($_GET["return"])))  ',  
+					   'url' =>' Yii::app()->createUrl( (intval($_GET["return"]) == 0) ? "specialOffer/create" : "specialOffer/update", array("assortmentId"=>$data->id, "id"=>intval($_GET["returnSparePart"])))  ',  
 					 //  'url' => '$returnUrl . \'assortmentId=\' . $data->id' ,  
 					 //  'options'=>array( 'id'=>'\'some-class-\'.$data->id', 'class'=>"specialOffer"),
 					),

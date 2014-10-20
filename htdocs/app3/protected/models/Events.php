@@ -65,6 +65,7 @@ class Events extends CActiveRecord
 	const TYPE_PRICING = '34'; // Установка цены
 	const TYPE_HIRING = '35'; // Приём на работу
 	const TYPE_LAY_OFF = '36'; // Увольнение с работы
+	const TYPE_REQUEST_NEW_POSITIONS = '37'; // добавление позиций новых запчастей от заказчика (ASSORTMENT_ITEMS)
 	 
 	/* Event statuses */
 	const STATUS_NEW = '2';   // новый
@@ -352,6 +353,11 @@ class Events extends CActiveRecord
 	public function orderNotation()  
 	{
 		return CHtml::Link(Yii::t('general','Order') . ' ' . Yii::t('general','#') . $this->id.  ' ' . Yii::t('general','from date') . ' ' . Controller::FConvertDate($this->Begin) , array('order/update', 'id'=>$this->id));
+		//Yii::t('general','Order') . ' ' . Yii::t('general','#') . $this->id.  ' ' . Yii::t('general','from date') . ' ' . Controller::FConvertDate($this->Begin);
+	}
+	public function orderNotationSimple()  
+	{
+		return Yii::t('general','Order') . ' ' . Yii::t('general','#') . $this->id.  ' ' . Yii::t('general','from date') . ' ' . Controller::FConvertDate($this->Begin);
 	}
 	public function ordersOfOrganization($organization)
 	{
@@ -364,7 +370,7 @@ class Events extends CActiveRecord
 			'params'=>array('EventTypeId' => self::TYPE_ORDER),
 				));
 		foreach($filteredOrders as $order)  
-			$orders[$order->id] = $order->orderNotation();	
+			$orders[$order->id] = $order->orderNotationSimple();	
 		return $orders;	
 	}
 	protected function afterSave()

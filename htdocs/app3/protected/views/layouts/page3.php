@@ -252,7 +252,7 @@
 										if (!Assortment::model()->count('groupCategory = '. $category->id)) continue;	
 									?>															
 										 <a class="tar_cat<?php if(($i++ % 2) == 1) echo ' tar_cat_first'; ?>" href="<?php echo $this->createUrl('assortment/index', array('Assortment[groupCategory]'=>$category->id)); ?>"> 
-										 <img src="<?php echo Yii::app()->baseUrl; ?>/images/subgroups/<?php echo $category->image; ?>" >
+										 <img src="<?php echo Yii::app()->baseUrl .'/images/subgroups/' .  $category->image; ?>" >
 											<span>
 												<?php echo str_replace(' ', '<br>', Yii::t('general', $category->name)); ?>
 											</span>
@@ -570,7 +570,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="tar_copy">Копирайт сайта 2014</div>
+                <div class="tar_copy">&copy; Igor Savinkin, Tarex Corp.</div>
             </div>
         </div>
     </div>
@@ -580,14 +580,14 @@
 	<div class="tar_in_head">
 		<span><?php echo Yii::t('general','Search parts by VIN'); ?> </span>
 		<a href="#" class='back-link' >
-				<img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_x.png">
+				<img src="images/tar_x.png">
 		</a> 
 	</div>
 	<div class="tar_recover_in_form" >
 		<div class='tar_in_text_1'>
-		 <?php echo Yii::t('general', 'Enter the VIN number to search for'), ':';?><br /> 	
+		 <?php echo Yii::t('general','Under development...'); //echo Yii::t('general', 'Enter the VIN number to search for'), ':';?><br /> 	
 		</div>			 
-		<?php $form=$this->beginWidget('CActiveForm', array(
+		<?php /* $form=$this->beginWidget('CActiveForm', array(
 			'id'=>'assortment-form',
 			'enableAjaxValidation'=>false,
 			'method'=>'get',
@@ -595,15 +595,16 @@
 			'htmlOptions' => array( 
 			),
 		)); ?>
-		<input type='text' name='vin' size='42' class='input_text'> 
-		 
-		<center><?php echo CHtml::submitButton(Yii::t('general', 'Search'), array('class'=>'in_form_submit')); ?>
-		</center>		 	
+		<input type='text' name='vin' size='42' class='input_text'  > 
+		 */ ?>
+		<center><?php //echo CHtml::submitButton(Yii::t('general', 'Search'), array('class'=>'in_form_submit')); ?>
+		</center>		 
+       		
 	</div><!-- tar_recover_in_form -->
 	
-	<?php $this->endWidget(); ?>
+	<?php //$this->endWidget(); ?>
 	
-</div><!-- id='searchbyvin' -->
+</div><!-- id='searchbyvin' --> 
 <?php 
 Yii::app()->clientScript->registerScript('searchbyvin-script', "
 $('#opendialog').click(function(data){ 	 

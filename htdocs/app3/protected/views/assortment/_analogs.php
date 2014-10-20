@@ -1,4 +1,4 @@
-<h1><?php echo Yii::t('general','Requested number analogues'); ?></h1>
+<h2><?php echo Yii::t('general','Requested number analogues'); ?></h2>
 <?php 
 	echo CHtml::form();
 	$url = CController::createUrl('index', array('id'=>$_GET['id']));

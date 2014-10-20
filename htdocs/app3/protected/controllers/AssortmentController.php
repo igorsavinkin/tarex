@@ -13,7 +13,7 @@ class AssortmentController extends Controller
 	{     
 		return array(     
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array( 'removefromcart', 'view', 'admin', 'admin2', 'index', 'addToCart','addToCartAjax', 'cart', 'checkout', 'clearcart',  'checkoutretail' , 'searchbyvin', 'autocomplete', 'fob', 'test'), 
+				'actions'=>array( 'removefromcart', 'view', 'admin', 'admin2', 'index', 'addToCart','addToCartAjax', 'cart', 'checkout', 'clearcart',  'checkoutretail' , 'searchbyvin', 'autocomplete', 'fob', 'test', 'view'), 
 				'users'=>array('*'),  
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -30,6 +30,13 @@ class AssortmentController extends Controller
 		);
 	}  
    
+	public function actionView($id)
+	{
+		$this->render('view_adv',array(
+			'model'=>$this->loadModel($id),
+		));
+	} 
+	
 	public function actionAddToCart($id, $amount=null)
 	{ 
 		// если это запрос в корзину
@@ -176,9 +183,7 @@ class AssortmentController extends Controller
 
 	// главный справочник номенклатуры
 	public function actionIndex($id = null, $assort=null, $subgroup=null) 
-	{ 	 
-		//echo 'GET = '; print_r($_GET);
-		
+	{ 	  		
 		$model=new Assortment('search');
 		$model->unsetAttributes();  // clear any default values
 		if($subgroup) 

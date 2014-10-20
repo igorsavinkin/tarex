@@ -715,7 +715,7 @@ return array(
 	'You should agree term to use our service'=>'Вы должны быть согласны с условиями договора',	
 	'Read contract'=>'Условия договора',
 	'Send to client login/password'=>'Послать клиенту логин/пароль',
-	
+	'Client id'=>'Клиентский номер',
 	
 	'Bank' => 'Банк',
 	'Correspondent Account' => 'К/С',
@@ -735,6 +735,7 @@ return array(
 	'How did you hear about us' => 'Откуда о нас узнали',
 	'scope of Organization activity' => 'Сфера деятельности организации',
 	'CEO Name' => 'ФИО директора',
+	'Contact person' => 'Контактное лицо',
 	'Accountant Name' => 'ФИО бухгалтера',
 	'cash'=>'наличный расчёт',
 	'cashless'=>'безналичный расчёт',
@@ -815,6 +816,7 @@ return array(
 	'Products / Services'=>'Товары / Услуги',
 	'Order\'s content'=>'Содержание заказа',  
 	"Order's content"=>'Содержание заказа',  
+	'Order\'s author'=>'Создатель заказа',
 	'Event\'s content'=>'Содержание события',  
 	'Total with discount'=> 'Cтоимость всего со скидкой',
 	'Cost with discount'=> 'Сумма со скидкой',

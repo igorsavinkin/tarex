@@ -12,6 +12,28 @@
 	<p class="note"><?php echo Yii::t('general','Fields with'); ?><span class="required"> * </span><?php echo Yii::t('general','are required') .'.'; ?></p>
 	<?php echo $form->errorSummary($model); ?>
  
+	<td colspan='2'>
+		<?php echo $form->labelEx($model,'assortmentId'); ?> 
+		<?php echo $form->textField($model,'assortmentId'); ?>  
+		<?php echo $form->error($model,'assortmentId'); ?>
+		
+	</td>
+	
+	<td class='padding10side'>
+		<?php echo $form->labelEx($model,'OEM'); ?> 
+		<?php echo $form->textField($model,'OEM',array('size'=>40,'maxlength'=>255)); 
+		 echo '<br>', CHtml::Link(Yii::t('general','Load a spare part by OEM') , array('assortment/admin', 'returnSparePart'=> $model->id), array('class'=>'btn-win'));
+		?>		
+		<?php echo $form->error($model,'OEM'); ?>
+	</td>
+<?php /*	
+	<td>
+		echo $form->labelEx($model,'article'); ?> 
+		<?php echo $form->textField($model,'article',array('size'=>40,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'article'); 
+	</td>
+*/ ?>
+</tr><tr  valign='top'> 
 	<td>
 		<?php echo $form->labelEx($model,'changeDate'); ?> 
 		<?php   			
@@ -39,27 +61,6 @@
 					));  
 				echo $form->error($model,'changeDate'); ?>
 		<?php echo $form->error($model,'changeDate'); ?>
-	</td>
-	
-	<td class='padding10side'>
-		<?php echo $form->labelEx($model,'OEM'); ?> 
-		<?php echo $form->textField($model,'OEM',array('size'=>40,'maxlength'=>255)); 
-		 echo '<br>', CHtml::Link(Yii::t('general','Load a spare part by OEM') , array('assortment/admin', 'return'=> 'smth'));
-		?>		
-		<?php echo $form->error($model,'OEM'); ?>
-	</td>
-	
-	<td>
-		<?php echo $form->labelEx($model,'article'); ?> 
-		<?php echo $form->textField($model,'article',array('size'=>40,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'article'); ?>
-	</td>
-
-</tr><tr  valign='top'> 
-	<td>
-		<?php echo $form->labelEx($model,'assortmentId'); ?> 
-		<?php echo $form->textField($model,'assortmentId'); ?>  
-		<?php echo $form->error($model,'assortmentId'); ?>
 	</td>
 
  

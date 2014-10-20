@@ -3,7 +3,8 @@
 /* @var $model Assortment */ 
   //print_r(Yii::app()->getParams());
  //echo '<br>return = ',  intval($_GET['return']);
- 
+$action = 'update';  
+$url = $this->createUrl($action);  
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'assortment-grid',
 	'dataProvider'=>$model->search(),
@@ -11,7 +12,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'cssFile' => Yii::app()->baseUrl . '/css/gridview.css',	
 	'selectableRows'=>1,
 	'selectionChanged'=>'function(id){ 		
-		location.href = "' . $this->createUrl('update') .'/id/"+$.fn.yiiGridView.getSelection(id);	
+		location.href = "' . $url .'/id/"+$.fn.yiiGridView.getSelection(id);	
 	}', 
 	'columns'=>array(
 		'title',

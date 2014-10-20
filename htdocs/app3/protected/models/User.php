@@ -77,7 +77,7 @@ class User extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('isActive, parentId, role, ban, isLegalEntity, organization, discount, paymentDelay, debtLimit, PaymentMethod, ShippingMethod, KnowingSource, scopeOfActivity, ShablonId, agree', 'numerical', 'integerOnly'=>true),
-			array('username, password, address, legalAddress, Bank, OrganizationInfo, notes, name', 'length', 'max'=>255),
+			array('username, password, address, legalAddress, Bank, OrganizationInfo,  notes, name', 'length', 'max'=>255),
 			array('phone, email, isCustomer, isEmployee, isSeller', 'length', 'max'=>50),
 			array('city, CorrespondentAccount, INN, KPP, BIC, CurrentAccount, OKVED, OKPO, email2, CEOname, AccountantName, Group', 'length', 'max'=>63),
 			array('priceConfig, Accounts, Childs', 'length', 'max'=>1000),
@@ -92,8 +92,7 @@ class User extends CActiveRecord
 			array('agree', 'required' , 'requiredValue' => 1, 'message' => Yii::t('general','You should agree term to use our service') , 'on'=>'register'), 
 			
 			 array('phone', 'phoneNumber'),
-			 
-			 
+			
 			array('email, username, phone, PaymentMethod, ShippingMethod', 'required' , 'on'=>'retail'), 
 			
 			array('username, email', 'unique'),
@@ -123,7 +122,7 @@ class User extends CActiveRecord
 	}
 	public function phoneNumber($attribute,$params='')
 	{
-		if(preg_match("/^\+?[\d-]{8,11}$/", $this->$attribute) === 0)
+		if(preg_match("/^\+?[\d-()\s]{8,}$/", $this->$attribute) === 0)
 		{   
 			$this->addError($attribute,
 				Yii::t('general','Contact phone should be in the following form' ) . ': +7495 1234567 ' . Yii::t('general','or') . ' 495-123-45-67' );  
@@ -236,6 +235,8 @@ class User extends CActiveRecord
 			'isCustomer'=>Yii::t('general','is Customer'),
 			'isSeller'=>Yii::t('general','is Seller'), 
 			'agree'=>Yii::t('general','Agree with the contract'), 
+			'notes'=>Yii::t('general','Notes'), 
+			 
 		);
 	} 
  

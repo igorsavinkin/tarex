@@ -13,8 +13,39 @@ class CategoryController extends Controller {
 			),
 		);
 	}
+	public function actionCreate()
+	{
+		$model=new Category('insert');    
+		$model->isActive = 1;  
+		
+		if(isset($_POST['Category']))
+		{ 
+			$model->attributes=$_POST['Category'];
+		 
+			$uploadedFile=CUploadedFile::getInstance($model,'image');
+			if ($uploadedFile == null) 
+				echo '<br>Failue to Upload photo'; 
+			else 
+			{  
+				$model->image =  $uploadedFile->name;  
+				//echo '<br>uploadedFile name = ', $model->image; 
+				if ($uploadedFile->saveAs( Yii::app()->basePath .'/../images/subgroups'. $uploadedFile->name))
+				{
+					//echo '<br>photo successfully saved';					
+				}
+				else 
+					echo '<br>Failure to Save photo';
+			}			
+			if($model->save())
+				//$this->redirect(array('admin'));	
+				$this->redirect(array('update', 'id'=>$model->id));				
+		}
+
+		$this->render('create',array(
+			'model'=>$model,
+		));
+	}
 	
-	public $layout = '//layouts/FrontendLayoutPavel';
 	public function loadModel($id)
 	{
 		$model=Category::model()->findByPk($id);
@@ -49,19 +80,34 @@ class CategoryController extends Controller {
 	
 	public function actionUpdate($id)
 	{	
-		if( $id == 'new' ){
-			$model=new Category;   
-			// Присвоить ид  
-			//$model->id = Category::model()->find(array('order'=>'id DESC'))->id + 1; 		
-		} else { 
-			$model = Category::model()->findByPk($id);			
-		} 
+		$model = Category::model()->findByPk($id);			
 
 		if(isset($_POST['Category']))
 		{ 
+			$_POST['Category']['image'] = $model->image;// сохраняем предыдущее имя загруженного файла
+			
 			$model->attributes=$_POST['Category'];  
-			if($model->save()) 
-				$this->redirect(array('admin'));
+			$uploadedFile=CUploadedFile::getInstance($model,'image'); 
+			// если старое имя пустое, тогда мы в него кладём то что из загружаемого файла
+			if (empty($model->image)) 
+				$model->image = $uploadedFile->name;
+				
+			if($model->save())
+			{
+				if(!empty($uploadedFile))  // check if uploaded file is set or not
+                { // сохраняем новый файл со старым(или новым) именем из $model->image			
+					if($uploadedFile->saveAs(Yii::app()->basePath . '/../images/subgroups/' . $model->image))
+					{
+				//	 echo '<br>Uploaded file is saved! path is:  ', Yii::app()->basePath . '/../images/subgroups/' . $model->image; 
+					} 
+					else
+						echo '<br>Failure saving uploaded file; the path to save is ', Yii::app()->basePath . '/../images/subgroups/' . $model->image;
+                } else 
+				{ 
+					echo '<br>Uploaded file is empty!';
+				}
+				$this->redirect(array('admin'));				
+			} 
 		}  
 		
 		$this->render('update' ,array(

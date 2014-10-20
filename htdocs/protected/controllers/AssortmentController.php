@@ -807,6 +807,7 @@ class AssortmentController extends Controller
 						$content=new EventContent('simple');
 						$content->eventId = $model->id; // только что сохранённого заказа
 						$assortment = Assortment::model()->findByPk($position->getId());
+						$content->assortmentId = $assortment->id; // заносим id номенклатуры из корзины 
 						$content->assortmentTitle = $assortment->title; // заносим title номенклатуры из корзины 
 						$content->price = $position->getPrice();		 
 						$content->assortmentAmount = $position->getQuantity();// заносим количество наименования номенклатуры из корзины 	

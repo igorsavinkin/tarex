@@ -169,7 +169,7 @@ if ($dataProvider->itemCount)
 	//echo '<br ><br >$dataProvider->getData() = '; print_r($dataProvider->getData()); //print_r($dataProvider->getData()); 
 	
 	//echo '<h1>' , Yii::t('general','Search item') , '</h1>'; // search element
-	if (isset($_GET['findbyoem-value'])) echo '<h1>' , Yii::t('general','Requested number') , '</h1>'; // search element
+	if (isset($_GET['findbyoem-value'])) echo '<h2>' , Yii::t('general','Requested number') , '</h2>'; // search element
 
 	$url = CController::createUrl('index', array('id'=>isset($_GET['id']) ? $_GET['id'] :''));
 	$findbyoemvalue = isset($_GET['findbyoem-value']) ?  $_GET['findbyoem-value'] : ''; 
@@ -190,6 +190,10 @@ if ($dataProvider->itemCount)
 		'ajaxUrl'=>array('assortment/index'),
 		//'pagination'=> array('pageSize'=>'20'),
 		//'rowCssClassExpression' => '$data->color',
+		'selectableRows'=>1,
+		'selectionChanged'=>'function(id){  		
+			location.href = "' . $this->createUrl('update').'/id/"+$.fn.yiiGridView.getSelection(id);	
+		}',
 		'columns'=>array(
 			// 'id',
 			'agroup',
@@ -205,7 +209,10 @@ if ($dataProvider->itemCount)
 			//'country',
 			//'measure_unit',
 		  // 'article',
-		    'article2',
+		    'article2'=>array(
+				'name'=>'article2',
+				'header'=>Yii::t('general','Article'),
+			),
 			'oem',
 			'manufacturer',
 			array(
@@ -242,10 +249,17 @@ if ($dataProvider->itemCount)
 				array('onchange'=>"window.location.href = window.location.href + '&pageSize=' + $(this).val(); ",
 				'options' => array('title'=>'Click me'),
 				)),    //Yii::t("general",'Add to cart'),
-				'visible'=>'$data->availability > 0', // видима если есть в наличии 
+			//	'visible'=>!($dataProvider->itemCount == 1 && $dataProvider->getData()[0]->avaliability == 0) , // видима если есть в наличии 
+				
 				'type'=>'raw',
 				'value'=>array($this, 'amountToCartAjax'), //	'htmlOptions'=>array('width'=>'90px'),
-			), 		
+			), 
+			array('type'=>'raw',
+				'value'=>'CHtml::hiddenField("BulkDelete[$data->id]",false,array(\'value\'=>$data->priceS))',
+				'htmlOptions'=>array('style'=>'width:0%; display:none'),
+				'headerHtmlOptions'=>array('style'=>'width:0%; display:none')
+			),
+			
 			array(
 				'class' => 'CCheckBoxColumn',
 				'id' => 'Assortment[id]',	 

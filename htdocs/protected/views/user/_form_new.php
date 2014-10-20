@@ -29,6 +29,8 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 	<table>
 		 <tr><td class='top'>		
 		<?php echo $form->labelEx($model,'username');?>
+		<!--label><?php // это поле переименовываем в 'Client id'Клиентский номер	
+		echo Yii::t('general','Client id');?></label--> 
 		<?php echo $form->textField($model,'username'); ?>
 		<?php echo $form->error($model,'username'); ?> 
 		
@@ -94,6 +96,14 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 		<?php echo $form->labelEx($model,'address'); ?>
 		<?php echo $form->textArea($model,'address',array('rows'=>2, 'cols'=>30));  ?>
 		<?php echo $form->error($model,'address'); ?>
+		
+		<?php echo $form->labelEx($model,'name'); ?>
+		<?php echo $form->textArea($model,'name',array('rows'=>2, 'cols'=>30)); ?>
+		<?php echo $form->error($model,'name'); ?>
+		
+		<?php echo $form->labelEx($model,'AccountantName'); ?>
+		<?php echo $form->textField($model,'AccountantName'); ?>
+		<?php echo $form->error($model,'AccountantName'); ?>
 		
 		<?php echo $form->labelEx($model,'discount'); ?>
 		<?php echo $form->textField($model,'discount'); ?>

@@ -32,12 +32,12 @@ class UserController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create',  'admin', 'sendinvitation'), 
-				'roles'=>array(1, 2, 4, 5),
+				'actions'=>array('create',  'admin', 'sendinvitation', 'adminPersonal'), 
+				'roles'=>array(1, 2, 3, 4, 5),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('delete'),
-				'roles'=>array('1'),
+				'roles'=>array(1,2,3),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -90,7 +90,10 @@ class UserController extends Controller
 				
 			if($model->save())
 				if (Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
-					$this->redirect(array('admin'));
+					if ($model->role > User::ROLE_MANAGER) 
+						$this->redirect(array('admin'));
+					else 
+						$this->redirect(array('adminPersonal'));
 				else 
 					$this->redirect(array('site/index'));
 		}
@@ -115,7 +118,10 @@ class UserController extends Controller
 			
 			if($model->save()) 
 			 	if (Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
-					$this->redirect(array('admin'));
+					if ($model->role > User::ROLE_MANAGER) 
+						$this->redirect(array('admin'));
+					else 
+						$this->redirect(array('adminPersonal'));
 				else 
 					$this->redirect(array('site/index'));
 		}
@@ -153,7 +159,7 @@ class UserController extends Controller
 				
 			if($model->save()) { 				
 			// письмо зарегистрировашемуся клиенту
-				$to =  '=?UTF-8?B?' . $model->username . '?= <'. $model->email .'>';
+				$to =   $model->username . ' <'. $model->email . '>';
 				$from = 'Компания ТАРЕКС <'. Yii::app()->params['adminEmail'] . '>' ; // Yii::app()->params['generalManagerEmail'];
 				$subject = Yii::t('general', 'Registration notification on Tarex.ru');//'Подтверждение регистрации на сайте TAREX.ru'; 
 				$orderlink = CHtml::link( Yii::t('general', 'Click'), $this->createAbsoluteUrl('site/login', array('email'=>$model->email, 'p' => $model->password )));
@@ -187,13 +193,18 @@ E-mail: info@tarex.ru
 		</html> 
 EOF;
 //end of message 
+			
+			//$to = '=?UTF-8?B?'.base64_encode($to).'?='; // не надо
+			$from = '=?UTF-8?B?'.base64_encode($from).'?=';
+			$subject =  '=?UTF-8?B?'.base64_encode($subject).'?=';
+			
 			$headers  = "From: {$from}\r\n"; 
 			$headers .= "Content-type: text/html;charset=UTF-8\r\n";
 			$headers .= "Mime-Version: 1.0\r\n"; 
 		// посылаем скрытую копию главному менеджеру
 			$headers .= 'Bcc: '.  Yii::app()->params['generalManagerEmail'] . "\r\n";
 			 
-			$subject =  '=?UTF-8?B?'.base64_encode($subject).'?=';
+			
 			
 			mail($to, $subject, $message, $headers); 	
 			Yii::app()->user->setFlash('success', 'Пользователь <b>' . $model->email . '</b> создан. Вам выслано письмо - уведомление о регистрации. Перейдите по ссылке указанной в письме для входа в систему.'); 
@@ -218,9 +229,9 @@ EOF;
 	public function actionSendinvitation($id, $filename = null) // sendInvitation
 	{
 		$client = $this->loadModel($id);
-		$manager = $this->loadModel(Yii::app()->user->id);
-		$from =  $manager->username . ' <'. $manager->email . '>';
-	 
+		$manager = $this->loadModel(Yii::app()->user->id); 
+		$from = '=?UTF-8?B?'.base64_encode($manager->username . ' <'. $manager->email . '>').'?=';
+		
 		$profilelink = CHtml::Link('ссылке', $this->createAbsoluteUrl('update', array( 'id'=> $id)));
 		$contract = CHtml::Link('этой ссылке', $this->createAbsoluteUrl('update', array( 'id'=> $id, '#'=>'tab2')));
 		$message = "Уважаемый <b>{$client->username}</b>,<br /> 
@@ -229,22 +240,36 @@ EOF;
 			Для входа в систему используйте cледующие данные:<br /> 
 		Email: <b>{$client->email}</b><br />
 		Пароль: <b>{$client->password}</b><br /><br />
-		С уважением, Ваш менеджер <em>{$manager->username}</em> {$manager->phone}";
-	 
-		if (mail($client->email, 'Приглашение на сайт автозапчастей TAREX.ru' , $message , "From: {$from}\r\nContent-type: text/html; charset=UTF-8\r\nMime-Version: 1.0\r\n")) {
+		С уважением, Ваш менеджер <em>{$manager->username}</em> {$manager->phone}"; 
+	    $subject = '=?UTF-8?B?'.base64_encode('Приглашение на сайт автозапчастей TAREX.ru').'?=';
+		if (mail(  $client->email , $subject  , $message , "From: {$from}\r\nContent-type: text/html; charset=UTF-8\r\nMime-Version: 1.0\r\n")) {
 			Yii::app()->user->setFlash('success', 'Клиенту выслано письмо с его данными для входа и ссылкой на договор.'); 
 			}
 		$this->redirect(array('update','id'=>$client->id));
 	}
 
 	public function actionAdmin()
-	{
+	{// переход на действие с персоналом если есть $_GET['Subsystem']
+		if (isset($_GET['Subsystem']) && $_GET['Subsystem'] == 'Staff & Salary tools')
+		    $this->redirect(array('adminPersonal'));
+			
 		$model=new User('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['User']))			
 			$model->attributes=$_GET['User'];
 			
 		$this->render('admin',array(
+			'model'=>$model,
+		));
+	}
+	public function actionAdminPersonal()
+	{
+		$model=new User('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['User']))			
+			$model->attributes=$_GET['User'];
+			
+		$this->render('adminPersonal',array(
 			'model'=>$model,
 		));
 	}
