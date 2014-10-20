@@ -104,12 +104,18 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 		<?php echo $form->labelEx($model,'AccountantName'); ?>
 		<?php echo $form->textField($model,'AccountantName'); ?>
 		<?php echo $form->error($model,'AccountantName'); ?>
-		
+
 		<?php echo $form->labelEx($model,'discount'); ?>
-		<?php echo $form->textField($model,'discount'); ?>
-		<?php echo $form->error($model,'discount'); ?>
+		<?php 
+	if(Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
+		{  
+			echo $form->textField($model,'discount');  
+			echo $form->error($model,'discount'); 
+		} else 
+			echo $model->discount;  
+		?>
 		
-<?php if(Yii::app()->user->role <= User::ROLE_MANAGER) 
+<?php if(Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
 		{ ?> 
 		<?php echo $form->label($model,'isEmployee'); ?>
 		<?php echo $form->checkBox($model,'isEmployee'); ?>	
