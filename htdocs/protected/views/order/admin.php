@@ -15,10 +15,12 @@ $('.search-form form').submit(function(){
 	return false;
 });
 "); 
+//$children = Events::allChildren(Yii::app()->user->id);
+//echo 'childern = '; print_r($children);
 ?>
 <h1><?php echo Yii::t('general','Orders'); ?></h1><br> 
 <?php 
-if(Yii::app()->user->role<6){
+if(Yii::app()->user->checkAccess(User::ROLE_MANAGER)){
 	echo CHtml::link(Yii::t('general','Advanced Search'),'#',array('class'=>'search-button btn-win')); 
 }
 echo CHtml::link(Yii::t('general','Create') . ' ' . Yii::t('general', 'Order' ) , array('create', 'new'=>1), array( 'class' => 'btn-win'));  // target='_blank' ?>

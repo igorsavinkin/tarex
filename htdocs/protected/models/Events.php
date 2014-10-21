@@ -218,7 +218,12 @@ class Events extends CActiveRecord
 	// фильтрация по пользователю если он - клиент 	
 		if(Yii::app()->user->role == USER::ROLE_USER OR Yii::app()->user->role == USER::ROLE_USER_RETAIL) 
 			$criteria->compare('contractorId', Yii::app()->user->id);	 
-		
+			
+	 // фильтрация по контрагенту если пользоветель - менеджер
+	   if(Yii::app()->user->role == USER::ROLE_MANAGER) { 		
+			$children = Events::allChildren(Yii::app()->user->id);
+			$criteria->compare('contractorId', $children);	 
+		}
 		
 		if ($this->Begin) $criteria->addCondition('Begin >= "' . $this->Begin . '" ');
 		if ($this->End) $criteria->addCondition('Begin <= "' . $this->End . '" ');
@@ -388,5 +393,17 @@ class Events extends CActiveRecord
 			//echo '$this->totalSum = ', $this->totalSum;
 			$this->saveAttributes(array('totalSum')); // doe not call for before/afterSave() methods as opposite to $this->save(); 			
 		}		 
-	}  
+	} 
+	public function allChildren($userId)
+	{
+		$criteria = new CDbCriteria;
+		$criteria->select='id';
+		$criteria->compare('parentId', $userId);
+		$users = User::model()->findAll($criteria);
+		foreach($users as $user)
+		{
+			$arr[]=$user->id;
+		}
+	    return $arr; // ? $arr : false;
+	}
 }
