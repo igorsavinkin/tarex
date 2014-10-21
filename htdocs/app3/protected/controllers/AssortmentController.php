@@ -28,11 +28,11 @@ class AssortmentController extends Controller
 				'users'=>array('*'),
 			),
 		);
-	}  
+	}   
    
 	public function actionView($id)
 	{
-		$this->render('view_adv2',array(
+		$this->render('view_adv',array(
 			'model'=>$this->loadModel($id),
 		));
 	} 
