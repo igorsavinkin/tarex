@@ -177,7 +177,7 @@ if ($dataProvider->itemCount)
 	//$_GET['findbyoemvalue'];	// Yii::app()->request->getParam('findbyoem-value');
 	
 	echo CHtml::Form();
-	$url = Yii::app()->user->checkAccess(User::ROLE_MANAGER) ? $this->createUrl('update') : $this->createUrl('view'); 
+	$url = Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER) ? $this->createUrl('update') : $this->createUrl('view'); 
 	
 	$this->widget('zii.widgets.grid.CGridView', array( 
 		'id'=>'assortment-grid',

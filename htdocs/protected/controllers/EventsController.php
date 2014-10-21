@@ -23,7 +23,7 @@ class EventsController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create', 'update', 'update2', 'PrintSF', 'PrintOrder', 'PrintSchet', 'PrintLabels', 'PrintPPL', 'PrintPPL2', 'LoadContent','loadContent', 'clone', 'bulkActions'),
+				'actions'=>array('create', /* 'update' ,*/ 'update2', 'PrintSF', 'PrintOrder', 'PrintSchet', 'PrintLabels', 'PrintPPL', 'PrintPPL2', 'LoadContent','loadContent', 'clone', 'bulkActions'),
 				'users'=>array('@'),  
 			), 
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -31,6 +31,11 @@ class EventsController extends Controller
 				'users'=>array('@'),  
 			//	'roles'=>array(User::ROLE_ADMIN),  
 			//	'expressions'=>array(User::ROLE_ADMIN),  
+			),
+			array('allow', 
+				'actions'=>array('update'), 
+				//	'users'=>array('@'),  
+				'expression'=>array($this, 'UpdateEvent'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('delete'), 
@@ -828,7 +833,7 @@ class EventsController extends Controller
 			Yii::app()->end();
 		}
 	} 
-	public function UpdateEvent($user, $rule)
+	/*public function UpdateEvent($user, $rule)
 	{ 
 		if ($user->checkAccess('1')) return true; // если это суперадмин - тогда ему позволено
 		$event = Events::model()->findByPk($_GET['id']);// получаем само событие
@@ -846,9 +851,9 @@ class EventsController extends Controller
 			// находим родителя и проверяем есть ли соответствие родителя если родитель - менеджер (не обязательно новое)	
 			if ($user->checkAccess('5') && ($user->id == User::model()->findByPk($u->UserId)->parentId)) return true;					
 		}
-		*/
+		 
 		return false;
-	}
+	}*/
 	
 	 protected function amountDataField($data,$row)
      { // ... generate the output for the column
@@ -936,25 +941,34 @@ class EventsController extends Controller
 					return 'isCustomer';
 			}
 	}
-/*	public function UpdateEvent($user, $rule)
+	public function UpdateEvent($user, $rule)
 	{ 
-		if ($user->checkAccess('1')) return true; // если это суперадмин - тогда ему позволено
-		$event = DocEvents::model()->findByPk($_GET['id']);// получаем само событие
+		if ($user->checkAccess(User::ROLE_ADMIN)) return true; // если это суперадмин - тогда ему позволено
+		$event = Events::model()->findByPk($_GET['id']);// получаем само событие
 		// если это старший менеджер или директор - тогда ему позволено редактировать любые события в своей компании 
-		if ( $user->checkAccess('4') && ($user->organization == $event->organizationId)) return true; 
+		if($user->organization == $event->organizationId) 
+		{
+			if ( $user->checkAccess(User::ROLE_SENIOR_MANAGER)) return true; 
+			// если это менеджер - тогда ему позволено редактировать событие где он   автор или события своих подчинённых
+			elseif ( $user->checkAccess(User::ROLE_MANAGER)  && ($user->id == $event->authorId OR $user->id == User::model()->findByPk($event->contractorId)->parentId) ) return true; 
+			// если это пользователь - тогда ему позволено редактировать событие где он или автор или контрагент
+			elseif ( $user->checkAccess(User::ROLE_USER_RETAIL)   && ($user->id == $event->authorId OR $user->id == $event->contractorId ) ) return true; 
+		}
+		return false;
 		
 		// если это не новое событие, то тогда его уже нельзя редактировать ни менеджерам ни владельцу-пользователю
 		//if ($event->StatusId != DocEvents::STATUS_NEW) return false;
 		// пока убрал это для TAREX
 		
-		if ( $user->checkAccess('5') && ($user->id == $event->organizationId)) return true; // если это (старший) менеджер или директор - тогда ему позволено смотреть любые события в своей компании 
+	/*	if ( $user->checkAccess(ROLE_SENIOR_MANAGER) && ($user->id == $event->organizationId)) return true; // если это (старший) менеджер или директор - тогда ему позволено смотреть любые события в своей компании 
 		foreach (DocEventUsers::model()->findAllByAttributes(array('EventId' => $_GET['id'])) as $u)
 		{ //пользователь есть на это событие и его права редактированиe или редактированиe и удалениe и это событие со статусом новое 
 			if ($user->id == $u->UserId && $u->AccessId >= 2 && $event->StatusId == DocEvents::STATUS_NEW) return true;			
 			// находим родителя и проверяем есть ли соответствие родителя если родитель - менеджер (не обязательно новое)	
 			if ($user->checkAccess('5') && ($user->id == User::model()->findByPk($u->UserId)->parentId)) return true;					
 		}
-		return false;
+		*/
+		
 	}
-	*/
+	 
 }
