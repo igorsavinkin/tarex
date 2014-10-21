@@ -49,7 +49,6 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 		<?php echo $form->labelEx($model, 'role'); 
 				   if(Yii::app()->user->role < $model->role) 
 					{ 
-						
 						$this->widget('ext.select2.ESelect2',array(
 							'model'=> $model,
 							'attribute'=> 'role', 
@@ -63,7 +62,7 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 		?> 
 		 
 		<?php echo $form->label($model,'isLegalEntity'); ?>
-		<?php  echo $form->checkBox($model,'isLegalEntity'); ?>	
+		<?php echo $form->checkBox($model,'isLegalEntity'); ?>	
 		<?php echo $form->error($model,'isLegalEntity'); ?> 
 		
 		<?php echo $form->label($model,'isActive'); ?>
@@ -72,11 +71,9 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 		{ 
 			echo $form->checkBox($model,'isActive');  
 			echo $form->error($model,'isActive'); 
-		} else 
-		{
+		} else  
 			echo $model->isActive ? Yii::t('general','yes') : Yii::t('general','no');
-		} ?>  
-		
+		?> 
 	 </td>
 	 <td class='top padding10side' >  
 		
@@ -107,12 +104,12 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 
 		<?php echo $form->labelEx($model,'discount'); ?>
 		<?php 
-	if(Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
-		{  
-			echo $form->textField($model,'discount');  
-			echo $form->error($model,'discount'); 
-		} else 
-			echo $model->discount;  
+			if(Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
+				{  
+					echo $form->textField($model,'discount');  
+					echo $form->error($model,'discount'); 
+				} else 
+					echo $model->discount;  
 		?>
 		
 <?php if(Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
@@ -162,7 +159,7 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 					),
 			));    
 		} else 
-			echo User::model()->findByPk($model->parentId)->username;
+			echo (!empty(User::model()->findByPk($model->parentId)->username)) ? User::model()->findByPk($model->parentId)->username : '-';
 	 
 		if(Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
 		{ 
@@ -180,8 +177,8 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 					'placeholder' => '', 
 					),
 			));   
-		echo $form->error($model,'Group'); 
-	} ?>		 
+			echo $form->error($model,'Group'); 
+		} ?>		 
 	
 		<?php echo $form->labelEx($model,'PaymentMethod'); ?>
 		<?php  $this->widget('ext.select2.ESelect2',array(
@@ -220,8 +217,8 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 						'width' => '200')              
 				));?>
 		<?php echo $form->error($model,'ShablonId'); ?><br> 			
-		<?php echo CHtml::link(Yii::t('general','Edit loading settings'), array('LoadDataSettings/admin'), array('target'=>'_blank')); 
-
+		<?php echo CHtml::link(Yii::t('general','Edit loading settings'), array('LoadDataSettings/admin'), array('target'=>'_blank'));  
+		
 		
 		$criteria=new CDbCriteria;
 		$criteria->select='make';

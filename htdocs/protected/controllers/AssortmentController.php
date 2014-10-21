@@ -29,7 +29,12 @@ class AssortmentController extends Controller
 			),
 		);
 	}  
-   
+    public function actionView($id)
+	{
+		$this->render('view_adv',array(
+			'model'=>$this->loadModel($id),
+		));
+	} 
 	public function actionAddToCart($id, $amount=null)
 	{ 
 		// если это запрос в корзину
@@ -1106,4 +1111,17 @@ EOF;
 	   $dd = CHtml::dropDownList('Assortment[amount][' . $data->id .']', 1, $dataArr, array('style'=>'width:40px;'));
 		return $dd  . '&nbsp;' . $buttonAjax; 		
     }	
+	public function info($data, $row)
+	{ 
+		$info = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/infoblue.png" ));
+		$infofoto = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/camerainfoblue.png" ));
+		$action = Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER) ?'update' : 'view';
+		/*try {
+			//$image = getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg");
+		}  catch(Exception $e)  { } */
+		if (getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg" ) !== false)
+			echo CHtml::Link($infofoto, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 	 
+		else  
+            echo CHtml::Link($info, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 
+	}
 }

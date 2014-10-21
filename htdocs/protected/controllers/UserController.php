@@ -29,7 +29,8 @@ class UserController extends Controller
 			),
 			array('allow', // allow authenticated user to perform 'update' actions
 				'actions'=>array('update'), 
-				'users'=>array('@'),
+				//'users'=>array('@'),
+				'expression'=>array($this, 'UpdateUser'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create',  'admin', 'sendinvitation', 'adminPersonal'), 
@@ -347,4 +348,15 @@ EOF;
 		} else return $children;
 		return $children;
 	}
+	public function UpdateUser($user, $rule) 
+	{ 
+	// если это суперадмин или старше менеджера или если id текущего пользователя равно $_GET['id'] - тогда позволено смотреть/редактировать
+		if ($user->checkAccess(User::ROLE_SENIOR_MANAGER) OR $user->id == $_GET['id']) return true; 
+	
+	// если это менеджер и он - родитель этого клиента - тогда можно смотреть/редактировать	
+		if( $user->checkAccess(User::ROLE_MANAGER) && User::model()->findByPk($_GET['id'])->parentId == $user->id) return true; 
+	  
+		return false;
+	}
+	
 }

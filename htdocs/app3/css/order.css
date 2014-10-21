@@ -1120,3 +1120,15 @@ div.tar_component_body
 	padding:0 10px;
 }
 .top{ vertical-align: top; }
+.bottom{ vertical-align: bottom; }
+#btn-up {
+	z-index:1000;position:fixed; 
+	bottom: 20px; right:20px;
+	filter: alpha(opacity=50);
+	opacity: 0.5;
+} 
+#btn-up:hover { 
+	filter: alpha(opacity=100);opacity: 1.0;}
+	
+/*.odd-row { background: #f0f3f5; }*/
+.odd-row { background: #bbb; }

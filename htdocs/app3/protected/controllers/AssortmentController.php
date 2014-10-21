@@ -13,7 +13,7 @@ class AssortmentController extends Controller
 	{     
 		return array(     
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array( 'removefromcart', 'view', 'admin', 'admin2', 'index', 'addToCart','addToCartAjax', 'cart', 'checkout', 'clearcart',  'checkoutretail' , 'searchbyvin', 'autocomplete', 'fob', 'test', 'view'), 
+				'actions'=>array( 'removefromcart', 'view', 'admin', 'admin2', 'index', 'addToCart','addToCartAjax', 'cart', 'checkout', 'clearcart',  'checkoutretail' , 'searchbyvin', 'autocomplete', 'fob', 'test'), 
 				'users'=>array('*'),  
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -32,7 +32,7 @@ class AssortmentController extends Controller
    
 	public function actionView($id)
 	{
-		$this->render('view_adv',array(
+		$this->render('view_adv2',array(
 			'model'=>$this->loadModel($id),
 		));
 	} 
@@ -1064,6 +1064,19 @@ EOF;
 			return "<a class='test-popup-link' href='{$src}'>". CHtml::tag("img", array("src" =>$src, "height"=>40, "width"=>40)) . '</a>';		
 			else  
 				return Yii::t('general','no image'); 
+	}
+	public function info($data, $row)
+	{ 
+		$info = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/infoblue.png" ));
+		$infofoto = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/camerainfoblue.png" ));
+		$action = Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER) ?'update' : 'view';
+		/*try {
+			//$image = getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg");
+		}  catch(Exception $e)  { } */
+		if (getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg" ) !== false)
+			echo CHtml::Link($infofoto, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 	 
+		else  
+            echo CHtml::Link($info, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 
 	}
 	protected function amountToCart($data,$row)
     {  

@@ -1129,3 +1129,6 @@ div.tar_component_body
 } 
 #btn-up:hover { 
 	filter: alpha(opacity=100);opacity: 1.0;}
+	
+/*.odd-row { background: #f0f3f5; }*/
+.odd-row { background: #bbb; }
