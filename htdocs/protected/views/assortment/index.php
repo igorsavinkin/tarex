@@ -231,7 +231,7 @@ if ($dataProvider->itemCount)
 				 'type'=>'html',
 				'value'=>array($this, 'info'), 
 			 ),	
-	    	'foto'=>array(
+	 /*    	'foto'=>array(
 				'header'=>Yii::t("general",'Foto'),
 				 'type'=>'html',
 			  'value'=>array($this, 'getImage'), 
@@ -246,7 +246,7 @@ if ($dataProvider->itemCount)
 				'value'=>'(isset($data->schema)) ?  "<span class=\"picture-icon schema\"></span>"  :Yii::t("general", "schema is not yet ready")',
 				//'<span class="info-picture"></span>',
 		    	'htmlOptions' => array('style' => 'text-align:center; width: 20px'),
-			),	
+			),	*/ 
 // new for getting into cart			
 			array('header'=> CHtml::dropDownList('pageSize', 
 				$pageSize,

@@ -13,7 +13,7 @@ $this->breadcrumbs=array(
 	<?php echo ' <em><u>'. $model->title . '</u></em>'; ?></h1>
 	<?php if ((getimagesize(Yii::app()->basePath. '/../img/foto/'. $model->article2 . '.jpg') !== false) ) : ?>
 	<div style="border: 1px solid #344756; margin:0 0 0 30px; padding: 5px;float:left;"> 
-	<?php echo CHtml::image(Yii::app()->baseUrl. '/img/foto/'. $model->article2 . '.jpg' , "photo"/*,array("width"=>350)*/)?> </div>
+	<?php echo CHtml::image(Yii::app()->baseUrl. '/img/foto/'. $model->article2 . '.jpg' , "photo",array("width"=>450))?> </div>
 	<?php endif;	?>
 	
 	<table style='float:left;margin:0 10px;'><tr class='odd-row' >

@@ -81,8 +81,9 @@
                                 <div class="pad"></div>
                             </div><!-- tar_choice_all -->
                             <div class="tar_reg_in_lang">
-                              <div class="tar_usermenu">
-                                    <a class="tar_name" href="<?php echo Yii::app()->createUrl('/user/update', array('id'=>Yii::app()->user->id)); ?>"><?php echo Yii::app()->user->username; ?></a><br>
+                              <div class="tar_usermenu" style='/*border: 1px solid red;*/ overflow:visible;' >
+                                    <a  class="objblink" style='text-decoration:none; background-color: red; color: white; float:left;cursor:pointer;position:absolute;margin-left:-6px;margin-top:-10px;overflow:visible;border-radius: 5px;' >&nbsp;52&nbsp;</a>
+									<a class="tar_name"href="<?php echo Yii::app()->createUrl('/user/update', array('id'=>Yii::app()->user->id)); ?>"><?php echo Yii::app()->user->username; ?></a><br>
                                       
                                     <span><?php echo Yii::app()->user->email; ?></span>
                                     <br>
