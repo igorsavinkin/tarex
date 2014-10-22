@@ -401,9 +401,7 @@ class Events extends CActiveRecord
 		$criteria->compare('parentId', $userId);
 		$users = User::model()->findAll($criteria);
 		foreach($users as $user)
-		{
 			$arr[]=$user->id;
-		}
 	    return $arr; // ? $arr : false;
 	}
 }

@@ -407,4 +407,14 @@ class User extends CActiveRecord
 		$managers = CHtml::listData(User::model()->findAll('role = '. User::ROLE_MANAGER .' OR role = '. User::ROLE_SENIOR_MANAGER), 'id', 'username');		
 		return CHtml::dropDownList('User[parentId]', $this->parentId, $managers);         
 	}
+	public function allChildren($userId)
+	{
+		$criteria = new CDbCriteria;
+		$criteria->select='id';
+		$criteria->compare('parentId', $userId);
+		$users = self::model()->findAll($criteria);
+		foreach($users as $user)
+			$arr[]=$user->id;
+	    return $arr; // ? $arr : false;
+	}
 }
