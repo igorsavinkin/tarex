@@ -82,6 +82,25 @@
                             </div><!-- tar_choice_all -->
                             <div class="tar_reg_in_lang">
                               <div class="tar_usermenu">
+							   <?php  
+									if (Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
+									{   
+										$criteriaCh = new CDbCriteria;
+										$criteriaCh->select='id';
+										$criteriaCh->compare('parentId', Yii::app()->user->id); 
+										$children=array();
+										foreach(User::model()->findAll($criteriaCh) as $u)
+											$children[]=$u->id; 
+										if (count($children))
+										{
+											$criteria=new CDbCriteria;
+											$criteria->compare('StatusId', array( Events::STATUS_NEW, Events::STATUS_REQUEST_TO_RESERVE, Events::STATUS_REQUEST_TO_DELIVERY ) ); // новый, запрос в резерв, запрос на доствку
+											$criteria->addInCondition('contractorId', $children); 
+											$newOrdersCount = Events::model()->count($criteria); 
+											if ($newOrdersCount) 											
+												echo CHtml::Link("&nbsp;{$newOrdersCount}&nbsp;", array('order/admin'), array('class'=>"objblink new-orders", 'title'=>'see the new coming orders')); 
+										} 
+									} ?>  
                                     <a class="tar_name" href="<?php echo Yii::app()->createUrl('/user/update', array('id'=>Yii::app()->user->id)); ?>"><?php echo Yii::app()->user->username; ?></a><br>
                                       
                                     <span><?php echo Yii::app()->user->email; ?></span>

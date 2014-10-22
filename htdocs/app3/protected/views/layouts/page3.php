@@ -98,7 +98,7 @@
 										if (count($children))
 										{
 											$criteria=new CDbCriteria;
-											$criteria->compare('StatusId', array( Events::STATUS_NEW,Events::STATUS_REQUEST_TO_RESERVE, Events::STATUS_REQUEST_TO_DELIVERY ) ); // новый, запрос в резерв, запрос на доствку
+											$criteria->compare('StatusId', array( Events::STATUS_NEW, Events::STATUS_REQUEST_TO_RESERVE, Events::STATUS_REQUEST_TO_DELIVERY ) ); // новый, запрос в резерв, запрос на доствку
 											$criteria->addInCondition('contractorId', $children); 
 											$newOrdersCount = Events::model()->count($criteria); 
 											if ($newOrdersCount) 											
