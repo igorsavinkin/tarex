@@ -1,6 +1,5 @@
 <?php
-return array(
-
+return array( 
 	/* Spare parts */
 	'Spare parts'=>'Запчасти',
 	'Spare part'=>'Запчасть',
@@ -844,6 +843,7 @@ return array(
 	'Confirm to delivery with changes'=>'Подтвердить на доставку с изменениями',
 	'Confirm with changes'=>'Подтвердить с изменениями',
 	'Recommended Price'=>'Рекомендуемая цена', 
+	'Your new coming orders'=>'Ваши новые входящие заказы',
 	/* tabs*/
 	'Main'=>'Основное', 
 	'Access'=>'Доступ',

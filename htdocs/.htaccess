@@ -3,5 +3,4 @@ php_flag display_errors on
 
 #отслеживаем все ошибки кроме предупреждений (Notice)
 # - по умолчанию в php.ini    
-php_value error_reporting "E_ALL & ~E_NOTICE"    
-      
+php_value error_reporting "E_ALL & ~E_NOTICE"        

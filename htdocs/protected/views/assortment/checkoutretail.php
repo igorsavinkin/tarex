@@ -135,7 +135,8 @@ $bankdataDisplay = ($user->PaymentMethod == '1' OR $user->isLegalEntity == '1') 
 </tr> 
 <tr>
 	<td style='width:30px' valign='top'  >
-		<?php echo $form->labelEx($user,'username'); ?>
+	    <label><?php echo Yii::t('general','User name'); ?></label>
+		<?php //echo $form->labelEx($user,'username'); ?>
 		<?php echo $form->textField($user,'username',array('size'=>30,'maxlength'=>255)); ?>
 		<?php echo $form->error($user,'username'); ?>
 	</td>
