@@ -81,7 +81,7 @@ class OrderController extends EventsController
 	
 	public function actionLoadContent()
 	{   
-			$eventId=$_POST['Events']['id'];
+		$eventId=$_POST['Events']['id'];
 		$model=$this->loadModel($eventId);  
 		
 		if (Yii::app()->user->role<=5){ 
@@ -256,7 +256,9 @@ class OrderController extends EventsController
 		} else { 	throw new CHttpException(404, 'No file has been loaded...');  } 
 	// возврат к заказу	
 		$this->redirect( array('update' , 'id'=>$eventId , '#' => 'tab2' ));  
-	} 
+	}
+	
+	
 	
 	public function actionCreate($contractorId=null)
 	{ 
@@ -368,22 +370,40 @@ class OrderController extends EventsController
 	
 	public function actionUpdate2($id)
 	{
-		$model=$this->loadModel($id);   
-		$this->layout='//layouts/simple';
-		
-	// пользователи	
-		$user=new User();		 
-		$user->unsetAttributes();  // clear any default values
-	    if(isset($_GET['User']))
-			$user->attributes=$_GET['User']; 
-		$dataProviderUser = $user->stool();	
+		$model=$this->loadModel($id); 
+		//$loadDataSetting = new LoadDataSettings; 
+	// задаём настройку шаблона либо из настроек контрагента либо из настроек залогиненного пользователя
+		$contractorId = ($model->contractorId) ? $model->contractorId : Yii::app()->user->id;
+		$user = User::model()->findByPk($contractorId);
+		$loadDataSetting = (LoadDataSettings::model()->findByPk($user->ShablonId)) ? LoadDataSettings::model()->findByPk($user->ShablonId) : LoadDataSettings::model()->findByPk(1); // если всё же не нашли шаблон, то тогда берём первую настройку - findByPk(1)	 
 		
 		if(isset($_POST['Events']))
-		{
-			$model->attributes=$_POST['Events'];			
+		{ 
+			$oldStatus = $model->StatusId;
+			$model->attributes=$_POST['Events'];	
+			
+			if ($model->contractorId) 
+			{
+				$user = User::model()->findByPk($model->contractorId); 
+				if ($oldStatus != $model->StatusId && $user->email) 
+				{ 
+	// посылка письма клиенту (контрагенту) об изменении статуса заказа
+					$orderLink = CHtml::LInk(/*Yii::t('general','order')*/ 'заказа', $this->createAbsoluteUrl('order/update', array('id'=>$model->id, '#' => 'tab2')));
+					$newStatusName = Yii::t('general', EventStatus::model()->findByPk($model->StatusId)->name);
+					mail( $user->email, 
+						"Изменение статуса заказа №{$model->id} в компании TAREX на cтатус {$newStatusName}",
+						"Уважаемый {$user->username}.<br> Статус вашего {$orderLink} №{$model->id} был изменён на статус '{$newStatusName}'.", "Content-type: text/html\r\n");				
+				}
+
+
+			   if ($user->PaymentMethod) 
+					$model->PaymentType = $user->PaymentMethod;
+				if ($user->ShablonId) 
+			        $loadDataSetting->id = $user->ShablonId;
+			}	/**/
 			if($model->save()) 
 			{
-				if ($_POST['OK']) 
+				if (isset($_POST['OK'])) 
 					$this->redirect(array('admin',  'Subsystem' => 'Warehouse automation', 'Reference'=>'Order'));
 			} 
 			else print_r($model->errors);
@@ -402,16 +422,19 @@ class OrderController extends EventsController
 			$assortment->attributes=$_GET['Assortment'];
 		}  		 
 		
+		
+		
 // если что-то из ассортимента добавляется в событие
 		if (isset($_POST['add-to-event']) && isset($_POST['Assortment']))
 		{
+			echo 'RecommendedPrice1 '. $eventContent->RecommendedPrice;
 			$item = Assortment::model()->findByPk($_POST['Assortment']['id']);
 			$eventContent = new EventContent;
 			$eventContent->assortmentId = $item->id;
 			$eventContent->assortmentTitle = $item->title;
 			$eventContent->eventId = $id;
 			$eventContent->assortmentAmount = $_POST['Assortment']['amount'];			
-			$eventContent->price = $eventContent->RecommendedPrice = $item->getPrice($model->contractorId);	
+			$eventContent->price = $eventContent->RecommendedPrice = $item->getPrice($model->contractorId);	 
 
 			// считаем новые стоимость и стоимость со скидкой
 			$eventContent->cost = $eventContent->price * $eventContent->assortmentAmount;           
@@ -427,15 +450,13 @@ class OrderController extends EventsController
 				Yii::app()->user->setFlash('error', Yii::t('general', "Failure to add the item"). ' <b>' . $eventContent->assortmentTitle . '</b> ' . Yii::t('general', " to the event") . '.');
 			
 			// здесь мы делаем GET-redirect чтобы избежать повторного сохранения POST-параметров если пользователь перезагрузит браузер
-			$this->redirect( array('update2' , 'id'=>$id , '#' => 'tab2' )); 
-		}// конец добавления ассортимента в событие		  
+			$this->redirect( array('update' , 'id'=>$id , '#' => 'tab2' )); 
+		}// конец добавления ассортимента в событие		
 		
-		
-		
-		$this->render('update2' ,array(
-			'model'=>$model, 'assortment'=>$assortment,  'pageSize' =>$pageSize, 'dataProviderUser'=>$dataProviderUser
-		));  
-	}  
+		$this->render('update' ,array(
+			'model'=>$model, 'assortment'=>$assortment,  'pageSize' =>$pageSize, 'loadDataSetting' => $loadDataSetting
+		));
+	} // end of update2 action	 
 	
 /********************************* Печатные формы **********************************/
 	public function actionPrintSF($id)
