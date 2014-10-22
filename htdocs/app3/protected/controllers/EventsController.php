@@ -51,21 +51,16 @@ class EventsController extends Controller
 	public function actionLoadAssortment()
 	{   
 		$eventId=$_POST['Events']['id'];
-		$model=$this->loadModel($eventId ? $eventId : 1 );  
+		$model=$this->loadModel($eventId);  
 		
-		if (Yii::app()->user->role<=5){ 
-			
+		if (Yii::app()->user->checkAccess(User::ROLE_MANAGER))
+		{ 			
 			$ShablonId=User::model()->findbypk(Yii::app()->user->id)->ShablonId;
-			if ($ShablonId!=0){
+			if ($ShablonId!=0)
 				$LoadDataSettings=LoadDataSettings::model()->findByPk($ShablonId); 
-			}
-		
-		} // ???
-					
-		//$LoadDataSettings=LoadDataSettings::model()->findByPk($_POST['LoadDataSettingsID']); 
+		}   
 		$LoadDataSettings=LoadDataSettings::model()->findByPk($_POST['LoadDataSettings']['id']);  
-		
-	    //print_r($LoadDataSettings);
+		 
 		$СolumnNumber =  $LoadDataSettings->ColumnNumber;  
 		$ListNumber= $LoadDataSettings->ListNumber;		
 		$AmountColumnNumber= $LoadDataSettings->AmountColumnNumber;
@@ -80,16 +75,8 @@ class EventsController extends Controller
 		foreach ($Rate as $r){
 			$CurrentRate=$r->totalSum;
 		}
-		
-		//$Discount=0;
-		//$Discount=User::model()->findByPk($model->contractorId)->discount;
-		
-		
-		//echo $CurrentRate;
-				
-		//$upfile = $_POST['FileUpload1'];	
-		$upfile = CUploadedFile::getInstance('FileUpload1', 0);	
-		//if (isset($_POST['add-to-event']) && isset($_POST['Assortment']))
+	 	
+		$upfile = CUploadedFile::getInstance('FileUpload1', 0);	 
 		$Order=new Events;
 		//$upfile = CUploadedFile::getInstance('FileUpload1', 0);		
 		//if (isset( $_POST['FileUpload1'])) { 
@@ -107,14 +94,10 @@ class EventsController extends Controller
 				$Order->file->saveAs('files/temp.xls');
 				$type='Excel5';	
 				$file='files/temp.xls';
-			}
-			
-			
+			} 
 			
 			require_once Yii::getPathOfAlias('ext'). '/PHPExcel.php';
-				
-			//$type=''	
-				 
+		 // $as - active sheet
 			$objReader = PHPExcel_IOFactory::createReader($type);
 			$objPHPExcel = $objReader->load($file); 
 			$as = $objPHPExcel->setActiveSheetIndex( $ListNumber - 1 );	
@@ -122,8 +105,7 @@ class EventsController extends Controller
 			$highestRow = $as->getHighestRow();
 			$error = '';
 			for ($startRow = 1; $startRow <= $highestRow; $startRow ++) 
-			{ 
-			 
+			{ 			 
 				$SearchString=$as->getCell($СolumnNumber . $startRow)->getValue(); 
 			 	$SearchString=str_replace(  array('.', ' ', '-')  , '' , $SearchString); 
 					//echo '/'.$SearchString.'/<br>';
@@ -224,8 +206,8 @@ class EventsController extends Controller
 			
 		} else { 	throw new CHttpException(404, 'No file has been loaded...');  } 
 	// возврат к заказу	
-		$this->redirect( array('update' , 'id'=>$eventId , '#' => 'tab2' ));  
-	} 
+		$this->redirect( array('order/update2' , 'id'=>$eventId , '#' => 'tab2' ));  
+	}  // end of loadAssortment
 	 
 	public function actionClone()
 	{  

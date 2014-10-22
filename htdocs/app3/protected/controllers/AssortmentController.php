@@ -17,7 +17,7 @@ class AssortmentController extends Controller
 				'users'=>array('*'),  
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array(  'search1'), 
+				'actions'=>array(  'search1', 'loadAssortment'),  
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -36,6 +36,167 @@ class AssortmentController extends Controller
 			'model'=>$this->loadModel($id),
 		));
 	} 
+	public function actionLoadAssortment()
+	{   
+		$eventId=$_POST['Events']['id'];
+		$model=$this->loadModel($eventId);  
+		
+		if (Yii::app()->user->checkAccess(User::ROLE_MANAGER))
+		{ 			
+			$ShablonId=User::model()->findbypk(Yii::app()->user->id)->ShablonId;
+			if ($ShablonId!=0)
+				$LoadDataSettings=LoadDataSettings::model()->findByPk($ShablonId); 
+		}   
+		$LoadDataSettings=LoadDataSettings::model()->findByPk($_POST['LoadDataSettings']['id']);  
+		 
+		$СolumnNumber =  $LoadDataSettings->ColumnNumber;  
+		$ListNumber= $LoadDataSettings->ListNumber;		
+		$AmountColumnNumber= $LoadDataSettings->AmountColumnNumber;
+		$PriceColumnNumber= $LoadDataSettings->PriceColumnNumber;
+		
+		$criteria=new CDbCriteria;
+		$criteria->condition='Begin <= :Begin AND Currency="USD"';
+		$criteria->order='Begin ASC';
+		$criteria->params=array('Begin'=>$model->Begin);
+		$Rate=Exchangerates::model()->findall($criteria);
+		//print_r($Rate);
+		foreach ($Rate as $r){
+			$CurrentRate=$r->totalSum;
+		}
+	 	
+		$upfile = CUploadedFile::getInstance('FileUpload1', 0);	 
+		$Order=new Events;
+		//$upfile = CUploadedFile::getInstance('FileUpload1', 0);		
+		//if (isset( $_POST['FileUpload1'])) { 
+		//print_r($upfile);
+		if ($upfile) { 
+			//echo 'FileUpload1 '.$_POST['FileUpload1'];
+			//$Order->attributes=$_POST['Item'];
+            $Order->file=$upfile;
+			//print_r($Order->file->name);
+			if (strstr($Order->file->name, 'xlsx')){
+				$Order->file->saveAs('files/temp.xlsx');
+				$file='files/temp.xlsx';
+				$type='Excel2007';	
+			}else{
+				$Order->file->saveAs('files/temp.xls');
+				$type='Excel5';	
+				$file='files/temp.xls';
+			} 
+			
+			require_once Yii::getPathOfAlias('ext'). '/PHPExcel.php';
+		 // $as - active sheet
+			$objReader = PHPExcel_IOFactory::createReader($type);
+			$objPHPExcel = $objReader->load($file); 
+			$as = $objPHPExcel->setActiveSheetIndex( $ListNumber - 1 );	
+			
+			$highestRow = $as->getHighestRow();
+			$error = '';
+			for ($startRow = 1; $startRow <= $highestRow; $startRow ++) 
+			{ 			 
+				$SearchString=$as->getCell($СolumnNumber . $startRow)->getValue(); 
+			 	$SearchString=str_replace(  array('.', ' ', '-')  , '' , $SearchString); 
+					//echo '/'.$SearchString.'/<br>';
+				if ($SearchString=='')  continue;
+				
+				$Amount=$as->getCell($AmountColumnNumber . $startRow)->getValue(); 
+				$Price=$as->getCell($PriceColumnNumber . $startRow)->getValue(); 
+				$criteria = new CDbCriteria; 
+				$criteria->params = array(':value'=>$SearchString);
+				$criteria->condition = 'title = :value OR oem = :value OR article = :value';
+				$Assortment=Assortment::model()->find($criteria); 
+				
+				if($Assortment==null) {$error .= Yii::t('general','Row #') . $startRow . '. ' .  Yii::t('general','Could not find assortment item on ') . $ColumnSearch. ' = "'. $SearchString . '"<br />'; 
+				} 
+				else {
+					
+					//$DiscountNew =$this->actionFDiscount($Assortment,$model->contractorId,$model->Begin);
+					//$DiscountNew = $Assortment->countDiscount( $model->Begin, $model->contractorId);
+					
+					
+					// $DefaultPrice=$Assortment->priceS;
+					// if ($DiscountNew!=0) $FinalPrice=($DefaultPrice+$DefaultPrice*$DiscountNew/100)*$CurrentRate;
+					
+					//echo '<br>FinalPrice '.$FinalPrice.'/DefaultPrice'.$DefaultPrice*$CurrentRate;
+					
+					// добавляем в содержимое заказа
+					$EventContent=EventContent::model()->find(array(
+						'condition'=>'eventId =:eventId AND assortmentId=:assortmentId',
+						'params'=>array(':eventId' =>$eventId, ':assortmentId'=>$Assortment->id)
+					));
+					if (!empty($EventContent)) {
+			//Добавляем кол-во в заказ
+						//echo 'assortmentAmount '.$EventContent->assortmentAmount.'/'.$Amount;
+						$OldAmount=$EventContent->assortmentAmount;
+						$EventContent->assortmentAmount=$OldAmount+$Amount; 
+						//echo 'assortmentAmount1 '.$EventContent->assortmentAmount;
+						$DefaultPrice=$Assortment->priceS;
+						
+						//$eventContent->price = $eventContent->RecommendedPrice = $item->getPrice($model->contractorId);	
+						
+						//$FinalPrice=round(($DefaultPrice+$DefaultPrice*$Discount/100)*$CurrentRate,2);
+						$FinalPrice=$Assortment->getPrice2($model->contractorId);
+						//if ($DiscountNew!=0) $FinalPrice=round(($DefaultPrice+$DefaultPrice*$DiscountNew/100)*$CurrentRate,2) ;
+						
+						if ($Price>0) {
+							$EventContent->price=$Price;
+						}else{	
+							
+							$EventContent->price=$FinalPrice;
+						}
+						$EventContent->RecommendedPrice = $FinalPrice;
+						$EventContent->cost=$EventContent->price * $EventContent->assortmentAmount;   // 	
+						$EventContent->cost_w_discount = $EventContent->cost;   // 	почему?
+					}else{
+			//Создаём новый состав заказа
+						
+						$EventContent=new EventContent;
+						$EventContent->eventId=$eventId; 
+						$EventContent->assortmentId=$Assortment->id;
+						$EventContent->assortmentTitle=$Assortment->title;
+						$EventContent->assortmentAmount = $Amount;
+						$DefaultPrice=$Assortment->priceS; 
+						//$FinalPrice=round(($DefaultPrice+$DefaultPrice*$Discount/100)*$CurrentRate,2);
+						$contractorId=$model->contractorId; 
+						
+						$FinalPrice=$Assortment->getPrice2($contractorId);
+						//echo 'contractorId'.$contractorId;
+						//return; 
+						
+						//if ($DiscountNew!=0) $FinalPrice=round(($DefaultPrice+$DefaultPrice*$DiscountNew/100)*$CurrentRate,2);
+						
+						if ($Price>0) {
+							$EventContent->price=$Price;
+						}else{
+							
+							$EventContent->price=$FinalPrice;
+						}
+						$EventContent->RecommendedPrice=$FinalPrice;
+						//$EventContent->RecommendedPrice=1000;
+						$EventContent->cost=$EventContent->price*$Amount;   // 	
+						$EventContent->cost_w_discount=$EventContent->cost;   // 
+
+						//print_r($EventContent);
+					} // конец нового состава заказа
+					$model->totalSum = EventContent::getTotalSumByEvent($model->id);
+					$model->save();
+					
+					//echo($EventContent->eventId.' '.$EventContent->assortmentTitle.' '.$EventContent->assortmentAmount.' '.$EventContent->price.' '.$EventContent->cost.' '.$EventContent->assortmentTitle);
+					//print_r($EventContent);
+						
+					if (!$EventContent->save()) $error .= Yii::t('general', 'Failure saving assortment item located at row #') . $startRow . '<br />';	
+					 
+				} // end "if ($Assortment==null)"			
+			}
+			if (!empty($error)) { 
+				Yii::app()->user->setFlash('error', Yii::t('general', "Some rows from the file have not been saved into the order") . ": <br />" . $error );
+			} else { Yii::app()->user->setFlash('success',Yii::t('general', "All the rows from the file have been saved into the order") . '.' ); 	} 	
+			
+		} else { 	throw new CHttpException(404, 'No file has been loaded...');  } 
+	// возврат к заказу	
+		$this->redirect( array('order/update2' , 'id'=>$eventId , '#' => 'tab2' ));  
+	}  // end of loadAssortment
+	
 	
 	public function actionAddToCart($id, $amount=null)
 	{ 

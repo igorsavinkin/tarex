@@ -453,7 +453,7 @@ class OrderController extends EventsController
 			$this->redirect( array('update' , 'id'=>$id , '#' => 'tab2' )); 
 		}// конец добавления ассортимента в событие		
 		
-		$this->render('update' ,array(
+		$this->render('update2' ,array(
 			'model'=>$model, 'assortment'=>$assortment,  'pageSize' =>$pageSize, 'loadDataSetting' => $loadDataSetting
 		));
 	} // end of update2 action	 
