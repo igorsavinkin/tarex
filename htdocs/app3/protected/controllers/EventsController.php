@@ -64,6 +64,7 @@ class EventsController extends Controller
 		$СolumnNumber =  $LoadDataSettings->ColumnNumber;  
 		$ListNumber= $LoadDataSettings->ListNumber;		
 		$AmountColumnNumber= $LoadDataSettings->AmountColumnNumber;
+		$TitleColumnNumber= $LoadDataSettings->TitleColumnNumber;
 		$PriceColumnNumber= $LoadDataSettings->PriceColumnNumber;
 		
 		$criteria=new CDbCriteria;
@@ -97,7 +98,7 @@ class EventsController extends Controller
 			} 
 			
 			require_once Yii::getPathOfAlias('ext'). '/PHPExcel.php';
-		 // $as - active sheet
+		 
 			$objReader = PHPExcel_IOFactory::createReader($type);
 			$objPHPExcel = $objReader->load($file); 
 			$as = $objPHPExcel->setActiveSheetIndex( $ListNumber - 1 );	
@@ -105,7 +106,8 @@ class EventsController extends Controller
 			$highestRow = $as->getHighestRow();
 			$error = '';
 			for ($startRow = 1; $startRow <= $highestRow; $startRow ++) 
-			{ 			 
+			{ 
+			 
 				$SearchString=$as->getCell($СolumnNumber . $startRow)->getValue(); 
 			 	$SearchString=str_replace(  array('.', ' ', '-')  , '' , $SearchString); 
 					//echo '/'.$SearchString.'/<br>';

@@ -1,5 +1,11 @@
 <?php
 return array(
+	/* Load Assortment from Excel file */
+	'Loading Assortment from Excel file'=>'Загрузка номенклатуры из Excel файла',
+	'Load new assortment from file'=>'Загрузите новую номенклатуру из файла'.
+	'First row is a column title'=>'Первый ряд - название колонки',
+	
+	
 	/* Make a request to manager */
 	'Make a request to manager'=>'Запрос запчасти менеджеру',
 	
@@ -22,11 +28,13 @@ return array(
 	
 	/* Load Data Settings */ 	
 	'Load Data Settings'=>'Настройка загрузки',
+	'Load assortment template'=>'Шаблон загрузки номенклатуры',
 	'Create Load Data Template'=>'Создать шаблон настройки загрузки',
 	'Column index (a-z) with Article'=>'Индекс столбца с артикулом детали', 
 	'List number with an Order'=>'Номер листа с заказом', 
 	'Column index (a-z) with Amount'=>'Индекс столбца с количеством детали', 
 	'Column index (a-z) with Price'=>'Индекс столбца с ценой детали', 
+	'Column index (a-z) for Assortment title'=>'Индекс столбца с наименованием детали', 
 	'Pattern'=>'Шаблон',
 
 	/* Pages */

@@ -8566,3 +8566,1247 @@ Stack trace:
 REQUEST_URI=/app3/index.php?r=assortment/loadAssortment
 HTTP_REFERER=http://tarex.ru/app3/index.php?r=order/update2&id=1010
 ---
+2014/10/22 16:29:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assortmetn/load".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortmetn/load')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app3/index.php?r=assortmetn/load
+---
+2014/10/22 16:30:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assortmetn/load".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortmetn/load')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app3/index.php?r=assortmetn/load
+---
+2014/10/22 16:30:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assortmetn/load".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortmetn/load')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app3/index.php?r=assortmetn/load
+---
+2014/10/22 16:30:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assortmetn/load".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortmetn/load')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app3/index.php?r=assortmetn/load
+---
+2014/10/22 16:30:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assortmetn/load".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortmetn/load')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app3/index.php?r=assortmetn/load
+---
+2014/10/22 16:30:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assortmetn/load".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortmetn/load')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app3/index.php?r=assortmetn/load
+---
+2014/10/22 16:30:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assortmetn/load".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortmetn/load')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app3/index.php?r=assortmetn/load
+---
+2014/10/22 16:32:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/app3/protected/controllers/EventsController.php:1058
+Stack trace:
+#0 /home/srv50213/htdocs/app3/protected/controllers/EventsController.php(54): EventsController->loadModel(NULL)
+#1 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): EventsController->actionLoadAssortment()
+#2 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#9 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('loadAssortment')
+#11 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('events/loadAsso...')
+#12 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#13 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#14 {main}
+REQUEST_URI=/app3/index.php?r=events/loadAssortment
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=assortment/load
+---
+2014/10/22 18:10:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assortment/index".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/inde...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app3/index.php?r=assortment/index&category=6&Assortment_page=3&Assortment_sort=availability.desc
+---
+2014/10/22 18:14:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assortment/load".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 18:14:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assortment/index".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/inde...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app3/index.php?r=assortment/index&category=7&Assortment_sort=agroup.desc&Assortment_page=118
+---
+2014/10/22 18:15:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assortment/view".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app3/index.php?r=assortment/view&id=7
+---
+2014/10/22 18:15:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assortment/гзвфеу".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/\xD0\xB3\xD0\xB7...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app3/index.php?r=assortment/%D0%B3%D0%B7%D0%B2%D1%84%D0%B5%D1%83&id=7
+---
+2014/10/22 18:15:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assortment/view".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app3/index.php?r=assortment/view&id=9604
+---
+2014/10/22 18:15:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assortment/update".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/upda...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app3/index.php?r=assortment/update&id=7
+---
+2014/10/22 18:15:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assortment/index".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/inde...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app3/index.php?r=assortment/index
+---
+2014/10/22 18:19:08 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'У вас недостаточно прав для выполнения указанного действия.' in /home/srv50213/htdocs/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xD0\xA3 \xD0\xB2\xD0\xB0\xD1\x81 \xD0\xBD\xD0\xB5\xD0...')
+#1 /home/srv50213/htdocs/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#6 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#8 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#9 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#11 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 18:19:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/app3/protected/controllers/OrderController.php:32
+Stack trace:
+#0 /home/srv50213/htdocs/app3/protected/controllers/OrderController.php(283): OrderController->loadModel('959')
+#1 [internal function]: OrderController->actionUpdate('959')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(OrderController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(OrderController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('order/update')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/app3/index.php?r=order/update&id=959
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=order/admin
+---
+2014/10/22 18:19:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/app3/protected/controllers/OrderController.php:32
+Stack trace:
+#0 /home/srv50213/htdocs/app3/protected/controllers/OrderController.php(283): OrderController->loadModel('959')
+#1 [internal function]: OrderController->actionUpdate('959')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(OrderController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(OrderController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('order/update')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/app3/index.php?r=order/update&id=959
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=order/admin
+---
+2014/10/22 18:19:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/app3/protected/controllers/OrderController.php:32
+Stack trace:
+#0 /home/srv50213/htdocs/app3/protected/controllers/OrderController.php(283): OrderController->loadModel('959')
+#1 [internal function]: OrderController->actionUpdate('959')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(OrderController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(OrderController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('order/update')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/app3/index.php?r=order/update&id=959
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=order/admin
+---
+2014/10/22 18:19:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/app3/protected/controllers/OrderController.php:32
+Stack trace:
+#0 /home/srv50213/htdocs/app3/protected/controllers/OrderController.php(283): OrderController->loadModel('959')
+#1 [internal function]: OrderController->actionUpdate('959')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(OrderController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(OrderController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('order/update')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/app3/index.php?r=order/update&id=959
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=order/admin
+---
+2014/10/22 18:19:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/app3/protected/controllers/OrderController.php:32
+Stack trace:
+#0 /home/srv50213/htdocs/app3/protected/controllers/OrderController.php(283): OrderController->loadModel('959')
+#1 [internal function]: OrderController->actionUpdate('959')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(OrderController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(OrderController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('order/update')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/app3/index.php?r=order/update&id=959
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=order/admin
+---
+2014/10/22 18:19:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/app3/protected/controllers/OrderController.php:32
+Stack trace:
+#0 /home/srv50213/htdocs/app3/protected/controllers/OrderController.php(283): OrderController->loadModel('959')
+#1 [internal function]: OrderController->actionUpdate('959')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(OrderController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(OrderController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('order/update')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/app3/index.php?r=order/update&id=959
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=order/admin
+---
+2014/10/22 18:19:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/app3/protected/controllers/OrderController.php:32
+Stack trace:
+#0 /home/srv50213/htdocs/app3/protected/controllers/OrderController.php(283): OrderController->loadModel('959')
+#1 [internal function]: OrderController->actionUpdate('959')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(OrderController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(OrderController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('order/update')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/app3/index.php?r=order/update&id=959
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=order/admin
+---
+2014/10/22 18:20:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:98
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 18:20:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:98
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 18:20:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:98
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 18:21:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:98
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 18:21:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:98
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 18:21:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:98
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 18:21:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:98
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 18:23:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 18:25:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 18:26:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 18:26:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 18:28:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 18:31:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 18:31:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 18:31:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 18:31:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 18:32:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 18:32:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/22 19:43:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:1040
+Stack trace:
+#0 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(36): AssortmentController->loadModel('2405')
+#1 [internal function]: AssortmentController->actionView('2405')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/app3/index.php?r=assortment/view&id=2405
+---
+2014/10/23 07:25:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/23 07:26:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/23 07:31:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/23 07:31:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/23 07:34:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/23 07:35:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/23 07:35:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/23 07:37:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/23 07:39:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/23 07:39:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/23 07:39:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/23 07:39:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/23 07:39:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/23 07:39:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/23 07:41:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/23 07:42:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/23 07:44:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/23 07:45:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+---
+2014/10/23 10:02:45 [error] [exception.PHPExcel_Exception] exception 'PHPExcel_Exception' with message 'Invalid cell coordinate 1' in /home/srv50213/htdocs/app3/protected/extensions/PHPExcel/Cell.php:546
+Stack trace:
+#0 /home/srv50213/htdocs/app3/protected/extensions/PHPExcel/Worksheet.php(1134): PHPExcel_Cell::coordinateFromString('1')
+#1 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(82): PHPExcel_Worksheet->getCell('1')
+#2 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#3 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#10 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#13 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#15 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=assortment/load
+---
+2014/10/23 10:09:15 [error] [exception.PHPExcel_Exception] exception 'PHPExcel_Exception' with message 'Invalid cell coordinate 1' in /home/srv50213/htdocs/app3/protected/extensions/PHPExcel/Cell.php:546
+Stack trace:
+#0 /home/srv50213/htdocs/app3/protected/extensions/PHPExcel/Worksheet.php(1134): PHPExcel_Cell::coordinateFromString('1')
+#1 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(82): PHPExcel_Worksheet->getCell('1')
+#2 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#3 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#10 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#13 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#15 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=assortment/load
+---
+2014/10/23 10:21:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=assortment/load
+---
+2014/10/23 10:22:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=assortment/load
+---
+2014/10/23 10:23:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=assortment/load
+---
+2014/10/23 10:23:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=assortment/load
+---
+2014/10/23 10:25:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=assortment/load
+---
+2014/10/23 10:25:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=assortment/load
+---
+2014/10/23 10:27:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:100
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=assortment/load
+---
+2014/10/23 11:40:44 [error] [exception.PHPExcel_Exception] exception 'PHPExcel_Exception' with message 'Invalid cell coordinate 2' in /home/srv50213/htdocs/app3/protected/extensions/PHPExcel/Cell.php:546
+Stack trace:
+#0 /home/srv50213/htdocs/app3/protected/extensions/PHPExcel/Worksheet.php(1134): PHPExcel_Cell::coordinateFromString('2')
+#1 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(83): PHPExcel_Worksheet->getCell('2')
+#2 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#3 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#10 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#13 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#15 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=assortment/load
+---
+2014/10/23 15:20:33 [error] [exception.PHPExcel_Exception] exception 'PHPExcel_Exception' with message 'Invalid cell coordinate 2' in /home/srv50213/htdocs/app3/protected/extensions/PHPExcel/Cell.php:546
+Stack trace:
+#0 /home/srv50213/htdocs/app3/protected/extensions/PHPExcel/Worksheet.php(1134): PHPExcel_Cell::coordinateFromString('2')
+#1 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(83): PHPExcel_Worksheet->getCell('2')
+#2 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#3 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#10 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#13 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#15 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=assortment/load
+---
+2014/10/23 15:47:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No file has been loaded...' in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php:106
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#1 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#10 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#11 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#13 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=assortment/load
+---
+2014/10/23 15:52:57 [error] [exception.PHPExcel_Exception] exception 'PHPExcel_Exception' with message 'Invalid cell coordinate 2' in /home/srv50213/htdocs/app3/protected/extensions/PHPExcel/Cell.php:546
+Stack trace:
+#0 /home/srv50213/htdocs/app3/protected/extensions/PHPExcel/Worksheet.php(1134): PHPExcel_Cell::coordinateFromString('2')
+#1 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(82): PHPExcel_Worksheet->getCell('2')
+#2 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionLoad()
+#3 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#10 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('load')
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/load')
+#13 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#15 {main}
+REQUEST_URI=/app3/index.php?r=assortment/load
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=assortment/load
+---
+2014/10/23 16:55:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assortmenе".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortmen\xD0\xB5')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/app3/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app3/index.php?r=assortmen%D0%B5
+---

@@ -47,9 +47,9 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'selectionChanged'=>'function(id){  
 		location.href = "' . $url .'/id/"+$.fn.yiiGridView.getSelection(id); 
 		}',
-	'columns'=>array( 
+	'columns'=>array(  
 		'id'=>array( 
-			'header'=>Yii::t('general','#'), 
+			'header'=>Yii::t('general','Id'), 
 			'name'=>'id',
 		),    
 		'name',	 
@@ -59,6 +59,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'value'=> 'Organization::model()->findByPk($data->organizationId)->name',
 			'visible'=> Yii::app()->user->checkAccess(User::ROLE_ADMIN),
 		), 
+		array(
+			'class'=>'CButtonColumn',
+			'template'=>'{delete}',
+			'visible'=> Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER), 
+		),
 		
 	),         
 ));  

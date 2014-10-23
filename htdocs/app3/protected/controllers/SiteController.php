@@ -24,7 +24,7 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','index2', 'contact', 'login','login2', 'logout' , 'frontendpavel'),
+				'actions'=>array('index','index2', 'contact', 'login', 'error', 'logout' , 'frontendpavel'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -43,7 +43,9 @@ class SiteController extends Controller
 			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
 		);
-	}	 
+	} 
+
+	
 	public function actionIndex($page=null, $id=null)
 	{		 
 		$this->render($page ? $page : 'index');  
@@ -69,7 +71,7 @@ class SiteController extends Controller
 	}	 
 
 	public function actionError()
-	{
+	{ 
 		if($error=Yii::app()->errorHandler->error)
 		{
 			if(Yii::app()->request->isAjaxRequest)

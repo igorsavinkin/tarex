@@ -58,6 +58,21 @@
 	</td>	
 <!--/tr><tr--> 	
 	<td class='padding10side'>
+		<?php echo $form->labelEx($model,'TitleColumnNumber');  
+    		$this->widget('ext.select2.ESelect2', array(
+					'model'=> $model,
+					'attribute'=> 'TitleColumnNumber',
+					'data' => $letters,
+					'options'=> array(
+						'allowClear'=>true, 
+						'width' => '100', 
+						'placeholder' => '', 
+						),
+				));	  
+		  echo $form->error($model,'TitleColumnNumber'); ?>
+	</td>
+	
+	<td class='padding10side'>
 		<?php echo $form->labelEx($model,'AmountColumnNumber'); ?> 
 		<?php //echo $form->textField($model,'AmountColumnNumber'); 
     		$this->widget('ext.select2.ESelect2', array(

@@ -74,7 +74,7 @@ border-color: #09f; text-decoration: none;
 }
 .tar_choice_all
 {
-    padding: 17px 0 0 88px;
+    padding: 17px 0 0 48px;
     float: left;
 }
 .tar_choice_city
@@ -1189,3 +1189,4 @@ div.tar_component_body
    text-decoration:none;
    color: white; 
 }
+.error{ color: red; border: 1px dotted red; font-size: 19px; padding 5px; margin: 0 5px;}
