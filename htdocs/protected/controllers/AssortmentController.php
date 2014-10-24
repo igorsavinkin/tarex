@@ -21,7 +21,7 @@ class AssortmentController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array( 'create', 'delete' , 'searchtool', 'update' , 'update2' , 'generateSchneiderNb',  'generateSchneiderNb2', 'fillInSchneiderGr', 'adminbulk' ),
+				'actions'=>array('load', 'create', 'delete' , 'searchtool', 'update' , 'update2' , 'generateSchneiderNb',  'generateSchneiderNb2', 'fillInSchneiderGr', 'adminbulk' ),
 				'roles'=>array(1, 2, 4, 5), 
 			),
 			array('deny',  // deny all users
@@ -29,6 +29,89 @@ class AssortmentController extends Controller
 			),
 		);
 	}  
+	public function actionLoad()
+	{    
+		$ShablonId = User::model()->findbypk(Yii::app()->user->id)->ShablonId;
+		$loadDataSetting = !empty($ShablonId) ? LoadDataSettings::model()->findByPk($ShablonId) : new LoadDataSettings; 
+	// экземпляр номенклатуры для задания начальных склада и организации	
+		$assortment = new Assortment;
+		$assortment->organizationId = Yii::app()->params['defaultOrganization'];
+		$assortment->warehouseId = 8; // склад "Москва 2" 
+				
+		if(isset($_POST) && isset($_POST['LoadDataSettings']['id']) && isset($_POST['Assortment']))
+		{			
+			$loadDataSetting = LoadDataSettings::model()->findByPk($_POST['LoadDataSettings']['id']);
+			
+			$ListNumber = $loadDataSetting->ListNumber;		
+			$ColumnNumber = $loadDataSetting->ColumnNumber;  				
+			$AmountColumnNumber = $loadDataSetting->AmountColumnNumber;
+			$TitleColumnNumber = $loadDataSetting->TitleColumnNumber;
+			$PriceColumnNumber = $loadDataSetting->PriceColumnNumber;
+		
+			$upfile = CUploadedFile::getInstance('FileUpload1', 0);
+			if ($upfile) 			
+			{   
+				echo '$upfile->name = ', $upfile->name, '<br>';
+				if (strstr($upfile->name, 'xlsx')){
+					$upfile->saveAs('files/temp.xlsx');
+					$file='files/temp.xlsx';
+					$type='Excel2007';
+					//echo 'upfile is saved as .xlsx';					
+				}else{
+					$upfile->saveAs('files/temp.xls');
+					$type='Excel5';	
+					$file='files/temp.xls';
+					//echo 'upfile is saved as .xls';
+				} 
+				require_once Yii::getPathOfAlias('ext'). '/PHPExcel.php';		 
+				$objReader = PHPExcel_IOFactory::createReader($type);
+				$objPHPExcel = $objReader->load($file); 
+				$as = $objPHPExcel->setActiveSheetIndex( $ListNumber - 1 );	
+				$highestRow = $as->getHighestRow();
+				$error = '';
+				for ($row = 1 + $_POST['firstRow'], $failureCounter=0; $row <= $highestRow; $row++) 
+				{ 		 					
+				// Создаём новую номенклатуру в складе warehouseId и organizationId 
+					$assortment=new Assortment;
+					if ($TitleColumnNumber)
+						$assortment->title = $as->getCell($TitleColumnNumber . $row)->getValue();		
+					$assortment->availability = $as->getCell($AmountColumnNumber . $row)->getValue();
+					$assortment->priceS = $as->getCell($PriceColumnNumber . $row)->getValue(); 
+					$assortment->article2 = $as->getCell($ColumnNumber . $row)->getValue(); // артикул 
+					$assortment->article = substr(array('.', '-', ' '), '', $assortment->article2);
+					
+				// общая информация	
+					$assortment->userId = Yii::app()->user->id; 
+					$assortment->date = date('Y-m-d H:i:s'); 
+					$assortment->depth = 5; // нормальная глубина для показа в сетке простой позиции 				
+				//  $assortment->parentId =  ??; // остаётся вопрос с иерархией родитель-ребёнок
+					$assortment->organizationId = $_POST['Assortment']['organizationId']; //  организация
+					$assortment->warehouseId = $_POST['Assortment']['warehouseId']; //  склад					
+					
+					if (!$assortment->save(false)) { 
+						$error .= Yii::t('general', 'Failure saving assortment item located at row #') . $row . '<br />'; // конец создания новой номенклатуры
+						$failureCounter++;
+					}
+				} // end 'for' circle
+				if (!empty($error)) { 
+					Yii::app()->user->setFlash('error', Yii::t('general', "Some rows from the file have not been saved into assortment") . ": <br />" . $error );
+				} else { $rows = $highestRow - $_POST['firstRow'] - $failureCounter ;  Yii::app()->user->setFlash('success', $rows . ' ' . Yii::t('general', "rows from the file have been saved into assortment") . '.' ); 	} 				 
+				 	
+				 
+			}  // end if(upfile)
+			else  
+				Yii::app()->user->setFlash('error', Yii::t('general',  'No file has been loaded...'));
+				//echo Yii::t('general', 'No file has been loaded...'); //throw new CHttpException(
+	 		
+			$this->redirect(array('load')); // переход на GET	
+		}// end if(isset($_POST))
+		
+		$this->render('load', array( 
+			'loadDataSetting' => $loadDataSetting, 
+			'assortment' => $assortment
+		));
+	} 	
+	
     public function actionView($id)
 	{
 		$this->render('view_adv',array(

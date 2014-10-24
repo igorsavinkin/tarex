@@ -9810,3 +9810,27 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/app3/index.php?r=assortmen%D0%B5
 ---
+2014/10/23 17:49:26 [error] [exception.CException] exception 'CException' with message 'Не определено свойство "CWebApplication.configuration".' in /home/srv50213/htdocs/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/srv50213/htdocs/framework/base/CModule.php(105): CComponent->__get('configuration')
+#1 /home/srv50213/htdocs/app3/index.php(15): CModule->__get('configuration')
+#2 {main}
+REQUEST_URI=/app3/index.php?r=warehouse/update/id/8
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=warehouse/admin
+---
+2014/10/23 17:49:38 [error] [exception.CException] exception 'CException' with message 'В классе CWebApplication и его поведениях не найден метод или замыкание с именем "init".' in /home/srv50213/htdocs/framework/base/CComponent.php:266
+Stack trace:
+#0 /home/srv50213/htdocs/app3/index.php(15): CComponent->__call('init', Array)
+#1 /home/srv50213/htdocs/app3/index.php(15): CWebApplication->init()
+#2 {main}
+REQUEST_URI=/app3/index.php?r=warehouse/update/id/8
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=warehouse/admin
+---
+2014/10/23 17:50:18 [error] [exception.CException] exception 'CException' with message 'Не определено свойство "CWebApplication.import".' in /home/srv50213/htdocs/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/srv50213/htdocs/framework/base/CModule.php(105): CComponent->__get('import')
+#1 /home/srv50213/htdocs/app3/index.php(15): CModule->__get('import')
+#2 {main}
+REQUEST_URI=/app3/index.php?r=warehouse/update/id/8
+HTTP_REFERER=http://tarex.ru/app3/index.php?r=warehouse/admin
+---

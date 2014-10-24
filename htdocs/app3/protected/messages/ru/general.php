@@ -1,17 +1,37 @@
 <?php
-return array(
+return array( 
 	/* Load Assortment from Excel file */
 	'Loading Assortment from Excel file'=>'Загрузка номенклатуры из Excel файла',
-	'Load new assortment from file'=>'Загрузите новую номенклатуру из файла'.
+	'Load new assortment from file'=>'Загрузите новую номенклатуру из файла',
 	'First row is a column title'=>'Первый ряд - название колонки',
+	'Set up the parameters for an assortment to be loaded'=>'Установите параметры для номенклатуры которая будет загружена',
+	'Load assortment template'=>'Шаблон загрузки номенклатуры',
 	
+	/* Spare parts */
+	'Spare parts'=>'Запчасти',
+	'Spare part'=>'Запчасть',
+	'Spare parts for company vehicle'=>'Запчасти для ТС компании',
+	'Contact phone should be in the following form'=>'Контактный телефон должен быть в форме',
 	
-	/* Make a request to manager */
-	'Make a request to manager'=>'Запрос запчасти менеджеру',
+	/* Scope of activity */
+	'Scope of activity'=>'Сфера деятельности',
+	'Scope Of Activity'=>'Сфера деятельности',
+	'Create scope of activity'=>'Создать сферу деятельности',
+	'Car service center'=>'Автосервис',
+	'Auto shop'=>'Автомагазин',
+	'Auto park'=>'Автопарк', 
+	'Insurance company'=>'Cтраховая компания',
+	'Business owner'=>'Частный предприниматель',
+	'Car disassembling'=>'Авто разборка',
+	'Wholesaler'=>'Оптовик',
+	'Internet store'=>'Интернет магазин',
+	'Car maintenance station'=>'Станция Технического Обслуживания',
+	'other'=>'другое',
 	
 	/* mail */
 	'Created order #'=>'Создан заказ №',
 	'You have created a new order'=>'Вы создали новый заказ',
+	'You have created a new'=>'Вы создали новый', 
 	
 	/* Office Vehicle */ 
 	'Office Vehicle'=>'Транспортное средство',
@@ -28,13 +48,11 @@ return array(
 	
 	/* Load Data Settings */ 	
 	'Load Data Settings'=>'Настройка загрузки',
-	'Load assortment template'=>'Шаблон загрузки номенклатуры',
 	'Create Load Data Template'=>'Создать шаблон настройки загрузки',
 	'Column index (a-z) with Article'=>'Индекс столбца с артикулом детали', 
 	'List number with an Order'=>'Номер листа с заказом', 
 	'Column index (a-z) with Amount'=>'Индекс столбца с количеством детали', 
 	'Column index (a-z) with Price'=>'Индекс столбца с ценой детали', 
-	'Column index (a-z) for Assortment title'=>'Индекс столбца с наименованием детали', 
 	'Pattern'=>'Шаблон',
 
 	/* Pages */
@@ -50,6 +68,7 @@ return array(
 	'news'=>'новость',
 	'News Date'=>'Дата',
 	'Image Url'=>'Картинка',
+	'Image name'=>'Имя картинки',
 	'Image Url path'=>'Путь к картинке',
 	'Link'=>'Ссылка',
 	'Special pages'=>'Спец. страницы',
@@ -176,6 +195,7 @@ return array(
 	'Sales' => 'Продажи', 
 	'Sales return' => 'Возвраты',
 	'RFQ' => 'Запросы поставщику',
+	'RNP' => 'Запрос новых позиций',
 	'Purchase order' => 'Заказы поставщику',
 	'Purchase' => 'Покупки',
 	'Purchase return' => 'Возвраты поставщику',
@@ -199,7 +219,8 @@ return array(
 	'Drivers load' => 'Загрузка водителей',
 	'Calls'=>'Звонки',
 	'Appointment'=>'Встреча',
-	
+	'New assortment items codes'=>'Коды новых позищий номенклатуры',
+	'comma separated'=>'разделённые запятой',
 	'Salary'=>'Зарплата',
 	'Payment salary'=>'Выплата зарплаты',
 	
@@ -700,7 +721,7 @@ return array(
 	'You should agree term to use our service'=>'Вы должны быть согласны с условиями договора',	
 	'Read contract'=>'Условия договора',
 	'Send to client login/password'=>'Послать клиенту логин/пароль',
-	
+	'Client id'=>'Клиентский номер',
 	
 	'Bank' => 'Банк',
 	'Correspondent Account' => 'К/С',
@@ -720,6 +741,7 @@ return array(
 	'How did you hear about us' => 'Откуда о нас узнали',
 	'scope of Organization activity' => 'Сфера деятельности организации',
 	'CEO Name' => 'ФИО директора',
+	'Contact person' => 'Контактное лицо',
 	'Accountant Name' => 'ФИО бухгалтера',
 	'cash'=>'наличный расчёт',
 	'cashless'=>'безналичный расчёт',
@@ -800,6 +822,7 @@ return array(
 	'Products / Services'=>'Товары / Услуги',
 	'Order\'s content'=>'Содержание заказа',  
 	"Order's content"=>'Содержание заказа',  
+	'Order\'s author'=>'Создатель заказа',
 	'Event\'s content'=>'Содержание события',  
 	'Total with discount'=> 'Cтоимость всего со скидкой',
 	'Cost with discount'=> 'Сумма со скидкой',
@@ -827,6 +850,7 @@ return array(
 	'Confirm to delivery with changes'=>'Подтвердить на доставку с изменениями',
 	'Confirm with changes'=>'Подтвердить с изменениями',
 	'Recommended Price'=>'Рекомендуемая цена', 
+	'Your new coming orders'=>'Ваши новые входящие заказы',
 	/* tabs*/
 	'Main'=>'Основное', 
 	'Access'=>'Доступ',
@@ -1154,7 +1178,8 @@ return array(
 	'You cannot print invoice since you as user are not registered with any organization.'=>'Вы не можете распечатать ',
 	'There is no content in the order to print in invoice.'=>'В заказе нет содержимого чтобы напечатать в счёте-фактуре.',
 	 'You cannot print invoice since you have not defined any contractor for this order. Turn to field "Contractor" and save the order.'=>'Вы не можете распечатать счёт фактуру так как Вы не определили никакого контрагента для этого заказа. Обратитесь к полю "Контрагент" и сохраните заказ.',
-	'You might set several values for a single field - comma or semicolon separated. For example: <b>Toyota, Ford, Sang-Yong</b>.'=>'Вы можете поставить несколько величин в отдельное поле - разделённых запятой или точкой с запятой; например: <b>Toyota, Ford, Sang-Yong</b>.', 
+	'You might set several values for a single field - comma or semicolon separated. For example: <b>Toyota, Ford, Sang-Yong</b>.'=>'Вы можете поставить несколько величин в отдельное поле - разделённых запятой или точкой с запятой; например: <b>Toyota, Ford, Sang-Yong</b>.',
+	'For an input field you need to set up the value with preceeding "=" sign. For example: <b>=922022E000, =Ford, =DEPO, =JAPAN</b>.'=>'Для поля ввода Вам нужно задать величину с предстоящим знаком "=", например: <b>=922022E000, =Ford, =DEPO, =JAPAN</b>.',	
 	/* Pricesetting */ 
 	'Pricesetting' => 'Настройка цены',
 	'Price Setting' => 'Настройка цены',
@@ -1213,7 +1238,7 @@ return array(
 	'Enter the VIN number to search for'=>'Введите VIN номер для поиска',
 	'Base'=>'Основание',
 	'On the basis of'=>'На основании',
-
+	'Under development...'=>'В стадии разработки...',
 	
 	/* Enter on the basis */
 	'Create new event on the basis of this event'=>'Создать новое событие на основании этого события',

@@ -1,5 +1,14 @@
 <?php
 return array( 
+	/* Load Assortment from Excel file */
+	'Loading Assortment from Excel file'=>'Загрузка номенклатуры из Excel файла',
+	'Load new assortment from file'=>'Загрузите новую номенклатуру из файла',
+	'First row is a column title'=>'Первый ряд - название колонки',
+	'Set up the parameters for an assortment to be loaded'=>'Установите параметры для номенклатуры которая будет загружена',
+	'Load assortment template'=>'Шаблон загрузки номенклатуры',
+	"rows from the file have been saved into assortment"=>'строк из файла были загружены в номенклатуру',
+	
+	
 	/* Spare parts */
 	'Spare parts'=>'Запчасти',
 	'Spare part'=>'Запчасть',

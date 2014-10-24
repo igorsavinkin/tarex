@@ -33,7 +33,7 @@ class UserController extends Controller
 				'expression'=>array($this, 'UpdateUser'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create',  'admin', 'sendinvitation', 'adminPersonal'), 
+				'actions'=>array('create',  'admin', 'sendinvitation',  'sendinvitation2', 'adminPersonal'), 
 				'roles'=>array(1, 2, 3, 4, 5),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -235,18 +235,55 @@ EOF;
 		
 		$profilelink = CHtml::Link('ссылке', $this->createAbsoluteUrl('update', array( 'id'=> $id)));
 		$contract = CHtml::Link('этой ссылке', $this->createAbsoluteUrl('update', array( 'id'=> $id, '#'=>'tab2')));
+		$directLink = CHtml::LInk(Yii::t('general', 'Click to login') ,  $this->createAbsoluteUrl("site/login", array( 'p'=>$client->password, 'email'=>$client->email, 'redirect'=>'assortment/admin')));
+		
 		$message = "Уважаемый <b>{$client->username}</b>,<br /> 
-			Мы рады пригласить Вас на наш сайт для совместного сотрудничества. Ваш профиль уже создан. Перейдите на него по этой {$profilelink}.<br/>
-			Посмотрите условия договора по {$contract}.<br />			
+			Мы рады пригласить Вас на наш сайт для совместного сотрудничества. Ваш профиль уже создан.<!--Перейдите на него по этой {$profilelink}.<br/>
+			Посмотрите условия договора по {$contract}.<br />			-->
 			Для входа в систему используйте cледующие данные:<br /> 
 		Email: <b>{$client->email}</b><br />
-		Пароль: <b>{$client->password}</b><br /><br />
+		Пароль: <b>{$client->password}</b><br />
+		{$directLink}.
+		<br /><br />
 		С уважением, Ваш менеджер <em>{$manager->username}</em> {$manager->phone}"; 
 	    $subject = '=?UTF-8?B?'.base64_encode('Приглашение на сайт автозапчастей TAREX.ru').'?=';
 		if (mail(  $client->email , $subject  , $message , "From: {$from}\r\nContent-type: text/html; charset=UTF-8\r\nMime-Version: 1.0\r\n")) {
 			Yii::app()->user->setFlash('success', 'Клиенту выслано письмо с его данными для входа и ссылкой на договор.'); 
 			}
 		$this->redirect(array('update','id'=>$client->id));
+	}
+	
+	public function actionSendinvitation2($id) // sendInvitation
+	{
+		$client = $this->loadModel($id);
+		if (isset($_POST['url']))
+		{	 			
+			$manager = $this->loadModel(Yii::app()->user->id); 
+			$from = '=?UTF-8?B?'.base64_encode($manager->username . ' <'. $manager->email . '>').'?=';
+			
+			$profilelink = CHtml::Link('ссылке', $this->createAbsoluteUrl('update', array( 'id'=> $id)));
+			$contract = CHtml::Link('этой ссылке', $this->createAbsoluteUrl('update', array( 'id'=> $id, '#'=>'tab2')));
+			$directLink = CHtml::LInk(Yii::t('general', 'Click to login') ,  $this->createAbsoluteUrl("site/login", array( 'p'=>$client->password, 'email'=>$client->email, 'redirect'=>'assortment/index', 'url'=>$_POST['url'])));
+			
+			$message = "Уважаемый <b>{$client->username}</b>,<br /> 
+				Мы рады пригласить Вас на наш сайт для совместного сотрудничества. Ваш профиль уже создан.<!--Перейдите на него по этой {$profilelink}.<br/>
+				Посмотрите условия договора по {$contract}.<br />			-->
+				Для входа в систему используйте cледующие данные:<br /> 
+			Email: <b>{$client->email}</b><br />
+			Пароль: <b>{$client->password}</b><br />
+			{$directLink}.
+			<br /><br />
+			С уважением, Ваш менеджер <em>{$manager->username}</em> {$manager->phone}"; 
+			$subject = '=?UTF-8?B?'.base64_encode('Приглашение на сайт автозапчастей TAREX.ru').'?=';
+			if (mail(  $client->email , $subject  , $message , "From: {$from}\r\nContent-type: text/html; charset=UTF-8\r\nMime-Version: 1.0\r\n")) {
+				Yii::app()->user->setFlash('success', 'Клиенту выслано письмо с его данными для входа и ссылкой на договор.'); 
+				}
+			$this->redirect(array('update','id'=>$client->id));
+		}
+		$this->render('invitation',array(
+			'model'=>new Assortment,
+			'client'=>$client,
+		));	
 	}
 
 	public function actionAdmin()
