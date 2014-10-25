@@ -131,7 +131,7 @@ if ($parent && !isset($_GET['country']) )
 </div><!-- shift-right40 --> 
 <?php  
 if (Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER)) 
-	echo CHtml::Link('Loading Assortment from Excel file' , array('load') , array( 'class'=>'btn-win', 'style'=>'float:right;')); 
+	echo CHtml::Link(Yii::t('general','Loading Assortment from Excel file') , array('load') , array( 'class'=>'btn-win', 'style'=>'float:right;')); 
 //  echo '<br> DProvider in view 1  count(<b>' , $dataProvider->itemCount , '</b>) = ' ; print_r($dataProvider->criteria); 
  
   	if (!empty($criteria) && !$dataProvider->itemCount /*&& $mainAssotrmentItem*/)	{

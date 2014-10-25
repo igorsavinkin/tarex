@@ -171,7 +171,7 @@
 							 <?php 
 								$Subsystem= Yii::app()->session['Subsystem'];
 								$Reference =  isset($_GET['Reference']) ? $_GET['Reference'] : Yii::app()->session['Reference'];
-								$MainMenu=MainMenu::model()->FindAll(
+								$MainMenu=MainMenu::model()->findAll(
 									array(
 										'select'=>'Subsystem,Img',
 										'order'=> 'DisplayOrder',

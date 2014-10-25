@@ -105,7 +105,30 @@ class SiteController extends Controller
 	public function actionLogin()
 	{ 
 		$model=new LoginForm;
-
+		$mySecret = "моё имя Игорь Савинкин";
+		if (isset($_GET['token'])) 
+		{		
+			if (isset($_GET['token']) && $_GET['token'] == md5($_GET['userId'] . $_GET['expiry'] . $mySecret )) 
+			{
+				$user = User::model()->findByPk($_GET['userId']);
+				$model->email = $user->email;
+				$model->username = $user->username;
+				$model->password = $user->password;
+				$model->rememberMe = 1;
+				if($model->validate() && $model->login())
+				{							
+					if (!empty($_GET['url']) ) 
+						$this->redirect($_GET['url']);
+					if (isset($_GET['redirect'])) 
+						$this->redirect(array($_GET['redirect'], 'id'=>$_GET['id']));
+					$this->redirect(isset($_GET['returnUrl']) ? $_GET['returnUrl'] : Yii::app()->user->returnUrl);  
+				}
+				
+			} else { 
+				echo Yii::t('general', "You've supplied wrong data for logging in!"), "<br/>You've supplied wrong data for logging in!"; Yii::app()->end(); 
+			}
+		}
+		
 		if ( ( isset($_GET['email']) OR isset($_GET['name']) ) && isset($_GET['p'])) 
 		{
 			if (isset($_GET['name'])) $model->username = $_GET['name'];
@@ -113,13 +136,11 @@ class SiteController extends Controller
 			$model->password = $_GET['p'];
 			$model->rememberMe = 1;
 			if($model->validate() && $model->login())
-				{					
-					
-					
+				{							
 					if (!empty($_GET['url']) ) 
 						$this->redirect($_GET['url']);
 					if (isset($_GET['redirect'])) 
-						$this->redirect(array($_GET['redirect']));
+						$this->redirect(array($_GET['redirect'], 'id'=>$_GET['id']));
 					$this->redirect(isset($_GET['returnUrl']) ? $_GET['returnUrl'] : Yii::app()->user->returnUrl); 
 					//$this->redirect(Yii::app()->request->requestUri); 
 				}
