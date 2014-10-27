@@ -16,6 +16,7 @@
  * @property string $imageUrl
  * @property string $fileUrl
  * @property integer $isService
+ * @property integer $isSpecialOffer
  * @property integer $depth
  * @property string $article
  * @property string $article2
@@ -59,14 +60,14 @@ class Assortment extends CActiveRecord implements IECartPosition
 		
 		/*****************************************/
 		    array('title, article, priceS, oem, organizationId, availability', 'required'),
-			array('parent_id, price, discount, isService, depth, organizationId,  LeadTime, RealLeadTime, availability, MinPart, YearBegin, YearEnd, userId, SupplierCode, groupCategory', 'numerical', 'integerOnly'=>true),
+			array('parent_id, price, discount, isService, isSpecialOffer, depth, organizationId,  LeadTime, RealLeadTime, availability, MinPart, YearBegin, YearEnd, userId, SupplierCode, groupCategory', 'numerical', 'integerOnly'=>true),
 			array('priceS, FOBCost', 'numerical'),	
 			array('subgroup, make, agroup,CostCalculation,ItemOrigin, PurchaseCurrency, Currency, ItemCategory', 'length', 'max'=>50), 		 
 			array('title, imageUrl, notes, fileUrl, Barcode, Misc, PartN, COF, itemSearch, specialDescription,ItemPosition,warehouse,Analogi, Photos, techInfo', 'length', 'max'=>1000),
 			
 			array('model, article, article2,  manufacturer, country, specialDescription,SchneiderN,SchneiderOldN,TradeN, PartN, ItemCode', 'length', 'max'=>200),
 			array('measure_unit, PIN, ItemFamily, ItemOrigin', 'length', 'max'=>20),
-	 		array('id, parent_id, subgroup, title, model, make, measure_unit, price, discount, imageUrl, fileUrl, isService, depth, article, article2, priceS, oem, organizationId, manufacturer, agroup, availability, country, MinPart, YearBegin, YearEnd, Currency, Analogi, Barcode, Misc, PartN, COF, ItemCategory, warehouseId, itemSearch, specialDescription, notes, Photos, userId, ItemCode, FOBCost, PurchaseCurrency,   LeadTime , RealLeadTime, CostCalculation, ItemOrigin, ItemFamily, techInfo, SupplierCode, PIN, groupCategory', 'safe', 'on'=>'search'),
+	 		array('id, parent_id, subgroup, title, model, make, measure_unit, price, discount, imageUrl, fileUrl, isService, depth, article, article2, priceS, oem, organizationId, manufacturer, agroup, availability, country, MinPart, YearBegin, YearEnd, Currency, Analogi, Barcode, Misc, PartN, COF, ItemCategory, warehouseId, itemSearch, specialDescription, notes, Photos, userId, ItemCode, FOBCost, PurchaseCurrency,   LeadTime , RealLeadTime, CostCalculation, ItemOrigin, ItemFamily, techInfo, SupplierCode, PIN, groupCategory, isSpecialOffer', 'safe', 'on'=>'search'),
 		);
 	}
  	public function relations()

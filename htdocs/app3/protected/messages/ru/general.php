@@ -7,6 +7,7 @@ return array(
 	'Set up the parameters for an assortment to be loaded'=>'Установите параметры для номенклатуры которая будет загружена',
 	'Load assortment template'=>'Шаблон загрузки номенклатуры',
 	
+	
 	/* Spare parts */
 	'Spare parts'=>'Запчасти',
 	'Spare part'=>'Запчасть',
@@ -80,7 +81,11 @@ return array(
 	'Manage Special Offers'=>'Управлять особыми предложениями',
 	'add to special offer'=>'добавить в спец. предложения',
 	'Load an assortment item'=>'Загрузить позицию номенклатуры',
-	
+	'rows in Assortment have been set as Special offer'=>'позиций номенклатуры были отмечены как спец. предложние', 
+	 'Load articles of special offer from file'=>'Загрузить артикулы спец. предложний из файла',
+	'Load Assortment articles for Special Offer from Excel file'=>'Загрузить артикулы номенклатуры для спец. предложений из Excel файла',
+	"No changes were made in Special Offer"=>'Не было внесено изменений в спец. предложения', 
+	 'Set up file'=>'Установите файл',
 	/* Categories */
 	'Set other category for selected items'=>'Установить категорию для выбранных элементов', 
 	'Add assortment to certain category'=>'Добавить номенклатуру в нужную категорию',

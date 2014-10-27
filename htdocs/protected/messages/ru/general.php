@@ -82,7 +82,10 @@ return array(
 	'Manage Special Offers'=>'Управлять особыми предложениями',
 	'add to special offer'=>'добавить в спец. предложения',
 	'Load an assortment item'=>'Загрузить позицию номенклатуры',
-	
+	'rows in Assortment have been set as Special offer'=>'позиций номенклатуры были отмечены как спец. предложние', 
+	 'Load articles of special offer from file'=>'Загрузить артикулы спец. предложний из файла',
+	'Load Assortment articles for Special Offer from Excel file'=>'Загрузить артикулы номенклатуры для спец. предложений из Excel файла',
+	 'Set up file'=>'Установите файл',
 	/* Categories */
 	'Set other category for selected items'=>'Установить категорию для выбранных элементов', 
 	'Add assortment to certain category'=>'Добавить номенклатуру в нужную категорию',

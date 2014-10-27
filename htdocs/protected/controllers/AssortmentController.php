@@ -13,7 +13,7 @@ class AssortmentController extends Controller
 	{     
 		return array(     
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array( 'removefromcart', 'view', 'admin', 'admin2', 'index', 'addToCart','addToCartAjax', 'cart', 'checkout', 'clearcart',  'checkoutretail' , 'searchbyvin', 'autocomplete', 'fob', 'test'), 
+				'actions'=>array( 'removefromcart', 'view', 'admin', 'admin2', 'index', 'addToCart','addToCartAjax', 'cart', 'checkout', 'clearcart',  'checkoutretail' , 'searchbyvin', 'autocomplete', 'fob', 'test', 'SpecialOffer'), 
 				'users'=>array('*'),  
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -21,7 +21,7 @@ class AssortmentController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array( 'load', 'create', 'delete' , 'searchtool', 'update' , 'update2' , 'generateSchneiderNb',  'generateSchneiderNb2', 'fillInSchneiderGr', 'adminbulk' ),
+				'actions'=>array( 'load', 'loadSpecialOffer', 'create', 'delete' , 'searchtool', 'update' , 'update2' , 'generateSchneiderNb',  'generateSchneiderNb2', 'fillInSchneiderGr', 'adminbulk' ),
 				'roles'=>array(1, 2, 4, 5), 
 			),
 			array('deny',  // deny all users
@@ -29,6 +29,62 @@ class AssortmentController extends Controller
 			),
 		);
 	}  
+	
+	public function actionSpecialOffer()
+	{
+		$this->render('specialOffer',array(
+			'model'=>new Assortment,
+		));
+	} 
+	public function actionLoadSpecialOffer()
+	{
+		if(isset($_POST))
+		{	
+			$upfile = CUploadedFile::getInstance('FileUpload1', 0);
+		 	if ($upfile) 			
+			{   
+			 //	echo '$upfile->name = "', $upfile->name, '"<br>';
+			 	if (strstr($upfile->name, 'xlsx'))
+				{
+					$upfile->saveAs('files/tempSp.xlsx');
+					$file='files/temp.xlsx';
+					$type='Excel2007';
+					// echo 'upfile is saved as .xlsx';					
+				} else {
+					$upfile->saveAs('files/tempSp.xls');
+					$type='Excel5';	
+					$file='files/temp.xls';
+					// echo 'upfile is saved as .xls';
+				} 
+				
+				require_once Yii::getPathOfAlias('ext'). '/PHPExcel.php';		 
+				$objReader = PHPExcel_IOFactory::createReader($type);
+				$objPHPExcel = $objReader->load($file); 
+				//$as = $objPHPExcel->setActiveSheetIndex(0);	
+				$as = $objPHPExcel->getActiveSheet();
+				$highestRow = $as->getHighestRow();
+				$error = ''; 
+				$line=''; 
+				$arr=array();
+				$criteria = new CDbCriteria;
+				for ($row = 1 + $_POST['firstRow'], $failureCounter=0; $row <= $highestRow; $row++) 
+				{ 		 
+					$criteria->addCondition('article2 = :param'. $row , 'OR');
+					$criteria->params += array(':param'. $row => '' . $as->getCell('A' . $row)->getValue() . '');
+				} 	 
+				//echo 'condition = '; print_r($criteria->condition);
+				//echo '<br>params = '; print_r($criteria->params);
+				$updated = Assortment::model()->updateAll(array('isSpecialOffer' => 1),$criteria);
+				  
+				if ($updated) 
+					Yii::app()->user->setFlash('success', $updated . ' ' . Yii::t('general', 'rows in Assortment have been set as Special offer') . '.' ); 
+				else 	
+					Yii::app()->user->setFlash('error', Yii::t('general', "No changes were made in Special Offer"));
+				$this->redirect(array($this->route));	
+			 } 
+		}		
+		$this->render('loadSpecialOffer');	
+	}
 	public function actionLoad()
 	{    
 		$ShablonId = User::model()->findbypk(Yii::app()->user->id)->ShablonId;
