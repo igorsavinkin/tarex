@@ -1,3 +1,4 @@
 <?php return array(
-	'Warehouse automation' => '����������',
+	'Warehouse automation' => 'Управление заказами',
+	'Money Management' => 'Управление финансами',
 );

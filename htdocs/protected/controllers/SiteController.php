@@ -108,7 +108,14 @@ class SiteController extends Controller
 		$mySecret = "моё имя Игорь Савинкин";
 		if (isset($_GET['token'])) 
 		{		
-			if (isset($_GET['token']) && $_GET['token'] == md5($_GET['userId'] . $_GET['expiry'] . $mySecret )) 
+			//echo '$_GET[expiry] = ', $_GET['expiry'];
+			//echo '<br> strtotime("now") = ', strtotime("now");
+		// проверка не истекла ли ссылка	
+			if(isset($_GET['expiry']) && strtotime("now") > $_GET['expiry']) {  
+				echo Yii::t('general', "Your link has expired!"), '<br>Your link has expired!';
+				Yii::app()->end(); 
+			}
+			if (isset($_GET['token']) && $_GET['token'] == md5($_GET['userId'] . $_GET['expiry'] . $mySecret )  )  
 			{
 				$user = User::model()->findByPk($_GET['userId']);
 				$model->email = $user->email;

@@ -47,7 +47,7 @@
 			echo "</script>";
 		?>
 </head>
-<body>
+<body> 
 <div class="tar_wrapper">
     <div class="in_wrapper">
         <div class="tar_header">
@@ -185,8 +185,9 @@
 									$checked = ($Subsystem==$r->Subsystem) ? 'checked' : '';
 								 	if($r->Img != '')  
 									{		 
+										$file = Yii::app()->user->checkAccess(User::ROLE_MANAGER) ? 'general' : 'user';
 										$_GET['Subsystem'] = $r->Subsystem; // меняем Subsystem
-										echo "<div class='tar_icons_item {$checked}'>",  CHtml::Link("<img src='/app3/images/subsystem/".$r->Img."' alt='".Yii::t('general', $r->Subsystem)."' title='".Yii::t('general', $r->Subsystem)."'>", array( $this->id. '/' . $this->getAction()->id) + $_GET) , '</div>';
+										echo "<div class='tar_icons_item {$checked}'>",  CHtml::Link("<img src='/app3/images/subsystem/".$r->Img."' alt='".Yii::t('general', $r->Subsystem)."' title='".Yii::t($file, $r->Subsystem)."'>", array( $this->id. '/' . $this->getAction()->id) + $_GET) , '</div>';
 									}
 								}  ?> 
                                     </div>

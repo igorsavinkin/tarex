@@ -17,7 +17,7 @@
 	 ?>
 	</td>
 </tr><tr>
-	<td class='bottom' colspan='2'><p class='required error'><?php echo Yii::t('general','The client will get his(her) login/password along with given assortment page url'); ?>.</p><?php  echo CHtml::submitButton(  Yii::t('general','Send invitation'),  array( 'class'=>'red' )); ?> 
+	<td class='bottom' colspan='2'><p class='required error'><?php echo Yii::t('general','The client will get his(her) token-link along with given assortment page url'); ?>.</p><?php  echo CHtml::submitButton(  Yii::t('general','Send invitation'),  array( 'class'=>'red' )); ?> 
 	</td>
 </tr></table>
 <?php echo CHtml::endForm(); ?>
