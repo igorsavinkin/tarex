@@ -1,0 +1,17 @@
+/* @page 
+{
+	size: auto;   auto is the initial value 
+	margin: 0mm;  /* this affects the margin in the printer settings 
+}*/
+@media print {
+  a[href]:after {
+    content: none !important;
+  }
+  .row:not(.print) {  
+	/*content: none !important; */
+	display: none;
+  }
+  footer, .footer, .no-print {
+   display: none;content: none !important;
+   }
+}

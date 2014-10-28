@@ -53,7 +53,7 @@
         <div class="tar_header">
             <div class="tar_top_head">
                 <div class="container">
-                    <div class="row">
+                    <div class="row print">
                         <div class="col-md-12">
                             <div class="tar_left_top_head">
                                 <div class="tar_top_logo">
@@ -258,7 +258,7 @@
 					<div class="row<?php echo ('assortment' != Yii::app()->controller->id) ? ' hidden' : ''; ?>">	
 						<?php $this->renderPartial('//layouts/_carmakes'); ?>
 					</div><!-- row -->
-                    <div class="row">
+                    <div class="row print">
                         <div class="col-md-12"><!--Категории -->
                             <div class="tar_category_vis tar_panel tar_open">
                                 <div class="tar_badge_vis"> 
@@ -342,7 +342,7 @@
                                 <?php // содержимое из cоответствующего view 
 																 echo $content; 
 															?> 
-								<a href='#' id='up' style='float:right;z-index:1000;position:fixed; bottom: 20px; right:20px'><img src='images/btn-up.png' width='35px'/></a>							
+								<a class='no-print' href='#' id='up' style='float:right;z-index:1000;position:fixed; bottom: 20px; right:20px'><img src='images/btn-up.png' width='35px'/></a>							
 								<!--div class="tar_pathway">                                  
 									<ul>
                                         <li>
@@ -497,7 +497,7 @@
         </div>
     </div>
 </div>
-<footer>
+<footer class='footer'>
     <div class="container">
         <div class="tar_left_cont_foot">
             <a class="tar_bot_logo" href="<?php echo Yii::app()->createUrl('/site/index'); ?>">

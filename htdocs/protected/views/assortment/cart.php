@@ -1,5 +1,9 @@
-<div class='print' style='visibility:hidden;display:none'><?php echo date('d-m-Y H:i:s'); ?></div>
-<div class='print'><?php 
+<div class='print' style='visibility:hidden;display:none'>
+	<?php echo date('d-m-Y H:i:s'); ?>
+</div>
+<div class='print'>
+<?php 
+Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . '/css/print.css');
 $this->pageTitle = Yii::t('general','Cart'); 
 echo date('d-m-Y H:i:s'); 
 if (!Yii::app()->shoppingCart->isEmpty()) 
@@ -77,4 +81,5 @@ else
 {
 	echo '<h1>', Yii::t('general', 'Cart is empty'), '.</h1>';
 }
+
 ?>
