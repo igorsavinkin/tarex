@@ -32,6 +32,13 @@ class AssortmentController extends Controller
 	
 	public function actionSpecialOffer()
 	{
+		//print_r($_POST);
+		if ($_POST['bulk-remome-special-offer'] && $_POST['Assortment']['id'])
+		{ 
+			$model = new Assortment;
+			$model->updateByPk($_POST['Assortment']['id'], array('isSpecialOffer'=>0));
+		}
+		
 		$this->render('specialOffer',array(
 			'model'=>new Assortment,
 		));
@@ -46,14 +53,14 @@ class AssortmentController extends Controller
 			 //	echo '$upfile->name = "', $upfile->name, '"<br>';
 			 	if (strstr($upfile->name, 'xlsx'))
 				{
-					$upfile->saveAs('files/tempSp.xlsx');
-					$file='files/temp.xlsx';
+					$upfile->saveAs('files/tempSpO.xlsx');
+					$file='files/tempSp.xlsx';
 					$type='Excel2007';
 					// echo 'upfile is saved as .xlsx';					
 				} else {
-					$upfile->saveAs('files/tempSp.xls');
+					$upfile->saveAs('files/tempSpO.xls');
 					$type='Excel5';	
-					$file='files/temp.xls';
+					$file='files/tempSpO.xls';
 					// echo 'upfile is saved as .xls';
 				} 
 				
@@ -62,19 +69,22 @@ class AssortmentController extends Controller
 				$objPHPExcel = $objReader->load($file); 
 				//$as = $objPHPExcel->setActiveSheetIndex(0);	
 				$as = $objPHPExcel->getActiveSheet();
-				$highestRow = $as->getHighestRow();
-				$error = ''; 
-				$line=''; 
-				$arr=array();
+				
+				$highestRow = $as->getHighestRow(); 				
 				$criteria = new CDbCriteria;
-				for ($row = 1 + $_POST['firstRow'], $failureCounter=0; $row <= $highestRow; $row++) 
+				for ($row = 1 + $_POST['firstRow']; $row <= $highestRow; $row++) 
 				{ 		 
+				  	$value = $as->getCell('A' . $row)->getValue();
+				 // echo '<br>', $row, '. row - ', $value ;
+					if ('' == $value ) 
+					 	continue;
+				// накапливаем условие и параметр		
 					$criteria->addCondition('article2 = :param'. $row , 'OR');
-					$criteria->params += array(':param'. $row => '' . $as->getCell('A' . $row)->getValue() . '');
+					$criteria->params += array(':param' . $row =>  $value );
 				} 	 
-				//echo 'condition = '; print_r($criteria->condition);
+			    // echo 'condition = '; print_r($criteria->condition);
 				//echo '<br>params = '; print_r($criteria->params);
-				$updated = Assortment::model()->updateAll(array('isSpecialOffer' => 1),$criteria);
+				$updated = Assortment::model()->updateAll(array('isSpecialOffer' => 1), $criteria);
 				  
 				if ($updated) 
 					Yii::app()->user->setFlash('success', $updated . ' ' . Yii::t('general', 'rows in Assortment have been set as Special offer') . '.' ); 

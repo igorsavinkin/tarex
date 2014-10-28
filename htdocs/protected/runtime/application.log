@@ -8719,3 +8719,1478 @@ Stack trace:
 #17 {main}
 REQUEST_URI=/index.php?do=static&page=%CE%20%EA%EE%EC%EF%E0%ED%E8%E8
 ---
+2014/10/27 23:41:00 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "truk".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('truk', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('truk')
+#2 [internal function]: SiteController->actionIndex('truk', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=truk
+---
+2014/10/27 23:46:01 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "����������� ��������� ����� DEPO �� ��� �����.".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('\xCF\xEE\xF1\xF2\xF3\xEF\xEB\xE5\xED\xE8\xE5 \xE7\xE0\xEF...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('\xCF\xEE\xF1\xF2\xF3\xEF\xEB\xE5\xED\xE8\xE5 \xE7\xE0\xEF...')
+#2 [internal function]: SiteController->actionIndex('\xCF\xEE\xF1\xF2\xF3\xEF\xEB\xE5\xED\xE8\xE5 \xE7\xE0\xEF...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%CF%EE%F1%F2%F3%EF%EB%E5%ED%E8%E5%20%E7%E0%EF%F7%E0%F1%F2%E5%E9%20%F4%E8%F0%EC%FB%20DEPO%20%ED%E0%20%ED%E0%F8%20%F1%EA%EB%E0%E4.
+---
+2014/10/28 00:11:15 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "Zapchasti_API_05_12".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('Zapchasti_API_0...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('Zapchasti_API_0...')
+#2 [internal function]: SiteController->actionIndex('Zapchasti_API_0...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=Zapchasti_API_05_12
+---
+2014/10/28 01:45:14 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "� ��������".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('\xCE \xEA\xEE\xEC\xEF\xE0\xED\xE8\xE8', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('\xCE \xEA\xEE\xEC\xEF\xE0\xED\xE8\xE8')
+#2 [internal function]: SiteController->actionIndex('\xCE \xEA\xEE\xEC\xEF\xE0\xED\xE8\xE8', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%CE%20%EA%EE%EC%EF%E0%ED%E8%E8
+---
+2014/10/28 01:59:16 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "��������� ����������� ���� ��������� ����� DEPO �� ��� ����� � ������ 23_09_2013".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...')
+#2 [internal function]: SiteController->actionIndex('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%CE%F7%E5%F0%E5%E4%ED%EE%E5%20%EF%EE%F1%F2%F3%EF%EB%E5%ED%E8%E5%20%E0%E2%F2%EE%20%E7%E0%EF%F7%E0%F1%F2%E5%E9%20%F4%E8%F0%EC%FB%20DEPO%20%ED%E0%20%ED%E0%F8%20%F1%EA%EB%E0%E4%20%E2%20%CC%EE%F1%EA%E2%E5%2023_09_2013
+---
+2014/10/28 02:09:34 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "��������".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('\xD0\xE5\xE3\xE8\xEE\xED\xE0\xEC', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('\xD0\xE5\xE3\xE8\xEE\xED\xE0\xEC')
+#2 [internal function]: SiteController->actionIndex('\xD0\xE5\xE3\xE8\xEE\xED\xE0\xEC', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%D0%E5%E3%E8%EE%ED%E0%EC
+---
+2014/10/28 03:53:07 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "��������� ����������� ���� ��������� ����� DEPO �� ��� ����� � ������ 23_09_2013".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...')
+#2 [internal function]: SiteController->actionIndex('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%CE%F7%E5%F0%E5%E4%ED%EE%E5%20%EF%EE%F1%F2%F3%EF%EB%E5%ED%E8%E5%20%E0%E2%F2%EE%20%E7%E0%EF%F7%E0%F1%F2%E5%E9%20%F4%E8%F0%EC%FB%20DEPO%20%ED%E0%20%ED%E0%F8%20%F1%EA%EB%E0%E4%20%E2%20%CC%EE%F1%EA%E2%E5%2023_09_2013
+---
+2014/10/28 03:53:34 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "HELLA".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('HELLA', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('HELLA')
+#2 [internal function]: SiteController->actionIndex('HELLA', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=HELLA
+---
+2014/10/28 03:54:31 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "rasshiritelnuy".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('rasshiritelnuy', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('rasshiritelnuy')
+#2 [internal function]: SiteController->actionIndex('rasshiritelnuy', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=rasshiritelnuy
+---
+2014/10/28 05:23:09 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "A80".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('A80', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('A80')
+#2 [internal function]: SiteController->actionIndex('A80', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=A80
+---
+2014/10/28 06:04:37 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1040] Too many connections' in /home/srv50213/htdocs/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /home/srv50213/htdocs/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /home/srv50213/htdocs/framework/base/CModule.php(389): CDbConnection->init()
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(450): CModule->getComponent('db')
+#4 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(634): CApplication->getDb()
+#5 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(667): CActiveRecord->getDbConnection()
+#6 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1469): CActiveRecord->getCommandBuilder()
+#7 /home/srv50213/htdocs/protected/views/site/index.php(18): CActiveRecord->findAll(Object(CDbCriteria))
+#8 /home/srv50213/htdocs/framework/web/CBaseController.php(126): require('/home/srv50213/...')
+#9 /home/srv50213/htdocs/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/srv50213/...', NULL, true)
+#10 /home/srv50213/htdocs/framework/web/CController.php(869): CBaseController->renderFile('/home/srv50213/...', NULL, true)
+#11 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#12 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('index')
+#13 [internal function]: SiteController->actionIndex(NULL, NULL)
+#14 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#15 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#16 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#25 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#26 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#27 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#28 {main}
+REQUEST_URI=/index.php
+HTTP_REFERER=http://www.tarex.ru/index.php
+---
+2014/10/28 06:04:40 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1040] Too many connections' in /home/srv50213/htdocs/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /home/srv50213/htdocs/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /home/srv50213/htdocs/framework/base/CModule.php(389): CDbConnection->init()
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(450): CModule->getComponent('db')
+#4 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(634): CApplication->getDb()
+#5 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(667): CActiveRecord->getDbConnection()
+#6 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1469): CActiveRecord->getCommandBuilder()
+#7 /home/srv50213/htdocs/protected/views/site/index.php(18): CActiveRecord->findAll(Object(CDbCriteria))
+#8 /home/srv50213/htdocs/framework/web/CBaseController.php(126): require('/home/srv50213/...')
+#9 /home/srv50213/htdocs/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/srv50213/...', NULL, true)
+#10 /home/srv50213/htdocs/framework/web/CController.php(869): CBaseController->renderFile('/home/srv50213/...', NULL, true)
+#11 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#12 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('index')
+#13 [internal function]: SiteController->actionIndex(NULL, NULL)
+#14 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#15 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#16 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#25 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#26 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#27 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#28 {main}
+REQUEST_URI=/index.php
+HTTP_REFERER=http://www.tarex.ru/index.php
+---
+2014/10/28 06:05:04 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[08004] [1040] Too many connections' in /home/srv50213/htdocs/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /home/srv50213/htdocs/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /home/srv50213/htdocs/framework/base/CModule.php(389): CDbConnection->init()
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(450): CModule->getComponent('db')
+#4 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(634): CApplication->getDb()
+#5 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(667): CActiveRecord->getDbConnection()
+#6 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1469): CActiveRecord->getCommandBuilder()
+#7 /home/srv50213/htdocs/protected/views/site/index.php(18): CActiveRecord->findAll(Object(CDbCriteria))
+#8 /home/srv50213/htdocs/framework/web/CBaseController.php(126): require('/home/srv50213/...')
+#9 /home/srv50213/htdocs/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/srv50213/...', NULL, true)
+#10 /home/srv50213/htdocs/framework/web/CController.php(869): CBaseController->renderFile('/home/srv50213/...', NULL, true)
+#11 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#12 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('index')
+#13 [internal function]: SiteController->actionIndex(NULL, NULL)
+#14 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#15 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#16 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#25 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#26 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#27 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#28 {main}
+REQUEST_URI=/index.php
+HTTP_REFERER=http://www.tarex.ru/index.php
+---
+2014/10/28 06:08:12 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchAll(): SQLSTATE[HY000]: General error: 2006 MySQL server has gone away. Выполнявшийся SQL-запрос: SHOW FULL COLUMNS FROM `tarex_assortment`.
+in /home/srv50213/htdocs/protected/views/site/index.php (18)
+in /home/srv50213/htdocs/protected/controllers/SiteController.php (49)
+in /home/srv50213/htdocs/index.php (16)
+2014/10/28 06:08:12 [error] [exception.CDbException] exception 'CDbException' with message 'Таблица "{{assortment}}", упомянутая в записи active record класса "Assortment", не найдена в базе данных.' in /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php:2362
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Assortment))
+#1 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(658): CActiveRecord->getMetaData()
+#2 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1350): CActiveRecord->getTableSchema()
+#3 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1470): CActiveRecord->query(Object(CDbCriteria), true)
+#4 /home/srv50213/htdocs/protected/views/site/index.php(18): CActiveRecord->findAll(Object(CDbCriteria))
+#5 /home/srv50213/htdocs/framework/web/CBaseController.php(126): require('/home/srv50213/...')
+#6 /home/srv50213/htdocs/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/srv50213/...', NULL, true)
+#7 /home/srv50213/htdocs/framework/web/CController.php(869): CBaseController->renderFile('/home/srv50213/...', NULL, true)
+#8 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#9 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('index')
+#10 [internal function]: SiteController->actionIndex(NULL, NULL)
+#11 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#12 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#13 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#20 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#22 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#23 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#24 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#25 {main}
+REQUEST_URI=/index.php
+HTTP_REFERER=http://www.tarex.ru/index.php
+---
+2014/10/28 06:08:12 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchAll(): SQLSTATE[HY000]: General error: 2006 MySQL server has gone away. Выполнявшийся SQL-запрос: SHOW FULL COLUMNS FROM `tarex_assortment`.
+in /home/srv50213/htdocs/protected/views/site/index.php (18)
+in /home/srv50213/htdocs/protected/controllers/SiteController.php (49)
+in /home/srv50213/htdocs/index.php (16)
+2014/10/28 06:08:12 [error] [exception.CDbException] exception 'CDbException' with message 'Таблица "{{assortment}}", упомянутая в записи active record класса "Assortment", не найдена в базе данных.' in /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php:2362
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Assortment))
+#1 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(658): CActiveRecord->getMetaData()
+#2 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1350): CActiveRecord->getTableSchema()
+#3 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1470): CActiveRecord->query(Object(CDbCriteria), true)
+#4 /home/srv50213/htdocs/protected/views/site/index.php(18): CActiveRecord->findAll(Object(CDbCriteria))
+#5 /home/srv50213/htdocs/framework/web/CBaseController.php(126): require('/home/srv50213/...')
+#6 /home/srv50213/htdocs/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/srv50213/...', NULL, true)
+#7 /home/srv50213/htdocs/framework/web/CController.php(869): CBaseController->renderFile('/home/srv50213/...', NULL, true)
+#8 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#9 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('index')
+#10 [internal function]: SiteController->actionIndex(NULL, NULL)
+#11 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#12 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#13 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#20 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#22 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#23 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#24 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#25 {main}
+REQUEST_URI=/index.php
+HTTP_REFERER=http://www.tarex.ru/index.php
+---
+2014/10/28 06:08:47 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No such file or directory' in /home/srv50213/htdocs/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /home/srv50213/htdocs/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /home/srv50213/htdocs/framework/base/CModule.php(389): CDbConnection->init()
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(450): CModule->getComponent('db')
+#4 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(634): CApplication->getDb()
+#5 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(667): CActiveRecord->getDbConnection()
+#6 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1469): CActiveRecord->getCommandBuilder()
+#7 /home/srv50213/htdocs/protected/views/site/index.php(18): CActiveRecord->findAll(Object(CDbCriteria))
+#8 /home/srv50213/htdocs/framework/web/CBaseController.php(126): require('/home/srv50213/...')
+#9 /home/srv50213/htdocs/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/srv50213/...', NULL, true)
+#10 /home/srv50213/htdocs/framework/web/CController.php(869): CBaseController->renderFile('/home/srv50213/...', NULL, true)
+#11 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#12 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('index')
+#13 [internal function]: SiteController->actionIndex(NULL, NULL)
+#14 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#15 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#16 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#25 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#26 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#27 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#28 {main}
+REQUEST_URI=/index.php
+HTTP_REFERER=http://www.tarex.ru/index.php
+---
+2014/10/28 06:08:49 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No such file or directory' in /home/srv50213/htdocs/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /home/srv50213/htdocs/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /home/srv50213/htdocs/framework/base/CModule.php(389): CDbConnection->init()
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(450): CModule->getComponent('db')
+#4 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(634): CApplication->getDb()
+#5 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(667): CActiveRecord->getDbConnection()
+#6 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1469): CActiveRecord->getCommandBuilder()
+#7 /home/srv50213/htdocs/protected/views/site/index.php(18): CActiveRecord->findAll(Object(CDbCriteria))
+#8 /home/srv50213/htdocs/framework/web/CBaseController.php(126): require('/home/srv50213/...')
+#9 /home/srv50213/htdocs/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/srv50213/...', NULL, true)
+#10 /home/srv50213/htdocs/framework/web/CController.php(869): CBaseController->renderFile('/home/srv50213/...', NULL, true)
+#11 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#12 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('index')
+#13 [internal function]: SiteController->actionIndex(NULL, NULL)
+#14 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#15 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#16 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#25 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#26 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#27 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#28 {main}
+REQUEST_URI=/index.php
+HTTP_REFERER=http://www.tarex.ru/index.php
+---
+2014/10/28 06:08:53 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No such file or directory' in /home/srv50213/htdocs/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /home/srv50213/htdocs/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /home/srv50213/htdocs/framework/base/CModule.php(389): CDbConnection->init()
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(450): CModule->getComponent('db')
+#4 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(634): CApplication->getDb()
+#5 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(667): CActiveRecord->getDbConnection()
+#6 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1469): CActiveRecord->getCommandBuilder()
+#7 /home/srv50213/htdocs/protected/views/site/index.php(18): CActiveRecord->findAll(Object(CDbCriteria))
+#8 /home/srv50213/htdocs/framework/web/CBaseController.php(126): require('/home/srv50213/...')
+#9 /home/srv50213/htdocs/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/srv50213/...', NULL, true)
+#10 /home/srv50213/htdocs/framework/web/CController.php(869): CBaseController->renderFile('/home/srv50213/...', NULL, true)
+#11 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#12 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('index')
+#13 [internal function]: SiteController->actionIndex(NULL, NULL)
+#14 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#15 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#16 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#25 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#26 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#27 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#28 {main}
+REQUEST_URI=/index.php
+HTTP_REFERER=http://www.tarex.ru/index.php
+---
+2014/10/28 06:08:55 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No such file or directory' in /home/srv50213/htdocs/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /home/srv50213/htdocs/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /home/srv50213/htdocs/framework/base/CModule.php(389): CDbConnection->init()
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(450): CModule->getComponent('db')
+#4 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(634): CApplication->getDb()
+#5 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(667): CActiveRecord->getDbConnection()
+#6 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1469): CActiveRecord->getCommandBuilder()
+#7 /home/srv50213/htdocs/protected/views/site/index.php(18): CActiveRecord->findAll(Object(CDbCriteria))
+#8 /home/srv50213/htdocs/framework/web/CBaseController.php(126): require('/home/srv50213/...')
+#9 /home/srv50213/htdocs/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/srv50213/...', NULL, true)
+#10 /home/srv50213/htdocs/framework/web/CController.php(869): CBaseController->renderFile('/home/srv50213/...', NULL, true)
+#11 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#12 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('index')
+#13 [internal function]: SiteController->actionIndex(NULL, NULL)
+#14 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#15 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#16 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#25 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#26 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#27 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#28 {main}
+REQUEST_URI=/index.php
+HTTP_REFERER=http://www.tarex.ru/index.php
+---
+2014/10/28 06:08:56 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No such file or directory' in /home/srv50213/htdocs/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /home/srv50213/htdocs/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /home/srv50213/htdocs/framework/base/CModule.php(389): CDbConnection->init()
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(450): CModule->getComponent('db')
+#4 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(634): CApplication->getDb()
+#5 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(667): CActiveRecord->getDbConnection()
+#6 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1469): CActiveRecord->getCommandBuilder()
+#7 /home/srv50213/htdocs/protected/views/site/index.php(18): CActiveRecord->findAll(Object(CDbCriteria))
+#8 /home/srv50213/htdocs/framework/web/CBaseController.php(126): require('/home/srv50213/...')
+#9 /home/srv50213/htdocs/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/srv50213/...', NULL, true)
+#10 /home/srv50213/htdocs/framework/web/CController.php(869): CBaseController->renderFile('/home/srv50213/...', NULL, true)
+#11 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#12 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('index')
+#13 [internal function]: SiteController->actionIndex(NULL, NULL)
+#14 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#15 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#16 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#25 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#26 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#27 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#28 {main}
+REQUEST_URI=/index.php
+HTTP_REFERER=http://www.tarex.ru/index.php
+---
+2014/10/28 06:09:08 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No such file or directory' in /home/srv50213/htdocs/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /home/srv50213/htdocs/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /home/srv50213/htdocs/framework/base/CModule.php(389): CDbConnection->init()
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(450): CModule->getComponent('db')
+#4 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(634): CApplication->getDb()
+#5 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(667): CActiveRecord->getDbConnection()
+#6 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1469): CActiveRecord->getCommandBuilder()
+#7 /home/srv50213/htdocs/protected/views/site/index.php(18): CActiveRecord->findAll(Object(CDbCriteria))
+#8 /home/srv50213/htdocs/framework/web/CBaseController.php(126): require('/home/srv50213/...')
+#9 /home/srv50213/htdocs/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/srv50213/...', NULL, true)
+#10 /home/srv50213/htdocs/framework/web/CController.php(869): CBaseController->renderFile('/home/srv50213/...', NULL, true)
+#11 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#12 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('index')
+#13 [internal function]: SiteController->actionIndex(NULL, NULL)
+#14 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#15 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#16 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#25 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#26 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#27 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#28 {main}
+REQUEST_URI=/index.php
+HTTP_REFERER=http://www.tarex.ru/index.php
+---
+2014/10/28 06:53:38 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "Avozapchasti_API_16_01_2014".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('Avozapchasti_AP...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('Avozapchasti_AP...')
+#2 [internal function]: SiteController->actionIndex('Avozapchasti_AP...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=Avozapchasti_API_16_01_2014
+---
+2014/10/28 07:00:04 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "��������� ����������� ������������� API �� ��� ����� � ������.".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...')
+#2 [internal function]: SiteController->actionIndex('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%CE%F7%E5%F0%E5%E4%ED%EE%E5%20%EF%EE%F1%F2%F3%EF%EB%E5%ED%E8%E5%20%E0%E2%F2%EE%E7%E0%EF%F7%E0%F1%F2%E5%E9%20API%20%ED%E0%20%ED%E0%F8%20%F1%EA%EB%E0%E4%20%E2%20%CC%EE%F1%EA%E2%E5.
+---
+2014/10/28 07:04:43 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "� ��������".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('\xCE \xEA\xEE\xEC\xEF\xE0\xED\xE8\xE8', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('\xCE \xEA\xEE\xEC\xEF\xE0\xED\xE8\xE8')
+#2 [internal function]: SiteController->actionIndex('\xCE \xEA\xEE\xEC\xEF\xE0\xED\xE8\xE8', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%CE%20%EA%EE%EC%EF%E0%ED%E8%E8
+---
+2014/10/28 07:11:31 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "W_140".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('W_140', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('W_140')
+#2 [internal function]: SiteController->actionIndex('W_140', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=W_140
+---
+2014/10/28 07:16:29 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "truk".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('truk', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('truk')
+#2 [internal function]: SiteController->actionIndex('truk', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=truk
+---
+2014/10/28 07:18:47 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "����������� ��������� ����� DEPO �� ��� �����.".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('\xCF\xEE\xF1\xF2\xF3\xEF\xEB\xE5\xED\xE8\xE5 \xE7\xE0\xEF...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('\xCF\xEE\xF1\xF2\xF3\xEF\xEB\xE5\xED\xE8\xE5 \xE7\xE0\xEF...')
+#2 [internal function]: SiteController->actionIndex('\xCF\xEE\xF1\xF2\xF3\xEF\xEB\xE5\xED\xE8\xE5 \xE7\xE0\xEF...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%CF%EE%F1%F2%F3%EF%EB%E5%ED%E8%E5%20%E7%E0%EF%F7%E0%F1%F2%E5%E9%20%F4%E8%F0%EC%FB%20DEPO%20%ED%E0%20%ED%E0%F8%20%F1%EA%EB%E0%E4.
+---
+2014/10/28 07:21:09 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "������� ������".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('\xD3\xF1\xEB\xEE\xE2\xE8\xFF \xF0\xE0\xE1\xEE\xF2\xFB', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('\xD3\xF1\xEB\xEE\xE2\xE8\xFF \xF0\xE0\xE1\xEE\xF2\xFB')
+#2 [internal function]: SiteController->actionIndex('\xD3\xF1\xEB\xEE\xE2\xE8\xFF \xF0\xE0\xE1\xEE\xF2\xFB', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%D3%F1%EB%EE%E2%E8%FF+%F0%E0%E1%EE%F2%FB
+---
+2014/10/28 07:27:25 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "����� ����".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('\xCF\xF0\xE0\xE9\xF1 \xEB\xE8\xF1\xF2', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('\xCF\xF0\xE0\xE9\xF1 \xEB\xE8\xF1\xF2')
+#2 [internal function]: SiteController->actionIndex('\xCF\xF0\xE0\xE9\xF1 \xEB\xE8\xF1\xF2', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%CF%F0%E0%E9%F1%20%EB%E8%F1%F2
+---
+2014/10/28 07:35:07 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "Zapchasti_API_05_12".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('Zapchasti_API_0...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('Zapchasti_API_0...')
+#2 [internal function]: SiteController->actionIndex('Zapchasti_API_0...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=Zapchasti_API_05_12
+---
+2014/10/28 07:49:30 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "zapchasti API optom".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('zapchasti API o...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('zapchasti API o...')
+#2 [internal function]: SiteController->actionIndex('zapchasti API o...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=zapchasti%20API%20optom
+---
+2014/10/28 07:53:04 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "������ �������� mann".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('\xD4\xE8\xEB\xFC\xF2\xF0 \xEC\xE0\xF1\xEB\xFF\xED\xFB\xE9...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('\xD4\xE8\xEB\xFC\xF2\xF0 \xEC\xE0\xF1\xEB\xFF\xED\xFB\xE9...')
+#2 [internal function]: SiteController->actionIndex('\xD4\xE8\xEB\xFC\xF2\xF0 \xEC\xE0\xF1\xEB\xFF\xED\xFB\xE9...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%D4%E8%EB%FC%F2%F0+%EC%E0%F1%EB%FF%ED%FB%E9+mann
+---
+2014/10/28 08:00:19 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "autoparts_api".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('autoparts_api', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('autoparts_api')
+#2 [internal function]: SiteController->actionIndex('autoparts_api', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=autoparts_api
+---
+2014/10/28 09:07:29 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "��������� ����������� ���� ��������� ����� DEPO �� ��� ����� � ������.".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...')
+#2 [internal function]: SiteController->actionIndex('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%CE%F7%E5%F0%E5%E4%ED%EE%E5%20%EF%EE%F1%F2%F3%EF%EB%E5%ED%E8%E5%20%E0%E2%F2%EE%20%E7%E0%EF%F7%E0%F1%F2%E5%E9%20%F4%E8%F0%EC%FB%20DEPO%20%ED%E0%20%ED%E0%F8%20%F1%EA%EB%E0%E4%20%E2%20%CC%EE%F1%EA%E2%E5.
+---
+2014/10/28 09:11:31 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "WINJET (�������)".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('WINJET (\xD2\xE0\xE9\xE2\xE0\xED\xFC...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('WINJET (\xD2\xE0\xE9\xE2\xE0\xED\xFC...')
+#2 [internal function]: SiteController->actionIndex('WINJET (\xD2\xE0\xE9\xE2\xE0\xED\xFC...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=WINJET%20%28%D2%E0%E9%E2%E0%ED%FC%29
+---
+2014/10/28 09:26:43 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "BMW".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('BMW', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('BMW')
+#2 [internal function]: SiteController->actionIndex('BMW', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=BMW
+---
+2014/10/28 09:36:07 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "Avozapchasti_API_16_01_2014".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('Avozapchasti_AP...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('Avozapchasti_AP...')
+#2 [internal function]: SiteController->actionIndex('Avozapchasti_AP...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=Avozapchasti_API_16_01_2014
+---
+2014/10/28 09:58:36 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "shock_absorber_NISSAN_QASHQAI_NOTE".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('shock_absorber_...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('shock_absorber_...')
+#2 [internal function]: SiteController->actionIndex('shock_absorber_...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=shock_absorber_NISSAN_QASHQAI_NOTE
+---
+2014/10/28 10:06:57 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "��������� ����������� ���� ��������� ����� DEPO �� ��� ����� � ������ 23_09_2013".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...')
+#2 [internal function]: SiteController->actionIndex('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%CE%F7%E5%F0%E5%E4%ED%EE%E5%20%EF%EE%F1%F2%F3%EF%EB%E5%ED%E8%E5%20%E0%E2%F2%EE%20%E7%E0%EF%F7%E0%F1%F2%E5%E9%20%F4%E8%F0%EC%FB%20DEPO%20%ED%E0%20%ED%E0%F8%20%F1%EA%EB%E0%E4%20%E2%20%CC%EE%F1%EA%E2%E5%2023_09_2013
+---
+2014/10/28 10:07:11 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "E36".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('E36', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('E36')
+#2 [internal function]: SiteController->actionIndex('E36', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=E36
+---
+2014/10/28 10:07:30 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "rasshiritelnuy".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('rasshiritelnuy', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('rasshiritelnuy')
+#2 [internal function]: SiteController->actionIndex('rasshiritelnuy', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=rasshiritelnuy
+---
+2014/10/28 10:18:23 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "HELLA".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('HELLA', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('HELLA')
+#2 [internal function]: SiteController->actionIndex('HELLA', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=HELLA
+---
+2014/10/28 10:23:44 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "SCHNIEDER1".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('SCHNIEDER1', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('SCHNIEDER1')
+#2 [internal function]: SiteController->actionIndex('SCHNIEDER1', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=SCHNIEDER1
+---
+2014/10/28 10:39:43 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "����������� ��������� ����� DEPO �� ��� �����.".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('\xCF\xEE\xF1\xF2\xF3\xEF\xEB\xE5\xED\xE8\xE5 \xE7\xE0\xEF...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('\xCF\xEE\xF1\xF2\xF3\xEF\xEB\xE5\xED\xE8\xE5 \xE7\xE0\xEF...')
+#2 [internal function]: SiteController->actionIndex('\xCF\xEE\xF1\xF2\xF3\xEF\xEB\xE5\xED\xE8\xE5 \xE7\xE0\xEF...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%CF%EE%F1%F2%F3%EF%EB%E5%ED%E8%E5+%E7%E0%EF%F7%E0%F1%F2%E5%E9+%F4%E8%F0%EC%FB+DEPO+%ED%E0+%ED%E0%F8+%F1%EA%EB%E0%E4.
+---
+2014/10/28 10:54:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "SpecialOffer2/admin".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('SpecialOffer2/a...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=SpecialOffer2/admin&Subsystem=Warehouse+automation&Reference=SpecialOffer2
+HTTP_REFERER=http://tarex.ru/index.php?r=specialOffer/admin&Subsystem=Warehouse+automation&Reference=SpecialOffer
+---
+2014/10/28 10:57:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assortmetn/specialOffer".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortmetn/spec...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=assortmetn/specialOffer
+HTTP_REFERER=http://tarex.ru/index.php?r=specialOffer/admin&Subsystem=Warehouse+automation&Reference=SpecialOffer
+---
+2014/10/28 11:08:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1131
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(174): AssortmentController->loadModel('2658')
+#1 [internal function]: AssortmentController->actionView('2658')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=2658
+---
+2014/10/28 12:01:52 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "%d1%e5%f0%f2%e8%f4%e8%ea%e0%f2%fb".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('%d1%e5%f0%f2%e8...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('%d1%e5%f0%f2%e8...')
+#2 [internal function]: SiteController->actionIndex('%d1%e5%f0%f2%e8...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%25d1%25e5%25f0%25f2%25e8%25f4%25e8%25ea%25e0%25f2%25fb
+---
+2014/10/28 12:07:33 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "T 4".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('T 4', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('T 4')
+#2 [internal function]: SiteController->actionIndex('T 4', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=T%204
+---
+2014/10/28 12:20:58 [error] [exception.CException] exception 'CException' with message 'Не определено свойство "CGridView.selectedRows".' in /home/srv50213/htdocs/framework/base/CComponent.php:173
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWidgetFactory.php(161): CComponent->__set('selectedRows', 2)
+#1 /home/srv50213/htdocs/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(AssortmentController), 'zii.widgets.gri...', Array)
+#2 /home/srv50213/htdocs/framework/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.gri...', Array)
+#3 /home/srv50213/htdocs/protected/views/assortment/specialOffer.php(111): CBaseController->widget('zii.widgets.gri...', Array)
+#4 /home/srv50213/htdocs/framework/web/CBaseController.php(126): require('/home/srv50213/...')
+#5 /home/srv50213/htdocs/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/srv50213/...', Array, true)
+#6 /home/srv50213/htdocs/framework/web/CController.php(869): CBaseController->renderFile('/home/srv50213/...', Array, true)
+#7 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('specialOffer', Array, true)
+#8 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(37): CController->render('specialOffer', Array)
+#9 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionSpecialOffer()
+#10 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#17 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('specialOffer')
+#19 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/spec...')
+#20 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#21 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#22 {main}
+REQUEST_URI=/index.php?r=assortment/specialOffer
+HTTP_REFERER=http://tarex.ru/index.php?r=assortment/loadSpecialOffer
+---
+2014/10/28 12:40:48 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "Avozapchasti_API_16_01_2014".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('Avozapchasti_AP...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('Avozapchasti_AP...')
+#2 [internal function]: SiteController->actionIndex('Avozapchasti_AP...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=Avozapchasti_API_16_01_2014
+---
+2014/10/28 12:47:11 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "��������� ����������� ������������� API �� ��� ����� � ������.".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...')
+#2 [internal function]: SiteController->actionIndex('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%CE%F7%E5%F0%E5%E4%ED%EE%E5%20%EF%EE%F1%F2%F3%EF%EB%E5%ED%E8%E5%20%E0%E2%F2%EE%E7%E0%EF%F7%E0%F1%F2%E5%E9%20API%20%ED%E0%20%ED%E0%F8%20%F1%EA%EB%E0%E4%20%E2%20%CC%EE%F1%EA%E2%E5.
+---
+2014/10/28 12:50:03 [error] [exception.CException] exception 'CException' with message 'В классе AssortmentController и его поведениях не найден метод или замыкание с именем "updateByPk".' in /home/srv50213/htdocs/framework/base/CComponent.php:266
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(37): CComponent->__call('updateByPk', Array)
+#1 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(37): AssortmentController->updateByPk(Array, Array)
+#2 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionSpecialOffer()
+#3 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#10 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('specialOffer')
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/spec...')
+#13 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php?r=assortment/specialOffer
+HTTP_REFERER=http://tarex.ru/index.php?r=assortment/specialOffer
+---
+2014/10/28 12:50:37 [error] [exception.CException] exception 'CException' with message 'В классе AssortmentController и его поведениях не найден метод или замыкание с именем "updateByPk".' in /home/srv50213/htdocs/framework/base/CComponent.php:266
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(37): CComponent->__call('updateByPk', Array)
+#1 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(37): AssortmentController->updateByPk(Array, Array)
+#2 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionSpecialOffer()
+#3 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#10 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('specialOffer')
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/spec...')
+#13 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php?r=assortment/specialOffer
+HTTP_REFERER=http://tarex.ru/index.php?r=assortment/specialOffer
+---
+2014/10/28 12:51:01 [error] [exception.CException] exception 'CException' with message 'В классе AssortmentController и его поведениях не найден метод или замыкание с именем "getCommandBuilder".' in /home/srv50213/htdocs/framework/base/CComponent.php:266
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1744): CComponent->__call('getCommandBuild...', Array)
+#1 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1744): AssortmentController->getCommandBuilder()
+#2 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(37): CActiveRecord->updateByPk(Array, Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): AssortmentController->actionSpecialOffer()
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('specialOffer')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/spec...')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/specialOffer
+HTTP_REFERER=http://tarex.ru/index.php?r=assortment/specialOffer
+---
+2014/10/28 12:51:26 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "� ��������".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('\xCE \xEA\xEE\xEC\xEF\xE0\xED\xE8\xE8', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('\xCE \xEA\xEE\xEC\xEF\xE0\xED\xE8\xE8')
+#2 [internal function]: SiteController->actionIndex('\xCE \xEA\xEE\xEC\xEF\xE0\xED\xE8\xE8', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%CE%20%EA%EE%EC%EF%E0%ED%E8%E8
+---
+2014/10/28 13:02:07 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "truk".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('truk', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('truk')
+#2 [internal function]: SiteController->actionIndex('truk', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=truk
+---
+2014/10/28 13:04:10 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "����������� ��������� ����� DEPO �� ��� �����.".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('\xCF\xEE\xF1\xF2\xF3\xEF\xEB\xE5\xED\xE8\xE5 \xE7\xE0\xEF...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('\xCF\xEE\xF1\xF2\xF3\xEF\xEB\xE5\xED\xE8\xE5 \xE7\xE0\xEF...')
+#2 [internal function]: SiteController->actionIndex('\xCF\xEE\xF1\xF2\xF3\xEF\xEB\xE5\xED\xE8\xE5 \xE7\xE0\xEF...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%CF%EE%F1%F2%F3%EF%EB%E5%ED%E8%E5%20%E7%E0%EF%F7%E0%F1%F2%E5%E9%20%F4%E8%F0%EC%FB%20DEPO%20%ED%E0%20%ED%E0%F8%20%F1%EA%EB%E0%E4.
+---
+2014/10/28 13:05:45 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "W140".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('W140', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('W140')
+#2 [internal function]: SiteController->actionIndex('W140', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=W140
+---
+2014/10/28 13:18:24 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "Zapchasti_API_05_12".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('Zapchasti_API_0...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('Zapchasti_API_0...')
+#2 [internal function]: SiteController->actionIndex('Zapchasti_API_0...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=Zapchasti_API_05_12
+---
+2014/10/28 13:54:15 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "AUTOPROISVOD".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('AUTOPROISVOD', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('AUTOPROISVOD')
+#2 [internal function]: SiteController->actionIndex('AUTOPROISVOD', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=AUTOPROISVOD
+---
+2014/10/28 13:54:25 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "zapchasti_api_1".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('zapchasti_api_1', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('zapchasti_api_1')
+#2 [internal function]: SiteController->actionIndex('zapchasti_api_1', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=zapchasti_api_1
+---

@@ -126,7 +126,7 @@ class Assortment extends CActiveRecord implements IECartPosition
 			'FOBCost'=>Yii::t('general', 'FOB cost'),
 		);
 	}
-	public function search()
+	public function search($specialOffer=null)
 	{
 		$criteria=new CDbCriteria;
 
@@ -146,6 +146,7 @@ class Assortment extends CActiveRecord implements IECartPosition
 		$criteria->compare('isService',$this->isService);
 		$criteria->compare('depth',$this->depth);	
 		$criteria->compare('priceS',$this->priceS);
+		
 		
 		$replaced4article = str_replace(array('.', '-', ' '), "", $this->article); // заменяем точки, тире и пробелы на ничего ТОЛЬКО для поиска по OEM и Артикулу 
 		$criteria->compare('article', $replaced4article, true);	
@@ -187,6 +188,9 @@ class Assortment extends CActiveRecord implements IECartPosition
 			//echo $OrganizationId;
 		}*/
 		if (Yii::app()->user->isGuest) $pagesize = 33;
+		
+		if ($specialOffer) 
+			$criteria->compare('isSpecialOffer', '1');
 		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

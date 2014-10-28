@@ -79,6 +79,8 @@ return array(
 	/* Special Offer */
 	'Special Offer'=>'Специальное предложение',
 	'Special Offers'=>'Специальные предложения',
+	'Special Offers to client'=>'Специальные предложения клиенту',
+	'Special Offer items'=>'Специальные предложения номенклатуры',
 	'Manage Special Offers'=>'Управлять особыми предложениями',
 	'add to special offer'=>'добавить в спец. предложения',
 	'Load an assortment item'=>'Загрузить позицию номенклатуры',
@@ -86,6 +88,10 @@ return array(
 	 'Load articles of special offer from file'=>'Загрузить артикулы спец. предложний из файла',
 	'Load Assortment articles for Special Offer from Excel file'=>'Загрузить артикулы номенклатуры для спец. предложений из Excel файла',
 	 'Set up file'=>'Установите файл',
+	 'View special offer assortment items'=>'Посмотреть специальные предложения номенклатуры', 
+	'Bulk remome Special Offer mark'=>'Удалить отметку что это спец. предложение', 
+	 
+	 
 	/* Categories */
 	'Set other category for selected items'=>'Установить категорию для выбранных элементов', 
 	'Add assortment to certain category'=>'Добавить номенклатуру в нужную категорию',
@@ -959,7 +965,8 @@ return array(
 	'isService'=> 'Услуга',
 	'Price $'=>'Цена $',
 	'Price with discount'=>'Цена со скидкой',
-	'Availability'=>'Доступность',
+	//'Availability'=>'Доступность',
+	'Availability'=>'Наличие',
 	'Assortment id'=>'id номенклатуры',
 	'Current Price'=>'Текущая цена', // (рублей) <br />цена$ * курс рубль/доллару ',
 	'add to cart'=>'в корзину',
