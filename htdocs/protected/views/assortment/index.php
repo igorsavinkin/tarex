@@ -163,7 +163,14 @@ if (Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER))
 		));	
 	}
 
-		
+	if (!empty($CriteriaAnalogsFromAssortment->condition)) 
+	{  
+	  // echo '<h4>3-d case </h4> $CriteriaAnalogsFromAssortment: ';	   print_r($CriteriaAnalogsFromAssortment);
+	   $dataProviderAnalog = new CActiveDataProvider('Assortment', array(
+						'criteria'=>$CriteriaAnalogsFromAssortment,
+						'pagination' =>false, 
+		));	
+	}	
 		
 if ($dataProvider->itemCount)  
 {   

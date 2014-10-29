@@ -129,26 +129,21 @@ if ($parent && !isset($_GET['country']) )
 	<?php $this->renderPartial('_search',array('model'=>$model, 'bodies'=>$bodies )); ?>
 	</div><!-- search-form -->
 </div><!-- shift-right40 --> 
-<?php  
-//  echo '<br> DProvider in view 1  count(<b>' , $dataProvider->itemCount , '</b>) = ' ; print_r($dataProvider->criteria); 
+<?php   
  
-  	if (!empty($criteria) && !$dataProvider->itemCount /*&& $mainAssotrmentItem*/) {
-		echo '<h4>first case: </h4>';
-		//echo 'criteria '.$criteria->condition.'<br>';
-		//print_r ($criteria->params);
-		//$criteria->mergeWith($dataProviderOriginal->criteria);
-		
-		
+  	if (!empty($criteria) && !$dataProvider->itemCount /*&& $mainAssotrmentItem*/) 
+	{
+		echo '<h4>first case: </h4>';		
 		$dataProvider = new CActiveDataProvider('Assortment', array(
 			'criteria'=>$criteria,
 			 'pagination' => array(							
 				'pageSize' =>isset($pagesize) ? $pagesize : Yii::app()->params['defaultPageSize'],
 			 ),
-		));		
+		));	 
 	} 
 	
 	if(!empty($CriteriaAnalog) && $dataProvider->itemCount /*&& !$mainAssotrmentItem*/){
-		echo '<h4>second case: search item is artificially from FaKeAssortment and Analog is from Assortment table</h4>';
+		echo '<h4>second case: search item is artificially from FakeAssortment and Analog is from Assortment table</h4>';
 		$dataProvider = new CActiveDataProvider('AssortmentFake', array(	//'criteria'=>$criteria,
 						'pagination' =>false, /* array(						
 							'pageSize' =>$this->pagesize ? $this->pagesize : Yii::app()->params['defaultPageSize'],
@@ -162,7 +157,16 @@ if ($parent && !isset($_GET['country']) )
 						 ),*/ 
 		));	
 	}
-
+	
+    
+	if (!empty($CriteriaAnalogsFromAssortment->condition)) 
+	{  
+	  // echo '<h4>3-d case </h4> $CriteriaAnalogsFromAssortment: ';	   print_r($CriteriaAnalogsFromAssortment);
+	   $dataProviderAnalog = new CActiveDataProvider('Assortment', array(
+						'criteria'=>$CriteriaAnalogsFromAssortment,
+						'pagination' =>false, 
+		));	
+	}
 		
 		
 if ($dataProvider->itemCount)  

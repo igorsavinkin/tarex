@@ -10086,3 +10086,267 @@ Stack trace:
 REQUEST_URI=/app3/index.php?r=assortment%2Findex&findbyoem-value=893412131B
 HTTP_REFERER=http://tarex.ru/app3/index.php?r=assortment/update/id/362
 ---
+2014/10/29 16:37:18 [error] [exception.CException] exception 'CException' with message 'В классе CDbCriteria и его поведениях не найден метод или замыкание с именем "condition".' in /home/srv50213/htdocs/framework/base/CComponent.php:266
+Stack trace:
+#0 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(291): CComponent->__call('condition', Array)
+#1 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(291): CDbCriteria->condition('oem = "2211116L...')
+#2 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(603): AssortmentController->findInAnalogs('2211116LLDEM')
+#3 [internal function]: AssortmentController->actionIndex(NULL, NULL, NULL)
+#4 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#5 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#6 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#7 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#13 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('index')
+#15 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/inde...')
+#16 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /home/srv50213/htdocs/app3/index.php(17): CApplication->run()
+#18 {main}
+REQUEST_URI=/app3/index.php?r=assortment%2Findex&findbyoem-value=2211116LLDEM
+---
+2014/10/29 17:28:01 [error] [exception.CException] exception 'CException' with message 'В классе CDbCriteria и его поведениях не найден метод или замыкание с именем "addCondtion".' in /home/srv50213/htdocs/framework/base/CComponent.php:266
+Stack trace:
+#0 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(624): CComponent->__call('addCondtion', Array)
+#1 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(624): CDbCriteria->addCondtion('oem = "92101250...', 'OR')
+#2 [internal function]: AssortmentController->actionIndex(NULL, NULL, NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('index')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/inde...')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/app3/index.php(17): CApplication->run()
+#17 {main}
+REQUEST_URI=/app3/index.php?r=assortment%2Findex&findbyoem-value=2211116LLDEM
+---
+2014/10/29 17:38:51 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchColumn(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'MM3397004667' in 'where clause'. Выполнявшийся SQL-запрос: SELECT COUNT(*) FROM `tarex_assortment` `t` WHERE oem = MM3397004667.
+in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php (305)
+in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php (623)
+in /home/srv50213/htdocs/app3/index.php (17)
+2014/10/29 17:38:51 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'MM3397004667' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `tarex_assortment` `t` WHERE oem = MM3397004667' in /home/srv50213/htdocs/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1601): CDbCommand->queryScalar()
+#2 /home/srv50213/htdocs/framework/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#3 /home/srv50213/htdocs/framework/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#4 /home/srv50213/htdocs/framework/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#5 /home/srv50213/htdocs/framework/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#6 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(305): CDataProvider->getData()
+#7 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(623): AssortmentController->findInAssortment('MM3397004667')
+#8 [internal function]: AssortmentController->actionIndex(NULL, NULL, NULL)
+#9 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#10 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#11 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#13 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#14 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#15 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#16 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#17 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#18 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('index')
+#20 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/inde...')
+#21 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#22 /home/srv50213/htdocs/app3/index.php(17): CApplication->run()
+#23 {main}
+REQUEST_URI=/app3/index.php?r=assortment%2Findex&findbyoem-value=2211116LLDEM
+---
+2014/10/29 17:39:39 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchColumn(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'MM3397004667' in 'where clause'. Выполнявшийся SQL-запрос: SELECT COUNT(*) FROM `tarex_assortment` `t` WHERE oem = MM3397004667.
+in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php (306)
+in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php (623)
+in /home/srv50213/htdocs/app3/index.php (17)
+2014/10/29 17:39:39 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'MM3397004667' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `tarex_assortment` `t` WHERE oem = MM3397004667' in /home/srv50213/htdocs/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1601): CDbCommand->queryScalar()
+#2 /home/srv50213/htdocs/framework/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#3 /home/srv50213/htdocs/framework/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#4 /home/srv50213/htdocs/framework/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#5 /home/srv50213/htdocs/framework/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#6 /home/srv50213/htdocs/framework/web/CDataProvider.php(212): CDataProvider->getData(false)
+#7 /home/srv50213/htdocs/framework/base/CComponent.php(111): CDataProvider->getItemCount()
+#8 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(306): CComponent->__get('itemCount')
+#9 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(623): AssortmentController->findInAssortment('MM3397004667')
+#10 [internal function]: AssortmentController->actionIndex(NULL, NULL, NULL)
+#11 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#12 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#13 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#20 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('index')
+#22 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/inde...')
+#23 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#24 /home/srv50213/htdocs/app3/index.php(17): CApplication->run()
+#25 {main}
+REQUEST_URI=/app3/index.php?r=assortment%2Findex&findbyoem-value=2211116LLDEM
+---
+2014/10/29 17:40:51 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchColumn(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'MM3397004667' in 'where clause'. Выполнявшийся SQL-запрос: SELECT COUNT(*) FROM `tarex_assortment` `t` WHERE oem = MM3397004667.
+in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php (306)
+in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php (623)
+in /home/srv50213/htdocs/app3/index.php (17)
+2014/10/29 17:40:51 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'MM3397004667' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `tarex_assortment` `t` WHERE oem = MM3397004667' in /home/srv50213/htdocs/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1601): CDbCommand->queryScalar()
+#2 /home/srv50213/htdocs/framework/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#3 /home/srv50213/htdocs/framework/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#4 /home/srv50213/htdocs/framework/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#5 /home/srv50213/htdocs/framework/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#6 /home/srv50213/htdocs/framework/web/CDataProvider.php(212): CDataProvider->getData(false)
+#7 /home/srv50213/htdocs/framework/base/CComponent.php(188): CDataProvider->getItemCount()
+#8 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(306): CComponent->__isset('itemCount')
+#9 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(623): AssortmentController->findInAssortment('MM3397004667')
+#10 [internal function]: AssortmentController->actionIndex(NULL, NULL, NULL)
+#11 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#12 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#13 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#20 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('index')
+#22 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/inde...')
+#23 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#24 /home/srv50213/htdocs/app3/index.php(17): CApplication->run()
+#25 {main}
+REQUEST_URI=/app3/index.php?r=assortment%2Findex&findbyoem-value=2211116LLDEM
+---
+2014/10/29 17:41:58 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchAll(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'MM3397004667' in 'where clause'. Выполнявшийся SQL-запрос: SELECT * FROM `tarex_assortment` `t` WHERE (oem = 9210125010) OR (oem = MM3397004667).
+in /home/srv50213/htdocs/app3/protected/views/assortment/index.php (321)
+in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php (756)
+in /home/srv50213/htdocs/app3/index.php (17)
+2014/10/29 17:41:58 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'MM3397004667' in 'where clause'. The SQL statement executed was: SELECT * FROM `tarex_assortment` `t` WHERE (oem = 9210125010) OR (oem = MM3397004667)' in /home/srv50213/htdocs/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1351): CDbCommand->queryAll()
+#2 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1470): CActiveRecord->query(Object(CDbCriteria), true)
+#3 /home/srv50213/htdocs/framework/web/CActiveDataProvider.php(199): CActiveRecord->findAll(Object(CDbCriteria))
+#4 /home/srv50213/htdocs/framework/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#5 /home/srv50213/htdocs/framework/web/CDataProvider.php(212): CDataProvider->getData(false)
+#6 /home/srv50213/htdocs/framework/base/CComponent.php(188): CDataProvider->getItemCount()
+#7 /home/srv50213/htdocs/app3/protected/views/assortment/index.php(321): CComponent->__isset('itemCount')
+#8 /home/srv50213/htdocs/framework/web/CBaseController.php(126): require('/home/srv50213/...')
+#9 /home/srv50213/htdocs/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/srv50213/...', Array, true)
+#10 /home/srv50213/htdocs/framework/web/CController.php(869): CBaseController->renderFile('/home/srv50213/...', Array, true)
+#11 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('index', Array, true)
+#12 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(756): CController->render('index', Array)
+#13 [internal function]: AssortmentController->actionIndex(NULL, NULL, NULL)
+#14 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#15 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#16 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('index')
+#25 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/inde...')
+#26 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#27 /home/srv50213/htdocs/app3/index.php(17): CApplication->run()
+#28 {main}
+REQUEST_URI=/app3/index.php?r=assortment%2Findex&findbyoem-value=2211116LLDEM
+---
+2014/10/29 17:43:01 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchAll(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'MM3397004667' in 'where clause'. Выполнявшийся SQL-запрос: SELECT * FROM `tarex_assortment` `t` WHERE (oem = 9210125010) OR (oem = MM3397004667).
+in /home/srv50213/htdocs/app3/protected/views/assortment/index.php (321)
+in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php (756)
+in /home/srv50213/htdocs/app3/index.php (17)
+2014/10/29 17:43:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'MM3397004667' in 'where clause'. The SQL statement executed was: SELECT * FROM `tarex_assortment` `t` WHERE (oem = 9210125010) OR (oem = MM3397004667)' in /home/srv50213/htdocs/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1351): CDbCommand->queryAll()
+#2 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1470): CActiveRecord->query(Object(CDbCriteria), true)
+#3 /home/srv50213/htdocs/framework/web/CActiveDataProvider.php(199): CActiveRecord->findAll(Object(CDbCriteria))
+#4 /home/srv50213/htdocs/framework/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#5 /home/srv50213/htdocs/framework/web/CDataProvider.php(212): CDataProvider->getData(false)
+#6 /home/srv50213/htdocs/framework/base/CComponent.php(188): CDataProvider->getItemCount()
+#7 /home/srv50213/htdocs/app3/protected/views/assortment/index.php(321): CComponent->__isset('itemCount')
+#8 /home/srv50213/htdocs/framework/web/CBaseController.php(126): require('/home/srv50213/...')
+#9 /home/srv50213/htdocs/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/srv50213/...', Array, true)
+#10 /home/srv50213/htdocs/framework/web/CController.php(869): CBaseController->renderFile('/home/srv50213/...', Array, true)
+#11 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('index', Array, true)
+#12 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(756): CController->render('index', Array)
+#13 [internal function]: AssortmentController->actionIndex(NULL, NULL, NULL)
+#14 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#15 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#16 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('index')
+#25 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/inde...')
+#26 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#27 /home/srv50213/htdocs/app3/index.php(17): CApplication->run()
+#28 {main}
+REQUEST_URI=/app3/index.php?r=assortment%2Findex&findbyoem-value=2211116LLDEM
+---
+2014/10/29 17:48:46 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchAll(): SQLSTATE[42S22]: Column not found: 1054 Unknown column '2211116LLDEM' in 'where clause'. Выполнявшийся SQL-запрос: SELECT * FROM `tarex_assortment` `t` WHERE ((oem = "9210125010" ) OR (oem = "MM3397004667" )) AND (article != 2211116LLDEM).
+in /home/srv50213/htdocs/app3/protected/views/assortment/index.php (321)
+in /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php (758)
+in /home/srv50213/htdocs/app3/index.php (17)
+2014/10/29 17:48:46 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column '2211116LLDEM' in 'where clause'. The SQL statement executed was: SELECT * FROM `tarex_assortment` `t` WHERE ((oem = "9210125010" ) OR (oem = "MM3397004667" )) AND (article != 2211116LLDEM)' in /home/srv50213/htdocs/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1351): CDbCommand->queryAll()
+#2 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1470): CActiveRecord->query(Object(CDbCriteria), true)
+#3 /home/srv50213/htdocs/framework/web/CActiveDataProvider.php(199): CActiveRecord->findAll(Object(CDbCriteria))
+#4 /home/srv50213/htdocs/framework/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#5 /home/srv50213/htdocs/framework/web/CDataProvider.php(212): CDataProvider->getData(false)
+#6 /home/srv50213/htdocs/framework/base/CComponent.php(188): CDataProvider->getItemCount()
+#7 /home/srv50213/htdocs/app3/protected/views/assortment/index.php(321): CComponent->__isset('itemCount')
+#8 /home/srv50213/htdocs/framework/web/CBaseController.php(126): require('/home/srv50213/...')
+#9 /home/srv50213/htdocs/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/srv50213/...', Array, true)
+#10 /home/srv50213/htdocs/framework/web/CController.php(869): CBaseController->renderFile('/home/srv50213/...', Array, true)
+#11 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('index', Array, true)
+#12 /home/srv50213/htdocs/app3/protected/controllers/AssortmentController.php(758): CController->render('index', Array)
+#13 [internal function]: AssortmentController->actionIndex(NULL, NULL, NULL)
+#14 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#15 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#16 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('index')
+#25 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/inde...')
+#26 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#27 /home/srv50213/htdocs/app3/index.php(17): CApplication->run()
+#28 {main}
+REQUEST_URI=/app3/index.php?r=assortment%2Findex&findbyoem-value=2211116LLDEM
+---
+2014/10/29 17:49:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assortment/index".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/inde...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/app3/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/app3/index.php?r=assortment%2Findex&findbyoem-value=2211116LLDEM
+---

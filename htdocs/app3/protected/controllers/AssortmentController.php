@@ -284,6 +284,27 @@ class AssortmentController extends Controller
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 	
+	public function findInAnalogs($oem)
+	{
+		$criteria=new CDbCriteria;
+		//$criteria->compare('oem', $oem);
+		$criteria->condition = 'oem = "' . $oem . '"';
+		//Analogs::model()->findAll($criteria);
+		//echo 'criteria: '; print_r($criteria); echo '<br>';
+		$dataProvider = new CActiveDataProvider('Analogi', array('criteria'=>$criteria));
+		echo 'Analogs by OEM are: '; print_r($dataProvider->getData());	 echo '<br><br>';
+	}
+	public function findInAssortment($oem)
+	{
+		$criteria=new CDbCriteria;
+		//$criteria->compare('oem', $oem);
+		$criteria->condition = 'oem = '. $oem ;
+		//Analogs::model()->findAll($criteria);
+		//echo 'criteria: '; print_r($criteria); echo '<br>';
+		$dataProvider = new CActiveDataProvider('Assortment', array('criteria'=>$criteria));
+		//echo ',<b>Assortment by OEM are: </b>'; print_r($dataProvider->getData());	 echo '<br><br>';
+		return /*isset($dataProvider) && */ !empty($dataProvider);
+	}
 	public function FArraySearchString($str){
 		//$Strlen=strlen($str);
 		//echo 'str '.$str;
@@ -589,10 +610,24 @@ class AssortmentController extends Controller
 				
 	
 			} //if (!$dataProviderOEM->itemCount) //НЕ НАШЛИ В НОМЕНКЛАТУРЕ ПО Артикулу ищем по ОЕМ
-			else{
-				//echo 'Нашли по артикулу';
+			else {
+				echo 'Нашли по артикулу<br>';
+				//$this->findInAnalogs($refined);
+				$items = Assortment::model()->findAll( 'article = :article' , array(':article'=>$refined));
+				echo 'found items are: '; print_r($items); echo '<br><br>';
+				$CriteriaAnalogsFromAssortment = new CDbCriteria;
+				//$CriteriaAnalogsFromAssortment->addNotINCondition('article', array($refined));
+				foreach($items as $item)
+				{// ищем для них соответствия в Аналогах
+					//$this->findInAnalogs($item->oem); 
+					//$CriteriaAnalogsFromAssortment = $CriteriaAnalogsFromAssortment->mergeWith($this->findInAssortment($item->oem)) ;
+					if ($this->findInAssortment($item->oem))
+						$CriteriaAnalogsFromAssortment->addCondition('oem = "'. $item->oem . '" ' , 'OR');
+				}
+				if(!empty($CriteriaAnalogsFromAssortment->condition)) $CriteriaAnalogsFromAssortment->addCondition('article != "' . $refined . '" ');
 				//print_r($dataProvider);
-			
+				echo '$CriteriaAnalogsFromAssortment:  '; print_r($CriteriaAnalogsFromAssortment ); echo '<br>';
+				
 			}
 	 
 		} //if(  isset($_POST['findbyoem-value'])  )
@@ -712,6 +747,7 @@ class AssortmentController extends Controller
 				'parent' => isset($id) ? $id : '', 
 				'criteria' => isset($criteria) ? $criteria : '', 
 				'CriteriaAnalog' =>  isset($CriteriaAnalog) ? $CriteriaAnalog : '', 
+				'CriteriaAnalogsFromAssortment' =>  !empty($CriteriaAnalogsFromAssortment->condition) ? $CriteriaAnalogsFromAssortment : array(), 
 				'mainAssotrmentItem' => isset($mainAssotrmentItem) ? $mainAssotrmentItem : '',
 			//	'ids'=> $ids , 	
 				'bodies'=> isset($bodies) ? $bodies : '',
