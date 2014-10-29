@@ -368,7 +368,7 @@ class AssortmentController extends Controller
 		} 
  
 		// если поиск по 'findbyoem-value' - из большой формы  	
-	    	if(  isset($_GET['findbyoem-value']) OR isset($_GET['findbyoemvalue']) )
+	       if(isset($_GET['findbyoem-value']) OR isset($_GET['findbyoemvalue']) )
 		   {  
 			unset($id); // отмена id если $_POST['findbyoem-value']
 			AssortmentFake::model()->deleteAll(); 
@@ -405,14 +405,13 @@ class AssortmentController extends Controller
 					if ($foundItem->make == $foundItem->manufacturer && $foundItem->manufacturer != '') { // найден по оem и выполнено условие что make = manufacturer тогда он - полностью оригинальная запчaпсть.	
 						$mainAssotrmentItem = 1;  
 					}	
-					else {
-						$dataProviderAnalog=new CActiveDataProvider('Assortment', array(
-							'criteria'=>$criteria, 
-						)); 
-						$CriteriaAnalog=$criteria;  
-					
+				   else { 
+					$dataProviderAnalog=new CActiveDataProvider('Assortment', array(
+						'criteria'=>$criteria, 
+					)); 
+					$CriteriaAnalog=$criteria;  
 
-					$f=AssortmentFake::model()->FindByAttributes(array('article'=>$foundItem->oem));
+					$f=AssortmentFake::model()->findByAttributes(array('article'=>$foundItem->oem));
 
 						if (empty($f)){
 							$fakeAssortment = new AssortmentFake;
@@ -444,7 +443,7 @@ class AssortmentController extends Controller
 					$dataProvider = new CActiveDataProvider('Analogi', array(
 						'criteria'=>$criteria, 
 					));  
-					$FoundedAnalog=Analogi::model()->find($criteria);
+					$FoundedAnalog=Analogi::model()->find($criteria); // ищем только один в Аналогах
 					
 					//echo ''.$replaced;
 					$founded=0;
@@ -687,10 +686,10 @@ class AssortmentController extends Controller
 				//$criteria->addCondition('`subgroup` = ' . $_GET['Assortment']['Subgroup']);
 			
 			$dataProvider = new CActiveDataProvider('Assortment', array(
-					'criteria'=>$criteria,
-					'pagination' => array( 
-						'pageSize' => $this->pagesize ? $this->pagesize : /**/ Yii::app()->user->pageSize,
-					),
+				'criteria'=>$criteria,
+				'pagination' => array( 
+					'pageSize' => $this->pagesize ? $this->pagesize : Yii::app()->user->pageSize,
+				),
 			)); 			
 			// echo '<br />Data Provider (Find) = '; print_r($dataProvider->criteria);
 			//echo '<br />count Data Provider = '; echo count($dataProvider);

@@ -6,6 +6,6 @@ $this->widget('CTabView', array(
 	 'tab1'=>array(
 		'title'=>Yii::t('general', 'Main'), //'Основное', 
 		'view'=>'_main',
-		'data'=>array('model'=>$model),				
+		'data'=>array('model'=>$model, 'loadDataSetting'=>$loadDataSetting,),				
 	 ), 			
 )));?>

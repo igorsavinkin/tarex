@@ -1,10 +1,5 @@
-/* @page 
-{
-	size: auto;   auto is the initial value 
-	margin: 0mm;  /* this affects the margin in the printer settings 
-}*/
 @media print {
-  a[href]:after {
+  a[href]:after { /* убираем вывод ссылок */
     content: none !important;
   }
   .row:not(.print) {  
@@ -12,6 +7,6 @@
 	display: none;
   }
   footer, .footer, .no-print {
-   display: none;content: none !important;
+   display: none; content: none !important;
    }
 }
