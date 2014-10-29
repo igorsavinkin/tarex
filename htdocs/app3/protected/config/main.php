@@ -157,6 +157,7 @@ return array(
 	'params'=>array(	// 
 	    'shopOrder'=>'', // this is used in contact page
 		'organization'=>7, // информация об организации хранится в массиве "params"
+		'defaultOrganization'=>7, // информация об организации хранится в массиве "params"
 		'adminEmail'=>'vyacheslav.sladkov@gmail.com', //'info@tarex.ru',  
 		'generalManagerEmail'=>'auto@tarex.ru', // 'mr.Sladkoff@yandex.ru', 
 		'defaultPageSize'=>35,

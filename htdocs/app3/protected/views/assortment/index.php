@@ -132,7 +132,8 @@ if ($parent && !isset($_GET['country']) )
 <?php  
 //  echo '<br> DProvider in view 1  count(<b>' , $dataProvider->itemCount , '</b>) = ' ; print_r($dataProvider->criteria); 
  
-  	if (!empty($criteria) && !$dataProvider->itemCount /*&& $mainAssotrmentItem*/)	{
+  	if (!empty($criteria) && !$dataProvider->itemCount /*&& $mainAssotrmentItem*/) {
+		echo '<h4>first case: </h4>';
 		//echo 'criteria '.$criteria->condition.'<br>';
 		//print_r ($criteria->params);
 		//$criteria->mergeWith($dataProviderOriginal->criteria);
@@ -147,6 +148,7 @@ if ($parent && !isset($_GET['country']) )
 	} 
 	
 	if(!empty($CriteriaAnalog) && $dataProvider->itemCount /*&& !$mainAssotrmentItem*/){
+		echo '<h4>second case: search item is artificially from FaKeAssortment and Analog is from Assortment table</h4>';
 		$dataProvider = new CActiveDataProvider('AssortmentFake', array(	//'criteria'=>$criteria,
 						'pagination' =>false, /* array(						
 							'pageSize' =>$this->pagesize ? $this->pagesize : Yii::app()->params['defaultPageSize'],
@@ -309,20 +311,10 @@ if ($dataProvider->itemCount)
 	echo CHtml::endForm();
 }  
 if (isset($dataProviderAnalog) && isset($dataProviderAnalog->itemCount) )
-{
-	//echo 'analogs';
-	/*
-	$show_msg = Yii::t('general', 'Show analogs');// will be used in 
-	$hide_msg = Yii::t('general', 'Hide analogs');
-	echo '<h3>', CHtml::Link($show_msg, '' , array('id'=>'show-analogs', 'class'=>'btn-win', 'style'=>'float:right;')); 
-*/
-?> 
+{ ?> 
 	<div class="analogs-form" style="display:block">
 	<?php $this->renderPartial('_analogs',array('model'=>$model,  'dataProviderAnalog'=>$dataProviderAnalog )); 		
 	?></div>
 	<!--/div><!-- search-form -->
 <?php 
 }  
-/*if (!$dataProviderAnalog->itemCount && !$dataProvider->itemCount ) { 
-	echo '<br /><div style="clear:both"></div>', Yii::t('general', 'There are no items corresponding to your request'), ' <b>', $_POST['findbyoem-value'], '</b>'; 
-}*/
