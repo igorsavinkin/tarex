@@ -8,7 +8,6 @@
  * @property string $TemplateName
  * @property string $ColumnSearch
  * @property string $ColumnNumber
- * @property string $TitleColumnNumber
  * @property integer $ListNumber
  * @property string $AmountColumnNumber
  */
@@ -34,10 +33,9 @@ class LoadDataSettings extends CActiveRecord
 			array('ListNumber', 'numerical', 'integerOnly'=>true),
 			array('TemplateName, ColumnSearch', 'length', 'max'=>255),
 			array('ColumnNumber, AmountColumnNumber', 'length', 'max'=>11),
-			array('TitleColumnNumber, PriceColumnNumber', 'length', 'max'=>2),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, TemplateName, ColumnSearch, ColumnNumber, ListNumber, AmountColumnNumber, PriceColumnNumber, TitleColumnNumber', 'safe', 'on'=>'search'),
+			array('id, TemplateName, ColumnSearch, ColumnNumber, ListNumber, AmountColumnNumber, PriceColumnNumber', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,7 +60,6 @@ class LoadDataSettings extends CActiveRecord
 			'ColumnSearch' => Yii::t('general','Column Search'),
 			'ColumnNumber' => Yii::t('general','Column index (a-z) with Article'),//Yii::t('general','Column Number'),
 			'ListNumber' => Yii::t('general','List number with an Order'), // Yii::t('general','List Number'),
-			'TitleColumnNumber' => Yii::t('general','Column index (a-z) for Assortment title'), //Yii::t('general','Amount Column Number'),
 			'AmountColumnNumber' => Yii::t('general','Column index (a-z) with Amount'), //Yii::t('general','Amount Column Number'),
 			'PriceColumnNumber' => Yii::t('general','Column index (a-z) with Price'), //Yii::t('general','Price Column Number'),
 		);

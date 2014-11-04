@@ -12,7 +12,7 @@ class AssortmentController extends Controller
 	{     
 		return array(     
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array(  'removefromcart', 'view', 'admin', 'admin2', 'index', 'addToCart','addToCartAjax', 'cart', 'checkout', 'clearcart',  'checkoutretail' , 'searchbyvin', 'autocomplete', 'fob', 'test' , 'specialOffer'), 
+				'actions'=>array( 'removefromcart', 'view', 'admin', 'admin2', 'index', 'addToCart','addToCartAjax', 'cart', 'checkout', 'clearcart',  'checkoutretail' , 'searchbyvin', 'autocomplete', 'fob', 'test' , 'specialOffer'), 
 				'users'=>array('*'),  
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -420,7 +420,7 @@ class AssortmentController extends Controller
 							'criteria'=>$criteria, 
 						)); 
 						$CriteriaAnalog=$criteria;  
-						echo 'Criteria Analog: '; print_r($CriteriaAnalog/*->condition*/); echo '<br>';
+						echo 'Criteria Analog: '; print_r($CriteriaAnalog); echo '<br>';
 
 					$f=AssortmentFake::model()->FindByAttributes(array('article'=>$foundItem->oem));
 
@@ -470,7 +470,7 @@ class AssortmentController extends Controller
 						$criteria->condition = ( 'oem = :oem' ); 
 						$criteria->order = ' "reliability" DESC' ;  // reliability  
 						$criteria->params = array(':oem' => "{$replaced}" );   					
-						echo "recross criteria's condition: "; print_r($criteria/*->condition*/); echo '<br>';
+						echo "recross criteria's condition: "; print_r($criteria ); echo '<br>';
 						$Recross=Analogi::model()->findAll($criteria);
 						if(!empty($Recross)){
 							$it=1; // итерация
@@ -550,17 +550,14 @@ class AssortmentController extends Controller
 								$fakeAssortment->manufacturer = $FoundedAnalog->brand;
 								$fakeAssortment->fileUrl = mt_rand();
 							
-							}else{
-								
+							}else{ 
 								$fakeAssortment->agroup = $ff->agroup;
 								$fakeAssortment->organizationId = $ff->organizationId;
 								$fakeAssortment->article = $replaced;
 								//$fakeAssortment->oem = $FoundedAnalog->oem;
 								$fakeAssortment->title = $ff->title;
 								$fakeAssortment->manufacturer = $FoundedAnalog->brand;
-								$fakeAssortment->fileUrl = mt_rand();
-
-							
+								$fakeAssortment->fileUrl = mt_rand(); 
 							}
 						
 							try { // мы так ловим исключение чтобы не вставлять дубликат записи 
@@ -602,9 +599,6 @@ class AssortmentController extends Controller
 					}else{
 						//5) === НИЧЕГО НЕ НАШЛИ ===						
 					}
-					
-				
-				
 				
 				}
 				
@@ -613,7 +607,7 @@ class AssortmentController extends Controller
 			else {
 				echo 'Нашли по артикулу<br>';
 				//$this->findInAnalogs($refined);
-				$items = Assortment::model()->findAll( 'article = :article' , array(':article'=>$refined));
+				$items = Assortment::model()->findAll( 'article = :article' , array(':article'=>$replaced4oem));
 				echo 'found items are: '; print_r($items); echo '<br><br>';
 				$CriteriaAnalogsFromAssortment = new CDbCriteria;
 				//$CriteriaAnalogsFromAssortment->addNotINCondition('article', array($refined));
@@ -624,14 +618,16 @@ class AssortmentController extends Controller
 					if ($this->findInAssortment($item->oem))
 						$CriteriaAnalogsFromAssortment->addCondition('oem = "'. $item->oem . '" ' , 'OR');
 				}
-				if(!empty($CriteriaAnalogsFromAssortment->condition)) $CriteriaAnalogsFromAssortment->addCondition('article != "' . $refined . '" ');
+				if(!empty($CriteriaAnalogsFromAssortment->condition)) $CriteriaAnalogsFromAssortment->addCondition('article != "' . $replaced4oem . '" ');
 				//print_r($dataProvider);
 				echo '$CriteriaAnalogsFromAssortment:  '; print_r($CriteriaAnalogsFromAssortment ); echo '<br>';
 				
 			}
 	 
 		} //if(  isset($_POST['findbyoem-value'])  )
-		// кладём товар в корзину
+		
+		
+// кладём товар в корзину
 		if (Yii::app()->getRequest()->getParam('assort')) 
 		{
 			$item = $this->loadModel(Yii::app()->getRequest()->getParam('assort'));
@@ -1278,5 +1274,13 @@ EOF;
 	   $dataArr = array(); for($i=1; $i <= $data->availability; $i++ ) { $dataArr[$i] = $i; }
 	   $dd = CHtml::dropDownList('Assortment[amount][' . $data->id .']', 1, $dataArr, array('style'=>'width:40px;'));
 		return $dd  . '&nbsp;' . $buttonAjax; 		
-    }	
+    }
+	protected getDiscount($data,$row)
+	{
+		$criteria=new CDbCriteria;
+		$criteria->compare('articles', $data->article, true); // нестрогое сравнение в поле Артикулы
+		$disc = DiscountGroup::model()->find($criteria)->value; 
+		return ' 5';// isset($disc) ? $disc : '0';
+	}
+	
 }

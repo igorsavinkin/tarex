@@ -33,7 +33,7 @@ class CityByIP extends CWidget
 				),     
 				'htmlOptions'=>array('class'=>'ch_city'),
 			));
-			echo '&nbsp;&nbsp;<br><center>';
+			echo '&nbsp;&nbsp;<br>';
 			//echo CHtml::submitButton(Yii::t('general','Change city'), '', array('class'=>'red')), '</center>';
 		echo CHtml::endForm();  
 	}

@@ -2,6 +2,16 @@
 
 class AccountsController extends Controller
 {
+	/**
+	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
+	 * using two-column layout. See 'protected/views/layouts/column2.php'.
+	 */
+	//public $layout='//layouts/column2';
+	public $layout='//layouts/FrontendLayoutPavel';
+
+	/**
+	 * @return array action filters
+	 */
 	public function filters()
 	{
 		return array(
@@ -10,7 +20,11 @@ class AccountsController extends Controller
 		);
 	}
 
-
+	/**
+	 * Specifies the access control rules.
+	 * This method is used by the 'accessControl' filter.
+	 * @return array access control rules
+	 */
 	public function accessRules()
 	{
 		return array(
@@ -41,7 +55,13 @@ class AccountsController extends Controller
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
-	} 
+	}
+	public function actionView_old($id)
+	{
+		$this->render('view_old',array(
+			'model'=>$this->loadModel($id),
+		));
+	}
 
 	/**
 	 * Creates a new model.

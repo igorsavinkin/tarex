@@ -264,13 +264,31 @@ class AssortmentController extends Controller
 	 
 	public function actionCreate()
 	{
-		$model=new Assortment;
-		//$this->layout = '//layouts/FrontendLayoutPavel';
+		$model=new Assortment; 
 		if(isset($_POST['Assortment']))
 		{
 			$model->attributes=$_POST['Assortment'];
 			$model->organizationId = Yii::app()->user->organization;
-			if($model->save())
+			$model->date = date('Y-m-d H:i:s');
+			$uploadedFile=CUploadedFile::getInstance($model, 'imageUrl');
+			if ($uploadedFile == null) 
+				echo '<br>Failue (or No uploaded) to upload photo'; 
+			else 
+			{  
+				//$model->imageUrl = $uploadedFile->name;  
+				if (empty($model->article2)) 
+					$model->article2 = $_POST['Assortment']['article'];
+				echo 'uploadedFile name = ', $model->article2 .'.jpg'; 
+				if ($uploadedFile->saveAs( Yii::app()->basePath .'/../img/foto/'. $model->article2 .'.jpg'))
+				{
+					echo '<br>photo successfully saved';					
+				}
+				else 
+					echo '<br>failure to save photo';
+			}
+			
+			if($model->save()) 
+				//$this->redirect(array('update', 'id'=>$model->id));
 				$this->redirect(array('admin'));
 		} 
 		$this->render('create',array(
@@ -285,8 +303,25 @@ class AssortmentController extends Controller
 		if(isset($_POST['Assortment']))
 		{			 
 			$model->attributes=$_POST['Assortment'];
-			if($model->save())
-				$this->redirect(array('admin','id'=>$model->id));
+			
+			$uploadedFile=CUploadedFile::getInstance($model, 'imageUrl');
+			if ($uploadedFile == null) 
+				echo '<br>Failue to upload photo(or No uploaded file)'; 
+			else 
+			{  
+				//$model->imageUrl = $uploadedFile->name;  
+				//if (empty($model->article)) $model->article = str_replace(array(' ','-','.'), '', $model->article2);
+				echo 'uploadedFile name = ', $model->article2 .'.jpg'; 
+				if ($uploadedFile->saveAs( Yii::app()->basePath .'/../img/foto/'. $model->article2 .'.jpg'))
+				{
+					echo '<br>photo successfully saved';					
+				}
+				else 
+					echo '<br>failure to save photo';
+			}
+			
+			if($model->save()) {}
+				//$this->redirect(array('admin','id'=>$model->id));
 		}
 
 		$this->render('update',array(
@@ -604,7 +639,7 @@ class AssortmentController extends Controller
 			} //if (!$dataProviderOEM->itemCount) //НЕ НАШЛИ В НОМЕНКЛАТУРЕ ПО Артикулу ищем по ОЕМ
 			else{
 				//echo 'Нашли по артикулу<br>'; 
-				$items = Assortment::model()->findAll( 'article = :article' , array(':article'=>$refined));
+				$items = Assortment::model()->findAll( 'article = :article' , array(':article'=>$replaced4oem));
 				//echo 'found items are: '; print_r($items); echo '<br><br>';
 				$CriteriaAnalogsFromAssortment = new CDbCriteria; 
 				foreach($items as $item)
@@ -613,7 +648,7 @@ class AssortmentController extends Controller
 					if ($this->findInAssortment($item->oem))
 						$CriteriaAnalogsFromAssortment->addCondition('oem = "'. $item->oem . '" ' , 'OR');
 				}
-				if(!empty($CriteriaAnalogsFromAssortment->condition)) $CriteriaAnalogsFromAssortment->addCondition('article != "' . $refined . '" ');
+				if(!empty($CriteriaAnalogsFromAssortment->condition)) $CriteriaAnalogsFromAssortment->addCondition('article != "' . $replaced4oem . '" ');
 		 
 				//echo '$CriteriaAnalogsFromAssortment:  '; print_r($CriteriaAnalogsFromAssortment ); echo '<br>';
 			

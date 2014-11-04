@@ -29,10 +29,11 @@ class UserController extends Controller
 			),
 			array('allow', // allow authenticated user to perform 'update' actions
 				'actions'=>array('update'), 
-				'users'=>array('@'),
+				//'users'=>array('@'),
+				'expression'=>array($this, 'UpdateUser'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create',  'admin', 'sendinvitation', 'adminPersonal'), 
+				'actions'=>array('create',  'admin', 'sendinvitation',  'sendinvitation2', 'adminPersonal'), 
 				'roles'=>array(1, 2, 3, 4, 5),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -234,18 +235,92 @@ EOF;
 		
 		$profilelink = CHtml::Link('ссылке', $this->createAbsoluteUrl('update', array( 'id'=> $id)));
 		$contract = CHtml::Link('этой ссылке', $this->createAbsoluteUrl('update', array( 'id'=> $id, '#'=>'tab2')));
+		$directLink = CHtml::LInk(Yii::t('general', 'Click to login') ,  $this->createAbsoluteUrl("site/login", array( 'p'=>$client->password, 'email'=>$client->email, 'redirect'=>'assortment/admin')));
+		
 		$message = "Уважаемый <b>{$client->username}</b>,<br /> 
-			Мы рады пригласить Вас на наш сайт для совместного сотрудничества. Ваш профиль уже создан. Перейдите на него по этой {$profilelink}.<br/>
-			Посмотрите условия договора по {$contract}.<br />			
+			Мы рады пригласить Вас на наш сайт для совместного сотрудничества. Ваш профиль уже создан.<!--Перейдите на него по этой {$profilelink}.<br/>
+			Посмотрите условия договора по {$contract}.<br />			-->
 			Для входа в систему используйте cледующие данные:<br /> 
 		Email: <b>{$client->email}</b><br />
-		Пароль: <b>{$client->password}</b><br /><br />
+		Пароль: <b>{$client->password}</b><br />
+		{$directLink}.
+		<br /><br />
 		С уважением, Ваш менеджер <em>{$manager->username}</em> {$manager->phone}"; 
 	    $subject = '=?UTF-8?B?'.base64_encode('Приглашение на сайт автозапчастей TAREX.ru').'?=';
 		if (mail(  $client->email , $subject  , $message , "From: {$from}\r\nContent-type: text/html; charset=UTF-8\r\nMime-Version: 1.0\r\n")) {
 			Yii::app()->user->setFlash('success', 'Клиенту выслано письмо с его данными для входа и ссылкой на договор.'); 
 			}
 		$this->redirect(array('update','id'=>$client->id));
+	}
+	
+	public function actionSendinvitation2($id) // sendInvitation
+	{
+		$client = $this->loadModel($id);
+		if (isset($_POST['url']) OR isset($_POST['Manufacturer']['id']) )
+		{	 			
+			$manager = $this->loadModel(Yii::app()->user->id); 
+			$from = '=?UTF-8?B?'.base64_encode($manager->username . ' <'. $manager->email . '>').'?=';
+			
+			$profilelink = CHtml::Link('ссылке', $this->createAbsoluteUrl('update', array( 'id'=> $id)));
+			$contract = CHtml::Link('этой ссылке', $this->createAbsoluteUrl('update', array( 'id'=> $id, '#'=>'tab2')));
+			
+	// мы формируем token (жетон) для клиента чтобы войти в систему.	
+		// When should this token expire?
+			$expiryTimestamp = strtotime("+3 hours");
+			$mySecret = "моё имя Игорь Савинкин";
+			$token = md5($id . $expiryTimestamp . $mySecret);
+		// Put parameters together into a link  -  безопасная ссылка
+			$link = CHtml::Link(Yii::t('general', 'Click to login (secure)'),  $this->createAbsoluteUrl("site/login", array( 
+				'token'  => $token, 
+				'userId' => $id, 
+				'expiry' => $expiryTimestamp,
+				 'redirect'=>'assortment/index', 
+				 'id'=>$_POST['Manufacturer']['id'],
+				 'url'=>$_POST['url'], )
+			)); 
+		
+		// небезопасная ссылка		
+			$directLink = CHtml::Link(Yii::t('general', 'Click to login') ,  $this->createAbsoluteUrl("site/login", array( 'p'=>$client->password, 'email'=>$client->email, 'redirect'=>'assortment/index', 'url'=>$_POST['url'], 'id'=>$_POST['Manufacturer']['id'])));
+			//	{$directLink}.
+			$message = "Уважаемый <b>{$client->username}</b>,<br /> 
+				Мы рады пригласить Вас на наш сайт для совместного сотрудничества. Ваш профиль уже создан.<!--Перейдите на него по этой {$profilelink}.<br/>
+				Посмотрите условия договора по {$contract}.<br />		
+				Для входа в систему используйте cледующие данные:<br /> 
+			Email: <b>{$client->email}</b><br />
+			Пароль: <b>{$client->password}</b><br />	-->
+			Для входа в систему используйте ссылку ниже:<br /> 
+			{$link}. Действие ссылки истекает через 3 часа. 
+			<br /><br />
+			С уважением, Ваш менеджер <em>{$manager->username}</em> {$manager->phone}"; 
+			$subject = '=?UTF-8?B?'.base64_encode('Приглашение на сайт автозапчастей TAREX.ru').'?=';
+			if (mail(  $client->email , $subject  , $message , "From: {$from}\r\nContent-type: text/html; charset=UTF-8\r\nMime-Version: 1.0\r\n")) {
+				Yii::app()->user->setFlash('success', 'Клиенту выслано письмо с его данными для входа и ссылкой на договор.'); 
+				}
+			$this->redirect(array('update','id'=>$client->id));
+		}
+		// формируем массив марок для выбора в eSelect2
+    	$criteria = new CDbCriteria;
+		$criteria->compare('depth', 2);	
+		$criteria->order = 'title ASC';			
+		$criteria->select = array('title', 'id');			
+		$manufacturers = Assortment::model()->findAll($criteria);
+		
+		/*$makesAll=array();												
+		foreach($manufacturers as $m)
+		{ 
+			// все данные
+			$Parent=Assortment::model()->findByPk($m->parent_id);
+			if($Parent->title=='ГРУЗОВИКИ')
+				$makesgrAll[$m->id] =  $m->title; 
+			else 
+				$makesAll[$m->id] =  $m->title; 
+*/
+		
+		$this->render('invitation',array(
+			'manufacturers'=>$manufacturers,
+			'model'=>new Assortment,
+			'client'=>$client,
+		));	
 	}
 
 	public function actionAdmin()
@@ -347,4 +422,15 @@ EOF;
 		} else return $children;
 		return $children;
 	}
+	public function UpdateUser($user, $rule) 
+	{ 
+	// если это суперадмин или старше менеджера или если id текущего пользователя равно $_GET['id'] - тогда позволено смотреть/редактировать
+		if ($user->checkAccess(User::ROLE_SENIOR_MANAGER) OR $user->id == $_GET['id']) return true; 
+	
+	// если это менеджер и он - родитель этого клиента - тогда можно смотреть/редактировать	
+		if( $user->checkAccess(User::ROLE_MANAGER) && User::model()->findByPk($_GET['id'])->parentId == $user->id) return true; 
+	  
+		return false;
+	}
+	
 }

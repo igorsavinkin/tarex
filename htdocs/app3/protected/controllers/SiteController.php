@@ -24,7 +24,7 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','index2', 'contact', 'login', 'error', 'logout' , 'frontendpavel'),
+				'actions'=>array('index','index2', 'contact', 'login','login2', 'logout' , 'frontendpavel'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -43,9 +43,7 @@ class SiteController extends Controller
 			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
 		);
-	} 
-
-	
+	}	 
 	public function actionIndex($page=null, $id=null)
 	{		 
 		$this->render($page ? $page : 'index');  
@@ -71,7 +69,7 @@ class SiteController extends Controller
 	}	 
 
 	public function actionError()
-	{ 
+	{
 		if($error=Yii::app()->errorHandler->error)
 		{
 			if(Yii::app()->request->isAjaxRequest)
@@ -105,11 +103,39 @@ class SiteController extends Controller
 	}
 	 
 	public function actionLogin()
-	{
-		//$this->layout='//layouts/login';
+	{ 
 		$model=new LoginForm;
-
-		$model=new LoginForm;
+		$mySecret = "моё имя Игорь Савинкин";
+		if (isset($_GET['token'])) 
+		{		
+			//echo '$_GET[expiry] = ', $_GET['expiry'];
+			//echo '<br> strtotime("now") = ', strtotime("now");
+		// проверка не истекла ли ссылка	
+			if(isset($_GET['expiry']) && strtotime("now") > $_GET['expiry']) {  
+				echo Yii::t('general', "Your link has expired!"), '<br>Your link has expired!';
+				Yii::app()->end(); 
+			}
+			if (isset($_GET['token']) && $_GET['token'] == md5($_GET['userId'] . $_GET['expiry'] . $mySecret )  )  
+			{
+				$user = User::model()->findByPk($_GET['userId']);
+				$model->email = $user->email;
+				$model->username = $user->username;
+				$model->password = $user->password;
+				$model->rememberMe = 1;
+				if($model->validate() && $model->login())
+				{							
+					if (!empty($_GET['url']) ) 
+						$this->redirect($_GET['url']);
+					if (isset($_GET['redirect'])) 
+						$this->redirect(array($_GET['redirect'], 'id'=>$_GET['id']));
+					$this->redirect(isset($_GET['returnUrl']) ? $_GET['returnUrl'] : Yii::app()->user->returnUrl);  
+				}
+				
+			} else { 
+				echo Yii::t('general', "You've supplied wrong data for logging in!"), "<br/>You've supplied wrong data for logging in!"; Yii::app()->end(); 
+			}
+		}
+		
 		if ( ( isset($_GET['email']) OR isset($_GET['name']) ) && isset($_GET['p'])) 
 		{
 			if (isset($_GET['name'])) $model->username = $_GET['name'];
@@ -117,8 +143,13 @@ class SiteController extends Controller
 			$model->password = $_GET['p'];
 			$model->rememberMe = 1;
 			if($model->validate() && $model->login())
-				{					
+				{							
+					if (!empty($_GET['url']) ) 
+						$this->redirect($_GET['url']);
+					if (isset($_GET['redirect'])) 
+						$this->redirect(array($_GET['redirect'], 'id'=>$_GET['id']));
 					$this->redirect(isset($_GET['returnUrl']) ? $_GET['returnUrl'] : Yii::app()->user->returnUrl); 
+					//$this->redirect(Yii::app()->request->requestUri); 
 				}
 		}
 		
@@ -129,10 +160,9 @@ class SiteController extends Controller
 			Yii::app()->end();
 		}
 
-		// collect user input data
+	// для чего это ? 
 		if(isset($_POST['email']))
-		{
-			 
+		{			 
 			// check 'email' and 'email2' fields
 			$user = User::model()->find('`email` = :email', array(':email'=>$_POST['email']));
 			
@@ -155,92 +185,25 @@ class SiteController extends Controller
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
 			{ 
-				if(isset($_POST['loginMobile']))
+				/*if(isset($_POST['loginMobile']))
 				{
 					echo 'return url: ', Yii::app()->user->returnUrl;
-					if(isset(Yii::app()->user->returnUrl)) $this->redirect(Yii::app()->user->returnUrl); 
-					else $this->redirect(array('MyFrontend/index'));   
-				}
+					if(isset(Yii::app()->user->returnUrl)) 
+						$this->redirect(Yii::app()->user->returnUrl); 
+					else 
+						$this->redirect(array('MyFrontend/index'));   
+				}*/
 				if(isset($_POST['login']))   
 				{ 
-					//$this->redirect(array('MyFrontend/index'));
+					if (isset($_GET['redirect'])) 
+						$this->redirect(array($_GET['redirect'].'23')); 
 					$this->redirect(array('index'));
 				} 
 			}
 		}
 		// display the login form
 		$this->render('login', array('model'=>$model));
-	}
-	public function actionLogin2()
-	{
-		//$this->layout='//layouts/main_new4';
-		$model=new LoginForm;
-
-		$model=new LoginForm;
-		if ( ( $_GET['email'] OR $_GET['name'] ) && ($_GET['p'])) 
-		{
-			$model->username = $_GET['name'];
-			$model->email = $_GET['email'];
-			$model->password = $_GET['p'];
-			$model->rememberMe = 1;
-			if($model->validate() && $model->login())
-				{					
-					$this->redirect($_GET['returnUrl'] ? $_GET['returnUrl'] : Yii::app()->user->returnUrl); 
-				}
-		}
-		
-		// if it is ajax validation request
-		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-
-		// collect user input data
-		if(isset($_POST['email']))
-		{
-			echo '<h2>checking email'; 
-			// check 'email' and 'email2' fields
-			$user = User::model()->find('`email` = :email', array(':email'=>$_POST['email']));
-			if (empty($user)) $user = User::model()->find('`email2`  = :email', array(':email'=>$_POST['email']));
-			if (empty($user)) {
-				Yii::app()->user->setFlash('error', Yii::t('general',"There is no user associated with the email you've entered"). ': ' . $_POST['email']);
-			} else { 				
-				// sending mail
-				if (mail($_POST['email'], Yii::t('general', 'Password recovery for') . ' ' . $user->username, 
-				Yii::t('general', 'Your login(email) and password in TAREX.ru are' ) . ":\nemail: {$user->email}\npassword: {$user->password}\n". Yii::t('general', 'Click to login') . ': ' .  $this->createAbsoluteUrl("site/login", array( 'p'=>$user->password, 'email'=>$user->email)) ) )  
-					Yii::app()->user->setFlash('success', Yii::t('general',"Credentials are sent on this email"). ': ' . $_POST['email']);
-				else Yii::app()->user->setFlash('error', Yii::t('general',"Failure to send recovery message to the email"). ': ' . $_POST['email']); 		
-			}
-		}		
-		
-		
-		// collect user input data
-		if(isset($_POST['LoginForm']))
-		{
-			$model->attributes=$_POST['LoginForm'];  
-			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
-			{ 
-				if(isset($_POST['loginMobile']))
-				{
-					echo 'return url: ', Yii::app()->user->returnUrl;
-					if(isset(Yii::app()->user->returnUrl)) $this->redirect(Yii::app()->user->returnUrl); 
-					else $this->redirect(array('MyFrontend/index'));   
-				}
-				if(isset($_POST['login']))   
-				{ 
-					/*if (Yii::app()->user->returnUrl) 
-						$this->redirect(Yii::app()->user->returnUrl);
-					else */
-						$this->redirect(array('backend'));
-						//$this->redirect(array('index'));
-				} 
-			}
-		}
-		// display the login form
-		$this->render('login',array('model'=>$model));
-	}  
+	} 
 	public function actionLogout()
 	{
 		Yii::app()->user->logout();

@@ -10,11 +10,6 @@ class EventsController extends Controller
 		);
 	}
 
-	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
 	public function accessRules()
 	{
 		return array( 
@@ -23,16 +18,19 @@ class EventsController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create', 'update', 'update2', 'PrintSF', 'PrintOrder', 'PrintSchet', 'PrintLabels', 'PrintPPL', 'PrintPPL2', 'LoadContent','LoadContent2', 'clone', 'bulkActions', 'loadAssortment', 'admin'),
+				'actions'=>array('create', 'update2', 'PrintSF', 'PrintOrder', 'PrintSchet', 'PrintLabels', 'PrintPPL', 'PrintPPL2', 'LoadContent', 'loadContent', 'clone', 'bulkActions'),
 				'users'=>array('@'),  
 			), 
-			/*array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array(),
-				'users'=>array('@'),  
-			//	'roles'=>array(User::ROLE_ADMIN),  
-			//	'expressions'=>array(User::ROLE_ADMIN),  
-			),*/
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin'),
+				'users'=>array('@'),   
+			), 
+			array('allow', 
+				'actions'=>array('update'), 
+				//	'users'=>array('@'),  
+				'expression'=>array($this, 'UpdateEvent'),
+			),
+			array('allow',  
 				'actions'=>array('delete'), 
 				'roles'=>array(User::ROLE_ADMIN),  
 			),
@@ -48,168 +46,7 @@ class EventsController extends Controller
 			Events::model()->deleteByPk($_POST['itemId']); 
 		} 
 	}
-	public function actionLoadAssortment()
-	{   
-		$eventId=$_POST['Events']['id'];
-		$model=$this->loadModel($eventId);  
-		
-		if (Yii::app()->user->checkAccess(User::ROLE_MANAGER))
-		{ 			
-			$ShablonId=User::model()->findbypk(Yii::app()->user->id)->ShablonId;
-			if ($ShablonId!=0)
-				$LoadDataSettings=LoadDataSettings::model()->findByPk($ShablonId); 
-		}   
-		$LoadDataSettings=LoadDataSettings::model()->findByPk($_POST['LoadDataSettings']['id']);  
-		 
-		$СolumnNumber =  $LoadDataSettings->ColumnNumber;  
-		$ListNumber= $LoadDataSettings->ListNumber;		
-		$AmountColumnNumber= $LoadDataSettings->AmountColumnNumber;
-		$TitleColumnNumber= $LoadDataSettings->TitleColumnNumber;
-		$PriceColumnNumber= $LoadDataSettings->PriceColumnNumber;
-		
-		$criteria=new CDbCriteria;
-		$criteria->condition='Begin <= :Begin AND Currency="USD"';
-		$criteria->order='Begin ASC';
-		$criteria->params=array('Begin'=>$model->Begin);
-		$Rate=Exchangerates::model()->findall($criteria);
-		//print_r($Rate);
-		foreach ($Rate as $r){
-			$CurrentRate=$r->totalSum;
-		}
-	 	
-		$upfile = CUploadedFile::getInstance('FileUpload1', 0);	 
-		$Order=new Events;
-		//$upfile = CUploadedFile::getInstance('FileUpload1', 0);		
-		//if (isset( $_POST['FileUpload1'])) { 
-		//print_r($upfile);
-		if ($upfile) { 
-			//echo 'FileUpload1 '.$_POST['FileUpload1'];
-			//$Order->attributes=$_POST['Item'];
-            $Order->file=$upfile;
-			//print_r($Order->file->name);
-			if (strstr($Order->file->name, 'xlsx')){
-				$Order->file->saveAs('files/temp.xlsx');
-				$file='files/temp.xlsx';
-				$type='Excel2007';	
-			}else{
-				$Order->file->saveAs('files/temp.xls');
-				$type='Excel5';	
-				$file='files/temp.xls';
-			} 
-			
-			require_once Yii::getPathOfAlias('ext'). '/PHPExcel.php';
-		 
-			$objReader = PHPExcel_IOFactory::createReader($type);
-			$objPHPExcel = $objReader->load($file); 
-			$as = $objPHPExcel->setActiveSheetIndex( $ListNumber - 1 );	
-			
-			$highestRow = $as->getHighestRow();
-			$error = '';
-			for ($startRow = 1; $startRow <= $highestRow; $startRow ++) 
-			{ 
-			 
-				$SearchString=$as->getCell($СolumnNumber . $startRow)->getValue(); 
-			 	$SearchString=str_replace(  array('.', ' ', '-')  , '' , $SearchString); 
-					//echo '/'.$SearchString.'/<br>';
-				if ($SearchString=='')  continue;
-				
-				$Amount=$as->getCell($AmountColumnNumber . $startRow)->getValue(); 
-				$Price=$as->getCell($PriceColumnNumber . $startRow)->getValue(); 
-				$criteria = new CDbCriteria; 
-				$criteria->params = array(':value'=>$SearchString);
-				$criteria->condition = 'title = :value OR oem = :value OR article = :value';
-				$Assortment=Assortment::model()->find($criteria); 
-				
-				if($Assortment==null) {$error .= Yii::t('general','Row #') . $startRow . '. ' .  Yii::t('general','Could not find assortment item on ') . $ColumnSearch. ' = "'. $SearchString . '"<br />'; 
-				} 
-				else {
-					
-					//$DiscountNew =$this->actionFDiscount($Assortment,$model->contractorId,$model->Begin);
-					//$DiscountNew = $Assortment->countDiscount( $model->Begin, $model->contractorId);
-					
-					
-					// $DefaultPrice=$Assortment->priceS;
-					// if ($DiscountNew!=0) $FinalPrice=($DefaultPrice+$DefaultPrice*$DiscountNew/100)*$CurrentRate;
-					
-					//echo '<br>FinalPrice '.$FinalPrice.'/DefaultPrice'.$DefaultPrice*$CurrentRate;
-					
-					// добавляем в содержимое заказа
-					$EventContent=EventContent::model()->find(array(
-						'condition'=>'eventId =:eventId AND assortmentId=:assortmentId',
-						'params'=>array(':eventId' =>$eventId, ':assortmentId'=>$Assortment->id)
-					));
-					if (!empty($EventContent)) {
-			//Добавляем кол-во в заказ
-						//echo 'assortmentAmount '.$EventContent->assortmentAmount.'/'.$Amount;
-						$OldAmount=$EventContent->assortmentAmount;
-						$EventContent->assortmentAmount=$OldAmount+$Amount; 
-						//echo 'assortmentAmount1 '.$EventContent->assortmentAmount;
-						$DefaultPrice=$Assortment->priceS;
-						
-						//$eventContent->price = $eventContent->RecommendedPrice = $item->getPrice($model->contractorId);	
-						
-						//$FinalPrice=round(($DefaultPrice+$DefaultPrice*$Discount/100)*$CurrentRate,2);
-						$FinalPrice=$Assortment->getPrice2($model->contractorId);
-						//if ($DiscountNew!=0) $FinalPrice=round(($DefaultPrice+$DefaultPrice*$DiscountNew/100)*$CurrentRate,2) ;
-						
-						if ($Price>0) {
-							$EventContent->price=$Price;
-						}else{	
-							
-							$EventContent->price=$FinalPrice;
-						}
-						$EventContent->RecommendedPrice = $FinalPrice;
-						$EventContent->cost=$EventContent->price * $EventContent->assortmentAmount;   // 	
-						$EventContent->cost_w_discount = $EventContent->cost;   // 	почему?
-					}else{
-			//Создаём новый состав заказа
-						
-						$EventContent=new EventContent;
-						$EventContent->eventId=$eventId; 
-						$EventContent->assortmentId=$Assortment->id;
-						$EventContent->assortmentTitle=$Assortment->title;
-						$EventContent->assortmentAmount = $Amount;
-						$DefaultPrice=$Assortment->priceS; 
-						//$FinalPrice=round(($DefaultPrice+$DefaultPrice*$Discount/100)*$CurrentRate,2);
-						$contractorId=$model->contractorId; 
-						
-						$FinalPrice=$Assortment->getPrice2($contractorId);
-						//echo 'contractorId'.$contractorId;
-						//return; 
-						
-						//if ($DiscountNew!=0) $FinalPrice=round(($DefaultPrice+$DefaultPrice*$DiscountNew/100)*$CurrentRate,2);
-						
-						if ($Price>0) {
-							$EventContent->price=$Price;
-						}else{
-							
-							$EventContent->price=$FinalPrice;
-						}
-						$EventContent->RecommendedPrice=$FinalPrice;
-						//$EventContent->RecommendedPrice=1000;
-						$EventContent->cost=$EventContent->price*$Amount;   // 	
-						$EventContent->cost_w_discount=$EventContent->cost;   // 
-
-						//print_r($EventContent);
-					} // конец нового состава заказа
-					$model->totalSum = EventContent::getTotalSumByEvent($model->id);
-					$model->save();
-					
-					//echo($EventContent->eventId.' '.$EventContent->assortmentTitle.' '.$EventContent->assortmentAmount.' '.$EventContent->price.' '.$EventContent->cost.' '.$EventContent->assortmentTitle);
-					//print_r($EventContent);
-						
-					if (!$EventContent->save()) $error .= Yii::t('general', 'Failure saving assortment item located at row #') . $startRow . '<br />';	
-					 
-				} // end "if ($Assortment==null)"			
-			}
-			if (!empty($error)) { 
-				Yii::app()->user->setFlash('error', Yii::t('general', "Some rows from the file have not been saved into the order") . ": <br />" . $error );
-			} else { Yii::app()->user->setFlash('success',Yii::t('general', "All the rows from the file have been saved into the order") . '.' ); 	} 	
-			
-		} else { 	throw new CHttpException(404, 'No file has been loaded...');  } 
-	// возврат к заказу	
-		$this->redirect( array('order/update2' , 'id'=>$eventId , '#' => 'tab2' ));  
-	}  // end of loadAssortment
+	
 	 
 	public function actionClone()
 	{  
@@ -681,88 +518,6 @@ class EventsController extends Controller
 	
 	}
  	 
-	public function actionUpdate2($id)
-	{
-		$model=$this->loadModel($id); 
-		if(isset($_POST['Events']))
-		{
-			$oldStatus = $model->StatusId;
-			$model->attributes = $_POST['Events'];
-			// при сохранении события выходим из "нового" статуса и переводим его в статус "в работе" 
-			if ($model->StatusId == Events::STATUS_NEW) 
-				$model->StatusId = Events::STATUS_IN_WORK; 	
-			
-			switch (mb_strtolower(Yii::app()->controller->id))
-			{ 
-				case 'recruitement': // для приёма на работу
-					if ($model->StatusId == Events::STATUS_COMPLETED  && (Events::STATUS_COMPLETED != $oldStatus) ) 
-					{
-						$newEmployee = User::loadModel($model->contractorId);
-						$newEmployee->isEmployee = 1;
-						print_r($newEmployee);
-						if ($newEmployee->save(false))
-							Yii::app()->user->setFlash('success', Yii::t('general','The system user') . ' <b>' . $newEmployee->username . '</b> ' . Yii::t('general','has been hired to your company') . '.');
-					}
-					break;
-			}
-				
-			if($model->save() && $_POST['ok']) 
-				$this->redirect(array('admin', 'Reference'=>$_POST['Events']['Reference']));
-		}
-		
-		if(!empty($_GET['StatusId'])  ){
-				$model->StatusId=$_GET['StatusId'];
-				if($model->save()) 
-					$this->redirect(array('admin', 'Reference'=>$app->session['Reference']));
-		}		
-			
-		$assortment=new Assortment('search');
-		$assortment->unsetAttributes();  // clear any default values
-		if(isset($_GET['Assortment'])) {					
-			$assortment->attributes=$_GET['Assortment'];
-		} 		 
-		
-// если что-то из ассортимента добавляется в событие
-		if (isset($_POST['add-to-event']) && isset($_POST['Assortment']))
-		{
-			$item = Assortment::model()->findByPk($_POST['Assortment']['id']);
-			// $model; // текущее событие
-			$eventContent = EventContent::model()->findByAttributes(array('eventId'=>$id, 'assortmentTitle'=> $item->title));
-			if ($eventContent){ 
-		// редактируем данный  EventContent
-				$eventContent->assortmentAmount += $_POST['Assortment']['amount'];
-			}
-			else { 
-		// создаём новый EventContent 
-				$eventContent = new EventContent;
-				$eventContent->assortmentTitle = $item->title;
-				$eventContent->eventId = $id;
-				$eventContent->assortmentId = $_POST['Assortment']['id'];				
-				$eventContent->assortmentAmount = $_POST['Assortment']['amount'];				
-			}
-			$eventContent->price = $item->currentPrice;	 // заносим текущую (новую по сравнению с тем что было) цену (см. getCurrentPrice() в модели Assortment )	
-			// считаем новые стоимость и стоимость со скидкой 
-			$eventContent->cost = $eventContent->price * $eventContent->assortmentAmount;
-			$discount = User::model()->findByPk($model->contractorId)->discount;
-			$eventContent->cost_w_discount = round($eventContent->cost * (100 - $discount) / 100);	
-			// потом сохраняем его
-			if ($eventContent->save(false)) { 				
-				$model->totalSum = EventContent::getTotalSumByEvent($id);
-				$model->save(); 
-				Yii::app()->user->setFlash('success', Yii::t('general', "The new item"). ' <b>' . $eventContent->assortmentTitle . '</b> ' . Yii::t('general', "has been added to the event") . '.');
-				}
-			else 
-				Yii::app()->user->setFlash('error', Yii::t('general', "Failure to add the item"). ' <b>' . $eventContent->assortmentTitle . '</b> ' . Yii::t('general', " to the event") . '.');
-			 
-			// здесь мы делаем GET-redirect чтобы избежать повторного сохранения POST-параметров если пользователь перезагрузит браузер
-			$this->redirect( array( 'update' , 'id'=>$id , '#' => 'tab2' )); 
-		}			
-		
-		$this->render('update' , array(
-			'model'=>$model, 'assortment'=>$assortment 
-		));
-	}
-
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id); 
@@ -1071,7 +826,7 @@ class EventsController extends Controller
 			Yii::app()->end();
 		}
 	} 
-	public function UpdateEvent($user, $rule)
+	/*public function UpdateEvent($user, $rule)
 	{ 
 		if ($user->checkAccess('1')) return true; // если это суперадмин - тогда ему позволено
 		$event = Events::model()->findByPk($_GET['id']);// получаем само событие
@@ -1089,9 +844,9 @@ class EventsController extends Controller
 			// находим родителя и проверяем есть ли соответствие родителя если родитель - менеджер (не обязательно новое)	
 			if ($user->checkAccess('5') && ($user->id == User::model()->findByPk($u->UserId)->parentId)) return true;					
 		}
-		*/
+		 
 		return false;
-	}
+	}*/
 	
 	 protected function amountDataField($data,$row)
      { // ... generate the output for the column
@@ -1179,25 +934,40 @@ class EventsController extends Controller
 					return 'isCustomer';
 			}
 	}
-/*	public function UpdateEvent($user, $rule)
+	public function UpdateEvent($user, $rule)
 	{ 
-		if ($user->checkAccess('1')) return true; // если это суперадмин - тогда ему позволено
-		$event = DocEvents::model()->findByPk($_GET['id']);// получаем само событие
+		if ($user->checkAccess(User::ROLE_ADMIN)) return true; // если это суперадмин - тогда ему позволено
+		$event = Events::model()->findByPk($_GET['id']);// получаем само событие
 		// если это старший менеджер или директор - тогда ему позволено редактировать любые события в своей компании 
-		if ( $user->checkAccess('4') && ($user->organization == $event->organizationId)) return true; 
+		if($user->organization == $event->organizationId) 
+		{
+			if ( $user->checkAccess(User::ROLE_SENIOR_MANAGER)) return true; 
+			// если это менеджер - тогда ему позволено редактировать событие где он   автор или события своих подчинённых
+			elseif ( $user->checkAccess(User::ROLE_MANAGER)  && ($user->id == $event->authorId OR $user->id == User::model()->findByPk($event->contractorId)->parentId) ) return true; 
+			// если это пользователь - тогда ему позволено редактировать событие где он или автор или контрагент
+			elseif ( $user->checkAccess(User::ROLE_USER_RETAIL)   && ($user->id == $event->authorId OR $user->id == $event->contractorId ) ) return true; 
+		}
+		return false;
 		
 		// если это не новое событие, то тогда его уже нельзя редактировать ни менеджерам ни владельцу-пользователю
 		//if ($event->StatusId != DocEvents::STATUS_NEW) return false;
 		// пока убрал это для TAREX
 		
-		if ( $user->checkAccess('5') && ($user->id == $event->organizationId)) return true; // если это (старший) менеджер или директор - тогда ему позволено смотреть любые события в своей компании 
+	/*	if ( $user->checkAccess(ROLE_SENIOR_MANAGER) && ($user->id == $event->organizationId)) return true; // если это (старший) менеджер или директор - тогда ему позволено смотреть любые события в своей компании 
 		foreach (DocEventUsers::model()->findAllByAttributes(array('EventId' => $_GET['id'])) as $u)
 		{ //пользователь есть на это событие и его права редактированиe или редактированиe и удалениe и это событие со статусом новое 
 			if ($user->id == $u->UserId && $u->AccessId >= 2 && $event->StatusId == DocEvents::STATUS_NEW) return true;			
 			// находим родителя и проверяем есть ли соответствие родителя если родитель - менеджер (не обязательно новое)	
 			if ($user->checkAccess('5') && ($user->id == User::model()->findByPk($u->UserId)->parentId)) return true;					
 		}
-		return false;
+		*/
+		
 	}
-	*/
+	public function getDiscount($data,$row)
+	{
+		$criteria=new CDbCriteria;
+		$criteria->compare('articles', $data->article, true); // нестрогое сравнение в поле Артикулы
+		$disc = DiscountGroup::model()->find($criteria)->value; 
+		return  isset($disc) ? $disc : '0';
+	}			
 }

@@ -10,10 +10,10 @@ class LangBox extends CWidget
 			<div class="tar_lang">
 				<div class="tar_rus_eng">
 					<a href="#">
-						<img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_rus.jpg">
+						<img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_rus.jpg" alt="" />
 					</a>
 					<a href="#">
-						<img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_eng.jpg">
+						<img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_eng.jpg" alt="" />
 					</a>
 				</div><!-- flags -->
 				 <?php  echo CHtml::form(); ?>

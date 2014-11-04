@@ -16,6 +16,7 @@
  * @property string $imageUrl
  * @property string $fileUrl
  * @property integer $isService
+ * @property integer $isSpecialOffer
  * @property integer $depth
  * @property string $article
  * @property string $article2
@@ -59,14 +60,14 @@ class Assortment extends CActiveRecord implements IECartPosition
 		
 		/*****************************************/
 		    array('title, article, priceS, oem, organizationId, availability', 'required'),
-			array('parent_id, price, discount, isService, depth, organizationId,  LeadTime, RealLeadTime, availability, MinPart, YearBegin, YearEnd, userId, SupplierCode, groupCategory', 'numerical', 'integerOnly'=>true),
+			array('parent_id, price, discount, isService, isSpecialOffer, depth, organizationId,  LeadTime, RealLeadTime, availability, MinPart, YearBegin, YearEnd, userId, SupplierCode, groupCategory', 'numerical', 'integerOnly'=>true),
 			array('priceS, FOBCost', 'numerical'),	
 			array('subgroup, make, agroup,CostCalculation,ItemOrigin, PurchaseCurrency, Currency, ItemCategory', 'length', 'max'=>50), 		 
 			array('title, imageUrl, notes, fileUrl, Barcode, Misc, PartN, COF, itemSearch, specialDescription,ItemPosition,warehouse,Analogi, Photos, techInfo', 'length', 'max'=>1000),
 			
 			array('model, article, article2,  manufacturer, country, specialDescription,SchneiderN,SchneiderOldN,TradeN, PartN, ItemCode', 'length', 'max'=>200),
 			array('measure_unit, PIN, ItemFamily, ItemOrigin', 'length', 'max'=>20),
-	 		array('id, parent_id, subgroup, title, model, make, measure_unit, price, discount, imageUrl, fileUrl, isService, depth, article, article2, priceS, oem, organizationId, manufacturer, agroup, availability, country, MinPart, YearBegin, YearEnd, Currency, Analogi, Barcode, Misc, PartN, COF, ItemCategory, warehouseId, itemSearch, specialDescription, notes, Photos, userId, ItemCode, FOBCost, PurchaseCurrency,   LeadTime , RealLeadTime, CostCalculation, ItemOrigin, ItemFamily, techInfo, SupplierCode, PIN, groupCategory', 'safe', 'on'=>'search'),
+	 		array('id, parent_id, subgroup, title, model, make, measure_unit, price, discount, imageUrl, fileUrl, isService, depth, article, article2, priceS, oem, organizationId, manufacturer, agroup, availability, country, MinPart, YearBegin, YearEnd, Currency, Analogi, Barcode, Misc, PartN, COF, ItemCategory, warehouseId, itemSearch, specialDescription, notes, Photos, userId, ItemCode, FOBCost, PurchaseCurrency,   LeadTime , RealLeadTime, CostCalculation, ItemOrigin, ItemFamily, techInfo, SupplierCode, PIN, groupCategory, isSpecialOffer', 'safe', 'on'=>'search'),
 		);
 	}
  	public function relations()
@@ -125,7 +126,7 @@ class Assortment extends CActiveRecord implements IECartPosition
 			'FOBCost'=>Yii::t('general', 'FOB cost'),
 		);
 	}
-	public function search()
+	public function search($specialOffer=null)
 	{
 		$criteria=new CDbCriteria;
 
@@ -145,6 +146,7 @@ class Assortment extends CActiveRecord implements IECartPosition
 		$criteria->compare('isService',$this->isService);
 		$criteria->compare('depth',$this->depth);	
 		$criteria->compare('priceS',$this->priceS);
+		
 		
 		$replaced4article = str_replace(array('.', '-', ' '), "", $this->article); // заменяем точки, тире и пробелы на ничего ТОЛЬКО для поиска по OEM и Артикулу 
 		$criteria->compare('article', $replaced4article, true);	
@@ -186,6 +188,9 @@ class Assortment extends CActiveRecord implements IECartPosition
 			//echo $OrganizationId;
 		}*/
 		if (Yii::app()->user->isGuest) $pagesize = 33;
+		
+		if ($specialOffer) 
+			$criteria->compare('isSpecialOffer', '1');
 		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -247,7 +252,14 @@ class Assortment extends CActiveRecord implements IECartPosition
 	{
 		return parent::model($className);
 	}  
-	
+	public function getPriceOpt()
+	{
+		$criteria=new CDbCriteria;
+		$criteria->compare('articles', $this->article, true); // нестрогое сравнение в поле Артикулы
+		$discount = DiscountGroup::model()->find($criteria)->value; 
+		//return isset($discount) ? $disc : '0';
+		return round($this->getCurrentPrice() * (1 + $discount/100), 2); 
+	}
 	public function getPrice($ContractorId=''){ // учитывает скидку клиента (залогиненного) И скидку исходя из настроек ценнообразования Pricing
 		
 		if ( $ContractorId==''){
@@ -256,50 +268,32 @@ class Assortment extends CActiveRecord implements IECartPosition
 				$discount = $discountNew; 
 			else
 				$discount = $discountNew ? $discountNew : User::model()->findByPk(Yii::app()->user->id)->discount;  		
-		}else{
+		} else {
 			$discountNew = $this->countDiscount( date("Y-m-d H:i:s"), $ContractorId );	
 			$discount = $discountNew ? $discountNew : User::model()->findByPk($ContractorId)->discount;  		
 		} 
 		
-		if (empty($discount)) $discount = 0;
-        
-		//echo 'discount /'.$discount.'/';
+		if (empty($discount)) $discount = 0; // echo 'discount =', $discount ;
 		
 		return round($this->getCurrentPrice() * (1 + $discount/100), 2);
-		
-		
-		
-    }
+   }
 	
 	// используется в OrderController
-	public function getPrice2($Id){ // учитывает скидку клиента (залогиненного) И скидку исходя из настроек ценнообразования Pricing
-	
-	
-
-		//echo 'Id '.$Id;
-		//return;
-		
+	public function getPrice2($Id){ // учитывает скидку клиента (залогиненного) И скидку исходя из настроек ценнообразования Pricing 
 		if ($Id==''){
 			$discountNew = $this->countDiscount( date("Y-m-d H:i:s"), Yii::app()->user->id );	
 			$discount = $discountNew ? $discountNew : User::model()->findByPk(Yii::app()->user->id)->discount;  		
 		}else{
 			$discountNew = $this->countDiscount( date("Y-m-d H:i:s"), $Id );	
-			$discount = $discountNew ? $discountNew : User::model()->findByPk($Id)->discount;  	
-			//echo 'discount /'.$discount.'/discountNew/'.$discountNew;
-			//return;
+			$discount = $discountNew ? $discountNew : User::model()->findByPk($Id)->discount;
 		}
-		
-		
-		
-		if (empty($discount)) $discount = 0;
-        
-		//echo 'discount /'.$discount.'/';
+		if (empty($discount)) $discount = 0;	//echo 'discount /'.$discount.'/';
 		
 		return round($this->getCurrentPrice() * (1 + $discount/100), 2);
     }
 	
 	 
-	public function getCurrentPrice() // возвращаем текущую цену исходя из последней настройки в документе Установка цен (Exchangerates)  
+	public function getCurrentPrice() // возвращаем текущую цену исходя из последней настройки в документе Курсы валют (Exchangerates)  
 	    // не учитывает скидку клиента 
 	{ 
 		$criteria = new CDbCriteria;
@@ -785,6 +779,13 @@ class Assortment extends CActiveRecord implements IECartPosition
 //			КУЗОВ ОПТИКА ПОДВЕСКА СИСТЕМА ОХЛАЖДЕНИЯ СИСТЕМА ПОДВЕСКИ ТОРМОЗНАЯ СИСТЕМА ТРАНСМИСИЯ ХОДОВАЯ СИСТЕМА ЭЛЕКТРИКА		
 		}	
 	}
+/*	public getDiscountOpt()
+	{
+		$criteria=new CDbCriteria;
+		$criteria->compare('articles', $this->article, true); // нестрогое сравнение в поле Артикулы
+		$value = DiscountGroup::model()->find($criteria)->value;
+		return isset($value) ? $value : null;
+	}*/
 /*	public function fob($begin=null, $end=null) 
 	{ 
 		// подсчёт суммы проданной позиции (за интервал)

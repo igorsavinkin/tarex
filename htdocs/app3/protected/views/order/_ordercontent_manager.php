@@ -31,29 +31,39 @@ $this->widget( 'zii.widgets.grid.CGridView', array(
         'columns' => array( 
 			'id',
 			'assortment.article2', 
-		//	'assortmentTitle',
-			//'assortmentTitle',
-			//'assortmentTitle'.'123',
 		 	array(  
-			//	'type'=>'raw',
 				'name'=>'assortmentTitle',
-			//	'value' => array($this, 'titleDataField'),
 			), 
 			array(  
 				'type'=>'raw',
 				'name'=>'assortmentAmount',
 				'value' => array($this, 'amountDataField'),
-			),			
+			),	
+			'minPrice'=>array(  
+				'type'=>'raw',
+				'name'=>Yii::t('general','Min Price') . ' (согласно оптовой максимальной скидке)', 
+				'value' => '$data->assortment->getPriceOpt()',
+			),
 			'price'=>array(  
 			 	'type'=>'raw',
 				'name'=>'price',
 				'value' => array($this, 'priceDataField'),
 			),
-			'RecommendedPrice'=>array(
-					'name'=>'RecommendedPrice',
-					'header'=>Yii::t('general','Recommended Price'), 
-					'cssClassExpression'=>'$data->priceCssClass',   
-					), 
+			'currentDiscount'=>array(  
+				'type'=>'raw',
+				'name'=>Yii::t('general','Current discount') . ', %', 
+				'value' => 'round(($data->price - $data->assortment->getCurrentPrice())/$data->assortment->getCurrentPrice()*100, 2)',
+			),
+			'basePrice'=>array(  
+			 	'type'=>'raw',
+				'name'=>Yii::t('general','Base Price'). ' (цена до всех скидок)',				
+				'value' =>  '$data->assortment->getCurrentPrice()',
+			),
+		    'RecommendedPrice'=>array(
+				'name'=>'RecommendedPrice',
+				'header'=>Yii::t('general','Recommended Price') . ' (цена с учётом скидки в Ценоообразовании)', 
+				'cssClassExpression'=>'$data->priceCssClass',   
+			), 
 			'cost', 			
 			array(
 				'class' => 'CCheckBoxColumn',

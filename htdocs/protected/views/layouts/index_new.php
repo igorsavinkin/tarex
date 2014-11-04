@@ -19,9 +19,9 @@
 	
     <?php Yii::app()->clientScript->registerCoreScript('jquery.ui'); ?>
 	<?php Yii::app()->clientScript->registerCoreScript('jQuery'); ?>
-	<script src="<?php echo Yii::app()->baseUrl; ?>/js/owl.carousel.min.js"></script>
-    <script src="<?php echo Yii::app()->baseUrl; ?>/js/bootstrap.js"></script>
-    <script src="<?php echo Yii::app()->baseUrl; ?>/js/tabSlideOut.js"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/bootstrap.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/tabSlideOut.js"></script>
 	
 	<script type="text/javascript">
 	jQuery(function($) {   
@@ -48,7 +48,7 @@
                             <div class="tar_left_top_head">
                                 <div class="tar_top_logo">
                                     <a href="<?php echo Yii::app()->createUrl('/site/index'); ?>">
-                                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_top_logo.png">
+                                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_top_logo.png"  alt=""/>
                                     </a>
                                 </div>
                                 <div class="tar_ad_phone">
@@ -57,7 +57,7 @@
                                         ул. Складочная д. 1, стр. 10
                                     </div>
                                     <div class="tar_phone">
-                                        <span class="s_one">+7 (495) </span><span class="s_two">785-88-50 </span><span class="tar_red_span">(многоканальный)<a href="mailto:auto@tarex.ru"><font color="C40000">auto@tarex.ru</font></a></span>
+                                        <span class="s_one">+7 (495) </span><span class="s_two">785-88-50 </span><span class="tar_red_span">(многоканальный)<a href="mailto:auto@tarex.ru">auto@tarex.ru</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
 
 							<div class="tar_basket">
                                 <a class="tar_bas" href="<?php echo Yii::app()->createUrl('assortment/cart');?>" >
-                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_basket.png">
+                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_basket.png" alt="" />
 									<span id='cart-content'><?php $cartContent =  Yii::t('general', 'BASKET') . '<br />' . Yii::app()->shoppingCart->getItemsCount() .' ' . Yii::t('general', 'item(s)');
 									$cost = Yii::t('general', 'for') . ' ' . Yii::app()->shoppingCart->getCost() . ' '.  Yii::t('general','RUB'); 
 									echo $cartContent , '<br>', $cost; ?>
@@ -111,12 +111,12 @@
                             <div class="tar_red_buttons">
                                 <div class="tar_vip">
                                     <a id='opendialog' href="#">
-                                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_vip.png">
+                                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_vip.png" alt="" />
                                     </a>
                                 </div>
                                 <div class="tar_catalog">
                                     <a href="#">
-                                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_catalog.png">
+                                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_catalog.png" alt="" />
                                     </a>
                                 </div>
                                 <div class="pad"></div>
@@ -169,7 +169,7 @@
 						<div class="col-md-12">
                             <div class="tar_category_vis tar_panel tar_open">
                                 <div class="tar_badge_vis">
-                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_category.png">
+                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_category.png" alt="" />
                                 </div>
                                 <div class="tar_cat_invis">
 								<?php 
@@ -180,7 +180,7 @@
 												if (!Assortment::model()->count('groupCategory = '. $category->id)) continue;	
 											?>															
 												 <a class="tar_cat<?php if(($i++ % 2) == 1) echo ' tar_cat_first'; ?>" href="<?php echo $this->createUrl('assortment/index', array('Assortment[groupCategory]'=>$category->id)); ?>">
-												 <img src="<?php echo Yii::app()->baseUrl .'/images/subgroups/' .  $category->image; ?>">
+												 <img src="<?php echo Yii::app()->baseUrl .'/images/subgroups/' .  $category->image; ?>" alt="" />
 													<span>
 														<?php echo str_replace(' ', '<br>', Yii::t('general', $category->name)); ?>
 													</span>
@@ -193,7 +193,7 @@
                             </div> 
                             <div class="tar_category">
                                 <div class="tar_badge">
-                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_category.png">
+                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_category.png" alt="" />
                                 </div> 
                                 <div class="pad"></div>
                             </div>
@@ -228,7 +228,7 @@
 								<?php // содержимое из cоответствующего view 
 									 echo $content; 
 								?>
-								<a href='#' id='btn-up' style=''><img src='images/btn-up.png' width='35px'/></a>
+								<a href='#' id='btn-up' style=''><img src='images/btn-up.png' width='35px' alt="" /></a>
 								<!--/div><!--tar_cat_top_regular-->
 								<div class="pad"></div>
 							</div><!-- tar_catalog_goods -->
@@ -257,7 +257,7 @@
                                         <div class="tar_first_sell">
                                             <div class="tar_sell_part tar_sell_part_1" >
                                                 <!--a class="tar_part" href="#"-->
-                                                    <img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[1]['img']; ?>" width='213' height='213' >
+                                                    <img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[1]['img']; ?>" width='213' height='213' alt="" />
                                                 <!--/a-->
                                                 <div class="tar_sell_part_name">
                                                     <?php echo $offerArr[1]['description']; ?><!--Название запчасти если оно длинное-->
@@ -269,7 +269,7 @@
                                             <div class="tar_two_sells">
                                                 <div class="tar_sell_part">
                                                     <!--a class="tar_part" href="#"-->
-                                                        <img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[2]['img']; ?>" width='213' height='213' >
+                                                        <img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[2]['img']; ?>" width='213' height='213' alt="" />
                                                     <!--/a-->
                                                     <div class="tar_sell_part_name">
                                                       <?php echo $offerArr[2]['description']; ?><!--Название запчасти если оно длинное-->
@@ -281,7 +281,7 @@
                                                 </div>
                                                 <div class="tar_sell_part">
                                                     <!--a class="tar_part" href="#"-->
-                                                        <img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[3]['img']; ?>" width='213' height='213' >
+                                                        <img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[3]['img']; ?>" width='213' height='213' alt="" />
                                                     <!--/a-->
                                                     <div class="tar_sell_part_name">
                                                       <?php echo $offerArr[3]['description']; ?><!--Название запчасти если оно длинное-->
@@ -300,7 +300,7 @@
                                         <div class="tar_last_sell">
                                             <div class="tar_sell_part">
                                                 <!--a class="tar_part" href="#"-->
-                                                    <img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[4]['img']; ?>" width='213' height='213' >
+                                                    <img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[4]['img']; ?>" width='213' height='213' alt="" />
                                                 <!--/a-->
                                                 <div class="tar_sell_part_name">
                                                   <?php echo $offerArr[4]['description']; ?><!--Название запчасти если оно длинное-->
@@ -311,7 +311,7 @@
                                             </div>
                                             <div class="tar_sell_part">
                                                 <!--a class="tar_part" href="#"-->
-                                                    <img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[5]['img']; ?>" width='213' height='213' >
+                                                    <img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[5]['img']; ?>" width='213' height='213' alt="" />
                                                 <!--/a-->
                                                 <div class="tar_sell_part_name">
                                                   <?php echo $offerArr[5]['description']; ?><!--Название запчасти если оно длинное-->
@@ -342,7 +342,7 @@
 							{
 								$date = new DateTime($item['newsDate']);
 								$newsItem[$i]="<a class='tar_new_img' href='{$item['link']}'>
-															<img src='images/{$item['imageUrl']}' width='212' height='139'>  
+															<img src='images/{$item['imageUrl']}' width='212' height='139' alt=/"/">  
 														</a>
 														<div class='tar_new_title'>
 															<a href='{$item['link']}'>
@@ -367,7 +367,7 @@
 						   // удаляем все <img ... /> и вырезаем для показа первые 1000 символов. Добавляем в конце "> чтобы закрыть открытый тег в случае чего
 							$description = substr( preg_replace('/<img.*?\/\>/', '', $channel['item'][0]->description), 0, 1000) . '">...'; 							
 							$newsItem = !empty($imgSrc) ? "<a class='tar_new_img' href='{$channel['item'][0]->link}'>
-														<img src='{$imgSrc}' width='212' height='139'>  
+														<img src='{$imgSrc}' width='212' height='139' alt=/"/">  
 													</a>" : ""; 					
 							$newsItem .= "<div class='tar_new_title'>
 														<a href='{$channel['item'][0]->link}'>
@@ -397,7 +397,7 @@
 								$description = substr( preg_replace('/<img.*?\/\>/', '', $channel['item'][$i]->description), 0, 1000) . '">...'; 
 
 								$newsItem[$i] = !empty($imgSrc) ? "<a class='tar_new_img' href='{$channel['item'][$i]->link}'>
-														<img src='{$imgSrc}' width='212' height='139'>  
+														<img src='{$imgSrc}' width='212' height='139 alt=/"/">  
 													</a>" : ""; 					
 								$newsItem[$i] .= "<div class='tar_new_title'>
 														<a href='{$channel['item'][$i]->link}'>
@@ -502,13 +502,13 @@
     <div class="container">
         <div class="tar_left_cont_foot">
             <a class="tar_bot_logo" href="<?php echo Yii::app()->createUrl('/site/index'); ?>">
-                <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_bot_logo.png">
+                <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_bot_logo.png" alt="">
             </a>
             <div class="tar_counters_vis">
                 <!-- Yandex.Metrika informer -->
 <a href="https://metrika.yandex.ru/stat/?id=18697171&amp;from=informer"
 target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/18697171/1_1_FFFFFFFF_EFEFEFFF_0_pageviews"
-style="width:80px; height:15px; border:0;" alt="??????.???????" title="??????.???????: ?????? ?? ??????? (?????????)" onclick="try{Ya.Metrika.informer({i:this,id:18697171,lang:'ru'});return false}catch(e){}"/></a>
+style="width:80px; height:15px; border:0;" alt="??????.???????" title="??????.???????: ?????? ?? ??????? (?????????)" onclick="try{Ya.Metrika.informer({i:this,id:18697171,lang:'ru'});return false}catch(e){}" alt="" /></a>
 <!-- /Yandex.Metrika informer -->
 
 <!-- Yandex.Metrika counter -->
@@ -582,13 +582,13 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                 <div class="tar_foot_social">
                     <div class="soc_icon">
                         <a href="#">
-                            <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_twitter.jpg">
+                            <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_twitter.jpg" alt="" />
                         </a>
                         <a href="#">
-                            <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_facebook.jpg">
+                            <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_facebook.jpg" alt="" />
                         </a>
                         <a href="#">
-                            <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_vk.jpg">
+                            <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_vk.jpg" alt="" />
                         </a>
                     </div>
                     <div class="soc_text">
@@ -610,13 +610,13 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                 <div class="tar_counters">
 
                     <a class="tar_counter" href="#">
-                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_counter.jpg">
+                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_counter.jpg" alt="" />
                     </a>
                     <a class="tar_counter" href="#">
-                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_counter.jpg">
+                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_counter.jpg" alt="" />
                     </a>
                     <a class="tar_counter" href="#">
-                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_counter.jpg">
+                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_counter.jpg" alt="" />
                     </a>
                     <div class="pad"></div>
                 </div>
@@ -657,7 +657,7 @@ var yaParams = {/*Здесь параметры визита*/};
 <!-- /Yandex.Metrika counter -->
 
 
-<script>
+<script type="text/javascript">
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -674,7 +674,7 @@ var yaParams = {/*Здесь параметры визита*/};
 	<div class="tar_in_head">
 		<span><?php echo Yii::t('general','Search parts by VIN'); ?> </span>
 		<a href="#" class='back-link' >
-				<img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_x.png">
+				<img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_x.png" alt="" />
 		</a> 
 	</div>
 	<div class="tar_recover_in_form" >
@@ -744,7 +744,7 @@ Yii::app()->clientScript->registerScript('hide-for-assortment', "
 });", CClientScript::POS_END);
 */
 ?>
-<script>   	
+<script type="text/javascript">   	
 	$('select').each(function(){
     $(this).siblings('p.simply').text( $(this).children('option:selected').text() );
     });
@@ -753,7 +753,7 @@ Yii::app()->clientScript->registerScript('hide-for-assortment', "
     });
 </script>
 
-<script>
+<script type="text/javascript">
     $(document).ready(function() { 
 	
 	// для контроллера 	assortment  мы скрываем меню категорий 
@@ -820,7 +820,7 @@ Yii::app()->clientScript->registerScript('hide-for-assortment', "
     <!--});-->
 <!--</script>-->
 
-<script>
+<script type="text/javascript">
     if($(window).width() > 1200){
         $(function(){
             $('.tar_badge_vis').on('click',function(){

@@ -1,5 +1,15 @@
 <?php
 return array( 
+	/* Discount */
+	'DiscountGroup'=>'Группа скидок',
+	'Discount Group'=>'Группа скидок',
+	'Discount Groups'=>'Группы скидок',
+	'Articles'=>'Артикулы',
+	'Max wholesale discount'=> 'Максимальная оптовая скидка',
+	'Min Price'=>'Минимально допустимая цена',
+	'Base Price'=>'Основная цена',
+	'Current discount'=>'Текущая скидка',
+	
 	/* Load Assortment from Excel file */
 	'Loading Assortment from Excel file'=>'Загрузка номенклатуры из Excel файла',
 	'Load new assortment from file'=>'Загрузите новую номенклатуру из файла',
@@ -70,6 +80,7 @@ return array(
 	'news'=>'новость',
 	'News Date'=>'Дата',
 	'Image Url'=>'Картинка',
+	'Image'=>'Фото',
 	'Image name'=>'Имя картинки',
 	'Image Url path'=>'Путь к картинке',
 	'Link'=>'Ссылка',

@@ -33,10 +33,15 @@ $this->widget('zii.widgets.grid.CGridView', array(
 				'name'=>'currentPrice', 
 				'header' => Yii::t('general', 'Current Price'),
 			),*/
+	    array(
+		//	'value'=>array('AssortmentController', 'getDiscount'),
+			'value'=>array($this, 'getDiscount'),
+			'header'=>Yii::t('general', 'Max wholesale discount'),
+		),
 		array(
 				'value'=>'$data->getPrice2('.$contractorId.')',
 				'header' => Yii::t('general', 'Price'),
-		),	 
+		),	  
 		'oem',
 		'manufacturer',
 		'availability',

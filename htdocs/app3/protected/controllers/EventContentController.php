@@ -136,13 +136,7 @@ class EventContentController extends Controller
 		$this->render('update_old',array(
 			'model'=>$model,
 		));
-	}
-
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
+	} 
 	public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
@@ -177,25 +171,7 @@ class EventContentController extends Controller
 			'model'=>$model,
 		));
 	}
-	public function actionAdmin_old()
-	{
-		$model=new EventContent('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['EventContent']))
-			$model->attributes=$_GET['EventContent'];
-
-		$this->render('admin_old',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer $id the ID of the model to be loaded
-	 * @return EventContent the loaded model
-	 * @throws CHttpException
-	 */
+	 
 	public function loadModel($id)
 	{
 		$model=EventContent::model()->findByPk($id);
@@ -203,11 +179,7 @@ class EventContentController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
-
-	/**
-	 * Performs the AJAX validation.
-	 * @param EventContent $model the model to be validated
-	 */
+ 
 	protected function performAjaxValidation($model)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='event-content-form')
