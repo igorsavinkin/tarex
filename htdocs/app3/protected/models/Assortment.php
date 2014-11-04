@@ -63,7 +63,8 @@ class Assortment extends CActiveRecord implements IECartPosition
 			array('parent_id, price, discount, isService, isSpecialOffer, depth, organizationId,  LeadTime, RealLeadTime, availability, MinPart, YearBegin, YearEnd, userId, SupplierCode, groupCategory', 'numerical', 'integerOnly'=>true),
 			array('priceS, FOBCost', 'numerical'),	
 			array('subgroup, make, agroup,CostCalculation,ItemOrigin, PurchaseCurrency, Currency, ItemCategory', 'length', 'max'=>50), 		 
-			array('title, imageUrl, notes, fileUrl, Barcode, Misc, PartN, COF, itemSearch, specialDescription,ItemPosition,warehouse,Analogi, Photos, techInfo', 'length', 'max'=>1000),
+			array('title, imageUrl, notes, fileUrl, Barcode, Misc, PartN, COF, itemSearch, specialDescription,ItemPosition,warehouse, Photos, techInfo', 'length', 'max'=>1000),
+			array('Analogi', 'length', 'max'=>65355),
 			
 			array('model, article, article2,  manufacturer, country, specialDescription,SchneiderN,SchneiderOldN,TradeN, PartN, ItemCode', 'length', 'max'=>200),
 			array('measure_unit, PIN, ItemFamily, ItemOrigin', 'length', 'max'=>20),

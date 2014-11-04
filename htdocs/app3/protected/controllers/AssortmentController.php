@@ -1,4 +1,5 @@
-<?php 
+<?php
+ 
 class AssortmentController extends Controller
 { 	
 	public function filters()
@@ -12,33 +13,34 @@ class AssortmentController extends Controller
 	{     
 		return array(     
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array( 'removefromcart', 'view', 'admin', 'admin2', 'index', 'addToCart','addToCartAjax', 'cart', 'checkout', 'clearcart',  'checkoutretail' , 'searchbyvin', 'autocomplete', 'fob', 'test' , 'specialOffer'), 
+				'actions'=>array( 'removefromcart', 'view', 'admin', 'admin2', 'index', 'addToCart','addToCartAjax', 'cart', 'checkout', 'clearcart',  'checkoutretail' , 'searchbyvin', 'autocomplete', 'fob', 'test', 'SpecialOffer'), 
 				'users'=>array('*'),  
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array(  'search1' ),  
+				'actions'=>array(  'search1'), 
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('load', 'loadSpecialOffer', 'create', 'delete' , 'searchtool', 'update' , 'update2' , 'generateSchneiderNb',  'generateSchneiderNb2', 'fillInSchneiderGr', 'adminbulk' ),
+				'actions'=>array( 'load', 'loadSpecialOffer', 'create', 'delete' , 'searchtool', 'update' , 'update2' , 'generateSchneiderNb',  'generateSchneiderNb2', 'fillInSchneiderGr', 'adminbulk' ),
 				'roles'=>array(1, 2, 4, 5), 
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
 		);
-	}   
-   
+	}  
+	
 	public function actionSpecialOffer()
 	{
+		//print_r($_POST);
+		if ($_POST['bulk-remome-special-offer'] && $_POST['Assortment']['id'])
+		{ 
+			$model = new Assortment;
+			$model->updateByPk($_POST['Assortment']['id'], array('isSpecialOffer'=>0));
+		}
+		
 		$this->render('specialOffer',array(
 			'model'=>new Assortment,
-		));
-	} 
-	public function actionView($id)
-	{
-		$this->render('view_adv',array(
-			'model'=>$this->loadModel($id),
 		));
 	} 
 	public function actionLoadSpecialOffer()
@@ -51,14 +53,14 @@ class AssortmentController extends Controller
 			 //	echo '$upfile->name = "', $upfile->name, '"<br>';
 			 	if (strstr($upfile->name, 'xlsx'))
 				{
-					$upfile->saveAs('files/tempSp.xlsx');
-					$file='files/temp.xlsx';
+					$upfile->saveAs('files/tempSpO.xlsx');
+					$file='files/tempSp.xlsx';
 					$type='Excel2007';
 					// echo 'upfile is saved as .xlsx';					
 				} else {
-					$upfile->saveAs('files/tempSp.xls');
+					$upfile->saveAs('files/tempSpO.xls');
 					$type='Excel5';	
-					$file='files/temp.xls';
+					$file='files/tempSpO.xls';
 					// echo 'upfile is saved as .xls';
 				} 
 				
@@ -67,19 +69,22 @@ class AssortmentController extends Controller
 				$objPHPExcel = $objReader->load($file); 
 				//$as = $objPHPExcel->setActiveSheetIndex(0);	
 				$as = $objPHPExcel->getActiveSheet();
-				$highestRow = $as->getHighestRow();
-				$error = ''; 
-				$line=''; 
-				$arr=array();
+				
+				$highestRow = $as->getHighestRow(); 				
 				$criteria = new CDbCriteria;
-				for ($row = 1 + $_POST['firstRow'], $failureCounter=0; $row <= $highestRow; $row++) 
+				for ($row = 1 + $_POST['firstRow']; $row <= $highestRow; $row++) 
 				{ 		 
+				  	$value = $as->getCell('A' . $row)->getValue();
+				 // echo '<br>', $row, '. row - ', $value ;
+					if ('' == $value ) 
+					 	continue;
+				// накапливаем условие и параметр		
 					$criteria->addCondition('article2 = :param'. $row , 'OR');
-					$criteria->params += array(':param'. $row => '' . $as->getCell('A' . $row)->getValue() . '');
+					$criteria->params += array(':param' . $row =>  $value );
 				} 	 
-				//echo 'condition = '; print_r($criteria->condition);
+			    // echo 'condition = '; print_r($criteria->condition);
 				//echo '<br>params = '; print_r($criteria->params);
-				$updated = Assortment::model()->updateAll(array('isSpecialOffer' => 1),$criteria);
+				$updated = Assortment::model()->updateAll(array('isSpecialOffer' => 1), $criteria);
 				  
 				if ($updated) 
 					Yii::app()->user->setFlash('success', $updated . ' ' . Yii::t('general', 'rows in Assortment have been set as Special offer') . '.' ); 
@@ -94,11 +99,13 @@ class AssortmentController extends Controller
 	{    
 		$ShablonId = User::model()->findbypk(Yii::app()->user->id)->ShablonId;
 		$loadDataSetting = !empty($ShablonId) ? LoadDataSettings::model()->findByPk($ShablonId) : new LoadDataSettings; 
+	// экземпляр номенклатуры для задания начальных склада и организации	
+		$assortment = new Assortment;
+		$assortment->organizationId = Yii::app()->params['defaultOrganization'];
+		$assortment->warehouseId = 8; // склад "Москва 2" 
 				
-		if(isset($_POST) && isset($_POST['LoadDataSettings']['id'])) {
-			$warehouseId = 9;
-			$organizationId = 7;
-			
+		if(isset($_POST) && isset($_POST['LoadDataSettings']['id']) && isset($_POST['Assortment']))
+		{			
 			$loadDataSetting = LoadDataSettings::model()->findByPk($_POST['LoadDataSettings']['id']);
 			
 			$ListNumber = $loadDataSetting->ListNumber;		
@@ -128,7 +135,7 @@ class AssortmentController extends Controller
 				$as = $objPHPExcel->setActiveSheetIndex( $ListNumber - 1 );	
 				$highestRow = $as->getHighestRow();
 				$error = '';
-				for ($row = 1 + $_POST['firstRow']; $row <= $highestRow; $row++) 
+				for ($row = 1 + $_POST['firstRow'], $failureCounter=0; $row <= $highestRow; $row++) 
 				{ 		 					
 				// Создаём новую номенклатуру в складе warehouseId и organizationId 
 					$assortment=new Assortment;
@@ -144,15 +151,17 @@ class AssortmentController extends Controller
 					$assortment->date = date('Y-m-d H:i:s'); 
 					$assortment->depth = 5; // нормальная глубина для показа в сетке простой позиции 				
 				//  $assortment->parentId =  ??; // остаётся вопрос с иерархией родитель-ребёнок
-					$assortment->organizationId = $organizationId; //  организация
-					$assortment->warehouseId = $warehouseId; //  склад					
+					$assortment->organizationId = $_POST['Assortment']['organizationId']; //  организация
+					$assortment->warehouseId = $_POST['Assortment']['warehouseId']; //  склад					
 					
-					if (!$assortment->save(false))  $error .= Yii::t('general', 'Failure saving assortment item located at row #') . $row . '<br />'; // конец создания новой номенклатуры
-					
+					if (!$assortment->save(false)) { 
+						$error .= Yii::t('general', 'Failure saving assortment item located at row #') . $row . '<br />'; // конец создания новой номенклатуры
+						$failureCounter++;
+					}
 				} // end 'for' circle
 				if (!empty($error)) { 
 					Yii::app()->user->setFlash('error', Yii::t('general', "Some rows from the file have not been saved into assortment") . ": <br />" . $error );
-				} else { $rows = $highestRow - $_POST['firstRow'];  Yii::app()->user->setFlash('success', Yii::t('general', "All the rows (" . $rows . ") from the file have been saved into assortment") . '.' ); 	} 				 
+				} else { $rows = $highestRow - $_POST['firstRow'] - $failureCounter ;  Yii::app()->user->setFlash('success', $rows . ' ' . Yii::t('general', "rows from the file have been saved into assortment") . '.' ); 	} 				 
 				 	
 				 
 			}  // end if(upfile)
@@ -163,9 +172,18 @@ class AssortmentController extends Controller
 			$this->redirect(array('load')); // переход на GET	
 		}// end if(isset($_POST))
 		
-		$this->render('load', array('loadDataSetting'=>$loadDataSetting,));
+		$this->render('load', array( 
+			'loadDataSetting' => $loadDataSetting, 
+			'assortment' => $assortment
+		));
 	} 	
 	
+    public function actionView($id)
+	{
+		$this->render('view_adv',array(
+			'model'=>$this->loadModel($id),
+		));
+	} 
 	public function actionAddToCart($id, $amount=null)
 	{ 
 		// если это запрос в корзину
@@ -224,8 +242,7 @@ class AssortmentController extends Controller
 	}
  
 	public function actionSearchtool()
-	{
-		//$this->layout = '//layouts/simple'; 
+	{ 
 		$model=new Assortment('search');
 		$model->unsetAttributes();  // clear any default values
 		 
@@ -283,27 +300,13 @@ class AssortmentController extends Controller
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
-	
-	public function findInAnalogs($oem)
-	{
-		$criteria=new CDbCriteria;
-		//$criteria->compare('oem', $oem);
-		$criteria->condition = 'oem = "' . $oem . '"';
-		//Analogs::model()->findAll($criteria);
-		//echo 'criteria: '; print_r($criteria); echo '<br>';
-		$dataProvider = new CActiveDataProvider('Analogi', array('criteria'=>$criteria));
-		echo 'Analogs by OEM are: '; print_r($dataProvider->getData());	 echo '<br><br>';
-	}
 	public function findInAssortment($oem)
 	{
-		$criteria=new CDbCriteria;
-		//$criteria->compare('oem', $oem);
-		$criteria->condition = 'oem = '. $oem ;
-		//Analogs::model()->findAll($criteria);
-		//echo 'criteria: '; print_r($criteria); echo '<br>';
+		$criteria=new CDbCriteria; 
+		$criteria->condition = 'oem = '. $oem ; 		//echo 'criteria: '; print_r($criteria); echo '<br>';
 		$dataProvider = new CActiveDataProvider('Assortment', array('criteria'=>$criteria));
 		//echo ',<b>Assortment by OEM are: </b>'; print_r($dataProvider->getData());	 echo '<br><br>';
-		return /*isset($dataProvider) && */ !empty($dataProvider);
+		return !empty($dataProvider);
 	}
 	public function FArraySearchString($str){
 		//$Strlen=strlen($str);
@@ -333,7 +336,7 @@ class AssortmentController extends Controller
 
 	// главный справочник номенклатуры
 	public function actionIndex($id = null, $assort=null, $subgroup=null) 
-	{ 	  		
+	{ 	 
 		$model=new Assortment('search');
 		$model->unsetAttributes();  // clear any default values
 		if($subgroup) 
@@ -372,7 +375,7 @@ class AssortmentController extends Controller
 		} 
  
 		// если поиск по 'findbyoem-value' - из большой формы  	
-	       if(  isset($_GET['findbyoem-value']) OR isset($_GET['findbyoemvalue']) )
+	       if(isset($_GET['findbyoem-value']) OR isset($_GET['findbyoemvalue']) )
 		   {  
 			unset($id); // отмена id если $_POST['findbyoem-value']
 			AssortmentFake::model()->deleteAll(); 
@@ -380,49 +383,42 @@ class AssortmentController extends Controller
  			//$ref  = str_replace($o_array, '0', trim($_POST['findbyoem-value'])); 
 			
 			
- 			$refined = $_GET['findbyoem-value'] ?  $_GET['findbyoem-value'] : $_GET['findbyoemvalue'];  
-			echo 'поисковая величина = ', $refined, '<br>';			
+ 			$refined = $_GET['findbyoem-value'] ?  $_GET['findbyoem-value'] : $_GET['findbyoemvalue'];    
 			$replaced =  str_replace("`", "", $refined); 
 			$replaced4oem =  str_replace(array('.', '-', ' '), "", $replaced); // заменяем точки, тире и пробелы на ничего ТОЛЬКО для поиска по OEM и Артикулу (например здесь 77.01.204.282) 
 			//echo '$replaced4oem = ', $replaced4oem;
 		    //=============== 1) Сначала ищем по артикулу =========
 			$criteria = new CDbCriteria;
-			$criteria->condition = ( 'article = :article AND organizationId =  ' . Yii::app()->params['defaultOrganization'] ); 
+			$criteria->condition = ( 'article = :article AND organizationId=7' ); 
 			$criteria->params = array(':article' => "{$replaced4oem}" ); 
 			$dataProvider = new CActiveDataProvider('Assortment', array(
 				'criteria'=>$criteria, 
 			)); 
-			 
-		//	echo 'поисковая величина = ', $refined, '<br>';
+			
+			//echo 'test'.$refined;
 			
 			if (!$dataProvider->itemCount) 
 			//===== 2) НЕ НАШЛИ  ПО Артикулу ищем по ОЕМ
-				
-			{    echo 'НЕ нашли по Артикулу ищем по ОЕМ<br>';
+			{
 				//echo $replaced;
 				//echo 'НЕ НАШЛИ В НОМЕНКЛАТУРЕ ПО Артикулу';
-				$criteria->condition = ( ' t.oem = :oem AND organizationId =  ' . Yii::app()->params['defaultOrganization']); 
+				$criteria->condition = ( ' t.oem = :oem AND organizationId = 7' ); 
 				$criteria->params = array(':oem' => "{$replaced4oem}" ); 
 				$dataProvider = new CActiveDataProvider('Assortment', array(
 					'criteria'=>$criteria, 
 				)); 
-				if ($dataProvider->itemCount)
-				{ // ЕСЛИ НАШЛИ ПО ОЕМ ПРОВЕРИМ ПРОИЗВОДИТЕЛЯ
-					echo 'нашли по OEM<br>';
+				if ($dataProvider->itemCount){ // ЕСЛИ НАШЛИ ПО ОЕМ ПРОВЕРИМ ПРОИЗВОДИТЕЛЯ
 					$foundItem = Assortment::model()->find($criteria);
 					if ($foundItem->make == $foundItem->manufacturer && $foundItem->manufacturer != '') { // найден по оem и выполнено условие что make = manufacturer тогда он - полностью оригинальная запчaпсть.	
-						$mainAssotrmentItem = 1; 
-						echo 'марка машины совпадает с производителем з/ч<br>';	
+						$mainAssotrmentItem = 1;  
 					}	
-					else {
-						echo 'марка машины НЕ совпадает с производителем з/ч<br>';	
-						$dataProviderAnalog=new CActiveDataProvider('Assortment', array(
-							'criteria'=>$criteria, 
-						)); 
-						$CriteriaAnalog=$criteria;  
-						echo 'Criteria Analog: '; print_r($CriteriaAnalog); echo '<br>';
+				   else { 
+					$dataProviderAnalog=new CActiveDataProvider('Assortment', array(
+						'criteria'=>$criteria, 
+					)); 
+					$CriteriaAnalog=$criteria;  
 
-					$f=AssortmentFake::model()->FindByAttributes(array('article'=>$foundItem->oem));
+					$f=AssortmentFake::model()->findByAttributes(array('article'=>$foundItem->oem));
 
 						if (empty($f)){
 							$fakeAssortment = new AssortmentFake;
@@ -446,48 +442,35 @@ class AssortmentController extends Controller
 					//echo 'НАШЛИ ПО ОЕМ ПРОВЕРИМ ПРОИЗВОДИТЕЛЯ '.$mainAssotrmentItem;
 				
 				}// конец if ($dataProviderOEM->itemCount){ // ЕСЛИ НАШЛИ ПО ОЕМ ПРОВЕРИМ ПРОИЗВОДИТЕЛЯ
-				else
-				{ 
-				    echo 'НЕ нашли по OEM;<br> 3. Ищем в Aналогах<br>';
-				//=== 3) Ищем в аналогах ===
+				else{
+					//echo 'Ищем в аналогах';
+					//=== 3) Ищем в аналогах ===
 					$criteria->condition = ( ' code = :code ' ); 
-					$criteria->params = array(':code' => "{$replaced}" ); 
+					$criteria->params = array(':code' => "{$replaced}" ); // $replaced - где только апострофы заменены
 					$dataProvider = new CActiveDataProvider('Analogi', array(
 						'criteria'=>$criteria, 
 					));  
-					$FoundedAnalog=Analogi::model()->find($criteria); // ?
-					if($FoundedAnalog) 
-					{ 	
-						echo '$FoundedAnalog->code = ', $FoundedAnalog->code, '<br>'; 
-						echo '$FoundedAnalog->oem = ', $FoundedAnalog->oem, '<br>'; 
-					}
+					$FoundedAnalog=Analogi::model()->find($criteria); // ищем только один в Аналогах
+					
+					//echo ''.$replaced;
 					$founded=0;
 					if (!$dataProvider->itemCount) {
-					//===== 3.1 РЕКРОСС ======
-						echo ' 3.1 РЕКРОСС ($dataProvider->itemCount < 1 не найден из таблицы Analogi) <br>'; 
-						
+						//===== 3.1 РЕКРОСС ======
 						$criteria = new CDbCriteria;
 						$criteria->condition = ( 'oem = :oem' ); 
 						$criteria->order = ' "reliability" DESC' ;  // reliability  
 						$criteria->params = array(':oem' => "{$replaced}" );   					
-						echo "recross criteria's condition: "; print_r($criteria ); echo '<br>';
-						$Recross=Analogi::model()->findAll($criteria);
+						
+						$Recross=Analogi::model()->findall($criteria);
 						if(!empty($Recross)){
-							$it=1; // итерация
-							$founded=0; // найден или нет
-							$i=1;
-							echo 'Проведём отбор кроссов которые есть по нашему (искомому) номеру '. $replaced . '<br>';
+							$it=1; $founded=0;
 							foreach ($Recross as $r){
-							    echo '1-й recross ', $i++, ': его code = ',  $r->code, '<br>';
+							
 								//Проведём отбор кроссов которые есть по нашему номеру
-								$Recross2=Analogi::model()->findAllByAttributes(array('code'=>$r->code));
-								$j=1;
+								$Recross2=Analogi::model()->FindAllByAttributes(array('code'=>$r->code));
 								foreach ($Recross2 as $r2){
-									echo '&nbsp;&nbsp;&nbsp; 2-й уровень - recross ', $j++, ': его oem = ',  $r2->oem, '; ';
-									$MainAssortment=Assortment::model()->findByAttributes(array('oem'=>$r2->oem));
-									if (!empty($MainAssortment))
-									{
-										echo 'найдено в основной номенклатуре по этому oem, заносим в AssortmentFake<br>';
+									$MainAssortment=Assortment::model()->FindByAttributes(array('oem'=>$r2->oem));
+									if (!empty($MainAssortment)){
 										$fakeAssortment = new AssortmentFake;
 										//$fakeAssortment->agroup = $foundItem->agroup;
 										$fakeAssortment->organizationId = 7;
@@ -505,75 +488,85 @@ class AssortmentController extends Controller
 										$CriteriaAnalog = new CDbCriteria;
 										$CriteriaAnalog->condition = ( 'oem = :oem' ); 
 										$CriteriaAnalog->params = array(':oem' => $MainAssortment->oem ); 
-								 		
+										
+										
+										
 										$founded=1;
 										//echo '1 '.$MainAssortment->id.'/'.$MainAssortment->make;
 										
-										//$criteria->condition = ( 'oem = :oem AND organizationId =  ' . Yii::app()->params['defaultOrganization'] ); 
+										
+										//$criteria->condition = ( 'oem = :oem AND organizationId=7' ); 
 										//$criteria->params = array(':oem' => $MainAssortment->oem ); 
 										break;
 										
-									}   else { 
-										echo 'не найдено в основной номенклатуре по этому oem<br>'; 
-									}
+									}   
 								}
 								if ($founded==1) break;
 								$it++;
-							} 
+								
+							}
+								
 						
-						} //if(!empty($Recross)){ // конец отбора кроссов по нашему (искомому) номеру
+						} //if(!empty($Recross)){
 						
 					
-					} else
-					{ //if (!$dataProvider->itemCount) 
-						echo ' 3.2 РЕКРОСС <br>($dataProvider->itemCount >= 1 найден Аналог из таблицы Аналоги по коду ' . $replaced . ' )<br>';
-						$CriteriaAnalog=new CDbCriteria;
-						$CriteriaAnalog->condition = ( ' oem = :oem AND organizationId =  ' . Yii::app()->params['defaultOrganization'] ); 
-						$CriteriaAnalog->params = array(':oem' => $FoundedAnalog->oem ); 
-						echo 'CriteriaAnalog condition: "', $CriteriaAnalog->condition, '" <br>';
-						echo 'CriteriaAnalog params: ';  print_r($CriteriaAnalog->params); echo  '<br>';
+					}else{ //if (!$dataProvider->itemCount) {
 						
-						$criteria->condition = ( ' article = :article ' ); 
-						$criteria->params = array(':article' => $FoundedAnalog->code ); 
-				// то что ниже мне не понятно				
-						$f=AssortmentFake::model()->findByAttributes(array('article'=>$replaced));
-
-						if (empty($f)){
-							$ff=Assortment::model()->findByAttributes(array('oem'=>$replaced));
-							$fakeAssortment = new AssortmentFake;
-							if (empty($ff)){							
-								//$fakeAssortment->agroup = $foundItem->agroup;
-								$fakeAssortment->organizationId = Yii::app()->params['defaultOrganization'];
-								$fakeAssortment->article = $replaced;
-								//$fakeAssortment->oem = $FoundedAnalog->oem;
-								$fakeAssortment->title = $FoundedAnalog->name;
-								$fakeAssortment->manufacturer = $FoundedAnalog->brand;
-								$fakeAssortment->fileUrl = mt_rand();
+					
+						
+							$CriteriaAnalog=new CDbCriteria;
+							$CriteriaAnalog->condition = ( ' oem = :oem AND organizationId=7' ); 
+							$CriteriaAnalog->params = array(':oem' => $FoundedAnalog->oem ); 
+							//echo 'CriteriaAnalog'.$CriteriaAnalog->condition;
 							
-							}else{ 
-								$fakeAssortment->agroup = $ff->agroup;
-								$fakeAssortment->organizationId = $ff->organizationId;
-								$fakeAssortment->article = $replaced;
-								//$fakeAssortment->oem = $FoundedAnalog->oem;
-								$fakeAssortment->title = $ff->title;
-								$fakeAssortment->manufacturer = $FoundedAnalog->brand;
-								$fakeAssortment->fileUrl = mt_rand(); 
+							$criteria->condition = ( ' article = :article ' ); 
+							$criteria->params = array(':article' => $FoundedAnalog->code ); 
+							
+							
+							$f=AssortmentFake::model()->FindByAttributes(array('article'=>$replaced));
+
+							if (empty($f)){
+								$ff=Assortment::model()->findbyattributes(array('oem'=>$replaced));
+								$fakeAssortment = new AssortmentFake;
+								if (empty($ff)){
+								
+									//$fakeAssortment->agroup = $foundItem->agroup;
+									$fakeAssortment->organizationId = 7;
+									$fakeAssortment->article = $replaced;
+									//$fakeAssortment->oem = $FoundedAnalog->oem;
+									$fakeAssortment->title = $FoundedAnalog->name;
+									$fakeAssortment->manufacturer = $FoundedAnalog->brand;
+									$fakeAssortment->fileUrl = mt_rand();
+								
+								}else{
+									
+									$fakeAssortment->agroup = $ff->agroup;
+									$fakeAssortment->organizationId = $ff->organizationId;
+									$fakeAssortment->article = $replaced;
+									//$fakeAssortment->oem = $FoundedAnalog->oem;
+									$fakeAssortment->title = $ff->title;
+									$fakeAssortment->manufacturer = $FoundedAnalog->brand;
+									$fakeAssortment->fileUrl = mt_rand();
+
+								
+								}
+							
+								try { // мы так ловим исключение чтобы не вставлять дубликат записи 
+									   // мы сделали поле oem - уникальное в AssortmentFake
+									$fakeAssortment->save(false);
+								} catch(Exception $e) { // doing nothing!!!!	 echo $e->getMessage(); 
+								}
 							}
-						
-							try { // мы так ловим исключение чтобы не вставлять дубликат записи 
-								   // мы сделали поле oem - уникальное в AssortmentFake
-								$fakeAssortment->save(false);
-							} catch(Exception $e) { // doing nothing!!!!	 echo $e->getMessage(); 
-							}
-						} 
+							
+					
 					}
 					
 					//=== 4) Если не нашли ищем по наименованию ===
 					if (  $founded==0  ) {  
-						echo '4. Если не нашли ищем по наименованию<br>Разбиваем на слова и составляем условие И по вхождению каждого слова.<br>';
+					
 						$ArraySearchString=$this->FArraySearchString($refined);
 					  //  $criteria= new CDbCriteria;
-						$criteria->condition ='organizationId = ' . Yii::app()->params['defaultOrganization'];
+						$criteria->condition ='organizationId=7 ';
 						//$criteria->params =''; 
 						
 						foreach ($ArraySearchString as $r){
@@ -597,37 +590,37 @@ class AssortmentController extends Controller
 
 						
 					}else{
-						//5) === НИЧЕГО НЕ НАШЛИ ===						
+						//5) === НИЧЕГО НЕ НАШЛИ ===
+						
+						
 					}
+					
+				
+				
 				
 				}
 				
 	
 			} //if (!$dataProviderOEM->itemCount) //НЕ НАШЛИ В НОМЕНКЛАТУРЕ ПО Артикулу ищем по ОЕМ
-			else {
-				echo 'Нашли по артикулу<br>';
-				//$this->findInAnalogs($refined);
+			else{
+				//echo 'Нашли по артикулу<br>'; 
 				$items = Assortment::model()->findAll( 'article = :article' , array(':article'=>$replaced4oem));
-				echo 'found items are: '; print_r($items); echo '<br><br>';
-				$CriteriaAnalogsFromAssortment = new CDbCriteria;
-				//$CriteriaAnalogsFromAssortment->addNotINCondition('article', array($refined));
+				//echo 'found items are: '; print_r($items); echo '<br><br>';
+				$CriteriaAnalogsFromAssortment = new CDbCriteria; 
 				foreach($items as $item)
-				{// ищем для них соответствия в Аналогах
-					//$this->findInAnalogs($item->oem); 
+				{// ищем для них соответствия в Аналогах 
 					//$CriteriaAnalogsFromAssortment = $CriteriaAnalogsFromAssortment->mergeWith($this->findInAssortment($item->oem)) ;
 					if ($this->findInAssortment($item->oem))
 						$CriteriaAnalogsFromAssortment->addCondition('oem = "'. $item->oem . '" ' , 'OR');
 				}
 				if(!empty($CriteriaAnalogsFromAssortment->condition)) $CriteriaAnalogsFromAssortment->addCondition('article != "' . $replaced4oem . '" ');
-				//print_r($dataProvider);
-				echo '$CriteriaAnalogsFromAssortment:  '; print_r($CriteriaAnalogsFromAssortment ); echo '<br>';
-				
+		 
+				//echo '$CriteriaAnalogsFromAssortment:  '; print_r($CriteriaAnalogsFromAssortment ); echo '<br>';
+			
 			}
-	 
+	
 		} //if(  isset($_POST['findbyoem-value'])  )
-		
-		
-// кладём товар в корзину
+		// кладём товар в корзину
 		if (Yii::app()->getRequest()->getParam('assort')) 
 		{
 			$item = $this->loadModel(Yii::app()->getRequest()->getParam('assort'));
@@ -711,10 +704,10 @@ class AssortmentController extends Controller
 				//$criteria->addCondition('`subgroup` = ' . $_GET['Assortment']['Subgroup']);
 			
 			$dataProvider = new CActiveDataProvider('Assortment', array(
-					'criteria'=>$criteria,
-					'pagination' => array( 
-						'pageSize' => $this->pagesize ? $this->pagesize : /**/ Yii::app()->user->pageSize,
-					),
+				'criteria'=>$criteria,
+				'pagination' => array( 
+					'pageSize' => $this->pagesize ? $this->pagesize : Yii::app()->user->pageSize,
+				),
 			)); 			
 			// echo '<br />Data Provider (Find) = '; print_r($dataProvider->criteria);
 			//echo '<br />count Data Provider = '; echo count($dataProvider);
@@ -774,7 +767,7 @@ class AssortmentController extends Controller
     public function actionAdmin()
 	{
 		// перенаправление на действие index
-		if (!isset($_GET['return'])) 
+		if (!isset($_GET['return']) && !isset($_GET['returnSparePart'])) 
 			$this->redirect(array('index')); 
 		
 		$model=new Assortment();  
@@ -800,9 +793,14 @@ class AssortmentController extends Controller
 		
 		
 		//return;
-		$this->render(isset($_GET['return']) ? 'admin_for_specialoffer' :  'admin', array(
-			'model'=>$model,  'pageSize'=>$pageSize // ,'returnUrl'=> $returnUrl,
-		)); 	
+		if (isset($_GET['returnSparePart'])) 
+			$this->render('admin_for_sparepart', array(
+				'model'=>$model,  'pageSize'=>$pageSize // ,'returnUrl'=> $returnUrl,
+			)); 
+		else
+			$this->render(isset($_GET['return']) ? 'admin_for_specialoffer' :  'admin', array(
+				'model'=>$model,  'pageSize'=>$pageSize // ,'returnUrl'=> $returnUrl,
+			)); 	
 		
 		
 	}
@@ -875,8 +873,14 @@ class AssortmentController extends Controller
 				$model->save(false);  
 				
 				$orderlink = CHtml::Link(Yii::t('general', 'Order') , CController::createAbsoluteUrl('order/update&id='.  $model->id));	
+				
 				$from = 'Компания ТАРЕКС <' . Yii::app()->params['adminEmail'] . '>' ;
-				mail($user->email, Yii::t('general','Created order #') . $model->id, Yii::t('general','You have created a new') . ' ' . $orderlink ,   "From: {$from}\r\nContent-type: text/html;\r\n charset=UTF-8\r\nMime-Version: 1.0\r\n");
+				$from = '=?UTF-8?B?'.base64_encode($from).'?=';
+				
+				$subject = Yii::t('general','Created order #') . $model->id ;
+				$subject = '=?UTF-8?B?'.base64_encode($subject).'?=';
+				
+				mail($user->email, $subject , Yii::t('general','You have created a new') . ' ' . $orderlink ,   "From: {$from}\r\nContent-type: text/html;\r\n charset=UTF-8\r\nMime-Version: 1.0\r\n");
 				
 				Yii::app()->shoppingCart->clear(); // Очищаем корзину
 				//$model->totalSum = EventContent::getTotalSumByEvent($model->id); // занесение общей стоимости заказа на основе содержимого заказа	- не работает	 
@@ -886,7 +890,8 @@ class AssortmentController extends Controller
 				mail( $managerEmail, 
 					"Пользователь {$user->username} создал новый заказ № {$model->id}", 
 					"Посмотреть и оформить его заказ Вы можете по этой ссылке: " . $orderlink , /* $this->createAbsoluteUrl('order/update', array('id'=>$model->id, '#' => 'tab1') ),*/  
-					"From: {$from}\r\nContent-type: text/html;\r\n charset=UTF-8\r\nMime-Version: 1.0\r\n");  
+					"From: {$from}\r\nContent-type: text/html;\r\n charset=UTF-8\r\nMime-Version: 1.0\r\n"); 
+				
 				//echo 'mail is sent to manager ', $managerEmail;
 			} else 
 			{
@@ -974,6 +979,7 @@ class AssortmentController extends Controller
 						$content=new EventContent('simple');
 						$content->eventId = $model->id; // только что сохранённого заказа
 						$assortment = Assortment::model()->findByPk($position->getId());
+						$content->assortmentId = $assortment->id; // заносим id номенклатуры из корзины 
 						$content->assortmentTitle = $assortment->title; // заносим title номенклатуры из корзины 
 						$content->price = $position->getPrice();		 
 						$content->assortmentAmount = $position->getQuantity();// заносим количество наименования номенклатуры из корзины 	
@@ -1000,42 +1006,45 @@ class AssortmentController extends Controller
 						$org = Yii::app()->user->organization; 
 			// массив email'ов старших менеджеров для отправки им писем			
 					$srManagerEmails = CHtml::listData(User::model()->findAllByAttributes(array('role'=>User::ROLE_SENIOR_MANAGER, 'organization'=> $org)), 'id', 'email');
-				//	print_r($srManagerEmails);
+				 	//print_r($srManagerEmails);
 					$from = '=?UTF-8?B?' . base64_encode('Компания ТАРЕКС <' . Yii::app()->params['adminEmail'] . '>') . '?=' ;
 					$subject =  '=?UTF-8?B?' . base64_encode("Регистрация нового клиента '{$user->username}' и новый заказ № {$model->id}") . '?=';
-					$headers = "From: {$from}\r\n Content-type: text/html;\r\n charset=UTF-8\r\nMime-Version: 1.0\r\n";
+					
+					$headers = "From: {$from}\r\nContent-type: text/html;\r\n charset=UTF-8\r\nMime-Version: 1.0\r\n"; 
 			// различие между новым и существующим пользователем
 					if ($newuser && $user->isLegalEntity)
 					{
 						 $mailContent = "Вы зарегистрировались в на сайте ТАРЕКС как юридическое лицо и создали заказ. <br>Заявка на регистрацию принята. Ваш заказ принят к проверке. В течение получаса менеджер свяжется с вами и вышлет Вам данные для входа на сайт. <br>По всем вопросам Вы можете позвонить на многоканальный телефон: +7 495 785-88-50."; 
 			// письмо и flash клиенту
 					 	mail($user->email, "=?UTF-8?B?" . base64_encode('Регистрация на сайте TAREX.ru') . " ?=", $mailContent, $headers );		 
-					//	echo '<br>mail is sent to ', $user->email , ' (isLegalEntity)<br>';	
+						//echo '<br>mail is sent to ', $user->email , ' (isLegalEntity)<br>';	
 						Yii::app()->user->setFlash('success', $mailContent);		
 			// письма генеральным (старшим) менеджерам						 
 						foreach ($srManagerEmails as $email) 
-						{ 				
+						{ 	
+							//if ('igor.savinkin@gmail.com' != $email) continue;
 							mail( $email, $subject, 
-							"Уважаемый генеральный менеджер, </br> новый пользователь '<em>{$user->username}</em>' (тел.: {$user->phone}) зарегистрировался на сайте и создал новый заказ № {$model->id} на сумму {$model->totalSum} рублей. </br>Просим связаться с ним и проставить группу цен и менеджера в его профиле. Посмотреть профиль этого пользователя Вы можете по этой ссылке: {$userprofile}. <br>Вы можете активировать этого нового пользователя: {$activate}.<br>Посмотреть его заказ Вы можете по этой ссылке: {$orderlink}.", 
+							"Уважаемый генеральный менеджер, </br> новый пользователь '<em>{$user->username}</em>' (тел.: {$user->phone}) зарегистрировался на сайте и создал новый заказ № {$model->id} на сумму {$model->totalSum} рублей. </br>Просим связаться с ним и проставить группу цен и менеджера в его профиле. Посмотреть профиль этого пользователя Вы можете по этой ссылке: {$userprofile}. <br>Там же вам нужно активировать этого нового пользователя чтобы он мог залогиниться в системе.<br>Посмотреть его заказ Вы можете по этой ссылке: {$orderlink}.", 
 							$headers);  
 						//	echo '<br>mail is sent to ', $email , ' (sr manager)<br>';						
 						}							
 					}
 					elseif ($newuser && !$user->isLegalEntity) 
 					{
-						$link = CHtml::Link(Yii::t('general', 'Enter') , Yii::app()->createAbsoluteUrl('site/login', array( 'email'=>$user->email, 'p'=>$user->password, 'returnUrl'=>CController::createAbsoluteUrl('order/update&id='.  $model->id))), array('target'=>'_blank')); 
+						$link = CHtml::Link(Yii::t('general', 'Enter') , Yii::app()->createAbsoluteUrl('site/login', array( /*  'email'=>$user->email, 'p'=>$user->password, 'returnUrl'=>CController::createAbsoluteUrl('order/update&id='.  $model->id)*/ )), array('target'=>'_blank')); 
 						$mailContent =  "Вы только что зарегистрировались как розничный клиент <b>{$user->username}</b>. Ваш пароль равен Вашему имени пользователя.<br> Вы можете зайти в систему по этой ссылке {$link} и посмотреть Ваш новый заказ: {$orderlink} (после входа). <br>По всем вопросам звонитe на многоканальный телефон: +7 495 785-88-50."; 
-				 // письмо только самому клиенту		
+				 // письмо  самому клиенту (розница)		 
 						mail( $user->email, "=?UTF-8?B?" . base64_encode('Регистрация на сайте TAREX.ru') . " ?=", $mailContent, $headers);
 						Yii::app()->user->setFlash('success', $mailContent); 
-					//	echo '<br>mail is sent to ', $user->email , ' (is not LegalEntity)<br>';
+					   // echo '<br>mail is sent to ', $user->email , ' (is not LegalEntity)<br>';
 				// письма генеральным (старшим) менеджерам	
 					    foreach ($srManagerEmails as $email) 
 						{ 	
+							//if ('igor.savinkin@gmail.com' != $email) continue;
 							mail( $email, $subject,
-							"Уважаемый генеральный менеджер, </br> новый пользователь '<em>{$user->username}</em>' (тел.: {$user->phone}) зарегистрировался на сайте и создал новый заказ № {$model->id} на сумму {$model->totalSum} рублей. </br>Просим связаться с ним и проставить группу цен и менеджера в его профиле. Посмотреть профиль этого пользователя Вы можете по этой ссылке: {$userprofile}. <br>Вы можете активировать этого нового пользователя: {$activate}.<br>Посмотреть его заказ Вы можете по этой ссылке: {$orderlink}.", 
+							"Уважаемый генеральный менеджер, </br> новый пользователь '<em>{$user->username}</em>' (тел.: {$user->phone}) зарегистрировался на сайте как розничный клиент и создал новый заказ № {$model->id} на сумму {$model->totalSum} рублей. </br>Просим связаться с ним и проставить группу цен и менеджера в его профиле. Посмотреть профиль этого пользователя Вы можете по этой ссылке: {$userprofile}. <br>Также вам нужно активировать этого нового пользователя чтобы он мог залогиниться в системе.<br>Посмотреть его заказ Вы можете по этой ссылке: {$orderlink}.", 
 							$headers);  
-						//	echo '<br>mail is sent to ', $email , ' (sr manager)<br>';						
+					 	// echo '<br>mail is sent to ', $email , ' (sr manager)<br>';						
 						}
 					}	
 		// конец посылки писем и flash сообщений для новых пользователей
@@ -1045,9 +1054,15 @@ class AssortmentController extends Controller
 						Yii::app()->user->setFlash('success', $flashContent); 
 					// розничному клиенту		
 						mail( $user->email, "=?UTF-8?B?" . base64_encode('Новый заказ на сайте TAREX.ru') . " ?=", $flashContent, $headers);
+						echo 'msg is sent to retail client on email ', $user->email , '<br>';
 					// его менеджеру или админу
 					    $managerEmail = (User::model()->findByPk($user->parentId)->email) ? User::model()->findByPk($user->parentId)->email : Yii::app()->params['adminEmail'];
-						mail($managerEmail , "=?UTF-8?B?" . base64_encode('Новый заказ на сайте TAREX.ru') . " ?=", "Пользователь {$user->username} сформировал новый {$orderlink}.<br>", $headers);
+						$subject = 'Новый заказ на сайте TAREX.ru';
+						$subject = "=?UTF-8?B?" . base64_encode($subject) . "?=";
+						$from = '=?UTF-8?B?' . base64_encode('Компания ТАРЕКС <' . Yii::app()->params['adminEmail'] . '>') . '?=' ;
+						$headers = "From: {$from}\r\nContent-type: text/html;\r\n charset=UTF-8\r\nMime-Version: 1.0\r\n"; 
+						
+						mail($managerEmail , $subject , "Пользователь {$user->username} сформировал новый {$orderlink}.", $headers);
 						//echo 'mail is sent to ', $managerEmail, '<br>';
 					} 
 	   // конец flash для существующего пользователя
@@ -1236,19 +1251,6 @@ EOF;
 			else  
 				return Yii::t('general','no image'); 
 	}
-	public function info($data, $row)
-	{ 
-		$info = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/infoblue.png" ));
-		$infofoto = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/camerainfoblue.png" ));
-		$action = Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER) ?'update' : 'view';
-		/*try {
-			//$image = getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg");
-		}  catch(Exception $e)  { } */
-		if (getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg" ) !== false)
-			echo CHtml::Link($infofoto, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 	 
-		else  
-            echo CHtml::Link($info, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 
-	}
 	protected function amountToCart($data,$row)
     {  
 		//$button = CHtml::imageButton('/img/cart.gif', array('width'=>'23px', 'style'=>'vertical-align:top;', 'id'=>'x-button', 'value'=>$data->id,  'name'=>'Assortment[id]'));		
@@ -1264,23 +1266,29 @@ EOF;
     }
 	protected function amountToCartAjax($data,$row)
     {   
-	    if(!$data->availability) return '';
-	//	if (!$data->availability) 			return CHtml::Link(Yii::t('general', 'Make a request to manager'), array('searchTerm/create')); //'';
+		if (!$data->availability) return '';
+		//CHml::Link('Make a request to manager', 'searchTerm/create');
+		
 		$msg = Yii::t('general','item(s) have been added to cart');
-		$buttonAjax = CHtml::ajaxSubmitButton(Yii::t('general', 'Add to Cart'), array('addToCartAjax'), array( 'data'=>'js:{id: this.name, amount: jQuery(this).siblings("select").val(), "' . Yii::app()->request->csrfTokenName . '": "' . Yii::app()->request->csrfToken . '" }'/*, 'update'=>'#cart-content'*/ , 'success'=>'js:function(data){var obj=JSON && JSON.parse(data) || $.parseJSON(data); $("#cart-content").html(obj.cartMsg); alert( obj.amount + " '. $msg. '"); }'), array('class'=>'btn btn-xs btn-primary', 'name' =>  $data->id ));  
+		$buttonAjax = CHtml::ajaxSubmitButton(Yii::t('general', 'Add to Cart'), array('addToCartAjax'), array( 'data'=>'js:{id: this.name, amount: jQuery(this).siblings("select").val(), "' . Yii::app()->request->csrfTokenName . '": "' . Yii::app()->request->csrfToken . '" }'/*, 'update'=>'#cart-content'*/ , 'success'=>'js:/*var amt = jQuery(this).siblings("select").val(); console.log(amt); */ function(data){var obj=JSON && JSON.parse(data) || $.parseJSON(data); $("#cart-content").html(obj.cartMsg); alert( obj.amount + " '. $msg. '"); }'), array('class'=>'btn btn-xs btn-primary', 'name' =>  $data->id ));  
 		
 		// $data ... the current row data   
         // $row ... the row index 
 	   $dataArr = array(); for($i=1; $i <= $data->availability; $i++ ) { $dataArr[$i] = $i; }
 	   $dd = CHtml::dropDownList('Assortment[amount][' . $data->id .']', 1, $dataArr, array('style'=>'width:40px;'));
 		return $dd  . '&nbsp;' . $buttonAjax; 		
-    }
-	protected getDiscount($data,$row)
-	{
-		$criteria=new CDbCriteria;
-		$criteria->compare('articles', $data->article, true); // нестрогое сравнение в поле Артикулы
-		$disc = DiscountGroup::model()->find($criteria)->value; 
-		return ' 5';// isset($disc) ? $disc : '0';
+    }	
+	public function info($data, $row)
+	{ 
+		$info = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/infoblue.png" ));
+		$infofoto = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/camerainfoblue.png" ));
+		$action = Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER) ?'update' : 'view';
+		/*try {
+			//$image = getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg");
+		}  catch(Exception $e)  { } */
+		if (getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg" ) !== false)
+			echo CHtml::Link($infofoto, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 	 
+		else  
+            echo CHtml::Link($info, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 
 	}
-	
 }
