@@ -24,7 +24,7 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','index2', 'contact', 'login','login2', 'logout' , 'frontendpavel'),
+				'actions'=>array('index','index2','sitemapxml' ,'contact', 'login','login2', 'logout' , 'frontendpavel'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -55,6 +55,18 @@ class SiteController extends Controller
 		$this->layout = '//layouts/index_no_ad';
 		$this->render('empty');  
 	}	 
+	
+	public function actionSitemapxml()
+	{
+		//echo 'sitemap';
+		 $assortment=Assortment::model()->findAll(array(
+                'order'=>'date DESC', //'limit'=>'3',
+                'condition'=>'priceS <> "0" ',
+        )); 
+		 	//print_r($assortment);
+         header('Content-Type: application/xml');
+         $this->renderPartial('sitemapxml', array('assortment'=>$assortment)); 
+	}
 	
 	public function actionBackend()
 	{

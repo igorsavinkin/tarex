@@ -78,17 +78,22 @@ return array(
 		//	'connectionID'=>'db',
 		),
 		// uncomment the following to enable URLs in path-format
-/*	 
+ 
 		'urlManager'=>array(
-			'urlFormat'=>'path',
-			'rules'=>array(
-			  // '<controller:\w+>/<action:\w+>/<Reference:\w+(\+)?(\w)? >'=>'<controller>/<action>', '<controller:\w+>/<action:\w+>
+			//'urlFormat'=>'path',	
+			'showScriptName'=>false, /**/
+			'rules'=>array(					
+				//'sitemap.xml/*'=>'/site/sitemapxml', 
+				array('site/sitemapxml', 'pattern'=>'sitemap.xml', 'urlSuffix'=>''),
+				  
+		/*		// '<controller:\w+>/<action:\w+>/<Reference:\w+(\+)?(\w)? >'=>'<controller>/<action>', '<controller:\w+>/<action:\w+>
 			  //<Subsystem:\w+(\+)?(\S)?(\+)?(\w)?(\+)?(\w)? >'=>'<controller>/<action>',
 				//'<controller:\w+>/<action:\w+>/<project:\d+>'=>'<controller>/<action>',
-				
+			
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>/*'=>'<controller>/<action>',
+				*/	
 			),
 		),
 		

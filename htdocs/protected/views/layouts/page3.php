@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" type="image/ico" href="/app2/img/favicon.ico">
 
-    <title><?php echo $this->pageTitle; ?></title>
+    <title><?php echo $this->getPageTitle(); //CHtml::encode($this->pageTitle); ?></title>
 	<link href="<?php echo Yii::app()->baseUrl; ?>/css/in.css" rel="stylesheet" type="text/css">
 	<link href="<?php echo Yii::app()->baseUrl; ?>/css/form.css" rel="stylesheet" type="text/css">
     <link href="<?php echo Yii::app()->baseUrl; ?>/css/reset.css" rel="stylesheet" type="text/css">
@@ -227,7 +227,7 @@
 										$link = $this->createUrl($r->Link."/admin", array('Subsystem'=>$r->Subsystem ,'Reference'=>$r->Link)); 								 	
 										echo "<li><a href='{$link}' ";
 										echo  ($r->Link == $Reference) ? "class='selected' >" : ">";
-										if (''!=$r->ReferenceImg) echo "<img src='images/referenceimg/{$r->ReferenceImg}' alt='Icon'>";
+										if (''!=$r->ReferenceImg) echo "<img src='" . Yii::app()->baseUrl . "/images/referenceimg/{$r->ReferenceImg}' alt='Icon'>";
 										echo "<span>" , Yii::t('general', $r->Reference) , "</span></a></li>";
 										$i++;
 										if (($i % $itemsInColumn) == 0) 

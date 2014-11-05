@@ -173,7 +173,7 @@
                                 <div class="tar_icons_right">
                                     <div class="tar_icons_border">
 							 <?php 
-								$Subsystem= Yii::app()->session['Subsystem'];
+								$Subsystem = isset($_GET['Subsystem']) ? $_GET['Subsystem'] : Yii::app()->session['Subsystem'];
 								$Reference =  isset($_GET['Reference']) ? $_GET['Reference'] : Yii::app()->session['Reference'];
 								$MainMenu=MainMenu::model()->FindAll(
 									array(
@@ -230,7 +230,7 @@
 										$link = $this->createUrl($r->Link."/admin", array('Subsystem'=>$r->Subsystem ,'Reference'=>$r->Link)); 								 	
 										echo "<li><a href='{$link}' ";
 										echo  ($r->Link == $Reference) ? "class='selected' >" : ">";
-										if (''!=$r->ReferenceImg) echo "<img src='images/referenceimg/{$r->ReferenceImg}' alt='Icon'>";
+										if (''!=$r->ReferenceImg) echo "<img src='" . Yii::app()->baseUrl . "/images/referenceimg/{$r->ReferenceImg}' alt='Icon' title='{$r->Reference}'>";
 										echo "<span>" , Yii::t('general', $r->Reference) , "</span></a></li>";
 										$i++;
 										if (($i % $itemsInColumn) == 0) 
@@ -345,7 +345,7 @@
                                 <?php // содержимое из cоответствующего view 
 																 echo $content; 
 															?> 
-								<a href='#' id='up' style='float:right;z-index:1000;position:fixed; bottom: 20px; right:20px'><img src='images/btn-up.png' width='35px'/></a>							
+								<a href='#' id='up' style='float:right;z-index:1000;position:fixed; bottom: 20px; right:20px'><img src='<?php echo Yii::app()->baseUrl;?>/images/btn-up.png' width='35px'/></a>							
 								<!--div class="tar_pathway">                                  
 									<ul>
                                         <li>

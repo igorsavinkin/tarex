@@ -36,7 +36,16 @@ if (!Yii::app()->user->isGuest) echo '<div class="tar_adv tar_adv_second">';
 <div class="tar_cat_bot">
 	<div class="tar_brands_car">
 		<div class="tar_cat_bot_title">
-			 <?php echo Yii::t('general', 'Car makes'); ?>
+			 <?php 
+				if (isset($_GET['id'])) 
+				{ 
+					$this->widget('zii.widgets.CBreadcrumbs', array(
+						'links'=>array(Yii::t( 'general', 'All makes') => array('site/index'), 
+							Assortment::model()->findByPk($_GET['id'])->title)
+					));	
+				} else 
+					echo Yii::t('general', 'Car makes'); 
+			?>
 		</div>
 			<div class="tar_cars">
 				<div class="tar_cat_bot_form"><b>Легковые:</b></div>

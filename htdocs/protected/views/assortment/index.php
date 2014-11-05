@@ -104,25 +104,17 @@ echo Yii::t('general', 'Enter the amount of this assortment item');?>
 
 $this->endWidget('zii.widgets.jui.CJuiDialog');*/
 /******************************** end of the Dialog box *************************************/
-if ((Assortment::model()->findByPk($parent)) ) {
-	$make =   Assortment::model()->findByPk($parent)->title; // echo 'make =' , $make;
-	$add =Assortment::model()->findByPk($parent)->parent_id;
-	$par =Assortment::model()->findByPk($add);
-}
-if ($parent && !isset($_GET['country']) ) 
-{    
-	$this->breadcrumbs=array( 
-		//Yii::t( 'general', 'All makes') => array('/myFrontend', 'r'=>''),
-		//$par->title => array('carbodynew', 'id'=>$par->id),
-		$make
-	);
-} 
-/*echo 'make = ' ,  $make->title, '<br/>';print_r($carModels);*/
-
-//$this->renderPartial('_carmakes'); 
-?> 
-
-
+$item = Assortment::model()->findByPk($parent);
+if ( $item ) {
+	$make = $item->title;  
+	$par =Assortment::model()->findByPk($item->parent_id);  
+	$this->widget('zii.widgets.CBreadcrumbs', array(
+		'links'=>array( 
+			 Yii::t( 'general', 'All makes') => array('site/index'),
+			 $par->title => array('site/index', 'id'=>$par->id),
+			 $make	)
+	));
+} ?> 
 <div class='shift-right40'> 
 	<h1 ><?php  echo Yii::t('contact','Assortment list'); ?></h1>
 	<div class="search-form" style="display:block; padding-left:40px;"> 
