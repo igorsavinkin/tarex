@@ -1,1 +1,0 @@
-<?php echo Advertisement::model()->findByPk(10)->content;  ?>
