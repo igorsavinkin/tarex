@@ -1,0 +1,12 @@
+[user]
+	name = Igor Savinkin
+	email = igor.savinkin@gmail.com
+[alias]
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	co = checkout
+	ci = commit -a
+	st = status
+	type = cat-file -t
+	dump = cat-file -p
+[core]
+	pager = cat

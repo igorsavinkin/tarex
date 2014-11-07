@@ -1,0 +1,314 @@
+-- MySQL dump 10.13  Distrib 5.5.28, for FreeBSD9.1 (amd64)
+--
+-- Host: db28.ht-systems.ru    Database: srv50213_yupe
+-- ------------------------------------------------------
+-- Server version	5.5.32-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `yupe_category_category`
+--
+
+DROP TABLE IF EXISTS `yupe_category_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `yupe_category_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) DEFAULT NULL,
+  `alias` varchar(150) NOT NULL,
+  `lang` char(2) DEFAULT NULL,
+  `name` varchar(250) NOT NULL,
+  `image` varchar(250) DEFAULT NULL,
+  `short_description` text,
+  `description` text NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ux_yupe_category_category_alias_lang` (`alias`,`lang`),
+  KEY `ix_yupe_category_category_parent_id` (`parent_id`),
+  KEY `ix_yupe_category_category_status` (`status`),
+  CONSTRAINT `fk_yupe_category_category_parent_id` FOREIGN KEY (`parent_id`) REFERENCES `yupe_category_category` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `yupe_category_category`
+--
+
+LOCK TABLES `yupe_category_category` WRITE;
+/*!40000 ALTER TABLE `yupe_category_category` DISABLE KEYS */;
+/*!40000 ALTER TABLE `yupe_category_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `yupe_mail_mail_event`
+--
+
+DROP TABLE IF EXISTS `yupe_mail_mail_event`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `yupe_mail_mail_event` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` varchar(150) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `description` text,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ux_yupe_mail_mail_event_code` (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `yupe_mail_mail_event`
+--
+
+LOCK TABLES `yupe_mail_mail_event` WRITE;
+/*!40000 ALTER TABLE `yupe_mail_mail_event` DISABLE KEYS */;
+/*!40000 ALTER TABLE `yupe_mail_mail_event` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `yupe_mail_mail_template`
+--
+
+DROP TABLE IF EXISTS `yupe_mail_mail_template`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `yupe_mail_mail_template` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` varchar(150) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `description` text,
+  `from` varchar(150) NOT NULL,
+  `to` varchar(150) NOT NULL,
+  `theme` text NOT NULL,
+  `body` text NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ux_yupe_mail_mail_template_code` (`code`),
+  KEY `ix_yupe_mail_mail_template_status` (`status`),
+  KEY `ix_yupe_mail_mail_template_event_id` (`event_id`),
+  CONSTRAINT `fk_yupe_mail_mail_template_event_id` FOREIGN KEY (`event_id`) REFERENCES `yupe_mail_mail_event` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `yupe_mail_mail_template`
+--
+
+LOCK TABLES `yupe_mail_mail_template` WRITE;
+/*!40000 ALTER TABLE `yupe_mail_mail_template` DISABLE KEYS */;
+/*!40000 ALTER TABLE `yupe_mail_mail_template` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `yupe_migrations`
+--
+
+DROP TABLE IF EXISTS `yupe_migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `yupe_migrations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `module` varchar(255) NOT NULL,
+  `version` varchar(255) NOT NULL,
+  `apply_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_migrations_module` (`module`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `yupe_migrations`
+--
+
+LOCK TABLES `yupe_migrations` WRITE;
+/*!40000 ALTER TABLE `yupe_migrations` DISABLE KEYS */;
+INSERT INTO `yupe_migrations` VALUES (1,'user','m000000_000000_user_base',1407506726),(2,'user','m131019_212911_user_tokens',1407506726),(3,'user','m131025_152911_clean_user_table',1407506727),(4,'user','m131026_002234_prepare_hash_user_password',1407506728),(5,'user','m131106_111552_user_restore_fields',1407506728),(6,'user','m131121_190850_modify_tokes_table',1407506728),(7,'yupe','m000000_000000_yupe_base',1407506730),(8,'yupe','m130527_154455_yupe_change_unique_index',1407506730),(9,'category','m000000_000000_category_base',1407506731),(10,'mail','m000000_000000_mail_base',1407506732),(11,'page','m000000_000000_page_base',1407506734),(12,'page','m130115_155600_columns_rename',1407506734),(13,'page','m140115_083618_add_layout',1407506734),(14,'page','m140620_072543_add_view',1407506735);
+/*!40000 ALTER TABLE `yupe_migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `yupe_page_page`
+--
+
+DROP TABLE IF EXISTS `yupe_page_page`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `yupe_page_page` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_id` int(11) DEFAULT NULL,
+  `lang` char(2) DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `creation_date` datetime NOT NULL,
+  `change_date` datetime NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `change_user_id` int(11) DEFAULT NULL,
+  `title_short` varchar(150) NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `slug` varchar(150) NOT NULL,
+  `body` text NOT NULL,
+  `keywords` varchar(250) NOT NULL,
+  `description` varchar(250) NOT NULL,
+  `status` int(11) NOT NULL,
+  `is_protected` tinyint(1) NOT NULL DEFAULT '0',
+  `order` int(11) NOT NULL DEFAULT '0',
+  `layout` varchar(250) DEFAULT NULL,
+  `view` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ux_yupe_page_page_slug_lang` (`slug`,`lang`),
+  KEY `ix_yupe_page_page_status` (`status`),
+  KEY `ix_yupe_page_page_is_protected` (`is_protected`),
+  KEY `ix_yupe_page_page_user_id` (`user_id`),
+  KEY `ix_yupe_page_page_change_user_id` (`change_user_id`),
+  KEY `ix_yupe_page_page_menu_order` (`order`),
+  KEY `ix_yupe_page_page_category_id` (`category_id`),
+  CONSTRAINT `fk_yupe_page_page_category_id` FOREIGN KEY (`category_id`) REFERENCES `yupe_category_category` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION,
+  CONSTRAINT `fk_yupe_page_page_change_user_id` FOREIGN KEY (`change_user_id`) REFERENCES `yupe_user_user` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION,
+  CONSTRAINT `fk_yupe_page_page_user_id` FOREIGN KEY (`user_id`) REFERENCES `yupe_user_user` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `yupe_page_page`
+--
+
+LOCK TABLES `yupe_page_page` WRITE;
+/*!40000 ALTER TABLE `yupe_page_page` DISABLE KEYS */;
+INSERT INTO `yupe_page_page` VALUES (1,NULL,'ru',NULL,'2014-08-08 18:07:06','2014-08-08 19:09:35',1,1,'test','test','test','<p>\r\n	     qwerty\r\n</p>','','',1,0,0,'modern',''),(2,NULL,'ru',NULL,'2014-08-14 12:16:55','2014-08-14 12:16:55',1,1,'привет','Простая страница от Игоря','prostaja-stranica-ot-igorja','<p>\r\n	ВОт простое содержимое.\r\n</p>','Игорь','Вот моя страница',1,0,0,'modern','');
+/*!40000 ALTER TABLE `yupe_page_page` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `yupe_user_tokens`
+--
+
+DROP TABLE IF EXISTS `yupe_user_tokens`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `yupe_user_tokens` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `token` varchar(255) DEFAULT NULL,
+  `type` int(11) NOT NULL,
+  `status` int(11) DEFAULT NULL,
+  `created` datetime NOT NULL,
+  `updated` datetime DEFAULT NULL,
+  `ip` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ix_yupe_user_tokens_user_id` (`user_id`),
+  CONSTRAINT `fk_yupe_user_tokens_user_id` FOREIGN KEY (`user_id`) REFERENCES `yupe_user_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `yupe_user_tokens`
+--
+
+LOCK TABLES `yupe_user_tokens` WRITE;
+/*!40000 ALTER TABLE `yupe_user_tokens` DISABLE KEYS */;
+/*!40000 ALTER TABLE `yupe_user_tokens` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `yupe_user_user`
+--
+
+DROP TABLE IF EXISTS `yupe_user_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `yupe_user_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `change_date` datetime NOT NULL,
+  `first_name` varchar(250) DEFAULT NULL,
+  `middle_name` varchar(250) DEFAULT NULL,
+  `last_name` varchar(250) DEFAULT NULL,
+  `nick_name` varchar(250) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `gender` tinyint(1) NOT NULL DEFAULT '0',
+  `birth_date` date DEFAULT NULL,
+  `site` varchar(250) NOT NULL DEFAULT '',
+  `about` varchar(250) NOT NULL DEFAULT '',
+  `location` varchar(250) NOT NULL DEFAULT '',
+  `status` int(11) NOT NULL DEFAULT '2',
+  `access_level` int(11) NOT NULL DEFAULT '0',
+  `last_visit` datetime DEFAULT NULL,
+  `registration_date` datetime NOT NULL,
+  `avatar` varchar(150) DEFAULT NULL,
+  `hash` varchar(255) NOT NULL DEFAULT '91bdbd2c8658dc0a57ff11273a1e2f820.90983800 1407506727',
+  `email_confirm` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ux_yupe_user_user_nick_name` (`nick_name`),
+  UNIQUE KEY `ux_yupe_user_user_email` (`email`),
+  KEY `ix_yupe_user_user_status` (`status`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `yupe_user_user`
+--
+
+LOCK TABLES `yupe_user_user` WRITE;
+/*!40000 ALTER TABLE `yupe_user_user` DISABLE KEYS */;
+INSERT INTO `yupe_user_user` VALUES (1,'2014-08-08 18:06:15','','','','admin','compmir1@gmail.com',0,NULL,'','','',1,1,'2014-08-14 12:01:53','2014-08-08 18:06:15',NULL,'$2a$13$KMEmDEJf/6zDxLRmLne3BukT4eDZdXTdehsSkf/Q5PIZy65fWHg.6',1);
+/*!40000 ALTER TABLE `yupe_user_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `yupe_yupe_settings`
+--
+
+DROP TABLE IF EXISTS `yupe_yupe_settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `yupe_yupe_settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `module_id` varchar(100) NOT NULL,
+  `param_name` varchar(100) NOT NULL,
+  `param_value` varchar(255) NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `change_date` datetime NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `type` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ux_yupe_yupe_settings_module_id_param_name_user_id` (`module_id`,`param_name`,`user_id`),
+  KEY `ix_yupe_yupe_settings_module_id` (`module_id`),
+  KEY `ix_yupe_yupe_settings_param_name` (`param_name`),
+  KEY `fk_yupe_yupe_settings_user_id` (`user_id`),
+  CONSTRAINT `fk_yupe_yupe_settings_user_id` FOREIGN KEY (`user_id`) REFERENCES `yupe_user_user` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `yupe_yupe_settings`
+--
+
+LOCK TABLES `yupe_yupe_settings` WRITE;
+/*!40000 ALTER TABLE `yupe_yupe_settings` DISABLE KEYS */;
+INSERT INTO `yupe_yupe_settings` VALUES (1,'yupe','siteDescription','Юпи! - самый простой способ создать сайт на Yii!','2014-08-08 18:06:24','2014-08-08 18:06:24',1,1),(2,'yupe','siteName','Юпи!','2014-08-08 18:06:24','2014-08-08 18:06:24',1,1),(3,'yupe','siteKeyWords','Юпи!, yupe, цмс, yii','2014-08-08 18:06:24','2014-08-08 18:06:24',1,1),(4,'yupe','email','compmir1@gmail.com','2014-08-08 18:06:24','2014-08-08 18:06:24',1,1),(5,'yupe','theme','default','2014-08-08 18:06:24','2014-08-08 18:06:24',1,1),(6,'yupe','backendTheme','','2014-08-08 18:06:24','2014-08-08 18:06:24',1,1);
+/*!40000 ALTER TABLE `yupe_yupe_settings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'srv50213_yupe'
+--
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2014-09-24  4:31:33

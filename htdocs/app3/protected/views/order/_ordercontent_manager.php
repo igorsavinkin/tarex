@@ -42,6 +42,11 @@ $this->widget( 'zii.widgets.grid.CGridView', array(
 			'minPrice'=>array(  
 				'type'=>'raw',
 				'name'=>Yii::t('general','Min Price') . ' (согласно оптовой максимальной скидке)', 
+				'value' => '$data->assortment->getPriceOptMax()',
+			),
+			'currentOptPrice'=>array(  
+				'type'=>'raw',
+				'name'=>Yii::t('general','Current Opt Price') . ' (согласно текущей оптовой скидке для клиента по группе товара)', 
 				'value' => '$data->assortment->getPriceOpt()',
 			),
 			'price'=>array(  

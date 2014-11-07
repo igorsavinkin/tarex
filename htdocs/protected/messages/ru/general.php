@@ -1,5 +1,7 @@
 <?php
 return array( 
+	 '{action} {controller}' => '{controller} {action}', // This is flipped in German: "subject verb"
+	
 	/* Discount */
 	'DiscountGroup'=>'Группа скидок',
 	'Discount Group'=>'Группа скидок',
@@ -108,7 +110,8 @@ return array(
 	'Add assortment to certain category'=>'Добавить номенклатуру в нужную категорию',
 	'Change category'=>'Изменить категорию',
 	'Parts categories'=>'Категории запчастей',
-	'Category'=>'Категория',
+	'All categories'=>'Все категории',
+	'Category'=>'Категория', 
 	'OPTICS'=>'ОПТИКА', 
 	'OPTICS '=>'ОПТИКА', 
 	'BRAKES'=>'ТОРМОЗНАЯ СИСТЕМА', 
@@ -785,6 +788,9 @@ return array(
 	'should contain exact 9 digits'=>'должен содержать 9 цифр',
 	'The cart content will be formed as new order and you might review and change its content'=>'Содержимое коризны будет сформировано в новый заказ и вы сможете просмотреть и изменить его.',
 	'Failure to form and save an order'=>'Невозможно сформировать и сохранить заказ',
+	'Additional info'=>'Дополнительная информация', 
+	'Set up discount groups value for this client' =>'Установить величину скидки для клиента по группам',
+	
 	/*Testtree*/
 	'Testtrees' => 'Тестовое дерево',
 	'Testtree' => 'Тестовое дерево',
@@ -1258,6 +1264,7 @@ return array(
 	'Cost in RUB'=>'Цена в Российских рублях',
 	
 	/* Miscellenious */
+	'Admin'=>'Управлять',
 	'a city'=> 'город',
 	'from date'=> 'от',
 	'till Date'=>'до Даты',

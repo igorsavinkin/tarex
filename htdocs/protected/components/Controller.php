@@ -30,10 +30,28 @@ class Controller extends CController
 		return $this->_isMobile;
 	}
 	
+	private $_pageTitle;
+	public function getPageTitle()
+	{
+        if($this->_pageTitle!==null) {
+                return Yii::t('general', $this->_pageTitle);
+        } else {
+                $controller = Yii::t('general', ucfirst(basename($this->getId())));
+                
+                if($this->getAction()!==null && strcasecmp($this->getAction()->getId(),$this->defaultAction)) {
+                        $action = Yii::t('general', ucfirst($this->getAction()->getId()));
+                        return $this->_pageTitle=Yii::app()->name.' - '.Yii::t('general', '{action} {controller}', array('{action}' => $action, '{controller}' => $controller));
+                } else {
+                        return $this->_pageTitle=Yii::app()->name.' - '.$controller;
+                }
+		}
+	}
+	
 	function init()
     {
         parent::init();   
-		
+		Yii::app()->clientScript->registerMetaTag("Автозапчасти для иномарок оптом по выгодным ценам, доставка в регионы - Тарекс тел. +7 (495) 785-88-50", 'description');
+		Yii::app()->clientScript->registerMetaTag('запчасти, опт, spare parts, wholesales, Russia, Россия', 'keywords');
 		// page size for the gridview
         try {
 			if (Yii::app()->user->isGuest) $this->pagesize = Yii::app()->params['defaultPageSize'];
@@ -57,9 +75,7 @@ class Controller extends CController
 		if ($this->getIsMobile()) {
 			//echo '<br>Mobile device<br />'; // it works
 			$this->layout='//layouts/mobile1';
-		}
-		 
-		//else $this->layout='//layouts/FrontendLayoutPavel';  
+		} 
 		
         $app = Yii::app();
         if (isset($_POST['_lang']))

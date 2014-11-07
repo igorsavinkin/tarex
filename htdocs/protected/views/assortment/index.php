@@ -1,7 +1,7 @@
 <?php 
 /* @var $this AssortmentController */
 /* @var $model Assortment */ 
-$this->widget("ext.magnific-popup.EMagnificPopup", array('target' => '.test-popup-link'));
+//$this->widget("ext.magnific-popup.EMagnificPopup", array('target' => '.test-popup-link'));
 
 /********************************** start of the Dialog box ******************************/
 ?>
@@ -105,15 +105,31 @@ echo Yii::t('general', 'Enter the amount of this assortment item');?>
 $this->endWidget('zii.widgets.jui.CJuiDialog');*/
 /******************************** end of the Dialog box *************************************/
 $item = Assortment::model()->findByPk($parent);
-if ( $item ) {
-	$make = $item->title;  
-	$par =Assortment::model()->findByPk($item->parent_id);  
+$grcategory = isset($_GET['Assortment']['groupCategory']) ? $_GET['Assortment']['groupCategory'] : 0;
+if ( $item OR $grcategory) { 
+	if ($item) {
+		$make = $item->title;  
+		$par =Assortment::model()->findByPk($item->parent_id);  
+		$breadcrumbs=array( Yii::t( 'general', 'All makes') => array('site/index'),
+				 $par->title => array('site/index', 'id'=>$par->id)	);
+		if ($grcategory) {
+			$breadcrumbs[$make] = array('assortment/index', 'id'=>$item->id);
+			$breadcrumbs[0] = Yii::t( 'general',  Category::model()->findByPk($_GET['Assortment']['groupCategory'])->name); 
+		}
+		else 	
+			$breadcrumbs[0]=$make;		
+    } else if ($grcategory) 
+	{	
+		$breadcrumbs = array(
+			Yii::t( 'general', 'All categories') => array('assortment/index'), 			 
+			Yii::t( 'general',  Category::model()->findByPk($grcategory)->name));
+	}	
+	
 	$this->widget('zii.widgets.CBreadcrumbs', array(
-		'links'=>array( 
-			 Yii::t( 'general', 'All makes') => array('site/index'),
-			 $par->title => array('site/index', 'id'=>$par->id),
-			 $make	)
-	));
+			'homeLink'=>false,
+			'links'=>$breadcrumbs
+		));
+	 
 } ?> 
 <div class='shift-right40'> 
 	<h1 ><?php  echo Yii::t('contact','Assortment list'); ?></h1>

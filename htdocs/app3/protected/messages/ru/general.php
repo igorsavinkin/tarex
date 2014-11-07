@@ -1,5 +1,12 @@
 <?php
 return array( 
+	 '{action} {controller}' => '{controller} {action}', // This is flipped in German: "subject verb"
+	
+	/* User Group Discount */
+	'User Group Discount'=>'Скидка пользователя по группе',
+	'The user\'s discounts by groups'=>'Скидки пользователя по группам',
+	
+	
 	/* Discount */
 	'DiscountGroup'=>'Группа скидок',
 	'Discount Group'=>'Группа скидок',
@@ -9,6 +16,8 @@ return array(
 	'Min Price'=>'Минимально допустимая цена',
 	'Base Price'=>'Основная цена',
 	'Current discount'=>'Текущая скидка',
+	'Current Opt Price'=>'Текущая цена оптового клиента',
+	
 	
 	/* Load Assortment from Excel file */
 	'Loading Assortment from Excel file'=>'Загрузка номенклатуры из Excel файла',
@@ -706,6 +715,7 @@ return array(
 	'Set as general manager'=> 'Назначить старшим менеджером',
 	'Set as accountant'=> 'Назначить бухгалтером',
 	'Delete'=>'Удалить',
+	'Delete Bulk'=>'Удалить несколько',
 	'Create new User'=>'Создать нового пользователя',
 	//'isLegalEntity' => 'юр. лицо',
 	'email' => 'Email',
@@ -784,6 +794,11 @@ return array(
 	'should contain exact 9 digits'=>'должен содержать 9 цифр',
 	'The cart content will be formed as new order and you might review and change its content'=>'Содержимое коризны будет сформировано в новый заказ и вы сможете просмотреть и изменить его.',
 	'Failure to form and save an order'=>'Невозможно сформировать и сохранить заказ',
+	'Additional info'=>'Дополнительная информация', 
+	'Discount groups'=>'Группы скидок',
+	'User Group Discounts'=>'Группы скидок пользователя',
+	'Set up discount groups value for this client' =>'Установить величину скидки для клиента по группам',
+		
 	/*Testtree*/
 	'Testtrees' => 'Тестовое дерево',
 	'Testtree' => 'Тестовое дерево',

@@ -17,7 +17,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . index.php
 
 
-ErrorDocument 404 /404.php
+#ErrorDocument 404 /404.php
 
 # Rewrite to no www
 RewriteEngine On

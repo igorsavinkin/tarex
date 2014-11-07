@@ -1102,8 +1102,17 @@ class AssortmentController extends Controller
 	}	
 	public function actionTest()
 	{
-		$schn = $this->findLastSchneiderNb($_GET['make']);
-		echo 'The Last Schneider Nb = ', $schn;
+		/*$schn = $this->findLastSchneiderNb($_GET['make']);
+		echo 'The Last Schneider Nb = ', $schn;*/
+		$assortment=Assortment::model()->findAll(array('select'=>'id, article', 'order'=>'id'));
+		$file = Yii::app()->basePath . '/../indexes' . date('Y-m-d') . '.txt';
+		$str='';
+		foreach($assortment as $a)
+		{
+			$str .=  $a->id.' ' .  $a->article . ','. PHP_EOL;
+		}
+		echo file_put_contents($file, $str), ' bytes were written into ', $file;
+		
 	}
 	
 	public function actionFillInSchneiderGr($make=null)

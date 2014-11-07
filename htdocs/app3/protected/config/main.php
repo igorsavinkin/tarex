@@ -50,6 +50,12 @@ return array(
 	
 	// application components
 	'components'=>array(
+	 	 /*'cache'=>array(
+            'class'=>'system.caching.CFileCache',
+            ), */
+		'memcache'=>array(
+		   'class'=>'system.caching.CMemCache',
+		 ),
 		'shoppingCart' =>
 			array(
 				'class' => 'ext.shoppingCart.EShoppingCart', /*.yiiext.components.*/

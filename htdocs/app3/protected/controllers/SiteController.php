@@ -42,7 +42,11 @@ class SiteController extends Controller
 		return array(
 			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
-		);
+			array(
+				'COutputCache + sitemapxml',
+				'duration' => 24 * 60 * 60 // cache for 24 hours
+			),
+		); 
 	}	 
 	public function actionIndex($page=null, $id=null)
 	{		 
@@ -58,14 +62,25 @@ class SiteController extends Controller
 	
 	public function actionSitemapxml()
 	{
-		//echo 'sitemap';
+		 //echo 'sitemap';
 		 $assortment=Assortment::model()->findAll(array(
-                'order'=>'date DESC', //'limit'=>'3',
+               // 'order'=>'date DESC',  
                 'condition'=>'priceS <> "0" ',
+				'select'=>'id',
         )); 
-		 	//print_r($assortment);
-         header('Content-Type: application/xml');
-         $this->renderPartial('sitemapxml', array('assortment'=>$assortment)); 
+		$makes = Assortment::model()->findAll(array( 
+                'condition'=>'depth = 2 ', 'select'=>'title, id', 'distinct'=>true
+        ));
+		$categories = Category::model()->findAll(array( 
+              'select'=>'id',  'condition'=>'isActive =1 '
+        ));
+		
+		//print_r($categories); Yii::app()->end();
+        header('Content-Type: application/xml');
+        $this->renderPartial('sitemapxml', array( 'assortment'=>$assortment,  
+			 'categories'=>$categories, 
+			 'makes'=>$makes
+		)); 
 	}
 	
 	public function actionBackend()

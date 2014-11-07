@@ -253,6 +253,14 @@ class Assortment extends CActiveRecord implements IECartPosition
 	{
 		return parent::model($className);
 	}  
+	public function getPriceOptMax()
+	{
+		$criteria=new CDbCriteria;
+		$criteria->compare('articles', $this->article, true); // нестрогое сравнение в поле Артикулы
+		$discount = DiscountGroup::model()->find($criteria)->value; 
+		//return isset($discount) ? $disc : '0';
+		return round($this->getCurrentPrice() * (1 + $discount/100), 2); 
+	}
 	public function getPriceOpt()
 	{
 		$criteria=new CDbCriteria;
