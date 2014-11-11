@@ -1,0 +1,12 @@
+@media print {
+  a[href]:after { /* убираем вывод ссылок */
+    content: none !important;
+  }
+  .row:not(.print) {  
+	/*content: none !important; */
+	display: none;
+  }
+  footer, .footer, .no-print {
+   display: none; content: none !important;
+   }
+}
