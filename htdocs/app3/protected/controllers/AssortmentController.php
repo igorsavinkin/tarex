@@ -858,7 +858,7 @@ class AssortmentController extends Controller
 					$assortment = Assortment::model()->findByPk($position->getId());
 					$content->assortmentTitle = $assortment->title; // заносим title номенклатуры из корзины 						
 					$content->assortmentId = $assortment->id; // заносим id номенклатуры из корзины 						
-					$content->price = $position->getPrice();			 	
+					$content->price = $position->getPrice(Yii::app()->user->id);			 	
 					$content->assortmentAmount = $position->getQuantity();// заносим количество наименования номенклатуры из корзины 	
 					$content->cost = $content->price * $content->assortmentAmount; // заносим cost
 					$totalCost += $content->cost;
@@ -981,7 +981,7 @@ class AssortmentController extends Controller
 						$assortment = Assortment::model()->findByPk($position->getId());
 						$content->assortmentId = $assortment->id; // заносим id номенклатуры из корзины 
 						$content->assortmentTitle = $assortment->title; // заносим title номенклатуры из корзины 
-						$content->price = $position->getPrice();		 
+						$content->price = $position->getPrice(Yii::app()->user->id);		 
 						$content->assortmentAmount = $position->getQuantity();// заносим количество наименования номенклатуры из корзины 	
 						$content->cost = $content->price * $content->assortmentAmount; // заносим cost
 						$totalCost += $content->cost;

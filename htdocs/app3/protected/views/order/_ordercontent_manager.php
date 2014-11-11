@@ -59,18 +59,21 @@ $this->widget( 'zii.widgets.grid.CGridView', array(
 				'value' => '$data->assortment->getDiscountOpt('. $model->contractorId . ')',
 				'visible'=>$contractorIsOpt, 
 			),
-			'price'=>array(  
+			'discount'=>array(  
 			 	'type'=>'raw',
-				'name'=>'price',
-				'value' => array($this, 'priceDataField'),
-				
-			),   
-			'currentDiscount'=>array(  
+				'name'=>Yii::t('general','Current discount') . ', %',
+				'value' => array($this, 'discountDataField'),				
+			),  
+		/*	'currentDiscount'=>array(  
 				'type'=>'raw',
 				'name'=>Yii::t('general','Current discount') . ', %', 
 				'value' => 'round(($data->price - $data->assortment->getCurrentPrice())/$data->assortment->getCurrentPrice()*100, 2)',
-			),
-		
+			),*/
+			'price'=>array(  
+			 	'type'=>'raw',
+				'name'=>'price',
+				'value' => array($this, 'priceDataField'),				
+			),   					
 		 /*   'RecommendedPrice'=>array(
 				'name'=>'RecommendedPrice',
 				'header'=>Yii::t('general','Recommended Price') . ' (цена с учётом скидки в Ценоообразовании)', 
@@ -136,7 +139,7 @@ $this->endWidget();?>
 </div>
 <style>  
 .difference { background-color: yellow; } 
-.green {background-color:  green;} 
+.green {background-color: #33CC33;} 
 .lime {background-color:  lime;} 
 .blue { background-color: #3399FF;} 
 .redbgcolor { background-color: #FF717E;} 

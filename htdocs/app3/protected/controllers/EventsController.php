@@ -895,6 +895,25 @@ class EventsController extends Controller
 		$button = CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','Save')) ,  array('eventContent/updateEventcontent', 'name' => 'savePrice'), array('success'  => 'js:  function() { $.fn.yiiGridView.update("orderscontent");}'), array('style'=>'float:right;')); 
 		
 		return $field . $button; 	         
+    }
+	protected function discountDataField($data,$row)
+     { 
+		$field =  CHtml::textField('EventContent[discount][' . $data->id .']', 
+			round(($data->price - $data->assortment->getCurrentPrice())/$data->assortment->getCurrentPrice()*100, 2),  
+			array( 
+				'style'=> 'width:45px',
+				'ajax' => array(
+				'type'=>'POST', 
+				'url'=>CController::createUrl('/eventContent/updateEventContent'),
+				'success' =>'js: function() { /* here we update the current Grid with id = "orderscontent" */
+								$.fn.yiiGridView.update("orderscontent");
+								}',					
+					)
+				)
+		);		
+		$button = CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','OK')) ,  array('eventContent/updateEventcontent', 'name' => 'saveDiscount'), array('success'  => 'js:  function() { $.fn.yiiGridView.update("orderscontent");}'), array('style'=>'float:right;')); 
+		
+		return $field . $button; 	         
     } 
 	
 	protected function titleDataField($data,$row)

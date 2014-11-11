@@ -60,7 +60,7 @@ class DiscountGroup extends CActiveRecord
 	{
 		if (!$article) return 'no article';
 		$criteria=new CDbCriteria;
-		$criteria->compare('articles', $this->article, true); // нестрогое сравнение в поле Артикулы
+		$criteria->compare('articles', $article, true); // нестрогое сравнение в поле Артикулы
 		$discountGroup = DiscountGroup::model()->find($criteria);  
 		return isset($discountGroup) ? $discountGroup->name : '';
 	}	
@@ -68,7 +68,7 @@ class DiscountGroup extends CActiveRecord
 	{
 		if (!$article) return 'no article';
 		$criteria=new CDbCriteria;
-		$criteria->compare('articles', $this->article, true); // нестрогое сравнение в поле Артикулы
+		$criteria->compare('articles', $article, true); // нестрогое сравнение в поле Артикулы
 		$discountGroup = DiscountGroup::model()->find($criteria);  
 		return isset($discountGroup) ? $discountGroup->prefix : '';
 	}	
@@ -76,8 +76,8 @@ class DiscountGroup extends CActiveRecord
 	{
 		if (!$article) return 0;
 		$criteria=new CDbCriteria;
-		$criteria->compare('articles', $this->article, true); // нестрогое сравнение в поле Артикулы
-		$discountGroup = DiscountGroup::model()->find($criteria);  
+		$criteria->compare('articles', $article, true); // нестрогое сравнение в поле Артикулы
+		$discountGroup = DiscountGroup::model()->find($criteria);   
 		return isset($discountGroup) ? $discountGroup->id : 0;
 	}	
 }

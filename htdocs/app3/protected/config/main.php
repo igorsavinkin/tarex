@@ -91,6 +91,7 @@ return array(
 			'rules'=>array(					
 				//'sitemap.xml/*'=>'/site/sitemapxml', 
 				array('site/sitemapxml', 'pattern'=>'sitemap.xml', 'urlSuffix'=>''),
+				
 				  
 		/*		// '<controller:\w+>/<action:\w+>/<Reference:\w+(\+)?(\w)? >'=>'<controller>/<action>', '<controller:\w+>/<action:\w+>
 			  //<Subsystem:\w+(\+)?(\S)?(\+)?(\w)?(\+)?(\w)? >'=>'<controller>/<action>',

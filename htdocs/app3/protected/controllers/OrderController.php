@@ -300,9 +300,9 @@ class OrderController extends EventsController
 			$eventContent->assortmentTitle = $item->title;
 			$eventContent->eventId = $id;
 			$eventContent->assortmentAmount = $_POST['Assortment']['amount'];			
-			$eventContent->price = $item->getPriceOpt($model->contractorId); // здесь учтываются  цены и для оптового и для розничного клиентов.
+			//$eventContent->price = $item->getPriceOpt($model->contractorId); // здесь учтываются  цены и для оптового и для розничного клиентов.
 			
-			//$eventContent->price = $eventContent->RecommendedPrice = $item->getPrice($model->contractorId);	 
+			$eventContent->price = $eventContent->RecommendedPrice = $item->getPrice($model->contractorId);	 
 
 			// считаем новые стоимость и стоимость со скидкой
 			$eventContent->cost = $eventContent->price * $eventContent->assortmentAmount;           

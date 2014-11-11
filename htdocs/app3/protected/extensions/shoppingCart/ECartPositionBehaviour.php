@@ -35,7 +35,12 @@ class ECartPositionBehaviour extends CActiveRecordBehavior {
      *
      */
     public function getSumPrice($withDiscount = true) {
-        $fullSum = $this->getOwner()->getPrice() * $this->quantity;
+        if (isset(Yii::app()->user->id) && !empty(Yii::app()->user->id)) {
+			$fullSum = $this->getOwner()->getPrice(Yii::app()->user->id) * $this->quantity;
+			return $fullSum;
+		}
+		else	
+			$fullSum = $this->getOwner()->getPrice() * $this->quantity;
         if($withDiscount)
             $fullSum -=  $this->discountPrice;
         return $fullSum;

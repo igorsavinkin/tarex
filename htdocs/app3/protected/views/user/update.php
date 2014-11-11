@@ -31,7 +31,7 @@ $this->widget('CTabView', array(
 			),	
 			'tab3'=>array(
 				'title'=>Yii::t('general', 'Discount groups'),  
-				'view'=>'_discount_groups', 
+				'view'=>'_discount_groups_new', 
 				'data'=>array('model'=>$model,
 									'userGroupDiscount' => $userGroupDiscount),
 				'visible'=>Yii::app()->user->checkAccess(User::ROLE_MANAGER) && (User::model()->findByPk($model->id)->role == User::ROLE_USER),

@@ -299,7 +299,8 @@ $('.notes').bind('blur', function(e) {
 				if (Eventtype::model()->findbypk($r))
 					$events[$r] = yii::t('general', Eventtype::model()->findbypk($r)->name);			
 		
-		if (!empty($events)) 
+// если есть события и пользователь - менеджер		
+		if (!empty($events) && Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
 		{
 			?>
 		 <h3><?php echo Yii::t('general', 'Create new event on the basis of this event'); ?></h3> 

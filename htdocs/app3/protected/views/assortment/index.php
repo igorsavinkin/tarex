@@ -232,7 +232,7 @@ if ($dataProvider->itemCount)
 			'oem',
 			'manufacturer',
 			array(
-				'value'=>'$data->getPriceOpt('.Yii::app()->user->id.')', //'$data->getPrice()',
+				'value'=>'$data->getPrice('.Yii::app()->user->id.')', //'$data->getPriceOpt()',
 				'header' => Yii::t('general', 'Price'),
 			),	  
 			'availability'=>array(
