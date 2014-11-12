@@ -1,4 +1,4 @@
-html, body
+﻿html, body
 {
     margin:0;
     padding:0;
@@ -14,7 +14,7 @@ a.btn-win
 {
 text-decoration: none;
 padding: 5px;
-margin: 5px;
+margin: 5px;.tar_cat_invis
 border: solid 2px #06c;
 cursor: pointer;
 } a.btn-win:hover, a.btn-win:focus {
@@ -787,7 +787,8 @@ footer
 }
 .tar_cat_invis
 {
-    overflow: hidden;
+     overflow: hidden; 
+     
 }
 
 

@@ -3,6 +3,28 @@ include('EventsController.php');
 	
 class OrderController extends EventsController 
 { 
+/*	public function accessRules()
+	{
+		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view', 'denisTpl', 'clone2', 'create2', 'test3', 'test1'), 
+				'users'=>array('*'),
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('create', 'update', 'update2', 'admin', 'PrintSF', 'PrintOrder', 'PrintSchet', 'PrintPPL', 'PrintPPL2', 'LoadContent','loadContent', 'clone'),
+				'users'=>array('@'),  
+			), 
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('delete'), 
+				'roles'=>array(User::ROLE_ADMIN),  
+			),
+			array('allow',  // deny all users
+				'users'=>array('*'),
+			),
+		);
+	} 
+*/	
+	
 	public function loadModel($id)
 	{
 		$model=Order::model()->findByPk($id);
@@ -14,7 +36,18 @@ class OrderController extends EventsController
 	
 	public function actiontest1()
 	{
-		echo 'test1';		
+		echo 'test1';
+		/*
+		$model=new Order('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Order']))
+			$model->attributes=$_GET['Order'];
+
+		$this->render('test1',array(
+			'model'=>$model,
+		));
+		*/
+		
 	}
 	
 	public function actionAdmin()
@@ -29,7 +62,9 @@ class OrderController extends EventsController
 
 		$this->render('admin',array(
 			'model'=>$model,
-		));		
+		));
+		
+		
 	} 	
  
 	public function actionIndex()
@@ -58,6 +93,7 @@ class OrderController extends EventsController
 		
 		} // ???
 					
+		//$LoadDataSettings=LoadDataSettings::model()->findByPk($_POST['LoadDataSettingsID']); 
 		$LoadDataSettings=LoadDataSettings::model()->findByPk($_POST['LoadDataSettings']['id']);  
 		
 	    //print_r($LoadDataSettings);
@@ -83,9 +119,15 @@ class OrderController extends EventsController
 		//echo $CurrentRate;
 				
 		//$upfile = $_POST['FileUpload1'];	
-		$upfile = CUploadedFile::getInstance('FileUpload1', 0);	 
-		$Order=new Events; 
-		if ($upfile) {  
+		$upfile = CUploadedFile::getInstance('FileUpload1', 0);	
+		//if (isset($_POST['add-to-event']) && isset($_POST['Assortment']))
+		$Order=new Events;
+		//$upfile = CUploadedFile::getInstance('FileUpload1', 0);		
+		//if (isset( $_POST['FileUpload1'])) { 
+		//print_r($upfile);
+		if ($upfile) { 
+			//echo 'FileUpload1 '.$_POST['FileUpload1'];
+			//$Order->attributes=$_POST['Item'];
             $Order->file=$upfile;
 			//print_r($Order->file->name);
 			if (strstr($Order->file->name, 'xlsx')){
@@ -293,15 +335,13 @@ class OrderController extends EventsController
 // если что-то из ассортимента добавляется в событие
 		if (isset($_POST['add-to-event']) && isset($_POST['Assortment']))
 		{
-			//echo 'RecommendedPrice1 '. $eventContent->RecommendedPrice;
+			echo 'RecommendedPrice1 '. $eventContent->RecommendedPrice;
 			$item = Assortment::model()->findByPk($_POST['Assortment']['id']);
 			$eventContent = new EventContent;
 			$eventContent->assortmentId = $item->id;
 			$eventContent->assortmentTitle = $item->title;
 			$eventContent->eventId = $id;
 			$eventContent->assortmentAmount = $_POST['Assortment']['amount'];			
-			//$eventContent->price = $item->getPriceOpt($model->contractorId); // здесь учтываются  цены и для оптового и для розничного клиентов.
-			
 			$eventContent->price = $eventContent->RecommendedPrice = $item->getPrice($model->contractorId);	 
 
 			// считаем новые стоимость и стоимость со скидкой
@@ -782,7 +822,7 @@ class OrderController extends EventsController
     	$field =  CHtml::textField('EventContent[price][' . $data->id .']', 
 			$data->price,  
 			array( 
-				'style'=> 'width:55px',
+				'style'=> 'width:45px',
 				'ajax' => array(
 				'type'=>'POST', 
 				'url'=>CController::createUrl('/eventContent/updateEventContent', array( 'name' => 'savePrice')),
@@ -806,8 +846,7 @@ class OrderController extends EventsController
 						}'),  array('style'=>'float:right;'));
 						
 	    return $field . $button; 	         
-	}
-	 
+	} 
 // ---- Написание суммы прописью
 	public function num2str($num) 
 	{

@@ -28,11 +28,11 @@ class UserController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'update' actions
-				'actions'=>array('update', 'print'),  
-				'expression'=>array($this, 'UpdateUser'),
+				'actions'=>array('update'), 
+				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create',  'admin', 'sendinvitation',  'sendinvitation2', 'adminPersonal'), 
+				'actions'=>array('create',  'admin', 'sendinvitation', 'adminPersonal'), 
 				'roles'=>array(1, 2, 3, 4, 5),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -45,19 +45,6 @@ class UserController extends Controller
 		);
 	}
  
-	public function actionPrint($id)
-	{ 
-		$user = User::model()->findByPk($id);
-		
-		$message = "<h1>Клиент ТАРЕКС <em>{$user->username}</em><br>
-					<table border=1> 
-					<tr><td><h3>Телефон</td><td><h3><em>{$user->phone}</td></tr>
-					<tr><td><h3>Email</td><td><h3><em>{$user->email}</td></tr> 
-					<tr><td><h3>Адрес</td><td><h3><em>{$user->address}</td></tr> 
-					<tr><td><h3>Заметки</td><td><h3><em>{$user->notes}</td></tr>
-					</table>";
-		echo "<html><head></head><body onload='window.print()' >{$message}</body></html>"; 
-	}
 	public function actionView($id)
 	{
 		$this->render('view',array(
@@ -119,46 +106,7 @@ class UserController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$model->scenario = 'insert';	 
-		
-		$userGroupDiscount = new UserGroupDiscount;
-		if(isset($_POST['UserGroupDiscount']))
-		{
-			$userGroupDiscount->attributes=$_POST['UserGroupDiscount'];
-			//print_r($userGroupDiscount);
-			//$userGroupDiscount->save(false);
-		}
-		
-		if(isset($_POST['bulkDelete']) && isset($_POST['UserGroupDiscountId']))
-		{
-			UserGroupDiscount::model()->deleteByPk($_POST['UserGroupDiscountId']);
-			$this->redirect(array('update', 'id'=>$id, '#'=>'tab3'));
-		}
-		
-		if(isset($_POST['groups']) && isset($_POST['user-group-discount']))
-		{
-			foreach($_POST['groups'] as $group)
-			{
-			     //$userGr =  UserGroupDiscount::model()->findByAttributes(array('userId'=>$id, 'discountGroupId'=> $group));
-				if (UserGroupDiscount::model()->updateAll(
-					array('value'=>$_POST['value']), // обновляемые атрибуты
-					' `userId` = :userId  AND `discountGroupId`=:discountGroupId', // query condition
-					array(':userId' => $id,  ':discountGroupId' => $group ) // параметры
-				)){} // просто обновили
-				// if ($userGr) $userGr->value= $_POST['value'];
-				 else 
-				 {
-					 $userGr = new UserGroupDiscount;
-					 $userGr->userId= $id;
-					 $userGr->discountGroupId= $group;
-					 $userGr->value= $_POST['value']; 
-					 $userGr->save(); 
-				 }
-				
-			} 
-			$this->redirect(array('update', 'id'=>$id, '#'=>'tab3'));
-		}
-		
+		$model->scenario = 'insert';	
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User']; 			
@@ -182,7 +130,6 @@ class UserController extends Controller
 		$model->carMakes = ($model->carMakes) ? explode(',', $model->carMakes) : array();
 		$this->render('update',array(
 			'model'=>$model,
-			'userGroupDiscount'=>$userGroupDiscount,
 		));
 	}
 	
@@ -287,92 +234,18 @@ EOF;
 		
 		$profilelink = CHtml::Link('ссылке', $this->createAbsoluteUrl('update', array( 'id'=> $id)));
 		$contract = CHtml::Link('этой ссылке', $this->createAbsoluteUrl('update', array( 'id'=> $id, '#'=>'tab2')));
-		$directLink = CHtml::LInk(Yii::t('general', 'Click to login') ,  $this->createAbsoluteUrl("site/login", array( 'p'=>$client->password, 'email'=>$client->email, 'redirect'=>'assortment/admin')));
-		
 		$message = "Уважаемый <b>{$client->username}</b>,<br /> 
-			Мы рады пригласить Вас на наш сайт для совместного сотрудничества. Ваш профиль уже создан.<!--Перейдите на него по этой {$profilelink}.<br/>
-			Посмотрите условия договора по {$contract}.<br />			-->
+			Мы рады пригласить Вас на наш сайт для совместного сотрудничества. Ваш профиль уже создан. Перейдите на него по этой {$profilelink}.<br/>
+			Посмотрите условия договора по {$contract}.<br />			
 			Для входа в систему используйте cледующие данные:<br /> 
 		Email: <b>{$client->email}</b><br />
-		Пароль: <b>{$client->password}</b><br />
-		{$directLink}.
-		<br /><br />
+		Пароль: <b>{$client->password}</b><br /><br />
 		С уважением, Ваш менеджер <em>{$manager->username}</em> {$manager->phone}"; 
 	    $subject = '=?UTF-8?B?'.base64_encode('Приглашение на сайт автозапчастей TAREX.ru').'?=';
 		if (mail(  $client->email , $subject  , $message , "From: {$from}\r\nContent-type: text/html; charset=UTF-8\r\nMime-Version: 1.0\r\n")) {
 			Yii::app()->user->setFlash('success', 'Клиенту выслано письмо с его данными для входа и ссылкой на договор.'); 
 			}
 		$this->redirect(array('update','id'=>$client->id));
-	}
-	
-	public function actionSendinvitation2($id) // sendInvitation
-	{
-		$client = $this->loadModel($id);
-		if (isset($_POST['url']) OR isset($_POST['Manufacturer']['id']) )
-		{	 			
-			$manager = $this->loadModel(Yii::app()->user->id); 
-			$from = '=?UTF-8?B?'.base64_encode($manager->username . ' <'. $manager->email . '>').'?=';
-			
-			$profilelink = CHtml::Link('ссылке', $this->createAbsoluteUrl('update', array( 'id'=> $id)));
-			$contract = CHtml::Link('этой ссылке', $this->createAbsoluteUrl('update', array( 'id'=> $id, '#'=>'tab2')));
-			
-	// мы формируем token (жетон) для клиента чтобы войти в систему.	
-		// When should this token expire?
-			$expiryTimestamp = strtotime("+3 hours");
-			$mySecret = "моё имя Игорь Савинкин";
-			$token = md5($id . $expiryTimestamp . $mySecret);
-		// Put parameters together into a link  -  безопасная ссылка
-			$link = CHtml::Link(Yii::t('general', 'Click to login (secure)'),  $this->createAbsoluteUrl("site/login", array( 
-				'token'  => $token, 
-				'userId' => $id, 
-				'expiry' => $expiryTimestamp,
-				 'redirect'=>'assortment/index', 
-				 'id'=>$_POST['Manufacturer']['id'],
-				 'url'=>$_POST['url'], )
-			)); 
-		
-		// небезопасная ссылка		
-			$directLink = CHtml::Link(Yii::t('general', 'Click to login') ,  $this->createAbsoluteUrl("site/login", array( 'p'=>$client->password, 'email'=>$client->email, 'redirect'=>'assortment/index', 'url'=>$_POST['url'], 'id'=>$_POST['Manufacturer']['id'])));
-			//	{$directLink}.
-			$message = "Уважаемый <b>{$client->username}</b>,<br /> 
-				Мы рады пригласить Вас на наш сайт для совместного сотрудничества. Ваш профиль уже создан.<!--Перейдите на него по этой {$profilelink}.<br/>
-				Посмотрите условия договора по {$contract}.<br />		
-				Для входа в систему используйте cледующие данные:<br /> 
-			Email: <b>{$client->email}</b><br />
-			Пароль: <b>{$client->password}</b><br />	-->
-			Для входа в систему используйте ссылку ниже:<br /> 
-			{$link}. Действие ссылки истекает через 3 часа. 
-			<br /><br />
-			С уважением, Ваш менеджер <em>{$manager->username}</em> {$manager->phone}"; 
-			$subject = '=?UTF-8?B?'.base64_encode('Приглашение на сайт автозапчастей TAREX.ru').'?=';
-			if (mail(  $client->email , $subject  , $message , "From: {$from}\r\nContent-type: text/html; charset=UTF-8\r\nMime-Version: 1.0\r\n")) {
-				Yii::app()->user->setFlash('success', 'Клиенту выслано письмо с его данными для входа и ссылкой на договор.'); 
-				}
-			$this->redirect(array('update','id'=>$client->id));
-		}
-		// формируем массив марок для выбора в eSelect2
-    	$criteria = new CDbCriteria;
-		$criteria->compare('depth', 2);	
-		$criteria->order = 'title ASC';			
-		$criteria->select = array('title', 'id');			
-		$manufacturers = Assortment::model()->findAll($criteria);
-		
-		/*$makesAll=array();												
-		foreach($manufacturers as $m)
-		{ 
-			// все данные
-			$Parent=Assortment::model()->findByPk($m->parent_id);
-			if($Parent->title=='ГРУЗОВИКИ')
-				$makesgrAll[$m->id] =  $m->title; 
-			else 
-				$makesAll[$m->id] =  $m->title; 
-*/
-		
-		$this->render('invitation',array(
-			'manufacturers'=>$manufacturers,
-			'model'=>new Assortment,
-			'client'=>$client,
-		));	
 	}
 
 	public function actionAdmin()
@@ -474,15 +347,4 @@ EOF;
 		} else return $children;
 		return $children;
 	}
-	public function UpdateUser($user, $rule) 
-	{ 
-	// если это суперадмин или старше менеджера или если id текущего пользователя равно $_GET['id'] - тогда позволено смотреть/редактировать
-		if ($user->checkAccess(User::ROLE_SENIOR_MANAGER) OR $user->id == $_GET['id']) return true; 
-	
-	// если это менеджер и он - родитель этого клиента - тогда можно смотреть/редактировать	
-		if( $user->checkAccess(User::ROLE_MANAGER) && User::model()->findByPk($_GET['id'])->parentId == $user->id) return true; 
-	  
-		return false;
-	}
-	
 }

@@ -10,6 +10,11 @@ class EventsController extends Controller
 		);
 	}
 
+	/**
+	 * Specifies the access control rules.
+	 * This method is used by the 'accessControl' filter.
+	 * @return array access control rules
+	 */
 	public function accessRules()
 	{
 		return array( 
@@ -18,19 +23,16 @@ class EventsController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create', 'update2', 'PrintSF', 'PrintOrder', 'PrintSchet', 'PrintLabels', 'PrintPPL', 'PrintPPL2', 'LoadContent', 'loadContent', 'clone', 'bulkActions'),
+				'actions'=>array('create', 'update', 'update2', 'PrintSF', 'PrintOrder', 'PrintSchet', 'PrintLabels', 'PrintPPL', 'PrintPPL2', 'LoadContent','loadContent', 'clone', 'bulkActions'),
 				'users'=>array('@'),  
 			), 
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin'),
-				'users'=>array('@'),   
-			), 
-			array('allow', 
-				'actions'=>array('update'), 
-				//	'users'=>array('@'),  
-				'expression'=>array($this, 'UpdateEvent'),
+				'users'=>array('@'),  
+			//	'roles'=>array(User::ROLE_ADMIN),  
+			//	'expressions'=>array(User::ROLE_ADMIN),  
 			),
-			array('allow',  
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('delete'), 
 				'roles'=>array(User::ROLE_ADMIN),  
 			),
@@ -826,7 +828,7 @@ class EventsController extends Controller
 			Yii::app()->end();
 		}
 	} 
-	/*public function UpdateEvent($user, $rule)
+	public function UpdateEvent($user, $rule)
 	{ 
 		if ($user->checkAccess('1')) return true; // если это суперадмин - тогда ему позволено
 		$event = Events::model()->findByPk($_GET['id']);// получаем само событие
@@ -844,9 +846,9 @@ class EventsController extends Controller
 			// находим родителя и проверяем есть ли соответствие родителя если родитель - менеджер (не обязательно новое)	
 			if ($user->checkAccess('5') && ($user->id == User::model()->findByPk($u->UserId)->parentId)) return true;					
 		}
-		 
+		*/
 		return false;
-	}*/
+	}
 	
 	 protected function amountDataField($data,$row)
      { // ... generate the output for the column
@@ -895,25 +897,6 @@ class EventsController extends Controller
 		$button = CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','Save')) ,  array('eventContent/updateEventcontent', 'name' => 'savePrice'), array('success'  => 'js:  function() { $.fn.yiiGridView.update("orderscontent");}'), array('style'=>'float:right;')); 
 		
 		return $field . $button; 	         
-    }
-	protected function discountDataField($data,$row)
-     { 
-		$field =  CHtml::textField('EventContent[discount][' . $data->id .']', 
-			round(($data->price - $data->assortment->getCurrentPrice())/$data->assortment->getCurrentPrice()*100, 2),  
-			array( 
-				'style'=> 'width:45px',
-				'ajax' => array(
-				'type'=>'POST', 
-				'url'=>CController::createUrl('/eventContent/updateEventContent'),
-				'success' =>'js: function() { /* here we update the current Grid with id = "orderscontent" */
-								$.fn.yiiGridView.update("orderscontent");
-								}',					
-					)
-				)
-		);		
-		$button = CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','OK')) ,  array('eventContent/updateEventcontent', 'name' => 'saveDiscount'), array('success'  => 'js:  function() { $.fn.yiiGridView.update("orderscontent");}'), array('style'=>'float:right;')); 
-		
-		return $field . $button; 	         
     } 
 	
 	protected function titleDataField($data,$row)
@@ -953,40 +936,25 @@ class EventsController extends Controller
 					return 'isCustomer';
 			}
 	}
-	public function UpdateEvent($user, $rule)
+/*	public function UpdateEvent($user, $rule)
 	{ 
-		if ($user->checkAccess(User::ROLE_ADMIN)) return true; // если это суперадмин - тогда ему позволено
-		$event = Events::model()->findByPk($_GET['id']);// получаем само событие
+		if ($user->checkAccess('1')) return true; // если это суперадмин - тогда ему позволено
+		$event = DocEvents::model()->findByPk($_GET['id']);// получаем само событие
 		// если это старший менеджер или директор - тогда ему позволено редактировать любые события в своей компании 
-		if($user->organization == $event->organizationId) 
-		{
-			if ( $user->checkAccess(User::ROLE_SENIOR_MANAGER)) return true; 
-			// если это менеджер - тогда ему позволено редактировать событие где он   автор или события своих подчинённых
-			elseif ( $user->checkAccess(User::ROLE_MANAGER)  && ($user->id == $event->authorId OR $user->id == User::model()->findByPk($event->contractorId)->parentId) ) return true; 
-			// если это пользователь - тогда ему позволено редактировать событие где он или автор или контрагент
-			elseif ( $user->checkAccess(User::ROLE_USER_RETAIL)   && ($user->id == $event->authorId OR $user->id == $event->contractorId ) ) return true; 
-		}
-		return false;
+		if ( $user->checkAccess('4') && ($user->organization == $event->organizationId)) return true; 
 		
 		// если это не новое событие, то тогда его уже нельзя редактировать ни менеджерам ни владельцу-пользователю
 		//if ($event->StatusId != DocEvents::STATUS_NEW) return false;
 		// пока убрал это для TAREX
 		
-	/*	if ( $user->checkAccess(ROLE_SENIOR_MANAGER) && ($user->id == $event->organizationId)) return true; // если это (старший) менеджер или директор - тогда ему позволено смотреть любые события в своей компании 
+		if ( $user->checkAccess('5') && ($user->id == $event->organizationId)) return true; // если это (старший) менеджер или директор - тогда ему позволено смотреть любые события в своей компании 
 		foreach (DocEventUsers::model()->findAllByAttributes(array('EventId' => $_GET['id'])) as $u)
 		{ //пользователь есть на это событие и его права редактированиe или редактированиe и удалениe и это событие со статусом новое 
 			if ($user->id == $u->UserId && $u->AccessId >= 2 && $event->StatusId == DocEvents::STATUS_NEW) return true;			
 			// находим родителя и проверяем есть ли соответствие родителя если родитель - менеджер (не обязательно новое)	
 			if ($user->checkAccess('5') && ($user->id == User::model()->findByPk($u->UserId)->parentId)) return true;					
 		}
-		*/
-		
+		return false;
 	}
-	public function getDiscount($data,$row)
-	{
-		$criteria=new CDbCriteria;
-		$criteria->compare('articles', $data->article, true); // нестрогое сравнение в поле Артикулы
-		$disc = DiscountGroup::model()->find($criteria)->value; 
-		return  isset($disc) ? $disc : '0';
-	}			
+	*/
 }

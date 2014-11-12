@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -228,6 +228,7 @@
 								<?php // содержимое из cоответствующего view 
 									 echo $content; 
 								?>
+							
 								<a href='#' id='btn-up' style=''><img src='images/btn-up.png' width='35px' alt="" /></a>
 								<!--/div><!--tar_cat_top_regular-->
 								<div class="pad"></div>
@@ -719,7 +720,7 @@ Yii::app()->clientScript->registerScript('hide-for-assortment', "
 	$('.tar_category_vis').animate({width:'0' }, 0, function(){
 		$('.tar_category_vis').css('overflow','visible'); // on complete
 	});  
-	$('.tar_category_vis').css('width','0px');
+        $('.tar_category_vis').css('width','0px');
 	$('.tar_badge_vis').css({right:'-30px'});
 	//	$('.tar_category_vis').addClass('hidden');
 	//	getElementByClassName('tar_cat_invis').setAttribute('style','width:0');		
@@ -763,7 +764,7 @@ Yii::app()->clientScript->registerScript('hide-for-assortment', "
 			$('.tar_cat_top').css({marginLeft:'0', width: w + 'px'});
 			$('.tar_cat_bot').css({marginLeft:'0', width: w + 'px'});
 			$('.tar_cat_invis').css({width:'0', height:'0'});		
-			$('.tar_category_vis').animate({width:'0' }, 0, function(){
+		        $('.tar_category_vis').animate({width:'0' }, 0, function(){
 				$('.tar_category_vis').css('overflow','visible'); // on complete
 			});  
 			//  $('.tar_category_vis').css('width','0px');
@@ -820,7 +821,7 @@ Yii::app()->clientScript->registerScript('hide-for-assortment', "
     <!--});-->
 <!--</script>-->
 
-<script type="text/javascript">
+<script>
     if($(window).width() > 1200){
         $(function(){
             $('.tar_badge_vis').on('click',function(){

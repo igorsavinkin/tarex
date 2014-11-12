@@ -27,7 +27,7 @@ $('.search-form form').submit(function(){
 
 <?php echo CHtml::link(Yii::t('general','Advanced Search'),'#',array('class'=>'search-button'));echo CHtml::link(Yii::t('general','Create'),array('create'),array('class'=>'btn-win')); ?>
 <div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(	'model'=>$model,)); ?>
+<?php // $this->renderPartial('_search',array(	'model'=>$model,)); ?>
 </div><!-- search-form -->
 
 <?php 

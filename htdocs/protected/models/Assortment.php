@@ -254,14 +254,104 @@ class Assortment extends CActiveRecord implements IECartPosition
 		return parent::model($className);
 	}  
 	
-	public function getPrice($ContractorId=''){ // учитывает скидку клиента (залогиненного) И скидку исходя из настроек ценнообразования Pricing
+	public function getPriceOptMax()
+	{
+		$criteria=new CDbCriteria;
+		$criteria->compare('articles', $this->article, true); // нестрогое сравнение в поле Артикулы
+		$discount = DiscountGroup::model()->find($criteria)->value; 
+		//return isset($discount) ? $disc : '0';
+		return round($this->getCurrentPrice() * (1 + $discount/100), 2); 
+	}
+	public function getDiscountOpt($contractorId=null )
+	{ 
+		$discGroupName = DiscountGroup::getDiscountGroupName($this->article2);
+		$discGroupId = DiscountGroup::getDiscountGroup($this->article2);
+		if(!$discGroupId) 
+			return Yii::t('general','no discount group applied');
+	
+	//	echo 'contractor: ', $contractorId, '; ';
+		if ($contractorId) 
+		{
+			$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$contractorId,'discountGroupId'=>$discGroupId /*$discountGroup->name*/));
+			if(isset($ugd)) 
+				 return $ugd->value . '% ('. $discGroupName. ')';  
+			else 		
+				 return '('.$discGroupName.')'; //$discountGroup->name;
+		}
+		return Yii::t('general', 'no contractor given'); 
+	}
+	public function getPriceOpt($contractorId=null ) 
+	{ 	
+		if ($contractorId) 
+		{	
+			$UserRole = User::model()->findByPk($contractorId)->role;
 		
-		if ( $ContractorId==''){
+		// если это розничный клиент тогда мы выдаём цену с его скидкой из Ценообразования:  $this->getPrice($contractorId)			
+			if ($UserRole == User::ROLE_USER_RETAIL) 
+				return $this->getPrice($contractorId); // . ' retail';
+		
+		// если это оптовый клиент	то тогда ищем скидки в группах скидок для этого клиента по артикулу позиции	($this->article2)
+			if ($UserRole == User::ROLE_USER) 
+			{    
+				$discGroupId = DiscountGroup::getDiscountGroup($this->article2); 
+				$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$contractorId,'discountGroupId'=>$discGroupId ));
+				return isset($ugd) ? round($this->getCurrentPrice() * (1 + $ugd->value/100), 2) : $this->getCurrentPrice();  	 
+			}
+		}
+	 // если не задан контрагент или ни одно условие не выполнено, тогда выдаём базовую цену.
+		return $this->getCurrentPrice(); //Yii::t('general', 'no contractor given'); 
+	} 
+ 	public function getPrice($ContractorId=null)
+	{ // учитывает скидку оптового клиента (залогиненного) И скидку исходя из настроек ценнообразования Pricing для всех других случаев	
+		$ContractorId = isset($ContractorId) ? $ContractorId : Yii::app()->user->id;
+	
+		if ($ContractorId) 
+		{	
+			$UserRole = User::model()->findByPk($ContractorId)->role;
+	// если это оптовый клиент	то тогда ищем скидки в группах скидок для этого клиента по артикулу позиции	($this->article2)
+			if ($UserRole == User::ROLE_USER) 
+			{    
+				$discGroupId = DiscountGroup::getDiscountGroup($this->article2); 
+				$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$ContractorId,'discountGroupId'=>$discGroupId ));
+				return isset($ugd) ? round($this->getCurrentPrice() * (1 + $ugd->value/100), 2) : $this->getCurrentPrice();  	
+			}
+				
+	// если это розничный клиент или кто-то из работников тогда мы выдаём цену с его скидкой из Ценообразования:  $this->getPrice($contractorId)			
+			if (1) 
+			{			 
+				$discountNew = $this->countDiscount( date("Y-m-d H:i:s"), $ContractorId );	
+				$discount = $discountNew ? $discountNew : User::model()->findByPk($ContractorId)->discount;  			 
+					
+				if (empty($discount)) $discount = 0; // echo 'discount =', $discount ;
+				return round($this->getCurrentPrice() * (1 + $discount/100), 2);
+			}
+		} else { // если не задан контрагент тогда выдаём цену из Ценообразования (Pricing) по залогиненному пользователю. 
 			$discountNew = $this->countDiscount( date("Y-m-d H:i:s"), Yii::app()->user->id );	
 			if (Yii::app()->user->isGuest) 
 				$discount = $discountNew; 
 			else
 				$discount = $discountNew ? $discountNew : User::model()->findByPk(Yii::app()->user->id)->discount;  		
+			return round($this->getCurrentPrice() * (1 + $discount/100), 2);
+		}
+		
+		return $this->getCurrentPrice() ; //Yii::t('general', 'no contractor given'). 'cp'; 
+    } 
+	/*public function getPrice($ContractorId=''){ // учитывает скидку клиента (залогиненного) И скидку исходя из настроек ценнообразования Pricing
+	 
+		if ( $ContractorId=='') {
+		 	$UserRole = User::model()->findByPk(Yii::app()->user->id)->role;
+			if ($UserRole == User::ROLE_USER) 
+			{    
+				$discGroupId = DiscountGroup::getDiscountGroup($this->article2); 
+				$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$ContractorId,'discountGroupId'=>$discGroupId )); 
+				return isset($ugd) ? round($this->getCurrentPrice() * (1 + $ugd->value/100), 2) : $this->getCurrentPrice();  	
+			} else {	 	
+				$discountNew = $this->countDiscount( date("Y-m-d H:i:s"), Yii::app()->user->id );	
+				if (Yii::app()->user->isGuest) 
+					$discount = $discountNew; 
+				else
+					$discount = $discountNew ? $discountNew : User::model()->findByPk(Yii::app()->user->id)->discount;  		
+			}
 		}else{
 			$discountNew = $this->countDiscount( date("Y-m-d H:i:s"), $ContractorId );	
 			$discount = $discountNew ? $discountNew : User::model()->findByPk($ContractorId)->discount;  		
@@ -271,11 +361,9 @@ class Assortment extends CActiveRecord implements IECartPosition
         
 		//echo 'discount /'.$discount.'/';
 		
-		return round($this->getCurrentPrice() * (1 + $discount/100), 2);
-		
-		
-		
-    }
+		return round($this->getCurrentPrice() * (1 + $discount/100), 2); 
+    }*/
+	
 	
 	// используется в OrderController
 	public function getPrice2($Id){ // учитывает скидку клиента (залогиненного) И скидку исходя из настроек ценнообразования Pricing

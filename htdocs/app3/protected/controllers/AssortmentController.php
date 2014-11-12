@@ -13,7 +13,7 @@ class AssortmentController extends Controller
 	{     
 		return array(     
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array( 'removefromcart', 'view', 'admin', 'admin2', 'index', 'addToCart','addToCartAjax', 'cart', 'checkout', 'clearcart',  'checkoutretail' , 'searchbyvin', 'autocomplete', 'fob', 'test', 'SpecialOffer'), 
+				'actions'=>array( 'removefromcart', 'view', 'admin', 'admin2', 'index', 'addToCart','addToCartAjax', 'cart', 'checkout', 'clearcart',  'checkoutretail' , 'searchbyvin', 'autocomplete', 'fob', 'test'), 
 				'users'=>array('*'),  
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -21,7 +21,7 @@ class AssortmentController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array( 'load', 'loadSpecialOffer', 'create', 'delete' , 'searchtool', 'update' , 'update2' , 'generateSchneiderNb',  'generateSchneiderNb2', 'fillInSchneiderGr', 'adminbulk' ),
+				'actions'=>array( 'create', 'delete' , 'searchtool', 'update' , 'update2' , 'generateSchneiderNb',  'generateSchneiderNb2', 'fillInSchneiderGr', 'adminbulk' ),
 				'roles'=>array(1, 2, 4, 5), 
 			),
 			array('deny',  // deny all users
@@ -29,161 +29,7 @@ class AssortmentController extends Controller
 			),
 		);
 	}  
-	
-	public function actionSpecialOffer()
-	{
-		//print_r($_POST);
-		if ($_POST['bulk-remome-special-offer'] && $_POST['Assortment']['id'])
-		{ 
-			$model = new Assortment;
-			$model->updateByPk($_POST['Assortment']['id'], array('isSpecialOffer'=>0));
-		}
-		
-		$this->render('specialOffer',array(
-			'model'=>new Assortment,
-		));
-	} 
-	public function actionLoadSpecialOffer()
-	{
-		if(isset($_POST))
-		{	
-			$upfile = CUploadedFile::getInstance('FileUpload1', 0);
-		 	if ($upfile) 			
-			{   
-			 //	echo '$upfile->name = "', $upfile->name, '"<br>';
-			 	if (strstr($upfile->name, 'xlsx'))
-				{
-					$upfile->saveAs('files/tempSpO.xlsx');
-					$file='files/tempSp.xlsx';
-					$type='Excel2007';
-					// echo 'upfile is saved as .xlsx';					
-				} else {
-					$upfile->saveAs('files/tempSpO.xls');
-					$type='Excel5';	
-					$file='files/tempSpO.xls';
-					// echo 'upfile is saved as .xls';
-				} 
-				
-				require_once Yii::getPathOfAlias('ext'). '/PHPExcel.php';		 
-				$objReader = PHPExcel_IOFactory::createReader($type);
-				$objPHPExcel = $objReader->load($file); 
-				//$as = $objPHPExcel->setActiveSheetIndex(0);	
-				$as = $objPHPExcel->getActiveSheet();
-				
-				$highestRow = $as->getHighestRow(); 				
-				$criteria = new CDbCriteria;
-				for ($row = 1 + $_POST['firstRow']; $row <= $highestRow; $row++) 
-				{ 		 
-				  	$value = $as->getCell('A' . $row)->getValue();
-				 // echo '<br>', $row, '. row - ', $value ;
-					if ('' == $value ) 
-					 	continue;
-				// накапливаем условие и параметр		
-					$criteria->addCondition('article2 = :param'. $row , 'OR');
-					$criteria->params += array(':param' . $row =>  $value );
-				} 	 
-			    // echo 'condition = '; print_r($criteria->condition);
-				//echo '<br>params = '; print_r($criteria->params);
-				$updated = Assortment::model()->updateAll(array('isSpecialOffer' => 1), $criteria);
-				  
-				if ($updated) 
-					Yii::app()->user->setFlash('success', $updated . ' ' . Yii::t('general', 'rows in Assortment have been set as Special offer') . '.' ); 
-				else 	
-					Yii::app()->user->setFlash('error', Yii::t('general', "No changes were made in Special Offer"));
-				$this->redirect(array($this->route));	
-			 } 
-		}		
-		$this->render('loadSpecialOffer');	
-	}
-	public function actionLoad()
-	{    
-		$ShablonId = User::model()->findbypk(Yii::app()->user->id)->ShablonId;
-		$loadDataSetting = !empty($ShablonId) ? LoadDataSettings::model()->findByPk($ShablonId) : new LoadDataSettings; 
-	// экземпляр номенклатуры для задания начальных склада и организации	
-		$assortment = new Assortment;
-		$assortment->organizationId = Yii::app()->params['defaultOrganization'];
-		$assortment->warehouseId = 8; // склад "Москва 2" 
-				
-		if(isset($_POST) && isset($_POST['LoadDataSettings']['id']) && isset($_POST['Assortment']))
-		{			
-			$loadDataSetting = LoadDataSettings::model()->findByPk($_POST['LoadDataSettings']['id']);
-			
-			$ListNumber = $loadDataSetting->ListNumber;		
-			$ColumnNumber = $loadDataSetting->ColumnNumber;  				
-			$AmountColumnNumber = $loadDataSetting->AmountColumnNumber;
-			$TitleColumnNumber = $loadDataSetting->TitleColumnNumber;
-			$PriceColumnNumber = $loadDataSetting->PriceColumnNumber;
-		
-			$upfile = CUploadedFile::getInstance('FileUpload1', 0);
-			if ($upfile) 			
-			{   
-				echo '$upfile->name = ', $upfile->name, '<br>';
-				if (strstr($upfile->name, 'xlsx')){
-					$upfile->saveAs('files/temp.xlsx');
-					$file='files/temp.xlsx';
-					$type='Excel2007';
-					//echo 'upfile is saved as .xlsx';					
-				}else{
-					$upfile->saveAs('files/temp.xls');
-					$type='Excel5';	
-					$file='files/temp.xls';
-					//echo 'upfile is saved as .xls';
-				} 
-				require_once Yii::getPathOfAlias('ext'). '/PHPExcel.php';		 
-				$objReader = PHPExcel_IOFactory::createReader($type);
-				$objPHPExcel = $objReader->load($file); 
-				$as = $objPHPExcel->setActiveSheetIndex( $ListNumber - 1 );	
-				$highestRow = $as->getHighestRow();
-				$error = '';
-				for ($row = 1 + $_POST['firstRow'], $failureCounter=0; $row <= $highestRow; $row++) 
-				{ 		 					
-				// Создаём новую номенклатуру в складе warehouseId и organizationId 
-					$assortment=new Assortment;
-					if ($TitleColumnNumber)
-						$assortment->title = $as->getCell($TitleColumnNumber . $row)->getValue();		
-					$assortment->availability = $as->getCell($AmountColumnNumber . $row)->getValue();
-					$assortment->priceS = $as->getCell($PriceColumnNumber . $row)->getValue(); 
-					$assortment->article2 = $as->getCell($ColumnNumber . $row)->getValue(); // артикул 
-					$assortment->article = substr(array('.', '-', ' '), '', $assortment->article2);
-					
-				// общая информация	
-					$assortment->userId = Yii::app()->user->id; 
-					$assortment->date = date('Y-m-d H:i:s'); 
-					$assortment->depth = 5; // нормальная глубина для показа в сетке простой позиции 				
-				//  $assortment->parentId =  ??; // остаётся вопрос с иерархией родитель-ребёнок
-					$assortment->organizationId = $_POST['Assortment']['organizationId']; //  организация
-					$assortment->warehouseId = $_POST['Assortment']['warehouseId']; //  склад					
-					
-					if (!$assortment->save(false)) { 
-						$error .= Yii::t('general', 'Failure saving assortment item located at row #') . $row . '<br />'; // конец создания новой номенклатуры
-						$failureCounter++;
-					}
-				} // end 'for' circle
-				if (!empty($error)) { 
-					Yii::app()->user->setFlash('error', Yii::t('general', "Some rows from the file have not been saved into assortment") . ": <br />" . $error );
-				} else { $rows = $highestRow - $_POST['firstRow'] - $failureCounter ;  Yii::app()->user->setFlash('success', $rows . ' ' . Yii::t('general', "rows from the file have been saved into assortment") . '.' ); 	} 				 
-				 	
-				 
-			}  // end if(upfile)
-			else  
-				Yii::app()->user->setFlash('error', Yii::t('general',  'No file has been loaded...'));
-				//echo Yii::t('general', 'No file has been loaded...'); //throw new CHttpException(
-	 		
-			$this->redirect(array('load')); // переход на GET	
-		}// end if(isset($_POST))
-		
-		$this->render('load', array( 
-			'loadDataSetting' => $loadDataSetting, 
-			'assortment' => $assortment
-		));
-	} 	
-	
-    public function actionView($id)
-	{
-		$this->render('view_adv',array(
-			'model'=>$this->loadModel($id),
-		));
-	} 
+   
 	public function actionAddToCart($id, $amount=null)
 	{ 
 		// если это запрос в корзину
@@ -300,14 +146,7 @@ class AssortmentController extends Controller
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
-	public function findInAssortment($oem)
-	{
-		$criteria=new CDbCriteria; 
-		$criteria->condition = 'oem = '. $oem ; 		//echo 'criteria: '; print_r($criteria); echo '<br>';
-		$dataProvider = new CActiveDataProvider('Assortment', array('criteria'=>$criteria));
-		//echo ',<b>Assortment by OEM are: </b>'; print_r($dataProvider->getData());	 echo '<br><br>';
-		return !empty($dataProvider);
-	}
+	
 	public function FArraySearchString($str){
 		//$Strlen=strlen($str);
 		//echo 'str '.$str;
@@ -375,7 +214,7 @@ class AssortmentController extends Controller
 		} 
  
 		// если поиск по 'findbyoem-value' - из большой формы  	
-	       if(isset($_GET['findbyoem-value']) OR isset($_GET['findbyoemvalue']) )
+	    	if(  isset($_GET['findbyoem-value']) OR isset($_GET['findbyoemvalue']) )
 		   {  
 			unset($id); // отмена id если $_POST['findbyoem-value']
 			AssortmentFake::model()->deleteAll(); 
@@ -412,13 +251,14 @@ class AssortmentController extends Controller
 					if ($foundItem->make == $foundItem->manufacturer && $foundItem->manufacturer != '') { // найден по оem и выполнено условие что make = manufacturer тогда он - полностью оригинальная запчaпсть.	
 						$mainAssotrmentItem = 1;  
 					}	
-				   else { 
-					$dataProviderAnalog=new CActiveDataProvider('Assortment', array(
-						'criteria'=>$criteria, 
-					)); 
-					$CriteriaAnalog=$criteria;  
+					else {
+						$dataProviderAnalog=new CActiveDataProvider('Assortment', array(
+							'criteria'=>$criteria, 
+						)); 
+						$CriteriaAnalog=$criteria;  
+					
 
-					$f=AssortmentFake::model()->findByAttributes(array('article'=>$foundItem->oem));
+					$f=AssortmentFake::model()->FindByAttributes(array('article'=>$foundItem->oem));
 
 						if (empty($f)){
 							$fakeAssortment = new AssortmentFake;
@@ -450,7 +290,7 @@ class AssortmentController extends Controller
 					$dataProvider = new CActiveDataProvider('Analogi', array(
 						'criteria'=>$criteria, 
 					));  
-					$FoundedAnalog=Analogi::model()->find($criteria); // ищем только один в Аналогах
+					$FoundedAnalog=Analogi::model()->find($criteria);
 					
 					//echo ''.$replaced;
 					$founded=0;
@@ -603,19 +443,8 @@ class AssortmentController extends Controller
 	
 			} //if (!$dataProviderOEM->itemCount) //НЕ НАШЛИ В НОМЕНКЛАТУРЕ ПО Артикулу ищем по ОЕМ
 			else{
-				//echo 'Нашли по артикулу<br>'; 
-				$items = Assortment::model()->findAll( 'article = :article' , array(':article'=>$replaced4oem));
-				//echo 'found items are: '; print_r($items); echo '<br><br>';
-				$CriteriaAnalogsFromAssortment = new CDbCriteria; 
-				foreach($items as $item)
-				{// ищем для них соответствия в Аналогах 
-					//$CriteriaAnalogsFromAssortment = $CriteriaAnalogsFromAssortment->mergeWith($this->findInAssortment($item->oem)) ;
-					if ($this->findInAssortment($item->oem))
-						$CriteriaAnalogsFromAssortment->addCondition('oem = "'. $item->oem . '" ' , 'OR');
-				}
-				if(!empty($CriteriaAnalogsFromAssortment->condition)) $CriteriaAnalogsFromAssortment->addCondition('article != "' . $replaced4oem . '" ');
-		 
-				//echo '$CriteriaAnalogsFromAssortment:  '; print_r($CriteriaAnalogsFromAssortment ); echo '<br>';
+				//echo 'Нашли по артикулу';
+				//print_r($dataProvider);
 			
 			}
 	
@@ -704,10 +533,10 @@ class AssortmentController extends Controller
 				//$criteria->addCondition('`subgroup` = ' . $_GET['Assortment']['Subgroup']);
 			
 			$dataProvider = new CActiveDataProvider('Assortment', array(
-				'criteria'=>$criteria,
-				'pagination' => array( 
-					'pageSize' => $this->pagesize ? $this->pagesize : Yii::app()->user->pageSize,
-				),
+					'criteria'=>$criteria,
+					'pagination' => array( 
+						'pageSize' => $this->pagesize ? $this->pagesize : /**/ Yii::app()->user->pageSize,
+					),
 			)); 			
 			// echo '<br />Data Provider (Find) = '; print_r($dataProvider->criteria);
 			//echo '<br />count Data Provider = '; echo count($dataProvider);
@@ -736,7 +565,6 @@ class AssortmentController extends Controller
 				'parent' => isset($id) ? $id : '', 
 				'criteria' => isset($criteria) ? $criteria : '', 
 				'CriteriaAnalog' =>  isset($CriteriaAnalog) ? $CriteriaAnalog : '', 
-				'CriteriaAnalogsFromAssortment' =>  !empty($CriteriaAnalogsFromAssortment->condition) ? $CriteriaAnalogsFromAssortment : array(), 
 				'mainAssotrmentItem' => isset($mainAssotrmentItem) ? $mainAssotrmentItem : '',
 			//	'ids'=> $ids , 	
 				'bodies'=> isset($bodies) ? $bodies : '',
@@ -858,7 +686,7 @@ class AssortmentController extends Controller
 					$assortment = Assortment::model()->findByPk($position->getId());
 					$content->assortmentTitle = $assortment->title; // заносим title номенклатуры из корзины 						
 					$content->assortmentId = $assortment->id; // заносим id номенклатуры из корзины 						
-					$content->price = $position->getPrice(Yii::app()->user->id);			 	
+					$content->price = $position->getPrice();			 	
 					$content->assortmentAmount = $position->getQuantity();// заносим количество наименования номенклатуры из корзины 	
 					$content->cost = $content->price * $content->assortmentAmount; // заносим cost
 					$totalCost += $content->cost;
@@ -979,9 +807,8 @@ class AssortmentController extends Controller
 						$content=new EventContent('simple');
 						$content->eventId = $model->id; // только что сохранённого заказа
 						$assortment = Assortment::model()->findByPk($position->getId());
-						$content->assortmentId = $assortment->id; // заносим id номенклатуры из корзины 
 						$content->assortmentTitle = $assortment->title; // заносим title номенклатуры из корзины 
-						$content->price = $position->getPrice(Yii::app()->user->id);		 
+						$content->price = $position->getPrice();		 
 						$content->assortmentAmount = $position->getQuantity();// заносим количество наименования номенклатуры из корзины 	
 						$content->cost = $content->price * $content->assortmentAmount; // заносим cost
 						$totalCost += $content->cost;
@@ -1102,17 +929,8 @@ class AssortmentController extends Controller
 	}	
 	public function actionTest()
 	{
-		/*$schn = $this->findLastSchneiderNb($_GET['make']);
-		echo 'The Last Schneider Nb = ', $schn;*/
-		$assortment=Assortment::model()->findAll(array('select'=>'id, article', 'order'=>'id'));
-		$file = Yii::app()->basePath . '/../indexes' . date('Y-m-d') . '.txt';
-		$str='';
-		foreach($assortment as $a)
-		{
-			$str .=  $a->id.' ' .  $a->article . ','. PHP_EOL;
-		}
-		echo file_put_contents($file, $str), ' bytes were written into ', $file;
-		
+		$schn = $this->findLastSchneiderNb($_GET['make']);
+		echo 'The Last Schneider Nb = ', $schn;
 	}
 	
 	public function actionFillInSchneiderGr($make=null)
@@ -1287,17 +1105,4 @@ EOF;
 	   $dd = CHtml::dropDownList('Assortment[amount][' . $data->id .']', 1, $dataArr, array('style'=>'width:40px;'));
 		return $dd  . '&nbsp;' . $buttonAjax; 		
     }	
-	public function info($data, $row)
-	{ 
-		$info = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/infoblue.png" ));
-		$infofoto = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/camerainfoblue.png" ));
-		$action = Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER) ?'update' : 'view';
-		/*try {
-			//$image = getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg");
-		}  catch(Exception $e)  { } */
-		if (getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg" ) !== false)
-			echo CHtml::Link($infofoto, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 	 
-		else  
-            echo CHtml::Link($info, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 
-	}
 }

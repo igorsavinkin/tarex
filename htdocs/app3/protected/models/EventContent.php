@@ -148,17 +148,10 @@ class EventContent extends CActiveRecord
 	{
 		return $this->id;
 	}
-	public function getPriceCssClass($contractorId=null) 
+	public function getPriceCssClass() 
 	{
-		if ($this->price == $this->assortment->getPriceOpt($contractorId)) return '';
-		if ($this->price > $this->assortment->getPriceOpt($contractorId)) return 'blue';
-		if ($this->price < $this->assortment->getPriceOpt($contractorId)) return 'green';
-	} 
-	public function priceCssClass($contractorId=null) 
-	{
-		if ($this->price < $this->assortment->getPriceOptMax()) return 'redbgcolor';
-		//if ($this->price == $this->assortment->getPriceOpt($contractorId)) return '';
-		if ( $this->price > $this->assortment->getCurrentPrice()  ) return 'green';
-		
+		if ($this->price == $this->RecommendedPrice) return '';
+		if ($this->price > $this->RecommendedPrice) return 'lime';
+		if ($this->price < $this->RecommendedPrice) return 'redbgcolor';
 	} 
 }

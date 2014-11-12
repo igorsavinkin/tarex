@@ -5,6 +5,6 @@ return array (
   'tablePrefix' => 'tarex_',
   'modelPath' => 'application.models',
   'baseClass' => 'CActiveRecord',
-  'buildRelations' => '1',
+  'buildRelations' => '0',
   'commentsAsLabels' => '0',
 );

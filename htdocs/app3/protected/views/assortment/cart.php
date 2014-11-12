@@ -11,7 +11,7 @@ if (!Yii::app()->shoppingCart->isEmpty())
 	foreach($positions as $position)
 	{
 		$items[$position->getId()] = $position->getQuantity();	
-		$cartCost +=  $position->getQuantity() *  $position->getPrice(Yii::app()->user->id); 
+		$cartCost +=  $position->getQuantity() *  $position->getPrice(''); 
 	}
 	$criteria = new CDbCriteria;
 	$criteria->addInCondition('id',  array_keys($items));
@@ -29,7 +29,7 @@ if (!Yii::app()->shoppingCart->isEmpty())
 			'article',  
 			'availability', 
 			'price'=>array(
-				'value'=>'$data->getPrice(' . Yii::app()->user->id . ')',
+				'value'=>'$data->getPrice()',
 				'header'=>Yii::t('general', 'Price with discount'),
 			), 
 			'amount'=>array(
@@ -38,7 +38,7 @@ if (!Yii::app()->shoppingCart->isEmpty())
 			), 
 			array(
 				'name'=>Yii::t('general','Total Sum'),
-				'value'=>'Yii::app()->shoppingCart->itemAt($data->id)->getQuantity() * $data->getPrice(' . Yii::app()->user->id . ')', 
+				'value'=>'Yii::app()->shoppingCart->itemAt($data->id)->getQuantity() * $data->getPrice()',
 			), 
 			array(
 					'class'=>'CButtonColumn',				

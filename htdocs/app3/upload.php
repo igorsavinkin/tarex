@@ -1,4 +1,4 @@
-<?php //echo 'upload';
+<?php
 //error_reporting(E_ALL);
 //require_once('chunkReadFilter.php');
 function transliterate($st) {
@@ -95,3 +95,4 @@ if (isset($_FILES['ufile']['name'])){
 //echo  $str;
 //echo '{"success":true}';
 ?>
+

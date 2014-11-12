@@ -98,7 +98,7 @@
                                  <?php echo CHtml::endForm(); ?>
                             </div>	
 
-							<div class="tar_basket"> 
+							<div class="tar_basket">
                                 <a class="tar_bas" href="<?php echo Yii::app()->createUrl('assortment/cart');?>" >
                                     <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_basket.png">
 									<span id='cart-content'><?php $cartContent =  Yii::t('general', 'BASKET') . '<br />' . Yii::app()->shoppingCart->getItemsCount() .' ' . Yii::t('general', 'item(s)');

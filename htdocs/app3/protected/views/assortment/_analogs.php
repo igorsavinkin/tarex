@@ -49,7 +49,7 @@
 			//'priceS',
 			//'currentPrice',
 			array(
-				'value'=>'$data->getPriceOpt('.Yii::app()->user->id.')',//'$data->getPrice()',
+				'value'=>'$data->getPrice()',
 				'header' => Yii::t('general', 'Price'),
 			),
 			// new for getting into cart			

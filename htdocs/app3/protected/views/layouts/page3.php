@@ -53,7 +53,7 @@
         <div class="tar_header">
             <div class="tar_top_head">
                 <div class="container">
-                    <div class="row"> 
+                    <div class="row">
                         <div class="col-md-12">
                             <div class="tar_left_top_head">
                                 <div class="tar_top_logo">
@@ -81,32 +81,8 @@
                                 <div class="pad"></div>
                             </div><!-- tar_choice_all -->
                             <div class="tar_reg_in_lang">
-                              <div class="tar_usermenu" > 
-                                    <?php  
-									if (Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
-									{  
-										// $this->widget('NewOrderNotificationWidget');
-									//echo 'id = ', Yii::app()->user->id;
-										$criteriaCh = new CDbCriteria;
-										$criteriaCh->select='id';
-										$criteriaCh->compare('parentId', Yii::app()->user->id); 
-										$children=array();
-										foreach(User::model()->findAll($criteriaCh) as $u)
-											$children[]=$u->id;
-									    //echo 'children = '; print_r($children);
-										//echo 'children count = ', count($children);
-										if (count($children))
-										{
-											$criteria=new CDbCriteria;
-											$criteria->compare('EventTypeId', Events::TYPE_ORDER); // ищем заказы среди других событий
-											$criteria->compare('StatusId', array( Events::STATUS_NEW, Events::STATUS_REQUEST_TO_RESERVE, Events::STATUS_REQUEST_TO_DELIVERY ) ); // новый, запрос в резерв, запрос на доствку
-											$criteria->addInCondition('contractorId', $children); 
-											$newOrdersCount = Events::model()->count($criteria); 
-											if ($newOrdersCount) 											
-												echo CHtml::Link("&nbsp;{$newOrdersCount}&nbsp;", array('order/admin'), array('class'=>"objblink new-orders", 'title'=>'see the new coming orders')); 
-										} 
-									} ?>  
-									<a class="tar_name"href="<?php echo Yii::app()->createUrl('/user/update', array('id'=>Yii::app()->user->id)); ?>"><?php echo Yii::app()->user->username; ?></a><br>
+                              <div class="tar_usermenu">
+                                    <a class="tar_name" href="<?php echo Yii::app()->createUrl('/user/update', array('id'=>Yii::app()->user->id)); ?>"><?php echo Yii::app()->user->username; ?></a><br>
                                       
                                     <span><?php echo Yii::app()->user->email; ?></span>
                                     <br>
@@ -173,7 +149,7 @@
                                 <div class="tar_icons_right">
                                     <div class="tar_icons_border">
 							 <?php 
-								$Subsystem = isset($_GET['Subsystem']) ? $_GET['Subsystem'] : Yii::app()->session['Subsystem'];
+								$Subsystem= Yii::app()->session['Subsystem'];
 								$Reference =  isset($_GET['Reference']) ? $_GET['Reference'] : Yii::app()->session['Reference'];
 								$MainMenu=MainMenu::model()->FindAll(
 									array(
@@ -230,7 +206,7 @@
 										$link = $this->createUrl($r->Link."/admin", array('Subsystem'=>$r->Subsystem ,'Reference'=>$r->Link)); 								 	
 										echo "<li><a href='{$link}' ";
 										echo  ($r->Link == $Reference) ? "class='selected' >" : ">";
-										if (''!=$r->ReferenceImg) echo "<img src='" . Yii::app()->baseUrl . "/images/referenceimg/{$r->ReferenceImg}' alt='Icon' title='{$r->Reference}'>";
+										if (''!=$r->ReferenceImg) echo "<img src='images/referenceimg/{$r->ReferenceImg}' alt='Icon'>";
 										echo "<span>" , Yii::t('general', $r->Reference) , "</span></a></li>";
 										$i++;
 										if (($i % $itemsInColumn) == 0) 
@@ -337,7 +313,7 @@
                                     <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_img_8.jpg">
                                     <span>
                                         Ходовая<br>система
-                                    </span> 
+                                    </span>
                                 </a>
                                 <div class="pad"></div>
                             </div>
@@ -345,7 +321,7 @@
                                 <?php // содержимое из cоответствующего view 
 																 echo $content; 
 															?> 
-								<a href='#' id='up' style='float:right;z-index:1000;position:fixed; bottom: 20px; right:20px'><img src='<?php echo Yii::app()->baseUrl;?>/images/btn-up.png' width='35px'/></a>							
+								<a href='#' id='up' style='float:right;z-index:1000;position:fixed; bottom: 20px; right:20px'><img src='images/btn-up.png' width='35px'/></a>							
 								<!--div class="tar_pathway">                                  
 									<ul>
                                         <li>

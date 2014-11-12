@@ -1,9 +1,6 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'enableAjaxValidation'=>false,
-	'enableClientValidation'=>false,
-	'htmlOptions' => array(
-        'enctype' => 'multipart/form-data',
-    ),
+	'enableAjaxValidation'=>true,
+	'enableClientValidation'=>true,
 )); ?>	 
 
 <div class="form">
@@ -220,25 +217,12 @@
  <td colspan=4> 
  <?php echo $form->labelEx($model,'notes'); 
 	echo $form->textField($model,'notes',array('size'=>130)); 		
- echo $form->error($model,'notes'); ?> 
- </td>
-</tr><tr>  
- <td> 
-		<?php echo $form->labelEx($model,'imageUrl'); ?> 
-		<?php echo $form->fileField($model,'imageUrl',array('size'=>40,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'imageUrl'); ?>
-		<br><br>
-		<?php echo CHtml::submitButton( $model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'),  array( 'class'=>'red' )); ?>
- </td>  
- <td>  <?php if ((getimagesize(Yii::app()->basePath. '/../img/foto/'. $model->article2 . '.jpg') !== false) ) : ?>
-	<div style="border: 1px solid #344756; margin:0 0 0 0px; padding: 5px;float:right;"> 
-	<?php echo CHtml::image(Yii::app()->baseUrl. '/img/foto/'. $model->article2 . '.jpg' , "photo",array("width"=>350))?> </div>
-	<?php endif;	?>
- </td>  
+ echo $form->error($model,'notes'); ?>
  
+ </td>
 </tr></table>
 
+<?php  echo CHtml::submitButton( $model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'),  array( 'class'=>'red' )); 
 
-
-<?php $this->endWidget(); ?>
+$this->endWidget(); ?>
 </div><!-- form -->

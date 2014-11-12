@@ -1,29 +1,19 @@
 <?php 
 class DiscountGroup extends CActiveRecord
-{
-	/**
-	 * @return string the associated database table name
-	 */
+{ 
 	public function tableName()
 	{
 		return '{{discountGroup}}';
-	}
-
-	/**
-	 * @return array validation rules for model attributes.
-	 */
+	} 
 	public function rules()
-	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+	{ 
 		return array(
 			array('name', 'required'),
 			array('isActive', 'numerical', 'integerOnly'=>true),
 			array('value', 'numerical'),
-			array('name', 'length', 'max'=>4),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('id, name, articles, value, isActive', 'safe', 'on'=>'search'),
+			array('name', 'length', 'max'=>32), 
+			array('prefix', 'length', 'max'=>4), 
+			array('id, name, prefix, articles, value, isActive', 'safe', 'on'=>'search'),
 		);
 	}
  
@@ -38,9 +28,10 @@ class DiscountGroup extends CActiveRecord
 		return array(
 			'id' => Yii::t('general','ID'),
 			'name' => Yii::t('general','Name'),
+			'prefix' => Yii::t('general','Prefix'),
 			'articles' => Yii::t('general','Articles'),
-			'value' => Yii::t('general', 'Discount value, %'),
-			'isActive' => Yii::t('general','Is Active'),
+			'value' => Yii::t('general','Discount value, %'),
+			'isActive' => Yii::t('general','is Active'),
 		);
 	}
   
@@ -51,6 +42,7 @@ class DiscountGroup extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
+		$criteria->compare('prefix',$this->prefix);
 		$criteria->compare('articles',$this->articles,true);
 		$criteria->compare('value',$this->value);
 		$criteria->compare('isActive',$this->isActive);
@@ -64,4 +56,28 @@ class DiscountGroup extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	public function getDiscountGroupName($article=null)
+	{
+		if (!$article) return 'no article';
+		$criteria=new CDbCriteria;
+		$criteria->compare('articles', $article, true); // нестрогое сравнение в поле Артикулы
+		$discountGroup = DiscountGroup::model()->find($criteria);  
+		return isset($discountGroup) ? $discountGroup->name : '';
+	}	
+	public function getDiscountGroupPrefix($article=null)
+	{
+		if (!$article) return 'no article';
+		$criteria=new CDbCriteria;
+		$criteria->compare('articles', $article, true); // нестрогое сравнение в поле Артикулы
+		$discountGroup = DiscountGroup::model()->find($criteria);  
+		return isset($discountGroup) ? $discountGroup->prefix : '';
+	}	
+	public function getDiscountGroup($article=null)
+	{
+		if (!$article) return 0;
+		$criteria=new CDbCriteria;
+		$criteria->compare('articles', $article, true); // нестрогое сравнение в поле Артикулы
+		$discountGroup = DiscountGroup::model()->find($criteria);   
+		return isset($discountGroup) ? $discountGroup->id : 0;
+	}	
 }

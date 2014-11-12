@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This is the model class for table "{{user}}".
  *
@@ -188,7 +189,7 @@ class User extends CActiveRecord
 	{
 		return array(
 			'id' => Yii::t('general','ID'),
-			'username' => Yii::t('general','Client id'),//Yii::t('general','User name'),
+			'username' => Yii::t('general','User name'),
 			'password' => Yii::t('general','Password'),
 			'isActive' => Yii::t('general', 'User is active'),
 			'created' => Yii::t('general','Created'),
@@ -215,8 +216,8 @@ class User extends CActiveRecord
 			'KnowingSource' => Yii::t('general', 'How did you hear about us'),
 		//	'scopeOfActivity' =>  Yii::t('general', 'scope of Organization activity' ),
 			'scopeOfActivity' =>  Yii::t('general', 'Scope Of Activity' ),
-			'CEOname' => Yii::t('general', 'CEO Name' ), //Yii::t('general', 'CEO Name' ),
-			'AccountantName' => Yii::t('general', 'Contact person'), //Yii::t('general', 'Accountant Name' ),
+			'CEOname' => Yii::t('general', 'CEO Name' ),
+			'AccountantName' => Yii::t('general', 'Accountant Name' ),
 			'carMakes' => Yii::t('general', 'Car makes'),
 			'priceConfig' => Yii::t('general', 'Price config' ),
 			'file' => 'Загрузить файл c прайсом',
@@ -227,7 +228,7 @@ class User extends CActiveRecord
 			'CorrespondentAccount' => Yii::t('general','Correspondent Account'),
 			'Bank' => Yii::t('general', 'Bank'),
 			'ShablonId' => Yii::t('general','Data Load Template'),
-			'name' => Yii::t('general','Contractor'), // здесь в этом поле мы храним имя "контрактор" (как бы второе имя для пользователя)
+			'name' => Yii::t('general','Name'),
 			'password_repeat'=>Yii::t('general','Repeat Password'),
 			'verifyCode'=>Yii::t('general','Verify code'), 
 			'isEmployee'=>Yii::t('general','is Employee'),
@@ -405,15 +406,5 @@ class User extends CActiveRecord
 	{
 		$managers = CHtml::listData(User::model()->findAll('role = '. User::ROLE_MANAGER .' OR role = '. User::ROLE_SENIOR_MANAGER), 'id', 'username');		
 		return CHtml::dropDownList('User[parentId]', $this->parentId, $managers);         
-	}
-	public function allChildren($userId)
-	{
-		$criteria = new CDbCriteria;
-		$criteria->select='id';
-		$criteria->compare('parentId', $userId);
-		$users = self::model()->findAll($criteria);
-		foreach($users as $user)
-			$arr[]=$user->id;
-	    return $arr; // ? $arr : false;
 	}
 }

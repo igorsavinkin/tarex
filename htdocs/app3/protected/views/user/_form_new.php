@@ -73,10 +73,8 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 		} else 
 		{
 			echo $model->isActive ? Yii::t('general','yes') : Yii::t('general','no');
-		} 
-	 
-		echo '<br>', CHtml::Link(Yii::t('general','Print user info'), array('print', 'id'=>$model->id), array('class'=>'btn-win', 'target'=>'_blank'));
-	 ?>  
+		} ?>  
+		
 	 </td>
 	 <td class='top padding10side' >  
 		
@@ -97,9 +95,9 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 		<?php echo $form->textArea($model,'address',array('rows'=>2, 'cols'=>30));  ?>
 		<?php echo $form->error($model,'address'); ?>
 		
-		<?php /* echo $form->labelEx($model,'discount'); ?>
+		<?php echo $form->labelEx($model,'discount'); ?>
 		<?php echo $form->textField($model,'discount'); ?>
-		<?php echo $form->error($model,'discount'); */ ?>
+		<?php echo $form->error($model,'discount'); ?>
 		
 <?php if(Yii::app()->user->role <= User::ROLE_MANAGER) 
 		{ ?> 

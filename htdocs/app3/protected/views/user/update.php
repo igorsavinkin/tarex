@@ -11,8 +11,8 @@ if ($flashMessages) {
 }
 ?>  	 
 <h2><?php echo Yii::t('general','User') , ' <u><em>',  $model->username , '</em></u>'; 
-/*if (Yii::app()->user->checkAccess(User::ROLE_ADMIN)) 
-	echo CHtml::Link(Yii::t('general','Manage Advertisement'), array('advertisement/admin'), array('class'=>'btn-win', 'style'=>'float:right;')); */
+if (Yii::app()->user->checkAccess(User::ROLE_ADMIN)) 
+	echo CHtml::Link(Yii::t('general','Manage Advertisement'), array('advertisement/admin'), array('class'=>'btn-win', 'style'=>'float:right;')); 
 if (Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
     echo CHtml::link(Yii::t('general','Send to client login/password'), array('sendinvitation', 'id'=>$model->id), array('class'=>'btn-win', 'style'=>'float:right;'));   
 ?></h2><br>
@@ -30,13 +30,6 @@ $this->widget('CTabView', array(
 				'data'=>array('model'=>$model),
 			),	
 			'tab3'=>array(
-				'title'=>Yii::t('general', 'Discount groups'),  
-				'view'=>'_discount_groups_new', 
-				'data'=>array('model'=>$model,
-									'userGroupDiscount' => $userGroupDiscount),
-				'visible'=>Yii::app()->user->checkAccess(User::ROLE_MANAGER) && (User::model()->findByPk($model->id)->role == User::ROLE_USER),
-			),
-			'tab4'=>array(
 				'title'=>Yii::t('general', 'Additional info'),  
 				'view'=>'_info', 
 				'data'=>array('model'=>$model),
