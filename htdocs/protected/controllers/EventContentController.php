@@ -50,16 +50,25 @@ class EventContentController extends Controller
 	}
 	public function actionUpdateEventContent()
 	{
-		if ($_GET['name']) 
-			{ 
-				foreach($_POST['EventContent']['price'] as $key => $price)
-				{
-					$content = EventContent::model()->findByPk($key);
-					$content->price = $price;
-					$content->cost = $content->assortmentAmount * $content->price;
-					$content->save(); 
-				}
-			} 
+		if ($_GET['name'] && ('savePrice' == $_GET['name']) ) // сохранение изменённой цены
+		{ 
+			foreach($_POST['EventContent']['price'] as $key => $price)
+			{
+				$content = EventContent::model()->findByPk($key);
+				$content->price = $price;
+				$content->cost = $content->assortmentAmount * $content->price;
+				$content->save(); 
+			}
+		} elseif ($_GET['name'] && ('saveDiscount' == $_GET['name']) ) // сохранение изменённой скидки и пересчёт цены
+		{ 
+			foreach($_POST['EventContent']['discount'] as $key => $discount)
+			{
+				$content = EventContent::model()->findByPk($key);
+				$content->price = round((1 + $discount/100) * $content->assortment->getCurrentPrice(), 2); 
+				$content->cost = $content->assortmentAmount * $content->price;
+				$content->save(); 
+			}
+		} 
 		else 	
 		{ 
 			$id = $_POST['eventContentId'][0];

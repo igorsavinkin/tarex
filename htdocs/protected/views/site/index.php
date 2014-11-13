@@ -19,10 +19,11 @@ if (!Yii::app()->user->isGuest) echo '<div class="tar_adv tar_adv_second">';
 				{	   
 					if (($i % 5) == 0 && $i>0) echo '</ul><ul class="tar_list_2">';
 					$i++; 
-					echo "<li><a href='" . Yii::app()->createUrl('site/index' , array( 'id'=>$assort->id )) . "'> " . Yii::t('general', $assort->title) . "</a></li>";	 
+					echo "<li> <a href='" . Yii::app()->createUrl('site/index' , array( 'id'=>$assort->id )) . "'>" . Yii::t('general', $assort->title) . "</a></li>";	 
 				}  ?>
-				<span class="tar_cat_line"></span><?php										
-			echo "<li><a href='" . Yii::app()->createUrl('site/index') . "'><font size='+1' face='Helvetica' >" . Yii::t('general', 'ALL MAKES') . "</font></a></li>";  ?> 
+				<span class="tar_cat_line"></span><?php	
+			$controller = isset($_GET['id']) ? 'site' : 'assortment';
+			echo "<li><a href='" . Yii::app()->createUrl($controller . '/index') . "'><font size='+1' face='Helvetica' >" . Yii::t('general', 'ALL MAKES') . "</font></a></li>";  ?> 
 			</ul> 
 			<div class="pad"></div>
 		</div>

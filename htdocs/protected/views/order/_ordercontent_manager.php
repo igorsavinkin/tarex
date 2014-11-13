@@ -6,6 +6,9 @@
 <h2><?php echo Yii::t('general', 'Order\'s content'); ?></h2>
 <div class='print' >  
 <?php // сетка с номенклатурой для данного заказа
+//echo 'contractor id = ', $model->contractorId;
+//echo '<br>contractor role = ', User::model()->findByPk($model->contractorId)->role;
+$contractorIsOpt = User::model()->findByPk($model->contractorId)->role == User::ROLE_USER;
 $dataProvider=new CActiveDataProvider('EventContent', array(    
         'criteria' => array(
         'condition'=>'eventId = '. $eventId, 'order'=>'id DESC'), // $eventId передан из view 'update' 
@@ -31,30 +34,55 @@ $this->widget( 'zii.widgets.grid.CGridView', array(
         'columns' => array( 
 			'id',
 			'assortment.article2', 
-		//	'assortmentTitle',
-			//'assortmentTitle',
-			//'assortmentTitle'.'123',
 		 	array(  
-			//	'type'=>'raw',
 				'name'=>'assortmentTitle',
-			//	'value' => array($this, 'titleDataField'),
 			), 
 			array(  
 				'type'=>'raw',
 				'name'=>'assortmentAmount',
 				'value' => array($this, 'amountDataField'),
-			),			
+			),	
+			'minPrice'=>array(  
+				'type'=>'raw',
+				'name'=>Yii::t('general','Min Price') . ' (согласно оптовой максимальной скидке)', 
+				'value' => '$data->assortment->getPriceOptMax()',
+				'visible'=>$contractorIsOpt,
+			),  
+			'basePrice'=>array(  
+			 	'type'=>'raw',
+				'name'=>Yii::t('general','Base Price'). ' (цена до всех скидок)',				
+				'value' =>  '$data->assortment->getCurrentPrice()',
+			),
+			'currentOptDiscount'=>array(         
+				'type'=>'raw',
+				'name'=>Yii::t('general','Opt Discount' ) , 
+				'value' => '$data->assortment->getDiscountOpt('. $model->contractorId . ')',
+				'visible'=>$contractorIsOpt, 
+			),
+			'discount'=>array(  
+			 	'type'=>'raw', 
+				'name'=>Yii::t('general','Current discount') . ', %',
+				'value' => array($this, 'discountDataField'),				
+			),  
+		/*	'currentDiscount'=>array(  
+				'type'=>'raw',
+				'name'=>Yii::t('general','Current discount') . ', %', 
+				'value' => 'round(($data->price - $data->assortment->getCurrentPrice())/$data->assortment->getCurrentPrice()*100, 2)',
+			),*/
 			'price'=>array(  
 			 	'type'=>'raw',
 				'name'=>'price',
-				'value' => array($this, 'priceDataField'),
-			),
-			'RecommendedPrice'=>array(
-					'name'=>'RecommendedPrice',
-					'header'=>Yii::t('general','Recommended Price'), 
-					'cssClassExpression'=>'$data->priceCssClass',   
-					), 
-			'cost', 			
+				'value' => array($this, 'priceDataField'),				
+			),   					
+		 /*   'RecommendedPrice'=>array(
+				'name'=>'RecommendedPrice',
+				'header'=>Yii::t('general','Recommended Price') . ' (цена с учётом скидки в Ценоообразовании)', 
+				'cssClassExpression'=>'$data->priceCssClass',   
+			), */
+			'cost'=>array(
+				'name'=>'cost',
+				'cssClassExpression'=>'$data->priceCssClass()',   
+			), 			
 			array(
 				'class' => 'CCheckBoxColumn',
 				'id' => 'eventContentId',	
@@ -74,8 +102,6 @@ echo CHtml::ajaxSubmitButton(Yii::t('general', 'Delete selection') /* 'Удал�
 		});  }'), array('style'=>'float:right;')); 
 echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red')); 
 $this->endWidget();?>	
-
-<!--button class='no-print' 'style'='float:right;' onClick="window.print()"><?php echo Yii::t('general','Print event content');  ?></button--> 
 	
 <br><br><h3> 
 <?php	
@@ -113,7 +139,7 @@ $this->endWidget();?>
 </div>
 <style>  
 .difference { background-color: yellow; } 
-.green {background-color:  green;} 
+.green {background-color: #33CC33;} 
 .lime {background-color:  lime;} 
 .blue { background-color: #3399FF;} 
 .redbgcolor { background-color: #FF717E;} 

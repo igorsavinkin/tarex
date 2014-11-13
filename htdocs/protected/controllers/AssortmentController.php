@@ -1059,7 +1059,7 @@ class AssortmentController extends Controller
 						{ 	
 							//if ('igor.savinkin@gmail.com' != $email) continue;
 							mail( $email, $subject, 
-							"Уважаемый генеральный менеджер, </br> новый пользователь '<em>{$user->username}</em>' (тел.: {$user->phone}) зарегистрировался на сайте и создал новый заказ № {$model->id} на сумму {$model->totalSum} рублей. </br>Просим связаться с ним и проставить группу цен и менеджера в его профиле. Посмотреть профиль этого пользователя Вы можете по этой ссылке: {$userprofile}. <br>Там же вам нужно активировать этого нового пользователя чтобы он мог залогиниться в системе.<br>Посмотреть его заказ Вы можете по этой ссылке: {$orderlink}.", 
+							"Уважаемый генеральный менеджер, </br> новый пользователь '<em>{$user->username}</em>' (тел.: {$user->phone}) зарегистрировался на сайте как юр. лицо и создал новый заказ № {$model->id} на сумму {$model->totalSum} рублей. </br>Просим связаться с ним и проставить группу цен и менеджера в его профиле. Посмотреть профиль этого пользователя Вы можете по этой ссылке: {$userprofile}. <br>Там же вам нужно активировать этого нового пользователя чтобы он мог залогиниться в системе.<br>Посмотреть его заказ Вы можете по этой ссылке: {$orderlink}.", 
 							$headers);  
 						//	echo '<br>mail is sent to ', $email , ' (sr manager)<br>';						
 						}							
@@ -1067,7 +1067,7 @@ class AssortmentController extends Controller
 					elseif ($newuser && !$user->isLegalEntity) 
 					{
 						$link = CHtml::Link(Yii::t('general', 'Enter') , Yii::app()->createAbsoluteUrl('site/login', array( /*  'email'=>$user->email, 'p'=>$user->password, 'returnUrl'=>CController::createAbsoluteUrl('order/update&id='.  $model->id)*/ )), array('target'=>'_blank')); 
-						$mailContent =  "Вы только что зарегистрировались как розничный клиент <b>{$user->username}</b>. Ваш пароль равен Вашему имени пользователя.<br> Вы можете зайти в систему по этой ссылке {$link} и посмотреть Ваш новый заказ: {$orderlink} (после входа). <br>По всем вопросам звонитe на многоканальный телефон: +7 495 785-88-50."; 
+						$mailContent = "Вы только что зарегистрировались как розничный клиент <b>{$user->username}</b>.<br>Ваш логин: <b>{$user->email}</b><br>Ваш пароль: <b>{$user->username}</b><br><br> Вы можете зайти в систему по этой ссылке {$link} и посмотреть Ваш новый заказ: {$orderlink} (после входа). <br>По всем вопросам звонитe на многоканальный телефон: +7 495 785-88-50."; 
 				 // письмо  самому клиенту (розница)		 
 						mail( $user->email, "=?UTF-8?B?" . base64_encode('Регистрация на сайте TAREX.ru') . " ?=", $mailContent, $headers);
 						Yii::app()->user->setFlash('success', $mailContent); 

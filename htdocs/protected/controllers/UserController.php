@@ -48,7 +48,7 @@ class UserController extends Controller
 	public function actionPrint($id)
 	{ 
 		$user = User::model()->findByPk($id);
-		
+		 
 		$message = "<h1>Клиент ТАРЕКС <em>{$user->username}</em><br>
 					<table border=1> 
 					<tr><td><h3>Телефон</td><td><h3><em>{$user->phone}</td></tr>

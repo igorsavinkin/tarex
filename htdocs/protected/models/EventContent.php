@@ -154,4 +154,9 @@ class EventContent extends CActiveRecord
 		if ($this->price > $this->RecommendedPrice) return 'lime';
 		if ($this->price < $this->RecommendedPrice) return 'redbgcolor';
 	} 
+	public function priceCssClass() 
+	{
+		if ($this->price < $this->assortment->getPriceOptMax()) return 'redbgcolor'; 
+		if ($this->price > $this->assortment->getCurrentPrice()) return 'green';		
+	} 
 }

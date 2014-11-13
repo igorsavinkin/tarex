@@ -112,7 +112,7 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 					echo $form->textField($model,'discount');  
 					echo $form->error($model,'discount'); 
 				} else 
-					echo $model->discount;  */
+					echo $model->discount;  */ 
 		?>
 		
 <?php if(Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 

@@ -11,6 +11,7 @@
 
 <h4 class='print' style='font-color:grey;'><?php// echo Yii::t('general','Order\'s Assortment'); //Номенклатура заказа: ?></h4>
 <?php // сетка с номенклатурой для данного заказа
+$contractorIsOpt = User::model()->findByPk($model->contractorId)->role == User::ROLE_USER;
 $dataProvider=new CActiveDataProvider('EventContent', array(    
         'criteria' => array(
         'condition'=>'eventId = '. $eventId , 'order'=>'id DESC'), // $eventId передан из view 'update' 
@@ -38,13 +39,32 @@ $this->widget( 'zii.widgets.grid.CGridView', array(
 			//	'value' => array($this, 'titleDataField'),
 			),
 			'assortmentAmount',
+			'basePrice'=>array(  
+			 	'type'=>'raw',
+				'name'=>Yii::t('general','Base Price'). ' (цена до всех скидок)',				
+				'value' =>  '$data->assortment->getCurrentPrice()',
+			),		 
+			'discount'=>array(  
+			 	'type'=>'raw', 
+				'name'=>Yii::t('general','Opt Discount' ),
+				'value' =>'$data->assortment->getDiscountOpt('. $model->contractorId .')',		
+				'visible'=>$contractorIsOpt, 				
+			),
+			'discountCurrent'=>array(  
+			 	'type'=>'raw', 
+				'name'=>Yii::t('general','Current discount' ) . ' %',
+				'value' =>'round(($data->price - $data->assortment->getCurrentPrice())/$data->assortment->getCurrentPrice()*100, 2)',  				
+			),			
 			'price', 
-			'RecommendedPrice'=>array(
+			/*'RecommendedPrice'=>array(
 					'name'=>'RecommendedPrice',
 					'header'=>Yii::t('general','Recommended Price'), 
 					'cssClassExpression'=>'$data->priceCssClass',   
-					), 
-			'cost', 
+					), */
+			'cost'=>array(
+				'name'=>'cost',
+				'cssClassExpression'=>'$data->priceCssClass()',   
+			), 		
 		),
     )); 
 echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red')); 

@@ -5,7 +5,7 @@ class DiscountGroup extends CActiveRecord
 	{
 		return '{{discountGroup}}';
 	} 
-	public function rules() 
+	public function rules()  
 	{ 
 		return array(
 			array('name', 'required'),

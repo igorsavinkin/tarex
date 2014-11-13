@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -777,24 +777,22 @@ Yii::app()->clientScript->registerScript('hide-for-assortment', "
     <!--});-->
 <!--</script>-->
 
-<script>
+<script type="text/javascript">
     if($(window).width() > 1200){
         $(function(){
             $('.tar_badge_vis').on('click',function(){
                 if($('.tar_cat_invis').is(':hidden')){
-                    $('.tar_cat_invis').animate({width:'236px', height:'595px'},50);
-                    $('.tar_badge_vis').animate({right:'-43px'},50);
-                    $('.tar_category_vis').animate({width:'236px'},50, function(){
-						$('.tar_category_vis').css('overflow','visible'); });
-                    $('.tar_cat_top').animate({marginLeft:'250px', width:'635px'},50);
-                    $('.tar_cat_bot').animate({marginLeft:'250px', width:'635px'},50);
+                   $('.tar_category_vis').animate({width:'240px'},50, 
+						 function(){ $('.tar_category_vis').css('overflow','visible'); });
+                 		     $('.tar_cat_invis').css('display','block');
+		    $('.tar_cat_invis').animate({width:'240px', height:'560px'},50);
+                     $('.tar_catalog_goods').css({marginLeft:'275px'});
                 }else{
+                    $('.tar_category_vis').animate({width:'0'},50, function(){ $('.tar_category_vis').css('overflow','visible');  });  
                     $('.tar_cat_invis').animate({width:'0', height:'0'},50);
-                    $('.tar_cat_top').animate({marginLeft:'0', width:'885px'},50);
-                    $('.tar_cat_bot').animate({marginLeft:'0', width:'885px'},50);
-                    $('.tar_category_vis').animate({width:'0'},50, function(){
-						$('.tar_category_vis').css('overflow','visible'); });
-                    $('.tar_badge_vis').animate({right:'-30px'},50);
+                    $('.tar_badge_vis').css({right:'-30px'}); 
+		     $('.tar_cat_invis').css('display','none');
+		    $('.tar_catalog_goods').css({marginLeft:'0px'});
                 }
             });
         });
@@ -803,19 +801,17 @@ Yii::app()->clientScript->registerScript('hide-for-assortment', "
         $(function(){
             $('.tar_badge_vis').on('click',function(){
                 if($('.tar_cat_invis').is(':hidden')){
-                    $('.tar_cat_invis').animate({width:'236px', height:'595px'},50);
-                    $('.tar_badge_vis').animate({right:'-43px'},50);
-                    $('.tar_category_vis').animate({width:'236px'},50, function(){
-						$('.tar_category_vis').css('overflow','visible'); });
-                    $('.tar_cat_top').animate({marginLeft:'250px', width:'443px'},50);
-                    $('.tar_cat_bot').animate({marginLeft:'250px', width:'443px'},50);
+                     $('.tar_category_vis').animate({width:'240px'},50, function(){
+						$('.tar_category_vis').css('overflow','visible');  });
+                     $('.tar_cat_invis').css('display','block');
+		    $('.tar_cat_invis').animate({width:'240px', height:'560px'},50);
+		    $('.tar_catalog_goods').css({marginLeft:'275px'});
                 }else{
-                    $('.tar_cat_invis').animate({width:'0', height:'0'},50);
-                    $('.tar_cat_top').animate({marginLeft:'0', width:'693px'},50);
-                    $('.tar_cat_bot').animate({marginLeft:'0', width:'693px'},50);
-                    $('.tar_category_vis').animate({width:'0'},50, function(){
-						$('.tar_category_vis').css('overflow','visible'); });
-                    $('.tar_badge_vis').animate({right:'-30px'},50);
+                    $('.tar_category_vis').animate({width:'0'},50,  function(){ $('.tar_category_vis').css('overflow','visible'); }); 
+		    $('.tar_cat_invis').animate({width:'0', height:'0'},50);
+                    $('.tar_badge_vis').css({right:'-30px'}); 
+		     $('.tar_cat_invis').css('display','none');
+ 		    $('.tar_catalog_goods').css({marginLeft:'0px'});
                 }
             });
         });

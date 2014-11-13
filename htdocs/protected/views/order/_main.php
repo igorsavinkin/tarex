@@ -281,10 +281,15 @@ $('.notes').bind('blur', function(e) {
 				echo '<b>', $model->Notes , '&nbsp;</b>'; 
 			}
 		?>
-		<span style='padding: 0px 15px 20px;margin-top:-25px;'>
+		<span class='paddingSpecial1'>		
+			<?php  
+			echo CHtml::button( Yii::t('general','Back to orders'), array( 'class'=>'red', 'onclick' => 'js:document.location.href="'. $this->createUrl('admin').'" '));
+			 ?>
+		</span>
+		<span class='paddingSpecial1'>
 			<?php echo CHtml::submitButton( Yii::t('general','Save'), array('class'=>'red', 'name'=>'save')); ?>
 		</span>
-		<span style='padding: 0px 5px 20px;margin-top:-25px;'>
+		<span class='paddingSpecial1'>
 			<?php echo CHtml::submitButton( Yii::t('general','Save & close'), array('class'=>'red', 'name'=>'OK')); ?>
 		</span>
 		

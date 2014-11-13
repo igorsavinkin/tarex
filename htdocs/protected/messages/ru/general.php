@@ -2,15 +2,26 @@
 return array( 
 	 '{action} {controller}' => '{controller} {action}', // This is flipped in German: "subject verb"
 	
+	/* User Group Discount */
+	'User Group Discount'=>'Скидка пользователя по группе',
+	'The user\'s discounts by groups'=>'Скидки пользователя по группам',
+	'Print user info'=>'Печатать инфо', 
+	'Prefix'=>'Префикс',
+	'no discount group applied'=>'нет группы скидок',
+	
 	/* Discount */
 	'DiscountGroup'=>'Группа скидок',
 	'Discount Group'=>'Группа скидок',
 	'Discount Groups'=>'Группы скидок',
-	'Articles'=>'Артикулы',
+	'Articles'=>'Артикулы', 
 	'Max wholesale discount'=> 'Максимальная оптовая скидка',
 	'Min Price'=>'Минимально допустимая цена',
 	'Base Price'=>'Основная цена',
 	'Current discount'=>'Текущая скидка',
+	'Current Opt Price'=>'Текущая цена оптового клиента',
+	'Current Opt Discount'=>'Текущая cкидка оптового клиента',
+	'Opt Discount'=>'Скидка оптового клиента',
+	'no contractor given'=>'нет контрагента',
 	
 	/* Load Assortment from Excel file */
 	'Loading Assortment from Excel file'=>'Загрузка номенклатуры из Excel файла',
@@ -82,7 +93,6 @@ return array(
 	'news'=>'новость',
 	'News Date'=>'Дата',
 	'Image Url'=>'Картинка',
-	'Image'=>'Фото',
 	'Image name'=>'Имя картинки',
 	'Image Url path'=>'Путь к картинке',
 	'Link'=>'Ссылка',
@@ -110,8 +120,7 @@ return array(
 	'Add assortment to certain category'=>'Добавить номенклатуру в нужную категорию',
 	'Change category'=>'Изменить категорию',
 	'Parts categories'=>'Категории запчастей',
-	'All categories'=>'Все категории',
-	'Category'=>'Категория', 
+	'Category'=>'Категория',
 	'OPTICS'=>'ОПТИКА', 
 	'OPTICS '=>'ОПТИКА', 
 	'BRAKES'=>'ТОРМОЗНАЯ СИСТЕМА', 
@@ -710,6 +719,7 @@ return array(
 	'Set as general manager'=> 'Назначить старшим менеджером',
 	'Set as accountant'=> 'Назначить бухгалтером',
 	'Delete'=>'Удалить',
+	'Delete Bulk'=>'Удалить несколько',
 	'Create new User'=>'Создать нового пользователя',
 	//'isLegalEntity' => 'юр. лицо',
 	'email' => 'Email',
@@ -789,8 +799,10 @@ return array(
 	'The cart content will be formed as new order and you might review and change its content'=>'Содержимое коризны будет сформировано в новый заказ и вы сможете просмотреть и изменить его.',
 	'Failure to form and save an order'=>'Невозможно сформировать и сохранить заказ',
 	'Additional info'=>'Дополнительная информация', 
+	'Discount groups'=>'Группы скидок',
+	'User Group Discounts'=>'Группы скидок пользователя',
 	'Set up discount groups value for this client' =>'Установить величину скидки для клиента по группам',
-	
+		
 	/*Testtree*/
 	'Testtrees' => 'Тестовое дерево',
 	'Testtree' => 'Тестовое дерево',
@@ -990,6 +1002,7 @@ return array(
 	'add to cart'=>'в корзину',
 	'Add to Cart'=>'В корзину',
 	'Add to the order'=>'Добавить в заказ',
+	'Back to orders'=>'Назад к заказам',
 	'Are you sure you want to remove this item from your cart'=>'Вы уверены что хотите удалить эту позицию из вашей корзины',
 	'item(s) have been added to cart'=>'позиций было добавлено в коризну',
 	'Change assortment bulk'=>'Изменить номенклатуру группой',
@@ -1026,7 +1039,7 @@ return array(
 	'Update EventStatuses' => 'Редактировать cтатус события',
 	'Create EventStatuses' => 'Создать cтатус события',
 	
-	/*Event Types*/
+	/* Event Types */
 	'Event Types' => 'Типы событий',
 	'Event Type' => 'Тип события',
 	'types' => 'типы',
@@ -1056,7 +1069,7 @@ return array(
 	
 	
 	
-	/*Event */
+	/* Event */
 	'Events' => 'События',
 	'Event' => 'Событие',
 	'types' => 'типы',
@@ -1264,7 +1277,6 @@ return array(
 	'Cost in RUB'=>'Цена в Российских рублях',
 	
 	/* Miscellenious */
-	'Admin'=>'Управлять',
 	'a city'=> 'город',
 	'from date'=> 'от',
 	'till Date'=>'до Даты',

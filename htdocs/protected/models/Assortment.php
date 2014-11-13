@@ -304,35 +304,31 @@ class Assortment extends CActiveRecord implements IECartPosition
  	public function getPrice($ContractorId=null)
 	{ // учитывает скидку оптового клиента (залогиненного) И скидку исходя из настроек ценнообразования Pricing для всех других случаев	
 		$ContractorId = isset($ContractorId) ? $ContractorId : Yii::app()->user->id;
-	
-		if ($ContractorId) 
-		{	
-			$UserRole = User::model()->findByPk($ContractorId)->role;
+        //echo 'ContractorId =', $ContractorId;
+		$UserRole = User::model()->findByPk($ContractorId)->role;
 	// если это оптовый клиент	то тогда ищем скидки в группах скидок для этого клиента по артикулу позиции	($this->article2)
-			if ($UserRole == User::ROLE_USER) 
-			{    
-				$discGroupId = DiscountGroup::getDiscountGroup($this->article2); 
-				$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$ContractorId,'discountGroupId'=>$discGroupId ));
-				return isset($ugd) ? round($this->getCurrentPrice() * (1 + $ugd->value/100), 2) : $this->getCurrentPrice();  	
-			}
+		if ($UserRole == User::ROLE_USER) 
+		{    
+			$discGroupId = DiscountGroup::getDiscountGroup($this->article2); 
+			$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$ContractorId,'discountGroupId'=>$discGroupId ));
+			return isset($ugd) ? round($this->getCurrentPrice() * (1 + $ugd->value/100), 2) : $this->getCurrentPrice();  	
+		}
 				
-	// если это розничный клиент или кто-то из работников тогда мы выдаём цену с его скидкой из Ценообразования:  $this->getPrice($contractorId)			
-			if (1) 
-			{			 
-				$discountNew = $this->countDiscount( date("Y-m-d H:i:s"), $ContractorId );	
-				$discount = $discountNew ? $discountNew : User::model()->findByPk($ContractorId)->discount;  			 
-					
-				if (empty($discount)) $discount = 0; // echo 'discount =', $discount ;
-				return round($this->getCurrentPrice() * (1 + $discount/100), 2);
-			}
-		} else { // если не задан контрагент тогда выдаём цену из Ценообразования (Pricing) по залогиненному пользователю. 
+	// если это розничный клиент или кто-то из работников тогда мы выдаём цену с его скидкой из Ценообразования:  $this->getPrice($contractorId)				 		 
+		$discountNew = $this->countDiscount( date("Y-m-d H:i:s"), $ContractorId );	
+		//echo 'discountNew =', $discountNew, '<br>';
+		$discount = $discountNew ? $discountNew : User::model()->findByPk($ContractorId)->discount;  				
+		if (empty($discount)) $discount = 0; // echo 'discount =', $discount ;
+		return round($this->getCurrentPrice() * (1 + $discount/100), 2);
+			 
+	/*	} else { // если не задан контрагент тогда выдаём цену из Ценообразования (Pricing) по залогиненному пользователю. 
 			$discountNew = $this->countDiscount( date("Y-m-d H:i:s"), Yii::app()->user->id );	
 			if (Yii::app()->user->isGuest) 
 				$discount = $discountNew; 
 			else
 				$discount = $discountNew ? $discountNew : User::model()->findByPk(Yii::app()->user->id)->discount;  		
 			return round($this->getCurrentPrice() * (1 + $discount/100), 2);
-		}
+		}*/
 		
 		return $this->getCurrentPrice() ; //Yii::t('general', 'no contractor given'). 'cp'; 
     } 
@@ -367,31 +363,16 @@ class Assortment extends CActiveRecord implements IECartPosition
 	
 	// используется в OrderController
 	public function getPrice2($Id){ // учитывает скидку клиента (залогиненного) И скидку исходя из настроек ценнообразования Pricing
-	
-	
-
-		//echo 'Id '.$Id;
-		//return;
-		
 		if ($Id==''){
 			$discountNew = $this->countDiscount( date("Y-m-d H:i:s"), Yii::app()->user->id );	
 			$discount = $discountNew ? $discountNew : User::model()->findByPk(Yii::app()->user->id)->discount;  		
 		}else{
 			$discountNew = $this->countDiscount( date("Y-m-d H:i:s"), $Id );	
-			$discount = $discountNew ? $discountNew : User::model()->findByPk($Id)->discount;  	
-			//echo 'discount /'.$discount.'/discountNew/'.$discountNew;
-			//return;
-		}
-		
-		
-		
-		if (empty($discount)) $discount = 0;
-        
-		//echo 'discount /'.$discount.'/';
-		
+			$discount = $discountNew ? $discountNew : User::model()->findByPk($Id)->discount;  
+		}		
+		if (empty($discount)) $discount = 0;		
 		return round($this->getCurrentPrice() * (1 + $discount/100), 2);
-    }
-	
+    }	
 	 
 	public function getCurrentPrice() // возвращаем текущую цену исходя из последней настройки в документе Установка цен (Exchangerates)  
 	    // не учитывает скидку клиента 
@@ -399,16 +380,12 @@ class Assortment extends CActiveRecord implements IECartPosition
 		$criteria = new CDbCriteria;
 		$criteria->order = 'Begin DESC';
 		$criteria->condition = 'Currency = "USD" '; 
-		$org = Yii::app()->user->isGuest ?  '7' : Yii::app()->user->organization;  // для гостей (Yii::app()->user->isGuest) мы выводим цену для компании 7
+		$org = Yii::app()->user->isGuest ? Yii::app()->params['organization'] : Yii::app()->user->organization;  // для гостей (Yii::app()->user->isGuest) мы выводим цену для компании из Yii::app()->params['organization']
 		$criteria->addCondition('organizationId = ' . $org );
 		
-		$rate = Exchangerates::model()->find($criteria); // находим одну последнюю по времени (Begin DESC).		
-		
-		
+		$rate = Exchangerates::model()->find($criteria); // находим одну последнюю по времени (Begin DESC).			
 		//echo ''.$rate->totalSum.'/'.$this->priceS.'/';
-		return $rate->totalSum * $this->priceS;  
-		
-		
+		return $rate->totalSum * $this->priceS;  		
 	}
  
 	public function countDiscount( $date, $userId )
