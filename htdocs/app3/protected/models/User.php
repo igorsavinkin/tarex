@@ -407,4 +407,11 @@ class User extends CActiveRecord
 		$managers = CHtml::listData(User::model()->findAll('role = '. User::ROLE_MANAGER .' OR role = '. User::ROLE_SENIOR_MANAGER), 'id', 'username');		
 		return CHtml::dropDownList('User[parentId]', $this->parentId, $managers);         
 	}
+	 protected function afterDelete()
+	{
+		$id = $this->id;
+		parent::afterDelete();
+		// удаляем все группы скидок после удаления пользователя
+		UserGroupDiscount::model()->deleteAllByAttributes(array('userId'=>$id));
+	} 
 }

@@ -100,7 +100,15 @@ class UserController extends Controller
 			else 
 				$model->operationCondition='Договор для физического лица'; 	
 				
-			if($model->save())
+			if($model->save()) 
+			{
+				// cоздаём для него группы скидок с нулями
+				foreach(DiscountGroup::model()->findAll() as $dg) {					 
+					$ugd=new UserGroupDiscount;
+					$ugd->userId=$model->id;
+					$ugd->discountGroupId=$dg->id;
+					$ugd->save(false);				 
+				}
 				if (Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
 					if ($model->role > User::ROLE_MANAGER) 
 						$this->redirect(array('admin'));
@@ -108,6 +116,7 @@ class UserController extends Controller
 						$this->redirect(array('adminPersonal'));
 				else 
 					$this->redirect(array('site/index'));
+			}
 		}
 
 		$this->render('create',array(
@@ -118,7 +127,56 @@ class UserController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$model->scenario = 'insert';	
+		$model->scenario = 'insert';	 
+		
+		$userGroupDiscount = new UserGroupDiscount;
+		if(isset($_POST['UserGroupDiscount']))
+		{
+			$userGroupDiscount->attributes=$_POST['UserGroupDiscount'];
+			//print_r($userGroupDiscount);
+			//$userGroupDiscount->save(false);
+		}
+		if(isset($_POST['discount']))
+		{ 
+			foreach($_POST['discount'] as $key => $value)
+			{
+				$ugd = UserGroupDiscount::model()->findByPk($key);
+				$ugd->value = $value; 
+				$ugd->save(); 
+			}
+		}
+		
+		
+		if(isset($_POST['bulkDelete']) && isset($_POST['UserGroupDiscountId']))
+		{
+			UserGroupDiscount::model()->deleteByPk($_POST['UserGroupDiscountId']);
+			$this->redirect(array('update', 'id'=>$id, '#'=>'tab3'));
+		}
+		
+		if(isset($_POST['groups']) && isset($_POST['user-group-discount']))
+		{
+			foreach($_POST['groups'] as $group)
+			{
+			     //$userGr =  UserGroupDiscount::model()->findByAttributes(array('userId'=>$id, 'discountGroupId'=> $group));
+				if (UserGroupDiscount::model()->updateAll(
+					array('value'=>$_POST['value']), // обновляемые атрибуты
+					' `userId` = :userId  AND `discountGroupId`=:discountGroupId', // query condition
+					array(':userId' => $id,  ':discountGroupId' => $group ) // параметры
+				)){} // просто обновили
+				// if ($userGr) $userGr->value= $_POST['value'];
+				 else 
+				 {
+					 $userGr = new UserGroupDiscount;
+					 $userGr->userId= $id;
+					 $userGr->discountGroupId= $group;
+					 $userGr->value= $_POST['value']; 
+					 $userGr->save(); 
+				 }
+				
+			} 
+			$this->redirect(array('update', 'id'=>$id, '#'=>'tab3'));
+		}
+		
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User']; 			
@@ -142,6 +200,7 @@ class UserController extends Controller
 		$model->carMakes = ($model->carMakes) ? explode(',', $model->carMakes) : array();
 		$this->render('update',array(
 			'model'=>$model,
+			'userGroupDiscount'=>$userGroupDiscount,
 		));
 	}
 	

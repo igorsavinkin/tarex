@@ -416,4 +416,5 @@ class User extends CActiveRecord
 			$arr[]=$user->id;
 	    return $arr; // ? $arr : false;
 	}
+	
 }
