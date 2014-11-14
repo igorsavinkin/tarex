@@ -1201,3 +1201,7 @@ div.tar_component_body
    text-decoration:none;
    color: white; 
 }
+
+.breadcrumbs {
+margin-left: 40px;
+}

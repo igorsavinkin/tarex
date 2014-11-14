@@ -3484,3 +3484,270 @@ Stack trace:
 #14 {main}
 REQUEST_URI=/index.php?r=order/loadContent
 ---
+2014/11/14 11:45:18 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Невозможно определить CSRF.' in /home/srv50213/htdocs/framework/web/CHttpRequest.php:1247
+Stack trace:
+#0 /home/srv50213/htdocs/framework/base/CComponent.php(561): CHttpRequest->validateCsrfToken(Object(CEvent))
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(207): CComponent->raiseEvent('onBeginRequest', Object(CEvent))
+#2 /home/srv50213/htdocs/framework/base/CApplication.php(178): CApplication->onBeginRequest(Object(CEvent))
+#3 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#4 {main}
+REQUEST_URI=/index.php?r=user/update/id/368
+HTTP_REFERER=http://tarex.ru/index.php?r=user/update/id/368
+---
+2014/11/14 11:45:25 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Невозможно определить CSRF.' in /home/srv50213/htdocs/framework/web/CHttpRequest.php:1247
+Stack trace:
+#0 /home/srv50213/htdocs/framework/base/CComponent.php(561): CHttpRequest->validateCsrfToken(Object(CEvent))
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(207): CComponent->raiseEvent('onBeginRequest', Object(CEvent))
+#2 /home/srv50213/htdocs/framework/base/CApplication.php(178): CApplication->onBeginRequest(Object(CEvent))
+#3 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#4 {main}
+REQUEST_URI=/index.php?r=user/update/id/368
+HTTP_REFERER=http://tarex.ru/index.php?r=user/update/id/368
+---
+2014/11/14 11:45:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('5020')
+#1 [internal function]: AssortmentController->actionView('5020')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?id=5020&r=assortment/view
+---
+2014/11/14 12:03:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/UserController.php:501
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/UserController.php(197): UserController->loadModel('')
+#1 [internal function]: UserController->actionUpdate('')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('user/update')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=user/update&id=
+---
+2014/11/14 12:03:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/UserController.php:501
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/UserController.php(197): UserController->loadModel('')
+#1 [internal function]: UserController->actionUpdate('')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('user/update')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=user/update&id=
+---
+2014/11/14 12:06:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/UserController.php:501
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/UserController.php(197): UserController->loadModel('')
+#1 [internal function]: UserController->actionUpdate('')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('user/update')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=user/update&id=
+---
+2014/11/14 12:07:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/UserController.php:501
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/UserController.php(197): UserController->loadModel('')
+#1 [internal function]: UserController->actionUpdate('')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('user/update')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=user/update&id=
+---
+2014/11/14 12:21:43 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchAll(): SQLSTATE[HY000]: General error: 1030 Got error 28 from storage engine. Выполнявшийся SQL-запрос: SHOW FULL COLUMNS FROM `tarex_assortment`.
+in /home/srv50213/htdocs/protected/controllers/AssortmentController.php (1192)
+in /home/srv50213/htdocs/protected/controllers/AssortmentController.php (184)
+in /home/srv50213/htdocs/index.php (16)
+2014/11/14 12:21:43 [error] [exception.CDbException] exception 'CDbException' with message 'Таблица "{{assortment}}", упомянутая в записи active record класса "Assortment", не найдена в базе данных.' in /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php:2362
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Assortment))
+#1 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(658): CActiveRecord->getMetaData()
+#2 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1485): CActiveRecord->getTableSchema()
+#3 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(1192): CActiveRecord->findByPk('3529')
+#4 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('3529')
+#5 [internal function]: AssortmentController->actionView('3529')
+#6 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#7 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#8 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#12 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#15 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#17 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#18 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#19 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#20 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=3529
+---
+2014/11/14 12:40:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('3984')
+#1 [internal function]: AssortmentController->actionView('3984')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?id=3984&r=assortment/view
+---
+2014/11/14 12:52:23 [error] [exception.PHPExcel_Exception] exception 'PHPExcel_Exception' with message 'Invalid character found in sheet title' in /home/srv50213/htdocs/protected/extensions/PHPExcel/Worksheet.php:430
+Stack trace:
+#0 /home/srv50213/htdocs/protected/extensions/PHPExcel/Worksheet.php(802): PHPExcel_Worksheet::_checkSheetTitle('\xD0\xA2\xD0\xB0\xD1\x80\xD0\xB5\xD0\xBA\xD1\x81 \xD0\xBF...')
+#1 /home/srv50213/htdocs/protected/controllers/UserController.php(81): PHPExcel_Worksheet->setTitle('\xD0\xA2\xD0\xB0\xD1\x80\xD0\xB5\xD0\xBA\xD1\x81 \xD0\xBF...')
+#2 [internal function]: UserController->actionPricelist2(NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('pricelist2')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('user/pricelist2')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?r=user/pricelist2
+---
+2014/11/14 12:52:43 [error] [exception.PHPExcel_Exception] exception 'PHPExcel_Exception' with message 'Invalid character found in sheet title' in /home/srv50213/htdocs/protected/extensions/PHPExcel/Worksheet.php:430
+Stack trace:
+#0 /home/srv50213/htdocs/protected/extensions/PHPExcel/Worksheet.php(802): PHPExcel_Worksheet::_checkSheetTitle('\xD0\xA2\xD0\xB0\xD1\x80\xD0\xB5\xD0\xBA\xD1\x81 \xD0\xBF...')
+#1 /home/srv50213/htdocs/protected/controllers/UserController.php(81): PHPExcel_Worksheet->setTitle('\xD0\xA2\xD0\xB0\xD1\x80\xD0\xB5\xD0\xBA\xD1\x81 \xD0\xBF...')
+#2 [internal function]: UserController->actionPricelist2(NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('pricelist2')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('user/pricelist2')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?r=user/pricelist2
+---
+2014/11/14 13:17:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('1760')
+#1 [internal function]: AssortmentController->actionView('1760')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?id=1760&r=assortment/view
+---
+2014/11/14 13:23:28 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchAll(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'BZ04020mcl' in 'where clause'. Выполнявшийся SQL-запрос: SELECT * FROM `tarex_assortment` `t` WHERE  article IN (BZ04020mcl, d5091m, 1el008369091) .
+in /home/srv50213/htdocs/protected/controllers/UserController.php (77)
+in /home/srv50213/htdocs/index.php (16)
+2014/11/14 13:23:28 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'BZ04020mcl' in 'where clause'. The SQL statement executed was: SELECT * FROM `tarex_assortment` `t` WHERE  article IN (BZ04020mcl, d5091m, 1el008369091) ' in /home/srv50213/htdocs/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/srv50213/htdocs/framework/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1351): CDbCommand->queryAll()
+#2 /home/srv50213/htdocs/framework/db/ar/CActiveRecord.php(1470): CActiveRecord->query(Object(CDbCriteria), true)
+#3 /home/srv50213/htdocs/protected/controllers/UserController.php(77): CActiveRecord->findAll(' article IN (BZ...')
+#4 [internal function]: UserController->actionPricelist(NULL)
+#5 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#6 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#7 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#8 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#10 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#14 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('pricelist')
+#16 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('user/pricelist')
+#17 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#18 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#19 {main}
+REQUEST_URI=/index.php?r=user/pricelist
+---
