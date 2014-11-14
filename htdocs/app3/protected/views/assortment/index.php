@@ -131,7 +131,7 @@ if ( $item OR $grcategory) {
 		));
 	 
 } ?> 
-<div class=''> 
+<div class='shift-right40'> 
 	<h1 ><?php  echo Yii::t('contact','Assortment list'); ?></h1>
 	<div class="search-form" style="display:block; padding-left:40px;"> 
 	<?php $this->renderPartial('_search',array('model'=>$model, 'bodies'=>$bodies )); ?>

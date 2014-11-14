@@ -1,4 +1,4 @@
-html, body
+﻿html, body
 {
     margin:0;
     padding:0;
@@ -1120,3 +1120,5 @@ div.tar_component_body
 	padding:0 10px;
 }
 .top{ vertical-align: top; }
+
+.breadcrumbs {margin-left: 40px;}

@@ -411,7 +411,7 @@ class User extends CActiveRecord
 	{
 		$id = $this->id;
 		parent::afterDelete();
-		// удаляем все группы скидок после удаления пользователя
+	// удаляем все группы скидок после удаления пользователя
 		UserGroupDiscount::model()->deleteAllByAttributes(array('userId'=>$id));
 	} 
 }
