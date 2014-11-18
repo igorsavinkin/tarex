@@ -24,7 +24,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('register', 'captcha', 'returnUsername' ,'ReturnShablonIdPaymentMethod' , 'test1' , 'test2', 'operationcondition', 'pricelist', 'pricelist2'),
+				'actions'=>array('register', 'captcha', 'returnUsername' ,'ReturnShablonIdPaymentMethod' , 'test1' , 'test2', 'operationcondition', 'pricelist', 'pricelistCSV'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'update' actions
@@ -46,12 +46,12 @@ class UserController extends Controller
 		);
 	}
 	public function actionPricelist($id=null)
-	{ 
-		// Error reporting		//error_reporting(E_ALL);  
+	{  
 		// клиент оптовый ? 
 		$wholesaler = (Yii::app()->user->role == User::ROLE_USER) ? 1 : 0;
 		// клиент розничный ? 
 		$retail = (Yii::app()->user->isGuest OR Yii::app()->user->role == User::ROLE_USER_RETAIL) ? 1 : 0;
+		
 		// PHPExcel    
 		include Yii::getPathOfAlias('ext'). '/PHPExcel.php';
 		include Yii::getPathOfAlias('ext').  '/PHPExcel/Writer/Excel2007.php';
@@ -62,39 +62,47 @@ class UserController extends Controller
 		// Set properties	 
 		$objPHPExcel->getProperties()->setCreator("TAREX Company, www.tarex.ru");
 		$objPHPExcel->getProperties()->setLastModifiedBy("www.tarex.ru");
-		$objPHPExcel->getProperties()->setTitle("Office 2007 XLSX Price list for ". date('d.m.Y H:i:s')."   ");
+		$objPHPExcel->getProperties()->setTitle("Office 2007 XLSX Price list at ". date('d.m.Y H:i:s')."   ");
 		$objPHPExcel->getProperties()->setSubject("Office 2007 XLSX Document");
 		$objPHPExcel->getProperties()->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.");
 		
-		// Add some data  
+		// Add data to document
 		$objPHPExcel->setActiveSheetIndex(0);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(20);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(90);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(17);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(17);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(17);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(80);
 		
 		$objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Артикул');
 		$objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Название');
-		$objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Цена');
-		$objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Наличие');
-		if ($wholesaler) { // если клиент оптовый 
-			$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(30);
-			$objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Скидка оптового клиента');
-		}
-		$counter=2;
-		$i=0; // measure_unit<>"" AND price>0 AND
-		
+		$objPHPExcel->getActiveSheet()->SetCellValue('C1', 'OEM');
+		$objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Модель');
+		$objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Производитель');
+		$objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Цена');
+		$objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Наличие');
+		/*if ($wholesaler) { // если клиент оптовый 
+			$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(30);
+			$objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Скидка оптового клиента');
+		}*/		
 		$criteria = new CDbCriteria();
-		$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
-		foreach( Assortment::model()->findAll($criteria) as $item)
+	//	$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
+		$criteria->condition =   'measure_unit<>"" AND price>0';
+		$counter=2;
+		foreach( Assortment::model()->findAll($criteria  ) as $item)
 		{
+			if (isset($_GET['file'])) continue; 
 			$objPHPExcel->getActiveSheet()->SetCellValue('A'.$counter, $item->article2);
 			$objPHPExcel->getActiveSheet()->SetCellValue('B'.$counter, $item->title);
-			$objPHPExcel->getActiveSheet()->SetCellValue('C'.$counter, $item->getPrice(Yii::app()->user->id));
+			$objPHPExcel->getActiveSheet()->SetCellValue('C'.$counter, $item->oem);
+			$objPHPExcel->getActiveSheet()->SetCellValue('D'.$counter, $item->model);
+			$objPHPExcel->getActiveSheet()->SetCellValue('E'.$counter, $item->manufacturer);
+			$objPHPExcel->getActiveSheet()->SetCellValue('F'.$counter, $item->getPrice(Yii::app()->user->id));
 			
-			$objPHPExcel->getActiveSheet()->SetCellValue('D'.$counter, $item->availability);
-		 	if ($wholesaler)  
-			  	$objPHPExcel->getActiveSheet()->SetCellValue('E'.$counter, $item->getDiscountOpt(Yii::app()->user->id));
-			$counter++;
-			if ($counter>100) break;
+			$objPHPExcel->getActiveSheet()->SetCellValue('G'.$counter, $item->availability);
+		/* 	if ($wholesaler)  
+			  	$objPHPExcel->getActiveSheet()->SetCellValue('H'.$counter, $item->getDiscountOpt(Yii::app()->user->id)); */
+			$counter++;   
 		}
  
 		$objPHPExcel->getActiveSheet()->setTitle('ТАРЕКС прайс лист на ' . date('d-m-Y'));
@@ -106,13 +114,47 @@ class UserController extends Controller
 			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '(розница).xlsx'; 
 		else 
 			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '.xlsx'; 
-		$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
-		ob_end_clean(); 
-		header('Content-Type: application/vnd.ms-excel');
-		header('Content-Disposition: attachment;filename="'.$filename.'"');
-		header('Cache-Control: max-age=0');  
-		$objWriter->save('php://output');   	 
-	} 
+	
+			$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+			ob_end_clean(); 
+			header('Content-Type: application/vnd.ms-excel');
+			header('Content-Disposition: attachment;filename="'.$filename.'"');
+			header('Cache-Control: max-age=0');  
+			$objWriter->save('php://output'); 
+	}  
+	public function actionPricelistCSV($count=null) // sendFile
+	{  
+		$wholesaler = (Yii::app()->user->role == User::ROLE_USER) ? 1 : 0;
+		// клиент розничный ? 
+		$retail = (Yii::app()->user->isGuest OR Yii::app()->user->role == User::ROLE_USER_RETAIL) ? 1 : 0;
+		if ($wholesaler)   
+			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '(оптовый).csv'; 
+		elseif ($retail)   
+			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '(розница).csv'; 
+		else 
+			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '.csv'; 
+		
+		$criteria = new CDbCriteria();
+	//	$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
+		$criteria->condition =   'measure_unit<>"" AND price>0';		
+		//$limit =  $count ? $count : 10;  
+		$filepath = Yii::app()->basePath . '/../files/'. $filename;
+		$out      = fopen($filepath, 'w'); 
+	// writing csv ...
+		fwrite($out, "\xEF\xBB\xBF");  // мы ставим BOM в начале содержимого файла
+		$counter=0;
+		$arr = array( Yii::t('general', 'Article'),Yii::t('general', 'Title'), 'OEM',Yii::t('general', 'Manufacturer'), Yii::t('general', 'Availability'), Yii::t('general', 'Price') );
+		fputcsv($out, $arr, ';');
+		foreach(Assortment::model()->findAll($criteria) as $d)
+		{
+			$arr = array( $d->article2, $d->title, $d->oem,  $d->make, $d->availability , $d->getPrice(Yii::app()->user->id) );
+			fputcsv($out, $arr, ';'); // разделитель - точка с запятой
+			if ($count && ($counter++ > $count) ) break;
+		}  
+		fclose($out); 
+		Yii::app()->request->sendFile($filename,   @file_get_contents($filepath)); 
+	}
+	
 	public function actionPrint($id)
 	{ 
 		$user = User::model()->findByPk($id);

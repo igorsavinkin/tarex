@@ -44,13 +44,13 @@ $this->widget( 'zii.widgets.grid.CGridView', array(
 			),	
 			'minPrice'=>array(  
 				'type'=>'raw',
-				'name'=>Yii::t('general','Min Price') . ' (согласно оптовой максимальной скидке)', 
+				'name'=>Yii::t('general','Min Price'), // . ' (согласно оптовой максимальной скидке)', 
 				'value' => '$data->assortment->getPriceOptMax()',
 				'visible'=>$contractorIsOpt,
 			),  
 			'basePrice'=>array(  
 			 	'type'=>'raw',
-				'name'=>Yii::t('general','Base Price'). ' (цена до всех скидок)',				
+				'name'=>Yii::t('general','Base Price'), //. ' (цена до всех скидок)',				
 				'value' =>  '$data->assortment->getCurrentPrice()',
 			),
 			'currentOptDiscount'=>array(         

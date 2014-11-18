@@ -22,7 +22,8 @@ return array(
 	'sourceLanguage'=> 'en_US',
 	// preloading 'log' component
 	'preload'=>array('log'),
-	
+	'onBeginRequest'=>create_function('$event', 'return ob_start("ob_gzhandler");'),
+	'onEndRequest'=>create_function('$event', 'return ob_end_flush();'),
 	// autoloading model and component classes
 	'import'=>array(
 		'select2.*',

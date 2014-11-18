@@ -822,7 +822,7 @@ class OrderController extends EventsController
     	$field =  CHtml::textField('EventContent[price][' . $data->id .']', 
 			$data->price,  
 			array( 
-				'style'=> 'width:45px',
+				'style'=> 'width:55px',
 				'ajax' => array(
 				'type'=>'POST', 
 				'url'=>CController::createUrl('/eventContent/updateEventContent', array( 'name' => 'savePrice')),
@@ -833,7 +833,7 @@ class OrderController extends EventsController
 					)
 				)
 		);		
-	/* */ $button = CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','Save')) ,  array('eventContent/updateEventcontent', 'name' => 'savePrice') , array('success'  => 'js:  function() { $.fn.yiiGridView.update("orderscontent", 
+	   $button = CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','OK')) ,  array('eventContent/updateEventcontent', 'name' => 'savePrice') , array('success'  => 'js:  function() { $.fn.yiiGridView.update("orderscontent", 
 							{   complete: function(jqXHR, status) {
 									if (status=="success"){
 										//console.log(jqXHR, status);

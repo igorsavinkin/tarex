@@ -56,7 +56,7 @@ class DiscountGroup extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-	public function getDiscountGroupName($article=null)
+	public static function getDiscountGroupName($article=null)
 	{
 		if (!$article) return 'no article';
 		$criteria=new CDbCriteria;
@@ -72,7 +72,7 @@ class DiscountGroup extends CActiveRecord
 		$discountGroup = DiscountGroup::model()->find($criteria);  
 		return isset($discountGroup) ? $discountGroup->prefix : '';
 	}	
-	public function getDiscountGroup($article=null)
+	public static function getDiscountGroup($article=null)
 	{
 		if (!$article) return 0;
 		$criteria=new CDbCriteria;

@@ -899,7 +899,7 @@ class EventsController extends Controller
 					)
 				)
 		);		
-		$button = CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','Save')) ,  array('eventContent/updateEventcontent', 'name' => 'savePrice'), array('success'  => 'js:  function() { $.fn.yiiGridView.update("orderscontent");}'), array('style'=>'float:right;')); 
+		$button = CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','OK')) ,  array('eventContent/updateEventcontent', 'name' => 'savePrice'), array('success'  => 'js:  function() { $.fn.yiiGridView.update("orderscontent");}'), array('style'=>'float:right;')); 
 		
 		return $field . $button; 	         
     } 

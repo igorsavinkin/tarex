@@ -5,3 +5,14 @@ php_flag display_errors on
 # - по умолчанию в php.ini    
 #php_value error_reporting "E_ALL & ~E_NOTICE"    
       
+	  
+Options +FollowSymLinks
+IndexIgnore */*
+RewriteEngine on
+
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# otherwise forward it to index.php
+RewriteRule . index.php

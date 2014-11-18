@@ -580,7 +580,10 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                         </li>
                     </ul>
                 </div>
-                <div class="tar_foot_social">
+		<div class="soc_text"><span>Иконки соц.сетей временно отключены</span>
+		<br/> 
+		<span style="margin-left: 630px;">Иконки соц.сетей</span></div>
+                <!--div class="tar_foot_social">
                     <div class="soc_icon">
                         <a href="#">
                             <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_twitter.jpg" alt="" />
@@ -595,7 +598,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                     <div class="soc_text">
                         Мы в соц. сетях
                     </div>
-                </div>
+                </div-->
                 <div class="pad"></div>
             </div>
             <div class="tar_bot_cont_foot">

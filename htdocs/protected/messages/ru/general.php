@@ -1,6 +1,8 @@
 <?php
 return array( 
-	 '{action} {controller}' => '{controller} {action}', // This is flipped in German: "subject verb"
+	 'Wait several seconds till the server composes and sends you personalized price list'=>'Подождите несколько секунд пока сервер составит и пошлёт Вам персонализированный прайс лист', 	
+
+	'{action} {controller}' => '{controller} {action}', // This is flipped in German: "subject verb"
 	
 	/* User Group Discount */
 	'User Group Discount'=>'Скидка пользователя по группе',
