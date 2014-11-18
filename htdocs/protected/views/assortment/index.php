@@ -140,9 +140,9 @@ if ( $item OR $grcategory) {
 <?php  
 if (Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER)) 
 	echo CHtml::Link(Yii::t('general','Loading Assortment from Excel file') , array('load') , array( 'class'=>'btn-win', 'style'=>'float:right;')); 
-	$msg = Yii::t('general', 'Wait several seconds till the server composes and sends you personalized price list');
+$msg = Yii::t('general', 'Wait several seconds till the server composes and sends you personalized price list');
 echo CHtml::Link(Yii::t('general','Download price list as Excel sheet') , array('user/pricelist') , array( 'class'=>'btn-win', 'style'=>'float:right;', 'onclick'=>"js:setTimeout(function(){ alert('{$msg}')},600);")); 
-echo CHtml::Link(Yii::t('general','Download price list as Excel sheet'). '(csv)' , array('user/pricelistCSV') , array( 'class'=>'btn-win', 'style'=>'float:right;', 'onclick'=>"js:setTimeout(function(){ alert('{$msg}')},600);")); 
+echo CHtml::Link(Yii::t('general','Download price list as Excel sheet') . ' (csv)' , array('user/pricelistCSV') , array( 'class'=>'btn-win', 'style'=>'float:right;', 'onclick'=>"js:setTimeout(function(){ alert('{$msg}')},600);")); 
 //  echo '<br> DProvider in view 1  count(<b>' , $dataProvider->itemCount , '</b>) = ' ; print_r($dataProvider->criteria); 
  
   	if (!empty($criteria) && !$dataProvider->itemCount /*&& $mainAssotrmentItem*/)	{

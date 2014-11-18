@@ -1,7 +1,9 @@
 <?php
 return array( 
-	 'Wait several seconds till the server composes and sends you personalized price list'=>'Подождите несколько секунд пока сервер составит и пошлёт Вам персонализированный прайс лист', 	
-
+	'Carmakes hide'=>'Скрыть марки машин',
+	'Carmakes show'=>'Показать марки машин',
+	'Wait several seconds till the server composes and sends you personalized price list'=>'Подождите несколько секунд пока сервер составит и пошлёт Вам персонализированный прайс лист', 	
+	'Download price list as Excel sheet'=>'Скачать прайс как лист Excel',
 	'{action} {controller}' => '{controller} {action}', // This is flipped in German: "subject verb"
 	
 	/* User Group Discount */

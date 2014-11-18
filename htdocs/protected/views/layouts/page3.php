@@ -255,8 +255,10 @@
 								echo '</ul>';
 							}?>
 					</div><!-- row -->
-					<div class="row<?php echo ('assortment' != Yii::app()->controller->id) ? ' hidden' : ''; ?>">	
-						<?php $this->renderPartial('//layouts/_carmakes'); ?>
+					<?php $hide=Yii::t('general', 'Carmakes hide'); $show=Yii::t('general', 'Carmakes show'); ?>					
+					<div class="row <?php echo ('assortment' != Yii::app()->controller->id) ? ' hidden' : ''; ?>">
+						<a href='#' class='carmakes-button'><?php echo $hide; ?></a>
+						<div class='carmakes'><?php $this->renderPartial('//layouts/_carmakes'); ?></div>
 					</div><!-- row -->
                     <div class="row print">
                         <div class="col-md-12"><!--Категории -->
@@ -635,7 +637,16 @@ $('#opendialog').click(function(data){
 $('.back-link').click(function(data){	 
 		$('#searchbyvin').hide();
 		return false;
-	});", CClientScript::POS_END);	
+	}); 
+	
+$('.carmakes-button').click(function(){
+	$('.carmakes').toggle();
+	if ($('.carmakes').is(':hidden')) 
+		{ $(this).text('{$show}') }
+	else 
+		{ $(this).text('{$hide}') };	
+	return false;
+});", CClientScript::POS_END);	
 ?>
 <script>
     $('select').each(function(){

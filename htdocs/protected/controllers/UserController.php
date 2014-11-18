@@ -51,6 +51,7 @@ class UserController extends Controller
 		$wholesaler = (Yii::app()->user->role == User::ROLE_USER) ? 1 : 0;
 		// клиент розничный ? 
 		$retail = (Yii::app()->user->isGuest OR Yii::app()->user->role == User::ROLE_USER_RETAIL) ? 1 : 0;
+		//$retail = (Yii::app()->user->isGuest OR Yii::app()->user->role == User::ROLE_USER_RETAIL) ? 1 : 0;
 		
 		// PHPExcel    
 		include Yii::getPathOfAlias('ext'). '/PHPExcel.php';
@@ -80,7 +81,8 @@ class UserController extends Controller
 		$objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Модель');
 		$objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Производитель');
 		$objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Цена');
-		$objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Наличие');
+		if (!Yii::app()->user->isGuest) 
+			$objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Наличие');
 		/*if ($wholesaler) { // если клиент оптовый 
 			$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(30);
 			$objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Скидка оптового клиента');
@@ -99,7 +101,8 @@ class UserController extends Controller
 			$objPHPExcel->getActiveSheet()->SetCellValue('E'.$counter, $item->manufacturer);
 			$objPHPExcel->getActiveSheet()->SetCellValue('F'.$counter, $item->getPrice(Yii::app()->user->id));
 			
-			$objPHPExcel->getActiveSheet()->SetCellValue('G'.$counter, $item->availability);
+			if (!Yii::app()->user->isGuest)  
+				$objPHPExcel->getActiveSheet()->SetCellValue('G'.$counter, $item->availability);
 		/* 	if ($wholesaler)  
 			  	$objPHPExcel->getActiveSheet()->SetCellValue('H'.$counter, $item->getDiscountOpt(Yii::app()->user->id)); */
 			$counter++;   
@@ -143,11 +146,15 @@ class UserController extends Controller
 	// writing csv ...
 		fwrite($out, "\xEF\xBB\xBF");  // мы ставим BOM в начале содержимого файла
 		$counter=0;
-		$arr = array( Yii::t('general', 'Article'),Yii::t('general', 'Title'), 'OEM',Yii::t('general', 'Manufacturer'), Yii::t('general', 'Availability'), Yii::t('general', 'Price') );
+		$arr = array('0'=> Yii::t('general', 'Article'),Yii::t('general', 'Title'), 'OEM',Yii::t('general', 'Model') ,Yii::t('general', 'Price') );
+		if (!Yii::app()->user->isGuest)  
+			$arr[] = Yii::t('general', 'Availability');
 		fputcsv($out, $arr, ';');
 		foreach(Assortment::model()->findAll($criteria) as $d)
 		{
-			$arr = array( $d->article2, $d->title, $d->oem,  $d->make, $d->availability , $d->getPrice(Yii::app()->user->id) );
+			$arr = array( $d->article2, $d->title, $d->oem,  $d->model,  $d->getPrice(Yii::app()->user->id) );
+			if (!Yii::app()->user->isGuest)  
+				$arr[] = $d->availability;
 			fputcsv($out, $arr, ';'); // разделитель - точка с запятой
 			if ($count && ($counter++ > $count) ) break;
 		}  

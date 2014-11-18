@@ -87,6 +87,7 @@ return array(
 	'Spare parts'=>'Автозапчасти',
 	'Get the link to the page'=>'Получить ссылку на страницу',
 	'The link'=>'Ссылка',
+	'sitemap'=>'Карта сайта',
 	
 	/* News */
 	'News'=>'Новости',
