@@ -264,13 +264,31 @@ class AssortmentController extends Controller
 	 
 	public function actionCreate()
 	{
-		$model=new Assortment;
-		//$this->layout = '//layouts/FrontendLayoutPavel';
+		$model=new Assortment; 
 		if(isset($_POST['Assortment']))
 		{
 			$model->attributes=$_POST['Assortment'];
 			$model->organizationId = Yii::app()->user->organization;
-			if($model->save())
+			$model->date = date('Y-m-d H:i:s');
+			$uploadedFile=CUploadedFile::getInstance($model, 'imageUrl');
+			if ($uploadedFile == null) 
+				echo '<br>Failue (or No uploaded) to upload photo'; 
+			else 
+			{  
+				//$model->imageUrl = $uploadedFile->name;  
+				if (empty($model->article2)) 
+					$model->article2 = $_POST['Assortment']['article'];
+				echo 'uploadedFile name = ', $model->article2 .'.jpg'; 
+				if ($uploadedFile->saveAs( Yii::app()->basePath .'/../img/foto/'. $model->article2 .'.jpg'))
+				{
+					echo '<br>photo successfully saved';					
+				}
+				else 
+					echo '<br>failure to save photo';
+			}
+			
+			if($model->save()) 
+				//$this->redirect(array('update', 'id'=>$model->id));
 				$this->redirect(array('admin'));
 		} 
 		$this->render('create',array(
@@ -285,8 +303,25 @@ class AssortmentController extends Controller
 		if(isset($_POST['Assortment']))
 		{			 
 			$model->attributes=$_POST['Assortment'];
-			if($model->save())
-				$this->redirect(array('admin','id'=>$model->id));
+			
+			$uploadedFile=CUploadedFile::getInstance($model, 'imageUrl');
+			if ($uploadedFile == null) 
+				echo '<br>Failue to upload photo(or No uploaded file)'; 
+			else 
+			{  
+				//$model->imageUrl = $uploadedFile->name;  
+				//if (empty($model->article)) $model->article = str_replace(array(' ','-','.'), '', $model->article2);
+				echo 'uploadedFile name = ', $model->article2 .'.jpg'; 
+				if ($uploadedFile->saveAs( Yii::app()->basePath .'/../img/foto/'. $model->article2 .'.jpg'))
+				{
+					echo '<br>photo successfully saved';					
+				}
+				else 
+					echo '<br>failure to save photo';
+			}
+			
+			if($model->save()) {}
+				//$this->redirect(array('admin','id'=>$model->id));
 		}
 
 		$this->render('update',array(
@@ -858,7 +893,7 @@ class AssortmentController extends Controller
 					$assortment = Assortment::model()->findByPk($position->getId());
 					$content->assortmentTitle = $assortment->title; // заносим title номенклатуры из корзины 						
 					$content->assortmentId = $assortment->id; // заносим id номенклатуры из корзины 						
-					$content->price = $position->getPrice(Yii::app()->user->id);			 	
+					$content->price = $position->getPrice();			 	
 					$content->assortmentAmount = $position->getQuantity();// заносим количество наименования номенклатуры из корзины 	
 					$content->cost = $content->price * $content->assortmentAmount; // заносим cost
 					$totalCost += $content->cost;
@@ -981,7 +1016,7 @@ class AssortmentController extends Controller
 						$assortment = Assortment::model()->findByPk($position->getId());
 						$content->assortmentId = $assortment->id; // заносим id номенклатуры из корзины 
 						$content->assortmentTitle = $assortment->title; // заносим title номенклатуры из корзины 
-						$content->price = $position->getPrice(Yii::app()->user->id);		 
+						$content->price = $position->getPrice();		 
 						$content->assortmentAmount = $position->getQuantity();// заносим количество наименования номенклатуры из корзины 	
 						$content->cost = $content->price * $content->assortmentAmount; // заносим cost
 						$totalCost += $content->cost;
@@ -1002,7 +1037,7 @@ class AssortmentController extends Controller
 					$orderlink = CHtml::Link(Yii::t('general', 'Order') , CController::createAbsoluteUrl('order/update&id='.  $model->id));	
 					if (Yii::app()->user->isGuest) 
 						$org = Yii::app()->params['organization'];
-					else  
+					else 
 						$org = Yii::app()->user->organization; 
 			// массив email'ов старших менеджеров для отправки им писем			
 					$srManagerEmails = CHtml::listData(User::model()->findAllByAttributes(array('role'=>User::ROLE_SENIOR_MANAGER, 'organization'=> $org)), 'id', 'email');
@@ -1014,7 +1049,7 @@ class AssortmentController extends Controller
 			// различие между новым и существующим пользователем
 					if ($newuser && $user->isLegalEntity)
 					{
-						 $mailContent = "Вы зарегистрировались в на сайте ТАРЕКС как юридическое лицо и создали заказ.<br>Заявка на регистрацию принята и Ваш заказ принят к проверке.<br>В течение получаса менеджер свяжется с вами и вышлет Вам данные для входа на сайт.<br><br>По всем вопросам Вы можете позвонить на многоканальный телефон: +7 495 785-88-50."; 
+						 $mailContent = "Вы зарегистрировались в на сайте ТАРЕКС как юридическое лицо и создали заказ. <br>Заявка на регистрацию принята. Ваш заказ принят к проверке. В течение получаса менеджер свяжется с вами и вышлет Вам данные для входа на сайт. <br>По всем вопросам Вы можете позвонить на многоканальный телефон: +7 495 785-88-50."; 
 			// письмо и flash клиенту
 					 	mail($user->email, "=?UTF-8?B?" . base64_encode('Регистрация на сайте TAREX.ru') . " ?=", $mailContent, $headers );		 
 						//echo '<br>mail is sent to ', $user->email , ' (isLegalEntity)<br>';	
@@ -1024,7 +1059,7 @@ class AssortmentController extends Controller
 						{ 	
 							//if ('igor.savinkin@gmail.com' != $email) continue;
 							mail( $email, $subject, 
-							"Уважаемый генеральный менеджер, </br> новый пользователь '<em>{$user->username}</em>' (тел.: {$user->phone}) зарегистрировался на сайте как юр. лицо и создал новый заказ № {$model->id} на сумму {$model->totalSum} рублей. <br>Просим связаться с ним и проставить группу цен и менеджера в его профиле. Посмотреть профиль этого пользователя Вы можете по этой ссылке: {$userprofile}. <br>Там же вам нужно активировать этого нового пользователя чтобы он мог залогиниться в системе.<br>Посмотреть его заказ Вы можете по этой ссылке: {$orderlink}.", 
+							"Уважаемый генеральный менеджер, </br> новый пользователь '<em>{$user->username}</em>' (тел.: {$user->phone}) зарегистрировался на сайте как юр. лицо и создал новый заказ № {$model->id} на сумму {$model->totalSum} рублей. </br>Просим связаться с ним и проставить группу цен и менеджера в его профиле. Посмотреть профиль этого пользователя Вы можете по этой ссылке: {$userprofile}. <br>Там же вам нужно активировать этого нового пользователя чтобы он мог залогиниться в системе.<br>Посмотреть его заказ Вы можете по этой ссылке: {$orderlink}.", 
 							$headers);  
 						//	echo '<br>mail is sent to ', $email , ' (sr manager)<br>';						
 						}							
@@ -1032,7 +1067,7 @@ class AssortmentController extends Controller
 					elseif ($newuser && !$user->isLegalEntity) 
 					{
 						$link = CHtml::Link(Yii::t('general', 'Enter') , Yii::app()->createAbsoluteUrl('site/login', array( /*  'email'=>$user->email, 'p'=>$user->password, 'returnUrl'=>CController::createAbsoluteUrl('order/update&id='.  $model->id)*/ )), array('target'=>'_blank')); 
-						$mailContent =  "Вы только что зарегистрировались как розничный клиент <b>{$user->username}</b>.<br>Ваш логин: <b>{$user->email}</b><br>Ваш пароль: <b>{$user->username}</b><br><br> Вы можете зайти в систему по этой ссылке {$link} и посмотреть Ваш новый заказ: {$orderlink} (после входа). <br>По всем вопросам звонитe на многоканальный телефон: +7 495 785-88-50."; 
+						$mailContent = "Вы только что зарегистрировались как розничный клиент <b>{$user->username}</b>.<br>Ваш логин: <b>{$user->email}</b><br>Ваш пароль: <b>{$user->username}</b><br><br> Вы можете зайти в систему по этой ссылке {$link} и посмотреть Ваш новый заказ: {$orderlink} (после входа). <br>По всем вопросам звонитe на многоканальный телефон: +7 495 785-88-50."; 
 				 // письмо  самому клиенту (розница)		 
 						mail( $user->email, "=?UTF-8?B?" . base64_encode('Регистрация на сайте TAREX.ru') . " ?=", $mailContent, $headers);
 						Yii::app()->user->setFlash('success', $mailContent); 
@@ -1102,17 +1137,8 @@ class AssortmentController extends Controller
 	}	
 	public function actionTest()
 	{
-		/*$schn = $this->findLastSchneiderNb($_GET['make']);
-		echo 'The Last Schneider Nb = ', $schn;*/
-		$assortment=Assortment::model()->findAll(array('select'=>'id, article', 'order'=>'id'));
-		$file = Yii::app()->basePath . '/../indexes' . date('Y-m-d') . '.txt';
-		$str='';
-		foreach($assortment as $a)
-		{
-			$str .=  $a->id.' ' .  $a->article . ','. PHP_EOL;
-		}
-		echo file_put_contents($file, $str), ' bytes were written into ', $file;
-		
+		$schn = $this->findLastSchneiderNb($_GET['make']);
+		echo 'The Last Schneider Nb = ', $schn;
 	}
 	
 	public function actionFillInSchneiderGr($make=null)
@@ -1287,7 +1313,7 @@ EOF;
 	   $dd = CHtml::dropDownList('Assortment[amount][' . $data->id .']', 1, $dataArr, array('style'=>'width:40px;'));
 		return $dd  . '&nbsp;' . $buttonAjax; 		
     }	
-	public function info($data, $row) 
+	public function info($data, $row)
 	{ 
 		$info = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/infoblue.png" ));
 		$infofoto = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/camerainfoblue.png" ));

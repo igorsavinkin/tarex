@@ -93,7 +93,8 @@ if ($flashMessages)
 			
 		 </td>
 		 <td  width='280' class='top'>
-			<?php echo $form->labelEx($model,'username'); ?>
+		    <label><?php echo Yii::t('general','User name'); ?></label>
+			<?php // echo $form->labelEx($model,'username'); ?>
 			<?php echo $form->textField($model,'username', array('size'=>'28')); ?>
 			<?php echo $form->error($model,'username'); ?>			
 			

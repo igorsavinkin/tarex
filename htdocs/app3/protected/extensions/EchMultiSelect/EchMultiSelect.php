@@ -6,16 +6,6 @@
  * 
  * @author C.Yildiz <c@cba-solutions.org>
  *
- $data= CHtml::listData(Color::model()->findAll(), 'ID', 'Name');
-$this->widget('ext.EchMultiSelect.EchMultiSelect', array(
-    'model' => $model,
-    'dropDownAttribute' => 'color',     
-    'data' => $data,
-    'dropDownHtmlOptions'=> array(
-        'style'=>'width:378px;',
-    ),
-));
- 
  */
 Yii::import('zii.widgets.jui.CJuiInputWidget');
 

@@ -10,6 +10,11 @@ class EventsController extends Controller
 		);
 	}
 
+	/**
+	 * Specifies the access control rules.
+	 * This method is used by the 'accessControl' filter.
+	 * @return array access control rules
+	 */
 	public function accessRules()
 	{
 		return array( 
@@ -18,12 +23,14 @@ class EventsController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create', 'update2', 'PrintSF', 'PrintOrder', 'PrintSchet', 'PrintLabels', 'PrintPPL', 'PrintPPL2', 'LoadContent', 'loadContent', 'clone', 'bulkActions'),
+				'actions'=>array('create', 'update2', 'PrintSF', 'PrintOrder', 'PrintLabels', 'PrintPPL', 'PrintPPL2', 'LoadContent', 'loadContent', 'clone', 'bulkActions'),
 				'users'=>array('@'),  
 			), 
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin'),
-				'users'=>array('@'),   
+				'users'=>array('@'),  
+			//	'roles'=>array(User::ROLE_ADMIN),  
+			//	'expressions'=>array(User::ROLE_ADMIN),  
 			), 
 			array('allow', 
 				'actions'=>array('update'), 
@@ -892,26 +899,7 @@ class EventsController extends Controller
 					)
 				)
 		);		
-		$button = CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','Save')) ,  array('eventContent/updateEventcontent', 'name' => 'savePrice'), array('success'  => 'js:  function() { $.fn.yiiGridView.update("orderscontent");}'), array('style'=>'float:right;')); 
-		
-		return $field . $button; 	          
-    }
-	protected function discountDataField($data,$row)
-     { 
-		$field =  CHtml::textField('EventContent[discount][' . $data->id .']', 
-			round(($data->price - $data->assortment->getCurrentPrice())/$data->assortment->getCurrentPrice()*100, 2),  
-			array( 
-				'style'=> 'width:45px',
-				'ajax' => array(
-				'type'=>'POST', 
-				'url'=>CController::createUrl('/eventContent/updateEventContent'),
-				'success' =>'js: function() { /* here we update the current Grid with id = "orderscontent" */
-								$.fn.yiiGridView.update("orderscontent");
-								}',					
-					)
-				)
-		);		
-		$button = CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','OK')) ,  array('eventContent/updateEventcontent', 'name' => 'saveDiscount'), array('success'  => 'js:  function() { $.fn.yiiGridView.update("orderscontent");}'), array('style'=>'float:right;')); 
+		$button = CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','OK')) ,  array('eventContent/updateEventcontent', 'name' => 'savePrice'), array('success'  => 'js:  function() { $.fn.yiiGridView.update("orderscontent");}'), array('style'=>'float:right;')); 
 		
 		return $field . $button; 	         
     } 
@@ -982,11 +970,29 @@ class EventsController extends Controller
 		*/
 		
 	}
-	public function getDiscount($data,$row)
+	protected function discountDataField($data,$row)
+    { 
+		$field =  CHtml::textField('EventContent[discount][' . $data->id .']', 
+			round(($data->price - $data->assortment->getCurrentPrice())/$data->assortment->getCurrentPrice()*100, 2),  
+			array( 
+				'style'=> 'width:45px',
+				'ajax' => array(
+				'type'=>'POST', 
+				'url'=>CController::createUrl('/eventContent/updateEventContent'),
+				'success' =>'js: function() { /* here we update the current Grid with id = "orderscontent" */
+								$.fn.yiiGridView.update("orderscontent");
+								}',					
+					)
+				)
+		);		
+		$button = CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','OK')) ,  array('eventContent/updateEventcontent', 'name' => 'saveDiscount'), array('success'  => 'js:  function() { $.fn.yiiGridView.update("orderscontent");}'), array('style'=>'float:right;')); 
+		
+		return $field . $button; 	         
+    } 
+	public function priceCssClass($contractorId=null) 
 	{
-		$criteria=new CDbCriteria;
-		$criteria->compare('articles', $data->article, true); // нестрогое сравнение в поле Артикулы
-		$disc = DiscountGroup::model()->find($criteria)->value; 
-		return  isset($disc) ? $disc : '0';
-	}			
+		if ($this->price < $this->assortment->getPriceOptMax()) return 'redbgcolor';
+		//if ($this->price == $this->assortment->getPriceOpt($contractorId)) return '';
+		if ( $this->price > $this->assortment->getCurrentPrice()  ) return 'green';		
+	} 
 }

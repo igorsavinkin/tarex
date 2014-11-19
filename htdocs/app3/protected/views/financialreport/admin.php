@@ -71,7 +71,7 @@
 				'placeholder' => '', 
 				),
 		)); 
-	}elseif (Yii::app()->user->role>3 && Yii::app()->user->role<6){
+	} elseif (Yii::app()->user->role>3 && Yii::app()->user->role<6){
 		echo '<strong>'.Yii::t('general','Contractor').' </strong>'; 
 		$AllowedContractors=CHtml::listData(User::model()->findAll(array(
 			'order'=>'name ASC',
@@ -89,6 +89,7 @@
 				),
 		)); 
 	}else{ 
+		//echo $form->hiddenField( $model, 'contractorId');
 		//echo $UserName;	
 	}
 ?>

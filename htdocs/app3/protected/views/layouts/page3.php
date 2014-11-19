@@ -1,24 +1,12 @@
-<?
-	require_once ($_SERVER['DOCUMENT_ROOT'] . '/seotools/seotools.class.php');
-	$ST = new Seotools; 
-?>
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" type="image/ico" href="/app2/img/favicon.ico">
 
-    <title><?
-$meta_title = $ST->get('title');
-$meta_keywords = $ST->get('keywords');
-$meta_desc = $ST->get('description');
-if ($meta_title) {echo $meta_title;}
-else {echo $this->pageTitle;} ?>
-</title> 
-<?if ($meta_keywords) echo '<meta name="keywords" content="'. $meta_keywords .'" />';
-if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?>
+    <title><?php echo $this->getPageTitle(); //CHtml::encode($this->pageTitle); ?></title>
 	<link href="<?php echo Yii::app()->baseUrl; ?>/css/in.css" rel="stylesheet" type="text/css">
 	<link href="<?php echo Yii::app()->baseUrl; ?>/css/form.css" rel="stylesheet" type="text/css">
     <link href="<?php echo Yii::app()->baseUrl; ?>/css/reset.css" rel="stylesheet" type="text/css">
@@ -59,18 +47,18 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
 			echo "</script>";
 		?>
 </head>
-<body>
+<body> 
 <div class="tar_wrapper">
     <div class="in_wrapper">
         <div class="tar_header">
             <div class="tar_top_head">
                 <div class="container">
-                    <div class="row">
+                    <div class="row print">
                         <div class="col-md-12">
                             <div class="tar_left_top_head">
                                 <div class="tar_top_logo">
                                     <a href="<?php echo Yii::app()->createUrl('/site/index'); ?>">
-                                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_top_logo.png">
+                                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_top_logo.png" alt="" />
                                     </a>
                                 </div>
                                 <div class="tar_ad_phone">
@@ -94,6 +82,26 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
                             </div><!-- tar_choice_all -->
                             <div class="tar_reg_in_lang">
                               <div class="tar_usermenu">
+							   <?php  
+									if (Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
+									{   
+										$criteriaCh = new CDbCriteria;
+										$criteriaCh->select='id';
+										$criteriaCh->compare('parentId', Yii::app()->user->id); 
+										$children=array();
+										foreach(User::model()->findAll($criteriaCh) as $u)
+											$children[]=$u->id; 
+										if (count($children))
+										{
+											$criteria=new CDbCriteria;
+											$criteria->compare('EventTypeId', Events::TYPE_ORDER); // ищем заказы среди других событий
+											$criteria->compare('StatusId', array( Events::STATUS_NEW, Events::STATUS_REQUEST_TO_RESERVE, Events::STATUS_REQUEST_TO_DELIVERY ) ); // новый, запрос в резерв, запрос на доствку
+											$criteria->addInCondition('contractorId', $children); 
+											$newOrdersCount = Events::model()->count($criteria); 
+											if ($newOrdersCount) 											
+												echo CHtml::Link("&nbsp;{$newOrdersCount}&nbsp;", array('order/admin'), array('class'=>"objblink new-orders", 'title'=>Yii::t('general','Your new coming orders') ));  
+										} 
+									} ?>  
                                     <a class="tar_name" href="<?php echo Yii::app()->createUrl('/user/update', array('id'=>Yii::app()->user->id)); ?>"><?php echo Yii::app()->user->username; ?></a><br>
                                       
                                     <span><?php echo Yii::app()->user->email; ?></span>
@@ -120,7 +128,7 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
 
 							 <div class="tar_basket">
                                 <a class="tar_bas" href="<?php echo Yii::app()->createUrl('assortment/cart');?>" >
-                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_basket.png">
+                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_basket.png" alt="" />
 									<span id='cart-content'><?php $cartContent =  Yii::t('general', 'BASKET') . '<br />' . Yii::app()->shoppingCart->getItemsCount() .' ' . Yii::t('general', 'item(s)');
 									$cost = Yii::t('general', 'for') . ' ' . Yii::app()->shoppingCart->getCost() . ' '.  Yii::t('general','RUB'); 
 									echo $cartContent , '<br>', $cost; ?>
@@ -132,12 +140,12 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
                             <div class="tar_red_buttons">
                                 <div class="tar_vip">
                                     <a id='opendialog' href="#">
-                                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_vip.png">
+                                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_vip.png" alt=''/>
                                     </a>
                                 </div>
                                 <div class="tar_catalog">
                                     <a href="#">
-                                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_catalog.png">
+                                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_catalog.png" alt="" />
                                     </a>
                                 </div>
                                 <div class="pad"></div>
@@ -163,7 +171,7 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
 							 <?php 
 								$Subsystem= Yii::app()->session['Subsystem'];
 								$Reference =  isset($_GET['Reference']) ? $_GET['Reference'] : Yii::app()->session['Reference'];
-								$MainMenu=MainMenu::model()->FindAll(
+								$MainMenu=MainMenu::model()->findAll(
 									array(
 										'select'=>'Subsystem,Img',
 										'order'=> 'DisplayOrder',
@@ -177,8 +185,9 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
 									$checked = ($Subsystem==$r->Subsystem) ? 'checked' : '';
 								 	if($r->Img != '')  
 									{		 
+										$file = Yii::app()->user->checkAccess(User::ROLE_MANAGER) ? 'general' : 'user';
 										$_GET['Subsystem'] = $r->Subsystem; // меняем Subsystem
-										echo "<div class='tar_icons_item {$checked}'>",  CHtml::Link("<img src='/app3/images/subsystem/".$r->Img."' alt='".Yii::t('general', $r->Subsystem)."' title='".Yii::t('general', $r->Subsystem)."'>", array( $this->id. '/' . $this->getAction()->id) + $_GET) , '</div>';
+										echo "<div class='tar_icons_item {$checked}'>",  CHtml::Link("<img src='/app3/images/subsystem/".$r->Img."' alt='".Yii::t('general', $r->Subsystem)."' title='".Yii::t($file, $r->Subsystem)."'>", array( $this->id. '/' . $this->getAction()->id) + $_GET) , '</div>';
 									}
 								}  ?> 
                                     </div>
@@ -218,7 +227,7 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
 										$link = $this->createUrl($r->Link."/admin", array('Subsystem'=>$r->Subsystem ,'Reference'=>$r->Link)); 								 	
 										echo "<li><a href='{$link}' ";
 										echo  ($r->Link == $Reference) ? "class='selected' >" : ">";
-										if (''!=$r->ReferenceImg) echo "<img src='images/referenceimg/{$r->ReferenceImg}' alt='Icon'>";
+										if (''!=$r->ReferenceImg) echo "<img src='" . Yii::app()->baseUrl . "/images/referenceimg/{$r->ReferenceImg}' alt='Icon'>";
 										echo "<span>" , Yii::t('general', $r->Reference) , "</span></a></li>";
 										$i++;
 										if (($i % $itemsInColumn) == 0) 
@@ -249,11 +258,11 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
 					<div class="row<?php echo ('assortment' != Yii::app()->controller->id) ? ' hidden' : ''; ?>">	
 						<?php $this->renderPartial('//layouts/_carmakes'); ?>
 					</div><!-- row -->
-                    <div class="row">
+                    <div class="row print">
                         <div class="col-md-12"><!--Категории -->
                             <div class="tar_category_vis tar_panel tar_open">
                                 <div class="tar_badge_vis"> 
-                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_category.png">
+                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_category.png" alt="">
                                 </div>
                                  <div class="tar_cat_invis">
 								<?php 
@@ -264,7 +273,7 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
 										if (!Assortment::model()->count('groupCategory = '. $category->id)) continue;	
 									?>															
 										 <a class="tar_cat<?php if(($i++ % 2) == 1) echo ' tar_cat_first'; ?>" href="<?php echo $this->createUrl('assortment/index', array('Assortment[groupCategory]'=>$category->id)); ?>"> 
-										 <img src="<?php echo Yii::app()->baseUrl .'/images/subgroups/' .  $category->image; ?>" >
+										 <img src="<?php echo Yii::app()->baseUrl .'/images/subgroups/' .  $category->image; ?>" alt="" />
 											<span>
 												<?php echo str_replace(' ', '<br>', Yii::t('general', $category->name)); ?>
 											</span>
@@ -277,52 +286,52 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
                             </div>
                             <div class="tar_category">
                                 <div class="tar_badge">
-                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_category.png">
+                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_category.png" alt="" />
                                 </div>
                                 <a class="tar_cat tar_cat_first" href="#">
-                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_img_1.jpg">
+                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_img_1.jpg" alt="" />
                                     <span>
                                         Гидравлическая<br>система
                                     </span>
                                 </a>
                                 <a class="tar_cat" href="#">
-                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_img_2.jpg">
+                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_img_2.jpg" alt="" />
                                     <span>
                                         Система<br>охлаждения
                                     </span>
                                 </a>
                                 <a class="tar_cat tar_cat_first" href="#">
-                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_img_3.jpg">
+                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_img_3.jpg" alt="" />
                                     <span>
                                         Оптика
                                     </span>
                                 </a>
                                 <a class="tar_cat" href="#">
-                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_img_4.jpg">
+                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_img_4.jpg" alt="" />
                                     <span>
                                         Детали кузова
                                     </span>
                                 </a>
                                 <a class="tar_cat tar_cat_first" href="#">
-                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_img_5.jpg">
+                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_img_5.jpg" alt="" />
                                     <span>
                                         Система<br>подвески
                                     </span>
                                 </a>
                                 <a class="tar_cat" href="#">
-                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_img_6.jpg">
+                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_img_6.jpg" alt="" />
                                     <span>
                                         Топливная<br>система
                                     </span>
                                 </a>
                                 <a class="tar_cat tar_cat_first" href="#">
-                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_img_7.jpg">
+                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_img_7.jpg" alt="" />
                                     <span>
                                         Тормозная<br>система
                                     </span>
                                 </a>
                                 <a class="tar_cat" href="#">
-                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_img_8.jpg">
+                                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_img_8.jpg" alt="" />
                                     <span>
                                         Ходовая<br>система
                                     </span>
@@ -333,7 +342,7 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
                                 <?php // содержимое из cоответствующего view 
 																 echo $content; 
 															?> 
-								<a href='#' id='up' style='float:right;z-index:1000;position:fixed; bottom: 20px; right:20px'><img src='images/btn-up.png' width='35px'/></a>							
+								<a class='no-print' href='#' id='up' style='float:right;z-index:1000;position:fixed; bottom: 20px; right:20px'><img src='images/btn-up.png' width='35px' alt="" /></a>							
 								<!--div class="tar_pathway">                                  
 									<ul>
                                         <li>
@@ -387,7 +396,7 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
 											<div class="tar_first_sell">
 												<div class="tar_sell_part tar_sell_part_1" >
 													<!--a class="tar_part" href="#"-->
-														<img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[1]['img']; ?>" width='213' height='213' >
+														<img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[1]['img']; ?>" width='213' height='213' alt="" />
 													<!--/a-->
 													<div class="tar_sell_part_name">
 														<?php echo $offerArr[1]['description']; ?><!--Название запчасти если оно длинное-->
@@ -399,7 +408,7 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
 												<div class="tar_two_sells">
 													<div class="tar_sell_part">
 														<!--a class="tar_part" href="#"-->
-															<img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[2]['img']; ?>" width='213' height='213' >
+															<img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[2]['img']; ?>" width='213' height='213' alt="" />
 														<!--/a-->
 														<div class="tar_sell_part_name">
 														  <?php echo $offerArr[2]['description']; ?><!--Название запчасти если оно длинное-->
@@ -411,7 +420,7 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
 													</div>
 													<div class="tar_sell_part">
 														<!--a class="tar_part" href="#"-->
-															<img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[3]['img']; ?>" width='213' height='213' >
+															<img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[3]['img']; ?>" width='213' height='213' alt="" />
 														<!--/a-->
 														<div class="tar_sell_part_name">
 														  <?php echo $offerArr[3]['description']; ?><!--Название запчасти если оно длинное-->
@@ -430,7 +439,7 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
 											<div class="tar_last_sell">
 												<div class="tar_sell_part">
 													<!--a class="tar_part" href="#"-->
-														<img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[4]['img']; ?>" width='213' height='213' >
+														<img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[4]['img']; ?>" width='213' height='213' alt="" />
 													<!--/a-->
 													<div class="tar_sell_part_name">
 													  <?php echo $offerArr[4]['description']; ?><!--Название запчасти если оно длинное-->
@@ -441,7 +450,7 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
 												</div>
 												<div class="tar_sell_part">
 													<!--a class="tar_part" href="#"-->
-														<img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[5]['img']; ?>" width='213' height='213' >
+														<img src="<?php echo Yii::app()->baseUrl; ?>/img/foto/<?php echo $offerArr[5]['img']; ?>" width='213' height='213' alt="" />
 													<!--/a-->
 													<div class="tar_sell_part_name">
 													  <?php echo $offerArr[5]['description']; ?><!--Название запчасти если оно длинное-->
@@ -488,21 +497,21 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
         </div>
     </div>
 </div>
-<footer>
+<footer class='footer'>
     <div class="container">
         <div class="tar_left_cont_foot">
             <a class="tar_bot_logo" href="<?php echo Yii::app()->createUrl('/site/index'); ?>">
-                <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_bot_logo.png">
+                <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_bot_logo.png" alt="" />
             </a>
             <div class="tar_counters_vis">
                 <a class="tar_counter" href="#">
-                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_counter.jpg">
+                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_counter.jpg" alt="" />
                 </a>
                 <a class="tar_counter" href="#">
-                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_counter.jpg">
+                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_counter.jpg" alt="" />
                 </a>
                 <a class="tar_counter" href="#">
-                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_counter.jpg">
+                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_counter.jpg" alt="" />
                 </a>
                 <div class="pad"></div>
             </div>
@@ -532,23 +541,18 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
                                 <?php echo Yii::t('general', 'Spare parts'); ?> 
                             </a>
                         </li>
-                        <li>
-                            <a href="<?php echo Yii::app()->createUrl('/site/index', array('page'=>'sitemap')); ?>">
-                                <?php echo Yii::t('general', 'Sitemap'); ?>  
-                            </a>
-                        </li>						
                     </ul>
                 </div>
                 <div class="tar_foot_social">
                     <div class="soc_icon">
                         <a href="#">
-                            <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_twitter.jpg">
+                            <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_twitter.jpg" alt="" />
                         </a>
                         <a href="#">
-                            <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_facebook.jpg">
+                            <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_facebook.jpg" alt="" />
                         </a>
                         <a href="#">
-                            <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_vk.jpg">
+                            <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_vk.jpg" alt="" />
                         </a>
                     </div>
                     <div class="soc_text">
@@ -570,13 +574,13 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
                 <div class="tar_counters">
 
                     <a class="tar_counter" href="#">
-                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_counter.jpg">
+                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_counter.jpg" alt="" />
                     </a>
                     <a class="tar_counter" href="#">
-                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_counter.jpg">
+                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_counter.jpg" alt="" />
                     </a>
                     <a class="tar_counter" href="#">
-                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_counter.jpg">
+                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_counter.jpg" alt="" />
                     </a>
                     <div class="pad"></div>
                 </div>
@@ -597,7 +601,7 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
 	<div class="tar_in_head">
 		<span><?php echo Yii::t('general','Search parts by VIN'); ?> </span>
 		<a href="#" class='back-link' >
-				<img src="images/tar_x.png">
+				<img src="images/tar_x.png" alt="" />
 		</a> 
 	</div>
 	<div class="tar_recover_in_form" >

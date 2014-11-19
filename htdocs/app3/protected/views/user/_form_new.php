@@ -29,6 +29,8 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 	<table>
 		 <tr><td class='top'>		
 		<?php echo $form->labelEx($model,'username');?>
+		<!--label><?php // это поле переименовываем в 'Client id'Клиентский номер	
+		echo Yii::t('general','Client id');?></label--> 
 		<?php echo $form->textField($model,'username'); ?>
 		<?php echo $form->error($model,'username'); ?> 
 		
@@ -47,7 +49,6 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 		<?php echo $form->labelEx($model, 'role'); 
 				   if(Yii::app()->user->role < $model->role) 
 					{ 
-						
 						$this->widget('ext.select2.ESelect2',array(
 							'model'=> $model,
 							'attribute'=> 'role', 
@@ -61,7 +62,7 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 		?> 
 		 
 		<?php echo $form->label($model,'isLegalEntity'); ?>
-		<?php  echo $form->checkBox($model,'isLegalEntity'); ?>	
+		<?php echo $form->checkBox($model,'isLegalEntity'); ?>	
 		<?php echo $form->error($model,'isLegalEntity'); ?> 
 		
 		<?php echo $form->label($model,'isActive'); ?>
@@ -70,13 +71,12 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 		{ 
 			echo $form->checkBox($model,'isActive');  
 			echo $form->error($model,'isActive'); 
-		} else 
-		{
+		} else  
 			echo $model->isActive ? Yii::t('general','yes') : Yii::t('general','no');
-		} 
-	 
+		
+		
 		echo '<br>', CHtml::Link(Yii::t('general','Print user info'), array('print', 'id'=>$model->id), array('class'=>'btn-win', 'target'=>'_blank'));
-	 ?>  
+?> 
 	 </td>
 	 <td class='top padding10side' >  
 		
@@ -97,11 +97,25 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 		<?php echo $form->textArea($model,'address',array('rows'=>2, 'cols'=>30));  ?>
 		<?php echo $form->error($model,'address'); ?>
 		
-		<?php /* echo $form->labelEx($model,'discount'); ?>
-		<?php echo $form->textField($model,'discount'); ?>
-		<?php echo $form->error($model,'discount'); */  ?>
+		<?php echo $form->labelEx($model,'name'); ?>
+		<?php echo $form->textArea($model,'name',array('rows'=>2, 'cols'=>30)); ?>
+		<?php echo $form->error($model,'name'); ?>
 		
-<?php if(Yii::app()->user->role <= User::ROLE_MANAGER) 
+		<?php echo $form->labelEx($model,'AccountantName'); ?>
+		<?php echo $form->textField($model,'AccountantName'); ?>
+		<?php echo $form->error($model,'AccountantName'); ?>
+
+		<?php /* echo $form->labelEx($model,'discount'); ?>
+		<?php 
+			if(Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
+				{  
+					echo $form->textField($model,'discount');  
+					echo $form->error($model,'discount'); 
+				} else 
+					echo $model->discount;  */ 
+		?>
+		
+<?php if(Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
 		{ ?> 
 		<?php echo $form->label($model,'isEmployee'); ?>
 		<?php echo $form->checkBox($model,'isEmployee'); ?>	
@@ -148,7 +162,7 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 					),
 			));    
 		} else 
-			echo User::model()->findByPk($model->parentId)->username;
+			echo (!empty(User::model()->findByPk($model->parentId)->username)) ? User::model()->findByPk($model->parentId)->username : '-';
 	 
 		if(Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
 		{ 
@@ -166,8 +180,8 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 					'placeholder' => '', 
 					),
 			));   
-		echo $form->error($model,'Group'); 
-	} ?>		 
+			echo $form->error($model,'Group'); 
+		} ?>		 
 	
 		<?php echo $form->labelEx($model,'PaymentMethod'); ?>
 		<?php  $this->widget('ext.select2.ESelect2',array(
@@ -206,8 +220,8 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 						'width' => '200')              
 				));?>
 		<?php echo $form->error($model,'ShablonId'); ?><br> 			
-		<?php echo CHtml::link(Yii::t('general','Edit loading settings'), array('LoadDataSettings/admin'), array('target'=>'_blank')); 
-
+		<?php echo CHtml::link(Yii::t('general','Edit loading settings'), array('LoadDataSettings/admin'), array('target'=>'_blank'));  
+		
 		
 		$criteria=new CDbCriteria;
 		$criteria->select='make';

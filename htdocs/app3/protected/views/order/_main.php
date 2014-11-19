@@ -281,10 +281,15 @@ $('.notes').bind('blur', function(e) {
 				echo '<b>', $model->Notes , '&nbsp;</b>'; 
 			}
 		?>
-		<span style='padding: 0px 15px 20px;margin-top:-25px;'>
+		<span class='paddingSpecial1'>		
+			<?php  
+			echo CHtml::button( Yii::t('general','Back to orders'), array( 'class'=>'red', 'onclick' => 'js:document.location.href="'. $this->createUrl('admin').'" '));
+			 ?>
+		</span>
+		<span class='paddingSpecial1'>
 			<?php echo CHtml::submitButton( Yii::t('general','Save'), array('class'=>'red', 'name'=>'save')); ?>
 		</span>
-		<span style='padding: 0px 5px 20px;margin-top:-25px;'>
+		<span class='paddingSpecial1'>
 			<?php echo CHtml::submitButton( Yii::t('general','Save & close'), array('class'=>'red', 'name'=>'OK')); ?>
 		</span>
 		
@@ -299,7 +304,8 @@ $('.notes').bind('blur', function(e) {
 				if (Eventtype::model()->findbypk($r))
 					$events[$r] = yii::t('general', Eventtype::model()->findbypk($r)->name);			
 		
-		if (!empty($events)) 
+// если есть события и пользователь - менеджер		
+		if (!empty($events) && Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
 		{
 			?>
 		 <h3><?php echo Yii::t('general', 'Create new event on the basis of this event'); ?></h3> 

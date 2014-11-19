@@ -27,7 +27,12 @@
 			'oem',
 			'manufacturer',
 			'availability',
-		    'foto'=>array( 
+			'info'=>array(
+				'header'=>Yii::t("general",'Info'),
+				 'type'=>'html',
+				'value'=>array($this, 'info'), 
+			 ),	
+		 /*   'foto'=>array( 
 				'header'=>Yii::t("general",'Foto'),
 				'type'=>'html',
 				'value'=>'(!empty($data->image)) ?  "<span class=\"picture-icon\"></span>"  :Yii::t("general", "no image")', //'<span class="info-picture"></span>',
@@ -39,7 +44,7 @@
 				'value'=>'(isset($data->schema)) ?  "<span class=\"picture-icon schema\"></span>"  :Yii::t("general", "schema is not yet ready")',
 				//'<span class="info-picture"></span>',
 		    	'htmlOptions' => array('style' => 'text-align:center; width: 20px'),
-			),
+			),*/
 			/*'availability2' => array(
 						'name' => 'availability',
 						'value' => '($data->availability==1) ? Yii::t("general", "yes") : Yii::t("general", "no")',

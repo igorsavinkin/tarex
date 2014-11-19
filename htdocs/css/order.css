@@ -796,9 +796,9 @@ footer
 /***page2.html********************************/
 .tar_icons
 {
- /*   margin-bottom: 14px;
-    padding-top: 10px;
-*/
+    margin-bottom: 6px;/**/
+    padding-top: 6px;
+
 }
 div.ma_bo
 {
@@ -836,11 +836,17 @@ div.tar_icons_right
 div.tar_submenu_hide
 {
 	position: absolute;  
-	top: 14px; 
-	left: 10px;
-	z-index: 400;
-    font-size: 12px;
-    font-family: Tahoma; 
+	bottom: 2px; 
+	right: 3px; 
+    font-size: 0.8em; 
+}
+div.tar_submenu_hide a
+{
+	text-decoration:none;
+}
+a.carmakes-button
+{
+	text-decoration:none;
 }
 div.tar_icons_border
 {
@@ -946,6 +952,7 @@ div.tar_catalog_goods_second .tar_cat_bot {
     background: #f0f3f5;
     margin-left: 0;
 	padding: 0 0 6px 6px;
+	/*border-top: 1px dotted #344756;*/
 }
 .tar_cat_bot2 ul li a
 {
@@ -1216,6 +1223,25 @@ margin-left: 40px;
 }
 .carmakes-button
 {
+	float:right; 
 	font-size:0.8em;
-	margin-top:-2px;
+	margin-top:2px; 	
+}
+ 
+.hr-with-arrow
+{
+	margin:1px;
+	border-top: 1px dotted #344756; 
+	height: 14px;
+
+}
+.arrows{width:16px;    height:14px;}
+.arrow-up
+{    
+ /*	background: url(../images/grey-arrow-up.png) no-repeat right;*/
+   background: url(../images/grey-arrows.png) 0 0;*/
+}
+.arrow-down
+{
+ 	background: url(../images/grey-arrows.png) -16px 0;
 }

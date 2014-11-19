@@ -10,12 +10,15 @@ if ($flashMessages) {
 	echo '</ul>'; 	 
 }
 ?>  	 
-<h2><?php echo Yii::t('general','User') , ' <u><em>',  $model->username , '</em></u>'; 
-/*if (Yii::app()->user->checkAccess(User::ROLE_ADMIN)) 
-	echo CHtml::Link(Yii::t('general','Manage Advertisement'), array('advertisement/admin'), array('class'=>'btn-win', 'style'=>'float:right;')); */
-if (Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
-    echo CHtml::link(Yii::t('general','Send to client login/password'), array('sendinvitation', 'id'=>$model->id), array('class'=>'btn-win', 'style'=>'float:right;'));   
-?></h2><br>
+<h4><?php echo Yii::t('general','User') , ' <u><em>',  $model->username , '</em></u>'; 
+//if (Yii::app()->user->checkAccess(User::ROLE_ADMIN)) 
+	//echo CHtml::Link(Yii::t('general','Manage Advertisement'), array('advertisement/admin'), array('class'=>'btn-win', 'style'=>'float:right;')); 
+if (Yii::app()->user->checkAccess(User::ROLE_MANAGER)) {
+ //   echo CHtml::link(Yii::t('general','Send to client login/password'), array('sendinvitation', 'id'=>$model->id), array('class'=>'btn-win', 'style'=>'float:right;')); 
+	echo CHtml::link(Yii::t('general','Send to client login/password with a link to a particular page'), array('sendinvitation2', 'id'=>$model->id), array('class'=>'btn-win', 'style'=>'float:right;'));
+
+	}	
+?></h4><br>
 <?php //$this->renderPartial('_form_new', array('model'=>$model));  
 $this->widget('CTabView', array( 
 		'tabs'=>array(			

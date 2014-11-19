@@ -1,13 +1,12 @@
-<h3><?php echo Yii::t('general','Set up discount groups value for this client' ); ?></h3>
+<h3><?php echo Yii::t('general','Discount groups' ); ?></h3>
 <?php 
 $dataProvider=new CActiveDataProvider('UserGroupDiscount', array(    
         'criteria' => array(
-        'condition'=>'userId = '. $model->id, 'order'=>'id DESC'),   
+        'condition'=>'userId = '. $model->id, 'order'=>'id ASC'),   
 		'pagination'=>false,
 	));
  // добавим тег открытия формы
- echo CHtml::form();
- // echo CHtml::submitButton('Bulk action button', array('name'=>'bulkAction', 'style'=>'float:right;'));
+ echo CHtml::form(); 
  
  $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'user-group-discount-grid',
@@ -22,13 +21,7 @@ $dataProvider=new CActiveDataProvider('UserGroupDiscount', array(
 			'value' => '$row + 1 +
 				$this->grid->dataProvider->pagination->currentPage
 				* $this->grid->dataProvider->pagination->pageSize',
-		),
-	//    'id',
-	/* 	'userId' =>array( 
-			'name'=>'userId',
-			'value'=>'User::model()->findByPk($data->userId)->username',
-			'filter' => CHtml::listData(User::model()->findall(array('order'=>'username ASC','condition'=> '`role`=' . User::ROLE_USER)), 'id', 'username'),		
-		), */
+		), 
 		'discountGroupId' =>array( 
 			'name'=>'discountGroupId',
 			'value'=>'DiscountGroup::model()->findByPk($data->discountGroupId)->name',
@@ -39,11 +32,9 @@ $dataProvider=new CActiveDataProvider('UserGroupDiscount', array(
 			'value'=>'DiscountGroup::model()->findByPk($data->discountGroupId)->prefix', 
 		),
 		'maxDiscount' =>array(  
-			'header'=>Yii::t('general','Max wholesale discount'),
-		
+			'header'=>Yii::t('general','Max wholesale discount'),		
 			'value'=>'DiscountGroup::model()->findByPk($data->discountGroupId)->value',
-			//'filter' => CHtml::listData(DiscountGroup::model()->findall(), 'id', 'name'),		
-		),  
+	 	),  
 		'discount'=>array(  
 			'type'=>'raw',
 			'htmlOptions'=>array('width'=>'150px'), 

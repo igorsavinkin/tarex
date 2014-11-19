@@ -18,7 +18,7 @@ class UserGroupDiscountController extends Controller
 				'users'=>array('*'),
 			), 
 			array('allow', 
-				'actions'=>array('index','view', 'create' ),
+				'actions'=>array('index','view', 'create' , 'createAllGroups'),
 				'roles'=>array(1,2,3,4,5),
 			),
 			array('allow', 
@@ -42,6 +42,39 @@ class UserGroupDiscountController extends Controller
 	}
 	public function actionView($id)
 	{
+		$this->render('view',array(
+			'model'=>$this->loadModel($id),
+		));
+	}
+	public function actionCreateAllGroups($userId=null)
+	{
+		$criteria=new CDbCriteria;
+		$criteria->select ='id';
+		// если задан userId тогда мы создаём группы только для этого пользователя
+		$users = $userId ? array('id'=>$userId ) ? User::model()->findAll($criteria);
+		$discountGroups= DiscountGroup::model()->findAll($criteria);
+		//
+		foreach($users as $user)
+		{
+			foreach($discountGroups as $dg)
+			{
+				$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$user->id,'discountGroupId'=>$dg->id));
+				if(!isset($ugd)) 
+				{
+					$ugd=new UserGroupDiscount;
+					$ugd->userId=$user->id;
+					$ugd->discountGroupId=$dg->id;
+					$ugd->save(false);
+				}
+			 
+			}
+		}
+		
+		$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$contractorId,'discountGroupId'=>$discGroupId /*$discountGroup->name*/));
+			if(isset($ugd)) 
+				 return $ugd->value . '% ('. $discGroupName. ')';  
+			else 		
+		
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
@@ -155,5 +188,5 @@ class UserGroupDiscountController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-	}  
+	} 
 }

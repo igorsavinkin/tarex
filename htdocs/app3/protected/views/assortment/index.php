@@ -1,12 +1,7 @@
-<?
-	require_once ($_SERVER['DOCUMENT_ROOT'] . '/seotools/seotools.class.php');
-	$ST = new Seotools; 
-	$meta_h1 = $ST->get('h1');
-?>
 <?php 
 /* @var $this AssortmentController */
 /* @var $model Assortment */ 
-$this->widget("ext.magnific-popup.EMagnificPopup", array('target' => '.test-popup-link'));
+//$this->widget("ext.magnific-popup.EMagnificPopup", array('target' => '.test-popup-link'));
 
 /********************************** start of the Dialog box ******************************/
 ?>
@@ -137,36 +132,34 @@ if ( $item OR $grcategory) {
 	 
 } ?> 
 <div class='shift-right40'> 
-<h1 >
-<?	if ($meta_h1) 
-		{
-			echo $meta_h1;
-		}
-	else 
-		{
-			echo Yii::t('contact','Assortment list');
-		}
-?>
-	</h1>
+	<h1 ><?php  echo Yii::t('contact','Assortment list'); ?></h1>
 	<div class="search-form" style="display:block; padding-left:40px;"> 
 	<?php $this->renderPartial('_search',array('model'=>$model, 'bodies'=>$bodies )); ?>
 	</div><!-- search-form -->
 </div><!-- shift-right40 --> 
-<?php   
+<?php  
+if (Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER)) 
+	echo CHtml::Link(Yii::t('general','Loading Assortment from Excel file') , array('load') , array( 'class'=>'btn-win', 'style'=>'float:right;')); 
+	$msg = Yii::t('general', 'Wait several seconds till the server composes and sends you personalized price list');
+echo CHtml::Link(Yii::t('general','Download price list as Excel sheet') , array('user/pricelist') , array( 'class'=>'btn-win', 'style'=>'float:right;', 'onclick'=>"js:setTimeout(function(){ alert('{$msg}')},600);")); 
+echo CHtml::Link(Yii::t('general','Download price list as Excel sheet'). '(csv)' , array('user/pricelistCSV') , array( 'class'=>'btn-win', 'style'=>'float:right;', 'onclick'=>"js:setTimeout(function(){ alert('{$msg}')},600);")); 
+//  echo '<br> DProvider in view 1  count(<b>' , $dataProvider->itemCount , '</b>) = ' ; print_r($dataProvider->criteria); 
  
-  	if (!empty($criteria) && !$dataProvider->itemCount /*&& $mainAssotrmentItem*/) 
-	{
-		echo '<h4>first case: </h4>';		
+  	if (!empty($criteria) && !$dataProvider->itemCount /*&& $mainAssotrmentItem*/)	{
+		//echo 'criteria '.$criteria->condition.'<br>';
+		//print_r ($criteria->params);
+		//$criteria->mergeWith($dataProviderOriginal->criteria);
+		
+		
 		$dataProvider = new CActiveDataProvider('Assortment', array(
 			'criteria'=>$criteria,
 			 'pagination' => array(							
 				'pageSize' =>isset($pagesize) ? $pagesize : Yii::app()->params['defaultPageSize'],
 			 ),
-		));	 
+		));		
 	} 
 	
 	if(!empty($CriteriaAnalog) && $dataProvider->itemCount /*&& !$mainAssotrmentItem*/){
-		echo '<h4>second case: search item is artificially from FakeAssortment and Analog is from Assortment table</h4>';
 		$dataProvider = new CActiveDataProvider('AssortmentFake', array(	//'criteria'=>$criteria,
 						'pagination' =>false, /* array(						
 							'pageSize' =>$this->pagesize ? $this->pagesize : Yii::app()->params['defaultPageSize'],
@@ -180,8 +173,7 @@ if ( $item OR $grcategory) {
 						 ),*/ 
 		));	
 	}
-	
-    
+
 	if (!empty($CriteriaAnalogsFromAssortment->condition)) 
 	{  
 	  // echo '<h4>3-d case </h4> $CriteriaAnalogsFromAssortment: ';	   print_r($CriteriaAnalogsFromAssortment);
@@ -189,8 +181,7 @@ if ( $item OR $grcategory) {
 						'criteria'=>$CriteriaAnalogsFromAssortment,
 						'pagination' =>false, 
 		));	
-	}
-		
+	}	
 		
 if ($dataProvider->itemCount)  
 {   
@@ -206,8 +197,6 @@ if ($dataProvider->itemCount)
 	//$_GET['findbyoemvalue'];	// Yii::app()->request->getParam('findbyoem-value');
 	
 	echo CHtml::Form();
-	$url = Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER) ? $this->createUrl('update') : $this->createUrl('view'); 
-	
 	$this->widget('zii.widgets.grid.CGridView', array( 
 		'id'=>'assortment-grid',
 		'dataProvider'=>$dataProvider, /*,/*$model->search()*/
@@ -221,10 +210,6 @@ if ($dataProvider->itemCount)
 		'ajaxUrl'=>array('assortment/index'),
 		//'pagination'=> array('pageSize'=>'20'),
 		//'rowCssClassExpression' => '$data->color',
-		'selectableRows'=>1,
-		'selectionChanged'=>'function(id){  		
-			location.href = "' . $url .'/id/"+$.fn.yiiGridView.getSelection(id);	
-		}',
 		'columns'=>array(
 			// 'id',
 			'agroup',
@@ -246,10 +231,12 @@ if ($dataProvider->itemCount)
 			),
 			'oem',
 			'manufacturer',
-			array(  
-				'value'=>'$data->getPrice('.Yii::app()->user->id.')', //'$data->getPriceOpt()',
+			array(
+				'value'=>'$data->getPrice()', 
+			//	'value'=>'$data->getPrice('.Yii::app()->user->id.')', 
+			//	'value'=>'$data->getPrice('.Yii::app()->user->id.')',
 				'header' => Yii::t('general', 'Price'),
-			),	  
+			),	 
 			'availability'=>array(
 				'name'=>'availability', 
 			    'htmlOptions'=>array('style'=>'text-align:center'),
@@ -266,7 +253,7 @@ if ($dataProvider->itemCount)
 				 'type'=>'html',
 				'value'=>array($this, 'info'), 
 			 ),	
-	/*		 'foto'=>array(
+	 /*    	'foto'=>array(
 				'header'=>Yii::t("general",'Foto'),
 				 'type'=>'html',
 			  'value'=>array($this, 'getImage'), 
@@ -281,7 +268,7 @@ if ($dataProvider->itemCount)
 				'value'=>'(isset($data->schema)) ?  "<span class=\"picture-icon schema\"></span>"  :Yii::t("general", "schema is not yet ready")',
 				//'<span class="info-picture"></span>',
 		    	'htmlOptions' => array('style' => 'text-align:center; width: 20px'),
-			),	*/
+			),	*/ 
 // new for getting into cart			
 			array('header'=> CHtml::dropDownList('pageSize', 
 				$pageSize,
@@ -293,13 +280,7 @@ if ($dataProvider->itemCount)
 				
 				'type'=>'raw',
 				'value'=>array($this, 'amountToCartAjax'), //	'htmlOptions'=>array('width'=>'90px'),
-			), 
-			array('type'=>'raw',
-				'value'=>'CHtml::hiddenField("BulkDelete[$data->id]",false,array(\'value\'=>$data->priceS))',
-				'htmlOptions'=>array('style'=>'width:0%; display:none'),
-				'headerHtmlOptions'=>array('style'=>'width:0%; display:none')
-			),
-			
+			), 		
 			array(
 				'class' => 'CCheckBoxColumn',
 				'id' => 'Assortment[id]',	 
@@ -338,10 +319,20 @@ if ($dataProvider->itemCount)
 	echo CHtml::endForm();
 }  
 if (isset($dataProviderAnalog) && isset($dataProviderAnalog->itemCount) )
-{ ?> 
+{
+	//echo 'analogs';
+	/*
+	$show_msg = Yii::t('general', 'Show analogs');// will be used in 
+	$hide_msg = Yii::t('general', 'Hide analogs');
+	echo '<h3>', CHtml::Link($show_msg, '' , array('id'=>'show-analogs', 'class'=>'btn-win', 'style'=>'float:right;')); 
+*/
+?> 
 	<div class="analogs-form" style="display:block">
 	<?php $this->renderPartial('_analogs',array('model'=>$model,  'dataProviderAnalog'=>$dataProviderAnalog )); 		
 	?></div>
 	<!--/div><!-- search-form -->
 <?php 
 }  
+/*if (!$dataProviderAnalog->itemCount && !$dataProvider->itemCount ) { 
+	echo '<br /><div style="clear:both"></div>', Yii::t('general', 'There are no items corresponding to your request'), ' <b>', $_POST['findbyoem-value'], '</b>'; 
+}*/

@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 <?php echo  Yii::t('general','You may optionally enter a comparison operator'); ?> (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>, <b>=</b>) <?php echo  Yii::t('general', 'at the beginning of each of your search values to specify how the comparison should be done'); ?>.
 </p>
 
-<?php echo CHtml::link(Yii::t('general','Advanced Search'),'#',array('class'=>'search-button'));echo CHtml::link(Yii::t('general','Create'),array('create'),array('class'=>'btn-win')); ?>
+<?php echo CHtml::link(Yii::t('general','Advanced Search'),'#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
@@ -37,14 +37,15 @@ $('.search-form form').submit(function(){
 
  // добавим тег открытия формы
  echo CHtml::form();
- //echo CHtml::submitButton('Bulk action button', array('name'=>'bulkAction', 'style'=>'float:right;'));
+ echo CHtml::submitButton('Bulk action button', array('name'=>'bulkAction', 'style'=>'float:right;'));
  
  $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'discount-group-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	//'rowCssClassExpression' => '$data->color',
-	'summaryText' => Yii::t('general','Elements') . " {start} - {end} " . Yii::t('general','out of') . " {count}.", 
+	'summaryText' => Yii::t('general','Elements') . " {start} - {end} " . Yii::t('general','out of') . " {count}.",
+	//'selectableRows' => 2, // this makes user to select more than 1 checkbox in the grid
 	'selectableRows'=>1,
 		'selectionChanged'=>'function(id){  		
 			location.href = "' . $this->createUrl('update') .'/id/"+$.fn.yiiGridView.getSelection(id);	
@@ -56,14 +57,13 @@ $('.search-form form').submit(function(){
                     $this->grid->dataProvider->pagination->currentPage
                     * $this->grid->dataProvider->pagination->pageSize',
             ),
-		// 'id',		
-		'name',	
+		// 'id',
+		'name',
 		'prefix',
 		array(
 			'header'=>Yii::t('general','Articles'),
 			'value'=>'substr($data->articles, 0 ,70) . "..." ',
-		), 
-		/*'articles',*/
+		),
 		'value',
 		'isActive',
 		

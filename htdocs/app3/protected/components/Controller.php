@@ -36,23 +36,21 @@ class Controller extends CController
 		
 		// page size for the gridview
         try {
-			if (Yii::app()->user->isGuest)
-			  $this->pagesize = Yii::app()->params['defaultPageSize'];
-		} catch(Exception $e)  { } //echo '$_GET[pageSize] = ' ,  $_GET['pageSize'];	
+			if (Yii::app()->user->isGuest) $this->pagesize = Yii::app()->params['defaultPageSize'];
+		}  catch(Exception $e)  { } //echo '$_GET[pageSize] = ' ,  $_GET['pageSize'];	
         if (isset($_GET['pageSize'])) {  
-			$this->pagesize = $_GET['pageSize'];  
-            if (!Yii::app()->user->isGuest) 
-				Yii::app()->user->setState('pageSize', (int)$_GET['pageSize']);
+				$this->pagesize = $_GET['pageSize']; // echo 'pagesize = ' , $pagesize;
+            if (!Yii::app()->user->isGuest) Yii::app()->user->setState('pageSize', (int) $_GET['pageSize']);
             unset($_GET['pageSize']); 
-        }	
+        }	 	
 // если это номенклатура с фильтром, тогда мы ставим максимальное число позиций на странице		
 		if ('assortment'==Yii::app()->controller->id && (isset($_GET['Series']) OR isset($_GET['Body'])) ) {	
 			//echo 'max page size<br>';
 			$this->pagesize =  Yii::app()->params['maxPageSize']; 
  		}
-		//error_reporting(E_ALL);
+		
 		if (Yii::app()->user->isGuest) 
-			$this->layout='//layouts/index_new';  
+			$this->layout='//layouts/index_new'; 
 		else 
 			$this->layout='//layouts/page3'; 
 

@@ -1,6 +1,8 @@
 <?php
+
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
+
 Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 
 Yii::setPathOfAlias('editable', dirname(__FILE__).'/../extensions/x-editable');
@@ -14,7 +16,7 @@ Yii::setPathOfAlias('XSelect2', dirname(__FILE__).'/../extensions/widgets/select
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Mobile v.3.0 Tarex',	
+	'name'=>'"Тарекс" - автозапчасти для иномарок оптом. Доставка запчастей оптом в регионы', //'Tarex v.3.4',	
 	//'defaultController' => 'MyFrontend',
 	'language'=>'ru',
 	'sourceLanguage'=> 'en_US',
@@ -78,19 +80,16 @@ return array(
 		//	'connectionID'=>'db',
 		),
 		// uncomment the following to enable URLs in path-format
-
+		/*
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
-			  // '<controller:\w+>/<action:\w+>/<Reference:\w+(\+)?(\w)? >'=>'<controller>/<action>', '<controller:\w+>/<action:\w+>
-			  //<Subsystem:\w+(\+)?(\S)?(\+)?(\w)?(\+)?(\w)? >'=>'<controller>/<action>',
-				//'<controller:\w+>/<action:\w+>/<project:\d+>'=>'<controller>/<action>',
-'<_c:(post|comment)>/<id:\d+>/<_a:(create|update|delete)>' => '<_c>/<_a>',
-    '<_c:(post|comment)>/<id:\d+>' => '<_c>/read',
-    '<_c:(post|comment)>s' => '<_c>/list',
+				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
+				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),
-		
+		*/
 		/*'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 		),*/
@@ -152,15 +151,17 @@ return array(
 
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
-	// v 3.0
-	'params'=>array(	// 
-	    'shopOrder'=>'', // this is used in contact page
+	// v 3.4
+	'params'=>array(
+		// this is used in contact page
+	    'shopOrder'=>'',
 		'organization'=>7, // информация об организации хранится в массиве "params"
-		'adminEmail'=>'vyacheslav.sladkov@gmail.com', //'info@tarex.ru',  
-		'generalManagerEmail'=>'auto@tarex.ru', // 'mr.Sladkoff@yandex.ru', 
-		'defaultPageSize'=>35,
+		'adminEmail'=>'vyacheslav.sladkov@gmail.com', //'info@tarex.ru', //'igor.savinkin@gmail.com',
+		'generalManagerEmail'=>'auto@tarex.ru', // 'mr.Sladkoff@yandex.ru', // // 'igor.savinkin@gmail.com', // //'igor.savinkin@gmail.com',
+		'defaultPageSize'=>34,
 		'maxPageSize'=>10000,
-		'returnUrl'=>'', 
+		'returnUrl'=>'345',
+	//	'Subsystem' => $_GET['Subsystem'], 
+	//	'Reference' => $_GET['Reference'], 
 	),
 );
-

@@ -1,34 +1,16 @@
-<?php
-/* @var $this UserController */
-/* @var $model User 
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
-$('.search-form form').submit(function(){
-	$('#user-grid').yiiGridView('update', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");*/
-?>
 <h1><?php
-$employees = $_GET['Subsystem'] == 'Staff & Salary tools';
- echo ($employees) ? Yii::t('general','Employees') : Yii::t('general','Users'); ?></h1><br />
+Yii::t('general','Users'); ?></h1><br />
 <?php //echo CHtml::link(Yii::t('general','Advanced Search'),'#',array('class'=>'search-button'));
 echo CHtml::link(Yii::t('general','Create'), array('create'), array('class' => 'btn-win')); ?>
 <div class="search-form" style="display:none">
-<?php /*
-$this->renderPartial('_search',array(
-	'model'=>$model,
-)); */ ?>
+<?php /*$this->renderPartial('_search',array(
+	'model'=>$model)); */ 
+	?>
 </div><!-- search-form -->
 <?php 
  $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'user-grid',
-	'dataProvider'=> $model->search($employees),
+	'dataProvider'=> $model->search(/*$employees*/),
 	'filter'=>$model,
 	'cssFile' => Yii::app()->baseUrl . '/css/gridview.css',
 	'selectableRows'=>1,
@@ -80,8 +62,8 @@ $this->renderPartial('_search',array(
 				'value'=>'$data->organization ? Organization::model()->findByPk($data->organization)->name : "" ',
 				'visible' => Yii::app()->user->checkAccess('1'),
 			),
-		'discount',  
-/**/   'isActive' => array(
+		//'discount',  
+		'isActive' => array(
 			'name' => 'isActive',
 			'value' => '($data->isActive == 1) ? Yii::t("general", "yes") : Yii::t("general", "no") ',
 			'filter' => array(1 => Yii::t("general", "yes") , 0 => Yii::t("general", "no")),

@@ -19,10 +19,11 @@ if (!Yii::app()->user->isGuest) echo '<div class="tar_adv tar_adv_second">';
 				{	   
 					if (($i % 5) == 0 && $i>0) echo '</ul><ul class="tar_list_2">';
 					$i++; 
-					echo "<li><a href='" . Yii::app()->createUrl('site/index' , array( 'id'=>$assort->id )) . "'> " . Yii::t('general', $assort->title) . "</a></li>";	 
+					echo "<li> <a href='" . Yii::app()->createUrl('site/index' , array( 'id'=>$assort->id )) . "'>" . Yii::t('general', $assort->title) . "</a></li>";	 
 				}  ?>
-				<span class="tar_cat_line"></span><?php										
-			echo "<li><a href='" . Yii::app()->createUrl('site/index') . "'><font size='+1' face='Helvetica' >" . Yii::t('general', 'ALL MAKES') . "</font></a></li>";  ?> 
+				<span class="tar_cat_line"></span><?php	
+			$controller = isset($_GET['id']) ? 'site' : 'assortment';
+			echo "<li><a href='" . Yii::app()->createUrl($controller . '/index') . "'><font size='+1' face='Helvetica' >" . Yii::t('general', 'ALL MAKES') . "</font></a></li>";  ?> 
 			</ul> 
 			<div class="pad"></div>
 		</div>
@@ -36,7 +37,13 @@ if (!Yii::app()->user->isGuest) echo '<div class="tar_adv tar_adv_second">';
 <div class="tar_cat_bot">
 	<div class="tar_brands_car">
 		<div class="tar_cat_bot_title">
-			 <?php echo Yii::t('general', 'Car makes'); ?>
+			 <?php if (isset($_GET['id'])) 
+						{ 	$this->widget('zii.widgets.CBreadcrumbs', array(
+								'links'=>array(Yii::t( 'general', 'All makes') => array('site/index'), 
+									Assortment::model()->findByPk($_GET['id'])->title)
+							));	
+						} else 
+							echo Yii::t('general', 'Car makes'); ?>
 		</div>
 			<div class="tar_cars">
 				<div class="tar_cat_bot_form"><b>Легковые:</b></div>

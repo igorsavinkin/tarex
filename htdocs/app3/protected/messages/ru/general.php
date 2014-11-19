@@ -1,37 +1,6 @@
 <?php
-return array( 
-	 '{action} {controller}' => '{controller} {action}', // This is flipped in German: "subject verb"
-	
-	/* User Group Discount */
-	'User Group Discount'=>'Скидка пользователя по группе',
-	'The user\'s discounts by groups'=>'Скидки пользователя по группам',
-	'Print user info'=>'Печатать инфо', 
-	'Prefix'=>'Префикс',
-	'no discount group applied'=>'нет группы скидок',
-	
-	/* Discount */
-	'DiscountGroup'=>'Группа скидок',
-	'Discount Group'=>'Группа скидок',
-	'Discount Groups'=>'Группы скидок',
-	'Articles'=>'Артикулы', 
-	'Max wholesale discount'=> 'Максимальная оптовая скидка',
-	'Min Price'=>'Минимально допустимая цена',
-	'Base Price'=>'Основная цена',
-	'Current discount'=>'Текущая скидка',
-	'Current Opt Price'=>'Текущая цена оптового клиента',
-	'Current Opt Discount'=>'Текущая cкидка оптового клиента',
-	'Opt Discount'=>'Скидка оптового клиента',
-	'no contractor given'=>'нет контрагента',
-	
-	/* Load Assortment from Excel file */
-	'Loading Assortment from Excel file'=>'Загрузка номенклатуры из Excel файла',
-	'Load new assortment from file'=>'Загрузите новую номенклатуру из файла',
-	'First row is a column title'=>'Первый ряд - название колонки',
-	'Set up the parameters for an assortment to be loaded'=>'Установите параметры для номенклатуры которая будет загружена',
-	'Load assortment template'=>'Шаблон загрузки номенклатуры',
-	"rows from the file have been saved into assortment"=>'строк из файла были загружены в номенклатуру',
-	
-	
+return array(
+
 	/* Spare parts */
 	'Spare parts'=>'Запчасти',
 	'Spare part'=>'Запчасть',
@@ -87,7 +56,6 @@ return array(
 	'Spare parts'=>'Автозапчасти',
 	'Get the link to the page'=>'Получить ссылку на страницу',
 	'The link'=>'Ссылка',
-	'sitemap'=>'Карта сайта',
 	
 	/* News */
 	'News'=>'Новости',
@@ -103,19 +71,10 @@ return array(
 	/* Special Offer */
 	'Special Offer'=>'Специальное предложение',
 	'Special Offers'=>'Специальные предложения',
-	'Special Offers to client'=>'Специальные предложения клиенту',
-	'Special Offer items'=>'Специальные предложения номенклатуры',
 	'Manage Special Offers'=>'Управлять особыми предложениями',
 	'add to special offer'=>'добавить в спец. предложения',
 	'Load an assortment item'=>'Загрузить позицию номенклатуры',
-	'rows in Assortment have been set as Special offer'=>'позиций номенклатуры были отмечены как спец. предложние', 
-	 'Load articles of special offer from file'=>'Загрузить артикулы спец. предложний из файла',
-	'Load Assortment articles for Special Offer from Excel file'=>'Загрузить артикулы номенклатуры для спец. предложений из Excel файла',
-	 'Set up file'=>'Установите файл',
-	 'View special offer assortment items'=>'Посмотреть специальные предложения номенклатуры', 
-	'Bulk remome Special Offer mark'=>'Удалить отметку что это спец. предложение', 
-	 
-	 
+	
 	/* Categories */
 	'Set other category for selected items'=>'Установить категорию для выбранных элементов', 
 	'Add assortment to certain category'=>'Добавить номенклатуру в нужную категорию',
@@ -448,9 +407,6 @@ return array(
 	'This username already exists.'=>'Это имя пользователя уже существует.',
 	'This email already exists.'=>'Этот email пользователя уже существует.',
 	'Click to login'=>'Нажмите чтобы войти',
-	'Click to login (secure)'=>'Нажмите чтобы войти (безопасно)',
-	"You've supplied wrong data for logging in!"=>'Вы предоставили неправильные данные для входа!',
-	"Your link has expired!"=>'Истёк срок действия ссылки!',
 	"There is no user associated with the email you've entered"=>'Нет пользователя с почтовым адресом, который Вы ввели',
 	"Failure to send recovery message to the email"=>'Невозможно послать сообщение о восстановлении логина/пароля на этот почтовый адрес',
 	'Credentials are sent on this email'=>'Данные высланы на этот адрес',
@@ -562,12 +518,6 @@ return array(
 	'Management'=> 'Управление',
 	'Generate password'=>'Сгенерировать пароль',
 	'Send invitation to the client'=>'Послать приглашение клиенту',
-	'Send to client login/password with a link to a particular page'=>'Послать клиенту логин/пароль со ссылкой на конкретную страницу', 
-	'Sent invitation to client to the page with the given assortment'=>'Послать клиенту приглашение на страницу с номенклатурой',
-	'Send invitation'=>'Послать приглашение',
-	'The client will get his(her) login/password along with given assortment page url'=>'Клиент получит его логин/пароль вместе со ссылкой на заданную страницу номенклатуры',
-	'The client will get his(her) token-link along with given assortment page url'=>'Клиент получит его ссылку-жетон для входа и сразу перейдёт на заданную страницу номенклатуры',
-	'Enter a particular page url'=>'Введите url конкретной страницы',
 	'Password change'=>'Смена пароля',
 	'Old password'=>'Старый пароль',
 	'New password'=>'Новый пароль',
@@ -649,7 +599,6 @@ return array(
 	'SEARCH'=> 'ПОИСК', 
 	'Save'=> 'Сохранить',
 	'Save & close'=> 'Сохранить и закрыть',
-	'Create & close'=> 'Создать и закрыть',
 	'Add'=> 'Добавить',
 	'Edit'=>'Редактировать',
 	'View'=>'Посмотреть',
@@ -720,7 +669,6 @@ return array(
 	'Set as general manager'=> 'Назначить старшим менеджером',
 	'Set as accountant'=> 'Назначить бухгалтером',
 	'Delete'=>'Удалить',
-	'Delete Bulk'=>'Удалить несколько',
 	'Create new User'=>'Создать нового пользователя',
 	//'isLegalEntity' => 'юр. лицо',
 	'email' => 'Email',
@@ -767,7 +715,7 @@ return array(
 	'You should agree term to use our service'=>'Вы должны быть согласны с условиями договора',	
 	'Read contract'=>'Условия договора',
 	'Send to client login/password'=>'Послать клиенту логин/пароль',
-	'Client id'=>'Клиентский номер',
+	
 	
 	'Bank' => 'Банк',
 	'Correspondent Account' => 'К/С',
@@ -787,7 +735,6 @@ return array(
 	'How did you hear about us' => 'Откуда о нас узнали',
 	'scope of Organization activity' => 'Сфера деятельности организации',
 	'CEO Name' => 'ФИО директора',
-	'Contact person' => 'Контактное лицо',
 	'Accountant Name' => 'ФИО бухгалтера',
 	'cash'=>'наличный расчёт',
 	'cashless'=>'безналичный расчёт',
@@ -799,11 +746,6 @@ return array(
 	'should contain exact 9 digits'=>'должен содержать 9 цифр',
 	'The cart content will be formed as new order and you might review and change its content'=>'Содержимое коризны будет сформировано в новый заказ и вы сможете просмотреть и изменить его.',
 	'Failure to form and save an order'=>'Невозможно сформировать и сохранить заказ',
-	'Additional info'=>'Дополнительная информация', 
-	'Discount groups'=>'Группы скидок',
-	'User Group Discounts'=>'Группы скидок пользователя',
-	'Set up discount groups value for this client' =>'Установить величину скидки для клиента по группам',
-		
 	/*Testtree*/
 	'Testtrees' => 'Тестовое дерево',
 	'Testtree' => 'Тестовое дерево',
@@ -873,7 +815,6 @@ return array(
 	'Products / Services'=>'Товары / Услуги',
 	'Order\'s content'=>'Содержание заказа',  
 	"Order's content"=>'Содержание заказа',  
-	'Order\'s author'=>'Создатель заказа',
 	'Event\'s content'=>'Содержание события',  
 	'Total with discount'=> 'Cтоимость всего со скидкой',
 	'Cost with discount'=> 'Сумма со скидкой',
@@ -901,7 +842,6 @@ return array(
 	'Confirm to delivery with changes'=>'Подтвердить на доставку с изменениями',
 	'Confirm with changes'=>'Подтвердить с изменениями',
 	'Recommended Price'=>'Рекомендуемая цена', 
-	'Your new coming orders'=>'Ваши новые входящие заказы',
 	/* tabs*/
 	'Main'=>'Основное', 
 	'Access'=>'Доступ',
@@ -996,8 +936,7 @@ return array(
 	'isService'=> 'Услуга',
 	'Price $'=>'Цена $',
 	'Price with discount'=>'Цена со скидкой',
-	//'Availability'=>'Доступность',
-	'Availability'=>'Наличие',
+	'Availability'=>'Доступность',
 	'Assortment id'=>'id номенклатуры',
 	'Current Price'=>'Текущая цена', // (рублей) <br />цена$ * курс рубль/доллару ',
 	'add to cart'=>'в корзину',
