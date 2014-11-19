@@ -137,7 +137,7 @@
                             </div>
 							
                    <!-- кнопки поиска по VIN и в огромном общем каталоге -->
-                            <div class="tar_red_buttons">
+                            <!--div class="tar_red_buttons">
                                 <div class="tar_vip">
                                     <a id='opendialog' href="#">
                                         <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_vip.png" alt=''/>
@@ -149,7 +149,7 @@
                                     </a>
                                 </div>
                                 <div class="pad"></div>
-                            </div>
+                            </div-->
                            
                             <div class="pad"></div>
                         </div>
@@ -192,6 +192,10 @@
 								}  ?> 
                                     </div>
                                 </div><!-- tar_icons_right -->
+								<div class="tar_submenu_hide">
+									<?php $hide_submenu=Yii::t('general', 'Submenu hide'); $show_submenu=Yii::t('general', 'Submenu show'); ?>	
+									<a href='#' class='submenu-button btn-win'><?php echo $hide_submenu; ?></a>
+								</div>
                                 <div class="pad"></div>
                             </div>
                         </div>
@@ -200,7 +204,8 @@
             </div>
             <div class="tar_bluemenu">
                 <div class="container">
-                    <div class="row">
+                    <div class="row submenu">
+					
                         <div class="col-md-12">
                             <?php 
 							if (!empty($Subsystem))
@@ -255,10 +260,10 @@
 								echo '</ul>';
 							}?>
 					</div><!-- row -->
-					<?php $hide=Yii::t('general', 'Carmakes hide'); $show=Yii::t('general', 'Carmakes show'); ?>					
+					<?php $hide=Yii::t('general', 'Carmakes hide'); $show=Yii::t('general', 'Carmakes show'); ?>				
 					<div class="row <?php echo ('assortment' != Yii::app()->controller->id) ? ' hidden' : ''; ?>">
-						<a href='#' class='carmakes-button'><?php echo $hide; ?></a>
-						<div class='carmakes'><?php $this->renderPartial('//layouts/_carmakes'); ?></div>
+						<a href='#' class='carmakes-button'><?php echo $hide; ?></a><hr  style='margin:1px;border: 1px dotted #344756; '>	
+						<div class='carmakes'><!--?php echo (isset($_GET['id'])) ? ' hidden' : ''; ?--><?php $this->renderPartial('//layouts/_carmakes'); ?></div>
 					</div><!-- row -->
                     <div class="row print">
                         <div class="col-md-12"><!--Категории -->
@@ -645,6 +650,14 @@ $('.carmakes-button').click(function(){
 		{ $(this).text('{$show}') }
 	else 
 		{ $(this).text('{$hide}') };	
+	return false;
+});
+$('.submenu-button').click(function(){
+	$('.submenu').toggle();
+	if ($('.submenu').is(':hidden')) 
+		{ $(this).text('{$show_submenu}') }
+	else 
+		{ $(this).text('{$hide_submenu}') };	
 	return false;
 });", CClientScript::POS_END);	
 ?>

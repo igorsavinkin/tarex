@@ -1,3 +1,8 @@
+<?
+	require_once ($_SERVER['DOCUMENT_ROOT'] . '/seotools/seotools.class.php');
+	$ST = new Seotools; 
+	$meta_h1 = $ST->get('h1');
+?>
 <?php 
 /* @var $this AssortmentController */
 /* @var $model Assortment */ 
@@ -132,7 +137,17 @@ if ( $item OR $grcategory) {
 	 
 } ?> 
 <div class='shift-right40'> 
-	<h1 ><?php  echo Yii::t('contact','Assortment list'); ?></h1>
+<h1 >
+<?	if ($meta_h1) 
+		{
+			echo $meta_h1;
+		}
+	else 
+		{
+			echo Yii::t('contact','Assortment list');
+		}
+?>
+	</h1>
 	<div class="search-form" style="display:block; padding-left:40px;"> 
 	<?php $this->renderPartial('_search',array('model'=>$model, 'bodies'=>$bodies )); ?>
 	</div><!-- search-form -->

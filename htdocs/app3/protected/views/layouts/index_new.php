@@ -48,7 +48,7 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
 	</script>
 </head>
 	
-<body>  
+<body itemscope itemtype="http://schema.org/Organization">  
 <div class="tar_wrapper">
     <div class="in_wrapper">
         <div class="tar_header">
@@ -59,16 +59,18 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
                             <div class="tar_left_top_head">
                                 <div class="tar_top_logo">
                                     <a href="<?php echo Yii::app()->createUrl('/site/index'); ?>">
+									<span itemprop="name" style="width:1px;height: 1px;display: block;color: #efefef;">"Tarex" Дистрибьютор автозапчастей</span>
                                         <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_top_logo.png">
                                     </a>
                                 </div>
                                 <div class="tar_ad_phone">
-                                    <div class="tar_ad">
-                                        Россия г. Москва,<br>
-                                        ул. Складочная д. 1, стр. 10
+                                    <div class="tar_ad" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                       <span itemprop="addressLocality"> Россия г. Москва</span>,<br>
+                                        <span itemprop="streetAddress">ул. Складочная д. 1, стр. 10</span>
                                     </div>
                                     <div class="tar_phone">
-                                        <span class="s_one">+7 (495) </span><span class="s_two">785-88-50 </span><span class="tar_red_span">(многоканальный)<a href="mailto:auto@tarex.ru"><font color="C40000">auto@tarex.ru</font></a></span>
+                                        <span class="s_one">+7 (495) </span><span class="s_two" itemprop="telephone">785-88-50 </span><span class="tar_red_span">(многоканальный)<a href="mailto:auto@tarex.ru">
+										<font color="C40000" itemprop="email">auto@tarex.ru</font></a></span>
                                     </div>
                                 </div>
                             </div>
@@ -515,6 +517,7 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';?
             <a class="tar_bot_logo" href="<?php echo Yii::app()->createUrl('/site/index'); ?>">
                 <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_bot_logo.png">
             </a>
+			<span style="color:#fff;">Продвижение сайта - <a href="astramg.ru" title=""><img src="/app3/images/logo_w.png" alt=""/></span>
             <div class="tar_counters_vis">
                 <!-- Yandex.Metrika informer -->
 <a href="https://metrika.yandex.ru/stat/?id=18697171&amp;from=informer"
@@ -588,6 +591,11 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                                 <?php echo Yii::t('general', 'Spare parts'); ?> 
                             </a>
                         </li>
+                        <li>
+                            <a href="<?php echo Yii::app()->createUrl('/site/index', array('page'=>'sitemap')); ?>">
+                                <?php echo Yii::t('general', 'Sitemap'); ?> 
+                            </a>
+                        </li>						
                     </ul>
                 </div>
                 <div class="tar_foot_social">

@@ -162,9 +162,11 @@
 								echo '</ul>';
 							}?>
 				   </div><!-- row -->
-                   <div class="row<?php echo ('assortment' != Yii::app()->controller->id) ? ' hidden' : ''; ?>">	
-						<?php $this->renderPartial('//layouts/_carmakes'); ?>
-				   </div>
+				   <?php $hide=Yii::t('general', 'Carmakes hide'); $show=Yii::t('general', 'Carmakes show'); ?>					
+					<div class="row <?php echo ('assortment' != Yii::app()->controller->id) ? ' hidden' : ''; ?>">
+						<a href='#' class='carmakes-button'><?php echo $hide; ?></a><hr  style='margin:1px;border: 1px dotted #344756; '>	
+						<div class='carmakes'><?php $this->renderPartial('//layouts/_carmakes'); ?></div>
+					</div><!-- row -->
 				   <div class="row">	 				
 						<div class="col-md-12">
                             <div class="tar_category_vis tar_panel tar_open">
@@ -580,9 +582,9 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                         </li>
                     </ul>
                 </div>
-		<div class="soc_text"><span>Иконки соц.сетей временно отключены</span>
+		<!-- Иконки соц.сетей временно отключены -->
 		<br/> 
-		<span style="margin-left: 630px;">Иконки соц.сетей</span></div>
+		<!-- Иконки соц.сетей -->
                 <!--div class="tar_foot_social">
                     <div class="soc_icon">
                         <a href="#">
@@ -704,17 +706,17 @@ var yaParams = {/*Здесь параметры визита*/};
 	
 </div><!-- id='searchbyvin' --> 
 
-<?php /*
-Yii::app()->clientScript->registerScript('searchbyvin-script', "
-$('#opendialog').click(function(data){ 	 
-		$('#searchbyvin').show();
-		return false;
-	});
-$('.back-link').click(function(data){	 
-		$('#searchbyvin').hide();
-		return false;
-	});", CClientScript::POS_END);	 
-
+<?php  
+Yii::app()->clientScript->registerScript('carmakes-script', "
+$('.carmakes-button').click(function(){
+	$('.carmakes').toggle();
+	if ($('.carmakes').is(':hidden')) 
+		{ $(this).text('{$show}') }
+	else 
+		{ $(this).text('{$hide}') };	
+	return false;
+});", CClientScript::POS_END);	 
+/*
 Yii::app()->clientScript->registerScript('hide-for-assortment', "
 	var width = ($(window).width() > 1200) ? '885' : '693';
 	$('.tar_cat_top').css({marginLeft:'0', width: width + 'px'});

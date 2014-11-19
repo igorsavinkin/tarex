@@ -1,5 +1,7 @@
 <?php
 return array( 
+	'Submenu hide'=>'Скрыть подменю',
+	'Submenu show'=>'Показать подменю',
 	'Carmakes hide'=>'Скрыть марки машин',
 	'Carmakes show'=>'Показать марки машин',
 	'Wait several seconds till the server composes and sends you personalized price list'=>'Подождите несколько секунд пока сервер составит и пошлёт Вам персонализированный прайс лист', 	

@@ -796,9 +796,9 @@ footer
 /***page2.html********************************/
 .tar_icons
 {
-    margin-bottom: 14px;
+ /*   margin-bottom: 14px;
     padding-top: 10px;
-
+*/
 }
 div.ma_bo
 {
@@ -832,6 +832,15 @@ div.tar_icons_left
 div.tar_icons_right
 {
     margin-left: 200px;
+}
+div.tar_submenu_hide
+{
+	position: absolute;  
+	top: 14px; 
+	left: 10px;
+	z-index: 400;
+    font-size: 12px;
+    font-family: Tahoma; 
 }
 div.tar_icons_border
 {
@@ -984,8 +993,8 @@ div.tar_adv_second .tar_cat_top_lists li
 .tar_bluemenu_block
 {
     background: #344756;
-    padding: 10px 10px;
-    margin-bottom: 10px;
+    padding: 5px 5px;/*10px 10px;*/
+  /*  margin-bottom: 10px;*/
     overflow: hidden;
 }
 .tar_bluemenu_block ul
