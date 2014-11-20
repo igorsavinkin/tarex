@@ -46,6 +46,38 @@
 			echo "//console.log('Language '+Language);";
 			echo "</script>";
 		?>
+<script>
+ var scrollFloat = function() {
+    'use strict';
+
+    var app = {};
+
+    app.init = function init(node) {
+        if (!node || node.nodeType !== 1) {
+            throw new Error(node + ' is not DOM element');
+        }
+        handleWindowScroll(node);
+    };
+
+    function handleWindowScroll(floatElement) {
+        window.onscroll = function() {
+            if (window.scrollY > floatElement.offsetTop) {
+                if (floatElement.style.position !== 'fixed') {
+                    floatElement.style.position = 'fixed';
+                    floatElement.style.top = '0';
+                }
+            } else {
+                if (floatElement.style.position === 'fixed') {
+                    floatElement.style.position = '';
+                    floatElement.style.top = '';
+                }
+            }
+        };
+    }
+
+    return app;
+}();
+</script>
 </head>
 <body> 
 <div class="tar_wrapper">
@@ -137,7 +169,7 @@
                             </div>
 							
                    <!-- кнопки поиска по VIN и в огромном общем каталоге -->
-                            <div class="tar_red_buttons">
+                            <!--div class="tar_red_buttons">
                                 <div class="tar_vip">
                                     <a id='opendialog' href="#">
                                         <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_vip.png" alt=''/>
@@ -149,7 +181,7 @@
                                     </a>
                                 </div>
                                 <div class="pad"></div>
-                            </div>
+                            </div-->
                            
                             <div class="pad"></div>
                         </div>
@@ -157,6 +189,10 @@
                 </div>
             </div>
         </div>
+<script>
+var el = document.getElementById('tar_bottom_head');
+scrollFloat.init(el);
+</script>
         <div class="tar_body">
             <div class="tar_icons">
                 <div class="container">
@@ -164,7 +200,7 @@
                         <div class="col-md-12">
                             <div class="tar_icons_block">
                                 <div class="tar_icons_left">
-                                    Mobile v.2.0 Tarex MOBILE version
+                                    Mobile v.3.4 Tarex MOBILE version
                                 </div>
                                 <div class="tar_icons_right">
                                     <div class="tar_icons_border">
@@ -192,6 +228,10 @@
 								}  ?> 
                                     </div>
                                 </div><!-- tar_icons_right -->
+								<div class="tar_submenu_hide">
+									<?php $hide_submenu=Yii::t('general', 'Submenu hide'); $show_submenu=Yii::t('general', 'Submenu show'); ?>	
+									<a href='#' class='submenu-button'><span><?php echo $hide_submenu; ?></span> <img src='../images/img_trans.gif' class='arrows arrow-up' /></a> 
+								</div>
                                 <div class="pad"></div>
                             </div>
                         </div>
@@ -200,7 +240,7 @@
             </div>
             <div class="tar_bluemenu">
                 <div class="container">
-                    <div class="row">
+                    <div class="row submenu"> 
                         <div class="col-md-12">
                             <?php 
 							if (!empty($Subsystem))
@@ -255,8 +295,21 @@
 								echo '</ul>';
 							}?>
 					</div><!-- row -->
-					<div class="row<?php echo ('assortment' != Yii::app()->controller->id) ? ' hidden' : ''; ?>">	
-						<?php $this->renderPartial('//layouts/_carmakes'); ?>
+								
+					<div class="row <?php echo ('assortment' != Yii::app()->controller->id) ? ' hidden' : ''; ?>">
+						<?php 
+						// задаём названия для кнопок 
+							$hide=Yii::t('general', 'Carmakes hide'); $show=Yii::t('general', 'Carmakes show'); 
+						// задаем начальное состояние марок машин
+							 if (isset($_GET['id']))
+								{ $position = $show; $class='arrow-down'; $display='none';}
+							 else 
+								{ $position = $hide;  $class='arrow-up'; $display='block';}
+						?>	
+						<div style='margin-bottom:5px;'  >
+							<a href='#' class='carmakes-button'><span><?php echo $position; ?></span> <img src='../images/img_trans.gif' class='arrows <?php echo $class; ?>' /></a>
+						</div> 
+						<div class='carmakes' style="display: <?php echo $display; ?>;"><?php $this->renderPartial('//layouts/_carmakes'); ?></div>
 					</div><!-- row -->
                     <div class="row print">
                         <div class="col-md-12"><!--Категории -->
@@ -635,7 +688,35 @@ $('#opendialog').click(function(data){
 $('.back-link').click(function(data){	 
 		$('#searchbyvin').hide();
 		return false;
-	});", CClientScript::POS_END);	
+	}); 
+	
+$('.carmakes-button').click(function(){
+	$('.carmakes').toggle();
+	var img  = $(this).children('img');
+	if ($('.carmakes').is(':hidden')) {
+		$(this).children('span').text('{$show}');
+		img.removeClass('arrow-up').addClass('arrow-down');
+	} 
+	else { 
+		$(this).children('span').text('{$hide}'); 
+		img.removeClass('arrow-down').addClass('arrow-up');
+	}
+	return false;
+});
+$('.submenu-button').click(function(){
+	$('.submenu').toggle();
+	var img  = $(this).children('img');
+	if ($('.submenu').is(':hidden')) 
+		{ 
+			$(this).children('span').text('{$show_submenu}');
+		    img.removeClass('arrow-up').addClass('arrow-down');		
+		}
+	else { 
+		$(this).children('span').text('{$hide_submenu}') 
+		img.removeClass('arrow-down').addClass('arrow-up');
+	}	
+	return false;
+});", CClientScript::POS_END);	
 ?>
 <script>
     $('select').each(function(){

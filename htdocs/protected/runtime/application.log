@@ -9384,3 +9384,1156 @@ Stack trace:
 #16 {main}
 REQUEST_URI=/index.php?r=assortment/view&id=3621
 ---
+2014/11/19 18:22:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('3959')
+#1 [internal function]: AssortmentController->actionView('3959')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=3959
+---
+2014/11/19 18:43:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('7898')
+#1 [internal function]: AssortmentController->actionView('7898')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=7898
+---
+2014/11/19 19:06:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('9721')
+#1 [internal function]: AssortmentController->actionView('9721')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=9721
+---
+2014/11/19 19:08:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('8192')
+#1 [internal function]: AssortmentController->actionView('8192')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=8192
+---
+2014/11/19 21:04:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('3074')
+#1 [internal function]: AssortmentController->actionView('3074')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=3074
+---
+2014/11/19 21:17:15 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "%CE%20%EA%EE%EC%EF%E0%ED%E8%E8".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('%CE%20%EA%EE%EC...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('%CE%20%EA%EE%EC...')
+#2 [internal function]: SiteController->actionIndex('%CE%20%EA%EE%EC...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%25CE%2520%25EA%25EE%25EC%25EF%25E0%25ED%25E8%25E8
+---
+2014/11/19 21:32:47 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "Avozapchasti_API_15_01_2014".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('Avozapchasti_AP...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('Avozapchasti_AP...')
+#2 [internal function]: SiteController->actionIndex('Avozapchasti_AP...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=Avozapchasti_API_15_01_2014
+HTTP_REFERER=http://yandex.ru/clck/jsredir?from=yandex.ru%3Byandsearch%3Bweb%3B%3B&text=&etext=513.p_MGXjJUdhb0HoMcUTt2AT24GBzrNvUpn7zC1cJfUAljNJQrHj8FhGuFZqbUBo2J.1b297f745fb2e542c09225859a9d35f348ea9dc8&uuid=&state=AiuY0DBWFJ4ePaEse6rgeAjgs2pI3DW9ufu7a6wZ7K9NziC5Hf4z0O6EqLf-PZ-zm1BYqpm1-pEyvvs6VIVvDZzqD-RLlVKNPTxFjKvPDIHQYZSw1S6BiTo_P4UV99SuksdJpCbUYauFjS9pKgHb64n-FBG50XFPCTtUJenoFZzw5MotNSEsfngIoiJbmCEd6GzRLmT6VglLG83UDU06vgg7_s_5CEZd2k2w1Qql0_yQzxPtRS05QBULm4sTbYQBHxB6UJJ2b5m01tRhg4K-PZHSitpxZ0qKNNqx3GX7Ee98jsmU-_FM9A&data=UlNrNmk5WktYejR0eWJFYk1LdmtxbURfRHB5bEpzMU5Oa3ZwN2ZCQzNyc3NDMTQ4MzdZS2M3aWxBVks4SjNFRnNzeFVjek1SOHVoN3ZSMEtGZzJDUVNCZWZpUG5WeVpELURtNWFuaEFNWVoyYlZNRU5DNGdRdi10RTZCbTRxZjdEVVFUbURNcnpZTDNUamo4Z0JYQ1ZpdU1fVjZuWFNwTEhNdGpzYkxXbjhz&b64e=2&sign=b781cd0ecd3bf713a0a2f9a43eb8555c&keyno=0&l10n=ru&cts=1416418354636&mc=5.504567114324689
+---
+2014/11/19 21:56:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('7035')
+#1 [internal function]: AssortmentController->actionView('7035')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=7035
+---
+2014/11/19 22:07:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('1765')
+#1 [internal function]: AssortmentController->actionView('1765')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=1765
+---
+2014/11/19 22:36:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('1440')
+#1 [internal function]: AssortmentController->actionView('1440')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=1440
+---
+2014/11/19 22:44:37 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "%CF%EE%F1%F2%F3%EF%EB%E5%ED%E8%E5 %E7%E0%EF%F7%E0%F1%F2%E5%E9 %F4%E8%F0%EC%FB DEPO %ED%E0 %ED%E0%F8 %F1%EA%EB%E0%E4.".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('%CF%EE%F1%F2%F3...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('%CF%EE%F1%F2%F3...')
+#2 [internal function]: SiteController->actionIndex('%CF%EE%F1%F2%F3...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%25CF%25EE%25F1%25F2%25F3%25EF%25EB%25E5%25ED%25E8%25E5+%25E7%25E0%25EF%25F7%25E0%25F1%25F2%25E5%25E9+%25F4%25E8%25F0%25EC%25FB+DEPO+%25ED%25E0+%25ED%25E0%25F8+%25F1%25EA%25EB%25E0%25E4.
+HTTP_REFERER=http://yandex.ru/yandsearch?text=www.tarex.ru&lr=213
+---
+2014/11/19 22:56:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('8294')
+#1 [internal function]: AssortmentController->actionView('8294')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=8294
+---
+2014/11/19 23:06:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('8339')
+#1 [internal function]: AssortmentController->actionView('8339')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=8339
+---
+2014/11/19 23:53:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('2270')
+#1 [internal function]: AssortmentController->actionView('2270')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=2270
+---
+2014/11/20 00:18:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('7456')
+#1 [internal function]: AssortmentController->actionView('7456')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=7456
+---
+2014/11/20 00:40:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('2269')
+#1 [internal function]: AssortmentController->actionView('2269')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=2269
+---
+2014/11/20 01:20:08 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Невозможно определить CSRF.' in /home/srv50213/htdocs/framework/web/CHttpRequest.php:1247
+Stack trace:
+#0 /home/srv50213/htdocs/framework/base/CComponent.php(561): CHttpRequest->validateCsrfToken(Object(CEvent))
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(207): CComponent->raiseEvent('onBeginRequest', Object(CEvent))
+#2 /home/srv50213/htdocs/framework/base/CApplication.php(178): CApplication->onBeginRequest(Object(CEvent))
+#3 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#4 {main}
+REQUEST_URI=/
+---
+2014/11/20 01:29:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('7600')
+#1 [internal function]: AssortmentController->actionView('7600')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=7600
+---
+2014/11/20 01:56:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('7651')
+#1 [internal function]: AssortmentController->actionView('7651')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=7651
+---
+2014/11/20 01:57:20 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "%25d1%25e5%25f0%25f2%25e8%25f4%25e8%25ea%25e0%25f2%25fb".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('%25d1%25e5%25f0...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('%25d1%25e5%25f0...')
+#2 [internal function]: SiteController->actionIndex('%25d1%25e5%25f0...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%2525d1%2525e5%2525f0%2525f2%2525e8%2525f4%2525e8%2525ea%2525e0%2525f2%2525fb
+---
+2014/11/20 02:08:38 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "PAJERO".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('PAJERO', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('PAJERO')
+#2 [internal function]: SiteController->actionIndex('PAJERO', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=PAJERO
+---
+2014/11/20 02:32:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('7463')
+#1 [internal function]: AssortmentController->actionView('7463')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=7463
+---
+2014/11/20 02:43:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('8014')
+#1 [internal function]: AssortmentController->actionView('8014')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=8014
+---
+2014/11/20 02:57:19 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "radiator".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('radiator', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('radiator')
+#2 [internal function]: SiteController->actionIndex('radiator', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=radiator
+---
+2014/11/20 03:01:46 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Невозможно определить CSRF.' in /home/srv50213/htdocs/framework/web/CHttpRequest.php:1247
+Stack trace:
+#0 /home/srv50213/htdocs/framework/base/CComponent.php(561): CHttpRequest->validateCsrfToken(Object(CEvent))
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(207): CComponent->raiseEvent('onBeginRequest', Object(CEvent))
+#2 /home/srv50213/htdocs/framework/base/CApplication.php(178): CApplication->onBeginRequest(Object(CEvent))
+#3 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#4 {main}
+REQUEST_URI=/
+---
+2014/11/20 03:46:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('3374')
+#1 [internal function]: AssortmentController->actionView('3374')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=3374
+---
+2014/11/20 04:02:35 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "%CF%EE%F1%F2%F3%EF%EB%E5%ED%E8%E5 %E7%E0%EF%F7%E0%F1%F2%E5%E9 %F4%E8%F0%EC%FB DEPO %ED%E0 %ED%E0%F8 %F1%EA%EB%E0%E4.".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('%CF%EE%F1%F2%F3...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('%CF%EE%F1%F2%F3...')
+#2 [internal function]: SiteController->actionIndex('%CF%EE%F1%F2%F3...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%25CF%25EE%25F1%25F2%25F3%25EF%25EB%25E5%25ED%25E8%25E5+%25E7%25E0%25EF%25F7%25E0%25F1%25F2%25E5%25E9+%25F4%25E8%25F0%25EC%25FB+DEPO+%25ED%25E0+%25ED%25E0%25F8+%25F1%25EA%25EB%25E0%25E4.
+HTTP_REFERER=http://yandex.ru/yandsearch?text=www.tarex.ru&lr=213
+---
+2014/11/20 05:07:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('5774')
+#1 [internal function]: AssortmentController->actionView('5774')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=5774
+---
+2014/11/20 05:07:07 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "%D0%E5%E3%E8%EE%ED%E0%EC".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('%D0%E5%E3%E8%EE...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('%D0%E5%E3%E8%EE...')
+#2 [internal function]: SiteController->actionIndex('%D0%E5%E3%E8%EE...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%25D0%25E5%25E3%25E8%25EE%25ED%25E0%25EC
+HTTP_REFERER=http://yandex.ru/yandsearch?text=tarex.ru/index.php%3Fr%3Dassortment/index%26id%3D2028%26Subsystem%3DWarehouse%2Bautomation%26Reference%3DAssortment%26Assortment_page%3D5%26Assortment_sort%3DgroupCategory&lr=213
+---
+2014/11/20 06:06:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('1479')
+#1 [internal function]: AssortmentController->actionView('1479')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=1479
+---
+2014/11/20 06:13:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('5257')
+#1 [internal function]: AssortmentController->actionView('5257')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=5257
+---
+2014/11/20 06:39:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assortment%2Findex".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment%2Fin...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?Reference=Assortment&Subsystem=Warehouse+automation&id=1820&r=assortment%252Findex
+---
+2014/11/20 07:18:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('3719')
+#1 [internal function]: AssortmentController->actionView('3719')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=3719
+---
+2014/11/20 07:25:36 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "zapchasti_api".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('zapchasti_api', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('zapchasti_api')
+#2 [internal function]: SiteController->actionIndex('zapchasti_api', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=zapchasti_api
+---
+2014/11/20 07:27:28 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "MERCEDES".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('MERCEDES', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('MERCEDES')
+#2 [internal function]: SiteController->actionIndex('MERCEDES', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=MERCEDES
+---
+2014/11/20 07:30:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('4416')
+#1 [internal function]: AssortmentController->actionView('4416')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=4416
+---
+2014/11/20 07:31:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('5651')
+#1 [internal function]: AssortmentController->actionView('5651')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=5651
+---
+2014/11/20 07:31:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('368')
+#1 [internal function]: AssortmentController->actionView('368')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=368
+---
+2014/11/20 07:38:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('4758')
+#1 [internal function]: AssortmentController->actionView('4758')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=4758
+---
+2014/11/20 09:12:22 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "E36".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('E36', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('E36')
+#2 [internal function]: SiteController->actionIndex('E36', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=E36
+---
+2014/11/20 09:17:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "register [PLM=0][R] GET http:".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('register [PLM=0...')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('register [PLM=0...')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('user/register [...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=user/register%20%5BPLM=0%5D%5BR%5D%20GET%20http://tarex.ru/index.php?r=user/register%20%5B0,112417,152449%5D%20-%3E%20%5BR%5D%20POST%20http://tarex.ru/index.php?r=user/register%20%5B0,0,152901%5D%20-%3E%20%5BL%5D%20GET%20http://tarex.ru/index.php?r=site/login%20%5B0,66904,96609%5D%20-%3E%20%5BL%5D%20POST%20http://tarex.ru/index.php?r=site/login%20%5B48867,0,96723%5D
+---
+2014/11/20 09:17:10 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Невозможно определить CSRF.' in /home/srv50213/htdocs/framework/web/CHttpRequest.php:1247
+Stack trace:
+#0 /home/srv50213/htdocs/framework/base/CComponent.php(561): CHttpRequest->validateCsrfToken(Object(CEvent))
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(207): CComponent->raiseEvent('onBeginRequest', Object(CEvent))
+#2 /home/srv50213/htdocs/framework/base/CApplication.php(178): CApplication->onBeginRequest(Object(CEvent))
+#3 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#4 {main}
+REQUEST_URI=/index.php/trackback/
+HTTP_REFERER=http://tarex.ru/index.php?r=user/register [PLM=0][R] GET http://tarex.ru/index.php?r=user/register [0,112417,152449] -> [R] POST http://tarex.ru/index.php?r=user/register [0,0,152901] -> [L] GET http://tarex.ru/index.php?r=site/login [0,66904,96609] -> [L] POST http://tarex.ru/index.php?r=site/login [48867,0,96723]
+---
+2014/11/20 09:21:17 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "%CF%EE%F1%F2%F3%EF%EB%E5%ED%E8%E5 %E7%E0%EF%F7%E0%F1%F2%E5%E9 %F4%E8%F0%EC%FB DEPO %ED%E0 %ED%E0%F8 %F1%EA%EB%E0%E4.".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('%CF%EE%F1%F2%F3...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('%CF%EE%F1%F2%F3...')
+#2 [internal function]: SiteController->actionIndex('%CF%EE%F1%F2%F3...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%25CF%25EE%25F1%25F2%25F3%25EF%25EB%25E5%25ED%25E8%25E5+%25E7%25E0%25EF%25F7%25E0%25F1%25F2%25E5%25E9+%25F4%25E8%25F0%25EC%25FB+DEPO+%25ED%25E0+%25ED%25E0%25F8+%25F1%25EA%25EB%25E0%25E4.
+HTTP_REFERER=http://yandex.ru/yandsearch?text=www.tarex.ru&lr=213
+---
+2014/11/20 10:06:10 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "%D0%E5%E3%E8%EE%ED%E0%EC".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('%D0%E5%E3%E8%EE...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('%D0%E5%E3%E8%EE...')
+#2 [internal function]: SiteController->actionIndex('%D0%E5%E3%E8%EE...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%25D0%25E5%25E3%25E8%25EE%25ED%25E0%25EC
+HTTP_REFERER=http://yandex.ru/yandsearch?text=tarex.ru/index.php%3Fr%3Dassortment/index%26id%3D2028%26Subsystem%3DWarehouse%2Bautomation%26Reference%3DAssortment%26Assortment_page%3D5%26Assortment_sort%3DgroupCategory&lr=213
+---
+2014/11/20 11:02:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('3719')
+#1 [internal function]: AssortmentController->actionView('3719')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=3719
+---
+2014/11/20 11:24:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('20')
+#1 [internal function]: AssortmentController->actionView('20')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=20
+---
+2014/11/20 11:24:52 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "T%204".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('T%204', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('T%204')
+#2 [internal function]: SiteController->actionIndex('T%204', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=T%25204
+---
+2014/11/20 12:01:05 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "��������� ����������� ������������� API �� ��� ����� � ������.".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(49): CController->render('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...')
+#2 [internal function]: SiteController->actionIndex('\xCE\xF7\xE5\xF0\xE5\xE4\xED\xEE\xE5 \xEF\xEE\xF1\xF2\xF3...', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=%CE%F7%E5%F0%E5%E4%ED%EE%E5+%EF%EE%F1%F2%F3%EF%EB%E5%ED%E8%E5+%E0%E2%F2%EE%E7%E0%EF%F7%E0%F1%F2%E5%E9+API+%ED%E0+%ED%E0%F8+%F1%EA%EB%E0%E4+%E2+%CC%EE%F1%EA%E2%E5.
+---
+2014/11/20 13:38:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('8010')
+#1 [internal function]: AssortmentController->actionView('8010')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=8010
+---
+2014/11/20 13:40:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('3250')
+#1 [internal function]: AssortmentController->actionView('3250')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=3250
+---
+2014/11/20 15:05:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('3769')
+#1 [internal function]: AssortmentController->actionView('3769')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=3769
+---
+2014/11/20 15:33:26 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "MERCEDES".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('MERCEDES', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(82): CController->render('MERCEDES')
+#2 [internal function]: SiteController->actionIndex('MERCEDES', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=MERCEDES
+---
+2014/11/20 16:41:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('2611')
+#1 [internal function]: AssortmentController->actionView('2611')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=2611
+---
+2014/11/20 16:59:36 [error] [exception.CException] exception 'CException' with message 'Контроллер SiteController не может найти представление "rasshiritelnuy".' in /home/srv50213/htdocs/framework/web/CController.php:878
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('rasshiritelnuy', NULL, true)
+#1 /home/srv50213/htdocs/protected/controllers/SiteController.php(86): CController->render('rasshiritelnuy')
+#2 [internal function]: SiteController->actionIndex('rasshiritelnuy', NULL)
+#3 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('')
+#14 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?do=static&page=rasshiritelnuy
+HTTP_REFERER=http://yandex.ru/clck/jsredir?from=yandex.ru%3Byandsearch%3Bweb%3B%3B&text=&etext=514.2hjNYipO8Iy3JfOXqpET0eCgikRPUfnVf0CB5zsV1R2Zsvo6loQWNr8WBB2fqBxt.f3fec5daa757162fe9bc61a8a5cb28857d47f84c&uuid=&state=AiuY0DBWFJ4ePaEse6rgeAjgs2pI3DW99KUdgowt9XtVrjk7SyH9Qs9zBYVg6FfuxD1EEQfZRpID0KklpBj1YR5Q7Mx9J-5xAVa7zvb35iVHcX2XrgDxErGegJdpYjhvlgNCRHsPfCBJuLOFN7si1P7M9LQ77pzuHvcmVo13bQDycsPBjdVt8Wt8t51UkJlSAF4BFkYgkzQGHkb437WI9kSKER88xB-8R4fYexgSe7TJ-rqzd8KZrC4OpUcd5K6BawnGFqmanuNB4mo443YbvQ&data=UlNrNmk5WktYejR0eWJFYk1LdmtxbURfRHB5bEpzMU5Oa3ZwN2ZCQzNyc3NDMTQ4MzdZS2M3aWxBVks4SjNFRnNzeFVjek1SOHVodzR6WEVvMEYyZG1WeUZ6ZzlEcjQyVjRWRklTOWI5NWdCS3JkNU1Wbm5MQjZWOHJoaWh4YXdoRERqR25HQi11SFhIeHFCZmE2VU5SQUsxdmFMWWpQRw&b64e=2&sign=75aaf0fb181232189d6cd81ace52dcda&keyno=0&l10n=ru&cts=1416491867394&mc=0
+---
+2014/11/20 17:10:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "assortment".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('assortment')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('assortment')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('site/assortment')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=site/assortment&id=699&Subsystem=Warehouse+automation&Reference=Assortment
+HTTP_REFERER=http://tarex.ru/?r=site/index&Subsystem=Manager+tools
+---
+2014/11/20 17:10:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1194
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(184): AssortmentController->loadModel('7598')
+#1 [internal function]: AssortmentController->actionView('7598')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=assortment/view&id=7598
+---
+2014/11/20 17:10:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "assortment".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('assortment')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('assortment')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('site/assortment')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=site/assortment&id=774&Subsystem=Warehouse+automation&Reference=Assortment
+HTTP_REFERER=http://tarex.ru/?id=6
+---
+2014/11/20 17:10:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "assortment".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('assortment')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('assortment')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('site/assortment')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/?r=site/assortment&id=990&Subsystem=Warehouse+automation&Reference=Assortment
+HTTP_REFERER=http://tarex.ru/?id=6
+---

@@ -1297,6 +1297,8 @@ return array(
 	'Base'=>'Основание',
 	'On the basis of'=>'На основании',
 	'Under development...'=>'В стадии разработки...',
+	'Frequent requests'=>'Поисковые запросы',
+	'Unmatched search requests'=>'Поисковые запросы',
 	
 	/* Enter on the basis */
 	'Create new event on the basis of this event'=>'Создать новое событие на основании этого события',

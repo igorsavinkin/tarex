@@ -57,7 +57,7 @@
                         <div class="col-md-12">
                             <div class="tar_left_top_head">
                                 <div class="tar_top_logo">
-                                    <a href="<?php echo Yii::app()->createUrl('/site/index'); ?>">
+                                    <a href="<?php echo Yii::app()->createUrl('/'); ?>">
                                         <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_top_logo.png" alt="" />
                                     </a>
                                 </div>
@@ -192,10 +192,12 @@
 								}  ?> 
                                     </div>
                                 </div><!-- tar_icons_right -->
-								<div class="tar_submenu_hide">
-									<?php $hide_submenu=Yii::t('general', 'Submenu hide'); $show_submenu=Yii::t('general', 'Submenu show'); ?>	
-									<a href='#' class='submenu-button'><span><?php echo $hide_submenu; ?></span> <img src='../images/img_trans.gif' class='arrows arrow-up' /></a> 
-								</div>
+								<?php if(!empty($Subsystem)) : ?>
+									<div class="tar_submenu_hide">
+										<?php $hide_submenu=Yii::t('general', 'Submenu hide'); $show_submenu=Yii::t('general', 'Submenu show'); ?>	
+										<a href='#' class='submenu-button'><span><?php echo $hide_submenu; ?></span> <img src='../images/img_trans.gif' class='arrows arrow-up' /></a> 
+									</div>
+								<? endif; ?>
                                 <div class="pad"></div>
                             </div>
                         </div>
@@ -517,7 +519,7 @@
 <footer class='footer'>
     <div class="container">
         <div class="tar_left_cont_foot">
-            <a class="tar_bot_logo" href="<?php echo Yii::app()->createUrl('/site/index'); ?>">
+            <a class="tar_bot_logo" href="<?php echo Yii::app()->createUrl('/'); ?>">
                 <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_bot_logo.png" alt="" />
             </a>
             <div class="tar_counters_vis">

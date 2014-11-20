@@ -110,8 +110,8 @@ if ( $item OR $grcategory) {
 	if ($item) {
 		$make = $item->title;  
 		$par =Assortment::model()->findByPk($item->parent_id);  
-		$breadcrumbs=array( Yii::t( 'general', 'All makes') => array('site/index'),
-				 $par->title => array('site/index', 'id'=>$par->id)	);
+		$breadcrumbs=array(// Yii::t( 'general', 'All makes') => array('/'),
+				 $par->title => array('/', 'id'=>$par->id)	);
 		if ($grcategory) {
 			$breadcrumbs[$make] = array('assortment/index', 'id'=>$item->id);
 			$breadcrumbs[0] = Yii::t( 'general',  Category::model()->findByPk($_GET['Assortment']['groupCategory'])->name); 
@@ -126,7 +126,7 @@ if ( $item OR $grcategory) {
 	}	
 	
 	$this->widget('zii.widgets.CBreadcrumbs', array(
-			'homeLink'=>false,
+			//'homeLink'=>false,
 			'links'=>$breadcrumbs
 		));
 	 

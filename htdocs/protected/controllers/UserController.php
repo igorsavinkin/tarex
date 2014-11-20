@@ -78,7 +78,7 @@ class UserController extends Controller
 		$objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Артикул');
 		$objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Название');
 		$objPHPExcel->getActiveSheet()->SetCellValue('C1', 'OEM');
-		$objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Модель');
+		$objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Марка');
 		$objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Производитель');
 		$objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Цена');
 		if (!Yii::app()->user->isGuest) 
@@ -97,7 +97,7 @@ class UserController extends Controller
 			$objPHPExcel->getActiveSheet()->SetCellValue('A'.$counter, $item->article2);
 			$objPHPExcel->getActiveSheet()->SetCellValue('B'.$counter, $item->title);
 			$objPHPExcel->getActiveSheet()->SetCellValue('C'.$counter, $item->oem);
-			$objPHPExcel->getActiveSheet()->SetCellValue('D'.$counter, $item->model);
+			$objPHPExcel->getActiveSheet()->SetCellValue('D'.$counter, $item->make);
 			$objPHPExcel->getActiveSheet()->SetCellValue('E'.$counter, $item->manufacturer);
 			$objPHPExcel->getActiveSheet()->SetCellValue('F'.$counter, $item->getPrice(Yii::app()->user->id));
 			
@@ -146,13 +146,13 @@ class UserController extends Controller
 	// writing csv ...
 		fwrite($out, "\xEF\xBB\xBF");  // мы ставим BOM в начале содержимого файла
 		$counter=0;
-		$arr = array('0'=> Yii::t('general', 'Article'),Yii::t('general', 'Title'), 'OEM',Yii::t('general', 'Model') ,Yii::t('general', 'Price') );
+		$arr = array('0'=> Yii::t('general', 'Article'),Yii::t('general', 'Title'), 'OEM',Yii::t('general', 'Make') ,Yii::t('general', 'Price') );
 		if (!Yii::app()->user->isGuest)  
 			$arr[] = Yii::t('general', 'Availability');
 		fputcsv($out, $arr, ';');
 		foreach(Assortment::model()->findAll($criteria) as $d)
 		{
-			$arr = array( $d->article2, $d->title, $d->oem,  $d->model,  $d->getPrice(Yii::app()->user->id) );
+			$arr = array( $d->article2, $d->title, $d->oem,  $d->make,  $d->getPrice(Yii::app()->user->id) );
 			if (!Yii::app()->user->isGuest)  
 				$arr[] = $d->availability;
 			fputcsv($out, $arr, ';'); // разделитель - точка с запятой

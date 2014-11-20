@@ -108,7 +108,7 @@
                                 </a>
                             </div>							
                    <!-- кнопки поиска по VIN и в огромном общем каталоге -->
-                            <div class="tar_red_buttons">
+                            <!--div class="tar_red_buttons">
                                 <div class="tar_vip">
                                     <a id='opendialog' href="#">
                                         <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_vip.png" alt="" />
@@ -120,7 +120,7 @@
                                     </a>
                                 </div>
                                 <div class="pad"></div>
-                            </div>
+                            </div-->
                             
                             <div class="pad"></div>
                         </div>
@@ -162,9 +162,21 @@
 								echo '</ul>';
 							}?>
 				   </div><!-- row -->
-                   <div class="row<?php echo ('assortment' != Yii::app()->controller->id) ? ' hidden' : ''; ?>">	
-						<?php $this->renderPartial('//layouts/_carmakes'); ?>
-				   </div>
+				   <div class="row <?php echo ('assortment' != Yii::app()->controller->id) ? ' hidden' : ''; ?>">
+						<?php 
+						// задаём названия для кнопок 
+							$hide=Yii::t('general', 'Carmakes hide'); $show=Yii::t('general', 'Carmakes show'); 
+						// задаем начальное состояние марок машин
+							 if (isset($_GET['id']))
+								{ $position = $show; $class='arrow-down'; $display='none';}
+							 else 
+								{ $position = $hide;  $class='arrow-up'; $display='block';}
+						?>	
+						<div style='margin:3px; text-decoration:none;'>
+							<a href='#' class='carmakes-button'><span><?php echo $position; ?></span> <img src='../images/img_trans.gif' class='arrows <?php echo $class; ?>' /></a>
+						</div> 
+						<div class='carmakes' style="display: <?php echo $display; ?>;"><?php $this->renderPartial('//layouts/_carmakes'); ?></div>
+					</div><!-- row -->
 				   <div class="row">	 				
 						<div class="col-md-12">
                             <div class="tar_category_vis tar_panel tar_open">
@@ -704,17 +716,22 @@ var yaParams = {/*Здесь параметры визита*/};
 	
 </div><!-- id='searchbyvin' --> 
 
-<?php /*
-Yii::app()->clientScript->registerScript('searchbyvin-script', "
-$('#opendialog').click(function(data){ 	 
-		$('#searchbyvin').show();
-		return false;
-	});
-$('.back-link').click(function(data){	 
-		$('#searchbyvin').hide();
-		return false;
-	});", CClientScript::POS_END);	 
-
+<?php  
+Yii::app()->clientScript->registerScript('carmakes-script', "
+$('.carmakes-button').click(function(){
+	$('.carmakes').toggle();
+	var img  = $(this).children('img');
+	if ($('.carmakes').is(':hidden')) {
+		$(this).children('span').text('{$show}');
+		img.removeClass('arrow-up').addClass('arrow-down');
+	} 
+	else { 
+		$(this).children('span').text('{$hide}'); 
+		img.removeClass('arrow-down').addClass('arrow-up');
+	}
+	return false;
+});", CClientScript::POS_END);	 
+/*
 Yii::app()->clientScript->registerScript('hide-for-assortment', "
 	var width = ($(window).width() > 1200) ? '885' : '693';
 	$('.tar_cat_top').css({marginLeft:'0', width: width + 'px'});

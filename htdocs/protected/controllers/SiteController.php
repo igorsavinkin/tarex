@@ -28,7 +28,7 @@ class SiteController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('backend','backendpavel','backendpavel2'),
+				'actions'=>array('backend','backendpavel','backendpavel2', 'sitemapGen'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -43,7 +43,44 @@ class SiteController extends Controller
 			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
 		);
-	}	 
+	}	
+	
+	public function actionSitemapGen($page=null, $id=null)
+	{		 
+	/*
+	Марка, марка+ модель, марка+подгруппа (кузов и тп) , марка + модель + подгруппа
+    пустые выкидывать из sitemap
+	*/	
+		//$this->render($page ? $page : 'index');  
+		$file = fopen(Yii::app()->basePath . '/../sitemap.xml', 'w'); 
+		fwrite($file, '<?xml version="1.0" encoding="UTF-8"?>
+		<urlset
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">');
+		// выводим страницы с марками машин 
+		$criteria = new CDbCriteria;
+		$criteria->compare('depth', 2);	
+		$criteria->order = 'title ASC';			
+		$criteria->select = array('title', 'id', 'parent_id');			
+		$makes = Assortment::model()->findAll($criteria);
+		foreach($makes as $make) :  
+			$item= "<url>
+				<loc>" . CHtml::encode($this->createAbsoluteUrl('assortment/index', array('id'=>$make->id, 'Subsystem'=>'Warehouse automation', 'Reference'=>'Assortment'))) . "</loc>
+				<changefreq>monthly</changefreq>
+				<priority>0.5</priority>
+			</url>";
+			fwrite($file, $item);
+		endforeach;  
+ 		
+				
+		fwrite($file,'</urlset>');
+		fclose($file);	
+		echo 'file is written';
+	}
+	
+	
 	public function actionIndex($page=null, $id=null)
 	{		 
 		$this->render($page ? $page : 'index');  
