@@ -85,20 +85,16 @@ return array(
 		'urlManager'=>array( 
 			'showScriptName'=>false,
 	//		'caseSensitive'=>false,
-   //	 'enablePrettyUrl' => true, for yii2 only
+   //		'enablePrettyUrl' => true, for yii2 only
 			'urlFormat'=>'path',
-			'rules'=>array( 	 
-		 	   'assortment/<Assortment[groupCategory]:\d+>'=> 'assortment/index',
-			 //  'assortment/(.*?)<Assortment%5BgroupCategory%5D:\d+>'=> 'assortment/index',
-			 //  'assortment/index/<groupCategory:\d+>'=> 'assortment/index',
-			 //  'assortment/index/<Assortment%5BgroupCategory%5D:\d+>' => 'assortment/index',
-			//   'assortment/<Assortment[groupCategory]:\d+>'=> 'assortment/index',
+			'rules'=>array( 	
+			 	 'assortment/<groupCategory:\d+>'=> 'assortment/index',			
+				 'site/page/<page:\w+>'=> 'site/index',			
+	        	 'assortment/<groupCategory:\d+>/<id:\d+>'=> 'assortment/index', 
+				 
 			/*	'<controller:\w+>/<id:\d+>'=>'<controller>/view',*/
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>', 
-				
-			//	 'post/<year:\d{4}>/<title>'=>'post/read',
-				
+				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',  
 			),  
 		), 
 		/*'db'=>array(

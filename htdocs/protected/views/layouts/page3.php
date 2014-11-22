@@ -292,7 +292,10 @@
 									{
 										if (!Assortment::model()->count('groupCategory = '. $category->id)) continue;	
 									?>															
-										 <a class="tar_cat<?php if(($i++ % 2) == 1) echo ' tar_cat_first'; ?>" href="<?php echo $this->createUrl('assortment/index') . '/Assortment[groupCategory]/' . $category->id; //$this->createUrl('assortment/index', array('Assortment[groupCategory]'=>$category->id)); ?>"> 
+										 <a class="tar_cat<?php if(($i++ % 2) == 1) echo ' tar_cat_first'; ?>" href="<?php 
+										 //  echo $this->createUrl('assortment/index') . '/Assortment[groupCategory]/' . $category->id; 
+										   echo $this->createUrl('assortment/index', array('groupCategory'=>$category->id));  
+										//   echo $this->createUrl('assortment/index', array('Assortment[groupCategory]'=>$category->id)); ?>"> 
 										 <img src="<?php echo Yii::app()->baseUrl .'/images/subgroups/' .  $category->image; ?>" alt="" />
 											<span>
 												<?php echo str_replace(' ', '<br>', Yii::t('general', $category->name)); ?>

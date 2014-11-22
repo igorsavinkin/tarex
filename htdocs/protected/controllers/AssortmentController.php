@@ -370,8 +370,10 @@ class AssortmentController extends Controller
 	}
 
 	// главный справочник номенклатуры
-	public function actionIndex($id = null, $assort=null, $subgroup=null) 
-	{ 	 
+	public function actionIndex($id = null, $assort=null, $subgroup=null, $category=null, $groupCategory=null) 	
+	{ 		
+	 //echo 'beginning groupCategory = ', $_GET['groupCategory'];
+	
 		$model=new Assortment('search');
 		$model->unsetAttributes();  // clear any default values
 		if($subgroup) 
@@ -663,11 +665,14 @@ class AssortmentController extends Controller
 			unset($assort);
 		}	
 // **************** выбор источника данных для таблицы ****************
-		if( !empty($_GET['Assortment']) && !isset($_GET['findbyoem-value']) && ( !empty($_GET['Assortment']['title'])  OR !empty($_GET['Assortment']['oem'])  OR !empty($_GET['Assortment']['article']) OR !empty($_GET['Assortment']['subgroup']) OR !empty($_GET['Assortment']['groupCategory']) OR !empty($_GET['Assortment']['model']) ) && !isset($_GET['id'])   ) 
+		if( (!empty($_GET['Assortment']) OR !empty($_GET['groupCategory']) ) && !isset($_GET['findbyoem-value']) && ( !empty($_GET['Assortment']['title'])  OR !empty($_GET['Assortment']['oem'])  OR !empty($_GET['Assortment']['article']) OR !empty($_GET['Assortment']['subgroup']) OR !empty($_GET['Assortment']['groupCategory']) OR !empty($_GET['groupCategory']) OR !empty($_GET['Assortment']['model']) ) && !isset($_GET['id'])   ) 
 		{  
 			// установление атрибутов модели из входного массива
 			//echo 'установление атрибутов модели из входного массива<br>'; 
+			$model->groupCategory = $_GET['groupCategory'];
 			$model->attributes=$_GET['Assortment'];
+			//echo '<br>inside groupCategory = ', $_GET['groupCategory'];
+			//print_r($model);
 		//	echo 'attributes: '; print_r($model->attributes);
 			// добавляем фильтрацию по марке
 			if (isset($_GET['id']))
@@ -730,13 +735,15 @@ class AssortmentController extends Controller
 				//print_r($criteria); echo  '<br>';
 				//echo 'choose by $id and its make';
 			}
-			$criteria->addCondition('`measure_unit` <> "" ');
-			if ($_GET['Assortment']['groupCategory'])  
-			{
-				$criteria->addCondition('groupCategory = '. $_GET['Assortment']['groupCategory']);
-				$model->groupCategory = $_GET['Assortment']['groupCategory'];
-			}//if ($_GET['Assortment']['Subgroup']) 
-				//$criteria->addCondition('`subgroup` = ' . $_GET['Assortment']['Subgroup']);
+	// добавляем условие что единица измерения - не пуста		
+        	$criteria->addCondition('`measure_unit` <> "" ');
+	// добавляем условие по категории товара (если задано)			
+			if ( isset($_GET['Assortment']['groupCategory']) OR isset($_GET['groupCategory']) )  
+			{			
+				$model->groupCategory = isset($_GET['Assortment']['groupCategory']) ? $_GET['Assortment']['groupCategory']  : $_GET['groupCategory'];	 
+				$criteria->addCondition('groupCategory = '.  $model->groupCategory);
+				//echo '<br>inside $model->groupCategory = ', $model->groupCategory; 				
+			}
 			
 			$dataProvider = new CActiveDataProvider('Assortment', array(
 				'criteria'=>$criteria,

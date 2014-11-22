@@ -103,7 +103,7 @@ class Controller extends CController
              $app->params['Reference']  = $app->session['Reference'];
         }*/
 // очищаем переменные сессии (Subsystem & Reference) если переход на главную страницу
-		if (Yii::app()->controller->id.'/'.Yii::app()->controller->action->id == 'site/index' ) 
+		if ('site/index' == Yii::app()->controller->id.'/'.Yii::app()->controller->action->id ) 
 		{
 			$app->session['Subsystem'] = '';
 			$app->session['Reference'] = '';  
