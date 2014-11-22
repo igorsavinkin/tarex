@@ -57,7 +57,7 @@
                         <div class="col-md-12">
                             <div class="tar_left_top_head">
                                 <div class="tar_top_logo">
-                                    <a href="<?php echo Yii::app()->createUrl('/'); ?>">
+                                    <a href="/">
                                         <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_top_logo.png" alt="" />
                                     </a>
                                 </div>
@@ -140,12 +140,12 @@
                             <!--div class="tar_red_buttons">
                                 <div class="tar_vip">
                                     <a id='opendialog' href="#">
-                                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_vip.png" alt=''/>
+                                        <img src="<?php //echo Yii::app()->baseUrl; ?>/images/tar_vip.png" alt=''/>
                                     </a>
                                 </div>
                                 <div class="tar_catalog">
                                     <a href="#">
-                                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_catalog.png" alt="" />
+                                        <img src="<?php //echo Yii::app()->baseUrl; ?>/images/tar_catalog.png" alt="" />
                                     </a>
                                 </div>
                                 <div class="pad"></div>
@@ -170,10 +170,11 @@
                                     <div class="tar_icons_border">
 							 <?php 
 								$Subsystem= Yii::app()->session['Subsystem'];
-								$Reference =  isset($_GET['Reference']) ? $_GET['Reference'] : Yii::app()->session['Reference'];
+							//	echo 'Subsystem session=', Yii::app()->session['Subsystem'], '<br>';
+							 	$Reference =  isset($_GET['Reference']) ? $_GET['Reference'] : Yii::app()->session['Reference'];
 								$MainMenu=MainMenu::model()->findAll(
 									array(
-										'select'=>'Subsystem,Img',
+										'select'=>'Subsystem, Img',
 										'order'=> 'DisplayOrder',
 										'distinct'=>true,
 										'condition'=>'RoleId LIKE :RoleId',
@@ -186,8 +187,8 @@
 								 	if($r->Img != '')  
 									{		 
 										$file = Yii::app()->user->checkAccess(User::ROLE_MANAGER) ? 'general' : 'user';
-										$_GET['Subsystem'] = $r->Subsystem; // меняем Subsystem
-										echo "<div class='tar_icons_item {$checked}'>",  CHtml::Link("<img src='/app3/images/subsystem/".$r->Img."' alt='".Yii::t('general', $r->Subsystem)."' title='".Yii::t($file, $r->Subsystem)."'>", array( $this->id. '/' . $this->getAction()->id) + $_GET) , '</div>';
+										$_GET['Subsystem'] = $r->Subsystem; // меняем Subsystem 
+										echo "<div class='tar_icons_item {$checked}'>",  CHtml::Link("<img src='/images/subsystem/".$r->Img."' alt='".Yii::t('general', $r->Subsystem)."' title='".Yii::t($file, $r->Subsystem)."'>", array( $this->id. '/' . $this->getAction()->id) + $_GET  )  ," <span style='font-size:0.7em'>" , Yii::t( $file, $r->Subsystem)   ,   '</span></div>';
 									}
 								}  ?> 
                                     </div>
@@ -291,7 +292,7 @@
 									{
 										if (!Assortment::model()->count('groupCategory = '. $category->id)) continue;	
 									?>															
-										 <a class="tar_cat<?php if(($i++ % 2) == 1) echo ' tar_cat_first'; ?>" href="<?php echo $this->createUrl('assortment/index', array('Assortment[groupCategory]'=>$category->id)); ?>"> 
+										 <a class="tar_cat<?php if(($i++ % 2) == 1) echo ' tar_cat_first'; ?>" href="<?php echo $this->createUrl('assortment/index') . '/Assortment[groupCategory]/' . $category->id; //$this->createUrl('assortment/index', array('Assortment[groupCategory]'=>$category->id)); ?>"> 
 										 <img src="<?php echo Yii::app()->baseUrl .'/images/subgroups/' .  $category->image; ?>" alt="" />
 											<span>
 												<?php echo str_replace(' ', '<br>', Yii::t('general', $category->name)); ?>
@@ -361,7 +362,7 @@
                                 <?php // содержимое из cоответствующего view 
 																 echo $content; 
 															?> 
-								<a class='no-print' href='#' id='up' style='float:right;z-index:1000;position:fixed; bottom: 20px; right:20px'><img src='images/btn-up.png' width='35px' alt="" /></a>							
+								<a class='no-print' href='#' id='up' style='float:right;z-index:1000;position:fixed; bottom: 20px; right:20px'><img src='<?php echo Yii::app()->baseUrl; ?>/../images/btn-up.png' width='35px' alt="" /></a>							
 								<!--div class="tar_pathway">                                  
 									<ul>
                                         <li>

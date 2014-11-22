@@ -31,7 +31,7 @@ $this->renderPartial('_search',array(
 	'cssFile' => Yii::app()->baseUrl . '/css/gridview.css',
 	'selectableRows'=>1,
 	'selectionChanged'=>'function(id){  		
-		location.href = "index.php?r=user/update/id/"+$.fn.yiiGridView.getSelection(id);	
+		location.href = "'. $this->createUrl('update') .'/id/"+$.fn.yiiGridView.getSelection(id);	
 	}',
 	'columns'=>array( 
  		/*array(

@@ -221,6 +221,7 @@ return array(
 	'Manager' => 'Mенеджер', 
 	'Manager tools' => 'Работа менеджера и CRM',
 	'Warehouse automation' => 'Управление Складом',
+	//'Warehouse automation' => 'Cклад',   
 	'Money Management' => 'Управление финансами',
 	'Delivery tools' => 'Управление доставкой',
 	'Staff & Salary tools' => 'Управление кадрами и зарплата',

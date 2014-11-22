@@ -84,16 +84,23 @@ return array(
 		
 		'urlManager'=>array( 
 			'showScriptName'=>false,
-			'caseSensitive'=>false,
-	/*	//	 'enablePrettyUrl' => true, for yii2 only
-		'urlFormat'=>'path',
-		/*	'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
+	//		'caseSensitive'=>false,
+   //	 'enablePrettyUrl' => true, for yii2 only
+			'urlFormat'=>'path',
+			'rules'=>array( 	 
+		 	   'assortment/<Assortment[groupCategory]:\d+>'=> 'assortment/index',
+			 //  'assortment/(.*?)<Assortment%5BgroupCategory%5D:\d+>'=> 'assortment/index',
+			 //  'assortment/index/<groupCategory:\d+>'=> 'assortment/index',
+			 //  'assortment/index/<Assortment%5BgroupCategory%5D:\d+>' => 'assortment/index',
+			//   'assortment/<Assortment[groupCategory]:\d+>'=> 'assortment/index',
+			/*	'<controller:\w+>/<id:\d+>'=>'<controller>/view',*/
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-			),*/
-		),
-		/**/
+				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>', 
+				
+			//	 'post/<year:\d{4}>/<title>'=>'post/read',
+				
+			),  
+		), 
 		/*'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 		),*/

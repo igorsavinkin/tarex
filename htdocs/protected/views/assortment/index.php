@@ -111,7 +111,7 @@ if ( $item OR $grcategory) {
 		$make = $item->title;  
 		$par =Assortment::model()->findByPk($item->parent_id);  
 		$breadcrumbs=array(// Yii::t( 'general', 'All makes') => array('/'),
-				 $par->title => array('/', 'id'=>$par->id)	);
+				 $par->title => array('site/index', 'id'=>$par->id)	);
 		if ($grcategory) {
 			$breadcrumbs[$make] = array('assortment/index', 'id'=>$item->id);
 			$breadcrumbs[0] = Yii::t( 'general',  Category::model()->findByPk($_GET['Assortment']['groupCategory'])->name); 

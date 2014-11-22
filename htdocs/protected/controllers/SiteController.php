@@ -47,11 +47,10 @@ class SiteController extends Controller
 	
 	public function actionSitemapGen($page=null, $id=null)
 	{		 
-	/*
-	Марка, марка+ модель, марка+подгруппа (кузов и тп) , марка + модель + подгруппа
+	/*  марка, марка + модель (не самое главное), марка + подгруппа (кузов и тп) , марка + модель + подгруппа
     пустые выкидывать из sitemap
 	*/	
-		//$this->render($page ? $page : 'index');  
+		// Марка
 		$file = fopen(Yii::app()->basePath . '/../sitemap.xml', 'w'); 
 		fwrite($file, '<?xml version="1.0" encoding="UTF-8"?>
 		<urlset
@@ -59,25 +58,44 @@ class SiteController extends Controller
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">');
-		// выводим страницы с марками машин 
+//Марка - выводим страницы с марками машин 
 		$criteria = new CDbCriteria;
-		$criteria->compare('depth', 2);	
-		$criteria->order = 'title ASC';			
-		$criteria->select = array('title', 'id', 'parent_id');			
+		$criteria->compare('depth', 2); 		
+		$criteria->select = 'id, title';			
 		$makes = Assortment::model()->findAll($criteria);
 		foreach($makes as $make) :  
+			//echo 'make = ', $make->title, '; id = ', $make->id  , '<br>';
 			$item= "<url>
-				<loc>" . CHtml::encode($this->createAbsoluteUrl('assortment/index', array('id'=>$make->id, 'Subsystem'=>'Warehouse automation', 'Reference'=>'Assortment'))) . "</loc>
+				<loc>" . CHtml::encode($this->createAbsoluteUrl('/assortment', array('id'=>$make->id /*, 'Subsystem'=>'Warehouse automation', 'Reference'=>'Assortment'*/ ))) . "</loc>
 				<changefreq>monthly</changefreq>
 				<priority>0.5</priority>
-			</url>";
+			</url>";			
 			fwrite($file, $item);
+			$conditionMake =   'make = "' .  $make->title . '" ';
+			foreach(Category::model()->findAll() as $category)
+			{			
+	//  Марка + подгруппа (кузов, оптика и т. п.) 
+	// проверим, если она пустая, тогда не включаем 
+			   $condition = $conditionMake . ' AND groupCategory = ' . $category->id;
+			  // echo 'condition: ',  $condition, '<br>';
+			   $numberOfItems = Assortment::model()->count($condition);
+			   if ($numberOfItems) 
+			   {     
+					//echo 'the items are ', $numberOfItems, '<br>';			   	
+			 	    $item= "<url><loc>" . CHtml::encode($this->createAbsoluteUrl('/assortment', array('id'=>$make->id, 'Assortment[groupCategory]'=> $category->id))) . "</loc>
+					<changefreq>monthly</changefreq>
+					<priority>0.5</priority>
+					</url>";
+					fwrite($file, $item); /**/
+				}
+			}
 		endforeach;  
  		
-				
+		//foreach()	
+		
 		fwrite($file,'</urlset>');
 		fclose($file);	
-		echo 'file is written';
+		echo ' sitemap.xml file is written';
 	}
 	
 	

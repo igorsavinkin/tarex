@@ -1,3 +1,9 @@
+<?
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/seotools/seotools.class.php');
+$ST = new Seotools; 
+ 
+
+?>
 <!DOCTYPE html>
 <html>
 <head> 
@@ -5,8 +11,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" type="image/ico" href="/app2/img/favicon.ico">
-
-    <title><?php echo $this->getPageTitle(); //CHtml::encode($this->pageTitle); ?></title>
+	<?
+// Сниппет для мета тегов
+$meta_title 	= $ST->get('title');
+$meta_keywords 	= $ST->get('keywords');
+$meta_desc	 	= $ST->get('description');
+if ($meta_title) {echo $meta_title;}
+else{echo $this->getPageTitle();;} ?>
+    </title> 
+	<?
+if ($meta_keywords) echo '<meta name="keywords" content="'. $meta_keywords .'" />';
+if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';
+?>
 	<link href="<?php echo Yii::app()->baseUrl; ?>/css/in.css" rel="stylesheet" type="text/css">
 	<link href="<?php echo Yii::app()->baseUrl; ?>/css/form.css" rel="stylesheet" type="text/css">
     <link href="<?php echo Yii::app()->baseUrl; ?>/css/reset.css" rel="stylesheet" type="text/css">
@@ -223,7 +239,8 @@ scrollFloat.init(el);
 									{		 
 										$file = Yii::app()->user->checkAccess(User::ROLE_MANAGER) ? 'general' : 'user';
 										$_GET['Subsystem'] = $r->Subsystem; // меняем Subsystem
-										echo "<div class='tar_icons_item {$checked}'>",  CHtml::Link("<img src='/app3/images/subsystem/".$r->Img."' alt='".Yii::t('general', $r->Subsystem)."' title='".Yii::t($file, $r->Subsystem)."'>", array( $this->id. '/' . $this->getAction()->id) + $_GET) , '</div>';
+										echo "<div class='tar_icons_item {$checked}'>",  CHtml::Link("<img src='/app3/images/subsystem/".$r->Img."' alt='".Yii::t('general', $r->Subsystem)."' title='".Yii::t($file, $r->Subsystem)."'>", array( $this->id. '/' . $this->getAction()->id) + $_GET) ,  </div>';  
+
 									}
 								}  ?> 
                                     </div>
@@ -592,6 +609,11 @@ scrollFloat.init(el);
                         <li>
                             <a href="<?php echo Yii::app()->createUrl('/site/index', array('page'=>'spareparts')); ?>">
                                 <?php echo Yii::t('general', 'Spare parts'); ?> 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo Yii::app()->createUrl('/site/index', array('page'=>'sitemap')); ?>">
+                                <?php echo Yii::t('general', 'Карта сайта'); ?>  
                             </a>
                         </li>
                     </ul>

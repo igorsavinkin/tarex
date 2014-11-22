@@ -87,30 +87,27 @@ class Controller extends CController
         {
             $app->language = $app->session['_lang'];
         }
-
+		//echo 'GET = '; print_r($_GET);echo '<br>';
 		if (isset($_GET['Subsystem']))
-        {
-        //    $app->params['Subsystem'] = $_GET['Subsystem'];
-            $app->session['Subsystem'] = $_GET['Subsystem']; //$app->params['Subsystem'];
-        }
-        else if (isset($app->session['Subsystem']))
-        {
-             //$app->params['Subsystem']  = $app->session['Subsystem'];
-        }
+			$app->session['Subsystem'] = $_GET['Subsystem'];  
+        //$app->params['Subsystem'] = $_GET['Subsystem'];
+		// echo '$Subsystem in Controller =',  $app->session['Subsystem'], '<br>';
+       
 		
-		if (isset($_GET['Reference']))
-        {
-            $app->params['Reference'] = $_GET['Reference'];
+		if (isset($_GET['Reference'])) 
+           // $app->params['Reference'] = $_GET['Reference'];
             $app->session['Reference'] = $app->params['Reference'];
-        }
-        else if (isset($app->session['Reference']))
+   
+      /*  else if (isset($app->session['Reference']))
         {
              $app->params['Reference']  = $app->session['Reference'];
-        }
-		// очищаем переменные сессии (Subsystem & Reference) если переход на главную страницу
-		if (!isset($_GET['r'])) {
-			$app->session['Reference'] = '';			$app->session['Subsystem'] = '';
-			}
+        }*/
+// очищаем переменные сессии (Subsystem & Reference) если переход на главную страницу
+		if (Yii::app()->controller->id.'/'.Yii::app()->controller->action->id == 'site/index' ) 
+		{
+			$app->session['Subsystem'] = '';
+			$app->session['Reference'] = '';  
+		}
 		// смена города
 		/*
 		  1) У пользователя смотрим city - если заполнен значит по умолчанию это его город

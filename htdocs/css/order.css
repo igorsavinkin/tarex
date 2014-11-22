@@ -865,7 +865,7 @@ div.tar_icons_item
 }
 div.tar_icons_item:first-child
 {
-    margin: 0 25px 0 10px;
+    margin: 0 25px 15px 10px;
 }
 div.tar_icons_item:last-child
 {

@@ -36,7 +36,7 @@
 				{		  											
 					foreach ($makesAll as $key => $make) 
 					{  
-						echo '<li>' ,CHtml::Link($make, array('assortment/index', 'id'=>$key, 'Subsystem'=>'Warehouse automation', 'Reference'=>'Assortment')), '</li>'; 
+						echo '<li>' ,CHtml::Link($make, array('assortment/index', 'id'=>$key /*, 'Subsystem'=>'Warehouse automation', 'Reference'=>'Assortment'*/ )), '</li>'; 
 						if (($i++ % 5 ) == 0) echo "</ul><ul style='float:left;'>";
 					}
 				}  ?>
@@ -52,7 +52,7 @@
 					$i=1;													
 					foreach ($makesgrAll as $key => $make) 
 					{ 														
-						echo '<li>' ,CHtml::Link( $make, array('assortment/index', 'id'=>$key, 'Subsystem'=>'Warehouse automation', 'Reference'=>'Assortment')), '</li>'; 
+						echo '<li>' ,CHtml::Link( $make, array('assortment/index', 'id'=>$key /*, 'Subsystem'=>'Warehouse automation', 'Reference'=>'Assortment'*/ )), '</li>'; 
 						if (($i++ % 2 ) == 0) echo "</ul><ul style='float: left;'>";
 					}
 				}  ?>  

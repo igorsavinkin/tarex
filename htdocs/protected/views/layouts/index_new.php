@@ -241,7 +241,7 @@
 									 echo $content; 
 								?>
 							
-								<a href='#' id='btn-up' style=''><img src='images/btn-up.png' width='35px' alt="" /></a>
+								<a href='#' id='btn-up' style=''><img src='<?php echo Yii::app()->baseUrl; ?>/../images/btn-up.png' width='35px' alt="" /></a>
 								<!--/div><!--tar_cat_top_regular-->
 								<div class="pad"></div>
 							</div><!-- tar_catalog_goods -->
