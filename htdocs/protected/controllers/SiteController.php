@@ -47,8 +47,10 @@ class SiteController extends Controller
 	
 	public function actionSitemapGen($page=null, $id=null)
 	{		 
-	/*  марка, марка + модель (не самое главное), марка + подгруппа (кузов и тп) , марка + модель + подгруппа
-    пустые выкидывать из sitemap */		
+	/*  марка, марка + модель (cогласно фильтрам-чекбоксам) - не самое главное, 
+	    марка + подгруппа (кузов и т. п.) , марка + модель + подгруппа
+        пустые убирать из sitemap 
+	*/		
 		echo 'Writing sitemap.xml<br>';
 		$count=0;
 		$file = fopen(Yii::app()->basePath . '/../sitemap.xml', 'w'); 
@@ -67,6 +69,7 @@ class SiteController extends Controller
 			</url>");	
 			$count++;	
 		endforeach;
+		
 //Марка - выводим страницы с марками машин 
 		$criteria = new CDbCriteria;
 		$criteria->compare('depth', 2); 		

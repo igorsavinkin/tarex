@@ -602,6 +602,7 @@ C:\Users\CD86~1\AppData\Local\Temp\F3TDE34.tmp\index.php<!DOCTYPE html>
                         </li>
                     </ul>
                 </div>
+                <!-- Иконки соц. сетей временно отключены ---------------------
                 <div class="tar_foot_social">
                     <div class="soc_icon">
                         <a href="#">
@@ -618,6 +619,7 @@ C:\Users\CD86~1\AppData\Local\Temp\F3TDE34.tmp\index.php<!DOCTYPE html>
                         Мы в соц. сетях
                     </div>
                 </div>
+                 --------------    Иконки соц сетей               -->
                 <div class="pad"></div>
             </div>
             <div class="tar_bot_cont_foot">

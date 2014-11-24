@@ -89,7 +89,7 @@ $('input[id^=\"series_\"]').on('change', function() {
 					)); ?> 
 		</td>
 		<td width='110'><br />		
-		<?php echo CHtml::submitButton(Yii::t('general','Find'),  array('class'=>'red' )); ?>
+		<?php echo CHtml::submitButton(Yii::t('general','Find'),  array('class'=>'red', 'name'=>'find-with-filter' )); ?>
 		</td>
 	</tr>
 </table>

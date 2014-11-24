@@ -28,7 +28,7 @@ class UserController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'update' actions
-				'actions'=>array('update', 'print'), 
+				'actions'=>array('update', 'print', 'pricelistSetting'), 
 				//'users'=>array('@'),
 				'expression'=>array($this, 'UpdateUser'),
 			),
@@ -44,6 +44,11 @@ class UserController extends Controller
 				'users'=>array('*'),
 			),
 		);
+	}
+	public $_data=0;
+	public function actionPricelistSetting($id=null)
+	{  
+		$this->render('pricelistSetting');  
 	}
 	public function actionPricelist($id=null)
 	{  

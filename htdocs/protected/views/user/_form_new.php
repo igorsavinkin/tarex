@@ -128,7 +128,14 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 		<?php echo $form->label($model,'isSeller'); ?>
 		<?php echo $form->checkBox($model,'isSeller'); ?>	
 		<?php echo $form->error($model,'isSeller'); 		
-		} ?> 		
+		} ?> 
+		<br><br>
+		<?php 
+			$plsId = PriceListSetting::model()->findByAttributes(array('userId'=>$model->id))->id;
+		if ($plsId)  
+			echo CHtml::link(Yii::t('general','Set up Price sending'), array('priceListSetting/update', 'id'=>$plsId), array('target'=>'_blank', 'class'=>'btn-win'));
+		else 
+			echo CHtml::link(Yii::t('general','Set up Price sending'), array('priceListSetting/create', 'id'=>$model->id), array('target'=>'_blank', 'class'=>'btn-win'));?>
 	</td> 
 	<td valign='top' >		
 		<?php  
@@ -220,9 +227,10 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 						'width' => '200')              
 				));?>
 		<?php echo $form->error($model,'ShablonId'); ?><br> 			
-		<?php echo CHtml::link(Yii::t('general','Edit loading settings'), array('LoadDataSettings/admin'), array('target'=>'_blank'));  
-		
-		
+		<?php echo CHtml::link(Yii::t('general','Edit loading settings'), array('LoadDataSettings/admin'), array('target'=>'_blank'));  ?>
+		<br>
+		<?php     
+// cписок марок машин с которыми пользователь работает		
 		$criteria=new CDbCriteria;
 		$criteria->select='make';
 		$criteria->distinct=true;

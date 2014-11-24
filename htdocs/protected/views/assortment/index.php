@@ -131,9 +131,9 @@ if ( $item OR $grcategory) {
 		));
 	 
 } ?> 
-<div class='shift-right40'> 
+<div class='shift-right40'> <!---->
 	<h1 ><?php  echo Yii::t('contact','Assortment list'); ?></h1>
-	<div class="search-form" style="display:block; padding-left:40px;"> 
+	<div class="search-form"> <!--style="display:block; padding-left:40px;"--> 
 	<?php $this->renderPartial('_search',array('model'=>$model, 'bodies'=>$bodies )); ?>
 	</div><!-- search-form -->
 </div><!-- shift-right40 --> 

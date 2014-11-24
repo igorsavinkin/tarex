@@ -1,5 +1,14 @@
 <?php
 return array( 
+	/*  Price List Settings */
+	'Price List Settings'=> 'Настройка посылки прайса', 
+	'Manage Price List Settings'=>'Управлять настройками посылки прайса', 
+	'Create Price List Settings'=>'Создать настройки посылки прайса', 
+	'Edit Price List Setting'=>'Редактировать настройку посылки прайса', 
+	'File Format'=>'Формат файла',
+	'Days Of Week'=>'Дни недели',
+	
+	
 	'Submenu hide'=>'Скрыть подменю',
 	'Submenu show'=>'Показать подменю',
 	'Carmakes hide'=>'Скрыть марки машин',

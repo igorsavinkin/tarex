@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" type="image/ico" href="/app2/img/favicon.ico">
 
-    <title><?php echo $this->getPageTitle(); //CHtml::encode($this->pageTitle); ?></title>
+    <title><?php echo $this->getPageTitle(); ?></title>
 	<link href="<?php echo Yii::app()->baseUrl; ?>/css/in.css" rel="stylesheet" type="text/css">
 	<link href="<?php echo Yii::app()->baseUrl; ?>/css/form.css" rel="stylesheet" type="text/css">
     <link href="<?php echo Yii::app()->baseUrl; ?>/css/reset.css" rel="stylesheet" type="text/css">
@@ -523,7 +523,7 @@
 <footer class='footer'>
     <div class="container">
         <div class="tar_left_cont_foot">
-            <a class="tar_bot_logo" href="<?php echo Yii::app()->createUrl('/'); ?>">
+            <a class="tar_bot_logo" href="/">
                 <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_bot_logo.png" alt="" />
             </a>
             <div class="tar_counters_vis">

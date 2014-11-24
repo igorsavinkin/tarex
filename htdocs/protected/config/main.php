@@ -53,6 +53,9 @@ return array(
 	
 	// application components
 	'components'=>array(
+		'formatter' => [
+		  'class' => 'yii\i18n\Formatter'
+		],
 		'shoppingCart' =>
 			array(
 				'class' => 'ext.shoppingCart.EShoppingCart', /*.yiiext.components.*/

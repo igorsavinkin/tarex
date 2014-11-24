@@ -667,9 +667,8 @@ class AssortmentController extends Controller
 // **************** выбор источника данных для таблицы ****************
 		if( (!empty($_GET['Assortment']) OR !empty($_GET['groupCategory']) ) && !isset($_GET['findbyoem-value']) && ( !empty($_GET['Assortment']['title'])  OR !empty($_GET['Assortment']['oem'])  OR !empty($_GET['Assortment']['article']) OR !empty($_GET['Assortment']['subgroup']) OR !empty($_GET['Assortment']['groupCategory']) OR !empty($_GET['groupCategory']) OR !empty($_GET['Assortment']['model']) ) && !isset($_GET['id'])   ) 
 		{  
-			// установление атрибутов модели из входного массива
-			//echo 'установление атрибутов модели из входного массива<br>'; 
-			$model->groupCategory = $_GET['groupCategory'];
+		// установление атрибутов модели из входного массива  
+			$model->groupCategory = $_GET['groupCategory'];  // если установлен $_GET['Assortment']['groupCategory'] то он перепишет $model->groupCategory в следующей строчке
 			$model->attributes=$_GET['Assortment'];
 			//echo '<br>inside groupCategory = ', $_GET['groupCategory'];
 			//print_r($model);
@@ -738,7 +737,7 @@ class AssortmentController extends Controller
 	// добавляем условие что единица измерения - не пуста		
         	$criteria->addCondition('`measure_unit` <> "" ');
 	// добавляем условие по категории товара (если задано)			
-			if ( isset($_GET['Assortment']['groupCategory']) OR isset($_GET['groupCategory']) )  
+			if ( !empty($_GET['Assortment']['groupCategory']) OR !empty($_GET['groupCategory']) )  
 			{			
 				$model->groupCategory = isset($_GET['Assortment']['groupCategory']) ? $_GET['Assortment']['groupCategory']  : $_GET['groupCategory'];	 
 				$criteria->addCondition('groupCategory = '.  $model->groupCategory);

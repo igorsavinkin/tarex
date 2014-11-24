@@ -1,3 +1,9 @@
+<?
+	require_once ($_SERVER['DOCUMENT_ROOT'] . '/seotools/seotools.class.php');
+	$ST = new Seotools; 
+	$meta_keywords 	= $ST->get('keywords');
+	$meta_desc	 	= $ST->get('description');
+?>
 <?php
 /**
  * Controller is the customized base controller class.
@@ -49,8 +55,9 @@ class Controller extends CController
 	
 	function init()
     {
+
         parent::init();   
-		Yii::app()->clientScript->registerMetaTag("Автозапчасти для иномарок оптом по выгодным ценам, доставка в регионы - Тарекс тел. +7 (495) 785-88-50", 'description');
+		Yii::app()->clientScript->registerMetaTag($_SERVER['DOCUMENT_ROOT'], 'description');
 		Yii::app()->clientScript->registerMetaTag('запчасти, опт, spare parts, wholesales, Russia, Россия', 'keywords');
 		// page size for the gridview
         try {

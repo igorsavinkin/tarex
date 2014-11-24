@@ -1,12 +1,26 @@
-﻿<!DOCTYPE html>
+﻿<?
+	require_once ($_SERVER['DOCUMENT_ROOT'] . '/seotools/seotools.class.php');
+	$ST = new Seotools; 
+?>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <title>
-      <?php echo $this->pageTitle; ?>
+	<?
+// Сниппет для мета тегов
+$meta_title 	= $ST->get('title');
+$meta_keywords 	= $ST->get('keywords');
+$meta_desc	 	= $ST->get('description');
+if ($meta_title) {echo $meta_title;}
+else{echo $this->pageTitle;} ?>
     </title> 
+	<?
+if ($meta_keywords) echo '<meta name="keywords" content="'. $meta_keywords .'" />';
+if ($meta_desc) 	$_SERVER['DOCUMENT_ROOT'];
+?>
   <link href="<?php echo Yii::app()->baseUrl; ?>/css/in.css" rel="stylesheet" type="text/css">
     <link href="<?php echo Yii::app()->baseUrl; ?>/css/form.css" rel="stylesheet" type="text/css">
     <link href="<?php echo Yii::app()->baseUrl; ?>/css/reset.css" rel="stylesheet" type="text/css">
@@ -47,7 +61,7 @@
                         <div class="col-md-12">
                             <div class="tar_left_top_head">
                                 <div class="tar_top_logo">
-                                    <a href="<?php echo Yii::app()->createUrl('/'); ?>">
+                                    <a href="<?php echo Yii::app()->createUrl('/site/index'); ?>">
                                         <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_top_logo.png"  alt=""/>
                                     </a>
                                 </div>
@@ -241,7 +255,7 @@
 									 echo $content; 
 								?>
 							
-								<a href='#' id='btn-up' style=''><img src='<?php echo Yii::app()->baseUrl; ?>/../images/btn-up.png' width='35px' alt="" /></a>
+								<a href='#' id='btn-up' style=''><img src='images/btn-up.png' width='35px' alt="" /></a>
 								<!--/div><!--tar_cat_top_regular-->
 								<div class="pad"></div>
 							</div><!-- tar_catalog_goods -->
@@ -514,7 +528,7 @@
 <footer>
     <div class="container">
         <div class="tar_left_cont_foot">
-            <a class="tar_bot_logo" href="<?php echo Yii::app()->createUrl('/'); ?>">
+            <a class="tar_bot_logo" href="<?php echo Yii::app()->createUrl('/site/index'); ?>">
                 <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_bot_logo.png" alt="">
             </a>
             <div class="tar_counters_vis">
@@ -588,6 +602,11 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                         <li>
                             <a href="<?php echo Yii::app()->createUrl('/site/index', array('page'=>'spareparts')); ?>">
                                 <?php echo Yii::t('general', 'Spare parts'); ?> 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo Yii::app()->createUrl('/site/index', array('page'=>'sitemap')); ?>">
+                                <?php echo Yii::t('general', 'Карта сайта'); ?>  
                             </a>
                         </li>
                     </ul>

@@ -1,29 +1,14 @@
 <?php
 
 class MainMenuController extends Controller
-{
-	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
-	 */
-	public $layout='//layouts/FrontendLayoutPavel';
-
-	/**
-	 * @return array action filters
-	 */
+{ 
 	public function filters()
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
 		);
-	}
-
-	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
+	} 
 	public function accessRules()
 	{
 		return array(
@@ -36,7 +21,7 @@ class MainMenuController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','update', 'delete'),
+				'actions'=>array('admin','update', 'delete','create'),
 				'roles'=>array(User::ROLE_ADMIN), 
 			),
 			array('deny',  // deny all users
@@ -44,13 +29,15 @@ class MainMenuController extends Controller
 			),
 		);
 	} 
-	 
+	public function actionCreate()
+	{ 
+		$model=new MainMenu;			 
+		if ($model->save(false))  // переходим на действие update с только что сохранённой моделью		
+			$this->redirect(array('update', 'id'=>$model->id));
+	}	 
 	public function actionUpdate($id)
 	{
-		if( $id == 'new' ) 
-			$model = new MainMenu;     		
-        else  
-			$model = MainMenu::model()->findByPk($id);	
+		$model = MainMenu::model()->findByPk($id);	
 
 		if(isset($_POST['MainMenu']))
 		{
