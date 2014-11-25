@@ -57,8 +57,8 @@ class Controller extends CController
     {
 
         parent::init();   
-		Yii::app()->clientScript->registerMetaTag($_SERVER['DOCUMENT_ROOT'], 'description');
-		Yii::app()->clientScript->registerMetaTag('запчасти, опт, spare parts, wholesales, Russia, Россия', 'keywords');
+		//Yii::app()->clientScript->registerMetaTag("Автозапчасти для иномарок оптом по выгодным ценам, доставка в регионы - Тарекс тел. +7 (495) 785-88-50", 'description');
+		//Yii::app()->clientScript->registerMetaTag('запчасти, опт, spare parts, wholesales, Russia, Россия', 'keywords');
 		// page size for the gridview
         try {
 			if (Yii::app()->user->isGuest) $this->pagesize = Yii::app()->params['defaultPageSize'];

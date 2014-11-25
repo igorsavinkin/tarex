@@ -362,10 +362,10 @@
                                 <div class="pad"></div>
                             </div>
                             <div class="tar_component">
-                                <?php // содержимое из cоответствующего view 
+                                <?php // содержимое из cоответствующего view style='float:right;z-index:1000;position:fixed; bottom: 20px; right:20px'
 																 echo $content; 
 															?> 
-								<a class='no-print' href='#' id='up' style='float:right;z-index:1000;position:fixed; bottom: 20px; right:20px'><img src='<?php echo Yii::app()->baseUrl; ?>/../images/btn-up.png' width='35px' alt="" /></a>							
+								<a class='no-print' href='#' id='btn-up' ><img src='<?php echo Yii::app()->baseUrl; ?>/../images/btn-up.png' width='35px' alt="" /></a>							
 								<!--div class="tar_pathway">                                  
 									<ul>
                                         <li>

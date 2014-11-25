@@ -82,9 +82,10 @@ class UserGroupDiscount extends CActiveRecord
 	}
 	public function discountField($id, $value)
 	{
-		$field = CHtml::textField('discount[' . $id .']', $value , array('size'=>2, "title"=>Yii::t('general', 'Press \'Save\' to save new value') ) );		
-		$button = CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','Save')) ,  array(/*'eventContent/updateEventcontent', 'name' => 'saveDiscount'*/ ), array('success'  => 'js:  function() { $.fn.yiiGridView.update("user-group-discount-grid");}'), array('style'=>'float:right;')); 
+		$field = CHtml::textField('discount[' . $id .']', $value , array('size'=>4, "title"=>Yii::t('general', 'Press \'Save\' to save new value') ) );	
+// пока кнопку не ставим, так как есть общая кнопка в форме		
+		$button = CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','Save')) ,  array(/*'eventContent/updateEventcontent', 'name' => 'saveDiscount'*/ ), array('success'  => 'js:  function() { $.fn.yiiGridView.update("user-group-discount-grid"); }'), array('style'=>'float:right;')); 
 		
-		return $field . $button;  
+		return $field; //. $button;  
 	}
 }

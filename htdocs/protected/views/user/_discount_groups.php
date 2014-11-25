@@ -1,12 +1,24 @@
 <h3><?php echo Yii::t('general','Discount groups' ); ?></h3>
-<?php 
+<?php  
+
 $dataProvider=new CActiveDataProvider('UserGroupDiscount', array(    
         'criteria' => array(
         'condition'=>'userId = '. $model->id, 'order'=>'id ASC'),   
 		'pagination'=>false,
 	));
+
+if (Yii::app()->user->checkAccess(User::ROLE_MANAGER) && (0 == $dataProvider->itemCount) )
+{
+	echo CHtml::Link(Yii::t('general','Create Discount groups'), 
+		array('userGroupDiscount/createAllGroups', 'userId'=>$model->id, 'return'=>1),
+	    //array('click' =>'js:function() { fn.yiiGridView.update("#user-group-discount-grid");}' ), // это надо если ajaxLink
+		array('class'=>'btn-win') ); 
+}
+	
  // добавим тег открытия формы
  echo CHtml::form(); 
+ $msg = Yii::t('general', "The discounts are renewed");
+ echo CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','Save')) ,  array(/*'eventContent/updateEventcontent', 'name' => 'saveDiscount'*/ ), array('success'  => 'js:  function() { $.fn.yiiGridView.update("user-group-discount-grid");alert("' . $msg . '"); }'), array( 'class'=>'red')); 
  
  $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'user-group-discount-grid',
@@ -43,6 +55,7 @@ $dataProvider=new CActiveDataProvider('UserGroupDiscount', array(
 		),  
 	),
 )); 
+
 // добавим тег закрытия формы
 	echo CHtml::endForm();
 ?>

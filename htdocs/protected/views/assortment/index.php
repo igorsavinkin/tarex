@@ -1,3 +1,9 @@
+<?
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/seotools/seotools.class.php');
+$ST = new Seotools; 
+
+
+?>
 <?php 
 /* @var $this AssortmentController */
 /* @var $model Assortment */ 
@@ -110,7 +116,7 @@ if ( $item OR $grcategory) {
 	if ($item) {
 		$make = $item->title;  
 		$par =Assortment::model()->findByPk($item->parent_id);  
-		$breadcrumbs=array(// Yii::t( 'general', 'All makes') => array('/'),
+		$breadcrumbs=array( Yii::t( 'general', 'All makes') => array('site/index'),
 				 $par->title => array('site/index', 'id'=>$par->id)	);
 		if ($grcategory) {
 			$breadcrumbs[$make] = array('assortment/index', 'id'=>$item->id);
@@ -126,23 +132,31 @@ if ( $item OR $grcategory) {
 	}	
 	
 	$this->widget('zii.widgets.CBreadcrumbs', array(
-			//'homeLink'=>false,
+			'homeLink'=>false,
 			'links'=>$breadcrumbs
 		));
 	 
 } ?> 
-<div class='shift-right40'> <!---->
-	<h1 ><?php  echo Yii::t('contact','Assortment list'); ?></h1>
-	<div class="search-form"> <!--style="display:block; padding-left:40px;"--> 
+<div class='shift-right40'> 
+	<h1 >
+<?php
+	$meta_h1 = $ST->get('h1');
+	if ($meta_h1) 
+			{echo $meta_h1;}
+		else
+			{echo Yii::t('contact','Assortment list');} 
+?>
+	</h1>
+	<div class="search-form" style="display:block; padding-left:40px;"> 
 	<?php $this->renderPartial('_search',array('model'=>$model, 'bodies'=>$bodies )); ?>
 	</div><!-- search-form -->
 </div><!-- shift-right40 --> 
 <?php  
 if (Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER)) 
 	echo CHtml::Link(Yii::t('general','Loading Assortment from Excel file') , array('load') , array( 'class'=>'btn-win', 'style'=>'float:right;')); 
-$msg = Yii::t('general', 'Wait several seconds till the server composes and sends you personalized price list');
+	$msg = Yii::t('general', 'Wait several seconds till the server composes and sends you personalized price list');
 echo CHtml::Link(Yii::t('general','Download price list as Excel sheet') , array('user/pricelist') , array( 'class'=>'btn-win', 'style'=>'float:right;', 'onclick'=>"js:setTimeout(function(){ alert('{$msg}')},600);")); 
-echo CHtml::Link(Yii::t('general','Download price list as Excel sheet') . ' (csv)' , array('user/pricelistCSV') , array( 'class'=>'btn-win', 'style'=>'float:right;', 'onclick'=>"js:setTimeout(function(){ alert('{$msg}')},600);")); 
+echo CHtml::Link(Yii::t('general','Download price list as Excel sheet'). '(csv)' , array('user/pricelistCSV') , array( 'class'=>'btn-win', 'style'=>'float:right;', 'onclick'=>"js:setTimeout(function(){ alert('{$msg}')},600);")); 
 //  echo '<br> DProvider in view 1  count(<b>' , $dataProvider->itemCount , '</b>) = ' ; print_r($dataProvider->criteria); 
  
   	if (!empty($criteria) && !$dataProvider->itemCount /*&& $mainAssotrmentItem*/)	{

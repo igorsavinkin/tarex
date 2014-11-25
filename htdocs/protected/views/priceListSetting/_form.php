@@ -14,19 +14,40 @@
 
 	<?php echo $form->errorSummary($model); ?>
  
-	<td>
-		<?php echo $form->labelEx($model,'userId'); ?> 
-		<?php 	$this->widget('ext.select2.ESelect2', array(
-						'model'=> $model,
-						'attribute'=> 'userId',
-						'data' => CHtml::listData(User::model()->findAll(array('order'=>'username ASC')), 'id','username'),
-						'options'=> array('allowClear'=>true, 
-							'width' => '200',  
-							),
-					)); ?>
-		<?php echo $form->error($model,'userId'); ?>
-	</td> 
 	<td class='padding10side'>
+		<?php if(Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
+		{
+			echo $form->labelEx($model,'userId');  	
+			$this->widget('ext.select2.ESelect2', array(
+				'model'=> $model,
+				'attribute'=> 'userId',
+				'data' => CHtml::listData(User::model()->findAll(array('order'=>'username ASC')), 'id','username'),
+				'options'=> array('allowClear'=>true, 
+					'width' => '220',  
+					),
+			));  
+			echo $form->error($model,'userId');
+		} ?>
+	</td>
+	<td rowspan='5' class='padding10side' width='100px'> 
+		<?php  
+
+		
+		    $model->daysOfWeek = explode(',' , $model->daysOfWeek ); // мы вытаскиваем из строковой переменной дни недели разделённые через запятую
+		    echo $form->labelEx($model,'daysOfWeek');  
+			echo $form->checkBoxList($model, 'daysOfWeek', Yii::app()->locale->getWeekDayNames('abbreviated'), array('template'=>'{input}{label}', 'separator'=>'', 'class'=>'checkBoxClass') );
+		/*	$this->widget('ext.EchMultiSelect.EchMultiSelect', array(
+				'model' => $model,
+				'dropDownAttribute' => 'daysOfWeek',     
+				'data' => Yii::app()->locale->weekDayNames,
+				'dropDownHtmlOptions'=> array(
+					'style'=>'width:140px;',
+				),
+			)); */ ?>
+		<?php echo $form->error($model,'daysOfWeek'); ?>
+	</td>
+</tr><tr> 	
+	<td class='padding10'>
 		<?php echo $form->labelEx($model,'format'); ?> 
 		<?php $this->widget('ext.select2.ESelect2', array(						 
 						'model'=> $model,
@@ -38,26 +59,15 @@
 					)); ?>
 		<?php echo $form->error($model,'format'); ?>
 	</td> 
-	<td>
+</tr><tr> 
+	<td class='padding10'>
 		<?php echo $form->labelEx($model,'email'); ?> 
-		<?php echo $form->textField($model,'email',array('size'=>40,'maxlength'=>255)); ?>
+		<?php echo $form->textField($model,'email',array('size'=>30,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'email'); ?>
 	</td>
+	
 </tr><tr> 
-	<td> 
-		<?php 
-		    $model->daysOfWeek = explode(',' , $model->daysOfWeek ); // мы вытаскиваем из строковой переменной дни недели разделённые через запятую
-		    echo $form->labelEx($model,'daysOfWeek');  
-			$this->widget('ext.EchMultiSelect.EchMultiSelect', array(
-				'model' => $model,
-				'dropDownAttribute' => 'daysOfWeek',     
-				'data' => Yii::app()->locale->weekDayNames,
-				'dropDownHtmlOptions'=> array(
-					'style'=>'width:140px;',
-				),
-			)); ?>
-		<?php echo $form->error($model,'daysOfWeek'); ?>
-	</td>
+	
 	<td class='padding10side'>
 		<?php echo $form->labelEx($model,'time'); ?> 
 		<?php if (Yii::app()->language == 'ru')   
@@ -88,10 +98,20 @@
 			  'mode' => 'time',
 			));  
 		echo $form->error($model,'time'); ?> 
-	</td >	
-	<td>	<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red')); ?>
+	</td >
+</tr><tr>	
+	<td class='padding10'>	<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red')); ?>
 	</td> 
 </tr></table> 
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+<style>
+#PriceListSetting_daysOfWeek input {
+    float: left;
+    margin-right: 10px;
+}
+.checkBoxClass {
+	float: left;
+}
+</style>
