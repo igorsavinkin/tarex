@@ -1,18 +1,9 @@
-<?php
-
-/**
- * This is the model class for table "{{price_list_setting}}".
- *
- * The followings are the available columns in table '{{price_list_setting}}':
- * @property integer $id
- * @property integer $userId
- * @property string $format
- * @property string $daysOfWeek
- * @property string $time
- */
+<?php 
 class PriceListSetting extends CActiveRecord
 {
-	public $_formats = array('csv'=>'csv', 'xls'=>'xls', 'xlsx'=>'xlsx');
+	public $_formats = array('csv'=>'csv', 'xls'=>'xls'/*, 'xlsx'=>'xlsx'*/);
+	public $carmakes=array();
+	
 	public function tableName()
 	{
 		return '{{price_list_setting}}';
@@ -20,12 +11,13 @@ class PriceListSetting extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('userId, format, daysOfWeek, time, email', 'required'),
+			array('userId, format, email', 'required'),
 			array('userId', 'numerical', 'integerOnly'=>true),
 			array('format', 'length', 'max'=>4),
 			array('daysOfWeek', 'length', 'max'=>255),
+			array('carmakes', 'length', 'max'=>1000),
 			array('email', 'email'),
-			array('id, userId, format, daysOfWeek, time, email', 'safe', 'on'=>'search'),
+			array('id, userId, format, daysOfWeek, time, email, carmakes', 'safe', 'on'=>'search'),
 		);
 	}
 	public function relations()
@@ -41,7 +33,7 @@ class PriceListSetting extends CActiveRecord
 			'format' => Yii::t('general','File Format'),
 			'daysOfWeek' => Yii::t('general','Days Of Week'),
 			'time' => Yii::t('general','Time'),
-			'isActive' => Yii::t('general','is Active'),
+			'carmakes' => Yii::t('general','Car makes'),
 		);
 	}
  
@@ -54,9 +46,9 @@ class PriceListSetting extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('userId',$this->userId);
 		$criteria->compare('format',$this->format,true);
-		$criteria->compare('daysOfWeek',$this->daysOfWeek,true);
+		$criteria->compare('daysOfWeek',$this->daysOfWeek, true);
 		$criteria->compare('time',$this->time,true);
-		$criteria->compare('isActive',$this->time);
+		$criteria->compare('carmakes',$this->carmakes, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

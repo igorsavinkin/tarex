@@ -10,7 +10,7 @@ else
 	$selectionChanged = ''; 
 //$data = array(); for($i=1; $i <= 10; $i++ ) { $data[$i] = $i; }	
 
-echo Chtml::form();
+echo CHtml::form();
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'assortment-grid',
 	'dataProvider'=>$model->search(),

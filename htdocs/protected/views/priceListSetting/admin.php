@@ -24,6 +24,11 @@ $('.search-form form').submit(function(){
 </div><!-- search-form -->
 
 <?php 
+$msg = Yii::t('general', 'Wait several seconds till the server composes and sends you personalized price list');
+echo CHtml::Link(Yii::t('general','Download price list as Excel sheet') , array('user/pricelist') , array( 'class'=>'btn-win', 'style'=>'float:right;', 'onclick'=>"js:setTimeout(function(){ alert('{$msg}')},600);")); 
+echo CHtml::Link(Yii::t('general','Download price list as Excel sheet'). '(csv)' , array('user/pricelistCSV') , array( 'class'=>'btn-win', 'style'=>'float:right;', 'onclick'=>"js:setTimeout(function(){ alert('{$msg}')},600);")); 
+
+
  // добавим тег открытия формы
  echo CHtml::form(); 
  

@@ -8,7 +8,10 @@ return array(
 	'Edit Price List Setting'=>'Редактировать настройку посылки прайса', 
 	'File Format'=>'Формат файла',
 	'Days Of Week'=>'Дни недели',
-	'Getting price list by mail'=>'Получение прайс-листа по почте',
+	'Getting price list by email'=>'Получение прайс-листа по почте',
+	'CHECK ALL'=>'ОТМЕТИТЬ ВСЕ',
+	
+	
 	
 	'Submenu hide'=>'Скрыть подменю',
 	'Submenu show'=>'Показать подменю',
