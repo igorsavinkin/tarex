@@ -2,6 +2,7 @@
 return array( 
 	/*  Price List Settings */
 	'Price List'=> 'Прайс', 
+	'Price List is in Attachment'=>'Прайс лист прикреплён к письму',
 	'Price List Settings'=> 'Настройка посылки прайса', 
 	'Manage Price List Settings'=>'Управлять настройками посылки прайса', 
 	'Create Price List Settings'=>'Создать настройки посылки прайса', 
@@ -9,8 +10,7 @@ return array(
 	'File Format'=>'Формат файла',
 	'Days Of Week'=>'Дни недели',
 	'Getting price list by email'=>'Получение прайс-листа по почте',
-	'CHECK ALL'=>'ОТМЕТИТЬ ВСЕ',
-	
+	'CHECK ALL'=>'ОТМЕТИТЬ ВСЕ', 
 	
 	
 	'Submenu hide'=>'Скрыть подменю',

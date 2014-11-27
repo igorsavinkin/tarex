@@ -14,3 +14,4 @@ require_once($yii);
 $app = Yii::createWebApplication($config);
 
 $app->run();
+require_once ($_SERVER['DOCUMENT_ROOT'] .'/redirect.php');

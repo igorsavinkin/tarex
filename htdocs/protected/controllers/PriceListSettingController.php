@@ -133,26 +133,25 @@ class PriceListSettingController extends Controller
 	 
 		$now = new CDbExpression("NOW()"); 
 		$criteria->addCondition('time < '. $now);
-		$criteria->addCondition('lastSentDate < "'. date('Y-m-d') . '" ' );// дата последней посылки должна быть меньше чем текущая дата
+	 	$criteria->addCondition('lastSentDate < "'. date('Y-m-d') . '" ' );// дата последней посылки должна быть меньше чем текущая дата
 		
 	/*	echo '<br>condition: ', $criteria->condition;
 		echo '<br>params: '; print_r($criteria->params); 
-	*/
-		//$plss = PriceListSetting::model()->findAll($criteria);
+	*/ 
 		$i=1;
 		echo '<br>Matched criteria<br>';
 		foreach(PriceListSetting::model()->findAll($criteria) as $pls)
-		{
-			echo $i++, '. ', $pls->id, '; cars: ' , $pls->carmakes, '. ';
-			//посылка прайса
-			$filename = 'temp.xls';
-			
-		// надо сформировать прайс
-			
-			$result = $this->runPHPMailer($filename);
+		{ 
+			echo 'user id = ', $pls->userId , '. ';
+			//посылка прайса			
+			echo '<br>user id = ', $pls->userId, '<br>';
+			$result = $this->runPHPMailer(
+				$pls->format, // формат файла
+				array($pls->email, User::model()->findByPk($pls->userId)->username, $pls->userId) // email и имя пользователя
+			);
 			if($result) 
 			{ 
-				echo 'Mail is sent to '. $pls->email . ' with attached file: ' . $filename, '<br>';
+				echo  $i++, '.'. date('H-i-s'). ' Mail is sent to <b>'. $pls->email . '</b> with attached price list in ' . $pls->format .' format<br>';
 				$pls->lastSentDate= date('Y-m-d');
 				$pls->save(false);
 			}				
@@ -160,8 +159,12 @@ class PriceListSettingController extends Controller
 				{ echo 'Mail failed to '. $pls->email . ' with attached file: ' . $filename, '<br>'; }
 		}
 	} 
-	public function runPHPMailer($filename=null)
+	public function runPHPMailer( $extention=null, $mailArr=null)
 	{ 
+		if ($extention == null)
+		{	echo 'No extention is given'; 
+			exit();			
+		}
 		Yii::import('ext.phpmailer.JPhpMailer');
 		$mail = new JPhpMailer;
 		$mail->IsSMTP(); 
@@ -170,23 +173,29 @@ class PriceListSettingController extends Controller
 		$mail->Username = 'igor.savinkin@tarex.ru';
 		$mail->Password = 'godmanig1';
 		$mail->SetFrom('info@tarex.ru', 'TAREX.RU');
-		$mail->Subject = 'Tarex price list; regular mailing'; 
+		$mail->Subject = 'TAREX price list '. date('Y-m-d'); 
 		$mail->AltBody = 'To view the message, please use an HTML compatible email viewer!';
-		$mail->MsgHTML('<h3>See the Price List in Attachment !</h3>');
-		$mail->AddAddress('igor.savinkin@gmail.com', 'from Igor Savinkin');
-	//	$filename = 'temp.xls';
-		$filepath = Yii::app()->basePath . '/../files/' . $filename;//	echo $filepath, '<br>';
+		$msg=Yii::t('general', 'Price List is in Attachment');
+		$mail->MsgHTML('<h4>'. $msg . '.</h4>');
+		$mail->AddAddress($mailArr[0], $mailArr[1]);
+		//$mail->AddAddress('igor.savinkin@gmail.com', 'from Igor Savinkin');
 	
+	//	$filename = 'temp.xls';
+	//	$filepath = Yii::app()->basePath . '/../files/' . $filename;//	echo $filepath, '<br>';	
 	//	$mail->AddAttachment( $filepath , 'TAREX price '. date('d-m-Y') . '.xls'); 
-		$mail->AddStringAttachment( $this->getPricelist() , 'TAREX price "on the fly" '. date('d-m-Y') . '.xls'); 
+		
+		if ('csv' == $extention) 
+			$mail->AddStringAttachment( $this->getPricelistCSV($mailArr[2]) , 'TAREX price list '. date('d-m-Y') . '.' .  $extention); 
+		if ('xls' == $extention) 
+			$mail->AddStringAttachment( $this->getPricelist($mailArr[2]) , 'TAREX price list '. date('d-m-Y') . '.' .  $extention); 
 		
 		return ($mail->Send()) ? true : false;  
 	}
 	public function getPricelist($id=null)
 	{   		
 		// PHPExcel    
-		include Yii::getPathOfAlias('ext'). '/PHPExcel.php';
-		include Yii::getPathOfAlias('ext').  '/PHPExcel/Writer/Excel2007.php';
+		include_once Yii::getPathOfAlias('ext'). '/PHPExcel.php';
+		include_once Yii::getPathOfAlias('ext').  '/PHPExcel/Writer/Excel2007.php';
 
 		// Create new PHPExcel object 	 
 		$objPHPExcel = new PHPExcel();
@@ -215,8 +224,8 @@ class PriceListSettingController extends Controller
 		$objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Наличие');
 			
 		$criteria = new CDbCriteria();
-	//		$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
-		$criteria->condition =   'measure_unit<>"" AND price>0';
+			$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
+	//	$criteria->condition =   'measure_unit<>"" AND price>0';
 		$counter=2;
 		foreach( Assortment::model()->findAll($criteria  ) as $item)
 		{
@@ -246,5 +255,21 @@ class PriceListSettingController extends Controller
 		$excelOutput = ob_get_clean();
 		return $excelOutput;
 	}  
-	
+	public function getPricelistCSV($userId=null) // sendFile
+	{ 	
+	// writing csv into string ...   
+		$output="\xEF\xBB\xBF"; // мы ставим BOM в начале содержимого файла 
+		$arr = array( Yii::t('general', 'Article'), Yii::t('general', 'Title'), 'OEM',Yii::t('general', 'Make') ,Yii::t('general', 'Price'),  Yii::t('general', 'Availability'));  
+	    $output .= implode( ';' ,  $arr) . "\xA"; // добавляем здесь и конец строки
+	 // начало итераций по записям
+		
+		$criteria = new CDbCriteria();
+		$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
+	//	$criteria->condition =   'measure_unit<>"" AND price>0';	
+		foreach(Assortment::model()->findAll($criteria) as $d)
+		{ 
+			$output .= implode( ';' , array( $d->article2, $d->title, $d->oem,  $d->make,  $d->getPriceConsole($userId),  $d->availability)) . "\xA"; // разделитель - точка с запятой 
+		}   
+		return $output;
+	}
 }

@@ -373,6 +373,11 @@ class Assortment extends CActiveRecord implements IECartPosition
 		if (empty($discount)) $discount = 0;		
 		return round($this->getCurrentPrice() * (1 + $discount/100), 2);
     }	
+	public function getPriceConsole($id){  // цена на товар для консольного приложения для оптового клиента с id = $id		
+		$discGroupId = DiscountGroup::getDiscountGroup($this->article2); 
+		$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$id,'discountGroupId'=>$discGroupId ));
+		return isset($ugd) ? round($this->getCurrentPriceConsole() * (1 + $ugd->value/100), 2) : $this->getCurrentPriceConsole();    
+    }	
 	 
 	public function getCurrentPrice() // возвращаем текущую цену исходя из последней настройки в документе Установка цен (Exchangerates)  
 	    // не учитывает скидку клиента 
@@ -385,6 +390,18 @@ class Assortment extends CActiveRecord implements IECartPosition
 		
 		$rate = Exchangerates::model()->find($criteria); // находим одну последнюю по времени (Begin DESC).			
 		//echo ''.$rate->totalSum.'/'.$this->priceS.'/';
+		return $rate->totalSum * $this->priceS;  		
+	}
+	public function getCurrentPriceConsole()     
+	{ 
+		$criteria = new CDbCriteria;
+		$criteria->order = 'Begin DESC';
+		$criteria->condition = 'Currency = "USD" '; 
+	// мы выводим цену для компании из Yii::app()->params['organization']
+		$criteria->addCondition('organizationId = 7' /* . Yii::app()->params['organization'] */ );
+		
+		$rate = Exchangerates::model()->find($criteria); // находим одну последнюю по времени (Begin DESC).	
+		//echo 	' $criteria->condition = ', $criteria->condition , '  ';
 		return $rate->totalSum * $this->priceS;  		
 	}
  
@@ -585,7 +602,7 @@ class Assortment extends CActiveRecord implements IECartPosition
 	//	echo 'discount = ', $Discount , '<br>';
 		return $Discount;		
 	}
-	
+	 
 	public function available()  // пока не работает
 	{
 		EventContent::model()->findAllByAttributes(array('assortmentId'=>$this->model));

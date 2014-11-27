@@ -9,7 +9,13 @@ return array(
 	// preloading 'log' component
 	'preload'=>array('log'),
 	'import' => array(
-			'application.models.*',
+			'application.extensions.shoppingCart.*',
+			'application.models.*',			 
+			'application.extensions.PHPExcel', 
+			'application.extensions.PHPMailer', 
+			
+			'application.extensions.*',
+			
 		),
 	// application components
 	'components'=>array(
@@ -24,7 +30,7 @@ return array(
 			'scriptUrl' => '',*/
 		), 
 		'urlManager' => array(
-			'baseUrl' => 'http://tarex.com',
+			'baseUrl' => 'http://tarex.ru',
 		),
 		'db'=>array( 			
                 // настройки для конфигурации в производство 
@@ -48,5 +54,9 @@ return array(
 				),
 			),
 		),
+		
+	),
+	'params'=>array( 
+		'organization'=>7, 
 	),
 );

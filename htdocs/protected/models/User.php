@@ -109,7 +109,7 @@ class User extends CActiveRecord
 			
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, username, password, isActive, created, parentId, role, ban, phone, city, address, isLegalEntity, email, organization, discount, paymentDelay, debtLimit, legalAddress, Bank, CorrespondentAccount, OrganizationInfo, INN, KPP, PaymentMethod, BIC, CurrentAccount, ShippingMethod, OKVED, OKPO, KnowingSource, scopeOfActivity, email2, CEOname, Accounts ,Childs,AccountantName, priceConfig, carMakes, operationCondition, name, ShablonId, city_new, pageSize, agree, notes', 'safe', 'on'=>'search, insert, register'),
+			array('id, username, password, isActive, created, parentId, role, ban, phone, city, address, isLegalEntity, email, organization, discount, paymentDelay, debtLimit, legalAddress, Bank, CorrespondentAccount, OrganizationInfo, INN, KPP, PaymentMethod, BIC, CurrentAccount, ShippingMethod, OKVED, OKPO, KnowingSource, scopeOfActivity, email2, CEOname, Accounts ,Childs, AccountantName, priceConfig, carMakes, operationCondition, name, ShablonId, city_new, pageSize, agree, notes', 'safe', 'on'=>'search, insert, register'),
 		);
 	}
  
