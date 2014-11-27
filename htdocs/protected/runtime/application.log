@@ -11152,3 +11152,2260 @@ Stack trace:
 #17 {main}
 REQUEST_URI=/site/index/page/index.php?r=site/index&page=page&id=12
 ---
+2014/11/27 17:32:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:32:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:32:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:32:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:32:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:32:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:37:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:37:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:37:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:37:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:37:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:37:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:39:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('User/images/tar...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/User/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/User/admin?Subsystem=Warehouse+automation&Reference=User
+---
+2014/11/27 17:39:50 [error] [exception.CException] exception 'CException' with message 'Не определено свойство "PriceListSettingController._formats".' in /home/srv50213/htdocs/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/srv50213/htdocs/protected/views/priceListSetting/admin.php(60): CComponent->__get('_formats')
+#1 /home/srv50213/htdocs/framework/web/CBaseController.php(126): require('/home/srv50213/...')
+#2 /home/srv50213/htdocs/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/srv50213/...', Array, true)
+#3 /home/srv50213/htdocs/framework/web/CController.php(869): CBaseController->renderFile('/home/srv50213/...', Array, true)
+#4 /home/srv50213/htdocs/framework/web/CController.php(782): CController->renderPartial('admin', Array, true)
+#5 /home/srv50213/htdocs/protected/controllers/PriceListSettingController.php(103): CController->render('admin', Array)
+#6 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(49): PriceListSettingController->actionAdmin()
+#7 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#8 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#10 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#14 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('admin')
+#16 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#17 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#18 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#19 {main}
+REQUEST_URI=/priceListSetting/admin
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/6
+---
+2014/11/27 17:40:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:40:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:40:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:40:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:40:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:40:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:41:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "administrator".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('administrator')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/administrator/
+---
+2014/11/27 17:41:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "admin.php".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('admin.php')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/admin.php
+---
+2014/11/27 17:41:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "app2/index.php".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('app2/index.php')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app2/index.php?r=assortment/index&id=751&Assortment_sort=subgroup.desc&Assortment_page=11
+---
+2014/11/27 17:42:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/431-1504L-UE.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/431-15...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/431-1504L-UE.jpg
+---
+2014/11/27 17:42:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/FD7920160-0R00.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/FD7920...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/FD7920160-0R00.jpg
+---
+2014/11/27 17:42:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/216-1147L-LDEM2.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/216-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/216-1147L-LDEM2.jpg
+---
+2014/11/27 17:42:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-2014R-UQ.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-20...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-2014R-UQ.jpg
+---
+2014/11/27 17:42:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/431-2020R-UE.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/431-20...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/431-2020R-UE.jpg
+---
+2014/11/27 17:42:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/214-1159R-LDEM2.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/214-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/214-1159R-LDEM2.jpg
+---
+2014/11/27 17:43:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/440-1119R-LD-EM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/440-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/440-1119R-LD-EM.jpg
+---
+2014/11/27 17:43:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1508R-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-15...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1508R-US.jpg
+---
+2014/11/27 17:44:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:44:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:44:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:44:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:44:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:44:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:46:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/
+---
+2014/11/27 17:46:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/
+---
+2014/11/27 17:46:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/
+---
+2014/11/27 17:46:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/
+---
+2014/11/27 17:46:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/
+---
+2014/11/27 17:46:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/index.php?r=assortment%252Findex&Assortment%255Btitle%255D=&Assortment%255Barticle%255D=&Assortment%255BgroupCategory%255D=&yt1=%25D0%259D%25D0%25B0%25D0%25B9%25D1%2582%25D0%25B8&id=1378&Body%255BPRELUDE%255D=0&Series%255B1466%255D=CR-V&Body%255BCR-V+%252896-02%2529%255D=1466
+---
+2014/11/27 17:46:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/index.php?r=assortment%252Findex&Assortment%255Btitle%255D=&Assortment%255Barticle%255D=&Assortment%255BgroupCategory%255D=&yt1=%25D0%259D%25D0%25B0%25D0%25B9%25D1%2582%25D0%25B8&id=1378&Body%255BPRELUDE%255D=0&Series%255B1466%255D=CR-V&Body%255BCR-V+%252896-02%2529%255D=1466
+---
+2014/11/27 17:46:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/index.php?r=assortment%252Findex&Assortment%255Btitle%255D=&Assortment%255Barticle%255D=&Assortment%255BgroupCategory%255D=&yt1=%25D0%259D%25D0%25B0%25D0%25B9%25D1%2582%25D0%25B8&id=1378&Body%255BPRELUDE%255D=0&Series%255B1466%255D=CR-V&Body%255BCR-V+%252896-02%2529%255D=1466
+---
+2014/11/27 17:46:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/index.php?r=assortment%252Findex&Assortment%255Btitle%255D=&Assortment%255Barticle%255D=&Assortment%255BgroupCategory%255D=&yt1=%25D0%259D%25D0%25B0%25D0%25B9%25D1%2582%25D0%25B8&id=1378&Body%255BPRELUDE%255D=0&Series%255B1466%255D=CR-V&Body%255BCR-V+%252896-02%2529%255D=1466
+---
+2014/11/27 17:46:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/index.php?r=assortment%252Findex&Assortment%255Btitle%255D=&Assortment%255Barticle%255D=&Assortment%255BgroupCategory%255D=&yt1=%25D0%259D%25D0%25B0%25D0%25B9%25D1%2582%25D0%25B8&id=1378&Body%255BPRELUDE%255D=0&Series%255B1466%255D=CR-V&Body%255BCR-V+%252896-02%2529%255D=1466
+---
+2014/11/27 17:47:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('site/images/img...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/images/img_trans.gif
+HTTP_REFERER=http://tarex.ru/site/index/6
+---
+2014/11/27 17:47:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/site/index/6
+---
+2014/11/27 17:47:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/site/index/6
+---
+2014/11/27 17:47:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/site/index/6
+---
+2014/11/27 17:47:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/site/index/6
+---
+2014/11/27 17:47:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/site/index/6
+---
+2014/11/27 17:47:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/imag...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/assortment/images/img_trans.gif
+HTTP_REFERER=http://tarex.ru/assortment/index/990
+---
+2014/11/27 17:47:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/assortment/index/990
+---
+2014/11/27 17:47:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/assortment/index/990
+---
+2014/11/27 17:47:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/assortment/index/990
+---
+2014/11/27 17:47:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/assortment/index/990
+---
+2014/11/27 17:47:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/assortment/index/990
+---
+2014/11/27 17:47:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "app2/css/style_n.css".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('app2/css/style_...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app2/css/style_n.css
+---
+2014/11/27 17:48:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/imag...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/assortment/images/img_trans.gif
+HTTP_REFERER=http://tarex.ru/assortment/index/990
+---
+2014/11/27 17:48:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/assortment/index/990
+---
+2014/11/27 17:48:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/assortment/index/990
+---
+2014/11/27 17:48:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/assortment/index/990
+---
+2014/11/27 17:48:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/assortment/index/990
+---
+2014/11/27 17:48:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/assortment/index/990
+---
+2014/11/27 17:49:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "app2/index.php".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('app2/index.php')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app2/index.php?r=assortment/index&subgroup=%D0%A5%D0%9E%D0%94%D0%9E%D0%92%D0%90%D0%AF+%D0%A1%D0%98%D0%A1%D0%A2%D0%95%D0%9C%D0%90&Assortment_sort=oem
+---
+2014/11/27 17:52:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:52:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:52:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:52:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:52:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:52:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:52:47 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in /home/srv50213/htdocs/framework/web/CController.php:336
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#10 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#12 {main}
+REQUEST_URI=/priceListSetting/update/images/img_trans.gif
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/6
+---
+2014/11/27 17:52:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/6
+---
+2014/11/27 17:52:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/6
+---
+2014/11/27 17:52:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/6
+---
+2014/11/27 17:52:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/6
+---
+2014/11/27 17:52:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/6
+---
+2014/11/27 17:52:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/PriceListSettingController.php:109
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/PriceListSettingController.php(60): PriceListSettingController->loadModel('images')
+#1 [internal function]: PriceListSettingController->actionUpdate('images')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PriceListSettingController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PriceListSettingController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/priceListSetting/update/id/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/6
+---
+2014/11/27 17:52:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:52:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:52:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:52:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:52:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:52:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 17:58:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "app2/index.php".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('app2/index.php')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app2/index.php?r=assortment/index&subgroup=%D0%93%D0%98%D0%94%D0%A0%D0%90%D0%92%D0%9B%D0%98%D0%A7%D0%95%D0%A1%D0%9A%D0%90%D0%AF+%D0%A1%D0%98%D0%A1%D0%A2%D0%95%D0%9C%D0%90&Assortment_sort=title&Assortment_page=31
+---
+2014/11/27 17:59:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('order/images/im...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/order/images/img_trans.gif
+HTTP_REFERER=http://tarex.ru/order/update/1085
+---
+2014/11/27 17:59:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/order/update/1085
+---
+2014/11/27 17:59:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/order/update/1085
+---
+2014/11/27 17:59:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/order/update/1085
+---
+2014/11/27 17:59:24 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in /home/srv50213/htdocs/framework/web/CController.php:336
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('order/update/im...')
+#10 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#12 {main}
+REQUEST_URI=/order/update/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/order/update/1085
+---
+2014/11/27 17:59:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/order/update/1085
+---
+2014/11/27 17:59:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/order/update/1085
+---
+2014/11/27 18:00:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:00:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:00:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:00:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:00:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:00:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:00:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:00:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:00:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:00:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:00:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:00:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:00:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:00:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:00:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:00:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:00:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:00:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:01:18 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in /home/srv50213/htdocs/framework/web/CController.php:336
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#10 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#12 {main}
+REQUEST_URI=/priceListSetting/update/images/img_trans.gif
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/4
+---
+2014/11/27 18:01:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/4
+---
+2014/11/27 18:01:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/4
+---
+2014/11/27 18:01:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/4
+---
+2014/11/27 18:01:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/4
+---
+2014/11/27 18:01:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/PriceListSettingController.php:109
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/PriceListSettingController.php(60): PriceListSettingController->loadModel('images')
+#1 [internal function]: PriceListSettingController->actionUpdate('images')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PriceListSettingController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PriceListSettingController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/priceListSetting/update/id/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/4
+---
+2014/11/27 18:01:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/4
+---
+2014/11/27 18:01:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:01:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:01:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:01:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:01:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:01:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:01:48 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in /home/srv50213/htdocs/framework/web/CController.php:336
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#10 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#12 {main}
+REQUEST_URI=/priceListSetting/update/images/img_trans.gif
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/5
+---
+2014/11/27 18:01:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/5
+---
+2014/11/27 18:01:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/5
+---
+2014/11/27 18:01:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/5
+---
+2014/11/27 18:01:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/5
+---
+2014/11/27 18:01:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/5
+---
+2014/11/27 18:01:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/PriceListSettingController.php:109
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/PriceListSettingController.php(60): PriceListSettingController->loadModel('images')
+#1 [internal function]: PriceListSettingController->actionUpdate('images')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PriceListSettingController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PriceListSettingController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/priceListSetting/update/id/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/5
+---
+2014/11/27 18:01:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:01:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:01:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:01:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:01:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:01:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:02:06 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in /home/srv50213/htdocs/framework/web/CController.php:336
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#10 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#12 {main}
+REQUEST_URI=/priceListSetting/update/images/img_trans.gif
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/5
+---
+2014/11/27 18:02:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/5
+---
+2014/11/27 18:02:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/5
+---
+2014/11/27 18:02:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/5
+---
+2014/11/27 18:02:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/5
+---
+2014/11/27 18:02:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/5
+---
+2014/11/27 18:02:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/PriceListSettingController.php:109
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/PriceListSettingController.php(60): PriceListSettingController->loadModel('images')
+#1 [internal function]: PriceListSettingController->actionUpdate('images')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PriceListSettingController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PriceListSettingController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/priceListSetting/update/id/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/5
+---
+2014/11/27 18:02:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:02:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:02:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:02:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:02:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:02:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:03:21 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in /home/srv50213/htdocs/framework/web/CController.php:336
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#10 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#12 {main}
+REQUEST_URI=/priceListSetting/update/images/img_trans.gif
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:03:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:03:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:03:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/PriceListSettingController.php:109
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/PriceListSettingController.php(60): PriceListSettingController->loadModel('images')
+#1 [internal function]: PriceListSettingController->actionUpdate('images')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PriceListSettingController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PriceListSettingController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/priceListSetting/update/id/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:03:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:03:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:03:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:03:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "app2/index.php".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('app2/index.php')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app2/index.php?r=assortment/index&id=1536&Subsystem=Warehouse+automation&Reference=Assortment&Assortment_sort=title.desc&Assortment_page=6
+---
+2014/11/27 18:03:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:03:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:03:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:03:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:03:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:03:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:04:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:04:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:04:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:04:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:04:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:04:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:05:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "app2/index.php".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('app2/index.php')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app2/index.php?r=assortment/index&subgroup=%D0%A5%D0%9E%D0%94%D0%9E%D0%92%D0%90%D0%AF+%D0%A1%D0%98%D0%A1%D0%A2%D0%95%D0%9C%D0%90&Assortment_sort=oem&Assortment_page=162
+---
+2014/11/27 18:12:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "app2/index.php".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('app2/index.php')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app2/index.php?r=assortment/index&subgroup=%D0%A5%D0%9E%D0%94%D0%9E%D0%92%D0%90%D0%AF+%D0%A1%D0%98%D0%A1%D0%A2%D0%95%D0%9C%D0%90&Assortment_sort=title.desc&Assortment_page=179
+---
+2014/11/27 18:20:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:20:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:20:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:20:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:20:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:20:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:21:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:21:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:21:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:21:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:21:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:21:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:25:22 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in /home/srv50213/htdocs/framework/web/CController.php:336
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#10 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#12 {main}
+REQUEST_URI=/priceListSetting/update/images/img_trans.gif
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:25:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:25:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:25:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:25:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/PriceListSettingController.php:109
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/PriceListSettingController.php(60): PriceListSettingController->loadModel('images')
+#1 [internal function]: PriceListSettingController->actionUpdate('images')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PriceListSettingController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PriceListSettingController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/priceListSetting/update/id/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:25:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:25:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:29:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "app2/index.php".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('app2/index.php')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app2/index.php?r=assortment/index&subgroup=%D0%9F%D0%9E%D0%94%D0%92%D0%95%D0%A1%D0%9A%D0%90&Assortment_sort=oem&Assortment_page=153
+---
+2014/11/27 18:31:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:31:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:31:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:31:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:31:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:31:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:32:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "app2/index.php".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('app2/index.php')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app2/index.php?r=assortment/index&subgroup=%D0%AD%D0%9B%D0%95%D0%9A%D0%A2%D0%A0%D0%98%D0%9A%D0%90&Assortment_sort=title&Assortment_page=3
+---
+2014/11/27 18:33:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "index.php".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('index.php')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('index.php')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('site/index.php')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/index.php?subaction=userinfo&user=Castarahott
+HTTP_REFERER=http://tarex.ru/index.php?subaction=userinfo&user=Castarahott
+---
+2014/11/27 18:33:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "index.php".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('index.php')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('index.php')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('site/index.php')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/index.php
+HTTP_REFERER=http://tarex.ru/index.php
+---
+2014/11/27 18:33:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:33:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:33:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:33:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:33:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:33:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:33:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:33:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:33:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:33:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:33:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:33:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:33:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:33:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:33:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:33:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/priceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:33:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:33:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/admin
+---
+2014/11/27 18:35:07 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in /home/srv50213/htdocs/framework/web/CController.php:336
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#9 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#10 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#12 {main}
+REQUEST_URI=/priceListSetting/update/images/img_trans.gif
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:35:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194L-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194L-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:35:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/333-1914L-US.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/333-19...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/333-1914L-US.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:35:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.006.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.006.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:35:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/441-1194R-LDHEM.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/441-11...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/441-1194R-LDHEM.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:35:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "img/foto/AD21.007.jpg".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('img/foto/AD21.0...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/img/foto/AD21.007.jpg
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---
+2014/11/27 18:35:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/PriceListSettingController.php:109
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/PriceListSettingController.php(60): PriceListSettingController->loadModel('images')
+#1 [internal function]: PriceListSettingController->actionUpdate('images')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PriceListSettingController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PriceListSettingController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('priceListSettin...')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/priceListSetting/update/id/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/priceListSetting/update/id/1
+---

@@ -2,11 +2,10 @@
 class SendCommand extends CConsoleCommand
 {
     public function actionIndex($type=5)
-	{
-		// check mail - 
-		mail('igor.savinkin@gmail.com', 'check command runnig at '. date('H:i:s'), 'Check is ok, send from SendCommand & action index, type = ' . $type);
+	{	
+	//mail('igor.savinkin@gmail.com', 'check command runnig at '. date('H:i:s'), 'Check is ok, send from SendCommand & action index, type = ' . $type);	// check mail - 
 	 	
-		echo 'day of week: ', getdate()['wday'], '<br>'; 
+	//	echo 'day of week: ', getdate()['wday'], '<br>'; 
 		$criteria=new CDbCriteria;
 		$criteria->compare('daysOfWeek', getdate()['wday'] , true); // сравнение по вхождению текущего дня недели с теми днями что в модели PriceListSetting
 	 
@@ -14,23 +13,23 @@ class SendCommand extends CConsoleCommand
 		$criteria->addCondition('time < '. $now);
 	 	$criteria->addCondition('lastSentDate < "'. date('Y-m-d') . '" ' ); // дата последней посылки должна быть меньше чем текущая дата		 
 	
-		$i=1;
-		echo '<br>Matched criteria<br>';
+		//$i=1;
+	//	echo '<br>Matched criteria<br>';
 		foreach(PriceListSetting::model()->findAll($criteria) as $pls)
 		{ 
-			echo  'user id = ', $pls->userId, '. <br> ';
+			//echo  'user id = ', $pls->userId, '. <br> ';
 			//посылка прайса			
 		    $username = User::model()->findByPk($pls->userId)->username;
-			$result = $this->runPHPMailer($pls->format, array($pls->email,  $username, $pls->userId));// email, имя пользователя и его id
+			$result = $this->runPHPMailer($pls->format, array($pls->email,  $username, $pls->userId, $pls->carmakes ));// email, имя пользователя, его id и марки
 				
 			if($result) 
 			{ 
-				echo date('H-i-s'), ' Mail is sent to <b>',   $username , '</b> at <b>', $pls->email , '</b> with attached price list in <b>' , $pls->format ,'</b> format<br>';
+				echo 'Mail is sent to ',   $username , ' at ', $pls->email , ' with attached price list in ' , $pls->format ,' format at ', date('H:i:s');
 				$pls->lastSentDate= date('Y-m-d');
 				$pls->save(false);
 			}				
 			else 
-				{ echo 'Mail failed to <b>',   $username , '</b> at <b>', $pls->email , '</b><br>'; }				
+				{ echo 'Mail failed to ',   $username , ' to ', $pls->email ,  ' at ', date('H:i:s'); }				
 		}		 
 	}  
 	
@@ -56,14 +55,15 @@ class SendCommand extends CConsoleCommand
 		$mail->AddAddress($mailArr[0], $mailArr[1]); 
 	 
 		$userId = $mailArr[2];
+		$makes = $mailArr[3];
 		if ('csv' == $extention) 
-			$mail->AddStringAttachment( $this->getPricelistCSV($userId) , 'TAREX price list '. date('d-m-Y') . '.' .  $extention); 
+			$mail->AddStringAttachment( $this->getPricelistCSV($userId, $makes) , 'TAREX price list '. date('d-m-Y') . '.' .  $extention); 
 		if ('xls' == $extention) 
-			$mail->AddStringAttachment( $this->getPricelist($userId) , 'TAREX price list '. date('d-m-Y') . '.' .  $extention); 
+			$mail->AddStringAttachment( $this->getPricelist($userId, $makes) , 'TAREX price list '. date('d-m-Y') . '.' .  $extention); 
 		
 		return ($mail->Send()) ? true : false;  
 	}
-	public function getPricelist($userId=null)
+	public function getPricelist($userId=null, $makes=null)
 	{   		
 		// PHPExcel    
 		include_once Yii::getPathOfAlias('ext'). '/PHPExcel.php';
@@ -96,8 +96,11 @@ class SendCommand extends CConsoleCommand
 		$objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Наличие');
 			
 		$criteria = new CDbCriteria(); 
-		$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
-	//	$criteria->condition =   'measure_unit<>"" AND price>0';
+	//	$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
+		$criteria->condition =   'measure_unit<>"" AND price>0';
+	// добавляем условие выбора конкретных марок если они заданы
+		if ($makes) 
+			$criteria->addInCondition('make', explode(',' , $makes));
 		$counter=2;
 		foreach( Assortment::model()->findAll($criteria) as $item)
 		{
@@ -133,11 +136,11 @@ class SendCommand extends CConsoleCommand
 		$output="\xEF\xBB\xBF"; // мы ставим BOM в начале содержимого файла 
 		$arr = array( Yii::t('general', 'Article'), Yii::t('general', 'Title'), 'OEM' , Yii::t('general', 'Make') , Yii::t('general', 'Price') ,   Yii::t('general', 'Availability'));  
 	    $output .= implode( ';' ,  $arr) . "\xA"; // добавляем здесь конец строки
-	 // начало итераций по записям
 		
+	// начало итераций по записям		
 		$criteria = new CDbCriteria(); 
-		$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
-	//	$criteria->condition =   'measure_unit<>"" AND price>0';	
+	//	$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
+		$criteria->condition =   'measure_unit<>"" AND price>0';	
 		foreach(Assortment::model()->findAll($criteria) as $d)
 		{ 
 			$output .= implode( ';' , array( $d->article2, $d->title, $d->oem,  $d->make,  $d->getPriceConsole($userId),  $d->availability)) . "\xA"; // разделитель - точка с запятой и потом конец строки

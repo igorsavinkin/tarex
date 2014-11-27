@@ -1,7 +1,7 @@
 <?php
 class PriceListSettingController extends Controller
 { 
-	public $formats = array('csv'=>'csv', 'xls'=>'xls', 'xlsx'=>'xlsx');
+	public $formats = array('csv'=>'csv', 'xls'=>'xls' /*, 'xlsx'=>'xlsx'*/);
 	public function filters()
 	{
 		return array(
@@ -141,17 +141,16 @@ class PriceListSettingController extends Controller
 		$i=1;
 		echo '<br>Matched criteria<br>';
 		foreach(PriceListSetting::model()->findAll($criteria) as $pls)
-		{ 
-			echo 'user id = ', $pls->userId , '. ';
+		{  
 			//посылка прайса			
 			echo '<br>user id = ', $pls->userId, '<br>';
 			$result = $this->runPHPMailer(
 				$pls->format, // формат файла
-				array($pls->email, User::model()->findByPk($pls->userId)->username, $pls->userId) // email и имя пользователя
+				array($pls->email, User::model()->findByPk($pls->userId)->username, $pls->userId, $pls->carmakes) // email, имя пользователя, id пользователя и марки машин
 			);
 			if($result) 
 			{ 
-				echo  $i++, '.'. date('H-i-s'). ' Mail is sent to <b>'. $pls->email . '</b> with attached price list in ' . $pls->format .' format<br>';
+				echo  date('H:i:s'),  ' Mail is sent to <b>',  $pls->email , '</b> with attached price list in ',  $pls->format , ' format<br>';
 				$pls->lastSentDate= date('Y-m-d');
 				$pls->save(false);
 			}				
@@ -185,13 +184,13 @@ class PriceListSettingController extends Controller
 	//	$mail->AddAttachment( $filepath , 'TAREX price '. date('d-m-Y') . '.xls'); 
 		
 		if ('csv' == $extention) 
-			$mail->AddStringAttachment( $this->getPricelistCSV($mailArr[2]) , 'TAREX price list '. date('d-m-Y') . '.' .  $extention); 
+			$mail->AddStringAttachment( $this->getPricelistCSV($mailArr[2], $mailArr[3]) , 'TAREX price list '. date('d-m-Y') . '.' .  $extention); 
 		if ('xls' == $extention) 
-			$mail->AddStringAttachment( $this->getPricelist($mailArr[2]) , 'TAREX price list '. date('d-m-Y') . '.' .  $extention); 
+			$mail->AddStringAttachment( $this->getPricelist($mailArr[2], $mailArr[3]) , 'TAREX price list '. date('d-m-Y') . '.' .  $extention); 
 		
 		return ($mail->Send()) ? true : false;  
 	}
-	public function getPricelist($id=null)
+	public function getPricelist($id=null, $makes=null)
 	{   		
 		// PHPExcel    
 		include_once Yii::getPathOfAlias('ext'). '/PHPExcel.php';
@@ -224,8 +223,10 @@ class PriceListSettingController extends Controller
 		$objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Наличие');
 			
 		$criteria = new CDbCriteria();
-			$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
-	//	$criteria->condition =   'measure_unit<>"" AND price>0';
+	// 	$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
+		$criteria->condition =   'measure_unit<>"" AND price>0';
+		if ($makes) 
+			$criteria->addInCondition('make', explode(',' , $makes));
 		$counter=2;
 		foreach( Assortment::model()->findAll($criteria  ) as $item)
 		{
@@ -255,7 +256,7 @@ class PriceListSettingController extends Controller
 		$excelOutput = ob_get_clean();
 		return $excelOutput;
 	}  
-	public function getPricelistCSV($userId=null) // sendFile
+	public function getPricelistCSV($userId=null,$makes=null) // sendFile
 	{ 	
 	// writing csv into string ...   
 		$output="\xEF\xBB\xBF"; // мы ставим BOM в начале содержимого файла 
@@ -264,8 +265,10 @@ class PriceListSettingController extends Controller
 	 // начало итераций по записям
 		
 		$criteria = new CDbCriteria();
-		$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
-	//	$criteria->condition =   'measure_unit<>"" AND price>0';	
+	//	$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
+		$criteria->condition =   'measure_unit<>"" AND price>0';	
+		if ($makes) 
+			$criteria->addInCondition('make', explode(',' , $makes));
 		foreach(Assortment::model()->findAll($criteria) as $d)
 		{ 
 			$output .= implode( ';' , array( $d->article2, $d->title, $d->oem,  $d->make,  $d->getPriceConsole($userId),  $d->availability)) . "\xA"; // разделитель - точка с запятой 

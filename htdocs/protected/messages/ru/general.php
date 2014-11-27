@@ -11,7 +11,7 @@ return array(
 	'Days Of Week'=>'Дни недели',
 	'Getting price list by email'=>'Получение прайс-листа по почте',
 	'CHECK ALL'=>'ОТМЕТИТЬ ВСЕ', 
-	
+	'Last Sent Date'=>'Дата последней посылки',
 	
 	'Submenu hide'=>'Скрыть подменю',
 	'Submenu show'=>'Показать подменю',
