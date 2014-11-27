@@ -63,7 +63,8 @@ echo CHtml::Link(Yii::t('general','Download price list as Excel sheet'). '(csv)'
 			'name'=>'daysOfWeek',
 			'value'=>array($this, 'parsedDays'), 		
 		),
-		'time',		
+		'time',	
+		'lastSentDate',
 		/*array(
 			'class' => 'CCheckBoxColumn',
 			'id' => 'UserId',	
