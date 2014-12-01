@@ -11,7 +11,7 @@ class SendCommand extends CConsoleCommand
 	 
 		$now = new CDbExpression("NOW()"); 
 		$criteria->addCondition('time < '. $now);
-	// 	$criteria->addCondition('lastSentDate < "'. date('Y-m-d') . '" ' ); // дата последней посылки должна быть меньше чем текущая дата		 
+	 	$criteria->addCondition('lastSentDate < "'. date('Y-m-d') . '" ' ); // дата последней посылки должна быть меньше чем текущая дата		 
 	
 		//$i=1;
 	//	echo '<br>Matched criteria<br>';
@@ -25,7 +25,7 @@ class SendCommand extends CConsoleCommand
 			if($result) 
 			{ 
 				echo 'Mail is sent to ',   $username , ' at ', $pls->email , ' with attached price list in ' , $pls->format ,' format at ', date('H:i:s');
-				$pls->lastSentDate= date('Y-m-d');
+				$pls->lastSentDate= date('Y-m-d'); // сохраняем дату посылки в модели/базе чтобы потом сравнивать с ней
 				$pls->save(false);
 			}				
 			else 

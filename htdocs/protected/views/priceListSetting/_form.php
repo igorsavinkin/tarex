@@ -137,7 +137,8 @@ $('.download-link').on('click', function(e){
 	
 </tr><tr>
 	<td colspan='5'><h4>
-        <?php echo CHtml::link(Yii::t('general','Setup price columns'),'#', array('class'=>'column-button')); ?>
+        <?php if(Yii::app()->user->checkAccess(User::ROLE_MANAGER))  
+						echo CHtml::link(Yii::t('general','Setup price columns'),'#', array('class'=>'column-button')); ?>
 			</h4>
 		<?php echo $form->hiddenField($model, 'columns'); ?> 
 		<div class="column-form" style="display:none">

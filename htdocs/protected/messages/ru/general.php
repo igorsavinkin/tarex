@@ -15,11 +15,14 @@ return array(
 	'Use also for regular mailing' =>'Использовать также для регулярной рассылки',
 	'does not match time format!'=>'не соответствует формату времени!',
 	'Min quantity'=>'Мин. количество',
+	'MinPart'=>'Мин. партия',
+	'manufacturer'=>'Производитель',
 	'Setup price columns'=>'Настройка колонок прайса',
 	'article2'=>'Артикул',
 	'availability'=>'Доступность',
 	'model'=>'Модель',
 	'title'=>'Название',
+	
 	'Price columns'=>'Колонки в прайсе',
 	
 	

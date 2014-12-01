@@ -70,62 +70,52 @@ class UserController extends Controller
 		// Add data to document
 		$objPHPExcel->setActiveSheetIndex(0);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(80);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(17);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(17);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(17);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(80);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(12);
 		
 		$objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Артикул');
 		$objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Название');
 		$objPHPExcel->getActiveSheet()->SetCellValue('C1', 'OEM');
-		$objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Марка');
+		$objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Модель');
 		$objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Производитель');
-		$objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Цена');
-		if (!Yii::app()->user->isGuest) 
-			$objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Наличие');
-		/*if ($wholesaler) { // если клиент оптовый 
-			$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(30);
-			$objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Скидка оптового клиента');
-		}*/		
+		$objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Цена'); 
+		$objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Наличие');
+		$objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Мин. партия');
+		
 		$criteria = new CDbCriteria();
 	//	$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
 		$criteria->condition =   'measure_unit<>"" AND price>0';
 		if ($_GET['carmakes']) 
 			$criteria->addInCondition('make', explode(',' , $_GET['carmakes']));
 		$counter=2;
-		foreach( Assortment::model()->findAll($criteria  ) as $item)
-		{
-			if (isset($_GET['file'])) continue; 
+		foreach( Assortment::model()->findAll($criteria ) as $item)
+		{			 
 			$objPHPExcel->getActiveSheet()->SetCellValue('A'.$counter, $item->article2);
 			$objPHPExcel->getActiveSheet()->SetCellValue('B'.$counter, $item->title);
 			$objPHPExcel->getActiveSheet()->SetCellValue('C'.$counter, $item->oem);
-			$objPHPExcel->getActiveSheet()->SetCellValue('D'.$counter, $item->make);
+			$objPHPExcel->getActiveSheet()->SetCellValue('D'.$counter, $item->model);
 			$objPHPExcel->getActiveSheet()->SetCellValue('E'.$counter, $item->manufacturer);
 			$objPHPExcel->getActiveSheet()->SetCellValue('F'.$counter, $item->getPrice(Yii::app()->user->id));
-			
-			if (!Yii::app()->user->isGuest)  
-				$objPHPExcel->getActiveSheet()->SetCellValue('G'.$counter, $item->availability);
-		/* 	if ($wholesaler)  
-			  	$objPHPExcel->getActiveSheet()->SetCellValue('H'.$counter, $item->getDiscountOpt(Yii::app()->user->id)); */
+			$objPHPExcel->getActiveSheet()->SetCellValue('G'.$counter, $item->availability);
+			$objPHPExcel->getActiveSheet()->SetCellValue('H'.$counter, $item->MinPart);
+ 
 			$counter++;   
 		}
  
 		$objPHPExcel->getActiveSheet()->setTitle('ТАРЕКС прайс лист на ' . date('d-m-Y'));
 		
 		// Save Excel 2007 file 
-		if ($wholesaler)   
-			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '(оптовый).xls'; 
-		elseif ($retail)   
-			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '(розница).xls'; 
-		else 
-			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '.xls'; 
-	
-			$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
-			ob_end_clean(); 
-			header('Content-Type: application/vnd.ms-excel');
-			header('Content-Disposition: attachment;filename="'.$filename.'"');
-			header('Cache-Control: max-age=0');  
-			$objWriter->save('php://output'); 
+		$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '.xls'; 
+
+		$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+		ob_end_clean(); 
+		header('Content-Type: application/vnd.ms-excel');
+		header('Content-Disposition: attachment;filename="'.$filename.'"');
+		header('Cache-Control: max-age=0');  
+		$objWriter->save('php://output'); 
 	}  
 	public function actionPricelistCSV($count=null) // sendFile
 	{  
@@ -133,12 +123,7 @@ class UserController extends Controller
 		$wholesaler = (Yii::app()->user->role == User::ROLE_USER) ? 1 : 0;
 		// клиент розничный ? 
 		$retail = (Yii::app()->user->isGuest OR Yii::app()->user->role == User::ROLE_USER_RETAIL) ? 1 : 0;
-	/*	if ($wholesaler)   
-			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '(оптовый).csv'; 
-		elseif ($retail)   
-			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '(розница).csv'; 
-		else */
-			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '.csv'; 
+		$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '.csv'; 
 		
 		$criteria = new CDbCriteria();
 	//	$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
@@ -150,17 +135,14 @@ class UserController extends Controller
 	// writing csv ...
 		fwrite($out, "\xEF\xBB\xBF");  // мы ставим BOM в начале содержимого файла
 		$counter=0;
-		$arr = array('0'=> Yii::t('general', 'Article'),Yii::t('general', 'Title'), 'OEM',Yii::t('general', 'Make') ,Yii::t('general', 'Price') );
-		if (!Yii::app()->user->isGuest)  
-			$arr[] = Yii::t('general', 'Availability');
+		$arr = array('0'=> Yii::t('general', 'Article'), Yii::t('general', 'Title'), 'OEM', Yii::t('general', 'Model') ,Yii::t('general', 'manufacturer') ,Yii::t('general', 'Price') ,Yii::t('general', 'availability') ,Yii::t('general', 'MinPart') );
+		//  array( 'article2', 'title', 'oem', 'manufacturer',  'model',  'Price',  'availability',  'MinPart');
 		fputcsv($out, $arr, ';');
 		foreach(Assortment::model()->findAll($criteria) as $d)
 		{
-			$arr = array( $d->article2, $d->title, $d->oem,  $d->make,  $d->getPrice(Yii::app()->user->id) );
-			if (!Yii::app()->user->isGuest)  
-				$arr[] = $d->availability;
+			$arr = array( $d->article2, $d->title, $d->oem,  $d->model, $d->manufacturer, $d->getPrice(Yii::app()->user->id),  $d->availability, $d->MinPart ); 
 			fputcsv($out, $arr, ';'); // разделитель - точка с запятой
-			if ($count && ($counter++ > $count) ) break;
+		//	if ($count && ($counter++ > $count) ) break;
 		}  
 		fclose($out); 
 		Yii::app()->request->sendFile($filename,   @file_get_contents($filepath)); 
