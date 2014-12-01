@@ -1,9 +1,3 @@
-<?
-	require_once ($_SERVER['DOCUMENT_ROOT'] . '/seotools/seotools.class.php');
-	$ST = new Seotools; 
-	$meta_keywords 	= $ST->get('keywords');
-	$meta_desc	 	= $ST->get('description');
-?>
 <?php
 /**
  * Controller is the customized base controller class.
@@ -55,10 +49,9 @@ class Controller extends CController
 	
 	function init()
     {
-
         parent::init();   
-		//Yii::app()->clientScript->registerMetaTag("Автозапчасти для иномарок оптом по выгодным ценам, доставка в регионы - Тарекс тел. +7 (495) 785-88-50", 'description');
-		//Yii::app()->clientScript->registerMetaTag('запчасти, опт, spare parts, wholesales, Russia, Россия', 'keywords');
+		Yii::app()->clientScript->registerMetaTag("Автозапчасти для иномарок оптом по выгодным ценам, доставка в регионы - Тарекс тел. +7 (495) 785-88-50", 'description');
+		Yii::app()->clientScript->registerMetaTag('запчасти, опт, spare parts, wholesales, Russia, Россия', 'keywords');
 		// page size for the gridview
         try {
 			if (Yii::app()->user->isGuest) $this->pagesize = Yii::app()->params['defaultPageSize'];
@@ -95,8 +88,16 @@ class Controller extends CController
             $app->language = $app->session['_lang'];
         }
 		//echo 'GET = '; print_r($_GET);echo '<br>';
-		if (isset($_GET['Subsystem']))
+		if (isset($_GET['Subsystem'])) 
+		{
 			$app->session['Subsystem'] = $_GET['Subsystem'];  
+		   // переход сразу к вкладке пользователя с его настройкой прайса при Subsystem == 'Price List' 
+			if( 'Price List' == $_GET['Subsystem'] && Yii::app()->user->role == User::ROLE_USER)
+			{ 
+				unset($_GET['Subsystem']); 				
+				$this->redirect(array('priceListSetting/update', 'id'=>PriceListSetting::model()->findByAttributes(array('userId'=>Yii::app()->user->id))->id));
+			}
+		}
         //$app->params['Subsystem'] = $_GET['Subsystem'];
 		// echo '$Subsystem in Controller =',  $app->session['Subsystem'], '<br>';
        

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<?require_once ($_SERVER['DOCUMENT_ROOT'] .'/redirect.php');?>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -38,6 +39,7 @@
 </head>
 	
 <body>  
+
 <div class="tar_wrapper">
     <div class="in_wrapper">
         <div class="tar_header">

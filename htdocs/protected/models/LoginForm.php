@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LoginForm class.
  * LoginForm is the data structure for keeping
@@ -43,7 +42,6 @@ class LoginForm extends CFormModel
 			'email' => Yii::t('general', "Email"),
 		);
 	}
-
 	/**
 	 * Authenticates the password.
 	 * This is the 'authenticate' validator as declared in rules().

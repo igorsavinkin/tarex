@@ -41,6 +41,7 @@
 class Assortment extends CActiveRecord implements IECartPosition
 {
 	public $amount; 		   // additional amount variable
+	public $Price; 		   // additional price variable
 	public $itemSearch, $modelMake;    // additional variable for search purpose 
 	public $warehousesArray= array();
 	/**
@@ -88,7 +89,7 @@ class Assortment extends CActiveRecord implements IECartPosition
 			'model' => Yii::t('general','Model'),
 			'make' => Yii::t('general','Make'),
 			'measure_unit' => Yii::t('general','Measure Unit'),
-			'price' => Yii::t('general','price'),
+			'price' => Yii::t('general','Price'),
 			'discount' => Yii::t('general','Discount'),
 			'imageUrl' => Yii::t('general','Image'), //Yii::t('general','Image Url'),
 			'fileUrl' => Yii::t('general','File Url'),
@@ -97,6 +98,7 @@ class Assortment extends CActiveRecord implements IECartPosition
 			'article' => Yii::t('general','Article'),
 			'article2' => Yii::t('general','Article'),
 			'priceS' => Yii::t('general','Price $'),
+			'Price' => Yii::t('general','Price'),
 			'сurrentPrice' => Yii::t('general','Current Price'), 
 			'oem' => Yii::t('general','OEM'),
 			'organizationId' => Yii::t('general','Organization'),
@@ -125,6 +127,7 @@ class Assortment extends CActiveRecord implements IECartPosition
 			'specialDescription' => Yii::t('general','Special Description'),
 			'userId'=>Yii::t('general', 'User created this item'),
 			'FOBCost'=>Yii::t('general', 'FOB cost'),
+			'MinPart'=>Yii::t('general', 'Min quantity'),
 		);
 	}
 	public function search($specialOffer=null)

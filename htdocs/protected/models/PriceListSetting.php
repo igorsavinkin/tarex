@@ -13,12 +13,12 @@ class PriceListSetting extends CActiveRecord
 			array('userId, format, email', 'required'),
 			array('userId', 'numerical', 'integerOnly'=>true),
 			array('format', 'length', 'max'=>4),
-			array('daysOfWeek', 'length', 'max'=>255),
+			array('daysOfWeek, columns', 'length', 'max'=>255),
 			array('carmakes', 'length', 'max'=>1000),
 			array('email', 'email'),
 			//array('lastSentDate',  'type', 'type' => 'date', 'message' => '{attribute}: is not a date!', 'dateFormat'=>'Y-m-d'),
-		 	array('time',  'match', 'pattern' => '/^(\d{1,2}:)?\d{2}:\d{2}$/', 'message' => '{attribute}: does not match time format!' ),
-			array('id, userId, format, daysOfWeek, time, email, carmakes, lastSentDate', 'safe', 'on'=>'search'),
+		 	array('time',  'match', 'pattern' => '/^(\d{1,2}:)?\d{2}:\d{2}$/', 'message' => '{attribute}: '.  Yii::t('general','does not match time format!') ),
+			array('id, userId, format, daysOfWeek, time, email, carmakes, lastSentDate, columns', 'safe', 'on'=>'search'),
 		);
 	}
 	public function relations()
@@ -36,6 +36,7 @@ class PriceListSetting extends CActiveRecord
 			'time' => Yii::t('general','Time'),
 			'carmakes' => Yii::t('general','Car makes'),
 			'lastSentDate' => Yii::t('general','Last Sent Date'),
+			'columns' => Yii::t('general','Price columns'),
 		);
 	}
  

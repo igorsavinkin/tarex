@@ -33,6 +33,7 @@ class PriceListSettingController extends Controller
 	{
 		$model=new PriceListSetting; 
 		$model->time = '8:00:00';  
+		//$model-> = '8:00:00';  
 		
 		if($id) {
 			$model->userId = $id;
@@ -43,8 +44,10 @@ class PriceListSettingController extends Controller
 			$model->attributes=$_POST['PriceListSetting'];
 			if (!empty($_POST['PriceListSetting']['daysOfWeek']))
 			 	$model->daysOfWeek = implode(',' , $_POST['PriceListSetting']['daysOfWeek']);
-			if (!empty($_POST['PriceListSetting']['carmakes']))
+			if (!empty($_POST['PriceListSetting']['carmakes']) && isset($_POST['use-in-reg-mailing']))
 			 	$model->carmakes = implode(',' , $_POST['PriceListSetting']['carmakes']);
+			else 
+				$model->carmakes ='';
 				
 			if($model->save())
 				$this->redirect(array('update','id'=>$model->id));
@@ -69,8 +72,10 @@ class PriceListSettingController extends Controller
 			
 		//	echo '<br>$model->daysOfWeek (after change) = ', $model->daysOfWeek; 
 			
-			if (!empty($_POST['PriceListSetting']['carmakes']))
+			if (!empty($_POST['PriceListSetting']['carmakes']) && isset($_POST['use-in-reg-mailing']))
 			 	$model->carmakes = implode(',' , $_POST['PriceListSetting']['carmakes']);
+			else 
+				$model->carmakes ='';
 			if($model->save()) //{}
 				$this->redirect(array('admin'));
 		}

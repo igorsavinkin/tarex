@@ -1,9 +1,9 @@
 <?php
 class SendCommand extends CConsoleCommand
 {
-    public function actionIndex($type=5)
+    public function actionIndex()
 	{	
-	//mail('igor.savinkin@gmail.com', 'check command runnig at '. date('H:i:s'), 'Check is ok, send from SendCommand & action index, type = ' . $type);	// check mail - 
+	//mail('igor.savinkin@gmail.com', 'check command runnig at '. date('H:i:s'), 'Check is ok, send from "Send" command & action "index".');	// check mail - 
 	 	
 	//	echo 'day of week: ', getdate()['wday'], '<br>'; 
 		$criteria=new CDbCriteria;
@@ -11,7 +11,7 @@ class SendCommand extends CConsoleCommand
 	 
 		$now = new CDbExpression("NOW()"); 
 		$criteria->addCondition('time < '. $now);
-	 	$criteria->addCondition('lastSentDate < "'. date('Y-m-d') . '" ' ); // дата последней посылки должна быть меньше чем текущая дата		 
+	// 	$criteria->addCondition('lastSentDate < "'. date('Y-m-d') . '" ' ); // дата последней посылки должна быть меньше чем текущая дата		 
 	
 		//$i=1;
 	//	echo '<br>Matched criteria<br>';
@@ -20,7 +20,7 @@ class SendCommand extends CConsoleCommand
 			//echo  'user id = ', $pls->userId, '. <br> ';
 			//посылка прайса			
 		    $username = User::model()->findByPk($pls->userId)->username;
-			$result = $this->runPHPMailer($pls->format, array($pls->email,  $username, $pls->userId, $pls->carmakes ));// email, имя пользователя, его id и марки
+			$result = $this->runPHPMailer($pls->format, array($pls->email,  $username, $pls->userId, $pls->carmakes, $pls->columns   )); // email, имя пользователя, его id , марки и колонки для вывода
 				
 			if($result) 
 			{ 
@@ -56,14 +56,15 @@ class SendCommand extends CConsoleCommand
 	 
 		$userId = $mailArr[2];
 		$makes = $mailArr[3];
+		$columns = $mailArr[4];
 		if ('csv' == $extention) 
-			$mail->AddStringAttachment( $this->getPricelistCSV($userId, $makes) , 'TAREX price list '. date('d-m-Y') . '.' .  $extention); 
+			$mail->AddStringAttachment( $this->getPricelistCSV($userId, $makes, $columns) , 'TAREX price list '. date('d-m-Y') . '.' .  $extention); 
 		if ('xls' == $extention) 
-			$mail->AddStringAttachment( $this->getPricelist($userId, $makes) , 'TAREX price list '. date('d-m-Y') . '.' .  $extention); 
+			$mail->AddStringAttachment( $this->getPricelist($userId, $makes, $columns) , 'TAREX price list '. date('d-m-Y') . '.' .  $extention); 
 		
 		return ($mail->Send()) ? true : false;  
 	}
-	public function getPricelist($userId=null, $makes=null)
+	public function getPricelist($userId=null, $makes=null, $columns=null)
 	{   		
 		// PHPExcel    
 		include_once Yii::getPathOfAlias('ext'). '/PHPExcel.php';
@@ -81,39 +82,70 @@ class SendCommand extends CConsoleCommand
 		
 		// Add data to document
 		$objPHPExcel->setActiveSheetIndex(0);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(20);
+/*		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(17);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(17);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(17);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(80);
+*/	
+		if ($columns)  // $columns - строковая переменная содержащая колонки для прайса
+			$columnsArr = array_unique(explode(',' , $columns));
+		else 
+			$columnsArr = array( 'article2', 'title', 'oem', 'manufacturer',  'model',  'Price',  'availability',  'MinPart');
+		$arr=array();	
+		$translationArr = array(	'article2'=>'Артикул',	'availability'=>'Доступность',	'model'=>'Модель', 'title'=>'Название','model'=>'Модель',  'Price'=>'Цена',  'oem'=> 'OEM', 'manufacturer'=>'Производитель', 'MinPart'=>'Мин. партия');
+		$letters = range('A', 'H');
+		$i=0; // для итерации по буквам - $letters[$i]
+		foreach($columnsArr as $column) 
+		{
+			$objPHPExcel->getActiveSheet()->SetCellValue( $letters[$i].'1',  $translationArr[$column]); 
+			switch ($column)
+			{
+				case 'article2': 
+					$objPHPExcel->getActiveSheet()->getColumnDimension($letters[$i])->setWidth(20);
+					break;
+				case 'title': 
+					$objPHPExcel->getActiveSheet()->getColumnDimension($letters[$i])->setWidth(80);
+					break;
+				case 'oem': 
+				case 'model': 
+				case 'MinPart': 
+				case 'manufacturer': 
+				case 'availability': 
+					$objPHPExcel->getActiveSheet()->getColumnDimension($letters[$i])->setWidth(17);
+					break; 
+			} 
+			$i++;
+		}			
 		
-		$objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Артикул');
+/*		$objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Артикул');
 		$objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Название');
 		$objPHPExcel->getActiveSheet()->SetCellValue('C1', 'OEM');
-		$objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Марка');
+		$objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Модель');
 		$objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Производитель');
 		$objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Цена');
-		$objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Наличие');
-			
+		$objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Наличие');	*/		
 		$criteria = new CDbCriteria(); 
 	//	$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
 		$criteria->condition =   'measure_unit<>"" AND price>0';
 	// добавляем условие выбора конкретных марок если они заданы
 		if ($makes) 
 			$criteria->addInCondition('make', explode(',' , $makes));
-		$counter=2;
+			
+		$counter=2;		
 		foreach( Assortment::model()->findAll($criteria) as $item)
 		{
-			if (isset($_GET['file'])) continue; 
-			$objPHPExcel->getActiveSheet()->SetCellValue('A'.$counter, $item->article2);
-			$objPHPExcel->getActiveSheet()->SetCellValue('B'.$counter, $item->title);
-			$objPHPExcel->getActiveSheet()->SetCellValue('C'.$counter, $item->oem);
-			$objPHPExcel->getActiveSheet()->SetCellValue('D'.$counter, $item->make);
-			$objPHPExcel->getActiveSheet()->SetCellValue('E'.$counter, $item->manufacturer);
-		 	$objPHPExcel->getActiveSheet()->SetCellValue('F'.$counter, $item->getPriceConsole($userId));  
-			$objPHPExcel->getActiveSheet()->SetCellValue('G'.$counter, $item->availability);
-		 
-			$counter++;   
+			$arr=array();
+			$i=0; // для итерации по буквам - $letters[$i]
+			foreach($columnsArr as $column) 
+			{	
+				if ('Price' != $column)  
+					$objPHPExcel->getActiveSheet()->SetCellValue($letters[$i].$counter, $item->$column);
+				else  
+					$objPHPExcel->getActiveSheet()->SetCellValue($letters[$i].$counter, $item->getPriceConsole($userId)); 		
+				$i++;			
+			}	
+			$counter++;					
 		}
  
 		$objPHPExcel->getActiveSheet()->setTitle('ТАРЕКС прайс лист на ' . date('d-m-Y'));
@@ -130,20 +162,44 @@ class SendCommand extends CConsoleCommand
 		$excelOutput = ob_get_clean();
 		return $excelOutput;
 	}  
-	public function getPricelistCSV($userId=null) // sendFile
+	public function getPricelistCSV($userId=null,  $makes, $columns=null) // sendFile
 	{ 	
 	// writing csv into string ...   
+		// если заданы колонки
+		if ($columns)  // $columns - строковая переменная содержащая колонки для прайса
+			$columnsArr = array_unique(explode(',' , $columns));
+		else 
+			$columnsArr = array( 'article2', 'title', 'oem',  'model',  'Price',  'availability');
+		$arr=array();	
+		$translationArr = array(	'article2'=>'Артикул',	'availability'=>'Доступность',	'model'=>'Модель', 'title'=>'Название','model'=>'Модель',  'Price'=>'Цена',  'oem'=> 'OEM', 'manufacturer'=>'Производитель', 'MinPart'=>'Мин. партия');
+		foreach($columnsArr as $column) 
+			$arr[] = $translationArr[$column];   
+			//$arr[] = Assortment::model()->getAttributeLabel($column);   // не работает в cli так как не определён язык
+			
 		$output="\xEF\xBB\xBF"; // мы ставим BOM в начале содержимого файла 
-		$arr = array( Yii::t('general', 'Article'), Yii::t('general', 'Title'), 'OEM' , Yii::t('general', 'Make') , Yii::t('general', 'Price') ,   Yii::t('general', 'Availability'));  
+		//$arr = array( Yii::t('general', 'Article'), Yii::t('general', 'Title'), 'OEM' , Yii::t('general', 'Make') , Yii::t('general', 'Price') ,   Yii::t('general', 'Availability'));  
 	    $output .= implode( ';' ,  $arr) . "\xA"; // добавляем здесь конец строки
 		
 	// начало итераций по записям		
 		$criteria = new CDbCriteria(); 
 	//	$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
 		$criteria->condition =   'measure_unit<>"" AND price>0';	
+    // добавляем условие выбора конкретных марок если они заданы
+		if ($makes) 
+			$criteria->addInCondition('make', explode(',' , $makes));
+		
 		foreach(Assortment::model()->findAll($criteria) as $d)
 		{ 
-			$output .= implode( ';' , array( $d->article2, $d->title, $d->oem,  $d->make,  $d->getPriceConsole($userId),  $d->availability)) . "\xA"; // разделитель - точка с запятой и потом конец строки
+			$arr=array();
+			foreach($columnsArr as $column) 
+			{
+			// формируем массив для записи потом данных	
+				if ('Price' != $column) 
+					$arr[] =  $d->$column;
+				else  
+					$arr[] = $d->getPriceConsole($userId); 				
+			}
+			$output .= implode( ';' , $arr) . "\xA"; // разделитель - точка с запятой и потом конец строки			
 		}   
 		return $output;
 	}	 

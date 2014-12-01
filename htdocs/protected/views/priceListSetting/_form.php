@@ -1,20 +1,47 @@
 <?php
 /* @var $this PriceListSettingController */
 /* @var $model PriceListSetting */
-/* @var $form CActiveForm */ 
-//print_r(Yii::app()->locale->weekDayNames);
- ?>
-<div class="form">
+/* @var $form CActiveForm  */ 
+$msg = Yii::t('general', 'Wait several seconds till the server composes and sends you personalized price list'); 
+Yii::app()->clientScript->registerScript('download-checked-makes', "
+$('.column-button').click(function(){
+	$('.column-form').toggle();
+	return false;
+}); 
+$('.download-link').on('click', function(e){  
+	setTimeout(function(){ alert('{$msg}')},500);
+	var selected = $('input.carmake:checked').map(function(i,el){return el.value;}).get().join(',');  
+	// console.log(selected);
+ 	location.href = $(this).attr('href') + '?carmakes=' + selected; 
+	
+	return false; // return false from within a jQuery event handler is effectively the same as calling both e.preventDefault and e.stopPropagation on the passed jQuery.Event object.
+});", CClientScript::POS_END);
+ ?> 
+<div class='form'>
+		
 <table><tr>
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'price-list-setting-form', 
 	'enableAjaxValidation'=>false,
-)); ?>
+)); ?> 
+ 
+	<td rowspan='3' class='top'>
+		<h3><center>
+<?php 
+	echo 'Скачай прямо сейчас<br>';
+	echo CHtml::Image('/images/download_arrow_blue.png'), '<br><br>';
+	echo CHtml::Link(Yii::t('general','TarexPrice.xls') , array('user/pricelist') , array(  'class'=>'btn-win',  'style'=>'line-height:0.5em; padding:5px 5px;margin-top:20px;', 'onclick'=>"js:setTimeout(function(){ alert('{$msg}')},600);"));  
+	echo '<br><br>', CHtml::Link(Yii::t('general','TarexPrice.csv') , array('user/pricelistCSV') , array( 'class'=>'btn-win',   'style'=>'line-height:1.0em; padding:5px 5px;', 'onclick'=>"js:setTimeout(function(){ alert('{$msg}')},600);")); 
+?>
+</center></h3>
+	</td>
+	<td colspan='5'><h3><center><?php echo 'Настройка рассылки<br>';?></center></h3>
+	
 	<p class="note"><?php echo Yii::t('general','Fields with'); ?><span class="required"> * </span><?php echo Yii::t('general','are required') .'.'; ?></p>
 
 	<?php echo $form->errorSummary($model); ?>
- 
-	
+	</td>
+</tr><tr>
 	<td class='padding10 top'  width='420px'> 
 		<?php  
 		    $model->daysOfWeek = explode(',' , $model->daysOfWeek ); // мы вытаскиваем из строковой переменной дни недели разделённые через запятую 
@@ -35,7 +62,7 @@
 			)); */ ?>
 		<?php echo $form->error($model,'daysOfWeek'); ?>
 	</td>
-
+	
 	<td class='padding10'> 
 		<?php echo $form->labelEx($model,'format');
 				echo $form->radioButtonList($model,'format', $this->formats,
@@ -54,7 +81,7 @@
 	</td> 
 	<td class='padding10'>	<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red')); ?>
 	</td> 
-</tr><tr> 		
+</tr><tr>  
 	<td class='padding10'>
 		<?php echo $form->labelEx($model,'email'); ?> 
 		<?php echo $form->textField($model,'email',array('size'=>30,'maxlength'=>255)); ?>
@@ -106,10 +133,26 @@
 			echo $form->error($model,'userId');
 		} ?>
 	</td>
+	
+	
+</tr><tr>
+	<td colspan='5'><h4>
+        <?php echo CHtml::link(Yii::t('general','Setup price columns'),'#', array('class'=>'column-button')); ?>
+			</h4>
+		<?php echo $form->hiddenField($model, 'columns'); ?> 
+		<div class="column-form" style="display:none">
+			<h3><center><?php echo 'Выбрать колонки для прайса';?></center></h3>	
+			<?php $this->renderPartial('_columns',array(
+				'model'=>$model,
+			)); ?>
+		</div><!-- search-form -->
+	</td>
 </tr><tr>	
-	<td colspan='3' class='padding10'> <label> 
-	<?php
-	     echo  Yii::t('general', 'Car makes'),  '</label>'; 
+	<td colspan='5'><h3><center><?php echo 'Скачать по марке автомобиля';?></center></h3></td>
+</tr><tr> 
+	<td colspan='5' class='padding10'> 
+	   
+	<?php 
 			$criteria = new CDbCriteria;
 			$criteria->compare('depth', 2);	
 			$criteria->order = 'title ASC';			
@@ -120,30 +163,21 @@
 				
 			echo $form->checkBoxList( $model, 'carmakes', 
 					$makes, 
-					array('template'=>'<div class="car-item">{input}{label}</div>', 'separator'=>'', 'class'=>'checkBoxClass', 'checkAll'=>'<h5 style="line-height:0.2em">' . Yii::t("general", "CHECK ALL") . '</h5>') 
-				);	
-	    //echo  ; ?>
-	</td>
+					array('template'=>'<div class="car-item">{input}{label}</div>', 'separator'=>'', 'class'=>'checkBoxClass carmake' /*, 'checkAll'=>'<h5 style="line-height:0.2em; margin-top:-0px;">' . Yii::t("general", "CHECK ALL") . '</h5>'*/) 
+				); ?> 
+	 </td>
+</tr><tr>
+	 <td colspan='5' class='padding10'>
+		<div style="float:right;">
+	   <label class='simple'><?php echo Yii::t('general', 'Use also for regular mailing');?></label>&nbsp;
+	   <input type='checkbox' name='use-in-reg-mailing' checked='checked'>
+	   </div>
+	 </td>
+</tr><tr>
+	 <td colspan='5' class='padding10'>
+	 <?php		
+	     echo CHtml::Link(Yii::t('general','Скачать по маркам XLS') , array('user/pricelist') , array('class'=>'download-link btn-win', 'style'=>"float:right;")); ?>
+	 </td>
 </tr></table> 
-<?php $this->endWidget(); ?>
-
-</div><!-- form -->
-<style>
-#PriceListSetting_daysOfWeek input, #PriceListSetting_carmakes input {
-    float: left;
-    margin-right: 10px;
-	padding: 5px;
-} 
-.checkBoxClass {
-	float: left;
-} 
-#PriceListSetting_daysOfWeek label, #PriceListSetting_carmakes label
-{
-	float: left;
-	font-weight: bold;
-	font-size: 0.9em; 
-	line-height: .4em;
-}
-div.item { float: left; padding: 7px; margin: 2px;}
-div.car-item { float: left; padding: 5px;  width:150px; }
-</style>
+<?php $this->endWidget(); ?> 
+</div> <!-- form --> 

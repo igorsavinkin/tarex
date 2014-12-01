@@ -28,7 +28,7 @@ class UserController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'update' actions
-				'actions'=>array('update', 'print', 'pricelistSetting'), 
+				'actions'=>array('update', 'print' ), 
 				//'users'=>array('@'),
 				'expression'=>array($this, 'UpdateUser'),
 			),
@@ -44,11 +44,6 @@ class UserController extends Controller
 				'users'=>array('*'),
 			),
 		);
-	}
-	public $_data=0;
-	public function actionPricelistSetting($id=null)
-	{  
-		$this->render('pricelistSetting');  
 	}
 	public function actionPricelist($id=null)
 	{  
@@ -95,6 +90,8 @@ class UserController extends Controller
 		$criteria = new CDbCriteria();
 	//	$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
 		$criteria->condition =   'measure_unit<>"" AND price>0';
+		if ($_GET['carmakes']) 
+			$criteria->addInCondition('make', explode(',' , $_GET['carmakes']));
 		$counter=2;
 		foreach( Assortment::model()->findAll($criteria  ) as $item)
 		{
@@ -117,11 +114,11 @@ class UserController extends Controller
 		
 		// Save Excel 2007 file 
 		if ($wholesaler)   
-			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '(оптовый).xlsx'; 
+			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '(оптовый).xls'; 
 		elseif ($retail)   
-			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '(розница).xlsx'; 
+			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '(розница).xls'; 
 		else 
-			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '.xlsx'; 
+			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '.xls'; 
 	
 			$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
 			ob_end_clean(); 
@@ -132,20 +129,22 @@ class UserController extends Controller
 	}  
 	public function actionPricelistCSV($count=null) // sendFile
 	{  
+		$user = User::model()->findByPk(Yii::app()->user->id);
 		$wholesaler = (Yii::app()->user->role == User::ROLE_USER) ? 1 : 0;
 		// клиент розничный ? 
 		$retail = (Yii::app()->user->isGuest OR Yii::app()->user->role == User::ROLE_USER_RETAIL) ? 1 : 0;
-		if ($wholesaler)   
+	/*	if ($wholesaler)   
 			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '(оптовый).csv'; 
 		elseif ($retail)   
 			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '(розница).csv'; 
-		else 
+		else */
 			$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '.csv'; 
 		
 		$criteria = new CDbCriteria();
 	//	$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
-		$criteria->condition =   'measure_unit<>"" AND price>0';		
-		//$limit =  $count ? $count : 10;  
+		$criteria->condition =   'measure_unit<>"" AND price>0';	
+		if ($_GET['carmakes']) 
+			$criteria->addInCondition('make', explode(',' , $_GET['carmakes']));		
 		$filepath = Yii::app()->basePath . '/../files/'. $filename;
 		$out      = fopen($filepath, 'w'); 
 	// writing csv ...

@@ -12,6 +12,16 @@ return array(
 	'Getting price list by email'=>'Получение прайс-листа по почте',
 	'CHECK ALL'=>'ОТМЕТИТЬ ВСЕ', 
 	'Last Sent Date'=>'Дата последней посылки',
+	'Use also for regular mailing' =>'Использовать также для регулярной рассылки',
+	'does not match time format!'=>'не соответствует формату времени!',
+	'Min quantity'=>'Мин. количество',
+	'Setup price columns'=>'Настройка колонок прайса',
+	'article2'=>'Артикул',
+	'availability'=>'Доступность',
+	'model'=>'Модель',
+	'title'=>'Название',
+	'Price columns'=>'Колонки в прайсе',
+	
 	
 	'Submenu hide'=>'Скрыть подменю',
 	'Submenu show'=>'Показать подменю',
