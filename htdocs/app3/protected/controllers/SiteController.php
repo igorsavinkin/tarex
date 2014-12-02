@@ -28,7 +28,7 @@ class SiteController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('backend','backendpavel','backendpavel2'),
+				'actions'=>array('backend','backendpavel','backendpavel2', 'sitemapGen'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -43,7 +43,79 @@ class SiteController extends Controller
 			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
 		);
-	}	 
+	}	
+	
+	public function actionSitemapGen($page=null, $id=null)
+	{		 
+	/*  марка, марка + модель (cогласно фильтрам-чекбоксам) - не самое главное, 
+	    марка + подгруппа (кузов и т. п.) , марка + модель + подгруппа
+        пустые убирать из sitemap 
+	*/		
+		echo 'Writing sitemap.xml<br>';
+		$count=0;
+		$file = fopen(Yii::app()->basePath . '/../sitemap.xml', 'w'); 
+		fwrite($file, '<?xml version="1.0" encoding="UTF-8"?>
+		<urlset
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">');
+//Особые страницы выводим  
+		foreach(array('company', 'contacts', 'products', 'spareparts') as $page) :  		
+			fwrite($file, "<url>
+				<loc>" . CHtml::encode($this->createAbsoluteUrl('/site/index', array('page'=>$page  ))) . "</loc>
+				<changefreq>monthly</changefreq>
+				<priority>0.5</priority>
+			</url>");	
+			$count++;	
+		endforeach;
+		
+//Марка - выводим страницы с марками машин 
+		$criteria = new CDbCriteria;
+		$criteria->compare('depth', 2); 		
+		$criteria->select = 'id, title';			
+		$makes = Assortment::model()->findAll($criteria);
+		foreach($makes as $make) :  
+			//echo 'make = ', $make->title, '; id = ', $make->id  , '<br>';
+			$conditionMake =   'make = "' .  $make->title . '" ';
+		    if (Assortment::model()->count($conditionMake . ' AND measure_unit <>"" ')) 
+			{
+				$item= "<url>
+					<loc>" . CHtml::encode($this->createAbsoluteUrl('/assortment/index', array('id'=>$make->id))) . "</loc>
+					<changefreq>monthly</changefreq>
+					<priority>0.5</priority>
+				</url>";					
+				fwrite($file, $item);
+				$count++;	
+			}
+	// Марка + подгруппа (кузов, оптика и т. п.) 		
+			
+			foreach(Category::model()->findAll() as $category)
+			{		
+	// Проверим, если она пустая, тогда не включаем 
+			   $condition = $conditionMake . ' AND groupCategory = ' . $category->id;
+			  // echo 'condition: ',  $condition, '<br>';
+			   $numberOfItems = Assortment::model()->count($condition);
+			   if ($numberOfItems) 
+			   {     
+					//echo 'the items are ', $numberOfItems, '<br>';	 
+					fwrite($file, "<url><loc>" . CHtml::encode($this->createAbsoluteUrl('/assortment') . '/' . $category->id. '/' . $make->id) . "</loc>
+					<changefreq>monthly</changefreq>
+					<priority>0.5</priority>
+					</url>");  
+					$count++;	
+				}
+				
+			}
+		endforeach;   
+		
+		fwrite($file,'</urlset>');
+		fclose($file);	
+		echo 'file is written: ', CHtml::Link('sitemap.xml',  '/sitemap.xml',  array('target'=>'_blank'));
+		echo '<br>total: ', $count , ' urls';
+	}
+	
+	
 	public function actionIndex($page=null, $id=null)
 	{		 
 		$this->render($page ? $page : 'index');  
@@ -123,7 +195,7 @@ class SiteController extends Controller
 				$model->password = $user->password;
 				$model->rememberMe = 1;
 				if($model->validate() && $model->login())
-				{							
+				{	 	
 					if (!empty($_GET['url']) ) 
 						$this->redirect($_GET['url']);
 					if (isset($_GET['redirect'])) 
@@ -184,7 +256,11 @@ class SiteController extends Controller
 			$model->attributes=$_POST['LoginForm'];  
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-			{ 
+			{   
+				// если это оптовый клиент то мы сразу переносим его в новый заказ
+				if (User::ROLE_USER == Yii::app()->user->role) 
+					$this->redirect(array('order/create'));
+					
 				/*if(isset($_POST['loginMobile']))
 				{
 					echo 'return url: ', Yii::app()->user->returnUrl;

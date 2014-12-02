@@ -22,7 +22,8 @@ return array(
 	'sourceLanguage'=> 'en_US',
 	// preloading 'log' component
 	'preload'=>array('log'),
-	
+	'onBeginRequest'=>create_function('$event', 'return ob_start("ob_gzhandler");'),
+	'onEndRequest'=>create_function('$event', 'return ob_end_flush();'),
 	// autoloading model and component classes
 	'import'=>array(
 		'select2.*',
@@ -52,6 +53,9 @@ return array(
 	
 	// application components
 	'components'=>array(
+		'formatter' => [
+		  'class' => 'yii\i18n\Formatter'
+		],
 		'shoppingCart' =>
 			array(
 				'class' => 'ext.shoppingCart.EShoppingCart', /*.yiiext.components.*/
@@ -81,15 +85,21 @@ return array(
 		),
 		// uncomment the following to enable URLs in path-format
 		
-		'urlManager'=>array(
+		'urlManager'=>array( 
+			'showScriptName'=>false,
+	//		'caseSensitive'=>false,
+   //		'enablePrettyUrl' => true, for yii2 only
 			'urlFormat'=>'path',
-			'rules'=>array(
-				'<_c:(post|comment)>/<id:\d+>/<_a:(create|update|delete)>' => '<_c>/<_a>',
-				'<_c:(post|comment)>/<id:\d+>' => '<_c>/read',
-				'<_c:(post|comment)>s' => '<_c>/list',
-			),
-		),
-		
+			'rules'=>array( 	
+			 	 'assortment/<groupCategory:\d+>'=> 'assortment/index',			
+				 'site/page/<page:\w+>'=> 'site/index',			
+	        	 'assortment/<groupCategory:\d+>/<id:\d+>'=> 'assortment/index', 
+				 
+			/*	'<controller:\w+>/<id:\d+>'=>'<controller>/view',*/
+				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',  
+			),  
+		), 
 		/*'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 		),*/

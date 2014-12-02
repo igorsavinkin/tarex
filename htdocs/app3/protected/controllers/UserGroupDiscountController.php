@@ -14,11 +14,11 @@ class UserGroupDiscountController extends Controller
 	{
 		return array(
 			array('allow',  
-				'actions'=>array('bulkSave'),
+				'actions'=>array('bulkSave', 'createAllGroups'),
 				'users'=>array('*'),
 			), 
 			array('allow', 
-				'actions'=>array('index','view', 'create' , 'createAllGroups'),
+				'actions'=>array('index','view', 'create' ),
 				'roles'=>array(1,2,3,4,5),
 			),
 			array('allow', 
@@ -33,51 +33,46 @@ class UserGroupDiscountController extends Controller
 				'users'=>array('*'),
 			),
 		);
-	}
-
- 
+	} 
 	public function actionBulkSave()
 	{
 		//print_r($_POST); 
-	}
-	public function actionView($id)
-	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
-	}
+	} 
 	public function actionCreateAllGroups($userId=null)
 	{
 		$criteria=new CDbCriteria;
-		$criteria->select ='id';
+		$criteria->select = 'id';
 		// если задан userId тогда мы создаём группы только для этого пользователя
-		$users = $userId ? array('id'=>$userId ) ? User::model()->findAll($criteria);
-		$discountGroups= DiscountGroup::model()->findAll($criteria);
-		//
+		//echo $_GET['userId']; 
+	//	echo '<br>$userId = ', $userId;	//	exit();
+		$users = array();
+		$users = $userId ? array( User::model()->findByPk($userId) ) : User::model()->findAll($criteria);
+		$discountGroups = DiscountGroup::model()->findAll($criteria);
+	//	echo '<br>$users = ', print_r($users);exit();
+		
 		foreach($users as $user)
-		{
+		{			
 			foreach($discountGroups as $dg)
 			{
-				$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$user->id,'discountGroupId'=>$dg->id));
+				$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$user['id'],'discountGroupId'=>$dg->id));
 				if(!isset($ugd)) 
 				{
 					$ugd=new UserGroupDiscount;
-					$ugd->userId=$user->id;
+					$ugd->userId= $user['id'];
 					$ugd->discountGroupId=$dg->id;
 					$ugd->save(false);
-				}
-			 
+				}		
+				//echo '<br><br>ugd = '; print_r($ugd);
 			}
+			//exit();
 		}
-		
-		$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$contractorId,'discountGroupId'=>$discGroupId /*$discountGroup->name*/));
-			if(isset($ugd)) 
-				 return $ugd->value . '% ('. $discGroupName. ')';  
-			else 		
-		
-		$this->render('view',array(
+	// если это запрос из карты клиента по созданию групп, тогда мы возвращаемся туда	
+		if ($_GET['return']) 
+			$this->redirect( Yii::app()->request->urlReferrer . '#tab3'); 
+			
+		/*$this->render('view',array(
 			'model'=>$this->loadModel($id),
-		));
+		));*/
 	}
  
 	public function actionCreate()

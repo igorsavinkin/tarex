@@ -257,7 +257,7 @@ border-color: #09f; text-decoration: none;
     background: none;
     border: none;
     font-family: "tahoma";
-    font-size: 25px;
+    font-size: 20px;
     text-transform: uppercase;
     color: #fff;
 }
@@ -817,7 +817,7 @@ div.tar_copy
 div.tar_icons_block
 {
     margin: auto;
-    max-width: 860px;
+    max-width: 900px;
 }
 div.tar_icons_left
 {
@@ -865,7 +865,7 @@ div.tar_icons_item
 }
 div.tar_icons_item:first-child
 {
-    margin: 0 25px 0 10px;
+    margin: 0 25px 15px 10px;
 }
 div.tar_icons_item:last-child
 {
@@ -1245,3 +1245,12 @@ margin-left: 40px;
 {
  	background: url(../images/grey-arrows.png) -16px 0;
 }
+
+.company {
+width: 630px;
+margin-left: 280px;
+}
+
+.html-map { 
+width:630px;
+margin-left: 280px;}

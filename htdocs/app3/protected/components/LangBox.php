@@ -4,17 +4,16 @@ class LangBox extends CWidget
     public function run()
     {
         $currentLang = Yii::app()->language; 
-		$login = (Yii::app()->user->isGuest) ? '' : '_login'; 
-		//echo '$login = ', $login;
+		$login = (Yii::app()->user->isGuest) ? '' : '_login'; //echo '$login = ', $login;		
 		?>
 		<div class="tar_lang_all<?php echo $login; ?>">
 			<div class="tar_lang">
 				<div class="tar_rus_eng">
 					<a href="#">
-						<img src="images/tar_rus.jpg">
+						<img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_rus.jpg" alt="" />
 					</a>
 					<a href="#">
-						<img src="images/tar_eng.jpg">
+						<img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_eng.jpg" alt="" />
 					</a>
 				</div><!-- flags -->
 				 <?php  echo CHtml::form(); ?>
@@ -25,8 +24,7 @@ class LangBox extends CWidget
 				</div><!-- tar_rus_eng -->
 			</div>
 		</div><!-- tar_lang_all -->
-	<?	
-	
+	<?		
 	}
 }
 ?>

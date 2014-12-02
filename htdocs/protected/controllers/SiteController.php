@@ -257,6 +257,9 @@ class SiteController extends Controller
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
 			{ 
+				// если это оптовый клиент то мы сразу переносим его в новый заказ
+				if (User::ROLE_USER == Yii::app()->user->role) 
+					$this->redirect(array('order/create'));
 				/*if(isset($_POST['loginMobile']))
 				{
 					echo 'return url: ', Yii::app()->user->returnUrl;

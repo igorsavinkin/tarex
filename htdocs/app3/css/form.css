@@ -61,6 +61,12 @@ div.form label
 	color: #666;
 	padding-top: 5px;        
 }
+div.form label.wide
+{
+	font-weight: bold;
+	font-size: 0.9em;  
+	padding-top: 5px;        
+}
 
 div.form .row
 {
@@ -338,5 +344,69 @@ div.hidden {  display: none !important; }
 }
 input#findbyoem-value
 {
-	width: 350px;
+	width: 750px;
 }
+.paddingSpecial1
+{
+	padding: 0px 15px 20px;
+	margin-top:-25px;
+}
+/* For the PriceListSetting update/create form */
+#PriceListSetting_daysOfWeek input, #PriceListSetting_carmakes input {
+    float: left;
+    margin-right: 10px;
+	padding: 5px;
+}  
+#PriceListSetting_daysOfWeek label, #PriceListSetting_carmakes label, label.simple
+{
+	float: left;
+	font-weight: bold;
+	font-size: 0.9em; 
+	line-height: .4em;
+}
+div.item 
+	{ float: left; padding: 7px; margin: 2px;}
+div.car-item 
+	{ float: left; padding: 5px;  width:150px; }
+/*#PriceListSetting_carmakes div:first-of-type 
+	{ margin-top: -25px; float:left; }*/	
+	
+/* For the PriceListSetting _columns */
+#sortable1, #sortable2 {
+    
+    width: 162px;
+    min-height: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px;
+    float: left;
+    margin-right: 10px;
+  }
+#sortable1 li, #sortable2 li {
+	margin: 5px 5px;
+	border: 1px solid grey;
+	padding: 5px;
+	font-size: 1.2em;
+	font-weight: bold; 
+	width: 140px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+#sortable1 li:hover, #sortable2 li:hover
+{
+	background-color: #529bda;
+}
+#sortable2
+{
+	border: 1px solid black;
+	height: 380px;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	background-color: #ccc;
+}
+#sortable2 li 
+{
+	background-color: #428bca;
+}	

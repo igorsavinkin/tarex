@@ -22,8 +22,8 @@ if (!Yii::app()->user->isGuest) echo '<div class="tar_adv tar_adv_second">';
 					echo "<li> <a href='" . Yii::app()->createUrl('site/index' , array( 'id'=>$assort->id )) . "'>" . Yii::t('general', $assort->title) . "</a></li>";	 
 				}  ?>
 				<span class="tar_cat_line"></span><?php	
-			$controller = isset($_GET['id']) ? 'site' : 'assortment';
-			echo "<li><a href='" . Yii::app()->createUrl($controller . '/index') . "'><font size='+1' face='Helvetica' >" . Yii::t('general', 'ALL MAKES') . "</font></a></li>";  ?> 
+			$controller = '/assortment/index';  // isset($_GET['id']) ? '/' : 'assortment/index';
+			echo "<li><a href='" . Yii::app()->createUrl($controller) . "'><font size='+1' face='Helvetica' >" . Yii::t('general', 'ALL MAKES') . "</font></a></li>";  ?> 
 			</ul> 
 			<div class="pad"></div>
 		</div>
@@ -39,6 +39,7 @@ if (!Yii::app()->user->isGuest) echo '<div class="tar_adv tar_adv_second">';
 		<div class="tar_cat_bot_title">
 			 <?php if (isset($_GET['id'])) 
 						{ 	$this->widget('zii.widgets.CBreadcrumbs', array(
+								'homeLink'=>false,
 								'links'=>array(Yii::t( 'general', 'All makes') => array('site/index'), 
 									Assortment::model()->findByPk($_GET['id'])->title)
 							));	
@@ -80,7 +81,7 @@ if (!Yii::app()->user->isGuest) echo '<div class="tar_adv tar_adv_second">';
 				{		  											
 					foreach ($makes as $key => $make) 
 					{  
-						echo '<li>' ,CHtml::Link( $make, array('assortment/index', 'id'=>$key, 'Subsystem'=>'Warehouse automation', 'Reference'=>'Assortment')), '</li>'; 
+						echo '<li>' ,CHtml::Link( $make, array('/assortment/index', 'id'=>$key /*, 'Subsystem'=>'Warehouse automation', 'Reference'=>'Assortment'*/) ), '</li>'; 
 						if (($i++ % 6 ) == 0) echo '</ul><ul>';
 					}
 				} 
@@ -96,7 +97,7 @@ if (!Yii::app()->user->isGuest) echo '<div class="tar_adv tar_adv_second">';
 					$i=1;													
 					foreach ($makesgr as $key => $make) 
 					{ 														
-						echo '<li>' ,CHtml::Link( $make, array('assortment/index', 'id'=>$key, 'Subsystem'=>'Warehouse automation', 'Reference'=>'Assortment')), '</li>'; 
+						echo '<li>' ,CHtml::Link( $make, array('assortment/index', 'id'=>$key /*, 'Subsystem'=>'Warehouse automation', 'Reference'=>'Assortment'*/)), '</li>'; 
 						if (($i++ % 3 ) == 0) echo '</ul><ul>';
 					}
 				}  	 				

@@ -37,17 +37,6 @@ class OrderController extends EventsController
 	public function actiontest1()
 	{
 		echo 'test1';
-		/*
-		$model=new Order('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Order']))
-			$model->attributes=$_GET['Order'];
-
-		$this->render('test1',array(
-			'model'=>$model,
-		));
-		*/
-		
 	}
 	
 	public function actionAdmin()

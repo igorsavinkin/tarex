@@ -1,8 +1,4 @@
-﻿<?
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/seotools/seotools.class.php');
-$ST = new Seotools; 
-
-?>
+﻿<?require_once ($_SERVER['DOCUMENT_ROOT'] .'/redirect.php');?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,18 +6,8 @@ $ST = new Seotools;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <title>
-	<?
-// Сниппет для мета тегов
-$meta_title 	= $ST->get('title');
-$meta_keywords 	= $ST->get('keywords');
-$meta_desc	 	= $ST->get('description');
-if ($meta_title) {echo $meta_title;}
-else{echo $this->pageTitle;} ?>
+      <?php echo $this->pageTitle; ?>
     </title> 
-	<?
-if ($meta_keywords) echo '<meta name="keywords" content="'. $meta_keywords .'" />';
-if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';
-?>
   <link href="<?php echo Yii::app()->baseUrl; ?>/css/in.css" rel="stylesheet" type="text/css">
     <link href="<?php echo Yii::app()->baseUrl; ?>/css/form.css" rel="stylesheet" type="text/css">
     <link href="<?php echo Yii::app()->baseUrl; ?>/css/reset.css" rel="stylesheet" type="text/css">
@@ -53,6 +39,7 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';
 </head>
 	
 <body>  
+
 <div class="tar_wrapper">
     <div class="in_wrapper">
         <div class="tar_header">
@@ -62,7 +49,7 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';
                         <div class="col-md-12">
                             <div class="tar_left_top_head">
                                 <div class="tar_top_logo">
-                                    <a href="<?php echo Yii::app()->createUrl('/site/index'); ?>">
+                                    <a href="/">
                                         <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_top_logo.png"  alt=""/>
                                     </a>
                                 </div>
@@ -206,7 +193,9 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';
 											{
 												if (!Assortment::model()->count('groupCategory = '. $category->id)) continue;	
 											?>															
-												 <a class="tar_cat<?php if(($i++ % 2) == 1) echo ' tar_cat_first'; ?>" href="<?php echo $this->createUrl('assortment/index', array('Assortment[groupCategory]'=>$category->id)); ?>">
+												 <a class="tar_cat<?php if(($i++ % 2) == 1) echo ' tar_cat_first'; ?>" href="<?php  
+												  echo $this->createUrl('assortment/index', array('groupCategory'=>$category->id));  
+												 //echo $this->createUrl('assortment/index', array('Assortment[groupCategory]'=>$category->id)); ?>">
 												 <img src="<?php echo Yii::app()->baseUrl .'/images/subgroups/' .  $category->image; ?>" alt="" />
 													<span>
 														<?php echo str_replace(' ', '<br>', Yii::t('general', $category->name)); ?>
@@ -256,7 +245,7 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';
 									 echo $content; 
 								?>
 							
-								<a href='#' id='btn-up' style=''><img src='images/btn-up.png' width='35px' alt="" /></a>
+								<a href='#' id='btn-up' ><img src='<?php echo Yii::app()->baseUrl; ?>/../images/btn-up.png' width='35px' alt="" /></a>
 								<!--/div><!--tar_cat_top_regular-->
 								<div class="pad"></div>
 							</div><!-- tar_catalog_goods -->
@@ -529,7 +518,7 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';
 <footer>
     <div class="container">
         <div class="tar_left_cont_foot">
-            <a class="tar_bot_logo" href="<?php echo Yii::app()->createUrl('/site/index'); ?>">
+            <a class="tar_bot_logo" href="/">
                 <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_bot_logo.png" alt="">
             </a>
             <div class="tar_counters_vis">
@@ -605,17 +594,10 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                                 <?php echo Yii::t('general', 'Spare parts'); ?> 
                             </a>
                         </li>
-                        <li>
-                            <a href="<?php echo Yii::app()->createUrl('/site/index', array('page'=>'sitemap')); ?>">
-                                <?php echo Yii::t('general', 'Карта сайта'); ?>  
-                            </a>
-                        </li>
                     </ul>
                 </div>
-		<div class="soc_text"><span>Иконки соц.сетей временно отключены</span>
-		<br/> 
-		<span style="margin-left: 630px;">Иконки соц.сетей</span></div>
-                <!--div class="tar_foot_social">
+		<!-- Иконки соц.сетей временно отключены -----------------
+                <div class="tar_foot_social">
                     <div class="soc_icon">
                         <a href="#">
                             <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_twitter.jpg" alt="" />
@@ -630,7 +612,8 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                     <div class="soc_text">
                         Мы в соц. сетях
                     </div>
-                </div-->
+                </div>
+		----------------------             Иконки соц.сетей-->
                 <div class="pad"></div>
             </div>
             <div class="tar_bot_cont_foot">

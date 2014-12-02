@@ -1,9 +1,4 @@
-<?
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/seotools/seotools.class.php');
-$ST = new Seotools; 
- 
-
-?>
+<?require_once ($_SERVER['DOCUMENT_ROOT'] .'/redirect.php');?>
 <!DOCTYPE html>
 <html>
 <head> 
@@ -11,18 +6,8 @@ $ST = new Seotools;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" type="image/ico" href="/app2/img/favicon.ico">
-	<?
-// Сниппет для мета тегов
-$meta_title 	= $ST->get('title');
-$meta_keywords 	= $ST->get('keywords');
-$meta_desc	 	= $ST->get('description');
-if ($meta_title) {echo $meta_title;}
-else{echo $this->getPageTitle();;} ?>
-    </title> 
-	<?
-if ($meta_keywords) echo '<meta name="keywords" content="'. $meta_keywords .'" />';
-if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';
-?>
+
+    <title><?php echo $this->getPageTitle(); ?></title>
 	<link href="<?php echo Yii::app()->baseUrl; ?>/css/in.css" rel="stylesheet" type="text/css">
 	<link href="<?php echo Yii::app()->baseUrl; ?>/css/form.css" rel="stylesheet" type="text/css">
     <link href="<?php echo Yii::app()->baseUrl; ?>/css/reset.css" rel="stylesheet" type="text/css">
@@ -62,38 +47,6 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';
 			echo "//console.log('Language '+Language);";
 			echo "</script>";
 		?>
-<script>
- var scrollFloat = function() {
-    'use strict';
-
-    var app = {};
-
-    app.init = function init(node) {
-        if (!node || node.nodeType !== 1) {
-            throw new Error(node + ' is not DOM element');
-        }
-        handleWindowScroll(node);
-    };
-
-    function handleWindowScroll(floatElement) {
-        window.onscroll = function() {
-            if (window.scrollY > floatElement.offsetTop) {
-                if (floatElement.style.position !== 'fixed') {
-                    floatElement.style.position = 'fixed';
-                    floatElement.style.top = '0';
-                }
-            } else {
-                if (floatElement.style.position === 'fixed') {
-                    floatElement.style.position = '';
-                    floatElement.style.top = '';
-                }
-            }
-        };
-    }
-
-    return app;
-}();
-</script>
 </head>
 <body> 
 <div class="tar_wrapper">
@@ -105,7 +58,7 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';
                         <div class="col-md-12">
                             <div class="tar_left_top_head">
                                 <div class="tar_top_logo">
-                                    <a href="<?php echo Yii::app()->createUrl('/site/index'); ?>">
+                                    <a href="/">
                                         <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_top_logo.png" alt="" />
                                     </a>
                                 </div>
@@ -188,12 +141,12 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';
                             <!--div class="tar_red_buttons">
                                 <div class="tar_vip">
                                     <a id='opendialog' href="#">
-                                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_vip.png" alt=''/>
+                                        <img src="<?php //echo Yii::app()->baseUrl; ?>/images/tar_vip.png" alt=''/>
                                     </a>
                                 </div>
                                 <div class="tar_catalog">
                                     <a href="#">
-                                        <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_catalog.png" alt="" />
+                                        <img src="<?php //echo Yii::app()->baseUrl; ?>/images/tar_catalog.png" alt="" />
                                     </a>
                                 </div>
                                 <div class="pad"></div>
@@ -205,10 +158,6 @@ if ($meta_desc) 	echo '<meta name="description" content="'. $meta_desc .'" />';
                 </div>
             </div>
         </div>
-<script>
-var el = document.getElementById('tar_bottom_head');
-scrollFloat.init(el);
-</script>
         <div class="tar_body">
             <div class="tar_icons">
                 <div class="container">
@@ -222,10 +171,11 @@ scrollFloat.init(el);
                                     <div class="tar_icons_border">
 							 <?php 
 								$Subsystem= Yii::app()->session['Subsystem'];
-								$Reference =  isset($_GET['Reference']) ? $_GET['Reference'] : Yii::app()->session['Reference'];
+							//	echo 'Subsystem session=', Yii::app()->session['Subsystem'], '<br>';
+							 	$Reference =  isset($_GET['Reference']) ? $_GET['Reference'] : Yii::app()->session['Reference'];
 								$MainMenu=MainMenu::model()->findAll(
 									array(
-										'select'=>'Subsystem,Img',
+										'select'=>'Subsystem, Img',
 										'order'=> 'DisplayOrder',
 										'distinct'=>true,
 										'condition'=>'RoleId LIKE :RoleId',
@@ -238,17 +188,18 @@ scrollFloat.init(el);
 								 	if($r->Img != '')  
 									{		 
 										$file = Yii::app()->user->checkAccess(User::ROLE_MANAGER) ? 'general' : 'user';
-										$_GET['Subsystem'] = $r->Subsystem; // меняем Subsystem
-										echo "<div class='tar_icons_item {$checked}'>",  CHtml::Link("<img src='/app3/images/subsystem/".$r->Img."' alt='".Yii::t('general', $r->Subsystem)."' title='".Yii::t($file, $r->Subsystem)."'>", array( $this->id. '/' . $this->getAction()->id) + $_GET) ,  </div>';  
-
+										$_GET['Subsystem'] = $r->Subsystem; // меняем Subsystem 
+										echo "<div class='tar_icons_item {$checked}'>",  CHtml::Link("<img src='/images/subsystem/".$r->Img."' alt='".Yii::t('general', $r->Subsystem)."' title='".Yii::t($file, $r->Subsystem)."'>", array( $this->id. '/' . $this->getAction()->id) + $_GET  )  ," <span style='font-size:0.7em'>" , Yii::t( $file, $r->Subsystem)   ,   '</span></div>';
 									}
 								}  ?> 
                                     </div>
                                 </div><!-- tar_icons_right -->
-								<div class="tar_submenu_hide">
-									<?php $hide_submenu=Yii::t('general', 'Submenu hide'); $show_submenu=Yii::t('general', 'Submenu show'); ?>	
-									<a href='#' class='submenu-button'><span><?php echo $hide_submenu; ?></span> <img src='../images/img_trans.gif' class='arrows arrow-up' /></a> 
-								</div>
+								<?php if(!empty($Subsystem)) : ?>
+									<div class="tar_submenu_hide">
+										<?php $hide_submenu=Yii::t('general', 'Submenu hide'); $show_submenu=Yii::t('general', 'Submenu show'); ?>	
+										<a href='#' class='submenu-button'><span><?php echo $hide_submenu; ?></span> <img src='../images/img_trans.gif' class='arrows arrow-up' /></a> 
+									</div>
+								<? endif; ?>
                                 <div class="pad"></div>
                             </div>
                         </div>
@@ -342,7 +293,10 @@ scrollFloat.init(el);
 									{
 										if (!Assortment::model()->count('groupCategory = '. $category->id)) continue;	
 									?>															
-										 <a class="tar_cat<?php if(($i++ % 2) == 1) echo ' tar_cat_first'; ?>" href="<?php echo $this->createUrl('assortment/index', array('Assortment[groupCategory]'=>$category->id)); ?>"> 
+										 <a class="tar_cat<?php if(($i++ % 2) == 1) echo ' tar_cat_first'; ?>" href="<?php 
+										 //  echo $this->createUrl('assortment/index') . '/Assortment[groupCategory]/' . $category->id; 
+										   echo $this->createUrl('assortment/index', array('groupCategory'=>$category->id));  
+										//   echo $this->createUrl('assortment/index', array('Assortment[groupCategory]'=>$category->id)); ?>"> 
 										 <img src="<?php echo Yii::app()->baseUrl .'/images/subgroups/' .  $category->image; ?>" alt="" />
 											<span>
 												<?php echo str_replace(' ', '<br>', Yii::t('general', $category->name)); ?>
@@ -409,10 +363,10 @@ scrollFloat.init(el);
                                 <div class="pad"></div>
                             </div>
                             <div class="tar_component">
-                                <?php // содержимое из cоответствующего view 
+                                <?php // содержимое из cоответствующего view style='float:right;z-index:1000;position:fixed; bottom: 20px; right:20px'
 																 echo $content; 
 															?> 
-								<a class='no-print' href='#' id='up' style='float:right;z-index:1000;position:fixed; bottom: 20px; right:20px'><img src='images/btn-up.png' width='35px' alt="" /></a>							
+								<a class='no-print' href='#' id='btn-up' ><img src='<?php echo Yii::app()->baseUrl; ?>/../images/btn-up.png' width='35px' alt="" /></a>							
 								<!--div class="tar_pathway">                                  
 									<ul>
                                         <li>
@@ -570,7 +524,7 @@ scrollFloat.init(el);
 <footer class='footer'>
     <div class="container">
         <div class="tar_left_cont_foot">
-            <a class="tar_bot_logo" href="<?php echo Yii::app()->createUrl('/site/index'); ?>">
+            <a class="tar_bot_logo" href="/">
                 <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_bot_logo.png" alt="" />
             </a>
             <div class="tar_counters_vis">
@@ -609,11 +563,6 @@ scrollFloat.init(el);
                         <li>
                             <a href="<?php echo Yii::app()->createUrl('/site/index', array('page'=>'spareparts')); ?>">
                                 <?php echo Yii::t('general', 'Spare parts'); ?> 
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo Yii::app()->createUrl('/site/index', array('page'=>'sitemap')); ?>">
-                                <?php echo Yii::t('general', 'Карта сайта'); ?>  
                             </a>
                         </li>
                     </ul>

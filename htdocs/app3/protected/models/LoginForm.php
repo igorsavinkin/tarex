@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LoginForm class.
  * LoginForm is the data structure for keeping
@@ -43,7 +42,6 @@ class LoginForm extends CFormModel
 			'email' => Yii::t('general', "Email"),
 		);
 	}
-
 	/**
 	 * Authenticates the password.
 	 * This is the 'authenticate' validator as declared in rules().
@@ -82,6 +80,7 @@ class LoginForm extends CFormModel
 		{
 			$duration=$this->rememberMe ? 3600*24*30 : 0; // 30 days
 			Yii::app()->user->login($this->_identity,$duration);
+			//Yii::app()->redirect(array('assortmetn/index'));
 			return true;
 		}
 		else

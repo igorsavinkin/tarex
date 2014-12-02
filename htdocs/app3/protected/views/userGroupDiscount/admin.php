@@ -63,13 +63,13 @@ $('.search-form form').submit(function(){
 		),
 		'value',
 		
-		array(
+	array(
 			'class' => 'CCheckBoxColumn',
 			'id' => 'UserId',	
 		),
-		array(
+/*			array(
 			'class'=>'CButtonColumn',
-		),
+		),*/
 	),
 )); 
 // добавим тег закрытия формы

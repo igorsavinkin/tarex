@@ -1,5 +1,32 @@
 <?php
 return array( 
+	/*  Price List Settings */
+	'Price List'=> 'Прайс', 
+	'Price List is in Attachment'=>'Прайс лист прикреплён к письму',
+	'Price List Settings'=> 'Настройка посылки прайса', 
+	'Manage Price List Settings'=>'Управлять настройками посылки прайса', 
+	'Create Price List Settings'=>'Создать настройки посылки прайса', 
+	'Edit Price List Setting'=>'Редактировать настройку посылки прайса', 
+	'File Format'=>'Формат файла',
+	'Days Of Week'=>'Дни недели',
+	'Getting price list by email'=>'Получение прайс-листа по почте',
+	'CHECK ALL'=>'ОТМЕТИТЬ ВСЕ', 
+	'Last Sent Date'=>'Дата последней посылки',
+	'Use also for regular mailing' =>'Использовать также для регулярной рассылки',
+	'does not match time format!'=>'не соответствует формату времени!',
+	'Min quantity'=>'Мин. количество',
+	'MinPart'=>'Мин. партия',
+	'manufacturer'=>'Производитель',
+	'Setup price columns'=>'Настройка колонок прайса',
+	'Set up Price sending'=>'Настройка посылки прайса',
+	'article2'=>'Артикул',
+	'availability'=>'Доступность',
+	'model'=>'Модель',
+	'title'=>'Название',
+	
+	'Price columns'=>'Колонки в прайсе',
+	
+	
 	'Submenu hide'=>'Скрыть подменю',
 	'Submenu show'=>'Показать подменю',
 	'Carmakes hide'=>'Скрыть марки машин',
@@ -19,6 +46,8 @@ return array(
 	'DiscountGroup'=>'Группа скидок',
 	'Discount Group'=>'Группа скидок',
 	'Discount Groups'=>'Группы скидок',
+	'Create Discount groups'=>'Создать группы скидок',
+	"The discounts are renewed"=>'Скидки обновлены',
 	'Articles'=>'Артикулы', 
 	'Max wholesale discount'=> 'Максимальная оптовая скидка',
 	'Min Price'=>'Минимально допустимая цена',
@@ -109,7 +138,7 @@ return array(
 	'Special Offer'=>'Специальное предложение',
 	'Special Offers'=>'Специальные предложения',
 	'Special Offers to client'=>'Специальные предложения клиенту',
-	'Special Offer items'=>'Специальные предложения номенклатуры',
+	'Special Offer items'=>'Специальные предложения',
 	'Manage Special Offers'=>'Управлять особыми предложениями',
 	'add to special offer'=>'добавить в спец. предложения',
 	'Load an assortment item'=>'Загрузить позицию номенклатуры',
@@ -119,7 +148,7 @@ return array(
 	 'Set up file'=>'Установите файл',
 	 'View special offer assortment items'=>'Посмотреть специальные предложения номенклатуры', 
 	'Bulk remome Special Offer mark'=>'Удалить отметку что это спец. предложение', 
-	 
+	'Include Special offer page'=>'Включить страницу спец предложений', 
 	 
 	/* Categories */
 	'Set other category for selected items'=>'Установить категорию для выбранных элементов', 
@@ -185,9 +214,7 @@ return array(
 	'Display Order'=>'Порядок показа',
 	'Subsystem'=>'Подсистема',
 	'Subsystem image'=>'Иконка для подсистемы',
-	'Reference image'=>'Иконка для подпункта',
-
-	
+	'Reference image'=>'Иконка для подпункта', 
 	
 	/* Google Map */ 
 	 'Map'=>'Карта',
@@ -214,17 +241,38 @@ return array(
 	'Completed'=>'Выполнен',
 	
 	
-	/* Menu mobile version*/
+	/* Menu mobile version old 
 	'Subsystems' => 'Подсистемы программы',
 	'Left menu' => 'Левое меню',
 	'Content' => 'Содержимое',
 	'Manager' => 'Mенеджер', 
 	'Manager tools' => 'Работа менеджера и CRM',
 	'Warehouse automation' => 'Управление Складом',
+	
+	//'Warehouse automation' => 'Cклад',   
 	'Money Management' => 'Управление финансами',
 	'Delivery tools' => 'Управление доставкой',
 	'Staff & Salary tools' => 'Управление кадрами и зарплата',
 	'Forecast tools & Reports' => 'Прогнозы и отчёты',
+*/
+	/* Menu mobile version*/
+	'Subsystems' => 'Подсистемы программы',
+	'Left menu' => 'Левое меню',
+	'Content' => 'Содержимое',
+	'Manager' => 'Mенеджер', 
+	//Работа менеджера и CRM
+	'Manager tools' => 'Работа',
+	//'Warehouse automation' => 'Управление Складом',
+	'Warehouse automation' => 'Заказы',   
+	//'Money Management' => 'Управление финансами',
+	'Money Management' => 'Финансы',
+	//'Delivery tools' => 'Управление доставкой',
+	'Delivery tools' => 'Доставка',
+	//'Staff & Salary tools' => 'Управление кадрами и зарплата',
+	'Staff & Salary tools' => 'Персонал',
+	//'Forecast tools & Reports' => 'Прогнозы и отчёты',
+	'Forecast tools & Reports' => 'Отчёты',
+
 	'Manufacturing' => 'Производство',
 	'P.O. Generator' => 'Формирование заказов на покупку',
 	'Search Tool' => 'Поиск и подбор номенклатуры',

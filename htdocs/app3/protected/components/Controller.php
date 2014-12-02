@@ -30,10 +30,28 @@ class Controller extends CController
 		return $this->_isMobile;
 	}
 	
+	private $_pageTitle;
+	public function getPageTitle()
+	{
+        if($this->_pageTitle!==null) {
+                return Yii::t('general', $this->_pageTitle);
+        } else {
+                $controller = Yii::t('general', ucfirst(basename($this->getId())));
+                
+                if($this->getAction()!==null && strcasecmp($this->getAction()->getId(),$this->defaultAction)) {
+                        $action = Yii::t('general', ucfirst($this->getAction()->getId()));
+                        return $this->_pageTitle=Yii::app()->name.' - '.Yii::t('general', '{action} {controller}', array('{action}' => $action, '{controller}' => $controller));
+                } else {
+                        return $this->_pageTitle=Yii::app()->name.' - '.$controller;
+                }
+		}
+	}
+	
 	function init()
     {
         parent::init();   
-		
+		Yii::app()->clientScript->registerMetaTag("Автозапчасти для иномарок оптом по выгодным ценам, доставка в регионы - Тарекс тел. +7 (495) 785-88-50", 'description');
+		Yii::app()->clientScript->registerMetaTag('запчасти, опт, spare parts, wholesales, Russia, Россия', 'keywords');
 		// page size for the gridview
         try {
 			if (Yii::app()->user->isGuest) $this->pagesize = Yii::app()->params['defaultPageSize'];
@@ -57,9 +75,7 @@ class Controller extends CController
 		if ($this->getIsMobile()) {
 			//echo '<br>Mobile device<br />'; // it works
 			$this->layout='//layouts/mobile1';
-		}
-		 
-		//else $this->layout='//layouts/FrontendLayoutPavel';  
+		} 
 		
         $app = Yii::app();
         if (isset($_POST['_lang']))
@@ -71,30 +87,39 @@ class Controller extends CController
         {
             $app->language = $app->session['_lang'];
         }
-
-		if (isset($_GET['Subsystem']))
-        {
-        //    $app->params['Subsystem'] = $_GET['Subsystem'];
-            $app->session['Subsystem'] = $_GET['Subsystem']; //$app->params['Subsystem'];
-        }
-        else if (isset($app->session['Subsystem']))
-        {
-             //$app->params['Subsystem']  = $app->session['Subsystem'];
-        }
+		//echo 'GET = '; print_r($_GET);echo '<br>';
+		if (isset($_GET['Subsystem'])) 
+		{
+			$app->session['Subsystem'] = $_GET['Subsystem'];  
+		   // переход сразу к вкладке пользователя с его настройкой прайса при Subsystem == 'Price List' 
+			if( 'Price List' == $_GET['Subsystem'] && Yii::app()->user->role == User::ROLE_USER)
+			{ 
+				unset($_GET['Subsystem']); 			
+				$plsId = PriceListSetting::model()->findByAttributes(array('userId'=>Yii::app()->user->id))->id;	
+				if (isset($plsId)) 
+					$this->redirect(array('priceListSetting/update', 'id'=>$plsId ));
+				else 
+					$this->redirect(array('priceListSetting/create'));
+			}
+		}
+        //$app->params['Subsystem'] = $_GET['Subsystem'];
+		// echo '$Subsystem in Controller =',  $app->session['Subsystem'], '<br>';
+       
 		
-		if (isset($_GET['Reference']))
-        {
-            $app->params['Reference'] = $_GET['Reference'];
+		if (isset($_GET['Reference'])) 
+           // $app->params['Reference'] = $_GET['Reference'];
             $app->session['Reference'] = $app->params['Reference'];
-        }
-        else if (isset($app->session['Reference']))
+   
+      /*  else if (isset($app->session['Reference']))
         {
              $app->params['Reference']  = $app->session['Reference'];
-        }
-		// очищаем переменные сессии (Subsystem & Reference) если переход на главную страницу
-		if (!isset($_GET['r'])) {
-			$app->session['Reference'] = '';			$app->session['Subsystem'] = '';
-			}
+        }*/
+// очищаем переменные сессии (Subsystem & Reference) если переход на главную страницу
+		if ('site/index' == Yii::app()->controller->id.'/'.Yii::app()->controller->action->id ) 
+		{
+			$app->session['Subsystem'] = '';
+			$app->session['Reference'] = '';  
+		}
 		// смена города
 		/*
 		  1) У пользователя смотрим city - если заполнен значит по умолчанию это его город
