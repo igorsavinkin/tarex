@@ -18,6 +18,7 @@ return array(
 	'MinPart'=>'Мин. партия',
 	'manufacturer'=>'Производитель',
 	'Setup price columns'=>'Настройка колонок прайса',
+	'Set up Price sending'=>'Настройка посылки прайса',
 	'article2'=>'Артикул',
 	'availability'=>'Доступность',
 	'model'=>'Модель',
@@ -137,7 +138,7 @@ return array(
 	'Special Offer'=>'Специальное предложение',
 	'Special Offers'=>'Специальные предложения',
 	'Special Offers to client'=>'Специальные предложения клиенту',
-	'Special Offer items'=>'Специальные предложения номенклатуры',
+	'Special Offer items'=>'Специальные предложения',
 	'Manage Special Offers'=>'Управлять особыми предложениями',
 	'add to special offer'=>'добавить в спец. предложения',
 	'Load an assortment item'=>'Загрузить позицию номенклатуры',
@@ -147,7 +148,7 @@ return array(
 	 'Set up file'=>'Установите файл',
 	 'View special offer assortment items'=>'Посмотреть специальные предложения номенклатуры', 
 	'Bulk remome Special Offer mark'=>'Удалить отметку что это спец. предложение', 
-	 
+	'Include Special offer page'=>'Включить страницу спец предложений', 
 	 
 	/* Categories */
 	'Set other category for selected items'=>'Установить категорию для выбранных элементов', 

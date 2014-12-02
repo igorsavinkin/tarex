@@ -94,8 +94,12 @@ class Controller extends CController
 		   // переход сразу к вкладке пользователя с его настройкой прайса при Subsystem == 'Price List' 
 			if( 'Price List' == $_GET['Subsystem'] && Yii::app()->user->role == User::ROLE_USER)
 			{ 
-				unset($_GET['Subsystem']); 				
-				$this->redirect(array('priceListSetting/update', 'id'=>PriceListSetting::model()->findByAttributes(array('userId'=>Yii::app()->user->id))->id));
+				unset($_GET['Subsystem']); 			
+				$plsId = PriceListSetting::model()->findByAttributes(array('userId'=>Yii::app()->user->id))->id;	
+				if (isset($plsId)) 
+					$this->redirect(array('priceListSetting/update', 'id'=>$plsId ));
+				else 
+					$this->redirect(array('priceListSetting/create'));
 			}
 		}
         //$app->params['Subsystem'] = $_GET['Subsystem'];

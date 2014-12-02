@@ -443,13 +443,15 @@ EOF;
 			$mySecret = "моё имя Игорь Савинкин";
 			$token = md5($id . $expiryTimestamp . $mySecret);
 		// Put parameters together into a link  -  безопасная ссылка
+		 	$url = isset($_POST['special-offer']) ? $this->createUrl('assortment/specialOffer') : $_POST['url'];
 			$link = CHtml::Link(Yii::t('general', 'Click to login (secure)'),  $this->createAbsoluteUrl("site/login", array( 
 				'token'  => $token, 
 				'userId' => $id, 
 				'expiry' => $expiryTimestamp,
 				 'redirect'=>'assortment/index', 
 				 'id'=>$_POST['Manufacturer']['id'],
-				 'url'=>$_POST['url'], )
+				 'url'=>$url, )
+				 //$_POST['url'], )
 			)); 
 		
 		// небезопасная ссылка		
@@ -477,17 +479,6 @@ EOF;
 		$criteria->order = 'title ASC';			
 		$criteria->select = array('title', 'id');			
 		$manufacturers = Assortment::model()->findAll($criteria);
-		
-		/*$makesAll=array();												
-		foreach($manufacturers as $m)
-		{ 
-			// все данные
-			$Parent=Assortment::model()->findByPk($m->parent_id);
-			if($Parent->title=='ГРУЗОВИКИ')
-				$makesgrAll[$m->id] =  $m->title; 
-			else 
-				$makesAll[$m->id] =  $m->title; 
-*/
 		
 		$this->render('invitation',array(
 			'manufacturers'=>$manufacturers,
