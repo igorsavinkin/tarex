@@ -232,9 +232,20 @@
  </td>  
  <td>  <?php if ((getimagesize(Yii::app()->basePath. '/../img/foto/'. $model->article2 . '.jpg') !== false) ) : ?>
 	<div style="border: 1px solid #344756; margin:0 0 0 0px; padding: 5px;float:right;"> 
-	<?php echo CHtml::image(Yii::app()->baseUrl. '/img/foto/'. $model->article2 . '.jpg' , "photo",array("width"=>350))?> </div>
+	<?php echo CHtml::image(Yii::app()->baseUrl. '/img/foto/'. $model->article2 . '.jpg' , $model->Misc,array("width"=>350 ))?> </div>
 	<?php endif;	?>
  </td>  
+ <td class='padding10side top'>
+		<label><?php echo Yii::t('general','ALT tag to the picture'); ?> </label>
+		<?php 	
+		if(!$model->Misc)
+		{	// формируем тег ALT "на лету" если он пустой
+			$model->Misc = $model->title . ' - ' . $model->make . ' - ' . $model->model;
+			$model->save(false);
+		}
+		echo $form->textArea($model,'Misc',array('row'=>6,'cols'=>40)); ?>
+		<?php echo $form->error($model,'Misc'); ?>
+ </td>
  
 </tr></table>
 

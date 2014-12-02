@@ -79,8 +79,33 @@ $('.download-link').on('click', function(e){
 					)); */ ?>
 		<?php echo $form->error($model,'format'); ?>
 	</td> 
-	<td class='padding10'>	<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red')); ?>
-	</td> 
+	<td class='padding10side'>
+		<?php echo $form->labelEx($model,'name', array('class'=>'simple')), '&nbsp;<label class="simple">&nbsp;(без расширения)</label>'; 
+		 if(Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
+		 {
+			echo $form->textField($model,'name',array('size'=>30,'maxlength'=>255)); 
+			echo $form->error($model,'name'); 
+		} 
+		else  
+			echo (''!=$model->name) ? $model->name : '-';
+		 ?>
+		<br>
+		
+		<?php if(Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
+		{
+			echo $form->labelEx($model,'userId');  	
+			$this->widget('ext.select2.ESelect2', array(
+				'model'=> $model,
+				'attribute'=> 'userId',
+				'data' => CHtml::listData(User::model()->findAll(array('order'=>'username ASC')), 'id','username'),
+				'options'=> array('allowClear'=>true, 
+					'width' => '220',  
+					),
+			));  
+			echo $form->error($model,'userId');
+		} ?>
+	</td>
+	
 </tr><tr>  
 	<td class='padding10'>
 		<?php echo $form->labelEx($model,'email'); ?> 
@@ -118,23 +143,8 @@ $('.download-link').on('click', function(e){
 			));  
 		echo $form->error($model,'time'); ?> 
 	</td >
-	<td class='padding10side'>
-		<?php if(Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
-		{
-			echo $form->labelEx($model,'userId');  	
-			$this->widget('ext.select2.ESelect2', array(
-				'model'=> $model,
-				'attribute'=> 'userId',
-				'data' => CHtml::listData(User::model()->findAll(array('order'=>'username ASC')), 'id','username'),
-				'options'=> array('allowClear'=>true, 
-					'width' => '220',  
-					),
-			));  
-			echo $form->error($model,'userId');
-		} ?>
-	</td>
-	
-	
+	<td class='padding10'>	<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red')); ?>
+	</td> 
 </tr><tr>
 	<td colspan='5'><h4>
         <?php if(Yii::app()->user->checkAccess(User::ROLE_MANAGER))  

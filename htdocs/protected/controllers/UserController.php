@@ -63,9 +63,9 @@ class UserController extends Controller
 		// Set properties	 
 		$objPHPExcel->getProperties()->setCreator("TAREX Company, www.tarex.ru");
 		$objPHPExcel->getProperties()->setLastModifiedBy("www.tarex.ru");
-		$objPHPExcel->getProperties()->setTitle("Office 2007 XLSX Price list at ". date('d.m.Y H:i:s')."   ");
-		$objPHPExcel->getProperties()->setSubject("Office 2007 XLSX Document");
-		$objPHPExcel->getProperties()->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.");
+		$objPHPExcel->getProperties()->setTitle("Office 2007 XLS Price list at ". date('d.m.Y H:i:s')."   ");
+		$objPHPExcel->getProperties()->setSubject("Office 2007 XLS Document");
+		$objPHPExcel->getProperties()->setDescription("Test document for Office 2007 XLS, generated using PHP classes.");
 		
 		// Add data to document
 		$objPHPExcel->setActiveSheetIndex(0);

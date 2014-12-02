@@ -1,5 +1,5 @@
 
-<?php
+<?php // echo 'here';
 /* @var $this EventcontentController */
 /* @var $content Eventcontent */
 /* @var $form CActiveForm */
@@ -35,8 +35,7 @@ $this->widget( 'zii.widgets.grid.CGridView', array(
 				'type'=>'raw',
 				'name'=>'assortmentTitle2',
 				'value' => array($this, 'assortmentTitle'),
-			),
-			
+			), 
 			array(  
 				'type'=>'raw',
 				'name'=>'assortmentAmount',
@@ -57,7 +56,7 @@ $this->widget( 'zii.widgets.grid.CGridView', array(
     )); 
 	
 echo CHtml::ajaxSubmitButton(Yii::t('general', 'Delete selection') /* 'Удалить несколько'*/,  array('eventContent/bulkActions', 'name' => 'delete'), array('success'  => 'js:  function() { $.fn.yiiGridView.update("orderscontent");}'), array('style'=>'float:right;')); 
-echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red')); 
+//echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red')); 
 $this->endWidget(); ?>	
 
 <button class='no-print' 'style'='float:right;' onClick="window.print()"><?php echo Yii::t('general','Print event content');  ?></button> 

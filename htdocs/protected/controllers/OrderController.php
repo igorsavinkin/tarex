@@ -260,7 +260,9 @@ class OrderController extends EventsController
 		
 		$model->EventTypeId = Events::TYPE_ORDER;  
 		$model->StatusId = Events::STATUS_NEW;  
-		$model->save();  
+	
+
+    	$model->save();  
 		// переходим на действие update с только что сохранённым заказом
 		$this->redirect(array('update', 'id'=>$model->id));
 	}	
@@ -272,6 +274,7 @@ class OrderController extends EventsController
 	// задаём настройку шаблона либо из настроек контрагента либо из настроек залогиненного пользователя
 		$contractorId = ($model->contractorId) ? $model->contractorId : Yii::app()->user->id;
 		$user = User::model()->findByPk($contractorId);
+	//	echo '$user = '; print_r($user);
 		$loadDataSetting = (LoadDataSettings::model()->findByPk($user->ShablonId)) ? LoadDataSettings::model()->findByPk($user->ShablonId) : LoadDataSettings::model()->findByPk(1); // если всё же не нашли шаблон, то тогда берём первую настройку - findByPk(1)	 
 		
 		if(isset($_POST['Events']))
@@ -349,6 +352,8 @@ class OrderController extends EventsController
 			// здесь мы делаем GET-redirect чтобы избежать повторного сохранения POST-параметров если пользователь перезагрузит браузер
 			$this->redirect( array('update' , 'id'=>$id , '#' => 'tab2' )); 
 		}// конец добавления ассортимента в событие		
+		
+	//	echo '<br><br>$loadDataSetting = '; print_r($loadDataSetting);
 		
 		$this->render('update' ,array(
 			'model'=>$model, 'assortment'=>$assortment,  'pageSize' =>$pageSize, 'loadDataSetting' => $loadDataSetting
@@ -574,9 +579,10 @@ class OrderController extends EventsController
 		require_once Yii::getPathOfAlias('ext'). '/PHPExcel.php';
 		
 		// Create new PHPExcel object
-		$objReader = PHPExcel_IOFactory::createReader('Excel2007');
+		//$objReader = PHPExcel_IOFactory::createReader('Excel2007'); // формат xlsx
+		$objReader = PHPExcel_IOFactory::createReader('Excel5'); // формат xls
 		
-		$objPHPExcel = $objReader->load("files/OrderTemplate.xlsx");  
+		$objPHPExcel = $objReader->load("files/OrderTemplate.xls");  
 		$as = $objPHPExcel->getActiveSheet();
 		
 		$DateY=Substr($DocEvent->Begin,0,4);
@@ -666,7 +672,7 @@ class OrderController extends EventsController
 			$as->getCell('N'.$iterator)->setValue(number_format($Itogo,2,',',' '));
 		
 		
-		$filename="Заказ_№{$id}_от_{$DateD}{$month1}{$DateY}.xlsx";
+		$filename="Заказ_№{$id}_от_{$DateD}{$month1}{$DateY}.xls";
 		$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
 		header('Content-Type: application/vnd.ms-excel');
 		header('Content-Disposition: attachment;filename="'.$filename.'"');

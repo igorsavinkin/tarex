@@ -270,9 +270,9 @@ $('.notes').bind('blur', function(e) {
  
 	</td> 
 </tr><tr>  
-	<td colspan=3  valign=middle>
+	<td colspan=3  valign='middle'>
 		<?php 
-			if ($UserRole<=5){
+			if ($UserRole<=5 OR ($CurrentStatusOrder < 3)){
 				echo $form->labelEx($model,'Notes');
 				echo $form->textArea($model,'Notes',array('rows'=>4, 'cols'=>60, 'class'=>'notes')); 
 				echo $form->error($model,'Notes');

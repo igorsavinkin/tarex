@@ -1,5 +1,4 @@
-
-<?php
+<?php //echo '_ordercontent_manager_noteditable';
 /* @var $this EventcontentController */
 /* @var $content Eventcontent */
 /* @var $form CActiveForm */
@@ -67,7 +66,7 @@ $this->widget( 'zii.widgets.grid.CGridView', array(
 			), 		
 		),
     )); 
-echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red')); 
+echo CHtml::submitButton(Yii::t('general','Save'), array('class'=>'red')); 
 
 echo CHtml::endForm(); ?>
 </div>
@@ -103,4 +102,5 @@ echo CHtml::endForm(); ?>
 		<?php echo $form->textField($model,'id'); ?>
 	</div>
 <?php $this->endWidget(); ?>
-</div> 
+</div> */
+?>

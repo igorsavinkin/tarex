@@ -180,8 +180,14 @@ class AssortmentController extends Controller
 	
     public function actionView($id)
 	{
+		$model= $this->loadModel($id);
+		if(!$model->Misc)
+		{	// формируем тег ALT "на лету" если он пустой
+			$model->Misc = $model->title .' - ' .$model->make . ' - ' . $model->model;
+			$model->save(false);
+		}
 		$this->render('view_adv',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$model,
 		));
 	} 
 	public function actionAddToCart($id, $amount=null)
@@ -305,13 +311,13 @@ class AssortmentController extends Controller
 			$model->attributes=$_POST['Assortment'];
 			
 			$uploadedFile=CUploadedFile::getInstance($model, 'imageUrl');
-			if ($uploadedFile == null) 
-				echo '<br>Failue to upload photo(or No uploaded file)'; 
+			if ($uploadedFile == null)  {}
+				//echo '<br>Failue to upload photo(or No uploaded file)'; 
 			else 
 			{  
 				//$model->imageUrl = $uploadedFile->name;  
 				//if (empty($model->article)) $model->article = str_replace(array(' ','-','.'), '', $model->article2);
-				echo 'uploadedFile name = ', $model->article2 .'.jpg'; 
+				//echo 'uploadedFile name = ', $model->article2 .'.jpg'; 
 				if ($uploadedFile->saveAs( Yii::app()->basePath .'/../img/foto/'. $model->article2 .'.jpg'))
 				{
 					echo '<br>photo successfully saved';					
@@ -321,7 +327,7 @@ class AssortmentController extends Controller
 			}
 			
 			if($model->save()) {}
-				//$this->redirect(array('admin','id'=>$model->id));
+				$this->redirect(array('admin','id'=>$model->id));
 		}
 
 		$this->render('update',array(

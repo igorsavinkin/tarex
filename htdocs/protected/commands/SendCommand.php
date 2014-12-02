@@ -20,7 +20,7 @@ class SendCommand extends CConsoleCommand
 			//echo  'user id = ', $pls->userId, '. <br> ';
 			//посылка прайса			
 		    $username = User::model()->findByPk($pls->userId)->username;
-			$result = $this->runPHPMailer($pls->format, array($pls->email,  $username, $pls->userId, $pls->carmakes, $pls->columns   )); // email, имя пользователя, его id , марки и колонки для вывода
+			$result = $this->runPHPMailer($pls->format, array($pls->email,  $username, $pls->userId, $pls->carmakes, $pls->columns , $pls->name   )); // email, имя пользователя, его id , марки, колонки для вывода и имя файла
 				
 			if($result) 
 			{ 
@@ -57,10 +57,11 @@ class SendCommand extends CConsoleCommand
 		$userId = $mailArr[2];
 		$makes = $mailArr[3];
 		$columns = $mailArr[4];
+		$filename =  (''!=$mailArr[5]) ?  $mailArr[5] . '.' . $extention :  'TAREX price list '. date('d-m-Y') . '.' .  $extention;
 		if ('csv' == $extention) 
-			$mail->AddStringAttachment( $this->getPricelistCSV($userId, $makes, $columns) , 'TAREX price list '. date('d-m-Y') . '.' .  $extention); 
+			$mail->AddStringAttachment( $this->getPricelistCSV($userId, $makes, $columns) , $filename); 
 		if ('xls' == $extention) 
-			$mail->AddStringAttachment( $this->getPricelist($userId, $makes, $columns) , 'TAREX price list '. date('d-m-Y') . '.' .  $extention); 
+			$mail->AddStringAttachment( $this->getPricelist($userId, $makes, $columns) , $filename); 
 		
 		return ($mail->Send()) ? true : false;  
 	}

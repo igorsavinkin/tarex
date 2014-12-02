@@ -253,16 +253,50 @@ class OrderController extends EventsController
 		$model->Begin = date('Y-m-d H-i-s');
 		$model->organizationId = Yii::app()->user->organization;  
 		$model->authorId=Yii::app()->user->id;
-		if ($contractorId)  
+		if (isset($contractorId))  
 			$model->contractorId=$contractorId; 
 		elseif (Yii::app()->user->role > 5)  
 			$model->contractorId=$model->authorId; 
 		
 		$model->EventTypeId = Events::TYPE_ORDER;  
 		$model->StatusId = Events::STATUS_NEW;  
-		$model->save();  
-		// переходим на действие update с только что сохранённым заказом
-		$this->redirect(array('update', 'id'=>$model->id));
+		
+		if(isset($_POST['Events']) OR isset($_POST['Order']))
+		{ 
+			$oldStatus = $model->StatusId;
+			$model->attributes = isset($_POST['Events']) ? $_POST['Events'] : $_POST['Order'];	
+			
+			if ($model->contractorId) 
+			{
+				$user = User::model()->findByPk($model->contractorId); 
+			// меняем тип оплаты и номер шаблона если другой/поставлен контрагент			    
+				if ($user->PaymentMethod) 
+					$model->PaymentType = $user->PaymentMethod;
+				if ($user->ShablonId) 
+			        $loadDataSetting->id = $user->ShablonId;
+			}
+		 /*
+		  // посылка письма клиенту (контрагенту) об cоздании нового заказа
+					$orderLink = CHtml::LInk( 'заказа', $this->createAbsoluteUrl('order/update', array('id'=>$model->id, '#' => 'tab2')));
+					$newStatusName = Yii::t('general', EventStatus::model()->findByPk($model->StatusId)->name);
+					mail( $user->email, 
+						"Создание нового заказа №{$model->id} в компании TAREX на cтатус {$newStatusName}",
+						"Уважаемый {$user->username}.<br> Статус вашего {$orderLink} №{$model->id} был изменён на статус '{$newStatusName}'.", "Content-type: text/html\r\n"); */	 
+
+
+			 
+				/**/
+			if($model->save(false)) 
+			{
+				if (isset($_POST['OK'])) 
+					$this->redirect(array('admin',  'Subsystem' => 'Warehouse automation', 'Reference'=>'Order'));
+				else	
+					// переходим на действие update с только что сохранённым заказом
+					$this->redirect(array('update', 'id'=>$model->id));
+			} 
+			else print_r($model->errors);
+		} 
+		$this->render('create', array('model'=>$model)); 		
 	}	
 	
 	public function actionUpdate($id)

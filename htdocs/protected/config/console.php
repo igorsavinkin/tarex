@@ -30,7 +30,18 @@ return array(
 			'scriptUrl' => '',*/
 		), 
 		'urlManager' => array(
+			'showScriptName'=>false,
 			'baseUrl' => 'http://tarex.ru',
+			'urlFormat'=>'path',
+			'rules'=>array( 	
+			 	 'assortment/<groupCategory:\d+>'=> 'assortment/index',			
+				 'site/page/<page:\w+>'=> 'site/index',			
+	        	 'assortment/<groupCategory:\d+>/<id:\d+>'=> 'assortment/index', 
+				 
+			/*	'<controller:\w+>/<id:\d+>'=>'<controller>/view',*/
+				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',  
+			),  
 		),
 		'db'=>array( 			
                 // настройки для конфигурации в производство 
@@ -58,5 +69,6 @@ return array(
 	),
 	'params'=>array( 
 		'organization'=>7, 
+		'adminEmail'=>'igor.savinkin@gmail.com',
 	),
 );
