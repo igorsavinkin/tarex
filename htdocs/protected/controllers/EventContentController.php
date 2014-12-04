@@ -9,17 +9,12 @@ class EventContentController extends Controller
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
-
-	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
+ 
 	public function accessRules()
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view' ,'admin' , 'bulkActions', 'updateEventContent'),
+				'actions'=>array('index','view' ,'admin' , 'bulkActions', 'updateEventContent', 'setModel'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -36,6 +31,38 @@ class EventContentController extends Controller
 		);
 	}
 
+	public function actionRenew($id)
+	{
+		$event=Events::model()->findByPk($id);
+		$content = EventContent::model()->findByAttributes(array('eventId'=>$id));
+		
+	}
+	public function actionSetModel()
+	{
+		 $contents = EventContent::model()->findAll();
+		 $count=0;
+		 foreach($contents as $c)
+		 {
+			$item=Assortment::model()->findByPk($c->assortmentId);
+			if(isset($item)) {
+				$c->assortmentArticle=$item->article2; 			
+				$c->basePrice=$item->getCurrentPrice();
+				$c->RecommendedPrice=$item->getPriceOptMax(); 	
+			 
+			// скидкa исходя из скидок по группам.
+				$contractor = Events::model()->findByPk($c->eventId)->contractorId;
+				$discGroupId = DiscountGroup::getDiscountGroup($item->article2);
+				if(!$discGroupId) 
+					$c->discount = 0; 
+				else {
+					$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$contractor, 'discountGroupId'=>$discGroupId));  
+					$c->discount = (isset($ugd)) ? $ugd->value : 0 ;  
+				}
+				if($c->save(false)) { $count++;}
+			}			
+		 }
+		 echo $count, ' models have been changed';
+	}
 	public function actionView($id)
 	{
 		$this->render('view',array(
@@ -55,8 +82,9 @@ class EventContentController extends Controller
 			foreach($_POST['EventContent']['price'] as $key => $price)
 			{
 				$content = EventContent::model()->findByPk($key);
-				$content->price = $price;
-				$content->cost = $content->assortmentAmount * $content->price;
+				$content->price = $price;	 				 
+				$content->discount = round(($price - $content->basePrice) *100 / $content->basePrice); 			
+				$content->cost = $content->assortmentAmount * $content->price;				
 				$content->save(); 
 			}
 		} elseif ($_GET['name'] && ('saveDiscount' == $_GET['name']) ) // сохранение изменённой скидки и пересчёт цены
@@ -65,6 +93,16 @@ class EventContentController extends Controller
 			{
 				$content = EventContent::model()->findByPk($key);
 				$content->price = round((1 + $discount/100) * $content->assortment->getCurrentPrice(), 2); 
+				$content->cost = $content->assortmentAmount * $content->price;
+				$content->save(); 
+			}
+		} elseif ($_GET['name'] && ('saveDiscountNew' == $_GET['name']) ) // сохранение изменённой скидки и пересчёт цены
+		{ 
+			foreach($_POST['EventContent']['discount'] as $key => $discount)
+			{				
+				$content = EventContent::model()->findByPk($key); 
+				$content->discount = $discount; 
+				$content->price = round((1 + $content->discount/100) * $content->basePrice, 2); 
 				$content->cost = $content->assortmentAmount * $content->price;
 				$content->save(); 
 			}
@@ -88,10 +126,7 @@ class EventContentController extends Controller
 	public function actionCreate()
 	{
 		$model=new EventContent;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
+ 
 		if(isset($_POST['EventContent']))
 		{
 			$model->attributes=$_POST['EventContent'];
@@ -104,12 +139,6 @@ class EventContentController extends Controller
 		));
 	}
 	 
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
@@ -225,4 +254,5 @@ class EventContentController extends Controller
 			Yii::app()->end();
 		}
 	}
+	
 }

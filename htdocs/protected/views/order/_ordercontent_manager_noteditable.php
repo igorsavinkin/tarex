@@ -18,6 +18,7 @@ $dataProvider=new CActiveDataProvider('EventContent', array(
 			'pageSize'=>100,
 		),
 	));
+//echo 'DataProvider: '; print_r($dataProvider->getData());	
 // добавим тег открытия формы
 echo CHtml::form();
 $this->widget( 'zii.widgets.grid.CGridView', array(
@@ -26,53 +27,33 @@ $this->widget( 'zii.widgets.grid.CGridView', array(
 		'selectableRows' => 2, 
 		'cssFile' => Yii::app()->baseUrl . '/css/gridview.css',	
 		// выводим сумму по таблице и подсчитываем всю сумму и заносим это в атрибут 'totalSum' модели Events ---> $this->countSumTotal($eventId). Это происходит каждый раз при пересчёте/обновлении таблицы
-	    'summaryText' => '<h3>' . Yii::t('general','Total with discount' ) . ' <em>'. EventContent::getTotalSumByEvent($eventId) . '</em> ' . Yii::t('general','RUB')  . '</h3>' . 'Результат {start} - {end} из {count}',
+//	    'summaryText' => '<h3>' . Yii::t('general','Total with discount' ) . ' <em>'. EventContent::getTotalSumByEvent($eventId) . '</em> ' . Yii::t('general','RUB')  . '</h3>' . 'Результат {start} - {end} из {count}',
 		'dataProvider' => $dataProvider,   	 
         'columns' => array( 
 			'id',
-			'assortment.article2',
-			//'assortmentTitle',
-			array(  
-			//	'type'=>'raw',
-				'name'=>'assortmentTitle',
-			//	'value' => array($this, 'titleDataField'),
-			),
-			'assortmentAmount',
-			'basePrice'=>array(  
-			 	'type'=>'raw',
-				'name'=>Yii::t('general','Base Price'). ' (цена до всех скидок)',				
-				'value' =>  '$data->assortment->getCurrentPrice()',
-			),		 
-			'discount'=>array(  
-			 	'type'=>'raw', 
-				'name'=>Yii::t('general','Opt Discount' ),
-				'value' =>'$data->assortment->getDiscountOpt('. $model->contractorId .')',		
-				'visible'=>$contractorIsOpt, 				
-			),
-			'discountCurrent'=>array(  
-			 	'type'=>'raw', 
-				'name'=>Yii::t('general','Current discount' ) . ' %',
-				'value' =>'round(($data->price - $data->assortment->getCurrentPrice())/$data->assortment->getCurrentPrice()*100, 2)',  				
-			),			
-			'price', 
-			/*'RecommendedPrice'=>array(
-					'name'=>'RecommendedPrice',
-					'header'=>Yii::t('general','Recommended Price'), 
-					'cssClassExpression'=>'$data->priceCssClass',   
-					), */
-			'cost'=>array(
+			'assortmentArticle',
+			'assortmentTitle',
+			'assortmentAmount', 
+			'RecommendedPrice'=>array(   
+				'name'=>'RecommendedPrice',
+				'header' =>Yii::t('general','Min Price'),				
+			), 
+			'basePrice',
+			'discount',
+			'price', 		 
+		  	'cost'=>array(
 				'name'=>'cost',
 				'cssClassExpression'=>'$data->priceCssClass()',   
-			), 		
+			),
 		),
-    )); 
+    ));  
 echo CHtml::submitButton(Yii::t('general','Save'), array('class'=>'red')); 
 
 echo CHtml::endForm(); ?>
 </div>
 <!--button class='no-print' 'style'='float:right;' onClick="window.print()"><?php echo Yii::t('general','Print event content');  ?></button--> 
 <br><br><h3> 
-<?php	 /*
+<?php	  
 	echo Yii::t('general', 'Load assortment from file'), '</h3>';
 	$form=$this->beginWidget('CActiveForm', array(  
 	'id'=>'doc-event-content-file',
@@ -102,5 +83,5 @@ echo CHtml::endForm(); ?>
 		<?php echo $form->textField($model,'id'); ?>
 	</div>
 <?php $this->endWidget(); ?>
-</div> */
+</div> 
 ?>

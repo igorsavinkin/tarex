@@ -33,7 +33,8 @@ $this->widget( 'zii.widgets.grid.CGridView', array(
 		'dataProvider' => $dataProvider,   	 
         'columns' => array( 
 			'id',
-			'assortment.article2', 
+			'assortmentArticle',
+		//	'assortment.article2', 
 		 	array(  
 				'name'=>'assortmentTitle',
 			), 
@@ -59,28 +60,35 @@ $this->widget( 'zii.widgets.grid.CGridView', array(
 				'value' => '$data->assortment->getDiscountOpt('. $model->contractorId . ')',
 				'visible'=>$contractorIsOpt, 
 			),
-			'discount'=>array(  
+	/*		'discount'=>array(  
 			 	'type'=>'raw', 
 				'name'=>Yii::t('general','Current discount') . ', %',
 				'value' => array($this, 'discountDataField'),				
 			),  
-		/*	'currentDiscount'=>array(  
+	/*	 	'currentDiscount'=>array(  
 				'type'=>'raw',
 				'name'=>Yii::t('general','Current discount') . ', %', 
 				'value' => 'round(($data->price - $data->assortment->getCurrentPrice())/$data->assortment->getCurrentPrice()*100, 2)',
-			),*/
+			), */
 			'price'=>array(  
 			 	'type'=>'raw',
 				'name'=>'price',
 				'value' => array($this, 'priceDataField'),				
-			),   					
+			),   
+			'discount',
+		 	'discountNew'=>array(  
+			 	'type'=>'raw', 
+				'name'=>Yii::t('general','Current discount new') . ', %',
+				'value' => array($this, 'discountDataFieldNew'),				
+			),  
 		 /*   'RecommendedPrice'=>array(
 				'name'=>'RecommendedPrice',
 				'header'=>Yii::t('general','Recommended Price') . ' (цена с учётом скидки в Ценоообразовании)', 
 				'cssClassExpression'=>'$data->priceCssClass',   
-			), */
-			'cost'=>array(
+			), 
+		*/	'cost'=>array(
 				'name'=>'cost',
+			//	'value'=>'$data->price * $data->assortmentAmount',
 				'cssClassExpression'=>'$data->priceCssClass()',   
 			), 			
 			array(

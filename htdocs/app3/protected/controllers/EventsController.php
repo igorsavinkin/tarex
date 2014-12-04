@@ -989,6 +989,25 @@ class EventsController extends Controller
 		
 		return $field . $button; 	         
     } 
+	protected function discountDataFieldNew($data,$row)
+    { 
+		$field = CHtml::textField('EventContent[discount][' . $data->id .']', 
+			 $data->discount ,  
+		 	array( 
+				'style'=> 'width:45px',
+			/*	'ajax' => array(
+				'type'=>'POST', 
+				'url'=>CController::createUrl('/eventContent/updateEventContent', array( 'name' => 'saveDiscountNew')) ,
+				'success' =>'js: function() { 
+								$.fn.yiiGridView.update("orderscontent");
+								}',					
+					)*/
+				) 
+		);		
+		$button = CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','OK')) ,  array('eventContent/updateEventcontent', 'name' => 'saveDiscountNew'), array('success'  => 'js:  function() { $.fn.yiiGridView.update("orderscontent");}'), array('style'=>'float:right;')); 
+		
+		return $field . $button; 	         
+    }
 	public function priceCssClass($contractorId=null) 
 	{
 		if ($this->price < $this->assortment->getPriceOptMax()) return 'redbgcolor';

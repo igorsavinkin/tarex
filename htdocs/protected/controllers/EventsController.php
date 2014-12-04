@@ -884,7 +884,7 @@ class EventsController extends Controller
 			)
 		);	
     } 
-	protected function priceDataField($data,$row)
+/*	protected function priceDataField($data,$row)
      { 
 		$field =  CHtml::textField('EventContent[price][' . $data->id .']', 
 			$data->price,  
@@ -893,7 +893,7 @@ class EventsController extends Controller
 				'ajax' => array(
 				'type'=>'POST', 
 				'url'=>CController::createUrl('/eventContent/updateEventContent'),
-				'success' =>'js: function() { /* here we update the current Grid with id = "orderscontent" */
+				'success' =>'js: function() { 
 								$.fn.yiiGridView.update("orderscontent");
 								}',					
 					)
@@ -902,7 +902,7 @@ class EventsController extends Controller
 		$button = CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','OK')) ,  array('eventContent/updateEventcontent', 'name' => 'savePrice'), array('success'  => 'js:  function() { $.fn.yiiGridView.update("orderscontent");}'), array('style'=>'float:right;')); 
 		
 		return $field . $button; 	         
-    } 
+    } */
 	
 	protected function titleDataField($data,$row)
     { 
@@ -989,6 +989,25 @@ class EventsController extends Controller
 		
 		return $field . $button; 	         
     } 
+	protected function discountDataFieldNew($data,$row)
+    { 
+		$field = CHtml::textField('EventContent[discount][' . $data->id .']', 
+			 $data->discount ,  
+		 	array( 
+				'style'=> 'width:45px',
+			/*	'ajax' => array(
+				'type'=>'POST', 
+				'url'=>CController::createUrl('/eventContent/updateEventContent', array( 'name' => 'saveDiscountNew')) ,
+				'success' =>'js: function() { 
+								$.fn.yiiGridView.update("orderscontent");
+								}',					
+					)*/
+				) 
+		);		
+		$button = CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','OK')) ,  array('eventContent/updateEventcontent', 'name' => 'saveDiscountNew'), array('success'  => 'js:  function() { $.fn.yiiGridView.update("orderscontent");}'), array('style'=>'float:right;')); 
+		
+		return $field . $button; 	         
+    }
 	public function priceCssClass($contractorId=null) 
 	{
 		if ($this->price < $this->assortment->getPriceOptMax()) return 'redbgcolor';

@@ -196,7 +196,7 @@ class OrderController extends EventsController
 						}
 						$EventContent->RecommendedPrice = $FinalPrice;
 						$EventContent->cost=$EventContent->price * $EventContent->assortmentAmount;   // 	
-						$EventContent->cost_w_discount = $EventContent->cost;   // 	почему?
+						//$EventContent->cost_w_discount = $EventContent->cost;   // 	почему?
 					}else{
 			//Создаём новый состав заказа
 						
@@ -253,50 +253,18 @@ class OrderController extends EventsController
 		$model->Begin = date('Y-m-d H-i-s');
 		$model->organizationId = Yii::app()->user->organization;  
 		$model->authorId=Yii::app()->user->id;
-		if (isset($contractorId))  
+		if ($contractorId)  
 			$model->contractorId=$contractorId; 
 		elseif (Yii::app()->user->role > 5)  
 			$model->contractorId=$model->authorId; 
 		
 		$model->EventTypeId = Events::TYPE_ORDER;  
 		$model->StatusId = Events::STATUS_NEW;  
-		
-		if(isset($_POST['Events']) OR isset($_POST['Order']))
-		{ 
-			$oldStatus = $model->StatusId;
-			$model->attributes = isset($_POST['Events']) ? $_POST['Events'] : $_POST['Order'];	
-			
-			if ($model->contractorId) 
-			{
-				$user = User::model()->findByPk($model->contractorId); 
-			// меняем тип оплаты и номер шаблона если другой/поставлен контрагент			    
-				if ($user->PaymentMethod) 
-					$model->PaymentType = $user->PaymentMethod;
-				if ($user->ShablonId) 
-			        $loadDataSetting->id = $user->ShablonId;
-			}
-		 /*
-		  // посылка письма клиенту (контрагенту) об cоздании нового заказа
-					$orderLink = CHtml::LInk( 'заказа', $this->createAbsoluteUrl('order/update', array('id'=>$model->id, '#' => 'tab2')));
-					$newStatusName = Yii::t('general', EventStatus::model()->findByPk($model->StatusId)->name);
-					mail( $user->email, 
-						"Создание нового заказа №{$model->id} в компании TAREX на cтатус {$newStatusName}",
-						"Уважаемый {$user->username}.<br> Статус вашего {$orderLink} №{$model->id} был изменён на статус '{$newStatusName}'.", "Content-type: text/html\r\n"); */	 
+	
 
-
-			 
-				/**/
-			if($model->save(false)) 
-			{
-				if (isset($_POST['OK'])) 
-					$this->redirect(array('admin',  'Subsystem' => 'Warehouse automation', 'Reference'=>'Order'));
-				else	
-					// переходим на действие update с только что сохранённым заказом
-					$this->redirect(array('update', 'id'=>$model->id));
-			} 
-			else print_r($model->errors);
-		} 
-		$this->render('create', array('model'=>$model)); 		
+    	$model->save();  
+		// переходим на действие update с только что сохранённым заказом
+		$this->redirect(array('update', 'id'=>$model->id));
 	}	
 	
 	public function actionUpdate($id)
@@ -306,6 +274,7 @@ class OrderController extends EventsController
 	// задаём настройку шаблона либо из настроек контрагента либо из настроек залогиненного пользователя
 		$contractorId = ($model->contractorId) ? $model->contractorId : Yii::app()->user->id;
 		$user = User::model()->findByPk($contractorId);
+	//	echo '$user = '; print_r($user);
 		$loadDataSetting = (LoadDataSettings::model()->findByPk($user->ShablonId)) ? LoadDataSettings::model()->findByPk($user->ShablonId) : LoadDataSettings::model()->findByPk(1); // если всё же не нашли шаблон, то тогда берём первую настройку - findByPk(1)	 
 		
 		if(isset($_POST['Events']))
@@ -358,18 +327,33 @@ class OrderController extends EventsController
 // если что-то из ассортимента добавляется в событие
 		if (isset($_POST['add-to-event']) && isset($_POST['Assortment']))
 		{
-			echo 'RecommendedPrice1 '. $eventContent->RecommendedPrice;
+			//echo 'RecommendedPrice1 '. $eventContent->RecommendedPrice;
 			$item = Assortment::model()->findByPk($_POST['Assortment']['id']);
 			$eventContent = new EventContent;
 			$eventContent->assortmentId = $item->id;
 			$eventContent->assortmentTitle = $item->title;
+			$eventContent->assortmentArticle = $item->article2;
 			$eventContent->eventId = $id;
 			$eventContent->assortmentAmount = $_POST['Assortment']['amount'];			
-			$eventContent->price = $eventContent->RecommendedPrice = $item->getPrice($model->contractorId);	 
-
+			$eventContent->price = $item->getPrice($model->contractorId);	 
+		//
+			$discGroupId = DiscountGroup::getDiscountGroup($item->article2);
+			if(!$discGroupId) 
+				$eventContent->discount = 0; 
+			else 
+			{
+				$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$model->contractorId, 'discountGroupId'=>$discGroupId));  
+				$eventContent->discount = (isset($ugd)) ? $ugd->value : 0 ;  
+			}
+		// заносим дополнительные цены и скидки для менеджеров
+		// - минимальная оптовая цена (согласно оптовой максимальной скидке): getPriceOptMax()
+		// - цена базовая (цена до всех скидок): getCurrentPrice()
+		// - Скидка оптового клиента: getDiscountOpt(Yii::app()->user->id)
+		// - Текущая скидка ??
+			$eventContent->RecommendedPrice = implode(';' , array($item->getPriceOptMax(),$item->getCurrentPrice()) );
 			// считаем новые стоимость и стоимость со скидкой
 			$eventContent->cost = $eventContent->price * $eventContent->assortmentAmount;           
-			$eventContent->cost_w_discount = $eventContent->cost;                 
+			//$eventContent->cost_w_discount = $eventContent->cost;                 
 			// потом сохраняем его
 			if ($eventContent->save(false)) { 				
 				$model->totalSum = EventContent::getTotalSumByEvent($id);
@@ -383,6 +367,8 @@ class OrderController extends EventsController
 			// здесь мы делаем GET-redirect чтобы избежать повторного сохранения POST-параметров если пользователь перезагрузит браузер
 			$this->redirect( array('update' , 'id'=>$id , '#' => 'tab2' )); 
 		}// конец добавления ассортимента в событие		
+		
+	//	echo '<br><br>$loadDataSetting = '; print_r($loadDataSetting);
 		
 		$this->render('update' ,array(
 			'model'=>$model, 'assortment'=>$assortment,  'pageSize' =>$pageSize, 'loadDataSetting' => $loadDataSetting
@@ -438,7 +424,7 @@ class OrderController extends EventsController
 
 			// считаем новые стоимость и стоимость со скидкой
 			$eventContent->cost = $eventContent->price * $eventContent->assortmentAmount;           
-			$eventContent->cost_w_discount = $eventContent->cost;                 
+			//$eventContent->cost_w_discount = $eventContent->cost;                 
 			// потом сохраняем его
 			if ($eventContent->save(false)) { 				
 				$model->totalSum = EventContent::getTotalSumByEvent($id);
@@ -608,9 +594,10 @@ class OrderController extends EventsController
 		require_once Yii::getPathOfAlias('ext'). '/PHPExcel.php';
 		
 		// Create new PHPExcel object
-		$objReader = PHPExcel_IOFactory::createReader('Excel2007');
+		//$objReader = PHPExcel_IOFactory::createReader('Excel2007'); // формат xlsx
+		$objReader = PHPExcel_IOFactory::createReader('Excel5'); // формат xls
 		
-		$objPHPExcel = $objReader->load("files/OrderTemplate.xlsx");  
+		$objPHPExcel = $objReader->load("files/OrderTemplate.xls");  
 		$as = $objPHPExcel->getActiveSheet();
 		
 		$DateY=Substr($DocEvent->Begin,0,4);
@@ -700,7 +687,7 @@ class OrderController extends EventsController
 			$as->getCell('N'.$iterator)->setValue(number_format($Itogo,2,',',' '));
 		
 		
-		$filename="Заказ_№{$id}_от_{$DateD}{$month1}{$DateY}.xlsx";
+		$filename="Заказ_№{$id}_от_{$DateD}{$month1}{$DateY}.xls";
 		$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
 		header('Content-Type: application/vnd.ms-excel');
 		header('Content-Disposition: attachment;filename="'.$filename.'"');

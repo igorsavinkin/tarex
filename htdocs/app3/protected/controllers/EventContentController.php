@@ -68,6 +68,18 @@ class EventContentController extends Controller
 				$content->cost = $content->assortmentAmount * $content->price;
 				$content->save(); 
 			}
+		} elseif ($_GET['name'] && ('saveDiscountNew' == $_GET['name']) ) // сохранение изменённой скидки и пересчёт цены
+		{ 
+			foreach($_POST['EventContent']['discount'] as $key => $discount)
+			{
+				$content = EventContent::model()->findByPk($key);
+				$content->discount = $discount;
+				$temp = (float)explode(';' , $content->RecommendedPrice)[1];
+				echo '$temp=',$temp;
+				$content->price = round((1 + $content->discount/100) * $temp); 
+				$content->cost = $content->assortmentAmount * $content->price;
+				$content->save(); 
+			}
 		} 
 		else 	
 		{ 
@@ -88,10 +100,7 @@ class EventContentController extends Controller
 	public function actionCreate()
 	{
 		$model=new EventContent;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
+ 
 		if(isset($_POST['EventContent']))
 		{
 			$model->attributes=$_POST['EventContent'];
@@ -104,12 +113,6 @@ class EventContentController extends Controller
 		));
 	}
 	 
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
@@ -225,4 +228,5 @@ class EventContentController extends Controller
 			Yii::app()->end();
 		}
 	}
+	
 }

@@ -1,5 +1,7 @@
 <?php
 return array( 
+
+
 	/*  Price List Settings */
 	'Price List'=> 'Прайс', 
 	'Price List is in Attachment'=>'Прайс лист прикреплён к письму',
@@ -133,6 +135,7 @@ return array(
 	'Link'=>'Ссылка',
 	'Special pages'=>'Спец. страницы',
 	'Manage News'=>'Управлять новостями',
+	'ALT tag to the picture'=>'ALT тэг к картинке',
 	
 	/* Special Offer */
 	'Special Offer'=>'Специальное предложение',

@@ -1,5 +1,5 @@
 
-<?php
+<?php // echo 'here client';
 /* @var $this EventcontentController */
 /* @var $content Eventcontent */
 /* @var $form CActiveForm */
@@ -51,7 +51,7 @@ $this->widget( 'zii.widgets.grid.CGridView', array(
     )); 
 	
 echo CHtml::ajaxSubmitButton(Yii::t('general', 'Delete selection') /* 'Удалить несколько'*/,  array('eventContent/bulkActions', 'name' => 'delete'), array('success'  => 'js:  function() { $.fn.yiiGridView.update("orderscontent");}'), array('style'=>'float:right;')); 
-echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red')); 
+//echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red')); 
 $this->endWidget(); ?>	
 
 <!--button class='no-print' 'style'='float:right;' onClick="window.print()"><?php echo Yii::t('general','Print event content');  ?></button--> 
@@ -59,7 +59,7 @@ $this->endWidget(); ?>
 <br><br><h3> 
 <?php	
 	echo Yii::t('general', 'Load assortment from file'), '</h3>';
-	echo Yii::t('general','Pattern'), ': <b>', $loadDataSetting->TemplateName, '<b><br>';
+	echo Yii::t('general','Pattern'), ': <b>', $loadDataSetting->TemplateName, '</b><br>';
 	
 	$form=$this->beginWidget('CActiveForm', array(  
 	'id'=>'doc-event-content-file',

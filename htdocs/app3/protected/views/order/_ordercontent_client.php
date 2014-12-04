@@ -59,7 +59,7 @@ $this->endWidget(); ?>
 <br><br><h3> 
 <?php	
 	echo Yii::t('general', 'Load assortment from file'), '</h3>';
-	echo Yii::t('general','Pattern'), ': <b>', $loadDataSetting->TemplateName, '<b><br>';
+	echo Yii::t('general','Pattern'), ': <b>', $loadDataSetting->TemplateName, '</b><br>';
 	
 	$form=$this->beginWidget('CActiveForm', array(  
 	'id'=>'doc-event-content-file',

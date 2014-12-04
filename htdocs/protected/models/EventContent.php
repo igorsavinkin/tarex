@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 /**
  * This is the model class for table "{{eventcontent}}".
  *
@@ -11,8 +10,7 @@
  * @property integer $assortmentAmount
  * @property integer $discount
  * @property integer $price
- * @property integer $cost
- * @property integer $cost_w_discount
+ * @property integer $cost 
  */
 class EventContent extends CActiveRecord
 {
@@ -36,12 +34,13 @@ class EventContent extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('eventId, assortmentId, assortmentTitle, assortmentAmount, price, cost, cost_w_discount, RecommendedPrice', 'required', 'except'=>'simple'),
-			array('eventId, assortmentId, assortmentAmount,Barcode', 'numerical', 'integerOnly'=>true),
-			//array('Barcode', 'length', 'max'=>100),
+			array('eventId, assortmentId, assortmentTitle, assortmentAmount, price, cost,  RecommendedPrice', 'required', 'except'=>'simple'),
+			array('price, cost, basePrice, RecommendedPrice, discount', 'numerical'),
+			array('eventId, assortmentId, assortmentAmount', 'numerical', 'integerOnly'=>true),
+			 array('assortmentArticle', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, eventId, Barcode, assortmentId, assortmentTitle, assortmentAmount, discount, price, cost, cost_w_discount, RecommendedPrice ', 'safe', 'on'=>'search'),
+			array('id, eventId, assortmentId, assortmentTitle, assortmentAmount, discount, price, cost, RecommendedPrice, assortmentArticle, basePrice', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,10 +73,11 @@ class EventContent extends CActiveRecord
 			'assortmentId' => Yii::t('general','Assortment'),
 			'assortmentTitle' => Yii::t('general','Title'),
 			'assortmentAmount' => Yii::t('general','Amount'),
+			'assortmentArticle' => Yii::t('general','Article'),
 			'discount' => Yii::t('general','Discount'),
 			'price' => Yii::t('general','Price'),
-			'cost' => Yii::t('general','Cost'),
-			'cost_w_discount' => Yii::t('general','Cost with discount'),
+			'basePrice' => Yii::t('general','Base Price'),
+			'cost' => Yii::t('general','Cost'), 
 		);
 	}
 
@@ -104,10 +104,10 @@ class EventContent extends CActiveRecord
 		$criteria->compare('assortmentId',$this->assortmentId);
 		$criteria->compare('assortmentTitle',$this->assortmentTitle, true);
 		$criteria->compare('assortmentAmount',$this->assortmentAmount);
+		$criteria->compare('assortmentArticle',$this->assortmentArticle);
 		$criteria->compare('discount',$this->discount);
 		$criteria->compare('price',$this->price);
-		$criteria->compare('cost',$this->cost);
-		$criteria->compare('cost_w_discount',$this->cost_w_discount);
+		$criteria->compare('cost',$this->cost); 
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -159,4 +159,21 @@ class EventContent extends CActiveRecord
 		if ($this->price < $this->assortment->getPriceOptMax()) return 'redbgcolor'; 
 		if ($this->price > $this->assortment->getCurrentPrice()) return 'green';		
 	} 
+	public function getDiscountOpt($contractorId=null )
+	{ 		
+		$discGroupId = DiscountGroup::getDiscountGroup($this->assortmentArticle);
+		if(!$discGroupId) 
+			return Yii::t('general','no discount group applied');
+		$discGroupName = DiscountGroup::getDiscountGroupName($this->assortmentArticle);
+	//	echo 'contractor: ', $contractorId, '; ';
+		if ($contractorId) 
+		{
+			$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$contractorId,'discountGroupId'=>$discGroupId /*$discountGroup->name*/));
+			if(isset($ugd)) 
+				 return $ugd->value . '% ('. $discGroupName. ')';  
+			else 		
+				 return '('.$discGroupName.')'; //$discountGroup->name;
+		}
+		return Yii::t('general', 'no contractor given'); 
+	}
 }

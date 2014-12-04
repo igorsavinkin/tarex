@@ -196,7 +196,7 @@ class OrderController extends EventsController
 						}
 						$EventContent->RecommendedPrice = $FinalPrice;
 						$EventContent->cost=$EventContent->price * $EventContent->assortmentAmount;   // 	
-						$EventContent->cost_w_discount = $EventContent->cost;   // 	почему?
+						//$EventContent->cost_w_discount = $EventContent->cost;   // 	почему?
 					}else{
 			//Создаём новый состав заказа
 						
@@ -327,19 +327,30 @@ class OrderController extends EventsController
 // если что-то из ассортимента добавляется в событие
 		if (isset($_POST['add-to-event']) && isset($_POST['Assortment']))
 		{
-			echo 'RecommendedPrice1 '. $eventContent->RecommendedPrice;
+			//echo 'RecommendedPrice1 '. $eventContent->RecommendedPrice;
 			$item = Assortment::model()->findByPk($_POST['Assortment']['id']);
 			$eventContent = new EventContent;
 			$eventContent->assortmentId = $item->id;
 			$eventContent->assortmentTitle = $item->title;
+			$eventContent->assortmentArticle = $item->article2;
 			$eventContent->eventId = $id;
 			$eventContent->assortmentAmount = $_POST['Assortment']['amount'];			
-			$eventContent->price = $eventContent->RecommendedPrice = $item->getPrice($model->contractorId);	 
-
-			// считаем новые стоимость и стоимость со скидкой
-			$eventContent->cost = $eventContent->price * $eventContent->assortmentAmount;           
-			$eventContent->cost_w_discount = $eventContent->cost;                 
-			// потом сохраняем его
+			$eventContent->price = $item->getPrice($model->contractorId);	 
+		// считаем скидку исходя из скидок по группам.
+			$discGroupId = DiscountGroup::getDiscountGroup($item->article2);
+			if(!$discGroupId) 
+				$eventContent->discount = 0; 
+			else {
+				$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$model->contractorId, 'discountGroupId'=>$discGroupId));  
+				$eventContent->discount = (isset($ugd)) ? $ugd->value : 0 ;  
+			}
+		// заносим дополнительные цены и скидки для менеджеров
+			$eventContent->RecommendedPrice = $item->getPriceOptMax(); // минимальная оптовая цена (согласно оптовой максимальной скидке)
+			$eventContent->basePrice = $item->getCurrentPrice(); // - цена базовая (цена до всех скидок) 
+			
+		// считаем новые стоимость и стоимость со скидкой
+			$eventContent->cost = $eventContent->price * $eventContent->assortmentAmount;                 
+		// потом сохраняем его
 			if ($eventContent->save(false)) { 				
 				$model->totalSum = EventContent::getTotalSumByEvent($id);
 				//echo "we've counted new sum : " , $model->totalSum;
@@ -409,7 +420,7 @@ class OrderController extends EventsController
 
 			// считаем новые стоимость и стоимость со скидкой
 			$eventContent->cost = $eventContent->price * $eventContent->assortmentAmount;           
-			$eventContent->cost_w_discount = $eventContent->cost;                 
+			//$eventContent->cost_w_discount = $eventContent->cost;                 
 			// потом сохраняем его
 			if ($eventContent->save(false)) { 				
 				$model->totalSum = EventContent::getTotalSumByEvent($id);

@@ -38,10 +38,10 @@ class EventContent extends CActiveRecord
 		return array(
 			array('eventId, assortmentId, assortmentTitle, assortmentAmount, price, cost, cost_w_discount, RecommendedPrice', 'required', 'except'=>'simple'),
 			array('eventId, assortmentId, assortmentAmount,Barcode', 'numerical', 'integerOnly'=>true),
-			//array('Barcode', 'length', 'max'=>100),
+			 array('assortmentArticle, RecommendedPrice', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, eventId, Barcode, assortmentId, assortmentTitle, assortmentAmount, discount, price, cost, cost_w_discount, RecommendedPrice ', 'safe', 'on'=>'search'),
+			array('id, eventId, Barcode, assortmentId, assortmentTitle, assortmentAmount, discount, price, cost, cost_w_discount, RecommendedPrice, assortmentArticle', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,10 +74,10 @@ class EventContent extends CActiveRecord
 			'assortmentId' => Yii::t('general','Assortment'),
 			'assortmentTitle' => Yii::t('general','Title'),
 			'assortmentAmount' => Yii::t('general','Amount'),
+			'assortmentArticle' => Yii::t('general','Article'),
 			'discount' => Yii::t('general','Discount'),
 			'price' => Yii::t('general','Price'),
-			'cost' => Yii::t('general','Cost'),
-			'cost_w_discount' => Yii::t('general','Cost with discount'),
+			'cost' => Yii::t('general','Cost'), 
 		);
 	}
 
@@ -104,10 +104,10 @@ class EventContent extends CActiveRecord
 		$criteria->compare('assortmentId',$this->assortmentId);
 		$criteria->compare('assortmentTitle',$this->assortmentTitle, true);
 		$criteria->compare('assortmentAmount',$this->assortmentAmount);
+		$criteria->compare('assortmentArticle',$this->assortmentArticle);
 		$criteria->compare('discount',$this->discount);
 		$criteria->compare('price',$this->price);
-		$criteria->compare('cost',$this->cost);
-		$criteria->compare('cost_w_discount',$this->cost_w_discount);
+		$criteria->compare('cost',$this->cost); 
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

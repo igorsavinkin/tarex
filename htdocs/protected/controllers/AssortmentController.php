@@ -904,12 +904,13 @@ class AssortmentController extends Controller
 					$content->eventId = $model->id; // только что сохранённого заказа
 					$assortment = Assortment::model()->findByPk($position->getId());
 					$content->assortmentTitle = $assortment->title; // заносим title номенклатуры из корзины 						
+					$content->assortmentArticle = $assortment->article2; // заносим article номенклатуры из корзины 						
 					$content->assortmentId = $assortment->id; // заносим id номенклатуры из корзины 						
 					$content->price = $position->getPrice();			 	
 					$content->assortmentAmount = $position->getQuantity();// заносим количество наименования номенклатуры из корзины 	
 					$content->cost = $content->price * $content->assortmentAmount; // заносим cost
 					$totalCost += $content->cost;
-					$content->cost_w_discount = $content->cost;
+					//$content->cost_w_discount = $content->cost;
 					if(!$content->save())  
 						{ 
 							echo 'content saving errors';  
@@ -1028,11 +1029,12 @@ class AssortmentController extends Controller
 						$assortment = Assortment::model()->findByPk($position->getId());
 						$content->assortmentId = $assortment->id; // заносим id номенклатуры из корзины 
 						$content->assortmentTitle = $assortment->title; // заносим title номенклатуры из корзины 
+						$content->assortmentArticle = $assortment->article2; // заносим article2 номенклатуры из корзины 
 						$content->price = $position->getPrice();		 
 						$content->assortmentAmount = $position->getQuantity();// заносим количество наименования номенклатуры из корзины 	
 						$content->cost = $content->price * $content->assortmentAmount; // заносим cost
 						$totalCost += $content->cost;
-						$content->cost_w_discount = $content->cost;
+						//$content->cost_w_discount = $content->cost;
 						if(!$content->save())  
 							{ 
 								echo 'content saving errors: ';  
