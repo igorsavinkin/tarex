@@ -1,5 +1,5 @@
 <?php   
-$columns=array('manufacturer', 'article2', 'title', 'Price', 'availability', 'model', 'oem', 'MinPart'); // ФИРМА  АРТИКУЛ  ОПИСАНИЕ  ЦЕНА(RUB)  КОЛИЧЕСТВО  МОДЕЛЬ ОРИГИНАЛЬНЫЙ_№  МИН_ПАРТИЯ
+$columns=array('manufacturer', 'article2', 'title', 'Price', 'availability', 'make', 'oem', 'MinPart'); // ФИРМА  АРТИКУЛ  ОПИСАНИЕ  ЦЕНА(RUB)  КОЛИЧЕСТВО  МОДЕЛЬ ОРИГИНАЛЬНЫЙ_№  МИН_ПАРТИЯ
 Yii::app()->clientScript->registerScript('jqueryui-sortable', "
    $(function() {
     $( '#sortable1, #sortable2' ).sortable({

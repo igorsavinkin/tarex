@@ -230,12 +230,12 @@ class PriceListSettingController extends Controller
 		$criteria = new CDbCriteria();
 	// 	$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
 		$criteria->condition =   'measure_unit<>"" AND price>0';
+		$criteria->order =   'make, manufacturer'; // сортировка по марке и производителю
 		if ($makes) 
 			$criteria->addInCondition('make', explode(',' , $makes));
 		$counter=2;
 		foreach( Assortment::model()->findAll($criteria  ) as $item)
-		{
-			if (isset($_GET['file'])) continue; 
+		{ 
 			$objPHPExcel->getActiveSheet()->SetCellValue('A'.$counter, $item->article2);
 			$objPHPExcel->getActiveSheet()->SetCellValue('B'.$counter, $item->title);
 			$objPHPExcel->getActiveSheet()->SetCellValue('C'.$counter, $item->oem);
@@ -272,6 +272,7 @@ class PriceListSettingController extends Controller
 		$criteria = new CDbCriteria();
 	//	$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
 		$criteria->condition =   'measure_unit<>"" AND price>0';	
+		$criteria->order =   'make, manufacturer'; // сортировка по марке и производителю
 		if ($makes) 
 			$criteria->addInCondition('make', explode(',' , $makes));
 		foreach(Assortment::model()->findAll($criteria) as $d)

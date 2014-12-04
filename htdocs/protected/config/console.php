@@ -69,6 +69,6 @@ return array(
 	),
 	'params'=>array( 
 		'organization'=>7, 
-		'adminEmail'=>'igor.savinkin@gmail.com',
+		'adminEmail'=>'mr.sladkoff@yandex.ru', //'igor.savinkin@gmail.com',
 	),
 );

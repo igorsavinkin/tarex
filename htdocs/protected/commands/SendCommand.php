@@ -11,32 +11,37 @@ class SendCommand extends CConsoleCommand
 	 
 		$now = new CDbExpression("NOW()"); 
 		$criteria->addCondition('time < '. $now);
-	 	$criteria->addCondition('lastSentDate < "'. date('Y-m-d') . '" ' ); // дата последней посылки должна быть меньше чем текущая дата		 
-	
-		//$i=1;
+	 //	$criteria->addCondition('lastSentDate < "'. date('Y-m-d') . '" ' ); // дата последней посылки должна быть меньше чем текущая дата		 
+	 
 	//	echo '<br>Matched criteria<br>';
 		foreach(PriceListSetting::model()->findAll($criteria) as $pls)
 		{ 
 			//echo  'user id = ', $pls->userId, '. <br> ';
-			//посылка прайса			
-		    $username = User::model()->findByPk($pls->userId)->username;
+			//посылка прайса		
+			$user = User::model()->findByPk($pls->userId);	
+		    $username = $user->username;
 			$result = $this->runPHPMailer($pls->format, array($pls->email,  $username, $pls->userId, $pls->carmakes, $pls->columns , $pls->name   )); // email, имя пользователя, его id , марки, колонки для вывода и имя файла
 				
 			if($result) 
 			{ 
-				echo 'Mail is sent to ',   $username , ' at ', $pls->email , ' with attached price list in ' , $pls->format ,' format at ', date('H:i:s');
+				echo 'Послано письмо клиенту "',   $username , '" на ', $pls->email , ' с прикреплённым Прайс Листом формата "' , $pls->format ,'" в ', date('H:i:s') . PHP_EOL;
 				$pls->lastSentDate= date('Y-m-d'); // сохраняем дату посылки в модели/базе чтобы потом сравнивать с ней
 				$pls->save(false);
+			// send mail to manager
+				$managerEmail = User::model()->findByPk($user->parentId)->email;
+				if ($managerEmail)
+					mail($managerEmail, 'Прайс Лист послан клиенту "' . $username .'"',
+						'Послано письмо клиенту "',   $username , '" на ', $pls->email , ' с прикреплённым Прайс Листом формата "' , $pls->format ,'" в ', date('H:i:s') . PHP_EOL); 
 			}				
 			else 
-				{ echo 'Mail failed to ',   $username , ' to ', $pls->email ,  ' at ', date('H:i:s'); }				
+				{ echo 'Не удалось послать письмо клиенту "',   $username , '" на ', $pls->email ,  ' в ', date('H:i:s'); }				
 		}		 
 	}  
 	
 	public function runPHPMailer( $extention=null, $mailArr=null)
 	{ 
 		if ($extention == null)
-		{	echo 'No extention is given'; 
+		{	echo 'Не задано расширение'; 
 			exit();			
 		}
 		Yii::import('ext.phpmailer.JPhpMailer');
@@ -92,9 +97,9 @@ class SendCommand extends CConsoleCommand
 		if ($columns)  // $columns - строковая переменная содержащая колонки для прайса
 			$columnsArr = array_unique(explode(',' , $columns));
 		else 
-			$columnsArr = array( 'article2', 'title', 'oem', 'manufacturer',  'model',  'Price',  'availability',  'MinPart');
+			$columnsArr = array( 'article2', 'title', 'oem', 'manufacturer',  'make',  'Price',  'availability',  'MinPart');
 		$arr=array();	
-		$translationArr = array(	'article2'=>'Артикул',	'availability'=>'Доступность',	'model'=>'Модель', 'title'=>'Название','model'=>'Модель',  'Price'=>'Цена',  'oem'=> 'OEM', 'manufacturer'=>'Производитель', 'MinPart'=>'Мин. партия');
+		$translationArr = array(	'article2'=>'Артикул',	'availability'=>'Доступность',	'model'=>'Модель', 'title'=>'Название','model'=>'Модель', 'make'=>'Марка',  'Price'=>'Цена',  'oem'=> 'OEM', 'manufacturer'=>'Производитель', 'MinPart'=>'Мин. партия');
 		$letters = range('A', 'H');
 		$i=0; // для итерации по буквам - $letters[$i]
 		foreach($columnsArr as $column) 
@@ -102,7 +107,8 @@ class SendCommand extends CConsoleCommand
 			$objPHPExcel->getActiveSheet()->SetCellValue( $letters[$i].'1',  $translationArr[$column]); 
 			switch ($column)
 			{
-				case 'article2': 
+				case 'article2': 				
+				case 'make': 
 					$objPHPExcel->getActiveSheet()->getColumnDimension($letters[$i])->setWidth(20);
 					break;
 				case 'title': 
@@ -129,6 +135,7 @@ class SendCommand extends CConsoleCommand
 		$criteria = new CDbCriteria(); 
 	//	$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
 		$criteria->condition =   'measure_unit<>"" AND price>0';
+		$criteria->order =   'make, manufacturer'; // сортировка по марке и производителю
 	// добавляем условие выбора конкретных марок если они заданы
 		if ($makes) 
 			$criteria->addInCondition('make', explode(',' , $makes));
@@ -170,9 +177,9 @@ class SendCommand extends CConsoleCommand
 		if ($columns)  // $columns - строковая переменная содержащая колонки для прайса
 			$columnsArr = array_unique(explode(',' , $columns));
 		else 
-			$columnsArr = array( 'article2', 'title', 'oem',  'model',  'Price',  'availability');
+			$columnsArr = array( 'article2', 'title', 'oem',  'make',  'Price',  'availability');
 		$arr=array();	
-		$translationArr = array(	'article2'=>'Артикул',	'availability'=>'Доступность',	'model'=>'Модель', 'title'=>'Название','model'=>'Модель',  'Price'=>'Цена',  'oem'=> 'OEM', 'manufacturer'=>'Производитель', 'MinPart'=>'Мин. партия');
+		$translationArr = array(	'article2'=>'Артикул',	'availability'=>'Доступность',	'model'=>'Модель', 'title'=>'Название','model'=>'Модель', 'make'=>'Марка',  'Price'=>'Цена',  'oem'=> 'OEM', 'manufacturer'=>'Производитель', 'MinPart'=>'Мин. партия');
 		foreach($columnsArr as $column) 
 			$arr[] = $translationArr[$column];   
 			//$arr[] = Assortment::model()->getAttributeLabel($column);   // не работает в cli так как не определён язык
@@ -185,6 +192,7 @@ class SendCommand extends CConsoleCommand
 		$criteria = new CDbCriteria(); 
 	//	$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
 		$criteria->condition =   'measure_unit<>"" AND price>0';	
+		$criteria->order =   'make, manufacturer'; // сортировка по марке и производителю
     // добавляем условие выбора конкретных марок если они заданы
 		if ($makes) 
 			$criteria->addInCondition('make', explode(',' , $makes));

@@ -14,7 +14,7 @@ class EventContentController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view' ,'admin' , 'bulkActions', 'updateEventContent', 'setModel'),
+				'actions'=>array('index','view' ,'admin' , 'bulkActions', 'updateEventContent', 'setModel', 'renew'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -32,10 +32,24 @@ class EventContentController extends Controller
 	}
 
 	public function actionRenew($id)
-	{
-		$event=Events::model()->findByPk($id);
-		$content = EventContent::model()->findByAttributes(array('eventId'=>$id));
-		
+	{   
+		// контрагент заказа
+		//$contractor=Events::model()->findByPk($id)->contractorId;
+		// содержимое заказа
+		$contents = EventContent::model()->findAllByAttributes(array('eventId'=>$id));
+		$count=0;
+		foreach($contents as $c)
+		{
+			// найдем элемент номенклатуры из заказа
+			$item=Assortment::model()->findByAttributes(array('article2'=>$c->assortmentArticle));
+			$c->basePrice=$item->getCurrentPrice(); // цена в долларах * на стоимость в долларах
+			$c->RecommendedPrice=$item->getPriceOptMax(); 	// мин цена при максимальной скидке по группе
+			$c->price = round($c->basePrice * (1 +$c->discount/100), 2); 
+			$c->cost = $c->price * $c->assortmentAmount;
+			
+			if($c->save(false)) { $count++; }		
+		}
+		echo $count , ' ' , Yii::t('general','items in the order have been renewed');	 
 	}
 	public function actionSetModel()
 	{

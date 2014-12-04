@@ -246,9 +246,8 @@ if ($dataProvider->itemCount)
 			'oem',
 			'manufacturer',
 			array(
-				'value'=>'$data->getPrice()', 
-			//	'value'=>'$data->getPrice('.Yii::app()->user->id.')', 
-			//	'value'=>'$data->getPrice('.Yii::app()->user->id.')',
+				//'value'=>'$data->getPrice()', 
+				'value'=>'$data->getPrice('.Yii::app()->user->id.')',  
 				'header' => Yii::t('general', 'Price'),
 			),	 
 			'availability'=>array(

@@ -1,8 +1,6 @@
 <?php 
 class PriceListSetting extends CActiveRecord
-{
-	public $_formats = array('csv'=>'csv', 'xls'=>'xls'  /*, 'xlsx'=>'xlsx'*/);
- 	
+{ 
 	public function tableName()
 	{
 		return '{{price_list_setting}}';

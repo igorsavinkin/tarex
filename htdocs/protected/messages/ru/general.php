@@ -25,9 +25,9 @@ return array(
 	'availability'=>'Доступность',
 	'model'=>'Модель',
 	'title'=>'Название',
-	
+	'Renew prices'=>'Обновить цены',
 	'Price columns'=>'Колонки в прайсе',
-	
+	'items in the order have been renewed'=>'позиций в заказе были обновлены',
 	
 	'Submenu hide'=>'Скрыть подменю',
 	'Submenu show'=>'Показать подменю',

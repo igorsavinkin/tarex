@@ -906,8 +906,11 @@ class AssortmentController extends Controller
 					$content->assortmentTitle = $assortment->title; // заносим title номенклатуры из корзины 						
 					$content->assortmentArticle = $assortment->article2; // заносим article номенклатуры из корзины 						
 					$content->assortmentId = $assortment->id; // заносим id номенклатуры из корзины 						
-					$content->price = $position->getPrice();			 	
+					$content->price = $position->getPrice();		
+					$content->basePrice=$assortment->getCurrentPrice(); // цена в долларах * на стоимость в долларах
+					$content->RecommendedPrice=$assortment->getPriceOptMax(); 	// мин цена при максимальной скидке по группе
 					$content->assortmentAmount = $position->getQuantity();// заносим количество наименования номенклатуры из корзины 	
+					$content->discount = round(($content->price - $content->basePrice) * 100 / $content->basePrice, 2);
 					$content->cost = $content->price * $content->assortmentAmount; // заносим cost
 					$totalCost += $content->cost;
 					//$content->cost_w_discount = $content->cost;
@@ -1030,7 +1033,15 @@ class AssortmentController extends Controller
 						$content->assortmentId = $assortment->id; // заносим id номенклатуры из корзины 
 						$content->assortmentTitle = $assortment->title; // заносим title номенклатуры из корзины 
 						$content->assortmentArticle = $assortment->article2; // заносим article2 номенклатуры из корзины 
-						$content->price = $position->getPrice();		 
+						$content->price = $position->getPrice();	
+			// добавлено
+			/********************************************/
+				 		$content->basePrice=$assortment->getCurrentPrice(); // цена в долларах * на стоимость в долларах
+						$content->RecommendedPrice=$assortment->getPriceOptMax(); 	// мин цена при максимальной скидке по группе
+						$content->assortmentAmount = $position->getQuantity();// заносим количество наименования номенклатуры из корзины 	
+						$content->discount = round(($content->price - $content->basePrice) * 100 / $content->basePrice, 2);	
+			/********************************************/		 		
+						 
 						$content->assortmentAmount = $position->getQuantity();// заносим количество наименования номенклатуры из корзины 	
 						$content->cost = $content->price * $content->assortmentAmount; // заносим cost
 						$totalCost += $content->cost;
@@ -1103,7 +1114,7 @@ class AssortmentController extends Controller
 						Yii::app()->user->setFlash('success', $flashContent); 
 					// розничному клиенту		
 						mail( $user->email, "=?UTF-8?B?" . base64_encode('Новый заказ на сайте TAREX.ru') . " ?=", $flashContent, $headers);
-						echo 'msg is sent to retail client on email ', $user->email , '<br>';
+					//echo 'msg is sent to retail client on email ', $user->email , '<br>';
 					// его менеджеру или админу
 					    $managerEmail = (User::model()->findByPk($user->parentId)->email) ? User::model()->findByPk($user->parentId)->email : Yii::app()->params['adminEmail'];
 						$subject = 'Новый заказ на сайте TAREX.ru';
