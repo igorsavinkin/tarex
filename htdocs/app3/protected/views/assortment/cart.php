@@ -11,12 +11,12 @@ if (!Yii::app()->shoppingCart->isEmpty())
 	echo '<h1>', Yii::t('general', 'Cart'), '</h1>';   
 	$positions = Yii::app()->shoppingCart->getPositions();
 	$items= array();  
-	$cartCost = 0;
+	//$cartCost = 0;
 	foreach($positions as $position)
 	{
 		$items[$position->getId()] = $position->getQuantity();	
-		$cartCost +=  $position->getQuantity() *  $position->getPrice(''); 
-	}
+		//$cartCost +=  $position->getQuantity() *  $position->getPrice(''); 
+	} 
 	$criteria = new CDbCriteria;
 	$criteria->addInCondition('id',  array_keys($items));
 	$dataProvider = new CActiveDataProvider('Assortment', array(
@@ -72,7 +72,8 @@ else {
 	echo 'Всего различных позиций в корзине - ', Yii::app()->shoppingCart->getCount(), '</br>';
 	echo 'Всего товаров в корзине - ', Yii::app()->shoppingCart->getItemsCount(), '</br>';
 	
-	echo '<h4>Общая стоимость товаров в коризне со скидкой - ', $cartCost, ' рублей. </h4>';?>
+//	echo '<h4>Общая стоимость товаров в коризне со скидкой - ', $cartCost, ' рублей. </h4>'; 
+	echo '<h4>Общая стоимость товаров в коризне со скидкой - ', Yii::app()->shoppingCart->getCost() , ' рублей. </h4>';?>
 	</div><!-- end class 'print' -->
 	<!--button class='no-print' onClick="window.print()">Распечатать накладную</button-->
 <?php

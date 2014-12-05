@@ -42,7 +42,7 @@ $this->widget( 'zii.widgets.grid.CGridView', array(
 			'cost', 
 		),
     )); 
-echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red')); 
+echo CHtml::submitButton(Yii::t('general','Save'), array('class'=>'red')); 
 
 echo CHtml::endForm(); ?>
 </div>
@@ -79,3 +79,5 @@ echo CHtml::endForm(); ?>
 	</div>
 <?php $this->endWidget(); ?>
 </div> 
+*/
+?>

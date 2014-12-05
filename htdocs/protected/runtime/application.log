@@ -1995,3 +1995,19 @@ Stack trace:
 #16 {main}
 REQUEST_URI=/assortment/view/6241
 ---
+2014/12/05 13:50:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "app2/index.php".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('app2/index.php')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app2/index.php?r=assortment/index&subgroup=%D0%A2%D0%A0%D0%90%D0%9D%D0%A1%D0%9C%D0%98%D0%A1%D0%98%D0%AF&Assortment_page=9&Assortment_sort=agroup.desc
+---
+2014/12/05 13:50:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "app2/index.php".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('app2/index.php')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app2/index.php?r=assortment/index&id=1536&Subsystem=Warehouse+automation&Reference=Assortment&Assortment_sort=agroup.desc&Assortment_page=6
+---

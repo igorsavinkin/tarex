@@ -3,6 +3,7 @@
 /* @var $model Events */
 $UserRole=Yii::app()->user->role;
 $CurrentStatusOrder=EventStatus::model()->FindByPk($model->StatusId)->Order1;
+//echo '<br>$loadDataSetting (in view) = '; print_r($loadDataSetting); 
 ?> 
 <h3 style='margin-bottom: 10px;'><?php  
 echo '<em>' , Yii::t('general',$model->EventType->name), '</em> №'.$model->id.' '.Yii::t('general','from date').' '. Controller::FConvertDate($model->Begin);  
@@ -18,13 +19,15 @@ if($model->eventNumber) echo ' ', Yii::t('general','#'), $model->eventNumber; ?>
 				'view'=>'_main',
 				'data'=>array('model'=>$model), 
 			 ), 
-			'tab2'=>array(
+	 	'tab2'=>array(
 				'title'=>Yii::t('general', 'Products / Services'), //'Доступ', 
 				//даём редактировать заказ до тех пор, пока он в работе или подтверждение доставки / заказа не пройдено
 				'view'=> $CurrentStatusOrder <= 3   ? '_ordercontent_manager' : '_ordercontent_manager_noteditable',  
-				'data'=>array('model'=>$model, 'eventId'=>$model->id, 'loadDataSetting' => $loadDataSetting),
-				'active'=>true,
-			),
+				'data'=>array('model'=>$model, 'eventId'=>$model->id ,
+				      'loadDataSetting' => $loadDataSetting
+				),
+			//	'active'=>true,
+			), 
 			'tab3'=>array(
 				'title'=>Yii::t('general', 'Assortment selection'),  
 				'view'=>'_assortment', 

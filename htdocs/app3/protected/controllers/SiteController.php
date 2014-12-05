@@ -120,13 +120,6 @@ class SiteController extends Controller
 	{		 
 		$this->render($page ? $page : 'index');  
 	}
-	public function actionIndex2($id = null) // без рекламы
-	{			
-		if(!Yii::app()->user->isGuest) 
-			$this->redirect(array('/myFrontend/admin')); 
-		$this->layout = '//layouts/index_no_ad';
-		$this->render('empty');  
-	}	 
 	
 	public function actionBackend()
 	{
@@ -195,7 +188,7 @@ class SiteController extends Controller
 				$model->password = $user->password;
 				$model->rememberMe = 1;
 				if($model->validate() && $model->login())
-				{	 	
+				{							
 					if (!empty($_GET['url']) ) 
 						$this->redirect($_GET['url']);
 					if (isset($_GET['redirect'])) 
@@ -256,11 +249,10 @@ class SiteController extends Controller
 			$model->attributes=$_POST['LoginForm'];  
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-			{   
+			{ 
 				// если это оптовый клиент то мы сразу переносим его в новый заказ
 				if (User::ROLE_USER == Yii::app()->user->role) 
-					$this->redirect(array('order/create'));
-					
+					$this->redirect(array('order/create', 'contractorId'=>Yii::app()->user->id));
 				/*if(isset($_POST['loginMobile']))
 				{
 					echo 'return url: ', Yii::app()->user->returnUrl;

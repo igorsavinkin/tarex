@@ -264,7 +264,7 @@ class OrderController extends EventsController
 
     	$model->save();  
 		// переходим на действие update с только что сохранённым заказом
-		$this->redirect(array('update', 'id'=>$model->id));
+		$this->redirect(array('update', 'id'=>$model->id, '#'=>'tab2'));
 	}	
 	
 	public function actionUpdate($id)
@@ -336,25 +336,21 @@ class OrderController extends EventsController
 			$eventContent->eventId = $id;
 			$eventContent->assortmentAmount = $_POST['Assortment']['amount'];			
 			$eventContent->price = $item->getPrice($model->contractorId);	 
-		//
+		// считаем скидку исходя из скидок по группам.
 			$discGroupId = DiscountGroup::getDiscountGroup($item->article2);
 			if(!$discGroupId) 
 				$eventContent->discount = 0; 
-			else 
-			{
+			else {
 				$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$model->contractorId, 'discountGroupId'=>$discGroupId));  
 				$eventContent->discount = (isset($ugd)) ? $ugd->value : 0 ;  
 			}
 		// заносим дополнительные цены и скидки для менеджеров
-		// - минимальная оптовая цена (согласно оптовой максимальной скидке): getPriceOptMax()
-		// - цена базовая (цена до всех скидок): getCurrentPrice()
-		// - Скидка оптового клиента: getDiscountOpt(Yii::app()->user->id)
-		// - Текущая скидка ??
-			$eventContent->RecommendedPrice = implode(';' , array($item->getPriceOptMax(),$item->getCurrentPrice()) );
-			// считаем новые стоимость и стоимость со скидкой
-			$eventContent->cost = $eventContent->price * $eventContent->assortmentAmount;           
-			//$eventContent->cost_w_discount = $eventContent->cost;                 
-			// потом сохраняем его
+			$eventContent->RecommendedPrice = $item->getPriceOptMax(); // минимальная оптовая цена (согласно оптовой максимальной скидке)
+			$eventContent->basePrice = $item->getCurrentPrice(); // - цена базовая (цена до всех скидок) 
+			
+		// считаем новые стоимость и стоимость со скидкой
+			$eventContent->cost = $eventContent->price * $eventContent->assortmentAmount;                 
+		// потом сохраняем его
 			if ($eventContent->save(false)) { 				
 				$model->totalSum = EventContent::getTotalSumByEvent($id);
 				//echo "we've counted new sum : " , $model->totalSum;

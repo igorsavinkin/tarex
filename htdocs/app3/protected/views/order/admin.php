@@ -17,14 +17,15 @@ $('.search-form form').submit(function(){
 "); 
 //$children = Events::allChildren(Yii::app()->user->id);
 //echo 'childern = '; print_r($children);
+//style="border: 1px solid grey; padding 5px;"
 ?>
-<h1 style="border: 1px solid grey; padding 5px;"><?php echo Yii::t('general','Orders'); ?></h1><br> 
+<h1><?php echo Yii::t('general','Orders'); ?></h1><br> 
 <?php 
 if(Yii::app()->user->checkAccess(User::ROLE_MANAGER)){
 	echo CHtml::link(Yii::t('general','Advanced Search'),'#',array('class'=>'search-button btn-win')); 
 }
 echo CHtml::link(Yii::t('general','Create') . ' ' . Yii::t('general', 'Order' ) , array('create', 'new'=>1), array( 'class' => 'btn-win'));  // target='_blank' ?>
-<div style="float:left; margin-top:-10px"><!--h4 style='padding-left:25px'>
+<div style="float:left; "><!--h4 style='padding-left:25px; /*margin-top:-10px*/'>
 <?php // echo Yii::t('general','Quick open order');?></h4--> 
 	<div> 
 		<!--form method='get'>   
@@ -89,7 +90,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'name'=>'contractorId',
 			'value'=>'isset($data->contractorId ) ?  User::model()->findByPk($data->contractorId)->username : "" ',	
 			//'filter' => CHtml::listData(Organization::model()->findall(), 'id', 'name'),		
-		),  */
+		),  */ 
 		array( 	
 		    'header' => Yii::t('general', 'Contractor'), 
 			'value'=>'isset($data->contractorId) ?  User::model()->findByPk($data->contractorId)->name : "" ',				

@@ -79,7 +79,7 @@ class UserController extends Controller
 		$objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Артикул');
 		$objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Название');
 		$objPHPExcel->getActiveSheet()->SetCellValue('C1', 'OEM');
-		$objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Модель');
+		$objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Марка');
 		$objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Производитель');
 		$objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Цена'); 
 		$objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Наличие');
@@ -88,6 +88,7 @@ class UserController extends Controller
 		$criteria = new CDbCriteria();
 	//	$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
 		$criteria->condition =   'measure_unit<>"" AND price>0';
+		$criteria->order =   'make, manufacturer'; // сортировка по марке и производителю
 		if ($_GET['carmakes']) 
 			$criteria->addInCondition('make', explode(',' , $_GET['carmakes']));
 		$counter=2;
@@ -96,7 +97,7 @@ class UserController extends Controller
 			$objPHPExcel->getActiveSheet()->SetCellValue('A'.$counter, $item->article2);
 			$objPHPExcel->getActiveSheet()->SetCellValue('B'.$counter, $item->title);
 			$objPHPExcel->getActiveSheet()->SetCellValue('C'.$counter, $item->oem);
-			$objPHPExcel->getActiveSheet()->SetCellValue('D'.$counter, $item->model);
+			$objPHPExcel->getActiveSheet()->SetCellValue('D'.$counter, $item->make);
 			$objPHPExcel->getActiveSheet()->SetCellValue('E'.$counter, $item->manufacturer);
 			$objPHPExcel->getActiveSheet()->SetCellValue('F'.$counter, $item->getPrice(Yii::app()->user->id));
 			$objPHPExcel->getActiveSheet()->SetCellValue('G'.$counter, $item->availability);
@@ -128,6 +129,7 @@ class UserController extends Controller
 		$criteria = new CDbCriteria();
 	//	$criteria->addInCondition("article2", array('BZ04020mcl', 'd5091m', '1el008369091'));
 		$criteria->condition =   'measure_unit<>"" AND price>0';	
+		$criteria->order =   'make, manufacturer'; // сортировка по марке и производителю
 		if ($_GET['carmakes']) 
 			$criteria->addInCondition('make', explode(',' , $_GET['carmakes']));		
 		$filepath = Yii::app()->basePath . '/../files/'. $filename;
@@ -135,12 +137,12 @@ class UserController extends Controller
 	// writing csv ...
 		fwrite($out, "\xEF\xBB\xBF");  // мы ставим BOM в начале содержимого файла
 		$counter=0;
-		$arr = array('0'=> Yii::t('general', 'Article'), Yii::t('general', 'Title'), 'OEM', Yii::t('general', 'Model') ,Yii::t('general', 'manufacturer') ,Yii::t('general', 'Price') ,Yii::t('general', 'availability') ,Yii::t('general', 'MinPart') );
-		//  array( 'article2', 'title', 'oem', 'manufacturer',  'model',  'Price',  'availability',  'MinPart');
+		$arr = array('0'=> Yii::t('general', 'Article'), Yii::t('general', 'Title'), 'OEM', Yii::t('general', 'Make') , /* Yii::t('general', 'Model') , */ Yii::t('general', 'manufacturer') ,Yii::t('general', 'Price') ,Yii::t('general', 'availability') ,Yii::t('general', 'MinPart') );
+		//  array( 'article2', 'title', 'oem', 'manufacturer',  'make',  'Price',  'availability',  'MinPart');
 		fputcsv($out, $arr, ';');
 		foreach(Assortment::model()->findAll($criteria) as $d)
 		{
-			$arr = array( $d->article2, $d->title, $d->oem,  $d->model, $d->manufacturer, $d->getPrice(Yii::app()->user->id),  $d->availability, $d->MinPart ); 
+			$arr = array( $d->article2, $d->title, $d->oem,  $d->make, $d->manufacturer, $d->getPrice(Yii::app()->user->id),  $d->availability, $d->MinPart ); 
 			fputcsv($out, $arr, ';'); // разделитель - точка с запятой
 		//	if ($count && ($counter++ > $count) ) break;
 		}  

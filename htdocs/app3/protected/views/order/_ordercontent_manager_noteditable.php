@@ -31,37 +31,20 @@ $this->widget( 'zii.widgets.grid.CGridView', array(
 		'dataProvider' => $dataProvider,   	 
         'columns' => array( 
 			'id',
-				'assortmentArticle',
-			//'assortment.article2',
-			//'assortmentTitle',
-			array(  
-			//	'type'=>'raw',
-				'name'=>'assortmentTitle',
-			//	'value' => array($this, 'titleDataField'),
-			),
-			'assortmentAmount',
-/*     		'basePrice'=>array(  
-			 	'type'=>'raw',
-				'name'=>Yii::t('general','Base Price'). ' (цена до всех скидок)',				
-				'value' =>  '$data->assortment->getCurrentPrice() ? $data->assortment->getCurrentPrice() : "" ',
-			),	   
-				'discount'=>array(  
-			 	'type'=>'raw', 
-				'name'=>Yii::t('general','Opt Discount' ),
-				'value' =>'$data->assortment->getDiscountOpt('. $model->contractorId .')',		
-				'visible'=>$contractorIsOpt, 				
-			),
-	 		'discountCurrent'=>array(  
-			 	'type'=>'raw', 
-				'name'=>Yii::t('general','Current discount' ) . ' %',
-				'value' =>'round(($data->price - $data->assortment->getCurrentPrice())/$data->assortment->getCurrentPrice()*100, 2)',  				
-			),		  */
-			'price', 
-		 
-		/* 	'cost'=>array(
+			'assortmentArticle',
+			'assortmentTitle',
+			'assortmentAmount', 
+			'RecommendedPrice'=>array(   
+				'name'=>'RecommendedPrice',
+				'header' =>Yii::t('general','Min Price'),				
+			), 
+			'basePrice',
+			'discount',
+			'price', 		 
+		  	'cost'=>array(
 				'name'=>'cost',
 				'cssClassExpression'=>'$data->priceCssClass()',   
-			),	 /*	*/
+			),
 		),
     ));  
 echo CHtml::submitButton(Yii::t('general','Save'), array('class'=>'red')); 

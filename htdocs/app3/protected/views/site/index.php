@@ -43,8 +43,8 @@ if (!Yii::app()->user->isGuest) echo '<div class="tar_adv tar_adv_second">';
 								'links'=>array(Yii::t( 'general', 'All makes') => array('site/index'), 
 									Assortment::model()->findByPk($_GET['id'])->title)
 							));	
-						} else 
-							echo Yii::t('general', 'Car makes'); ?>
+						} else {}
+							//echo Yii::t('general', 'Car makes'); ?>
 		</div>
 			<div class="tar_cars">
 				<div class="tar_cat_bot_form"><b>Легковые:</b></div>

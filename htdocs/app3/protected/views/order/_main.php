@@ -28,13 +28,10 @@ $('.notes').bind('blur', function(e) {
 	<?php echo $form->errorSummary($model); ?>
  
 	<td width='250'>
-		<?php   
-			if(!$model->isNewRecord)
-			{
-				echo $form->labelEx($model,'eventNumber');  
-				echo $model->id;
-			} else 
-			{ echo '<b>Чтобы добавить номенклатуру сначала сохраните этот новый заказ.</b>';}?>  
+		<?php echo $form->labelEx($model,'eventNumber');  ?> 
+		<?php /* if ($UserRole<=2) echo $form->textField($model,'id',array('size'=>10,'maxlength'=>20,  'class'=>'notes')); 
+			else */ echo $model->id; ?> 
+		<?php //echo $form->error($model,'eventNumber'); ?>
 	</td>
   
 	<td width='230'>
@@ -69,10 +66,9 @@ $('.notes').bind('blur', function(e) {
 		<?php echo $form->error($model,'Begin'); ?>
 	</td>
 
-	<td>
+	<td  >
 		<?php echo $form->labelEx($model,'totalSum'); ?> 
-		<?php if ($model->isNewRecord) 
-			$model->totalSum = EventContent::getTotalSumByEvent($model->id); 
+		<?php $model->totalSum = EventContent::getTotalSumByEvent($model->id); 
 			echo '<b id="total-sum">', $model->totalSum, '</b>'; ?>
 		<?php echo $form->error($model,'totalSum'); ?>
 	</td> 
@@ -95,10 +91,19 @@ $('.notes').bind('blur', function(e) {
 						),
 					'htmlOptions'=>array(
 						'onChange'=>'js:this.form.submit()',
-						
+						/*'onChange'=>CHtml::ajax(array('type'=>'POST',
+						'url'=>$this->createUrl('update', array('id'=>$model->id)),
+						//'url'=>$this->createUrl('user/returnShablonIdPaymentMethod'),
+						'data'=>'js:$("#events-form").serialize()',	//'data'=>'js:{id:this.value}',					
+						'success'=>'function(data){  							 
+							 // перезагрузка страницы из сервера чтобы получить новые данные
+							location.reload(true);							
+						    //	data = JSON.parse(data)); console.dir(data);							
+						}', 
+						)) /*. 'js:alert(this.value);',*/
 					), 
 				)); 
-			 	echo '<br>', CHtml::Link(Yii::t('general','Edit Customers') , array('user/admin', 'User[isCustomer]'=>'1'), array('target'=>'_blank')); 	
+				echo '<br>', CHtml::Link(Yii::t('general','Edit Customers') , array('user/admin', 'User[isCustomer]'=>'1'), array('target'=>'_blank')); 	
 			}
 			//Менеджерам разрешаем выбрать контрагента если заказ новый
 			elseif ($CurrentStatusOrder<=1 && $UserRole<=5){
@@ -134,7 +139,7 @@ $('.notes').bind('blur', function(e) {
 	<?php echo ($model->contractorId) ? User::model()->findByPk($model->contractorId)->parent->username : '-'; ?>
 	</td>
 	<td>
-		<?php  
+		<?php
 		if ($UserRole==7 || $UserRole<=5){
 			echo $form->labelEx($model,'PaymentType');  				 
 			$this->widget('ext.select2.ESelect2', array(
@@ -180,7 +185,8 @@ $('.notes').bind('blur', function(e) {
 	
 </tr><tr>
 	
-	<td colspan='3' valign=top> 
+	<td colspan='3' valign=top>
+	
 	
 		<?php echo $form->labelEx($model,'StatusId'); ?> 
 		<?php 	
@@ -222,14 +228,14 @@ $('.notes').bind('blur', function(e) {
 				));
 				echo '&#09;&#09;&#09;&nbsp;&nbsp;&nbsp;&nbsp;';
 				//Запрос в резерв
-				if ($model->StatusId == 14 && !$model->isNewRecord){
+				if ($model->StatusId == 14 ){
 					echo CHtml::link(Yii::t('general','Confirm to reserve'), array('update', 'StatusId' => 16, 'id' => $model->id), array('class' => 'btn-win'));	
 					
 					echo CHtml::link(Yii::t('general','Confirm with changes'), array('update', 'StatusId' => 17, 'id' => $model->id), array('class' => 'btn-win'));	
 				
 				}
 				//Запрос на доставку
-				if ($model->StatusId==15 && !$model->isNewRecord){
+				if ($model->StatusId==15){
 					
 					echo CHtml::link(Yii::t('general','Confirm to delivery'), array('update', 'StatusId' => 23, 'id' => $model->id), array('class' => 'btn-win'));
 
@@ -245,15 +251,16 @@ $('.notes').bind('blur', function(e) {
 				echo '&#09;&#09;&#09;&nbsp;&nbsp;&nbsp;&nbsp;';
 				//Для нового заказа или заказа в работе дадим возможность клиенту делать запрос в резерв и на доставку или для заказа "подтверждён с изменениями" или "Подтверждён на доставку с изменениями"
 
-				if (($model->StatusId==2 || $model->StatusId==3 || $model->StatusId==17 || $model->StatusId==18) && !$model->isNewRecord){ 
+				if ($model->StatusId==2 || $model->StatusId==3 || $model->StatusId==17 || $model->StatusId==18){ 
 					
 					echo CHtml::link(Yii::t('general','Request to the reserve'),  array('update', 'StatusId' => 14, 'id' => $model->id), array('class' => 'btn-win'));	
 					
 					echo CHtml::link(Yii::t('general','Request to the delivery'), array('update', 'StatusId' => 15, 'id' => $model->id), array('class' => 'btn-win'));	 
 				}
-				if ( $model->StatusId==16 && !$model->isNewRecord){ 					
+				if ( $model->StatusId==16){ 					
 					echo CHtml::link(Yii::t('general','Request to the delivery'), array('update', 'StatusId' => 15, 'id' => $model->id), array('class' => 'btn-win'));	
-				} 
+				}  
+				
 			
 			}
 			//===== СМЕНА СТАТУСА ТОЛЬКО ВПЕРЁД ======
@@ -263,7 +270,7 @@ $('.notes').bind('blur', function(e) {
  
 	</td> 
 </tr><tr>  
-	<td colspan=3  valign=middle>
+	<td colspan=3  valign='middle'>
 		<?php 
 			if ($UserRole<=5 OR ($CurrentStatusOrder < 3)){
 				echo $form->labelEx($model,'Notes');
@@ -272,7 +279,7 @@ $('.notes').bind('blur', function(e) {
 			} else {
 				echo $form->labelEx($model,'Notes');
 				echo '<b>', $model->Notes , '&nbsp;</b>'; 
-			}  
+			}
 		?>
 		<span class='paddingSpecial1'>		
 			<?php  
@@ -291,8 +298,6 @@ $('.notes').bind('blur', function(e) {
 </tr><tr>
 	<td colspan='2'>
 	<? 
-	if(!$model->isNewRecord) 
-	{
 		$CurrentType=Eventtype::model()->FindByPk($model->EventTypeId);
 		if ($CurrentType->IsBasisFor) 
 			foreach ( explode(',', $CurrentType->IsBasisFor)  as $r)
@@ -318,7 +323,6 @@ $('.notes').bind('blur', function(e) {
 			echo '&#9;&nbsp;&#9;&nbsp;&#9;&nbsp;&#9;&nbsp;&#9;&nbsp;&#9;&nbsp;', CHtml::submitButton(  Yii::t('general','Create new event') , array('class'=>'red')); 
 			echo CHtml::endForm();	    
 		}
-	}
 	?>
 	</td>
 <!--- конец Ввод на основании ---> 
@@ -327,12 +331,10 @@ $('.notes').bind('blur', function(e) {
 	
 <div style='padding: 10px 0px 0px'>
 <?php  
-if (!$model->isNewRecord) 
-{
-	echo CHtml::link(Yii::t('general','Print invoice.'),  array('printSchet', "id"=> $model->id), array('class' => 'btn-win'));
+echo CHtml::link(Yii::t('general','Print invoice.'),  array('printSchet', "id"=> $model->id), array('class' => 'btn-win'));
 
-	echo CHtml::link(Yii::t('general','Print order'),  array('printOrder', "id"=> $model->id), array('class' => 'btn-win'));   
-} 
+echo CHtml::link(Yii::t('general','Print order'),  array('printOrder', "id"=> $model->id), array('class' => 'btn-win'));   
+ 
 ?>
 </div> 
 

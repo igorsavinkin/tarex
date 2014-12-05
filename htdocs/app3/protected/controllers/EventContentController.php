@@ -9,17 +9,12 @@ class EventContentController extends Controller
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
-
-	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
+ 
 	public function accessRules()
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view' ,'admin' , 'bulkActions', 'updateEventContent'),
+				'actions'=>array('index','view' ,'admin' , 'bulkActions', 'updateEventContent', 'setModel', 'renew'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -36,6 +31,52 @@ class EventContentController extends Controller
 		);
 	}
 
+	public function actionRenew($id)
+	{   
+		// контрагент заказа
+		//$contractor=Events::model()->findByPk($id)->contractorId;
+		// содержимое заказа
+		$contents = EventContent::model()->findAllByAttributes(array('eventId'=>$id));
+		$count=0;
+		foreach($contents as $c)
+		{
+			// найдем элемент номенклатуры из заказа
+			$item=Assortment::model()->findByAttributes(array('article2'=>$c->assortmentArticle));
+			$c->basePrice=$item->getCurrentPrice(); // цена в долларах * на стоимость в долларах
+			$c->RecommendedPrice=$item->getPriceOptMax(); 	// мин цена при максимальной скидке по группе
+			$c->price = round($c->basePrice * (1 +$c->discount/100), 2); 
+			$c->cost = $c->price * $c->assortmentAmount;
+			
+			if($c->save(false)) { $count++; }		
+		}
+		echo $count , ' ' , Yii::t('general','items in the order have been renewed');	 
+	}
+	public function actionSetModel()
+	{
+		 $contents = EventContent::model()->findAll();
+		 $count=0;
+		 foreach($contents as $c)
+		 {
+			$item=Assortment::model()->findByPk($c->assortmentId);
+			if(isset($item)) {
+				$c->assortmentArticle=$item->article2; 			
+				$c->basePrice=$item->getCurrentPrice();
+				$c->RecommendedPrice=$item->getPriceOptMax(); 	
+			 
+			// скидкa исходя из скидок по группам.
+				$contractor = Events::model()->findByPk($c->eventId)->contractorId;
+				$discGroupId = DiscountGroup::getDiscountGroup($item->article2);
+				if(!$discGroupId) 
+					$c->discount = 0; 
+				else {
+					$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$contractor, 'discountGroupId'=>$discGroupId));  
+					$c->discount = (isset($ugd)) ? $ugd->value : 0 ;  
+				}
+				if($c->save(false)) { $count++;}
+			}			
+		 }
+		 echo $count, ' models have been changed';
+	}
 	public function actionView($id)
 	{
 		$this->render('view',array(
@@ -55,8 +96,9 @@ class EventContentController extends Controller
 			foreach($_POST['EventContent']['price'] as $key => $price)
 			{
 				$content = EventContent::model()->findByPk($key);
-				$content->price = $price;
-				$content->cost = $content->assortmentAmount * $content->price;
+				$content->price = $price;	 				 
+				$content->discount = round(($price - $content->basePrice) *100 / $content->basePrice); 			
+				$content->cost = $content->assortmentAmount * $content->price;				
 				$content->save(); 
 			}
 		} elseif ($_GET['name'] && ('saveDiscount' == $_GET['name']) ) // сохранение изменённой скидки и пересчёт цены
@@ -71,12 +113,10 @@ class EventContentController extends Controller
 		} elseif ($_GET['name'] && ('saveDiscountNew' == $_GET['name']) ) // сохранение изменённой скидки и пересчёт цены
 		{ 
 			foreach($_POST['EventContent']['discount'] as $key => $discount)
-			{
-				$content = EventContent::model()->findByPk($key);
-				$content->discount = $discount;
-				$temp = (float)explode(';' , $content->RecommendedPrice)[1];
-				echo '$temp=',$temp;
-				$content->price = round((1 + $content->discount/100) * $temp); 
+			{				
+				$content = EventContent::model()->findByPk($key); 
+				$content->discount = $discount; 
+				$content->price = round((1 + $content->discount/100) * $content->basePrice, 2); 
 				$content->cost = $content->assortmentAmount * $content->price;
 				$content->save(); 
 			}

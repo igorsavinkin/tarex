@@ -10,7 +10,7 @@
 ?> 
 <h3>
 <?php   
-  echo '<em>' .Yii::t('general','New'). ' '.Yii::t('general', $model->EventType->name). '</em> ';//$model->id.' '.Yii::t('general','from date').' '. Controller::FConvertDate($model->Begin);
+  echo '<em>' .Yii::t('general','New'). ' '.Yii::t('general',$model->EventType->name). '</em> №'.$model->id.' '.Yii::t('general','from date').' '. Controller::FConvertDate($model->Begin);
   
   if($model->eventNumber) echo ' ', Yii::t('general','#'), $model->eventNumber;   
 ?>
@@ -30,18 +30,19 @@
 				'data'=>array('model'=>$model),
 				//'itemOptions'=>array('class'=>'inbox', 'title'=>'click here to read the mail'),
 			 ), 
-		/*	'tab2'=>array(
+			'tab2'=>array(
 				'title'=>Yii::t('general', 'Products / Services'), //'Доступ', 
 				'view'=>'_ordercontent_noteditable',
 				//'view'=>'_ordercontent2',
 				'data'=>array('model'=>$model, 'eventId'=>$model->id),
 				'active'=>true,
-			),*/
+			),
 			
 		)));
 	//Клиентам даём редактировать заказ до тех пор пока они не отправили его на подтверждение
-	} 
-	else{	
+	}
+	
+	elseif ($CurrentStatusOrder>2 && $UserRole>=6){
 		$this->widget('CTabView', array(
 		'tabs'=>array(			
 			 'tab1'=>array(
@@ -49,7 +50,24 @@
 				'view'=>'_main',
 				'data'=>array('model'=>$model),
 			 ), 
-	/*		'tab2'=>array(
+			'tab2'=>array(
+				'title'=>Yii::t('general', 'Products / Services'), //'Доступ', 
+				'view'=>'_ordercontent_noteditable',
+				//'view'=>'_ordercontent2',
+				'data'=>array('model'=>$model, 'eventId'=>$model->id),
+				'active'=>true,
+			),
+			
+		)));
+	}else{	
+		$this->widget('CTabView', array(
+		'tabs'=>array(			
+			 'tab1'=>array(
+				'title'=>Yii::t('general', 'Main'), //'Основное', 
+				'view'=>'_main',
+				'data'=>array('model'=>$model),
+			 ), 
+			'tab2'=>array(
 				'title'=>Yii::t('general', 'Products / Services'), //'Доступ', 
 				'view'=>'_ordercontent',
 				//'view'=>'_ordercontent2',
@@ -61,7 +79,7 @@
 				'view'=>'_assortment',
 			   // 'view'=>'../assortment/admin',
 				'data'=>array('model'=>$model, 'eventId'=>$model->id,   'assortment'=>$assortment),
-			),*/
+			),
 		)));		
 	}
 ?>
