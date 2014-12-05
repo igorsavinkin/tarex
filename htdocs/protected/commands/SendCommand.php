@@ -29,9 +29,10 @@ class SendCommand extends CConsoleCommand
 				$pls->save(false);
 			// send mail to manager
 				$managerEmail = User::model()->findByPk($user->parentId)->email; 
-				if ($managerEmail)
-					mail($managerEmail, 'Прайс Лист послан клиенту "' . $username .'"',
-						'Послано письмо клиенту "'.   $username . '" на '. $pls->email . ' с прикреплённым Прайс Листом формата "' . $pls->format .'" в '.date('H:i:s') . PHP_EOL); 
+				if ($managerEmail) 
+					mail($managerEmail, '=?UTF-8?B?'.base64_encode('Прайс лист послан клиенту "' . $username .'"').'?=',
+						'Послано письмо клиенту "'.   $username . '" на '. $pls->email . ' с прикреплённым Прайс Листом формата "' . $pls->format .'" в '.date('H:i:s') . PHP_EOL, 
+						"From: ". Yii::app()->params['adminEmail'] . "\r\n Content-type: text/html;\r\n charset=UTF-8\r\nMime-Version: 1.0\r\n"); 
 			}				
 			else 
 				{ echo 'Не удалось послать письмо клиенту "',   $username , '" на ', $pls->email ,  ' в ', date('H:i:s'); }				

@@ -2011,3 +2011,211 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/app2/index.php?r=assortment/index&id=1536&Subsystem=Warehouse+automation&Reference=Assortment&Assortment_sort=agroup.desc&Assortment_page=6
 ---
+2014/12/05 13:57:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "app2/index.php".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('app2/index.php')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app2/index.php?r=assortment/index&subgroup=%D0%A1%D0%98%D0%A1%D0%A2%D0%95%D0%9C%D0%90+%D0%9E%D0%A5%D0%9B%D0%90%D0%96%D0%94%D0%95%D0%9D%D0%98%D0%AF&Assortment_page=38&Assortment_sort=manufacturer.desc
+---
+2014/12/05 14:03:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('site/images/tar...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/site/index?Subsystem=Price+List
+---
+2014/12/05 14:03:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('PriceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/PriceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/PriceListSetting/admin?Subsystem=Price+List&Reference=PriceListSetting
+---
+2014/12/05 14:07:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "app2/index.php".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('app2/index.php')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app2/index.php?r=assortment/index&subgroup=%D0%A1%D0%98%D0%A1%D0%A2%D0%95%D0%9C%D0%90+%D0%9E%D0%A5%D0%9B%D0%90%D0%96%D0%94%D0%95%D0%9D%D0%98%D0%AF&Assortment_page=144&Assortment_sort=article2
+---
+2014/12/05 14:07:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('site/images/tar...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/site/login
+---
+2014/12/05 14:07:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('site/images/mod...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/images/model_gif.gif
+HTTP_REFERER=http://tarex.ru/site/login
+---
+2014/12/05 14:07:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('site/images/win...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/images/winjet_gif.gif
+HTTP_REFERER=http://tarex.ru/site/login
+---
+2014/12/05 14:07:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('PriceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/PriceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/PriceListSetting/admin?Subsystem=Price+List&Reference=PriceListSetting
+---
+2014/12/05 14:07:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('site/images/tar...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/site/index
+---
+2014/12/05 14:07:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "app2/img/favicon.ico".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('app2/img/favico...')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app2/img/favicon.ico
+---
+2014/12/05 14:08:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "app2/index.php".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('app2/index.php')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app2/index.php?r=assortment/index&subgroup=%D0%94%D0%95%D0%A2%D0%90%D0%9B%D0%98+%D0%9A%D0%A3%D0%97%D0%9E%D0%92%D0%90&Assortment_page=172
+---
+2014/12/05 14:09:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('site/images/tar...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/site/index?Subsystem=Settings
+---
+2014/12/05 14:09:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('Category/images...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/Category/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/Category/admin?Subsystem=Settings&Reference=Category
+---
+2014/12/05 14:09:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('Category/images...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/Category/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/Category/admin?Subsystem=Settings&Reference=Category
+---
+2014/12/05 14:09:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('site/images/tar...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/site/index?Subsystem=Money+Management
+---
+2014/12/05 14:10:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/srv50213/htdocs/protected/controllers/AssortmentController.php:1211
+Stack trace:
+#0 /home/srv50213/htdocs/protected/controllers/AssortmentController.php(183): AssortmentController->loadModel('8424')
+#1 [internal function]: AssortmentController->actionView('8424')
+#2 /home/srv50213/htdocs/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(AssortmentController), Array)
+#3 /home/srv50213/htdocs/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(AssortmentController), Object(ReflectionMethod), Array)
+#4 /home/srv50213/htdocs/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/srv50213/htdocs/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/srv50213/htdocs/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/srv50213/htdocs/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/srv50213/htdocs/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/srv50213/htdocs/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/srv50213/htdocs/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('assortment/view')
+#14 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#16 {main}
+REQUEST_URI=/assortment/view/8424
+---
+2014/12/05 14:10:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "app2/index.php".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('app2/index.php')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app2/index.php?r=assortment/index&id=1536&Subsystem=Warehouse+automation&Reference=Assortment&Assortment_sort=agroup.desc&Assortment_page=9
+---
+2014/12/05 14:10:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "images".' in /home/srv50213/htdocs/framework/web/CController.php:483
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CController.php(270): CController->missingAction('images')
+#1 /home/srv50213/htdocs/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('PriceListSettin...')
+#3 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/PriceListSetting/images/tar_x.png
+HTTP_REFERER=http://tarex.ru/PriceListSetting/admin?Subsystem=Price+List&Reference=PriceListSetting
+---
+2014/12/05 14:11:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "app2/index.php".' in /home/srv50213/htdocs/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/srv50213/htdocs/framework/web/CWebApplication.php(141): CWebApplication->runController('app2/index.php')
+#1 /home/srv50213/htdocs/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/srv50213/htdocs/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/app2/index.php?r=assortment/index&subgroup=%D0%93%D0%98%D0%94%D0%A0%D0%90%D0%92%D0%9B%D0%98%D0%A7%D0%95%D0%A1%D0%9A%D0%90%D0%AF+%D0%A1%D0%98%D0%A1%D0%A2%D0%95%D0%9C%D0%90&Assortment_page=158&Assortment_sort=oem.desc
+---
+2014/12/05 14:14:22 [error] [php] Trying to get property of non-object (/home/srv50213/htdocs/protected/commands/SendCommand.php:31)
+Stack trace:
+#0 /home/srv50213/htdocs/framework/console/CConsoleCommandRunner.php(71): SendCommand->run()
+#1 /home/srv50213/htdocs/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run()
+#2 /home/srv50213/htdocs/framework/base/CApplication.php(180): CConsoleApplication->processRequest()
+#3 /home/srv50213/htdocs/framework/yiic.php(33): CConsoleApplication->run()
+

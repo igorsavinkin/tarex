@@ -33,7 +33,7 @@ class PriceListSetting extends CActiveRecord
 			'format' => Yii::t('general','File Format'),
 			'daysOfWeek' => Yii::t('general','Days Of Week'),
 			'time' => Yii::t('general','Time'),
-			'carmakes' => Yii::t('general','Car makes'),
+			'carmakes' => Yii::t('general','Car makes'), //'Car makes'=>'Марки машин',
 			'lastSentDate' => Yii::t('general','Last Sent Date'),
 			'columns' => Yii::t('general','Price columns'),
 		);
