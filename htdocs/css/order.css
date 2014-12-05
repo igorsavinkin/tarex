@@ -550,19 +550,20 @@ border-color: #09f; text-decoration: none;
 .tar_sell_part
 {
     float: left;
-    margin-right: 7px;
+    margin-right: 4px;
     border: 1px solid #e6e6e6;
     padding: 3px;
 }
 .tar_sell_part_name
 {
-    width: 150px;
+    width: 200px;
     margin: auto;
     text-align: center;
     color: #666;
     font-family: "tahoma";
-    font-size: 16px;
+    font-size: 12px;
     padding: 6px 0 16px 0;
+    height: 60px;
 }
 .tar_price:hover
 {
@@ -941,7 +942,7 @@ div.tar_adv_second .tar_cat_top_in
      height: auto;
 }
 div.tar_catalog_goods_second .tar_cat_bot {
-    width: auto;
+    width: 821px;
     background: #f0f3f5;
     margin-left: 0;
     padding: 16px 0 0 22px;

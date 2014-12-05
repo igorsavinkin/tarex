@@ -315,55 +315,16 @@ class Assortment extends CActiveRecord implements IECartPosition
 			$discGroupId = DiscountGroup::getDiscountGroup($this->article2); 
 			$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$ContractorId,'discountGroupId'=>$discGroupId ));
 			return isset($ugd) ? round($this->getCurrentPrice() * (1 + $ugd->value/100), 2) : $this->getCurrentPrice();  	
-		}
-				
-	// если это розничный клиент или кто-то из работников тогда мы выдаём цену с его скидкой из Ценообразования:  $this->getPrice($contractorId)				 		 
-		$discountNew = $this->countDiscount( date("Y-m-d H:i:s"), $ContractorId );	
-		//echo 'discountNew =', $discountNew, '<br>';
-		$discount = $discountNew ? $discountNew : User::model()->findByPk($ContractorId)->discount;  				
-		if (empty($discount)) $discount = 0; // echo 'discount =', $discount ;
-		return round($this->getCurrentPrice() * (1 + $discount/100), 2);
-			 
-	/*	} else { // если не задан контрагент тогда выдаём цену из Ценообразования (Pricing) по залогиненному пользователю. 
-			$discountNew = $this->countDiscount( date("Y-m-d H:i:s"), Yii::app()->user->id );	
-			if (Yii::app()->user->isGuest) 
-				$discount = $discountNew; 
-			else
-				$discount = $discountNew ? $discountNew : User::model()->findByPk(Yii::app()->user->id)->discount;  		
+		} else 
+		{ 	// если это розничный клиент или кто-то из работников тогда мы выдаём цену с его скидкой из Ценообразования:  
+			$discount = $this->countDiscount( date("Y-m-d H:i:s"), $ContractorId );	 
+			//echo  'contractor=', $ContractorId, '<br> disc=', $discount, '<br>';	
+			if (empty($discount)) $discount = 0;  
 			return round($this->getCurrentPrice() * (1 + $discount/100), 2);
-		}*/
-		
-		return $this->getCurrentPrice() ; //Yii::t('general', 'no contractor given'). 'cp'; 
-    } 
-	/*public function getPrice($ContractorId=''){ // учитывает скидку клиента (залогиненного) И скидку исходя из настроек ценнообразования Pricing
-	 
-		if ( $ContractorId=='') {
-		 	$UserRole = User::model()->findByPk(Yii::app()->user->id)->role;
-			if ($UserRole == User::ROLE_USER) 
-			{    
-				$discGroupId = DiscountGroup::getDiscountGroup($this->article2); 
-				$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$ContractorId,'discountGroupId'=>$discGroupId )); 
-				return isset($ugd) ? round($this->getCurrentPrice() * (1 + $ugd->value/100), 2) : $this->getCurrentPrice();  	
-			} else {	 	
-				$discountNew = $this->countDiscount( date("Y-m-d H:i:s"), Yii::app()->user->id );	
-				if (Yii::app()->user->isGuest) 
-					$discount = $discountNew; 
-				else
-					$discount = $discountNew ? $discountNew : User::model()->findByPk(Yii::app()->user->id)->discount;  		
-			}
-		}else{
-			$discountNew = $this->countDiscount( date("Y-m-d H:i:s"), $ContractorId );	
-			$discount = $discountNew ? $discountNew : User::model()->findByPk($ContractorId)->discount;  		
 		} 
-		
-		if (empty($discount)) $discount = 0;
-        
-		//echo 'discount /'.$discount.'/';
-		
-		return round($this->getCurrentPrice() * (1 + $discount/100), 2); 
-    }*/
-	
-	
+		return $this->getCurrentPrice() ; 
+    } 
+	 
 	// используется в OrderController
 	public function getPrice2($Id){ // учитывает скидку клиента (залогиненного) И скидку исходя из настроек ценнообразования Pricing
 		if ($Id==''){
@@ -416,13 +377,13 @@ class Assortment extends CActiveRecord implements IECartPosition
 		if (Yii::app()->user->isGuest){
 			$Pricing=Pricing::model()->findall(array('order'=>'Date DESC', 'condition'=>'Date <= :Date AND isActive = 1 AND GroupFilter="3" ', 'params'=>array(':Date'=>$date) ));			
 		}else{
-			$Pricing=Pricing::model()->findall(array('order'=>'Date DESC', 'condition'=>'Date <= :Date AND isActive = 1 ', 'params'=>array(':Date'=>$date) ));
+			$Pricing=Pricing::model()->findAll(array('order'=>'Date DESC', 'condition'=>'Date <= :Date AND isActive = 1 ', 'params'=>array(':Date'=>$date) ));
 		}
 		
 		foreach ($Pricing as $r){
 			
 			$Field=$r->SubgroupFilter;	
-		//	echo '$r->SubgroupFilter = ', $r->SubgroupFilter, '<br>';
+		 //	echo '$r->SubgroupFilter = ', $r->SubgroupFilter, '<br>';
 			if($Field!=''){
 				$FieldToCompare=mb_strtolower($this->subgroup);
 				if (strstr($Field, "=")!=''){
@@ -552,10 +513,10 @@ class Assortment extends CActiveRecord implements IECartPosition
 	//Фильтры по пользователю / группе	//echo 'user'.$userId;
 //echo 'Discount2 /'.$Discount.'/';
 
-
+		 //	echo '<br>search disc by user =', $userId;
 			if (Yii::app()->user->isGuest) {
 				$Discount=$r->Value;
-			//	echo 'discount (Guest) = ', $Discount , '<br>';
+			 //	echo '<br>discount (Guest) = ', $Discount , '<br>';
 				return $Discount;
 			}
 				
@@ -582,8 +543,8 @@ class Assortment extends CActiveRecord implements IECartPosition
 			//Фильтр по группе пользователя
 			$Field=$r->GroupFilter;			
 			if($Field!='' ){ 
-			
-				$FieldToCompare=mb_strtolower( User::model()->findbypk($userId)->Group );
+	    //	echo '<br>group = ', User::model()->findByPk($userId)->Group; 
+			$FieldToCompare=mb_strtolower( User::model()->findbypk($userId)->Group );
 				// echo 'Discount/'.$Discount.'/Field/'.$Field.'/FieldToCompare/'.$FieldToCompare.'/';
 				
 				if ($FieldToCompare!=$Field){
@@ -602,7 +563,7 @@ class Assortment extends CActiveRecord implements IECartPosition
 		}
 		
 		
-	//	echo 'discount = ', $Discount , '<br>';
+	 //	echo 'discount = ', $Discount , '<br>';
 		return $Discount;		
 	}
 	 
@@ -869,7 +830,7 @@ class Assortment extends CActiveRecord implements IECartPosition
 			case 'СИСТЕМА ОХЛАЖДЕНИЯ':         RETURN 2;
 			case 'ОПТИКА':                                      RETURN 3;
 			case 'ДЕТАЛИ КУЗОВА':                        RETURN 4;
-			case 'СИСТЕМА ПОДВЕСКИ':	           RETURN 5;		
+			case 'СИСТЕМА ПОДВЕСКИ':	              RETURN 5;		
 			case 'ТОПЛИВНАЯ СИСТЕМА':             RETURN 6;
 			case 'ТОРМОЗНАЯ СИСТЕМА':            RETURN 7;
 			case 'ХОДОВАЯ СИСТЕМА' :                RETURN 8;

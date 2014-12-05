@@ -264,7 +264,7 @@ class OrderController extends EventsController
 
     	$model->save();  
 		// переходим на действие update с только что сохранённым заказом
-		$this->redirect(array('update', 'id'=>$model->id));
+		$this->redirect(array('update', 'id'=>$model->id, '#'=>'tab2'));
 	}	
 	
 	public function actionUpdate($id)

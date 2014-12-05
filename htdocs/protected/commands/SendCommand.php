@@ -11,7 +11,7 @@ class SendCommand extends CConsoleCommand
 	 
 		$now = new CDbExpression("NOW()"); 
 		$criteria->addCondition('time < '. $now);
-	 //	$criteria->addCondition('lastSentDate < "'. date('Y-m-d') . '" ' ); // дата последней посылки должна быть меньше чем текущая дата		 
+	 	$criteria->addCondition('lastSentDate < "'. date('Y-m-d') . '" ' ); // дата последней посылки должна быть меньше чем текущая дата		 
 	 
 	//	echo '<br>Matched criteria<br>';
 		foreach(PriceListSetting::model()->findAll($criteria) as $pls)
@@ -28,10 +28,10 @@ class SendCommand extends CConsoleCommand
 				$pls->lastSentDate= date('Y-m-d'); // сохраняем дату посылки в модели/базе чтобы потом сравнивать с ней
 				$pls->save(false);
 			// send mail to manager
-				$managerEmail = User::model()->findByPk($user->parentId)->email;
+				$managerEmail = User::model()->findByPk($user->parentId)->email; 
 				if ($managerEmail)
 					mail($managerEmail, 'Прайс Лист послан клиенту "' . $username .'"',
-						'Послано письмо клиенту "',   $username , '" на ', $pls->email , ' с прикреплённым Прайс Листом формата "' , $pls->format ,'" в ', date('H:i:s') . PHP_EOL); 
+						'Послано письмо клиенту "'.   $username . '" на '. $pls->email . ' с прикреплённым Прайс Листом формата "' . $pls->format .'" в '.date('H:i:s') . PHP_EOL); 
 			}				
 			else 
 				{ echo 'Не удалось послать письмо клиенту "',   $username , '" на ', $pls->email ,  ' в ', date('H:i:s'); }				

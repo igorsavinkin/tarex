@@ -398,7 +398,7 @@ return array(
 	'Choose car model'=>'Выберите модель машины',
 	'Choose car make'=>'Выберите марку машины', 
 	'All makes'=>'Все марки',
-	'Car makes'=>'Марки машин',
+	//'Car makes'=>'Марки машин',
 	'Body'=>'Кузов',
 	'Steering'=>'Руль',
 	'Left'=>'Левый',

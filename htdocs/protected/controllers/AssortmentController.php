@@ -850,26 +850,20 @@ class AssortmentController extends Controller
 			)); 	
 		
 		
-	}
- 
+	} 
 	public function actionCart($id=null)  
-	{
-		////$this->layout='//layouts/main_new5';
-		$this->render('cart',array(
-			//'model'=>$model, 'dataProvider'=>$dataProvider,
-		));
+	{ 
+		$this->render('cart');
 	}
 
 	public function actionSearchbyvin($vin)  
-	{
-		////$this->layout='//layouts/main_new5'; 
+	{ 
 		$this->render('searchbyvin', array('vin'=>$vin)); 
 	}
 
 	public function actionRemovefromcart($id)
 	{
-		Yii::app()->shoppingCart->remove($id);
-		// if AJAX request (triggered by removing via Cart grid view), we should not redirect the browser
+		Yii::app()->shoppingCart->remove($id); 
 		$this->redirect(array('cart')); 
 	} 
 
@@ -913,7 +907,6 @@ class AssortmentController extends Controller
 					$content->discount = round(($content->price - $content->basePrice) * 100 / $content->basePrice, 2);
 					$content->cost = $content->price * $content->assortmentAmount; // заносим cost
 					$totalCost += $content->cost;
-					//$content->cost_w_discount = $content->cost;
 					if(!$content->save())  
 						{ 
 							echo 'content saving errors';  
@@ -923,7 +916,7 @@ class AssortmentController extends Controller
 				$model->totalSum = $totalCost; // занесение общей стоимости заказа на основе стоимости со скидкой
 				$model->save(false);  
 				
-				$orderlink = CHtml::Link(Yii::t('general', 'Order') , CController::createAbsoluteUrl('order/update&id='.  $model->id));	
+				$orderlink = CHtml::Link(Yii::t('general', 'Order') , CController::createAbsoluteUrl('order/update', array('id'=>$model->id)));	
 				
 				$from = 'Компания ТАРЕКС <' . Yii::app()->params['adminEmail'] . '>' ;
 				$from = '=?UTF-8?B?'.base64_encode($from).'?=';
@@ -940,7 +933,7 @@ class AssortmentController extends Controller
 				$managerEmail = User::model()->findByPk($user->parentId)->email;				
 				mail( $managerEmail, 
 					"Пользователь {$user->username} создал новый заказ № {$model->id}", 
-					"Посмотреть и оформить его заказ Вы можете по этой ссылке: " . $orderlink , /* $this->createAbsoluteUrl('order/update', array('id'=>$model->id, '#' => 'tab1') ),*/  
+					"Посмотреть и оформить его заказ Вы можете по этой ссылке: " . $orderlink ,   
 					"From: {$from}\r\nContent-type: text/html;\r\n charset=UTF-8\r\nMime-Version: 1.0\r\n"); 
 				
 				//echo 'mail is sent to manager ', $managerEmail;
@@ -966,7 +959,7 @@ class AssortmentController extends Controller
 				$user->organization = Yii::app()->params['organization']; 
 			}
 		else  
-		{
+		{   // существующий пользователь
 			$user = User::model()->findByPk(Yii::app()->user->id);
 			$user->scenario = 'retail';
 		}
@@ -984,10 +977,9 @@ class AssortmentController extends Controller
 			} else 
 			   $newuser = false;
 				
-			if ($user->isLegalEntity == 0) 
+			if ($user->isLegalEntity == 0 && $user->isNewRecord) 
 			{
-				$user->role = User::ROLE_USER_RETAIL;
-				//echo 'retail user';
+				$user->role = User::ROLE_USER_RETAIL; //echo 'retail user';
 			}
 			else 
 			{
@@ -995,16 +987,16 @@ class AssortmentController extends Controller
 				if($newuser) $user->isActive = 0; //  он не активен, так как новый и юр. лицо
 				//echo 'legal user<br>gross user<br>not active';
 			}
-			if ($user->role == User::ROLE_USER_RETAIL)
+			if ($user->role == User::ROLE_USER_RETAIL && $user->isNewRecord)
 			{
 				$user->isActive = 1; //  он активен
-				$user->Group = 'Розница';  
+				$user->Group = 3; // присваиваем ему группу 'розничные'  
 			}
 
 			if ($user->save())  // сохранение пользователя
 			{ 
 // сохраняем корзину как заказ и содержимое заказа (для обработки менеджером)
-				$model = new Order;
+				$model = new Order; 
 				$model->EventTypeId = Events::TYPE_ORDER; // заказ
 				$model->Begin= date("Y-m-d H:i:s");
 				$model->authorId= $user->id; // заносим идентификатор автора заказа
@@ -1039,13 +1031,13 @@ class AssortmentController extends Controller
 				 		$content->basePrice=$assortment->getCurrentPrice(); // цена в долларах * на стоимость в долларах
 						$content->RecommendedPrice=$assortment->getPriceOptMax(); 	// мин цена при максимальной скидке по группе
 						$content->assortmentAmount = $position->getQuantity();// заносим количество наименования номенклатуры из корзины 	
-						$content->discount = round(($content->price - $content->basePrice) * 100 / $content->basePrice, 2);	
+						$content->discount = 
+						//round(($content->price - $content->basePrice) * 100 / $content->basePrice, 2);	
 			/********************************************/		 		
 						 
 						$content->assortmentAmount = $position->getQuantity();// заносим количество наименования номенклатуры из корзины 	
 						$content->cost = $content->price * $content->assortmentAmount; // заносим cost
-						$totalCost += $content->cost;
-						//$content->cost_w_discount = $content->cost;
+						$totalCost += $content->cost; 
 						if(!$content->save())  
 							{ 
 								echo 'content saving errors: ';  
@@ -1058,8 +1050,8 @@ class AssortmentController extends Controller
 				}	// end if($model->save()) - конец создания заказа и его содержимого		
 			
 		  // абсолютные ссылки на профиль и заказ пользователя
-					$userprofile = CHtml::Link(Yii::t('general', 'Profile') , CController::createAbsoluteUrl('user/update&id='. $user->id)); 
-					$orderlink = CHtml::Link(Yii::t('general', 'Order') , CController::createAbsoluteUrl('order/update&id='.  $model->id));	
+					$userprofile = CHtml::Link(Yii::t('general', 'Profile') , CController::createAbsoluteUrl('user/update' , array('id'=>$user->id))); 
+					$orderlink = CHtml::Link(Yii::t('general', 'Order') , CController::createAbsoluteUrl('order/update' , array('id'=> $model->id)));	
 					if (Yii::app()->user->isGuest) 
 						$org = Yii::app()->params['organization'];
 					else 

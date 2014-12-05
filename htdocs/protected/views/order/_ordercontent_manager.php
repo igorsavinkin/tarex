@@ -106,13 +106,11 @@ echo CHtml::ajaxSubmitButton(Yii::t('general', 'Delete selection') /* 'Удал�
 			}
 		});  }'), array('style'=>'float:right;')); 
 echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red')); 
-//$msg= 
+ 
 if (Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
 	echo '&nbsp;', CHtml::ajaxSubmitButton(Yii::t('general', 'Renew prices'), array('eventContent/renew', 'id'=> $model->id), array('success'  => 'js: function(data) { $.fn.yiiGridView.update("orderscontent"); alert(data); }'), array('class'=>'red')
 	); 	 
-$this->endWidget();
-
-//echo '<br>', CHtml::Link(Yii::t('general', 'Renew prices'), array('eventContent/renew', 'id'=>$eventId) , array('class'=>'btn-win')/**/ );
+$this->endWidget(); 
 ?>	
 	
 <br><br><h3> 

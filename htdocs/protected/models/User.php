@@ -75,10 +75,10 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('isActive, parentId, role, ban, isLegalEntity, organization, discount, paymentDelay, debtLimit, PaymentMethod, ShippingMethod, KnowingSource, scopeOfActivity, ShablonId, agree', 'numerical', 'integerOnly'=>true),
+			array('isActive, parentId, role, ban, isLegalEntity, organization, discount, paymentDelay, debtLimit, PaymentMethod, ShippingMethod, KnowingSource, scopeOfActivity, ShablonId, agree, Group', 'numerical', 'integerOnly'=>true),
 			array('username, password, address, legalAddress, Bank, OrganizationInfo,  notes, name', 'length', 'max'=>255),
 			array('phone, email, isCustomer, isEmployee, isSeller', 'length', 'max'=>50),
-			array('city, CorrespondentAccount, INN, KPP, BIC, CurrentAccount, OKVED, OKPO, email2, CEOname, AccountantName, Group', 'length', 'max'=>63),
+			array('city, CorrespondentAccount, INN, KPP, BIC, CurrentAccount, OKVED, OKPO, email2, CEOname, AccountantName', 'length', 'max'=>63),
 			array('priceConfig, Accounts, Childs', 'length', 'max'=>1000),
 			
 			array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements(),'on' => 'register'),			

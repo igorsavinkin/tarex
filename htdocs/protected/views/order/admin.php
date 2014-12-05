@@ -90,7 +90,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'name'=>'contractorId',
 			'value'=>'isset($data->contractorId ) ?  User::model()->findByPk($data->contractorId)->username : "" ',	
 			//'filter' => CHtml::listData(Organization::model()->findall(), 'id', 'name'),		
-		),  */
+		),  */ 
 		array( 	
 		    'header' => Yii::t('general', 'Contractor'), 
 			'value'=>'isset($data->contractorId) ?  User::model()->findByPk($data->contractorId)->name : "" ',				
