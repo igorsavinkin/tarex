@@ -1334,7 +1334,7 @@ EOF;
 	{ 
 		$info = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/infoblue.png" ));
 		$infofoto = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/camerainfoblue.png" ));
-		$action = Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER) ?'update' : 'view';
+		$action = Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER) ? 'update' : 'view';
 		/*try {
 			//$image = getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg");
 		}  catch(Exception $e)  { } */

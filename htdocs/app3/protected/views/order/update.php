@@ -19,10 +19,11 @@ if($model->eventNumber) echo ' ', Yii::t('general','#'), $model->eventNumber; ?>
 				'view'=>'_main',
 				'data'=>array('model'=>$model), 
 			 ), 
-	 	'tab2'=>array(
+	     	'tab2'=>array(
+				'active'=>true,
 				'title'=>Yii::t('general', 'Products / Services'), //'Доступ', 
 				//даём редактировать заказ до тех пор, пока он в работе или подтверждение доставки / заказа не пройдено
-				'view'=> $CurrentStatusOrder <= 3   ? '_ordercontent_manager' : '_ordercontent_manager_noteditable',  
+				'view'=> $CurrentStatusOrder <= 3   ? '_ordercontent_manager_new' : '_ordercontent_manager_noteditable',  
 				'data'=>array('model'=>$model, 'eventId'=>$model->id ,
 				      'loadDataSetting' => $loadDataSetting
 				),

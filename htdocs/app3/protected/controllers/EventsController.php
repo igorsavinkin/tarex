@@ -23,7 +23,7 @@ class EventsController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create', 'update2', 'PrintSF', 'PrintOrder', 'PrintLabels', 'PrintPPL', 'PrintPPL2', 'LoadContent', 'loadContent', 'clone', 'bulkActions'),
+				'actions'=>array('create', 'update2', 'PrintSF', 'PrintOrder', 'PrintLabels', 'PrintPPL', 'PrintPPL2', 'LoadContent', 'loadContent', 'clone', 'bulkActions', 'searchUnique'),
 				'users'=>array('@'),  
 			), 
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions

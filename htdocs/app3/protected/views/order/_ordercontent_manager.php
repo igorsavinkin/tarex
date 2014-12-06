@@ -74,7 +74,7 @@ $this->widget( 'zii.widgets.grid.CGridView', array(
 			), */
 			'discountNew'=>array(  
 			 	'type'=>'raw', 
-				'name'=>Yii::t('general','Current discount'), //. ', % (по новому)',
+				'name'=>Yii::t('general','Current discount') . ', % ', //(по новому)',
 				'value' => array($this, 'discountDataFieldNew'),		
 				'htmlOptions'=>array('width'=>'90px'),		
 			),  

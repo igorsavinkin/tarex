@@ -97,7 +97,7 @@ class EventContentController extends Controller
 			{
 				$content = EventContent::model()->findByPk($key);
 				$content->price = $price;	 				 
-				$content->discount = round(($price - $content->basePrice) *100 / $content->basePrice); 			
+				$content->discount = round(($price - $content->basePrice) *100 / $content->basePrice, 2); 			
 				$content->cost = $content->assortmentAmount * $content->price;				
 				$content->save(); 
 			}

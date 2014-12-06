@@ -8,8 +8,8 @@
  * @property integer $assortmentId
  * @property string   $assortmentTitle
  * @property integer $assortmentAmount
- * @property integer $discount
- * @property integer $price
+ * @property float $discount
+ * @property float $price
  * @property integer $cost 
  */
 class EventContent extends CActiveRecord

@@ -34,9 +34,217 @@ class OrderController extends EventsController
 	}
 	
 	
-	public function actiontest1()
+	public function actionSearchUnique()
 	{
-		echo 'test1';
+		if(isset($_POST['search-value']))
+	    {   
+			AssortmentFake::model()->deleteAll(); 		
+			$refined = $_POST['search-value'];    //echo 'refined:'.$refined;
+			$replaced =  str_replace("`", "", $refined); 
+			$replaced4oem =  str_replace(array('.', '-', ' '), "", $replaced); // заменяем точки, тире и пробелы на ничего ТОЛЬКО для поиска по OEM и Артикулу (например здесь 77.01.204.282) 
+			//echo '$replaced4oem = ', $replaced4oem;
+			//=============== 1) Сначала ищем по артикулу =========
+			$criteria = new CDbCriteria;
+			$criteria->condition = ( 'article = :article AND organizationId=' . Yii::app()->params['organization']); 
+			$criteria->params = array(':article' => "{$replaced4oem}" ); 
+			$dataProvider = new CActiveDataProvider('Assortment', array(
+				'criteria'=>$criteria, 
+			)); 
+			if (!$dataProvider->itemCount) 
+			//===== 2) НЕ НАШЛИ  ПО Артикулу ищем по ОЕМ
+			{ 
+				//echo 'НЕ НАШЛИ В НОМЕНКЛАТУРЕ ПО Артикулу';
+				$criteria->condition = ( ' t.oem = :oem AND organizationId = ' . Yii::app()->params['organization'] ); 
+				$criteria->params = array(':oem' => "{$replaced4oem}" ); 
+				$dataProvider = new CActiveDataProvider('Assortment', array(
+					'criteria'=>$criteria, 
+				)); 
+				if ($dataProvider->itemCount){ // ЕСЛИ НАШЛИ ПО ОЕМ ПРОВЕРИМ ПРОИЗВОДИТЕЛЯ
+					$foundItem = Assortment::model()->find($criteria);
+					if ($foundItem->make == $foundItem->manufacturer && $foundItem->manufacturer != '') { // найден по оem и выполнено условие что make = manufacturer тогда он - полностью оригинальная запчaпсть.	
+						$mainAssotrmentItem = 1;  
+					}	
+					else 
+					{ 
+						$dataProviderAnalog=new CActiveDataProvider('Assortment', array(
+							'criteria'=>$criteria, 
+						)); 
+						$CriteriaAnalog=$criteria;  
+						$f=AssortmentFake::model()->findByAttributes(array('article'=>$foundItem->oem));
+						if (empty($f)){
+							$fakeAssortment = new AssortmentFake;
+							$fakeAssortment->agroup = $foundItem->agroup;
+							$fakeAssortment->organizationId = $foundItem->organizationId;
+							$fakeAssortment->article = $foundItem->oem;
+							$fakeAssortment->oem = $foundItem->oem;
+							$fakeAssortment->title = $foundItem->title;
+							$fakeAssortment->manufacturer = $foundItem->make;
+							$fakeAssortment->fileUrl = mt_rand();
+							//$fakeAssortment->save(false);
+							try { // мы так ловим исключение чтобы не вставлять дубликат записи 
+								   // мы сделали поле oem - уникальное в AssortmentFake
+								$fakeAssortment->save(false);
+							} catch(Exception $e) { // doing nothing!!!!	 echo $e->getMessage(); 
+							}
+						} 
+						$mainAssotrmentItem = 0; 
+					}
+					//echo 'НАШЛИ ПО ОЕМ ПРОВЕРИМ ПРОИЗВОДИТЕЛЯ '.$mainAssotrmentItem;
+				
+				}// конец if ($dataProvider->itemCount){ //по OEM // ЕСЛИ НАШЛИ ПО ОЕМ ПРОВЕРИМ ПРОИЗВОДИТЕЛЯ
+				else{
+					//echo 'Ищем в аналогах';
+					//=== 3) Ищем в аналогах ===
+					$criteria->condition = ( ' code = :code ' ); 
+					$criteria->params = array(':code' => "{$replaced}" ); // $replaced - где только апострофы заменены
+					$dataProvider = new CActiveDataProvider('Analogi', array(
+						'criteria'=>$criteria, 
+					));  
+					$FoundedAnalog=Analogi::model()->find($criteria); // ищем только один в Аналогах
+					
+					//echo ''.$replaced;
+					$founded=0;
+					if (!$dataProvider->itemCount) {
+						//===== 3.1 РЕКРОСС ======
+						$criteria = new CDbCriteria;
+						$criteria->condition = ( 'oem = :oem' ); 
+						$criteria->order = ' "reliability" DESC' ;  // reliability  
+						$criteria->params = array(':oem' => "{$replaced}" );   					
+						
+						$Recross=Analogi::model()->findall($criteria);
+						if(!empty($Recross)){
+							$it=1; $founded=0;
+							foreach ($Recross as $r){
+							
+								//Проведём отбор кроссов которые есть по нашему номеру
+								$Recross2=Analogi::model()->FindAllByAttributes(array('code'=>$r->code));
+								foreach ($Recross2 as $r2){
+									$MainAssortment=Assortment::model()->FindByAttributes(array('oem'=>$r2->oem));
+									if (!empty($MainAssortment)){
+										$fakeAssortment = new AssortmentFake;
+										//$fakeAssortment->agroup = $foundItem->agroup;
+										$fakeAssortment->organizationId = Yii::app()->params['organization'];
+										$fakeAssortment->article = $r->oem;
+										$fakeAssortment->oem = $r->oem;
+										$fakeAssortment->title = $r->name;
+										//$fakeAssortment->manufacturer = $foundItem->make;
+										$fakeAssortment->fileUrl = mt_rand();
+										 
+										$fakeAssortment->agroup=$MainAssortment->agroup;
+										$fakeAssortment->make=$MainAssortment->make;
+										$fakeAssortment->save(false); 
+										
+										$CriteriaAnalog = new CDbCriteria;
+										$CriteriaAnalog->condition = ( 'oem = :oem' ); 
+										$CriteriaAnalog->params = array(':oem' => $MainAssortment->oem );  
+										
+										$founded=1;
+										//echo 'MainAssortment' . $MainAssortment->id . '/' . $MainAssortment->make; 
+										
+										//$criteria->condition = ( 'oem = :oem AND organizationId=7' ); 
+										//$criteria->params = array(':oem' => $MainAssortment->oem ); 
+										break; 
+									}   
+								}
+								if ($founded==1) break;
+								$it++; 
+							} 
+						
+						} //if(!empty($Recross)){ 
+						
+					}
+					else
+					{ // if (!$dataProvider->itemCount) { 
+						$CriteriaAnalog=new CDbCriteria;
+						$CriteriaAnalog->condition = ( ' oem = :oem AND organizationId=' . Yii::app()->params['organization']); 
+						$CriteriaAnalog->params = array(':oem' => $FoundedAnalog->oem ); 
+						//echo 'CriteriaAnalog '.$CriteriaAnalog->condition;
+						
+						$criteria->condition = ( ' article = :article ' ); 
+						$criteria->params = array(':article' => $FoundedAnalog->code );  
+						
+						$f=AssortmentFake::model()->FindByAttributes(array('article'=>$replaced));
+
+						if (empty($f)){
+							$ff=Assortment::model()->findbyattributes(array('oem'=>$replaced));
+							$fakeAssortment = new AssortmentFake;
+							if (empty($ff)){ 
+								$fakeAssortment->organizationId = Yii::app()->params['organization'];
+								$fakeAssortment->article = $replaced; 
+								$fakeAssortment->title = $FoundedAnalog->name;
+								$fakeAssortment->manufacturer = $FoundedAnalog->brand;
+								$fakeAssortment->fileUrl = mt_rand();
+							 
+							}else{							
+								$fakeAssortment->agroup = $ff->agroup;
+								$fakeAssortment->organizationId = $ff->organizationId;
+								$fakeAssortment->article = $replaced;
+								//$fakeAssortment->oem = $FoundedAnalog->oem;
+								$fakeAssortment->title = $ff->title;
+								$fakeAssortment->manufacturer = $FoundedAnalog->brand;
+								$fakeAssortment->fileUrl = mt_rand(); 
+							} 
+							try { // мы так ловим исключение чтобы не вставлять дубликат записи 
+								   // мы сделали поле oem - уникальное в AssortmentFake
+								$fakeAssortment->save(false);
+							} catch(Exception $e) { // doing nothing!!!!	 echo $e->getMessage(); 
+							}
+						}								
+					}
+					
+					//=== 4) Если не нашли ищем по наименованию ===
+					if (  $founded==0  ) {   
+						$ArraySearchString=explode(' ', $refined); // $ArraySearchString=$this->FArraySearchString($refined);
+						
+					  //  $criteria= new CDbCriteria;
+						$criteria->condition ='organizationId= ' . Yii::app()->params['organization'];
+					 
+						foreach ($ArraySearchString as $r){
+							
+							$Make=Assortment::model()->findbyattributes(array('make'=>$r));
+							if (!empty($Make)){
+								$criteria->condition .= ( " AND make = '{$Make->make}' "); 
+							}else{
+								$r = addcslashes($r, '%_"');
+								$criteria->condition .= ( " AND title LIKE \"%{$r}%\" "); 
+							} 
+							//$criteria->params = array (':r'=> "%{$r}%") ; 
+						//echo 'Ищем по наименованию';
+						}
+						//echo $criteria->condition ;
+						// $dataProvider = new CActiveDataProvider('Assortment', array(
+							// 'criteria'=>$criteria, 
+						// )); 
+					}else{
+						//5) === НИЧЕГО НЕ НАШЛИ ===				
+					}
+				}
+			} //if (!$dataProviderOEM->itemCount) // НЕ НАШЛИ В НОМЕНКЛАТУРЕ ПО Артикулу ищем по ОЕМ 
+			else
+			{
+				//echo 'Нашли по артикулу<br>'; 
+				$items = Assortment::model()->findAll( 'article = :article' , array(':article'=>$replaced4oem));
+				//echo 'found items are: '; print_r($items); echo '<br><br>';
+				$CriteriaAnalogsFromAssortment = new CDbCriteria; 
+				foreach($items as $item)
+				{// ищем для них соответствия в Аналогах  
+					//echo '<br><br>item = ';print_r($item); 
+					if( Assortment::model()->count('oem = "'. $item->oem . '"') <> '0') $CriteriaAnalogsFromAssortment->addCondition('oem = "'. $item->oem . '" ' , 'OR');
+				}
+				if(!empty($CriteriaAnalogsFromAssortment->condition)) $CriteriaAnalogsFromAssortment->addCondition('article != "' . $replaced4oem . '" ');
+			}
+		
+		} // end if(  isset($_POST['search-value'])  ) 
+		else { echo 'no input supplied'; Yii::app()->end();}
+		$this->render('searchUnique', array( 
+			'criteria' => isset($criteria) ? $criteria : '', 
+			'CriteriaAnalog' =>  isset($CriteriaAnalog) ? $CriteriaAnalog : '', 
+			'CriteriaAnalogsFromAssortment' =>  !empty($CriteriaAnalogsFromAssortment->condition) ? $CriteriaAnalogsFromAssortment : array(), 
+			'mainAssotrmentItem' => isset($mainAssotrmentItem) ? $mainAssotrmentItem : '',
+
+			'dataProvider' => $dataProvider, 
+			'dataProviderAnalog' => isset($dataProviderAnalog) ? $dataProviderAnalog : '',		
+		));
 	}
 	
 	public function actionAdmin()
@@ -366,7 +574,7 @@ class OrderController extends EventsController
 		
 	//	echo '<br><br>$loadDataSetting = '; print_r($loadDataSetting);
 		
-		$this->render('update' ,array(
+		$this->render('update' , array(
 			'model'=>$model, 'assortment'=>$assortment,  'pageSize' =>$pageSize, 'loadDataSetting' => $loadDataSetting
 		));
 	} 
