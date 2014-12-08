@@ -208,14 +208,14 @@ echo '<br><br>mainAssotrmentItem: ', $mainAssotrmentItem;
 		//echo '<br>1st case <br>!empty($criteria) && !$dataProvider->itemCount'; 
 		$dataProvider = new CActiveDataProvider('Assortment', array(
 			'criteria'=>$criteria,
-			 'pagination' => array(							
+			 'pagination' => false, /* array(							
 				'pageSize' =>isset($pagesize) ? $pagesize : Yii::app()->params['defaultPageSize'],
-			 ),
+			 ),*/
 		));		
 	} 
 	
 	if(!empty($CriteriaAnalog) && $dataProvider->itemCount){
-		//echo '<br>2nd case <b>!empty($CriteriaAnalog) && $dataProvider->itemCount</b>'; 
+		 //echo '<br>2nd case <b>!empty($CriteriaAnalog) && $dataProvider->itemCount</b>'; 
 		$dataProvider = new CActiveDataProvider('AssortmentFake', array(						'pagination' =>false,
 		));		
 		$dataProviderAnalog = new CActiveDataProvider('Assortment', array(
@@ -244,10 +244,10 @@ if ($dataProvider->itemCount)
 	$this->widget('zii.widgets.grid.CGridView', array( 
 		'id'=>'assortment-grid',
 		'dataProvider'=>$dataProvider, 
-        'cssFile' => Yii::app()->baseUrl . '/css/gridview.css',		
+      //  'cssFile' => Yii::app()->baseUrl . '/css/gridview.css',		
 		'ajaxUrl'=>array('assortment/index'), 
 		'columns'=>array(
-			'id',
+			//'id',
 			'agroup',
 			'groupCategory'=>array(
 				'name'=>Yii::t('general', 'groupCategory') ,  
@@ -273,14 +273,37 @@ if ($dataProvider->itemCount)
 				'name'=>'availability', 
 			    'htmlOptions'=>array('style'=>'text-align:center'),
 			  ), 			
-	   /* 	'info'=>array(
+	    	'info'=>array(
 				'header'=>Yii::t("general",'Info'),
-				 'type'=>'html',
+				'type'=>'html',
 				'value'=>array($this, 'info'), 
-			 ),	*/
-	 
+			 	'visible'=>'$data->availability', 
+			 ),	       
 // new for getting into cart			
-			array('header'=> CHtml::dropDownList('pageSize', 
+			array(
+				'class'=>'ButtonColumn', 
+				'evaluateID'=>true,
+				'template'=>'{add}',
+				'buttons' => array(    
+					'add' => array( 
+						 'label' => Yii::t('general','Add'), 
+						 'options' => array('class'=>'custom-btn add-to-order', 'id'=>'\'item-\'.$data->id', 'max-amount'=>'\'amt-\'.$data->availability'),
+						 'url'=>'', //'Yii::app()->controller->createUrl("#", array("id"=>$data[id]))',
+						//  'visible'=>'Yii::app()->user->checkAccess(1)',
+						  'visible'=>'/*Yii::app()->controller->id <> "assortment" && */ $data->availability <> 0 ',
+						  'click'=>"function(){
+											$('#cart').dialog('open');							
+											// we put the id value into the field
+											var rx = /(\d+)$/;	
+											var arr = rx.exec($(this).attr('id'));
+											$('#Assortment_id').val(arr[1] );	
+											return false;					  
+							}", 
+						),
+				   ), 
+			),
+
+	/*		array('header'=> CHtml::dropDownList('pageSize', 
 				$pageSize,
 				array( ' '=>  Yii::t('general', 'items on page'), 20=>20, 50=>50, 100=>100, 10000=>Yii::t('general', 'all items')),
 				array('onchange'=>"window.location.href = window.location.href + '&pageSize=' + $(this).val(); ",
@@ -288,7 +311,7 @@ if ($dataProvider->itemCount)
 				)),   				
 				'type'=>'raw',
 				'value'=>array('AssortmentController', 'amountToCartAjax'), 
-			), 		
+			), 		*/
 			array(
 				'class' => 'CCheckBoxColumn',
 				'id' => 'Assortment[id]',	 

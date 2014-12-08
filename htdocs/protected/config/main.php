@@ -34,6 +34,7 @@ return array(
 		'application.extensions.magnific-popup.*',  
        	'application.extensions.EchMultiSelect.*',
        	'application.extensions.tinymce.*',
+       	'application.extensions.EJuiDateTimePicker.*',
 	),
 	'controllerMap'=>array(
 		'YiiFeedWidget' => 'ext.yii-feed-widget.YiiFeedWidgetController'

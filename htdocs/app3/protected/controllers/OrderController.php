@@ -569,7 +569,7 @@ class OrderController extends EventsController
 				Yii::app()->user->setFlash('error', Yii::t('general', "Failure to add the item"). ' <b>' . $eventContent->assortmentTitle . '</b> ' . Yii::t('general', " to the event") . '.');
 			
 			// здесь мы делаем GET-redirect чтобы избежать повторного сохранения POST-параметров если пользователь перезагрузит браузер
-			$this->redirect( array('update' , 'id'=>$id , '#' => 'tab2' )); 
+			$this->redirect( array('update' , 'id'=>$id , '#' => 'tab2' , 'search-value'=>$_POST['search-value'])); 
 		}// конец добавления ассортимента в событие		
 		
 	//	echo '<br><br>$loadDataSetting = '; print_r($loadDataSetting);
@@ -1243,4 +1243,18 @@ class OrderController extends EventsController
 	  $objWriter->save('php://output');
 	}
 /**************** конец Печатные формы *********************************/
+	public function info($data, $row)
+	{ 
+	    if (!$data->priceS) return; // если это искусственный элемент, то ничего не показываем
+		$info = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/infoblue.png" ));
+		$infofoto = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/camerainfoblue.png" ));
+		$action = Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER) ? 'assortment/update' : 'assortment/view';
+		/*try {
+			//$image = getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg");
+		}  catch(Exception $e)  { } */
+		if (getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg" ) !== false)
+			echo CHtml::Link($infofoto, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 	 
+		else  
+            echo CHtml::Link($info, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 
+	}
 }

@@ -1,6 +1,8 @@
 <?php
 return array( 
-
+    /* Spare parts for cars */
+	'for cars'=>'для автомобилей',
+	'Spare parts for cars'=>'Детали для автомобилей',
 
 	/*  Price List Settings */
 	'Price List'=> 'Прайс', 

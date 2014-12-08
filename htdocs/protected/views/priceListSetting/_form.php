@@ -87,7 +87,7 @@ $('.download-link').on('click', function(e){
 			echo $form->error($model,'name'); 
 		} 
 		else  
-			echo (''!=$model->name) ? $model->name : '-';
+			echo (''!=$model->name) ? $model->name : '<br>-';
 		 ?>
 		<br>
 		

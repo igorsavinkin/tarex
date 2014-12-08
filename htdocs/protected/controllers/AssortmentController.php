@@ -1322,13 +1322,14 @@ EOF;
 		//CHml::Link('Make a request to manager', 'searchTerm/create');
 		
 		$msg = Yii::t('general','item(s) have been added to cart');
-		$buttonAjax = CHtml::ajaxSubmitButton(Yii::t('general', 'Add to Cart'), array('addToCartAjax'), array( 'data'=>'js:{id: this.name, amount: jQuery(this).siblings("select").val(), "' . Yii::app()->request->csrfTokenName . '": "' . Yii::app()->request->csrfToken . '" }'/*, 'update'=>'#cart-content'*/ , 'success'=>'js:/*var amt = jQuery(this).siblings("select").val(); console.log(amt); */ function(data){var obj=JSON && JSON.parse(data) || $.parseJSON(data); $("#cart-content").html(obj.cartMsg); alert( obj.amount + " '. $msg. '"); }'), array('class'=>'btn btn-xs btn-primary', 'name' =>  $data->id ));  
+		$buttonAjax = CHtml::ajaxSubmitButton(Yii::t('general', 'Add to Cart'), array('addToCartAjax'), array( 'data'=>'js:{id: this.name, amount: jQuery(this).siblings().val(), "' . Yii::app()->request->csrfTokenName . '": "' . Yii::app()->request->csrfToken . '" }'/*, 'update'=>'#cart-content'*/ , 'success'=>'js:/*var amt = jQuery(this).siblings("select").val(); console.log(amt); */ function(data){var obj=JSON && JSON.parse(data) || $.parseJSON(data); $("#cart-content").html(obj.cartMsg); alert( obj.amount + " '. $msg. '"); }'), array('class'=>'btn btn-xs btn-primary', 'name' =>  $data->id ));  
 		
 		// $data ... the current row data   
         // $row ... the row index 
 	   $dataArr = array(); for($i=1; $i <= $data->availability; $i++ ) { $dataArr[$i] = $i; }
 	   $dd = CHtml::dropDownList('Assortment[amount][' . $data->id .']', 1, $dataArr, array('style'=>'width:40px;'));
-		return $dd  . '&nbsp;' . $buttonAjax; 		
+	    $textField = CHtml::textField('Assortment[amount][' . $data->id .']' , 1,  array('style'=>'width:40px;')); 
+		return $textField  . '&nbsp;' . $buttonAjax; 		
     }	
 	public function info($data, $row)
 	{ 
