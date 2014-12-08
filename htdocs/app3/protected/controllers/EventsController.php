@@ -1010,8 +1010,8 @@ class EventsController extends Controller
     }
 	public function priceCssClass($contractorId=null) 
 	{
-		if ($this->price < $this->assortment->getPriceOptMax()) return 'redbgcolor';
+		if ($this->price < $this->RecommendedPrice) return 'redbgcolor';
 		//if ($this->price == $this->assortment->getPriceOpt($contractorId)) return '';
-		if ( $this->price > $this->assortment->getCurrentPrice()  ) return 'green';		
+		if ( $this->price > $this->basePrice) return 'green';		
 	} 
 }

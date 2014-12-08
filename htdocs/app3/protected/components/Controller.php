@@ -47,7 +47,7 @@ class Controller extends CController
                 } else 
 				{
 				//  aвтоматически формировать заголовок (title) из <категории> и <марки> и <модели> 
-                  	//категория и маркаhttp://tarex.ru/app3/assortment/index?Assortment%5BgroupCategory%5D=2&id=7)	 			
+                   	//категория и маркаhttp://tarex.ru/app3/assortment/index?Assortment%5BgroupCategory%5D=2&id=7)	 			
 					if(stristr(Yii::app()->request->requestUri, 'series') OR stristr(Yii::app()->request->requestUri, 'body') ){
 					 	foreach($_GET['Body'] as $key=>$body) // выводим те Bodies которые не 0
 						{

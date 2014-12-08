@@ -30,12 +30,8 @@ $this->widget( 'zii.widgets.grid.CGridView', array(
 		'dataProvider' => $dataProvider,   	 
         'columns' => array( 
 			'id',
-			'assortment.article2', 
-		 	array(  
-				//'type'=>'raw',
-				'name'=>'assortmentTitle',
-				//'value' => array($this, 'titleDataField'),
-			), 
+			'assortmentArticle', 
+			'assortmentTitle',
 			array(  
 				'type'=>'raw',
 				'name'=>'assortmentAmount',
