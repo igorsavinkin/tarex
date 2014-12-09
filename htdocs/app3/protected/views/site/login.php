@@ -17,7 +17,7 @@ else :
         <div class="tar_in_head">
             <span><?php echo Yii::t('general','Sign in'); ?></span>
             <a href="#" id='login-back-link'>
-                <img src="images/tar_x.png">
+                <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_x.png">
             </a>
             <div class="pad"></div>
         </div>

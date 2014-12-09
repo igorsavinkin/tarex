@@ -26,7 +26,8 @@ $this->widget( 'zii.widgets.grid.CGridView', array(
 		'selectableRows' => 2, 
 		'cssFile' => Yii::app()->baseUrl . '/css/gridview.css',	
 		// выводим сумму по таблице и подсчитываем всю сумму и заносим это в атрибут 'totalSum' модели Events ---> $this->countSumTotal($eventId). Это происходит каждый раз при пересчёте/обновлении таблицы
-	    'summaryText' => '<h3>' . Yii::t('general','Total with discount' ) . ' <em>'. EventContent::getTotalSumByEvent($eventId) . '</em> ' . Yii::t('general','RUB')  . '</h3>' . 'Результат {start} - {end} из {count}',
+	    'template'=>'{items}{pager}{summary}',  
+		'summaryText' => 'Результат {start} - {end} из {count}<h3 class="order-total">' . Yii::t('general','Total with discount' ) . ' <em id="grid-total-sum">'. EventContent::getTotalSumByEvent($eventId) . '</em> ' . Yii::t('general','RUB')  . '</h3>' ,
 		'dataProvider' => $dataProvider,   	 
         'columns' => array( 
 			'id',

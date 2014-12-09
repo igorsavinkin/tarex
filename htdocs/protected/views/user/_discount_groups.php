@@ -1,6 +1,12 @@
 <h3><?php echo Yii::t('general','Discount groups' ); ?></h3>
-<?php  
-
+<?php   
+//********************** script for the popup Dialog **********************//
+$msg='Для нового клиента задайте сначала группы скидок, сохраните их и перейдите на  вкладку "Основное" чтобы до конца задать инфо клиента.';
+Yii::app()->clientScript->registerScript('info-msg', "
+if (location.search.indexOf('new') != false) 
+	alert('{$msg}');
+", CClientScript::POS_END);
+ 
 $dataProvider=new CActiveDataProvider('UserGroupDiscount', array(    
         'criteria' => array(
         'condition'=>'userId = '. $model->id, 'order'=>'id ASC'),   

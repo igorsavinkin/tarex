@@ -13,7 +13,7 @@ class AssortmentController extends Controller
 	{     
 		return array(     
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array( 'removefromcart', 'view', 'admin', 'admin2', 'index', 'addToCart','addToCartAjax', 'cart', 'checkout', 'clearcart',  'checkoutretail' , 'searchbyvin', 'autocomplete', 'fob', 'test', 'SpecialOffer'), 
+				'actions'=>array( 'removefromcart', 'view', 'admin', 'admin2', 'index', 'addToCart','addToCartAjax', 'cart', 'checkout', 'clearcart',  'checkoutretail' , 'searchbyvin', 'autocomplete', 'fob', 'test', 'itemInfo',  'testInfo', 'SpecialOffer'), 
 				'users'=>array('*'),  
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -1322,7 +1322,7 @@ EOF;
 		//CHml::Link('Make a request to manager', 'searchTerm/create');
 		
 		$msg = Yii::t('general','item(s) have been added to cart');
-		$buttonAjax = CHtml::ajaxSubmitButton(Yii::t('general', 'Add to Cart'), array('addToCartAjax'), array( 'data'=>'js:{id: this.name, amount: jQuery(this).siblings().val(), "' . Yii::app()->request->csrfTokenName . '": "' . Yii::app()->request->csrfToken . '" }'/*, 'update'=>'#cart-content'*/ , 'success'=>'js:/*var amt = jQuery(this).siblings("select").val(); console.log(amt); */ function(data){var obj=JSON && JSON.parse(data) || $.parseJSON(data); $("#cart-content").html(obj.cartMsg); alert( obj.amount + " '. $msg. '"); }'), array('class'=>'btn btn-xs btn-primary', 'name' =>  $data->id ));  
+		$buttonAjax = CHtml::ajaxSubmitButton(Yii::t('general', 'Add to Cart'), array('addToCartAjax'), array( 'data'=>'js:{id: this.name, amount: jQuery(this).siblings().val(), "' . Yii::app()->request->csrfTokenName . '": "' . Yii::app()->request->csrfToken . '" }'/*, 'update'=>'#cart-content'*/ , 'success'=>'js:/*var amt = jQuery(this).siblings().val(); console.log(amt); */ function(data){var obj=JSON && JSON.parse(data) || $.parseJSON(data); $("#cart-content").html(obj.cartMsg); alert( obj.amount + " '. $msg. '"); }'), array('class'=>'btn btn-xs btn-primary', 'name' =>  $data->id ));  
 		
 		// $data ... the current row data   
         // $row ... the row index 
@@ -1345,3 +1345,4 @@ EOF;
             echo CHtml::Link($info, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 
 	}
 }
+?> 

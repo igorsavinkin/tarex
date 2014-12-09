@@ -269,7 +269,7 @@ if ($dataProvider->itemCount)
 	 /*    	'foto'=>array(
 				'header'=>Yii::t("general",'Foto'),
 				 'type'=>'html',
-			  'value'=>array($this, 'getImage'), 
+			     'value'=>array($this, 'getImage'), 
 			 //'value'=>'CHtml::tag("img", array("src" =>"/app3/img/foto/" . $data->article2 . ".jpg", "height"=>30, "width"=>30))',
 			//'value'=>'CHtml::tag("img", array("src" =>"/app3/img/foto/thumbnails/AD01.5213.10.jpg.thumb_31x50.jpg", "height"=>30, "width"=>30))', 
 			 //     'value'=>'(!empty($data->imageUrl)) ?  "<span class=\"picture-icon\"></span>"  :Yii::t("general", "no image")', //'<span class="info-picture"></span>',

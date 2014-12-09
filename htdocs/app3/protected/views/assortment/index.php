@@ -2,15 +2,21 @@
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/seotools/seotools.class.php');
 $ST = new Seotools; 
 
+// подгрузка css для вывода картинки с описанием
+Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/in.css');  
 
+$this->widget("ext.magnific-popup.EMagnificPopup", array('target' => '.test-popup-link')); 
 ?>
-<?php 
-/* @var $this AssortmentController */
-/* @var $model Assortment */ 
-//$this->widget("ext.magnific-popup.EMagnificPopup", array('target' => '.test-popup-link'));
+<!-- Окно для вывода картинки с описанием -->
+<div id="info-popup"></div> 
+<?php // скрипт для вызова popup картинки с описанием: действие itemInfo вызывает через renderPartial представление 'popup'
+$ajaxUrl = $this->createUrl('itemInfo');
+Yii::app()->clientScript->registerScript('info-popup-script', "
+jQuery('.info-link').on('click', function(){ jQuery.ajax({'data':{id: this.id },'url':'{$ajaxUrl}','cache':false,'success':function(html){jQuery('#info-popup').html(html)}});return false;});
+", CClientScript::POS_END); 
+?> 
+<!--/******************************* start of the Dialog box ***************************/-->
 
-/********************************** start of the Dialog box ******************************/
-?>
 <div id='cart' class="tar_add_form"> 
 	<div class="tar_in_head">
 		<span><?php echo Yii::t('general','Add the assortment to a cart'); ?> </span>
@@ -245,6 +251,11 @@ if ($dataProvider->itemCount)
 			),
 			'oem',
 			'manufacturer',
+			'infoPopup'=>array(
+				'header'=>Yii::t("general",'Info Popup'),
+				 'type'=>'html',
+				'value'=>array($this, 'infoPopup'), 
+			 ),	
 			array(
 				'value'=>'$data->getPrice()', 
 			//	'value'=>'$data->getPrice('.Yii::app()->user->id.')',  
@@ -261,11 +272,12 @@ if ($dataProvider->itemCount)
 		    	'htmlOptions' => array('style' => 'text-align:center; width: 20px'), 
 			),*/
 			
-	    	'info'=>array(
+	    /*	'info'=>array(
 				'header'=>Yii::t("general",'Info'),
 				 'type'=>'html',
 				'value'=>array($this, 'info'), 
 			 ),	
+			
 	 /*    	'foto'=>array(
 				'header'=>Yii::t("general",'Foto'),
 				 'type'=>'html',

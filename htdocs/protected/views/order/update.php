@@ -22,7 +22,7 @@ if($model->eventNumber) echo ' ', Yii::t('general','#'), $model->eventNumber; ?>
 	 	'tab2'=>array(
 				'title'=>Yii::t('general', 'Products / Services'), //'Доступ', 
 				//даём редактировать заказ до тех пор, пока он в работе или подтверждение доставки / заказа не пройдено
-				'view'=> $CurrentStatusOrder <= 3   ? '_ordercontent_manager' : '_ordercontent_manager_noteditable',  
+				'view'=> $CurrentStatusOrder <= 3   ? '_ordercontent_manager_new' : '_ordercontent_manager_noteditable',  
 				'data'=>array('model'=>$model, 'eventId'=>$model->id ,
 				      'loadDataSetting' => $loadDataSetting
 				),
@@ -47,7 +47,7 @@ if($model->eventNumber) echo ' ', Yii::t('general','#'), $model->eventNumber; ?>
 			'tab2'=>array(
 				'title'=>Yii::t('general', 'Products / Services'), 
 				// даём редактировать заказ до тех пор пока они не отправили его на подтверждение
-				'view'=>($CurrentStatusOrder <= 2) ? '_ordercontent_client' : '_ordercontent_noteditable', 
+				'view'=>($CurrentStatusOrder <= 2) ? '_ordercontent_client_new' : '_ordercontent_noteditable', 
 				'data'=>array('model'=>$model, 'eventId'=>$model->id, 'loadDataSetting' => $loadDataSetting),
 				'active'=>true,
 			),

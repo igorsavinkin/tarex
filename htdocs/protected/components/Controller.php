@@ -43,9 +43,14 @@ class Controller extends CController
 						return $this->_pageTitle=Yii::app()->name.' - '. Yii::t('general', '{action} {controller}', array('{action}' =>Yii::t('general',   $action), '{controller}' =>Yii::t('general',  $controller)));
                 } else {
                    //  aвтоматически формировать заголовок (title) из <категории> и <марки> и <модели> 
-                  	//категория и маркаhttp://tarex.ru/assortment/index?Assortment%5BgroupCategory%5D=2&id=7)	 			
+                  	// категория формирует заголовок тэга  
+					if (!empty($_GET['Assortment']['groupCategory'])) 
+     					$titleHead =  Yii::t('general',  Category::model()->findByPk($_GET['Assortment']['groupCategory'])->name) . ' ' . Yii::t('general', 'for cars'); 
+					else 
+						$titleHead = Yii::t('general', 'Spare parts for cars'); 
+					// если заданы Body[...] и Series[] то накапливаем их 
 					if(stristr(Yii::app()->request->requestUri, 'series') OR stristr(Yii::app()->request->requestUri, 'body') ){
-					 	foreach($_GET['Body'] as $key=>$body) // выводим те Bodies которые не 0 и где $key==$body
+					 	foreach($_GET['Body'] as $key=>$body) // те Body которые не 0 или где $key==$body
 						{
 							if(0!=$body OR $key==$body) $arr[]=$key;						
 						}
@@ -53,21 +58,21 @@ class Controller extends CController
 						{
 							$arr[]=$series;						
 						}						
-						return $this->_pageTitle = Yii::t('general', 'Spare parts for cars') . ' ' . implode(', ', $arr);
-					} 			
-					elseif (isset($_GET['Assortment']['groupCategory']) && isset($_GET['id'])) 
-     					return $this->_pageTitle =  Yii::t('general',  Category::model()->findByPk($_GET['Assortment']['groupCategory'])->name) . ' ' . Yii::t('general', 'for cars') . ' ' . Assortment::model()->findByPk($_GET['id'])->title; 
+						// вывод их в месте где isset($_GET['id'])
+ 						//if (!empty($arr)) 
+							//return $this->_pageTitle = $titleHead . ' ' . implode(', ', $arr);
+					}  
 					 
-					// только марка, ссылки типа http://tarex.ru/assortment/index/3859	
-					elseif (isset($_GET['id']))
-					 	return $this->_pageTitle = Yii::t('general', 'Spare parts for cars') . ' ' .Assortment::model()->findByPk($_GET['id'])->title;
+					// марка, ссылки типа http://tarex.ru/assortment/index/3859	
+					if (isset($_GET['id']))
+					 	return $this->_pageTitle = $titleHead . ' ' . Assortment::model()->findByPk($_GET['id'])->title . ' ' . implode(', ', $arr); // добавили накопленные Body[...] и Series[]
 					
 					// только категория, ссылки типа http://tarex.ru/assortment/1	
 					elseif (isset($_GET['groupCategory']))
 					 	return $this->_pageTitle = Yii::app()->name .' - '. Yii::t('general',  Category::model()->findByPk($_GET['groupCategory'])->name);
 						 
 					else
-						return $this->_pageTitle=Yii::app()->name.' - '. Yii::t('general', $controller);
+						return $this->_pageTitle= Yii::app()->name.' - '. Yii::t('general', $controller);
                 }
 		}
 	}

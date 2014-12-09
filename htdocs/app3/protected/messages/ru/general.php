@@ -433,6 +433,7 @@ return array(
 	'No details found for this subnode'=>'Не найдено деталей по этоту подузлу',
 	'Spare part'=>'Запчасть',
 	'Info'=>'Инфо',
+	'Detailed Info'=>'Детальная информация',
 	'Show in schema'=>'Показать на схеме',
 	"schema is not yet ready"=>'схема ещё не готова',
 	'Search item'=>'Искомый элемент',

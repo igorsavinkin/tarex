@@ -47,12 +47,12 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 		<?php echo $form->error($model,'password'); ?> 
 		 
 		<?php echo $form->labelEx($model, 'role'); 
-				   if(Yii::app()->user->role < $model->role) 
+				   if(Yii::app()->user->role < $model->role OR !isset($model->role)) 
 					{ 
 						$this->widget('ext.select2.ESelect2',array(
 							'model'=> $model,
 							'attribute'=> 'role', 
-							'data'=> CHtml::listData(UserRole::model()->findAll(array('order'=>'Name ASC')), 'id','name'),
+							'data'=> CHtml::listData(UserRole::model()->findAll(array('order'=>'Name ASC', 'condition'=>'id >' . Yii::app()->user->role)), 'id','name'),
 							'options'=> array('allowClear'=>true, 'width' => '200',
 							),                 
 						));  

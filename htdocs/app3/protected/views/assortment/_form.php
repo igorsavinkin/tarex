@@ -1,4 +1,6 @@
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php
+$this->widget("ext.magnific-popup.EMagnificPopup", array('target' => '.test-popup-link')); 
+$form=$this->beginWidget('CActiveForm', array(
 	'enableAjaxValidation'=>false,
 	'enableClientValidation'=>false,
 	'htmlOptions' => array(
@@ -232,7 +234,11 @@
  </td>  
  <td>  <?php if ((getimagesize(Yii::app()->basePath. '/../img/foto/'. $model->article2 . '.jpg') !== false) ) : ?>
 	<div style="border: 1px solid #344756; margin:0 0 0 0px; padding: 5px;float:right;"> 
-	<?php echo CHtml::image(Yii::app()->baseUrl. '/img/foto/'. $model->article2 . '.jpg' , $model->Misc,array("width"=>350 ))?> </div>
+	<?php $src= Yii::app()->baseUrl. '/img/foto/'. $model->article2 . '.jpg' ;
+			echo "<a class='test-popup-link' href='{$src}'>" . CHtml::image($src , $model->Misc ,array("width"=>350)) . '</a>'; 
+	
+	//echo CHtml::image(Yii::app()->baseUrl. '/img/foto/'. $model->article2 . '.jpg' , $model->Misc,array("width"=>350 )) 
+	?> </div>
 	<?php endif;	?>
  </td>  
  <td class='padding10side top'>

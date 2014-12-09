@@ -1256,5 +1256,19 @@ class OrderController extends EventsController
 			echo CHtml::Link($infofoto, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 	 
 		else  
             echo CHtml::Link($info, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 
-	}
+	}	
+	public function info_new($data, $row)
+	{ 
+	    if (!$data->priceS) return; // если это искусственный элемент, то ничего не показываем
+		$info = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/infoblue.png" ));
+		$infofoto = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/camerainfoblue.png" ));
+		$action = Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER) ? 'assortment/update' : 'assortment/view';
+		/*try {
+			//$image = getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg");
+		}  catch(Exception $e)  { } */
+		if (getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg" ) !== false)
+			echo CHtml::Link($infofoto, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 	 
+		else  
+            echo CHtml::Link($info, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 
+	}	 
 }

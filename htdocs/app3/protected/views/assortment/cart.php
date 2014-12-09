@@ -60,8 +60,8 @@ if (!Yii::app()->shoppingCart->isEmpty())
 		),
 	)); 		
 if (Yii::app()->user->checkAccess( User::ROLE_USER ) ) {
-	echo CHtml::link(Yii::t('general', Yii::t('general',"Request to the delivery")) , array('checkout', 'statusId'=>Events::STATUS_REQUEST_TO_DELIVERY),array('class'=>'btn-win no-print add-info', 'style' => 'float:right;')); 
-	echo CHtml::link(Yii::t('general', Yii::t('general',"Request to the reserve")) , array('checkout', 'statusId'=>Events::STATUS_REQUEST_TO_RESERVE),array('class'=>'btn-win no-print add-info', 'style' => 'float:right;'));
+//	echo CHtml::link(Yii::t('general', Yii::t('general',"Request to the delivery")) , array('checkout', 'statusId'=>Events::STATUS_REQUEST_TO_DELIVERY),array('class'=>'btn-win no-print add-info', 'style' => 'float:right;')); 
+//	echo CHtml::link(Yii::t('general', Yii::t('general',"Request to the reserve")) , array('checkout', 'statusId'=>Events::STATUS_REQUEST_TO_RESERVE),array('class'=>'btn-win no-print add-info', 'style' => 'float:right;'));
 	echo CHtml::link(Yii::t('general', Yii::t('general',"Make order")) , array('checkout'),array('class'=>'btn-win no-print', 'style' => 'float:right;'));
 	} 
 else { 
