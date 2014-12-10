@@ -1,10 +1,19 @@
 <?
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/seotools/seotools.class.php');
 $ST = new Seotools; 
-
+ 
+// подгрузка css для вывода картинки с описанием
+Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/in.css');  
 
 ?>
-<?php 
+<!-- Окно для вывода картинки с описанием -->
+<div id="info-popup"></div> 
+<?php // скрипт для вызова popup картинки с описанием: действие itemInfo вызывает через renderPartial представление 'popup'
+$ajaxUrl = $this->createUrl('itemInfo');
+Yii::app()->clientScript->registerScript('info-popup-script', "
+jQuery('.info-link').on('click', function(){ jQuery.ajax({'data':{id: this.id },'url':'{$ajaxUrl}','cache':false,'success':function(html){jQuery('#info-popup').html(html)}});return false;});
+", CClientScript::POS_END); /**/
+
 /* @var $this AssortmentController */
 /* @var $model Assortment */ 
 //$this->widget("ext.magnific-popup.EMagnificPopup", array('target' => '.test-popup-link'));
@@ -260,8 +269,12 @@ if ($dataProvider->itemCount)
 				'value'=>'(!empty($data->image)) ?  "<span class=\"picture-icon\"></span>"  . (!empty($data->schema)) ?  "<span class=\"picture-icon schema\"></span>"  ', //'<span class="info-picture"></span>',
 		    	'htmlOptions' => array('style' => 'text-align:center; width: 20px'), 
 			),*/
-			
-	    	'info'=>array(
+			'infoPopup'=>array(
+				'header'=>Yii::t("general",'Info Popup'),
+				 'type'=>'html',
+				'value'=>array($this, 'infoPopup'), 
+			 ),	
+	    /*	'info'=>array(
 				'header'=>Yii::t("general",'Info'),
 				 'type'=>'html',
 				'value'=>array($this, 'info'), 

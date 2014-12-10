@@ -20,10 +20,15 @@
 	<?php echo $form->errorSummary($model); ?>
 
  
-	<td>
+	<td class='padding10side top'>
 		<?php echo $form->labelEx($model,'name'); ?> 
-		<?php echo $form->textField($model,'name',array('size'=>4,'maxlength'=>4)); ?>
+		<?php echo $form->textField($model,'name',array('size'=>5,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'name'); ?>
+		<br>
+		<?php echo $form->labelEx($model,'value'); ?> 
+		<?php echo $form->textField($model,'value',array('size'=>5,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'value'); ?>
+		
 	</td>
 
  
@@ -32,27 +37,18 @@
 		<?php echo $form->textArea($model,'articles',array('rows'=>6, 'cols'=>40)); ?>
 		<?php echo $form->error($model,'articles'); ?>
 	</td>
-
  
-	<td>
-		<?php echo $form->labelEx($model,'value'); ?> 
-		<?php echo $form->textField($model,'value'); ?>
-		<?php echo $form->error($model,'value'); ?>
-	</td>
+ 
 
-</tr><tr> 
-	<td>
+	
+	<td class='padding10side top'>		
 		<?php echo $form->labelEx($model,'isActive'); ?> 
 		<?php echo $form->checkBox($model,'isActive'); ?>
 		<?php echo $form->error($model,'isActive'); ?>
-	</td>
-
-	
-	<td>	<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save')); ?>
-	</td>
-	<td>	<?php echo CHtml::ajaxSubmitButton('ajaxSubmitButton', array('Discount Group/update', 'id'=> $model->id), array('success'  => 'js: function(data) { $("#locator").html(data); } 
-		function() { $.fn.yiiGridView.update("#discount-group-grid");}'
-		)); ?>
+	<br>
+	<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red')); ?> 
+	<td>	<?php //echo CHtml::ajaxSubmitButton('ajaxSubmitButton', array('Discount Group/update', 'id'=> $model->id), array('success'  => 'js: function(data) { $("#locator").html(data); } 
+		//function() { $.fn.yiiGridView.update("#discount-group-grid");}'		)); ?>
 	</td>
 </tr></table> 
 <?php $this->endWidget(); ?>

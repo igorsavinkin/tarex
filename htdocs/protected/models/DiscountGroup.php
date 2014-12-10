@@ -8,7 +8,7 @@ class DiscountGroup extends CActiveRecord
 	public function rules()
 	{ 
 		return array(
-			array('name', 'required'),
+		//	array('name', 'required'),
 			array('isActive', 'numerical', 'integerOnly'=>true),
 			array('value', 'numerical'),
 			array('name', 'length', 'max'=>32), 

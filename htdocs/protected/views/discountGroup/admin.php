@@ -1,12 +1,6 @@
 <?php
 /* @var $this DiscountGroupController */
 /* @var $model DiscountGroup */
-
-$this->breadcrumbs=array(
-	Yii::t('general','Discount Groups')=>array('index'),
-	Yii::t('general','Manage'),
-); 
-
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
 	$('.search-form').toggle();
@@ -21,12 +15,9 @@ $('.search-form form').submit(function(){
 ");
 ?>
 <h1><?php echo Yii::t('general','Manage'), ' ',  Yii::t('general','Discount Groups'); ?></h1>
- 
-<p>
-<?php echo  Yii::t('general','You may optionally enter a comparison operator'); ?> (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>, <b>=</b>) <?php echo  Yii::t('general', 'at the beginning of each of your search values to specify how the comparison should be done'); ?>.
-</p>
-
-<?php echo CHtml::link(Yii::t('general','Advanced Search'),'#',array('class'=>'search-button')); ?>
+<?php 
+echo CHtml::link(Yii::t('general','Advanced Search'),'#',array('class'=>'search-button'));   
+echo CHtml::link(Yii::t('general','Create'),array('create'),array('class'=>'btn-win')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
@@ -34,10 +25,9 @@ $('.search-form form').submit(function(){
 </div><!-- search-form -->
 
 <?php 
-
  // добавим тег открытия формы
  echo CHtml::form();
- echo CHtml::submitButton('Bulk action button', array('name'=>'bulkAction', 'style'=>'float:right;'));
+ //echo CHtml::submitButton('Bulk action button', array('name'=>'bulkAction', 'style'=>'float:right;'));
  
  $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'discount-group-grid',
@@ -57,7 +47,7 @@ $('.search-form form').submit(function(){
                     $this->grid->dataProvider->pagination->currentPage
                     * $this->grid->dataProvider->pagination->pageSize',
             ),
-		// 'id',
+		'id',
 		'name',
 		'prefix',
 		array(
@@ -65,7 +55,12 @@ $('.search-form form').submit(function(){
 			'value'=>'substr($data->articles, 0 ,70) . "..." ',
 		),
 		'value',
-		'isActive',
+		'isActive' => array(
+			'name' => 'isActive',
+			'value' => '($data->isActive == 1) ? Yii::t("general", "yes") : Yii::t("general", "no") ',
+			'filter' => array(1 => Yii::t("general", "yes") , 0 => Yii::t("general", "no")),
+			//'header' => 'Активен',			
+			), 
 		
 		array(
 			'class' => 'CCheckBoxColumn',

@@ -3,7 +3,6 @@
 /* @var $model DiscountGroup */
 /* @var $form CActiveForm */
 ?>
-
 <div class="wide form">
 <table><tr>
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -12,23 +11,23 @@
 )); ?>
 
 	<td>
-		<?php echo $form->label($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
+		<?php echo $form->label($model,'Id'); ?>
+		<?php echo $form->textField($model,'id',array('size'=>5)); ?>
 	</td>
 
 	<td>
 		<?php echo $form->label($model,'name'); ?>
-		<?php echo $form->textField($model,'name',array('size'=>4,'maxlength'=>4)); ?>
+		<?php echo $form->textField($model,'name'); ?>
 	</td>
 
 	<td>
 		<?php echo $form->label($model,'articles'); ?>
-		<?php echo $form->textArea($model,'articles',array('rows'=>6, 'cols'=>40)); ?>
+		<?php echo $form->textField($model,'articles'); ?>
 	</td>
 
 </tr><tr>	<td>
 		<?php echo $form->label($model,'value'); ?>
-		<?php echo $form->textField($model,'value'); ?>
+		<?php echo $form->textField($model,'value',array('size'=>5,'maxlength'=>255)); ?>
 	</td>
 
 	<td>
@@ -37,7 +36,7 @@
 	</td>
 
 	<td>
-		<?php echo CHtml::submitButton(Yii::t('general','Search')); ?>
+		<?php echo CHtml::submitButton(Yii::t('general','Search'), array('class'=>'red')); ?>
 	</td>
 </tr></table> 
 <?php $this->endWidget(); ?>
