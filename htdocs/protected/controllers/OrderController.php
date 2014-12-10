@@ -1049,4 +1049,13 @@ class OrderController extends EventsController
 		else  
             echo CHtml::Link($info, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 
 	}
+	public function infoPopup($data, $row)
+	{ 
+		$info = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/infoblue.png" ));
+		$infofoto = CHtml::tag("img", array("src" => Yii::app()->baseUrl . "/images/camerainfoblue.png" )); 
+		if (getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg" ) !== false)
+			echo CHtml::Link($infofoto, '',  array('class'=>'info-link', 'id' => 'image-' . $data->id)); 	 	 
+		else  
+            echo CHtml::Link($info, '',  array('class'=>'info-link', 'id' => 'item-' . $data->id)); 
+	}
 }
