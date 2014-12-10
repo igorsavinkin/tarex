@@ -1311,6 +1311,17 @@ EOF;
 			else  
 				return Yii::t('general','no image'); 
 	}
+	public function getAjax($data, $row)
+	{
+		$src= Yii::app()->baseUrl . '/img/foto/' . $data->article2 . '.jpg';
+		/*try {
+			//$image = getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg");
+		}  catch(Exception $e)  { } */
+		if (getimagesize(  Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg" /**/) !== false)
+			return "<a class='test-popup-link' href='{$src}'>". CHtml::tag("img", array("src" =>$src, "height"=>40, "width"=>40)) . '</a>';		
+			else  
+				return Yii::t('general','no image'); 
+	}
 	protected function amountToCart($data,$row)
     {  
 		//$button = CHtml::imageButton('/img/cart.gif', array('width'=>'23px', 'style'=>'vertical-align:top;', 'id'=>'x-button', 'value'=>$data->id,  'name'=>'Assortment[id]'));		

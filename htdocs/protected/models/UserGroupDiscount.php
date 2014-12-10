@@ -43,7 +43,7 @@ class UserGroupDiscount extends CActiveRecord
 	{
 		return array(
 		//	'user'=>array(BELONGS_TO, 'User', 'userId'),
-		//	'discountGroup'=>array(BELONGS_TO, 'DiscountGroup', 'discountGroupId'),
+		 	'discountGroup'=>array(self::BELONGS_TO, 'DiscountGroup', 'discountGroupId'),
 		);
 	}
 	/**

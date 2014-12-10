@@ -30,7 +30,7 @@ a
     background: #344756;
 	position:fixed;
 	z-index: 100;
-	left: 23%; top: 2%;   /* for the centering */ 
+	left: 23%; top: 5%;   /* for the centering */ 
     padding-top:20px;	
 }
 .tar_recover_form

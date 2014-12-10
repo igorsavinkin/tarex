@@ -5,7 +5,7 @@ $ST = new Seotools;
 // подгрузка css для вывода картинки с описанием
 Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/in.css');  
 
-$this->widget("ext.magnific-popup.EMagnificPopup", array('target' => '.test-popup-link')); 
+
 ?>
 <!-- Окно для вывода картинки с описанием -->
 <div id="info-popup"></div> 
@@ -13,7 +13,7 @@ $this->widget("ext.magnific-popup.EMagnificPopup", array('target' => '.test-popu
 $ajaxUrl = $this->createUrl('itemInfo');
 Yii::app()->clientScript->registerScript('info-popup-script', "
 jQuery('.info-link').on('click', function(){ jQuery.ajax({'data':{id: this.id },'url':'{$ajaxUrl}','cache':false,'success':function(html){jQuery('#info-popup').html(html)}});return false;});
-", CClientScript::POS_END); 
+", CClientScript::POS_END); /**/
 ?> 
 <!--/******************************* start of the Dialog box ***************************/-->
 
@@ -251,6 +251,21 @@ if ($dataProvider->itemCount)
 			),
 			'oem',
 			'manufacturer',
+	/*		'fotoAjax'=>array(
+				'header'=>Yii::t("general",'Foto Ajax'),
+				'type'=>'html',
+			    'value'=>array($this, 'getAjax'),  
+		        'htmlOptions' => array('style' => 'text-align:center; width: 50px'),
+			), 
+			'foto'=>array(
+				'header'=>Yii::t("general",'Foto'),
+				 'type'=>'html',
+			  'value'=>array($this, 'getImage'), 
+			 //'value'=>'CHtml::tag("img", array("src" =>"/app3/img/foto/" . $data->article2 . ".jpg", "height"=>30, "width"=>30))',
+			//'value'=>'CHtml::tag("img", array("src" =>"/app3/img/foto/thumbnails/AD01.5213.10.jpg.thumb_31x50.jpg", "height"=>30, "width"=>30))', 
+			 //     'value'=>'(!empty($data->imageUrl)) ?  "<span class=\"picture-icon\"></span>"  :Yii::t("general", "no image")', //'<span class="info-picture"></span>',
+		    	 'htmlOptions' => array('style' => 'text-align:center; width: 50px'),
+			), */
 			'infoPopup'=>array(
 				'header'=>Yii::t("general",'Info Popup'),
 				 'type'=>'html',
@@ -277,17 +292,9 @@ if ($dataProvider->itemCount)
 				 'type'=>'html',
 				'value'=>array($this, 'info'), 
 			 ),	
-			
-	 /*    	'foto'=>array(
-				'header'=>Yii::t("general",'Foto'),
-				 'type'=>'html',
-			  'value'=>array($this, 'getImage'), 
-			 //'value'=>'CHtml::tag("img", array("src" =>"/app3/img/foto/" . $data->article2 . ".jpg", "height"=>30, "width"=>30))',
-			//'value'=>'CHtml::tag("img", array("src" =>"/app3/img/foto/thumbnails/AD01.5213.10.jpg.thumb_31x50.jpg", "height"=>30, "width"=>30))', 
-			 //     'value'=>'(!empty($data->imageUrl)) ?  "<span class=\"picture-icon\"></span>"  :Yii::t("general", "no image")', //'<span class="info-picture"></span>',
-		    	 'htmlOptions' => array('style' => 'text-align:center; width: 50px'),
-			), 
-			'showInSchema'=>array(
+		*/	
+	    
+	/* 		'showInSchema'=>array(
 				'header'=>Yii::t("general",'Show in schema'),
 				 'type'=>'html',
 				'value'=>'(isset($data->schema)) ?  "<span class=\"picture-icon schema\"></span>"  :Yii::t("general", "schema is not yet ready")',
