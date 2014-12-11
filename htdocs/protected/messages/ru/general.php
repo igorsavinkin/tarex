@@ -3,7 +3,7 @@ return array(
     /* Spare parts for cars */
 	'for cars'=>'для автомобилей',
 	'Spare parts for cars'=>'Детали для автомобилей',
-
+	
 	/*  Price List Settings */
 	'Price List'=> 'Прайс', 
 	'Price List is in Attachment'=>'Прайс лист прикреплён к письму',
@@ -400,7 +400,7 @@ return array(
 	'Choose car model'=>'Выберите модель машины',
 	'Choose car make'=>'Выберите марку машины', 
 	'All makes'=>'Все марки',
-	//'Car makes'=>'Марки машин',
+	'Car makes'=>'Марки машин',
 	'Body'=>'Кузов',
 	'Steering'=>'Руль',
 	'Left'=>'Левый',
@@ -433,6 +433,8 @@ return array(
 	'No details found for this subnode'=>'Не найдено деталей по этоту подузлу',
 	'Spare part'=>'Запчасть',
 	'Info'=>'Инфо',
+	'Info Popup'=>'Инфо',
+	'Detailed Info'=>'Детальная информация',
 	'Show in schema'=>'Показать на схеме',
 	"schema is not yet ready"=>'схема ещё не готова',
 	'Search item'=>'Искомый элемент',

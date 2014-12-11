@@ -22,7 +22,7 @@ class DiscountGroupController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array( 'admin' ,'create' ,'update', 'delete', 'index','view' , 'add'),
+				'actions'=>array( 'admin' ,'create' ,'update', 'delete' , 'add'),
 				'roles'=>array(1,2,3,4,5),
 			),
 			array('deny',  // deny all users
@@ -75,35 +75,18 @@ class DiscountGroupController extends Controller
 		} 
 		// сохраняем последнюю
 		DiscountGroup::model()->updateAll(array('articles'=>$currentGroupArticles) , 'name = "'. $currentGroup . '" ');
-		echo $i++, '. the last current group = ', $currentGroup , '; articles = ' , $currentGroupArticles ,  '<br>';
-		
-		/*foreach($groups as $group)
-		{
-			$group->name;
-			$i=1;		
-		}*/
-		
-	/*	$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));*/
+		echo $i++, '. the last current group = ', $currentGroup , '; articles = ' , $currentGroupArticles ,  '<br>';	 
 	}
-	
-	public function actionView($id)
-	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
-	}
-
 	public function actionCreate()
 	{
 		$model=new DiscountGroup;
+		$model->isActive=1; 
  
 		if(isset($_POST['DiscountGroup']))
 		{
 			$model->attributes=$_POST['DiscountGroup'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('admin'));
 		}
 
 		$this->render('create',array(
@@ -118,14 +101,13 @@ class DiscountGroupController extends Controller
 		{
 			$model->attributes=$_POST['DiscountGroup'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('admin'));
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
 		));
 	}
-	
 	public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
@@ -135,18 +117,11 @@ class DiscountGroupController extends Controller
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('DiscountGroup');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
-
 	public function actionAdmin()
 	{
 		$model=new DiscountGroup('search');
 		$model->unsetAttributes();  // clear any default values
+		$model->isActive=1;
 		if(isset($_GET['DiscountGroup']))
 			$model->attributes=$_GET['DiscountGroup'];
 

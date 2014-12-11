@@ -237,8 +237,18 @@ echo '<br><br>mainAssotrmentItem: ', $mainAssotrmentItem;
 
 if ($dataProvider->itemCount)  
 {   
-	//echo '<br><br>dataProvider: <b>'; print_r($dataProvider->data); echo '</b>'; 
-	//if (isset($_POST['search-value'])) echo '<h4>' , Yii::t('general','Requested number') ,' <em>', $_POST['search-value'] , '</em></h4>'; // search element
+	 
+	// подгрузка css для вывода картинки с описанием
+	Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/in.css');  
+
+	?>
+	<!-- Окно для вывода картинки с описанием -->
+	<div id="info-popup"></div> 
+	<?php // скрипт для вызова popup картинки с описанием: действие itemInfo вызывает через renderPartial представление 'popup'
+	$ajaxUrl = $this->createUrl('assortment/itemInfo');
+	Yii::app()->clientScript->registerScript('info-popup-script', "
+	jQuery('.info-link').on('click', function(){ jQuery.ajax({'data':{id: this.id },'url':'{$ajaxUrl}','cache':false,'success':function(html){jQuery('#info-popup').html(html)}});return false;});
+	", CClientScript::POS_END);  
  
 	echo CHtml::Form();
 	$this->widget('zii.widgets.grid.CGridView', array( 
@@ -272,13 +282,18 @@ if ($dataProvider->itemCount)
 			'availability'=>array(
 				'name'=>'availability', 
 			    'htmlOptions'=>array('style'=>'text-align:center'),
-			  ), 			
-	    	'info'=>array(
+			  ), 	
+			'infoPopup'=>array(
+				'header'=>Yii::t("general",'Info'),
+				 'type'=>'html',
+				'value'=>array($this, 'infoPopup'), 
+			 ),	
+	    	/*'info'=>array(
 				'header'=>Yii::t("general",'Info'),
 				'type'=>'html',
 				'value'=>array($this, 'info'), 
 			 	'visible'=>'$data->availability', 
-			 ),	       
+			 ),	  */     
 // new for getting into cart			
 			array(
 				'class'=>'ButtonColumn', 

@@ -35,6 +35,45 @@ class ExchangeratesController extends EventsController {
 			'model'=>$model,
 		));
 	}  
+	public function actionCreate()
+	{
+		$model=new Exchangerates;			
+		$model->id = Exchangerates::model()->Find(array('order'=>'id DESC'))->id+1;//Присвоить ид 
+		
+		$model->Begin = date('Y-m-d H-i-s');
+		$date = date_create();
+		date_modify($date, '+1 hour'); 
+		
+		$model->authorId=Yii::app()->user->id;
+		if(Yii::app()->user->role>5) 				
+			$model->contractorId=Yii::app()->user->id;
+		
+		$model->End = date_format($date, 'Y-m-d H:i:s');
+		$model->organizationId = Yii::app()->user->organization; 
+		$model->EventTypeId = Events::TYPE_EXCHANGE_RATE; //Тип события (установка курса валют)
+		$model->StatusId = Events::STATUS_NEW; // статус новый 	 
+		if(isset($_POST['Exchangerates']))
+		{ 
+			$model->attributes=$_POST['Exchangerates'];
+			if($model->save()) 
+				$this->redirect(array('admin'));
+			else 
+				{ echo 'save errors'; print_r($model->getErrors()); }
+		}
+		if(isset($_POST['Events']))
+		{ 
+			$model->attributes=$_POST['Events'];
+			if($model->save()) 
+				$this->redirect(array('admin'));
+			else 
+				{ echo 'save errors'; print_r($model->getErrors()); }
+		}
+		
+		$this->render('update' ,array(
+			'model'=>$model,
+		));
+	}
+	
 	public function actionUpdate($id)
 	{
 	
@@ -54,7 +93,8 @@ class ExchangeratesController extends EventsController {
 			$model->organizationId = Yii::app()->user->organization; 
 			$model->EventTypeId = Events::TYPE_EXCHANGE_RATE; //Тип события (установка курса валют)
 			$model->StatusId = Events::STATUS_NEW; // статус новый 		
-		}else{ 
+			$model->save();
+		} else{ 
 			$model = Exchangerates::model()->findByPk($id); 
 		}
 
@@ -72,7 +112,7 @@ class ExchangeratesController extends EventsController {
 			if($model->save()) 
 				$this->redirect(array('admin'));
 			else 
-				{ echo 'save errrors'; print_r($model->getErrors()); }
+				{ echo 'save errors'; print_r($model->getErrors()); }
 		}
 		
 		$this->render('update' ,array(

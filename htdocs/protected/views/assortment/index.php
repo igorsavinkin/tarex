@@ -270,7 +270,7 @@ if ($dataProvider->itemCount)
 		    	'htmlOptions' => array('style' => 'text-align:center; width: 20px'), 
 			),*/
 			'infoPopup'=>array(
-				'header'=>Yii::t("general",'Info Popup'),
+				'header'=>Yii::t("general",'Info'),
 				 'type'=>'html',
 				'value'=>array($this, 'infoPopup'), 
 			 ),	

@@ -23,7 +23,7 @@ class EventsController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create', 'update2', 'PrintSF', 'PrintOrder', 'PrintLabels', 'PrintPPL', 'PrintPPL2', 'LoadContent', 'loadContent', 'clone', 'bulkActions', 'searchUnique'),
+				'actions'=>array('create', 'update2', 'PrintSF', 'PrintOrder', 'PrintLabels', 'PrintPPL', 'PrintPPL2', 'LoadContent', 'loadContent','loadContent2', 'clone', 'bulkActions'),
 				'users'=>array('@'),  
 			), 
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -1010,8 +1010,8 @@ class EventsController extends Controller
     }
 	public function priceCssClass($contractorId=null) 
 	{
-		if ($this->price < $this->RecommendedPrice) return 'redbgcolor';
+		if ($this->price < $this->assortment->getPriceOptMax()) return 'redbgcolor';
 		//if ($this->price == $this->assortment->getPriceOpt($contractorId)) return '';
-		if ( $this->price > $this->basePrice) return 'green';		
+		if ( $this->price > $this->assortment->getCurrentPrice()  ) return 'green';		
 	} 
 }

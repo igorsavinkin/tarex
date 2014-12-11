@@ -67,10 +67,108 @@ class OrderController extends EventsController
 			'model'=>$model,
 		));
 	} 
+	public function actionLoadContent2()
+	{   
+		$eventId=$_POST['Events']['id'];
+		$model=$this->loadModel($eventId);  
+		
+		if (Yii::app()->user->role<=5){  
+			$ShablonId=User::model()->findbypk(Yii::app()->user->id)->ShablonId;
+			if ($ShablonId!=0){
+				$LoadDataSettings=LoadDataSettings::model()->findByPk($ShablonId); 
+			}		
+		} // ???
+					
+		$LoadDataSettings=LoadDataSettings::model()->findByPk($_POST['LoadDataSettings']['id']);  
+		
+	    //print_r($LoadDataSettings);
+		$СolumnNumber =  $LoadDataSettings->ColumnNumber;  
+		$ListNumber= $LoadDataSettings->ListNumber;		
+		$AmountColumnNumber= $LoadDataSettings->AmountColumnNumber;
+		$PriceColumnNumber= $LoadDataSettings->PriceColumnNumber;
+		 
+	    $upfile = CUploadedFile::getInstance('FileUpload1', 0);	
+		$Order=new Events; 
+		if ($upfile) { 
+			//echo 'FileUpload1 '.$_POST['FileUpload1'];
+			//$Order->attributes=$_POST['Item'];
+            $Order->file=$upfile;
+			//print_r($Order->file->name);
+			if (strstr($Order->file->name, 'xlsx')){
+				$Order->file->saveAs('files/temp.xlsx');
+				$file='files/temp.xlsx';
+				$type='Excel2007';	
+			}else{
+				$Order->file->saveAs('files/temp.xls');
+				$type='Excel5';	
+				$file='files/temp.xls';
+			} 
+			
+			require_once Yii::getPathOfAlias('ext'). '/PHPExcel.php';
+	 	 
+			$objReader = PHPExcel_IOFactory::createReader($type);
+			$objPHPExcel = $objReader->load($file); 
+			$as = $objPHPExcel->setActiveSheetIndex( $ListNumber - 1 );	
+			
+			$highestRow = $as->getHighestRow();
+			$error = '';
+			for ($startRow = 1; $startRow <= $highestRow; $startRow ++) 
+			{ 
+			 
+				$SearchString=$as->getCell($СolumnNumber . $startRow)->getValue(); 
+			 	$SearchString=str_replace(  array('.', ' ', '-')  , '' , $SearchString); 
+					//echo '/'.$SearchString.'/<br>';
+				if ($SearchString=='')  continue;
+				
+				$fileAmount=$as->getCell($AmountColumnNumber . $startRow)->getValue(); 
+				$filePrice=$as->getCell($PriceColumnNumber . $startRow)->getValue(); 
+				$criteria = new CDbCriteria; 
+				$criteria->params = array(':value'=>$SearchString);
+				$criteria->condition = 'title = :value OR oem = :value OR article = :value';
+				$item=Assortment::model()->find($criteria); 
+				
+				if($item==null) {$error .= Yii::t('general','Row #') . $startRow . '. ' .  Yii::t('general','Could not find assortment item on ') . $ColumnSearch. ' = "'. $SearchString . '"<br />'; 
+				} 
+				else 
+				{ 
+					print_r($item); echo '<br><br>'; 
+					
+				// Создаём новое содержимое заказа						
+					$EventContent=new EventContent;
+					$EventContent->eventId=$eventId; 
+					$EventContent->assortmentId=$item->id;
+					$EventContent->assortmentTitle=$item->title;
+					$EventContent->assortmentArticle=$item->article2;
+					$EventContent->assortmentAmount = $fileAmount; // количество берём из файла					
+					$EventContent->price = $item->getPrice($model->contractorId);
+				 
+				 // Считаем скидку исходя из скидок по группам cкидок для менеджеров
+					$discGroupId = DiscountGroup::getDiscountGroup($item->article2);
+					if(!$discGroupId) 
+						$EventContent->discount = 0; 
+					else {
+						$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$model->contractorId, 'discountGroupId'=>$discGroupId));  
+						$EventContent->discount = (isset($ugd)) ? $ugd->value : 0 ;  
+					}
+				// Заносим дополнительные цены для менеджеров
+					$EventContent->RecommendedPrice = $item->getPriceOptMax(); // минимальная оптовая цена (согласно оптовой максимальной скидке)
+					$EventContent->basePrice = $item->getCurrentPrice(); // - цена базовая (цена до всех скидок) 
+					
+				// Считаем новые стоимость и стоимость со скидкой
+					$EventContent->cost = $eventContent->price * $eventContent->assortmentAmount;                 
+				// Сохраняем его
+					if (!$eventContent->save())  	//print_r($EventContent);
+					   $error .= Yii::t('general', 'Failure saving assortment item located at row #') . $startRow . '<br />';	 
+				// Конец нового содержимого заказа 
+				
+				} // end if($item==null)
+		    } // end for() circle
+		}// end if($upfile)
+	}
 	
 	public function actionLoadContent()
 	{   
-			$eventId=$_POST['Events']['id'];
+		$eventId=$_POST['Events']['id'];
 		$model=$this->loadModel($eventId);  
 		
 		if (Yii::app()->user->role<=5){ 
@@ -158,45 +256,22 @@ class OrderController extends EventsController
 				
 				if($Assortment==null) {$error .= Yii::t('general','Row #') . $startRow . '. ' .  Yii::t('general','Could not find assortment item on ') . $ColumnSearch. ' = "'. $SearchString . '"<br />'; 
 				} 
-				else {
-					
-					//$DiscountNew =$this->actionFDiscount($Assortment,$model->contractorId,$model->Begin);
-					//$DiscountNew = $Assortment->countDiscount( $model->Begin, $model->contractorId);
-					
-					
-					// $DefaultPrice=$Assortment->priceS;
-					// if ($DiscountNew!=0) $FinalPrice=($DefaultPrice+$DefaultPrice*$DiscountNew/100)*$CurrentRate;
-					
-					//echo '<br>FinalPrice '.$FinalPrice.'/DefaultPrice'.$DefaultPrice*$CurrentRate;
-					
+				else { 
 					// добавляем в содержимое заказа
 					$EventContent=EventContent::model()->find(array(
 						'condition'=>'eventId =:eventId AND assortmentId=:assortmentId',
 						'params'=>array(':eventId' =>$eventId, ':assortmentId'=>$Assortment->id)
 					));
-					if (!empty($EventContent)) {
-			//Добавляем кол-во в заказ
-						//echo 'assortmentAmount '.$EventContent->assortmentAmount.'/'.$Amount;
-						$OldAmount=$EventContent->assortmentAmount;
-						$EventContent->assortmentAmount=$OldAmount+$Amount; 
-						//echo 'assortmentAmount1 '.$EventContent->assortmentAmount;
-						$DefaultPrice=$Assortment->priceS;
-						
-						//$eventContent->price = $eventContent->RecommendedPrice = $item->getPrice($model->contractorId);	
-						
-						//$FinalPrice=round(($DefaultPrice+$DefaultPrice*$Discount/100)*$CurrentRate,2);
-						$FinalPrice=$Assortment->getPrice2($model->contractorId);
-						//if ($DiscountNew!=0) $FinalPrice=round(($DefaultPrice+$DefaultPrice*$DiscountNew/100)*$CurrentRate,2) ;
-						
-						if ($Price>0) {
-							$EventContent->price=$Price;
-						}else{	
-							
-							$EventContent->price=$FinalPrice;
-						}
-						$EventContent->RecommendedPrice = $FinalPrice;
-						$EventContent->cost=$EventContent->price * $EventContent->assortmentAmount;   // 	
-						//$EventContent->cost_w_discount = $EventContent->cost;   // 	почему?
+					if (0 && !empty($EventContent) ) {
+			//Добавляем кол-во в существующее содержимое
+						$EventContent->assortmentAmount += $Amount; 
+						$EventContent->assortmentArticle = $Assortment->article2; 
+				 // Заносим дополнительные цены для менеджеров
+						$EventContent->RecommendedPrice = $Assortment->getPriceOptMax(); // минимальная оптовая цена (согласно оптовой максимальной скидке)
+						$EventContent->basePrice = $Assortment->getCurrentPrice(); // - цена базовая (цена до всех скидок) 
+						$EventContent->price = $Assortment->getPrice($model->contractorId);		
+						$EventContent->discount = round(($EventContent->price - $EventContent->basePrice) * 100  / $EventContent->basePrice, 2);						
+						$EventContent->cost = $EventContent->price * $EventContent->assortmentAmount; 
 					}else{
 			//Создаём новый состав заказа
 						
@@ -205,39 +280,21 @@ class OrderController extends EventsController
 						$EventContent->assortmentId=$Assortment->id;
 						$EventContent->assortmentTitle=$Assortment->title;
 						$EventContent->assortmentAmount = $Amount;
-						$DefaultPrice=$Assortment->priceS; 
-						//$FinalPrice=round(($DefaultPrice+$DefaultPrice*$Discount/100)*$CurrentRate,2);
-						$contractorId=$model->contractorId; 
-						
-						$FinalPrice=$Assortment->getPrice2($contractorId);
-						//echo 'contractorId'.$contractorId;
-						//return; 
-						
-						//if ($DiscountNew!=0) $FinalPrice=round(($DefaultPrice+$DefaultPrice*$DiscountNew/100)*$CurrentRate,2);
-						
-						if ($Price>0) {
-							$EventContent->price=$Price;
-						}else{
-							
-							$EventContent->price=$FinalPrice;
-						}
-						$EventContent->RecommendedPrice=$FinalPrice;
-						//$EventContent->RecommendedPrice=1000;
-						$EventContent->cost=$EventContent->price*$Amount;   // 	
-						$EventContent->cost_w_discount=$EventContent->cost;   // 
-
+						$EventContent->assortmentArticle = $Assortment->article2;  
+					// Заносим дополнительные цены для менеджеров
+						$EventContent->RecommendedPrice = $Assortment->getPriceOptMax(); // минимальная оптовая цена (согласно оптовой максимальной скидке)
+						$EventContent->basePrice = $Assortment->getCurrentPrice(); // - цена базовая (цена до всех скидок) 
+						$EventContent->price = $Assortment->getPrice($model->contractorId);	
+						$EventContent->discount = round(($EventContent->price - $EventContent->basePrice) * 100  / $EventContent->basePrice, 2);
+						$EventContent->cost = $EventContent->price * $EventContent->assortmentAmount; 
 						//print_r($EventContent);
-					} // конец нового состава заказа
-					$model->totalSum = EventContent::getTotalSumByEvent($model->id);
-					$model->save();
-					
-					//echo($EventContent->eventId.' '.$EventContent->assortmentTitle.' '.$EventContent->assortmentAmount.' '.$EventContent->price.' '.$EventContent->cost.' '.$EventContent->assortmentTitle);
-					//print_r($EventContent);
-						
-					if (!$EventContent->save()) $error .= Yii::t('general', 'Failure saving assortment item located at row #') . $startRow . '<br />';	
+					} // конец нового состава заказа				 	
+					if (!$EventContent->save(false)) $error .= Yii::t('general', 'Failure saving assortment item located at row #') . $startRow . '<br />';	
 					 
 				} // end "if ($Assortment==null)"			
 			}
+			$model->totalSum = EventContent::getTotalSumByEvent($model->id);
+			$model->save();
 			if (!empty($error)) { 
 				Yii::app()->user->setFlash('error', Yii::t('general', "Some rows from the file have not been saved into the order") . ": <br />" . $error );
 			} else { Yii::app()->user->setFlash('success',Yii::t('general', "All the rows from the file have been saved into the order") . '.' ); 	} 	
@@ -253,6 +310,7 @@ class OrderController extends EventsController
 		$model->Begin = date('Y-m-d H-i-s');
 		$model->organizationId = Yii::app()->user->organization;  
 		$model->authorId=Yii::app()->user->id;
+		
 		if ($contractorId)  
 			$model->contractorId=$contractorId; 
 		elseif (Yii::app()->user->role > 5)  

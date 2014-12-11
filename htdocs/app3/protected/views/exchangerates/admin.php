@@ -21,9 +21,9 @@ $this->pageTitle = Yii::t('general','Exchange Rates');
 <?php  
 echo CHtml::link(Yii::t('general','Advanced Search'),'#',array('class'=>'search-button')); 
 if(Yii::app()->user->role<=1){
-	echo CHtml::link(Yii::t('general','Create')  , array('update',   'id'=>'new'),array( 'class' => 'btn-win'));
+	echo CHtml::link(Yii::t('general','Create')  , array('create'),array( 'class' => 'btn-win'));
 } 
-?>
+?> 
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,

@@ -27,7 +27,7 @@
 			'oem',
 			'manufacturer',
 			'availability',
-		 	'info'=>array(
+			'info'=>array(
 				'header'=>Yii::t("general",'Info'),
 				 'type'=>'html',
 				'value'=>array($this, 'info'), 

@@ -38,12 +38,13 @@ if($model->eventNumber) echo ' ', Yii::t('general','#'), $model->eventNumber; ?>
 	} else {
 // Клиентам  
 		$this->widget('CTabView', array( 
-		'tabs'=>array(			
-			 'tab1'=>array(
+		'tabs'=>array(	 
+			/* клиенты не видят вкладку Основное 
+			'tab1'=>array(
 				'title'=>Yii::t('general', 'Main'), //'Основное', 
 				'view'=>'_main',
 				'data'=>array('model'=>$model), 
-			 ), 
+			 ), */
 			'tab2'=>array(
 				'title'=>Yii::t('general', 'Products / Services'), 
 				// даём редактировать заказ до тех пор пока они не отправили его на подтверждение

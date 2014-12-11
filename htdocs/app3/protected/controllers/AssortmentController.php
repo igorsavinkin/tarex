@@ -13,13 +13,13 @@ class AssortmentController extends Controller
 	{     
 		return array(     
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array( 'removefromcart', 'view', 'admin', 'admin2', 'index', 'addToCart','addToCartAjax', 'cart', 'checkout', 'clearcart',  'checkoutretail' , 'searchbyvin', 'autocomplete', 'fob', 'test', 'itemInfo',  'testInfo', 'SpecialOffer'), 
+				'actions'=>array( 'removefromcart', 'view', 'admin', 'admin2', 'index', 'addToCart','addToCartAjax', 'cart', 'checkout', 'clearcart',  'checkoutretail' , 'searchbyvin', 'autocomplete', 'fob', 'test', 'itemInfo',   'SpecialOffer'), 
 				'users'=>array('*'),  
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array(  'search1'), 
 				'users'=>array('@'),
-			), 
+			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array( 'load', 'loadSpecialOffer', 'create', 'delete' , 'searchtool', 'update' , 'update2' , 'generateSchneiderNb',  'generateSchneiderNb2', 'fillInSchneiderGr', 'adminbulk' ),
 				'roles'=>array(1, 2, 4, 5), 
@@ -29,11 +29,6 @@ class AssortmentController extends Controller
 			),
 		);
 	}  
-	
-	public function actionTestInfo()
-	{   
-	   $this->render('testInfo');	 
-	}
 	public function actionItemInfo()
 	{ 
 		$this->renderPartial('popup', array('data'=>$_REQUEST['id']), false,true);
@@ -1311,17 +1306,6 @@ EOF;
 			else  
 				return Yii::t('general','no image'); 
 	}
-	public function getAjax($data, $row)
-	{
-		$src= Yii::app()->baseUrl . '/img/foto/' . $data->article2 . '.jpg';
-		/*try {
-			//$image = getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg");
-		}  catch(Exception $e)  { } */
-		if (getimagesize(  Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg" /**/) !== false)
-			return "<a class='test-popup-link' href='{$src}'>". CHtml::tag("img", array("src" =>$src, "height"=>40, "width"=>40)) . '</a>';		
-			else  
-				return Yii::t('general','no image'); 
-	}
 	protected function amountToCart($data,$row)
     {  
 		//$button = CHtml::imageButton('/img/cart.gif', array('width'=>'23px', 'style'=>'vertical-align:top;', 'id'=>'x-button', 'value'=>$data->id,  'name'=>'Assortment[id]'));		
@@ -1341,22 +1325,20 @@ EOF;
 		//CHml::Link('Make a request to manager', 'searchTerm/create');
 		
 		$msg = Yii::t('general','item(s) have been added to cart');
-		$buttonAjax = CHtml::ajaxSubmitButton(Yii::t('general', 'Add to Cart'), array('addToCartAjax'), array( 'data'=>'js:{id: this.name, amount: jQuery(this).siblings().val(), "' . Yii::app()->request->csrfTokenName . '": "' . Yii::app()->request->csrfToken . '" }'/*, 'update'=>'#cart-content'*/ , 'success'=>'js:/*var amt = jQuery(this).siblings("select").val(); console.log(amt); */ function(data){var obj=JSON && JSON.parse(data) || $.parseJSON(data); $("#cart-content").html(obj.cartMsg); alert( obj.amount + " '. $msg. '"); }'), array('class'=>'btn btn-xs btn-primary', 'name' =>  $data->id ));  
+		$buttonAjax = CHtml::ajaxSubmitButton(Yii::t('general', 'Add to Cart'), array('addToCartAjax'), array( 'data'=>'js:{id: this.name, amount: jQuery(this).siblings().val(), "' . Yii::app()->request->csrfTokenName . '": "' . Yii::app()->request->csrfToken . '" }'/*, 'update'=>'#cart-content'*/ , 'success'=>'js:/*var amt = jQuery(this).siblings().val(); console.log(amt); */ function(data){var obj=JSON && JSON.parse(data) || $.parseJSON(data); $("#cart-content").html(obj.cartMsg); alert( obj.amount + " '. $msg. '"); }'), array('class'=>'btn btn-xs btn-primary', 'name' =>  $data->id ));  
 		
 		// $data ... the current row data   
         // $row ... the row index 
 	   $dataArr = array(); for($i=1; $i <= $data->availability; $i++ ) { $dataArr[$i] = $i; }
-	   $dd = CHtml::dropDownList('Assortment[amount][' . $data->id .']', 1, $dataArr, array('style'=>'width:40px;'));  
-	   $textField = CHtml::textField('Assortment[amount][' . $data->id .']' , 1,  array('style'=>'width:40px;')); 
-	   
-		return $textField . '&nbsp;' . $buttonAjax; 	
-	 
+	   $dd = CHtml::dropDownList('Assortment[amount][' . $data->id .']', 1, $dataArr, array('style'=>'width:40px;'));
+	    $textField = CHtml::textField('Assortment[amount][' . $data->id .']' , 1,  array('style'=>'width:40px;')); 
+		return $textField  . '&nbsp;' . $buttonAjax; 		
     }	
 	public function info($data, $row)
 	{ 
 		$info = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/infoblue.png" ));
 		$infofoto = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/camerainfoblue.png" ));
-		$action = Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER) ? 'update' : 'view';
+		$action = Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER) ?'update' : 'view';
 		/*try {
 			//$image = getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg");
 		}  catch(Exception $e)  { } */
@@ -1375,3 +1357,4 @@ EOF;
             echo CHtml::Link($info, '',  array('class'=>'info-link', 'id' => 'item-' . $data->id)); 
 	}
 }
+?> 

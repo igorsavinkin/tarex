@@ -105,10 +105,7 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog',array(
 )); ?>
 		<?php 
 		// добавляем скрытое поле для id номенклатуры 
-		echo $form->hiddenField($model, 'id'); 
-		// добавляем скрытое поле для search-value  
-		echo CHtml::hiddenField('search-value' , $_POST['search-value']);  
-		?> 
+		echo $form->hiddenField($model, 'id'); ?> 
 	<div class="row"> 
 		<?php //echo $form->labelEx($model,'amount'); ?>
 		<?php $data = array(); for($i=1; $i <= 100 ; $i++ ) { $data[$i] = $i; }	

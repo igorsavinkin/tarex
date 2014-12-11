@@ -33,7 +33,7 @@ class UserController extends Controller
 				'expression'=>array($this, 'UpdateUser'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create',  'admin', 'sendinvitation',  'sendinvitation2', 'adminPersonal'), 
+				'actions'=>array('create','create2',  'admin', 'sendinvitation',  'sendinvitation2', 'adminPersonal'), 
 				'roles'=>array(1, 2, 3, 4, 5),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -169,7 +169,32 @@ class UserController extends Controller
 		));
 	} 
  
-	public function actionCreate()
+	public function actionCreate2()
+	{
+		$model=new User('insert');
+		$model->organization = 7;
+		$model->isCustomer = 1;
+		$model->parentId = Yii::app()->user->id;
+		$model->created = date("Y-m-d");
+		$model->PaymentMethod = 2;// самовывоз 
+		$model->ban = 0;
+		$model->role = User::ROLE_USER; // оптовый клиент
+		$model->isActive = 1; // 0 - статус того, что этот
+		if($model->save(false)) 
+		{
+			// cоздаём для него группы скидок с нулями
+			foreach(DiscountGroup::model()->findAll() as $dg) {					 
+				$ugd=new UserGroupDiscount;
+				$ugd->userId=$model->id;
+				$ugd->discountGroupId=$dg->id;
+				$ugd->save(false);				 
+			}
+			$this->redirect(array('update', 'id'=>$model->id, 'new'=>1));
+		}
+		else 
+			echo $model->errors;
+	}		
+    public function actionCreate()
 	{
 		$model=new User('insert');
 		$model->organization = 7;
@@ -179,7 +204,7 @@ class UserController extends Controller
 		$model->PaymentMethod = 2;// самовывоз 
 		$model->ban = 0;
 		$model->isActive = 1; // 0 - статус того, что этот 		 
-
+		
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
@@ -305,7 +330,7 @@ class UserController extends Controller
 		$model->carMakes = ($model->carMakes) ? explode(',', $model->carMakes) : array();
 		$this->render('update',array(
 			'model'=>$model,
-			'userGroupDiscount'=>$userGroupDiscount,
+			'userGroupDiscount'=>$userGroupDiscount,			
 		));
 	}
 	

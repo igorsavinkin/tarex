@@ -8,8 +8,8 @@
  * @property integer $assortmentId
  * @property string   $assortmentTitle
  * @property integer $assortmentAmount
- * @property float $discount
- * @property float $price
+ * @property integer $discount
+ * @property integer $price
  * @property integer $cost 
  */
 class EventContent extends CActiveRecord
@@ -147,17 +147,11 @@ class EventContent extends CActiveRecord
 	public function getId()
 	{
 		return $this->id;
-	}
-	public function getPriceCssClass() 
-	{
-		if ($this->price == $this->RecommendedPrice) return '';
-		if ($this->price > $this->RecommendedPrice) return 'lime';
-		if ($this->price < $this->RecommendedPrice) return 'redbgcolor';
-	} 
+	}  
 	public function priceCssClass() 
 	{
-		if ($this->price < $this->assortment->getPriceOptMax()) return 'redbgcolor'; 
-		if ($this->price > $this->assortment->getCurrentPrice()) return 'green';		
+		if ($this->price < $this->RecommendedPrice) return 'redbgcolor'; 
+		if ($this->price > $this->basePrice) return 'green';		
 	} 
 	public function getDiscountOpt($contractorId=null )
 	{ 		

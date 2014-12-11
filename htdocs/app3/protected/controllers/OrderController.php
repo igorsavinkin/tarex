@@ -34,217 +34,9 @@ class OrderController extends EventsController
 	}
 	
 	
-	public function actionSearchUnique()
+	public function actiontest1()
 	{
-		if(isset($_POST['search-value']))
-	    {   
-			AssortmentFake::model()->deleteAll(); 		
-			$refined = $_POST['search-value'];    //echo 'refined:'.$refined;
-			$replaced =  str_replace("`", "", $refined); 
-			$replaced4oem =  str_replace(array('.', '-', ' '), "", $replaced); // заменяем точки, тире и пробелы на ничего ТОЛЬКО для поиска по OEM и Артикулу (например здесь 77.01.204.282) 
-			//echo '$replaced4oem = ', $replaced4oem;
-			//=============== 1) Сначала ищем по артикулу =========
-			$criteria = new CDbCriteria;
-			$criteria->condition = ( 'article = :article AND organizationId=' . Yii::app()->params['organization']); 
-			$criteria->params = array(':article' => "{$replaced4oem}" ); 
-			$dataProvider = new CActiveDataProvider('Assortment', array(
-				'criteria'=>$criteria, 
-			)); 
-			if (!$dataProvider->itemCount) 
-			//===== 2) НЕ НАШЛИ  ПО Артикулу ищем по ОЕМ
-			{ 
-				//echo 'НЕ НАШЛИ В НОМЕНКЛАТУРЕ ПО Артикулу';
-				$criteria->condition = ( ' t.oem = :oem AND organizationId = ' . Yii::app()->params['organization'] ); 
-				$criteria->params = array(':oem' => "{$replaced4oem}" ); 
-				$dataProvider = new CActiveDataProvider('Assortment', array(
-					'criteria'=>$criteria, 
-				)); 
-				if ($dataProvider->itemCount){ // ЕСЛИ НАШЛИ ПО ОЕМ ПРОВЕРИМ ПРОИЗВОДИТЕЛЯ
-					$foundItem = Assortment::model()->find($criteria);
-					if ($foundItem->make == $foundItem->manufacturer && $foundItem->manufacturer != '') { // найден по оem и выполнено условие что make = manufacturer тогда он - полностью оригинальная запчaпсть.	
-						$mainAssotrmentItem = 1;  
-					}	
-					else 
-					{ 
-						$dataProviderAnalog=new CActiveDataProvider('Assortment', array(
-							'criteria'=>$criteria, 
-						)); 
-						$CriteriaAnalog=$criteria;  
-						$f=AssortmentFake::model()->findByAttributes(array('article'=>$foundItem->oem));
-						if (empty($f)){
-							$fakeAssortment = new AssortmentFake;
-							$fakeAssortment->agroup = $foundItem->agroup;
-							$fakeAssortment->organizationId = $foundItem->organizationId;
-							$fakeAssortment->article = $foundItem->oem;
-							$fakeAssortment->oem = $foundItem->oem;
-							$fakeAssortment->title = $foundItem->title;
-							$fakeAssortment->manufacturer = $foundItem->make;
-							$fakeAssortment->fileUrl = mt_rand();
-							//$fakeAssortment->save(false);
-							try { // мы так ловим исключение чтобы не вставлять дубликат записи 
-								   // мы сделали поле oem - уникальное в AssortmentFake
-								$fakeAssortment->save(false);
-							} catch(Exception $e) { // doing nothing!!!!	 echo $e->getMessage(); 
-							}
-						} 
-						$mainAssotrmentItem = 0; 
-					}
-					//echo 'НАШЛИ ПО ОЕМ ПРОВЕРИМ ПРОИЗВОДИТЕЛЯ '.$mainAssotrmentItem;
-				
-				}// конец if ($dataProvider->itemCount){ //по OEM // ЕСЛИ НАШЛИ ПО ОЕМ ПРОВЕРИМ ПРОИЗВОДИТЕЛЯ
-				else{
-					//echo 'Ищем в аналогах';
-					//=== 3) Ищем в аналогах ===
-					$criteria->condition = ( ' code = :code ' ); 
-					$criteria->params = array(':code' => "{$replaced}" ); // $replaced - где только апострофы заменены
-					$dataProvider = new CActiveDataProvider('Analogi', array(
-						'criteria'=>$criteria, 
-					));  
-					$FoundedAnalog=Analogi::model()->find($criteria); // ищем только один в Аналогах
-					
-					//echo ''.$replaced;
-					$founded=0;
-					if (!$dataProvider->itemCount) {
-						//===== 3.1 РЕКРОСС ======
-						$criteria = new CDbCriteria;
-						$criteria->condition = ( 'oem = :oem' ); 
-						$criteria->order = ' "reliability" DESC' ;  // reliability  
-						$criteria->params = array(':oem' => "{$replaced}" );   					
-						
-						$Recross=Analogi::model()->findall($criteria);
-						if(!empty($Recross)){
-							$it=1; $founded=0;
-							foreach ($Recross as $r){
-							
-								//Проведём отбор кроссов которые есть по нашему номеру
-								$Recross2=Analogi::model()->FindAllByAttributes(array('code'=>$r->code));
-								foreach ($Recross2 as $r2){
-									$MainAssortment=Assortment::model()->FindByAttributes(array('oem'=>$r2->oem));
-									if (!empty($MainAssortment)){
-										$fakeAssortment = new AssortmentFake;
-										//$fakeAssortment->agroup = $foundItem->agroup;
-										$fakeAssortment->organizationId = Yii::app()->params['organization'];
-										$fakeAssortment->article = $r->oem;
-										$fakeAssortment->oem = $r->oem;
-										$fakeAssortment->title = $r->name;
-										//$fakeAssortment->manufacturer = $foundItem->make;
-										$fakeAssortment->fileUrl = mt_rand();
-										 
-										$fakeAssortment->agroup=$MainAssortment->agroup;
-										$fakeAssortment->make=$MainAssortment->make;
-										$fakeAssortment->save(false); 
-										
-										$CriteriaAnalog = new CDbCriteria;
-										$CriteriaAnalog->condition = ( 'oem = :oem' ); 
-										$CriteriaAnalog->params = array(':oem' => $MainAssortment->oem );  
-										
-										$founded=1;
-										//echo 'MainAssortment' . $MainAssortment->id . '/' . $MainAssortment->make; 
-										
-										//$criteria->condition = ( 'oem = :oem AND organizationId=7' ); 
-										//$criteria->params = array(':oem' => $MainAssortment->oem ); 
-										break; 
-									}   
-								}
-								if ($founded==1) break;
-								$it++; 
-							} 
-						
-						} //if(!empty($Recross)){ 
-						
-					}
-					else
-					{ // if (!$dataProvider->itemCount) { 
-						$CriteriaAnalog=new CDbCriteria;
-						$CriteriaAnalog->condition = ( ' oem = :oem AND organizationId=' . Yii::app()->params['organization']); 
-						$CriteriaAnalog->params = array(':oem' => $FoundedAnalog->oem ); 
-						//echo 'CriteriaAnalog '.$CriteriaAnalog->condition;
-						
-						$criteria->condition = ( ' article = :article ' ); 
-						$criteria->params = array(':article' => $FoundedAnalog->code );  
-						
-						$f=AssortmentFake::model()->FindByAttributes(array('article'=>$replaced));
-
-						if (empty($f)){
-							$ff=Assortment::model()->findbyattributes(array('oem'=>$replaced));
-							$fakeAssortment = new AssortmentFake;
-							if (empty($ff)){ 
-								$fakeAssortment->organizationId = Yii::app()->params['organization'];
-								$fakeAssortment->article = $replaced; 
-								$fakeAssortment->title = $FoundedAnalog->name;
-								$fakeAssortment->manufacturer = $FoundedAnalog->brand;
-								$fakeAssortment->fileUrl = mt_rand();
-							 
-							}else{							
-								$fakeAssortment->agroup = $ff->agroup;
-								$fakeAssortment->organizationId = $ff->organizationId;
-								$fakeAssortment->article = $replaced;
-								//$fakeAssortment->oem = $FoundedAnalog->oem;
-								$fakeAssortment->title = $ff->title;
-								$fakeAssortment->manufacturer = $FoundedAnalog->brand;
-								$fakeAssortment->fileUrl = mt_rand(); 
-							} 
-							try { // мы так ловим исключение чтобы не вставлять дубликат записи 
-								   // мы сделали поле oem - уникальное в AssortmentFake
-								$fakeAssortment->save(false);
-							} catch(Exception $e) { // doing nothing!!!!	 echo $e->getMessage(); 
-							}
-						}								
-					}
-					
-					//=== 4) Если не нашли ищем по наименованию ===
-					if (  $founded==0  ) {   
-						$ArraySearchString=explode(' ', $refined); // $ArraySearchString=$this->FArraySearchString($refined);
-						
-					  //  $criteria= new CDbCriteria;
-						$criteria->condition ='organizationId= ' . Yii::app()->params['organization'];
-					 
-						foreach ($ArraySearchString as $r){
-							
-							$Make=Assortment::model()->findbyattributes(array('make'=>$r));
-							if (!empty($Make)){
-								$criteria->condition .= ( " AND make = '{$Make->make}' "); 
-							}else{
-								$r = addcslashes($r, '%_"');
-								$criteria->condition .= ( " AND title LIKE \"%{$r}%\" "); 
-							} 
-							//$criteria->params = array (':r'=> "%{$r}%") ; 
-						//echo 'Ищем по наименованию';
-						}
-						//echo $criteria->condition ;
-						// $dataProvider = new CActiveDataProvider('Assortment', array(
-							// 'criteria'=>$criteria, 
-						// )); 
-					}else{
-						//5) === НИЧЕГО НЕ НАШЛИ ===				
-					}
-				}
-			} //if (!$dataProviderOEM->itemCount) // НЕ НАШЛИ В НОМЕНКЛАТУРЕ ПО Артикулу ищем по ОЕМ 
-			else
-			{
-				//echo 'Нашли по артикулу<br>'; 
-				$items = Assortment::model()->findAll( 'article = :article' , array(':article'=>$replaced4oem));
-				//echo 'found items are: '; print_r($items); echo '<br><br>';
-				$CriteriaAnalogsFromAssortment = new CDbCriteria; 
-				foreach($items as $item)
-				{// ищем для них соответствия в Аналогах  
-					//echo '<br><br>item = ';print_r($item); 
-					if( Assortment::model()->count('oem = "'. $item->oem . '"') <> '0') $CriteriaAnalogsFromAssortment->addCondition('oem = "'. $item->oem . '" ' , 'OR');
-				}
-				if(!empty($CriteriaAnalogsFromAssortment->condition)) $CriteriaAnalogsFromAssortment->addCondition('article != "' . $replaced4oem . '" ');
-			}
-		
-		} // end if(  isset($_POST['search-value'])  ) 
-		else { echo 'no input supplied'; Yii::app()->end();}
-		$this->render('searchUnique', array( 
-			'criteria' => isset($criteria) ? $criteria : '', 
-			'CriteriaAnalog' =>  isset($CriteriaAnalog) ? $CriteriaAnalog : '', 
-			'CriteriaAnalogsFromAssortment' =>  !empty($CriteriaAnalogsFromAssortment->condition) ? $CriteriaAnalogsFromAssortment : array(), 
-			'mainAssotrmentItem' => isset($mainAssotrmentItem) ? $mainAssotrmentItem : '',
-
-			'dataProvider' => $dataProvider, 
-			'dataProviderAnalog' => isset($dataProviderAnalog) ? $dataProviderAnalog : '',		
-		));
+		echo 'test1';
 	}
 	
 	public function actionAdmin()
@@ -275,10 +67,108 @@ class OrderController extends EventsController
 			'model'=>$model,
 		));
 	} 
+	public function actionLoadContent2()
+	{   
+		$eventId=$_POST['Events']['id'];
+		$model=$this->loadModel($eventId);  
+		
+		if (Yii::app()->user->role<=5){  
+			$ShablonId=User::model()->findbypk(Yii::app()->user->id)->ShablonId;
+			if ($ShablonId!=0){
+				$LoadDataSettings=LoadDataSettings::model()->findByPk($ShablonId); 
+			}		
+		} // ???
+					
+		$LoadDataSettings=LoadDataSettings::model()->findByPk($_POST['LoadDataSettings']['id']);  
+		
+	    //print_r($LoadDataSettings);
+		$СolumnNumber =  $LoadDataSettings->ColumnNumber;  
+		$ListNumber= $LoadDataSettings->ListNumber;		
+		$AmountColumnNumber= $LoadDataSettings->AmountColumnNumber;
+		$PriceColumnNumber= $LoadDataSettings->PriceColumnNumber;
+		 
+	    $upfile = CUploadedFile::getInstance('FileUpload1', 0);	
+		$Order=new Events; 
+		if ($upfile) { 
+			//echo 'FileUpload1 '.$_POST['FileUpload1'];
+			//$Order->attributes=$_POST['Item'];
+            $Order->file=$upfile;
+			//print_r($Order->file->name);
+			if (strstr($Order->file->name, 'xlsx')){
+				$Order->file->saveAs('files/temp.xlsx');
+				$file='files/temp.xlsx';
+				$type='Excel2007';	
+			}else{
+				$Order->file->saveAs('files/temp.xls');
+				$type='Excel5';	
+				$file='files/temp.xls';
+			} 
+			
+			require_once Yii::getPathOfAlias('ext'). '/PHPExcel.php';
+	 	 
+			$objReader = PHPExcel_IOFactory::createReader($type);
+			$objPHPExcel = $objReader->load($file); 
+			$as = $objPHPExcel->setActiveSheetIndex( $ListNumber - 1 );	
+			
+			$highestRow = $as->getHighestRow();
+			$error = '';
+			for ($startRow = 1; $startRow <= $highestRow; $startRow ++) 
+			{ 
+			 
+				$SearchString=$as->getCell($СolumnNumber . $startRow)->getValue(); 
+			 	$SearchString=str_replace(  array('.', ' ', '-')  , '' , $SearchString); 
+					//echo '/'.$SearchString.'/<br>';
+				if ($SearchString=='')  continue;
+				
+				$fileAmount=$as->getCell($AmountColumnNumber . $startRow)->getValue(); 
+				$filePrice=$as->getCell($PriceColumnNumber . $startRow)->getValue(); 
+				$criteria = new CDbCriteria; 
+				$criteria->params = array(':value'=>$SearchString);
+				$criteria->condition = 'title = :value OR oem = :value OR article = :value';
+				$item=Assortment::model()->find($criteria); 
+				
+				if($item==null) {$error .= Yii::t('general','Row #') . $startRow . '. ' .  Yii::t('general','Could not find assortment item on ') . $ColumnSearch. ' = "'. $SearchString . '"<br />'; 
+				} 
+				else 
+				{ 
+					print_r($item); echo '<br><br>'; 
+					
+				// Создаём новое содержимое заказа						
+					$EventContent=new EventContent;
+					$EventContent->eventId=$eventId; 
+					$EventContent->assortmentId=$item->id;
+					$EventContent->assortmentTitle=$item->title;
+					$EventContent->assortmentArticle=$item->article2;
+					$EventContent->assortmentAmount = $fileAmount; // количество берём из файла					
+					$EventContent->price = $item->getPrice($model->contractorId);
+				 
+				 // Считаем скидку исходя из скидок по группам cкидок для менеджеров
+					$discGroupId = DiscountGroup::getDiscountGroup($item->article2);
+					if(!$discGroupId) 
+						$EventContent->discount = 0; 
+					else {
+						$ugd = UserGroupDiscount::model()->findByAttributes(array('userId'=>$model->contractorId, 'discountGroupId'=>$discGroupId));  
+						$EventContent->discount = (isset($ugd)) ? $ugd->value : 0 ;  
+					}
+				// Заносим дополнительные цены для менеджеров
+					$EventContent->RecommendedPrice = $item->getPriceOptMax(); // минимальная оптовая цена (согласно оптовой максимальной скидке)
+					$EventContent->basePrice = $item->getCurrentPrice(); // - цена базовая (цена до всех скидок) 
+					
+				// Считаем новые стоимость и стоимость со скидкой
+					$EventContent->cost = $eventContent->price * $eventContent->assortmentAmount;                 
+				// Сохраняем его
+					if (!$eventContent->save())  	//print_r($EventContent);
+					   $error .= Yii::t('general', 'Failure saving assortment item located at row #') . $startRow . '<br />';	 
+				// Конец нового содержимого заказа 
+				
+				} // end if($item==null)
+		    } // end for() circle
+		}// end if($upfile)
+	}
 	
 	public function actionLoadContent()
 	{   
-			$eventId=$_POST['Events']['id'];
+		$eventId=$_POST['Events']['id'];
 		$model=$this->loadModel($eventId);  
 		
 		if (Yii::app()->user->role<=5){ 
@@ -366,45 +256,22 @@ class OrderController extends EventsController
 				
 				if($Assortment==null) {$error .= Yii::t('general','Row #') . $startRow . '. ' .  Yii::t('general','Could not find assortment item on ') . $ColumnSearch. ' = "'. $SearchString . '"<br />'; 
 				} 
-				else {
-					
-					//$DiscountNew =$this->actionFDiscount($Assortment,$model->contractorId,$model->Begin);
-					//$DiscountNew = $Assortment->countDiscount( $model->Begin, $model->contractorId);
-					
-					
-					// $DefaultPrice=$Assortment->priceS;
-					// if ($DiscountNew!=0) $FinalPrice=($DefaultPrice+$DefaultPrice*$DiscountNew/100)*$CurrentRate;
-					
-					//echo '<br>FinalPrice '.$FinalPrice.'/DefaultPrice'.$DefaultPrice*$CurrentRate;
-					
+				else { 
 					// добавляем в содержимое заказа
 					$EventContent=EventContent::model()->find(array(
 						'condition'=>'eventId =:eventId AND assortmentId=:assortmentId',
 						'params'=>array(':eventId' =>$eventId, ':assortmentId'=>$Assortment->id)
 					));
-					if (!empty($EventContent)) {
-			//Добавляем кол-во в заказ
-						//echo 'assortmentAmount '.$EventContent->assortmentAmount.'/'.$Amount;
-						$OldAmount=$EventContent->assortmentAmount;
-						$EventContent->assortmentAmount=$OldAmount+$Amount; 
-						//echo 'assortmentAmount1 '.$EventContent->assortmentAmount;
-						$DefaultPrice=$Assortment->priceS;
-						
-						//$eventContent->price = $eventContent->RecommendedPrice = $item->getPrice($model->contractorId);	
-						
-						//$FinalPrice=round(($DefaultPrice+$DefaultPrice*$Discount/100)*$CurrentRate,2);
-						$FinalPrice=$Assortment->getPrice2($model->contractorId);
-						//if ($DiscountNew!=0) $FinalPrice=round(($DefaultPrice+$DefaultPrice*$DiscountNew/100)*$CurrentRate,2) ;
-						
-						if ($Price>0) {
-							$EventContent->price=$Price;
-						}else{	
-							
-							$EventContent->price=$FinalPrice;
-						}
-						$EventContent->RecommendedPrice = $FinalPrice;
-						$EventContent->cost=$EventContent->price * $EventContent->assortmentAmount;   // 	
-						//$EventContent->cost_w_discount = $EventContent->cost;   // 	почему?
+					if (0 && !empty($EventContent) ) {
+			//Добавляем кол-во в существующее содержимое
+						$EventContent->assortmentAmount += $Amount; 
+						$EventContent->assortmentArticle = $Assortment->article2; 
+				 // Заносим дополнительные цены для менеджеров
+						$EventContent->RecommendedPrice = $Assortment->getPriceOptMax(); // минимальная оптовая цена (согласно оптовой максимальной скидке)
+						$EventContent->basePrice = $Assortment->getCurrentPrice(); // - цена базовая (цена до всех скидок) 
+						$EventContent->price = $Assortment->getPrice($model->contractorId);		
+						$EventContent->discount = round(($EventContent->price - $EventContent->basePrice) * 100  / $EventContent->basePrice, 2);						
+						$EventContent->cost = $EventContent->price * $EventContent->assortmentAmount; 
 					}else{
 			//Создаём новый состав заказа
 						
@@ -413,39 +280,21 @@ class OrderController extends EventsController
 						$EventContent->assortmentId=$Assortment->id;
 						$EventContent->assortmentTitle=$Assortment->title;
 						$EventContent->assortmentAmount = $Amount;
-						$DefaultPrice=$Assortment->priceS; 
-						//$FinalPrice=round(($DefaultPrice+$DefaultPrice*$Discount/100)*$CurrentRate,2);
-						$contractorId=$model->contractorId; 
-						
-						$FinalPrice=$Assortment->getPrice2($contractorId);
-						//echo 'contractorId'.$contractorId;
-						//return; 
-						
-						//if ($DiscountNew!=0) $FinalPrice=round(($DefaultPrice+$DefaultPrice*$DiscountNew/100)*$CurrentRate,2);
-						
-						if ($Price>0) {
-							$EventContent->price=$Price;
-						}else{
-							
-							$EventContent->price=$FinalPrice;
-						}
-						$EventContent->RecommendedPrice=$FinalPrice;
-						//$EventContent->RecommendedPrice=1000;
-						$EventContent->cost=$EventContent->price*$Amount;   // 	
-						$EventContent->cost_w_discount=$EventContent->cost;   // 
-
+						$EventContent->assortmentArticle = $Assortment->article2;  
+					// Заносим дополнительные цены для менеджеров
+						$EventContent->RecommendedPrice = $Assortment->getPriceOptMax(); // минимальная оптовая цена (согласно оптовой максимальной скидке)
+						$EventContent->basePrice = $Assortment->getCurrentPrice(); // - цена базовая (цена до всех скидок) 
+						$EventContent->price = $Assortment->getPrice($model->contractorId);	
+						$EventContent->discount = round(($EventContent->price - $EventContent->basePrice) * 100  / $EventContent->basePrice, 2);
+						$EventContent->cost = $EventContent->price * $EventContent->assortmentAmount; 
 						//print_r($EventContent);
-					} // конец нового состава заказа
-					$model->totalSum = EventContent::getTotalSumByEvent($model->id);
-					$model->save();
-					
-					//echo($EventContent->eventId.' '.$EventContent->assortmentTitle.' '.$EventContent->assortmentAmount.' '.$EventContent->price.' '.$EventContent->cost.' '.$EventContent->assortmentTitle);
-					//print_r($EventContent);
-						
-					if (!$EventContent->save()) $error .= Yii::t('general', 'Failure saving assortment item located at row #') . $startRow . '<br />';	
+					} // конец нового состава заказа				 	
+					if (!$EventContent->save(false)) $error .= Yii::t('general', 'Failure saving assortment item located at row #') . $startRow . '<br />';	
 					 
 				} // end "if ($Assortment==null)"			
 			}
+			$model->totalSum = EventContent::getTotalSumByEvent($model->id);
+			$model->save();
 			if (!empty($error)) { 
 				Yii::app()->user->setFlash('error', Yii::t('general', "Some rows from the file have not been saved into the order") . ": <br />" . $error );
 			} else { Yii::app()->user->setFlash('success',Yii::t('general', "All the rows from the file have been saved into the order") . '.' ); 	} 	
@@ -461,6 +310,7 @@ class OrderController extends EventsController
 		$model->Begin = date('Y-m-d H-i-s');
 		$model->organizationId = Yii::app()->user->organization;  
 		$model->authorId=Yii::app()->user->id;
+		
 		if ($contractorId)  
 			$model->contractorId=$contractorId; 
 		elseif (Yii::app()->user->role > 5)  
@@ -569,12 +419,12 @@ class OrderController extends EventsController
 				Yii::app()->user->setFlash('error', Yii::t('general', "Failure to add the item"). ' <b>' . $eventContent->assortmentTitle . '</b> ' . Yii::t('general', " to the event") . '.');
 			
 			// здесь мы делаем GET-redirect чтобы избежать повторного сохранения POST-параметров если пользователь перезагрузит браузер
-			$this->redirect( array('update' , 'id'=>$id , '#' => 'tab2' , 'search-value'=>$_POST['search-value'])); 
+			$this->redirect( array('update' , 'id'=>$id , '#' => 'tab2' )); 
 		}// конец добавления ассортимента в событие		
 		
 	//	echo '<br><br>$loadDataSetting = '; print_r($loadDataSetting);
 		
-		$this->render('update' , array(
+		$this->render('update' ,array(
 			'model'=>$model, 'assortment'=>$assortment,  'pageSize' =>$pageSize, 'loadDataSetting' => $loadDataSetting
 		));
 	} 
@@ -1245,7 +1095,7 @@ class OrderController extends EventsController
 /**************** конец Печатные формы *********************************/
 	public function info($data, $row)
 	{ 
-	    if (!$data->priceS) return; // если это искусственный элемент, то ничего не показываем
+	    if (!$data->priceS) return; // если это искусственный элемент, то ничего не показываем 
 		$info = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/infoblue.png" ));
 		$infofoto = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/camerainfoblue.png" ));
 		$action = Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER) ? 'assortment/update' : 'assortment/view';
@@ -1256,19 +1106,14 @@ class OrderController extends EventsController
 			echo CHtml::Link($infofoto, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 	 
 		else  
             echo CHtml::Link($info, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 
-	}	
-	public function info_new($data, $row)
+	}
+	public function infoPopup($data, $row)
 	{ 
-	    if (!$data->priceS) return; // если это искусственный элемент, то ничего не показываем
 		$info = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/infoblue.png" ));
-		$infofoto = CHtml::tag("img", array("src" =>   Yii::app()->baseUrl . "/images/camerainfoblue.png" ));
-		$action = Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER) ? 'assortment/update' : 'assortment/view';
-		/*try {
-			//$image = getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg");
-		}  catch(Exception $e)  { } */
+		$infofoto = CHtml::tag("img", array("src" => Yii::app()->baseUrl . "/images/camerainfoblue.png" )); 
 		if (getimagesize(Yii::app()->basePath . "/../img/foto/" . $data->article2 . ".jpg" ) !== false)
-			echo CHtml::Link($infofoto, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 	 
+			echo CHtml::Link($infofoto, '',  array('class'=>'info-link', 'id' => 'image-' . $data->id)); 	 	 
 		else  
-            echo CHtml::Link($info, array($action, 'id'=>$data->id),  array('target'=>'_blank')); 
-	}	 
+            echo CHtml::Link($info, '',  array('class'=>'info-link', 'id' => 'item-' . $data->id)); 
+	}
 }
