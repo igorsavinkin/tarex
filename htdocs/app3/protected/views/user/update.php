@@ -21,24 +21,26 @@ if (Yii::app()->user->checkAccess(User::ROLE_MANAGER)) {
 ?></h4><br>
 <?php //$this->renderPartial('_form_new', array('model'=>$model));  
 $this->widget('CTabView', array( 
+		'activeTab'=>isset($_GET['new']) ? 'tab3' : '',// если создаём по новому то тогда сразу переходим на группу скидок
 		'tabs'=>array(			
 			 'tab1'=>array(
 				'title'=>Yii::t('general', 'Main'), //'Основное', 
 				'view'=>'_form_new',
-				'data'=>array('model'=>$model), 
+				'data'=>array('model'=>$model, 
+									 'userGroupDiscount' => $userGroupDiscount), 
 			 ), 
 			'tab2'=>array(
 				'title'=>Yii::t('general', 'Contract'),  
 				'view'=>'_contract', 
 				'data'=>array('model'=>$model),
 			),	
-			'tab3'=>array(
+	/*		'tab3'=>array( 
 				'title'=>Yii::t('general', 'Discount groups'),  
 				'view'=>'_discount_groups', 
 				'data'=>array('model'=>$model,
 									'userGroupDiscount' => $userGroupDiscount),
 				'visible'=>Yii::app()->user->checkAccess(User::ROLE_MANAGER) && (User::model()->findByPk($model->id)->role == User::ROLE_USER),
-			),
+			),*/
 			'tab4'=>array(
 				'title'=>Yii::t('general', 'Additional info'),  
 				'view'=>'_info', 

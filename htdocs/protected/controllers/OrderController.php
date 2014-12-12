@@ -39,8 +39,15 @@ class OrderController extends EventsController
 		echo 'test1';
 	}
 	
-	public function actionAdmin()
-	{ 
+	public function actionAdmin($id=null)
+	{   
+	    // если этот заказ сохраняется пользователем и он со статусом "новый" то переводим его в статус "в работе"
+		if(isset($_POST['client-save']) && isset($_POST['status-new']))
+		{
+			$order=$this->loadModel($_POST['eventId']);			 
+			$order->updateByPk($_POST['eventId'], array('StatusId'=>Events::STATUS_IN_WORK));		 
+		}
+		
 		if(isset($_GET['quickOpen']))
 			$this->redirect(array('update', 'id'=>$_GET['quickOpen']));
 		
@@ -51,9 +58,7 @@ class OrderController extends EventsController
 
 		$this->render('admin',array(
 			'model'=>$model,
-		));
-		
-		
+		)); 
 	} 	
  
 	public function actionIndex()

@@ -351,6 +351,13 @@ input#findbyoem-value
 	padding: 0px 15px 20px;
 	margin-top:-25px;
 }
+.paddingSpecial2
+{
+	position:relative;
+	padding: 15px 15px 20px;
+	margin-top:15px;
+	float::right; 
+}
 /* For the PriceListSetting update/create form */
 #PriceListSetting_daysOfWeek input, #PriceListSetting_carmakes input {
     float: left;

@@ -111,7 +111,8 @@ class UserController extends Controller
 		// Save Excel 2007 file 
 		$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '.xls'; 
 
-		$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+		//$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel); // xlsx
+		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);  // xls
 		ob_end_clean(); 
 		header('Content-Type: application/vnd.ms-excel');
 		header('Content-Disposition: attachment;filename="'.$filename.'"');

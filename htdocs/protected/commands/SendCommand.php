@@ -28,7 +28,7 @@ class SendCommand extends CConsoleCommand
 				$pls->lastSentDate= date('Y-m-d'); // сохраняем дату посылки в модели/базе чтобы потом сравнивать с ней
 				$pls->save(false);
 			// send mail to manager
-				$managerEmail = User::model()->findByPk($user->parentId)->email; 
+				$managerEmail = isset($user->parentId) ? User::model()->findByPk($user->parentId)->email : null; 
 				if ($managerEmail) 
 					mail($managerEmail, '=?UTF-8?B?'.base64_encode('Прайс лист послан клиенту "' . $username .'"').'?=',
 						'Послано письмо клиенту "'.   $username . '" на '. $pls->email . ' с прикреплённым Прайс Листом формата "' . $pls->format .'" в '.date('H:i:s') . PHP_EOL, 
@@ -55,8 +55,8 @@ class SendCommand extends CConsoleCommand
 		$mail->SetFrom('info@tarex.ru', 'TAREX.RU');
 		$mail->Subject = 'TAREX price list '. date('Y-m-d'); 
 		$mail->AltBody = 'To view the message, please use an HTML compatible email viewer!';
-		// this is 
-		$msg=Yii::t('general', 'Price List is in Attachment');
+		// this is Прайс лист в прикреплении
+		$msg=Yii::t('general', 'Price List is in an Attachment');
 		$mail->MsgHTML('<h4>'. $msg . '.</h4>');
 		$mail->AddAddress($mailArr[0], $mailArr[1]); 
 	 
@@ -83,9 +83,9 @@ class SendCommand extends CConsoleCommand
 		// Set properties	 
 		$objPHPExcel->getProperties()->setCreator("TAREX Company, www.tarex.ru");
 		$objPHPExcel->getProperties()->setLastModifiedBy("www.tarex.ru");
-		$objPHPExcel->getProperties()->setTitle("Office 2007 XLSX Price list at ". date('d.m.Y H:i:s')."   ");
-		$objPHPExcel->getProperties()->setSubject("Office 2007 XLSX Document");
-		$objPHPExcel->getProperties()->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.");
+		$objPHPExcel->getProperties()->setTitle("Office 2003 XLS Price list at ". date('d.m.Y H:i:s')."   ");
+		$objPHPExcel->getProperties()->setSubject("Office 2003 XLS Document");
+		$objPHPExcel->getProperties()->setDescription("Test document for Office 2004 XLS, generated using PHP classes.");
 		
 		// Add data to document
 		$objPHPExcel->setActiveSheetIndex(0);
@@ -159,7 +159,8 @@ class SendCommand extends CConsoleCommand
  
 		$objPHPExcel->getActiveSheet()->setTitle('ТАРЕКС прайс лист на ' . date('d-m-Y'));
 	 
-		$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+		// $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel); // xlsx
+		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel); // xls
 		ob_start();
 	/*	ob_end_clean();
 		$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '.xlsx';  

@@ -87,7 +87,7 @@ $this->widget( 'zii.widgets.grid.CGridView', array(
 			'cost'=>array(
 				'name'=>'cost',
 				'cssClassExpression'=>'$data->priceCssClass()',   
-			), 			
+			), 		 	
 			array(
 				'class' => 'CCheckBoxColumn',
 				'id' => 'eventContentId',	

@@ -236,7 +236,7 @@ return array(
 	'Request to cancel' =>'Запрос на отмену', 
 	'Request to the reserve' =>'Запрос в резерв', 
 	'Request to the delivery' =>'Запрос на доставку',
-	'Confirmed to reserve'=>'Подтверждён в резерв',
+	'Confirmed'=>'Подтверждён',
 	'Confirmed to delivery'=>'Подтверждён на доставку',
 	'Confirmed to delivery with changes'=>'Подтверждён на доставку с изменениями',
 	'Confirmed with changes'=>'Подтверждён с изменениями', 

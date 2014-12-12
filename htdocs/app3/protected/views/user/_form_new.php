@@ -1,4 +1,17 @@
 <?php
+Yii::app()->clientScript->registerScript('group-discount-script', "
+	$('.group-discount-button').click(function(){
+		$('.group-discount-form').toggle();
+		return false;
+	});
+/*	$('.search-form form').submit(function(){
+		$('#events-grid').yiiGridView('update', {
+			data: $(this).serialize()
+		});
+		return false;
+	});*/
+	"); 
+	  
 Yii::app()->clientScript->registerScript('legal-fields', "
 $( document ).ready(function() {
     if (!$('#User_isLegalEntity').is(':checked') && ($('#User_PaymentMethod').val() != '1' )   ) 
@@ -47,12 +60,12 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 		<?php echo $form->error($model,'password'); ?> 
 		 
 		<?php echo $form->labelEx($model, 'role'); 
-				   if(Yii::app()->user->role < $model->role) 
+				   if(Yii::app()->user->role < $model->role OR !isset($model->role)) 
 					{ 
 						$this->widget('ext.select2.ESelect2',array(
 							'model'=> $model,
 							'attribute'=> 'role', 
-							'data'=> CHtml::listData(UserRole::model()->findAll(array('order'=>'Name ASC')), 'id','name'),
+							'data'=> CHtml::listData(UserRole::model()->findAll(array('order'=>'Name ASC', 'condition'=>'id >' . Yii::app()->user->role)), 'id','name'),
 							'options'=> array('allowClear'=>true, 'width' => '200',
 							),                 
 						));  
@@ -305,9 +318,9 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 		<?php echo $form->labelEx($model,'notes'); ?>
 		<?php echo $form->textField($model,'notes',array('size'=>100)); ?>
 		<?php echo $form->error($model,'notes'); ?>
-		
-		
-		<br> <br>
+		<br>
+
+			</div><!-- group-discount-form -->
 		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save') , array( 'class'=>'red')); ?>
 
 		
@@ -318,5 +331,13 @@ $('#User_isLegalEntity, #User_PaymentMethod').on('change', function() {
 	
 	</table>
 		<?php $this->endWidget(); ?>
+		<?php echo CHtml::link(Yii::t('general', 'Discount Groups') . ' ' . '(показать/скрыть)' ,'#',array('class'=>'group-discount-button')); ?>
+	    <br>
+	    <div class="group-discount-form" style="display:none">
+		<?php $this->renderPartial('_discount_groups',array(
+			'model'=>$model, 'userGroupDiscount' => $userGroupDiscount
+		)); ?>	
 	</div><!-- form -->
+	
  </fieldset>  
+

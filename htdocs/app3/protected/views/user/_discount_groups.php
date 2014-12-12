@@ -1,9 +1,15 @@
 <h3><?php echo Yii::t('general','Discount groups' ); ?></h3>
-<?php  
-
+<?php   
+//********************** script for the popup Dialog **********************//
+/*$msg='Для нового клиента задайте сначала группы скидок, сохраните их и перейдите на  вкладку "Основное" чтобы до конца задать инфо клиента.';
+Yii::app()->clientScript->registerScript('info-msg', "
+if (location.search.indexOf('new') >= 0) 
+	alert('{$msg}');
+", CClientScript::POS_END);
+*/
 $dataProvider=new CActiveDataProvider('UserGroupDiscount', array(    
-        'criteria' => array(
-        'condition'=>'userId = '. $model->id, 'order'=>'id ASC'),   
+        'criteria' => array(   'with'=>'discountGroup',
+        'condition'=>'userId = '. $model->id  . ' AND discountGroup.value<>0'  ,  'order'=>'t.id ASC'),   
 		'pagination'=>false,
 	));
 
@@ -18,7 +24,7 @@ if (Yii::app()->user->checkAccess(User::ROLE_MANAGER) && (0 == $dataProvider->it
  // добавим тег открытия формы
  echo CHtml::form(); 
  $msg = Yii::t('general', "The discounts are renewed");
- echo CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','Save')) ,  array(/*'eventContent/updateEventcontent', 'name' => 'saveDiscount'*/ ), array('success'  => 'js:  function() { $.fn.yiiGridView.update("user-group-discount-grid");alert("' . $msg . '"); }'), array( 'class'=>'red')); 
+ echo CHtml::ajaxSubmitButton(Yii::t('general', Yii::t('general','Save'). ' ' .Yii::t('general', 'Discount Groups') ) ,  array(/*'eventContent/updateEventcontent', 'name' => 'saveDiscount'*/ ), array('success'  => 'js:  function() { $.fn.yiiGridView.update("user-group-discount-grid");alert("' . $msg . '"); }'), array( 'class'=>'red', 'style'=>'float:left;')); 
  
  $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'user-group-discount-grid',
@@ -42,11 +48,11 @@ if (Yii::app()->user->checkAccess(User::ROLE_MANAGER) && (0 == $dataProvider->it
 		array( 
 			'header'=> Yii::t('general','Prefix'),
 			'value'=>'DiscountGroup::model()->findByPk($data->discountGroupId)->prefix', 
-		),
+		), 
 		'maxDiscount' =>array(  
 			'header'=>Yii::t('general','Max wholesale discount'),		
-			'value'=>'DiscountGroup::model()->findByPk($data->discountGroupId)->value',
-	 	),  
+			'name'=>'discountGroup.value', //'value'=>'DiscountGroup::model()->findByPk($data->discountGroupId)->value',
+	 	),   
 		'discount'=>array(  
 			'type'=>'raw',
 			'htmlOptions'=>array('width'=>'150px'), 
