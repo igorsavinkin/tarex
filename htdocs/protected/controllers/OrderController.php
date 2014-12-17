@@ -328,7 +328,12 @@ class OrderController extends EventsController
 						//print_r($EventContent);
 					} // конец нового состава заказа				 	
 					if (!$EventContent->save(false)) $error .= Yii::t('general', 'Failure saving assortment item located at row #') . $startRow . '<br />';	
-					 
+					else 
+					{
+					// мы добавили эту позицию из номенклатуры, поэтому нам надо добавить количество в зарезервированное поле модели Assortment (поле reservedAmount)		
+						$Assortment->reservedAmount += $Amount;
+						$Assortment->save(false); 
+					} 
 				} // end "if ($Assortment==null)"			
 			}
 			$model->totalSum = EventContent::getTotalSumByEvent($model->id);

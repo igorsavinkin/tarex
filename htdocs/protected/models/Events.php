@@ -407,4 +407,9 @@ class Events extends CActiveRecord
 			$arr[]=$user->id;
 	    return $arr; // ? $arr : false;
 	}
+	protected function beforeDelete()
+	{	
+	    EventContent::model()->deleteAllByAttributes(array('eventId'=>$this->id));
+		return parent::beforeDelete(); 
+	}/**/
 }

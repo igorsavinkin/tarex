@@ -85,8 +85,18 @@ class EventContentController extends Controller
 	}
 	public function actionBulkActions($name = null)
 	{ 
-		if ($_GET['name'] == 'delete') { 			
-			EventContent::model()->deleteByPk($_POST['eventContentId']); 
+		if ($_GET['name'] == 'delete') { 		 
+		    $ecs = EventContent::model()->findAllByPk($_POST['eventContentId']);  // несколько так как $_POST['eventContentId'] - массив
+			foreach($ecs as $ec)
+			{
+				$item = Assortment::model()->findByPk($ec->assortmentId);						
+				if($item)
+				{
+					$item->reservedAmount -= $ec->assortmentAmount;
+					$item->save(false);
+				}  
+			}	
+			EventContent::model()->deleteByPk($_POST['eventContentId']);		
 		} 
 	}
 	public function actionUpdateEventContent()
@@ -121,11 +131,15 @@ class EventContentController extends Controller
 				$content->save(); 
 			}
 		} 
-		else 	
+		else 	// при изменении количества
 		{ 
 			$id = $_POST['eventContentId'][0];
 			$content = EventContent::model()->findByPk($id); 
-			$content->assortmentAmount = $_POST['EventContent']['assortmentAmount'][$id];
+			$deltaAmount =  $_POST['EventContent']['assortmentAmount'][$id] - $content->assortmentAmount; // save difference amount
+			$content->assortmentAmount = $_POST['EventContent']['assortmentAmount'][$id]; // chage for the new content
+			$item = Assortment::model()->findByPk($content->assortmentId);						
+			if($item) 
+				$item->reserve($deltaAmount); 
 		}
 		$content->cost = $content->assortmentAmount * $content->price;
 

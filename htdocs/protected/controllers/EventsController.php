@@ -50,7 +50,8 @@ class EventsController extends Controller
 	{ 
 		// print_r($_POST);
 		if ($_GET['name'] == 'delete-bulk') {			
-			Events::model()->deleteByPk($_POST['itemId']); 
+			Events::model()->deleteByPk($_POST['itemId']);  
+			EventContent::model()->deleteAllByAttributes(array('eventId'=>$_POST['itemId']));
 		} 
 	}
 	

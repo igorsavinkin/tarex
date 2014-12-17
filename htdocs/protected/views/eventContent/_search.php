@@ -55,12 +55,7 @@
 	<td>
 		<?php echo $form->label($model,'cost'); ?>
 		<?php echo $form->textField($model,'cost'); ?>
-	</td>
-
-	<td>
-		<?php echo $form->label($model,'cost_w_discount'); ?>
-		<?php echo $form->textField($model,'cost_w_discount'); ?>
-	</td>
+	</td> 
 
 </tr><tr>	
 	<td>

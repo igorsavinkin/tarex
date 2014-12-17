@@ -911,10 +911,16 @@ class AssortmentController extends Controller
 					$content->cost = $content->price * $content->assortmentAmount; // заносим cost
 					$totalCost += $content->cost;
 					if(!$content->save())  
-						{ 
-							echo 'content saving errors';  
-							print_r($content->errors); 
-						}						
+					{ 
+						echo 'content saving errors';  
+						print_r($content->errors); 
+					}	
+					else
+					{    // заносим в резерв в модели Assortment это количество 
+						 $item = Assortment::model()->findByPk($content->assortmentId); 
+						 if($item) 
+							$item->reserve($content->assortmentAmount);
+					}			
 				}
 				$model->totalSum = $totalCost; // занесение общей стоимости заказа на основе стоимости со скидкой
 				$model->save(false);  
@@ -1045,7 +1051,13 @@ class AssortmentController extends Controller
 							{ 
 								echo 'content saving errors: ';  
 								print_r($content->errors); 
-							}					
+							}	
+						else
+						{    // заносим в резерв в модели Assortment это количество 
+						     $item = Assortment::model()->findByPk($content->assortmentId); 
+							 if($item) 
+								$item->reserve($content->assortmentAmount);
+						}						
 					}					
 					$model->totalSum = $totalCost;  
 					$model->save();

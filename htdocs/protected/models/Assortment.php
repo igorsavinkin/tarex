@@ -839,6 +839,14 @@ class Assortment extends CActiveRecord implements IECartPosition
 //			КУЗОВ ОПТИКА ПОДВЕСКА СИСТЕМА ОХЛАЖДЕНИЯ СИСТЕМА ПОДВЕСКИ ТОРМОЗНАЯ СИСТЕМА ТРАНСМИСИЯ ХОДОВАЯ СИСТЕМА ЭЛЕКТРИКА		
 		}	
 	}
+	public function reserve($amount=0)
+	{
+		if ($amount) 
+		{	
+		    $this->reservedAmount += $amount; 
+			$this->save(false); 
+		}
+	}
 /*	public function fob($begin=null, $end=null) 
 	{ 
 		// подсчёт суммы проданной позиции (за интервал)

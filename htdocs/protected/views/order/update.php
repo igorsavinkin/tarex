@@ -2,7 +2,7 @@
 /* @var $this EventsController */
 /* @var $model Events */
 $UserRole=Yii::app()->user->role;
-$CurrentStatusOrder=EventStatus::model()->FindByPk($model->StatusId)->Order1;
+$CurrentStatusOrder=EventStatus::model()->findByPk($model->StatusId)->Order1;
 //echo '<br>$loadDataSetting (in view) = '; print_r($loadDataSetting); 
 ?> 
 <h3 style='margin-bottom: 10px;'><?php  
