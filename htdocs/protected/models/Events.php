@@ -409,7 +409,16 @@ class Events extends CActiveRecord
 	}
 	protected function beforeDelete()
 	{	
-	    EventContent::model()->deleteAllByAttributes(array('eventId'=>$this->id));
+	    // отменяем резервацию
+		$ecs = EventContent::model()->findAllByAttributes(array('eventId'=>$this->id));  		
+		foreach($ecs as $ec)
+		{
+			$item = Assortment::model()->findByPk($ec->assortmentId);						
+			if($item) 
+				$item->reserve((-1)*$ec->assortmentAmount);  
+		} 
+		// удаляем всё содержимое		
+		EventContent::model()->deleteAllByAttributes(array('eventId'=>$this->id));
 		return parent::beforeDelete(); 
-	}/**/
+	}
 }
