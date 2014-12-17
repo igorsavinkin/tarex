@@ -26,8 +26,18 @@
 			'article',
 			'oem',
 			'manufacturer',
-			'availability',
-			'info'=>array(
+			//'availability',
+			'availability-reserved'=>array(
+				'header' =>Yii::t('general','Availability'),
+				'value'=>'$data->availability - $data->reservedAmount',
+				'htmlOptions'=>array('style'=>'text-align:center'),
+			),
+			'infoPopup'=>array(
+				'header'=>Yii::t("general",'Info'),
+				 'type'=>'html',
+				'value'=>array($this, 'infoPopup'), 
+			 ),
+		/*	'info'=>array(
 				'header'=>Yii::t("general",'Info'),
 				 'type'=>'html',
 				'value'=>array($this, 'info'), 

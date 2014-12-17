@@ -68,7 +68,7 @@
 		 
 	</td></tr><tr class='odd-row'><td> 	
 		<b><?php echo $item->getAttributeLabel('availability') ?>:</b></td><td> 
-		<?php echo $item->availability ?>
+		<?php echo $item->availability - $item->reservedAmount; ?>
 		
 	 </td></tr><tr><td> 
 		<b><?php echo $item->getAttributeLabel('country') ?>:</b></td><td> 

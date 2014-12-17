@@ -314,6 +314,8 @@ class Events extends CActiveRecord
 	protected function afterDelete()
     {
 		parent::afterDelete();
+		
+        echo (EventContent::model()->findAllByAttributes(array( 'eventId' => $this->id)));	
 		EventContent::model()->deleteAllByAttributes(array( 'eventId' => $this->id)); 	 
 	}
 	public function __clone()  

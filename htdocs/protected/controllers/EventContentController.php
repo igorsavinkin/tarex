@@ -85,7 +85,7 @@ class EventContentController extends Controller
 	}
 	public function actionBulkActions($name = null)
 	{ 
-		if ($_GET['name'] == 'delete') {
+		if ($_GET['name'] == 'delete') { 			
 			EventContent::model()->deleteByPk($_POST['eventContentId']); 
 		} 
 	}
@@ -171,30 +171,7 @@ class EventContentController extends Controller
 			'model'=>$model,
 		));
 	}
-	public function actionUpdate_old($id)
-	{
-		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['EventContent']))
-		{
-			$model->attributes=$_POST['EventContent'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
-
-		$this->render('update_old',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
+	 
 	public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();

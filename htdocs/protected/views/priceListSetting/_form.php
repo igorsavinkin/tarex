@@ -112,7 +112,8 @@ $('.download-link').on('click', function(e){
 		<?php echo $form->textField($model,'email',array('size'=>30,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'email'); ?>
 	</td> 
-	<td class='padding10side'>
+	<td class='padding10side'  >
+	    <table><tr><td>
 		<?php echo $form->labelEx($model,'time'); ?> 
 		<?php if (Yii::app()->language == 'ru')   
 		{       
@@ -141,7 +142,68 @@ $('.download-link').on('click', function(e){
 				),
 			  'mode' => 'time',
 			));  
-		echo $form->error($model,'time'); ?> 
+		echo $form->error($model,'time'); ?>
+		</td><td class='padding10side' >
+		<?php echo $form->labelEx($model,'time2'); ?> 
+		<?php if (Yii::app()->language == 'ru')   
+		{       
+			$options = array(
+				'dateFormat'=>'yy-mm-dd',  
+				'timeFormat'=>strtolower(Yii::app()->locale->timeFormat),
+				'changeMonth'=>'true',  
+				'showSecond'=>true,
+				'changeYear'=>'true',
+				'changeHour'=>'true', 
+				'timeOnlyTitle' => 'Выберите часы',
+				'timeText' => 'Время',
+				'hourText'=>'Часы',
+				'minuteText'=> 'Минуты',
+				'secondText'=> 'Секунды');
+				$lang = 'ru';
+		} else { $lang = 'en-GB';
+				    $options=array('timeFormat'=>strtolower(Yii::app()->locale->timeFormat)); } 
+		
+		 $this->widget( 'ext.EJuiTimePicker.EJuiTimePicker', array(
+	     	  'model' => $model, // Your model
+			  'attribute' => 'time2', // Attribute for input
+			  'timeHtmlOptions' => array(
+				  'size' => 5,
+				  'maxlength' => 5,
+				),
+			  'mode' => 'time',
+			));  
+		echo $form->error($model,'time2'); ?> 
+		</td><td>
+		<?php echo $form->labelEx($model,'time3'); ?> 
+		<?php if (Yii::app()->language == 'ru')   
+		{       
+			$options = array(
+				'dateFormat'=>'yy-mm-dd',  
+				'timeFormat'=>strtolower(Yii::app()->locale->timeFormat),
+				'changeMonth'=>'true',  
+				'showSecond'=>true,
+				'changeYear'=>'true',
+				'changeHour'=>'true', 
+				'timeOnlyTitle' => 'Выберите часы',
+				'timeText' => 'Время',
+				'hourText'=>'Часы',
+				'minuteText'=> 'Минуты',
+				'secondText'=> 'Секунды');
+				$lang = 'ru';
+		} else { $lang = 'en-GB';
+				    $options=array('timeFormat'=>strtolower(Yii::app()->locale->timeFormat)); } 
+		
+		 $this->widget( 'ext.EJuiTimePicker.EJuiTimePicker', array(
+	     	  'model' => $model, // Your model
+			  'attribute' => 'time3', // Attribute for input
+			  'timeHtmlOptions' => array(
+				  'size' => 5,
+				  'maxlength' => 5,
+				),
+			  'mode' => 'time',
+			));  
+		echo $form->error($model,'time3'); ?> 
+		</td></tr></table>
 	</td >
 	<td class='padding10'>	<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red')); ?>
 	</td> 

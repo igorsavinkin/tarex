@@ -115,14 +115,14 @@ class Events extends CActiveRecord
 		// will receive user inputs.
 		return array(
 		//	array('Subject, eventNumber, Notes, Place, EventTypeId, organizationId, Begin, End, contractId, Percentage, totalSum, ReflectInCalendar, ReflectInTree,  parent_id, Priority, StatusId, Comment, PlanHours, FactHours, Tags, bizProcessId, dateTimeForDelivery, dateTimeForPayment', 'required'),
-			array('EventTypeId, organizationId, contractorId, contractId, ReflectInCalendar, ReflectInTree, parent_id, Priority, StatusId, PlanHours, bizProcessId, manualTransactionEditing, PaymentType, Subconto1, Subconto2', 'numerical', 'integerOnly'=>true),
+			array('EventTypeId, organizationId, contractorId, contractId, ReflectInCalendar, ReflectInTree, parent_id, Priority, StatusId, PlanHours, bizProcessId, manualTransactionEditing, PaymentType, shippingMethod, Subconto1, Subconto2', 'numerical', 'integerOnly'=>true),
 			array('Percentage, totalSum, FactHours', 'numerical'),
 			array('Subject, Place, Comment, Tags, Notes, Reference', 'length', 'max'=>200),
 			array('eventNumber, Currency, Begin, End', 'length', 'max'=>50),
 			
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, Subject, authorId, eventNumber, Notes, Place, EventTypeId, organizationId, Begin, End, contractorId, contractId, Percentage, totalSum, ReflectInCalendar, ReflectInTree, parent_id, Priority, StatusId, Comment, PlanHours, FactHours, Tags, bizProcessId, manualTransactionEditing, dateTimeForDelivery, dateTimeForPayment, PaymentType, Currency, Subconto1, Subconto2', 'safe', 'on'=>'search'),
+			array('id, Subject, authorId, eventNumber, Notes, Place, EventTypeId, organizationId, Begin, End, contractorId, contractId, Percentage, totalSum, ReflectInCalendar, ReflectInTree, parent_id, Priority, StatusId, Comment, PlanHours, FactHours, Tags, bizProcessId, manualTransactionEditing, dateTimeForDelivery, dateTimeForPayment, PaymentType, shippingMethod, Currency, Subconto1, Subconto2', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -175,6 +175,7 @@ class Events extends CActiveRecord
 			'notCompleted' =>Yii::t('general', 'not completed Events'),
 			'bizProcessId' =>Yii::t('general', 'Business Process'),
 			'PaymentType'=>Yii::t('general', 'Payment Type'), //'Тип Оплаты',
+			'shippingMethod'=>Yii::t('general', 'Shipping Method'), //'Тип Оплаты',
 			'manualTransactionEditing' =>Yii::t('general', 'Manual Transaction editing'), 
 		 	'dateTimeForDelivery' => Yii::t('general','Date & time for delivery'), //'дата и время когда ставить статус "Доставка"'),
 			'dateTimeForPayment' => Yii::t('general','Date & time for payment'), //'время и дата для оплаты. Если не было оплаты, то высылаются письма с уведомлением'), 
@@ -197,6 +198,8 @@ class Events extends CActiveRecord
 		$criteria->compare('totalSum',$this->totalSum);
 		$criteria->compare('ReflectInCalendar',$this->ReflectInCalendar);
 		$criteria->compare('ReflectInTree',$this->ReflectInTree);
+		$criteria->compare('PaymentType',$this->PaymentType);
+		$criteria->compare('shippingMethod',$this->shippingMethod);
 		$criteria->compare('parent_id',$this->parent_id);
 		$criteria->compare('Priority',$this->Priority);
 		$criteria->compare('StatusId',$this->StatusId);

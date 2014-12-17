@@ -259,10 +259,15 @@ if ($dataProvider->itemCount)
 			//	'value'=>'$data->getPrice('.Yii::app()->user->id.')',  
 				'header' => Yii::t('general', 'Price'),
 			),	 
-			'availability'=>array(
+		/*	'availability'=>array(
 				'name'=>'availability', 
 			    'htmlOptions'=>array('style'=>'text-align:center'),
-			  ),
+			  ),*/
+		    'availability2'=>array(
+				'header' =>Yii::t('general','Availability'),
+				'value'=>'$data->availability - $data->reservedAmount',
+				'htmlOptions'=>array('style'=>'text-align:center'),
+			),
 		/*	'information'=>array(
 				'header'=>Yii::t("general",'Foto'),
 				'type'=>'html',

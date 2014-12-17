@@ -3,18 +3,35 @@ class SendCommand extends CConsoleCommand
 {
     public function actionIndex()
 	{	
-	//mail('igor.savinkin@gmail.com', 'check command runnig at '. date('H:i:s'), 'Check is ok, send from "Send" command & action "index".');	// check mail - 
+	   	// check mail - 
+		//mail('igor.savinkin@gmail.com', 'check command runnig at '. date('H:i:s'), 'Check is ok, send from "Send" command & action "index" '); 
 	 	
 	//	echo 'day of week: ', getdate()['wday'], '<br>'; 
-		$criteria=new CDbCriteria;
-		$criteria->compare('daysOfWeek', getdate()['wday'] , true); // сравнение по вхождению текущего дня недели с теми днями что в модели PriceListSetting
-	 
-		$now = new CDbExpression("NOW()"); 
-		$criteria->addCondition('time < '. $now);
-	 	$criteria->addCondition('lastSentDate < "'. date('Y-m-d') . '" ' ); // дата последней посылки должна быть меньше чем текущая дата		 
+		$now = new CDbExpression("NOW()");
+		for($i=1; $i<4; $i++)  
+		{
+			$criteria=new CDbCriteria;
+			$criteria->compare('daysOfWeek', getdate()['wday'] , true); // сравнение по вхождению текущего дня недели с теми днями что в модели PriceListSetting		 
+			if ($i>1) {
+			    $criteria->addCondition("time{$i} < " . $now . " AND lastSentDate{$i} < '". date('Y-m-d') . "' ");
+				// условие что время посылки не первое не должно быть нулевым
+				$criteria->addCondition("time{$i} <> '00:00:00' ");
+			}
+		    else 
+				$criteria->addCondition('time < '. $now . ' AND lastSentDate < "'. date('Y-m-d') . '" ');
+			
+			//echo ' <br>criteria='; print_r($criteria); echo ' $i=', $i;
+			$this->sendByCriteria($criteria, $i);
+		}
+		
+	//	$criteria->addCondition('time2 < '. $now . ' AND lastSentDate2 < "'. date('Y-m-d') . '" ', 'OR' );
+	//	$criteria->addCondition('time3 < '. $now . ' AND lastSentDate3 < "'. date('Y-m-d') . '" ', 'OR' ); // дата последней посылки должна быть меньше чем текущая дата	
+	 	//$criteria->addCondition();	 
 	 
 	//	echo '<br>Matched criteria<br>';
-		foreach(PriceListSetting::model()->findAll($criteria) as $pls)
+		
+	
+	/*	foreach(PriceListSetting::model()->findAll($criteria) as $pls)
 		{ 
 			//echo  'user id = ', $pls->userId, '. <br> ';
 			//посылка прайса		
@@ -36,9 +53,39 @@ class SendCommand extends CConsoleCommand
 			}				
 			else 
 				{ echo 'Не удалось послать письмо клиенту "',   $username , '" на ', $pls->email ,  ' в ', date('H:i:s'); }				
-		}		 
+		}	*/	 
 	}  
+	public function sendByCriteria($criteria, $time='')
+	{ 
+		//mail('igor.savinkin@gmail.com', 'check command runnig at '. date('H:i:s'), 'Check is ok, send from "Send" command & action "index". $criteria= ' . print_r($criteria, true));
+		
+		$time = ('1'==$time) ? '' : $time; // для 1 мы присваиваем '' (пустую строку)
+		foreach(PriceListSetting::model()->findAll($criteria) as $pls)
+		{ 
+			//echo  'user id = ', $pls->userId, '. <br> ';
+			//посылка прайса		
+			$user = User::model()->findByPk($pls->userId);	
+		    $username = $user->username;
+			$result = $this->runPHPMailer($pls->format, array($pls->email,  $username, $pls->userId, $pls->carmakes, $pls->columns , $pls->name   )); // email, имя пользователя, его id , марки, колонки для вывода и имя файла
+				
+			if($result) 
+			{ 
+				echo 'Послано письмо клиенту "',   $username , '" на ', $pls->email , ' с прикреплённым Прайс Листом формата "' , $pls->format ,'" в ', date('H:i:s') . PHP_EOL;
+				$lsd = 'lastSentDate'.$time;
+				$pls->{$lsd} = date('Y-m-d'); // сохраняем дату посылки в модели/базе чтобы потом сравнивать с ней
+				$pls->save(false);
+			// send mail to manager
+				$managerEmail = isset($user->parentId) ? User::model()->findByPk($user->parentId)->email : null; 
+				if ($managerEmail) 
+					mail($managerEmail, '=?UTF-8?B?'.base64_encode('Прайс лист послан клиенту "' . $username .'"').'?=',
+						'Послано письмо клиенту "'.   $username . '" на '. $pls->email . ' с прикреплённым Прайс Листом формата "' . $pls->format .'" в '.date('H:i:s') . PHP_EOL, 
+						"From: ". Yii::app()->params['adminEmail'] . "\r\n Content-type: text/html;\r\n charset=UTF-8\r\nMime-Version: 1.0\r\n"); 
+			}				
+			else 
+				{ echo 'Не удалось послать письмо клиенту "',   $username , '" на ', $pls->email ,  ' в ', date('H:i:s'); }				
+		}	
 	
+	}
 	public function runPHPMailer( $extention=null, $mailArr=null)
 	{ 
 		if ($extention == null)

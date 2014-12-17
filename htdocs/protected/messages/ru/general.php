@@ -1,6 +1,11 @@
 <?php
 return array( 
-    /* Spare parts for cars */
+	'Define payment & shipping methods'=>'Определите методы оплаты и посылки',
+	'Shipping method'=>'Метод посылки',
+	'Form the order'=>'Оформить заказ',
+	
+	
+   /* Spare parts for cars */
 	'for cars'=>'для автомобилей',
 	'Spare parts for cars'=>'Детали для автомобилей',
 	
@@ -1058,6 +1063,7 @@ return array(
 	'Price with discount'=>'Цена со скидкой',
 	//'Availability'=>'Доступность',
 	'Availability'=>'Наличие',
+	'Reserved amount'=>'Зарезервировано',
 	'Assortment id'=>'id номенклатуры',
 	'Current Price'=>'Текущая цена', // (рублей) <br />цена$ * курс рубль/доллару ',
 	'add to cart'=>'в корзину',
@@ -1142,7 +1148,7 @@ return array(
 	'Create Event' => 'Создать событие',
 	'Date & time for delivery'=>'дата и время когда ставить статус "Доставка"',
 	'Date & time for payment'=>'время и дата для оплаты. Если не было оплаты, то высылаются письма с уведомлением',
-	'Payment Type' =>'Тип Оплаты',
+	'Payment Type' =>'Тип оплаты',
 	'Client price cost'=>'Стоимость по цене клиента',
 	'Client Price'=>'Цена клиента',
 	'Create new event'=>'Создать новое событие',

@@ -39,7 +39,12 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		),	 
 		'oem',
 		'manufacturer',
-		'availability',
+	/*	'availability', 
+		'reservedAmount',*/
+		'availability-reserved'=>array(
+		    'header' =>Yii::t('general','Availability'),
+		    'value'=>'$data->availability - $data->reservedAmount',
+		),
 		array(
 			'class'=>'ButtonColumn', 
 			'evaluateID'=>true,

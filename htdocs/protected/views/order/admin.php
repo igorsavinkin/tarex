@@ -53,7 +53,7 @@ $action = 'update';
 { $action = 'update'; }*/
 $url = $this->createUrl($action);  
 // конец выбора действия которое надо применить при клике на запись в сетке
- 
+
 echo CHtml::form(array('bulkActions'));
 //echo CHtml::submitButton('Delete bulk', array('style'=>'float:right;', 'name'=>'delete-bulk')); 
 echo CHtml::ajaxSubmitButton(Yii::t('general', 'Delete selection'), array('bulkActions', 'name' => 'delete-bulk'), array('success'  => 'js:  function() { $.fn.yiiGridView.update("events-grid");  }'), array('style'=>'float:right;'));
@@ -108,7 +108,14 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'name'=>'StatusId',
 			'value'=>'Yii::t("general", EventStatus::model()->findByPk($data->StatusId)->name)',
 			'filter' => CHtml::listData(EventStatus::model()->findall(), 'id', 'name'),		
-		), 
+		),
+	/*	'PaymentType' ,
+		'shippingMethod' ,
+	/*	'PaymentType4' =>array( 
+			'name'=>'PaymentType',
+			'value'=>'Yii::t("general", PaymentMethod:model()->findByPk($data->PaymentType)->name)',
+		//	'filter' => CHtml::listData(PaymentMethod::model()->findall(), 'id', 'name'),		
+		), */
 		'Organization'=>array(          
 			'header'=>Yii::t('general','Organization'), 
 			'value'=> 'Organization::model()->findByPk($data->organizationId)->name',
@@ -139,4 +146,5 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	),
 )); 
 CHtml::endForm();
+ //print_r( $model->search()->getKeys() );
 ?>

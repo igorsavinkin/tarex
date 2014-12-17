@@ -62,10 +62,13 @@ echo CHtml::Link(Yii::t('general','Download price list as Excel sheet'). '(csv)'
 			'name'=>'daysOfWeek',
 			'value'=>array($this, 'parsedDays'), 		
 		),
-		'time',	
-		'carmakes',
-	//	'columns',
-		'lastSentDate', 
+		'time',		'lastSentDate', 
+		'time2',		'lastSentDate2', 
+	 	'time3',		'lastSentDate3',
+		'carmakes',	 	
+		
+		
+	 
 		array(
 			'class'=>'CButtonColumn',
 			'template'=>'{delete}',

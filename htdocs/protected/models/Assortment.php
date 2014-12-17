@@ -61,7 +61,7 @@ class Assortment extends CActiveRecord implements IECartPosition
 		
 		/*****************************************/
 		    array('title, article, priceS, oem, organizationId, availability', 'required'),
-			array('parent_id, price, discount, isService, isSpecialOffer, depth, organizationId,  LeadTime, RealLeadTime, availability, MinPart, YearBegin, YearEnd, userId, SupplierCode, groupCategory', 'numerical', 'integerOnly'=>true),
+			array('parent_id, price, discount, isService, isSpecialOffer, depth, organizationId,  LeadTime, RealLeadTime, availability, MinPart, YearBegin, YearEnd, userId, SupplierCode, groupCategory, reservedAmount', 'numerical', 'integerOnly'=>true),
 			array('priceS, FOBCost', 'numerical'),	
 			array('subgroup, make, agroup,CostCalculation,ItemOrigin, PurchaseCurrency, Currency, ItemCategory', 'length', 'max'=>50), 		 
 			array('title, imageUrl, notes, fileUrl, Barcode, Misc, PartN, COF, itemSearch, specialDescription,ItemPosition,warehouse,Photos, techInfo', 'length', 'max'=>1000),
@@ -69,7 +69,7 @@ class Assortment extends CActiveRecord implements IECartPosition
 			
 			array('model, article, article2,  manufacturer, country, specialDescription,SchneiderN,SchneiderOldN,TradeN, PartN, ItemCode', 'length', 'max'=>200),
 			array('measure_unit, PIN, ItemFamily, ItemOrigin', 'length', 'max'=>20),
-	 		array('id, parent_id, subgroup, title, model, make, measure_unit, price, discount, imageUrl, fileUrl, isService, depth, article, article2, priceS, oem, organizationId, manufacturer, agroup, availability, country, MinPart, YearBegin, YearEnd, Currency, Analogi, Barcode, Misc, PartN, COF, ItemCategory, warehouseId, itemSearch, specialDescription, notes, Photos, userId, ItemCode, FOBCost, PurchaseCurrency,   LeadTime , RealLeadTime, CostCalculation, ItemOrigin, ItemFamily, techInfo, SupplierCode, PIN, groupCategory, isSpecialOffer', 'safe', 'on'=>'search'),
+	 		array('id, parent_id, subgroup, title, model, make, measure_unit, price, discount, imageUrl, fileUrl, isService, depth, article, article2, priceS, oem, organizationId, manufacturer, agroup, availability, country, MinPart, YearBegin, YearEnd, Currency, Analogi, Barcode, Misc, PartN, COF, ItemCategory, warehouseId, itemSearch, specialDescription, notes, Photos, userId, ItemCode, FOBCost, PurchaseCurrency,   LeadTime , RealLeadTime, CostCalculation, ItemOrigin, ItemFamily, techInfo, SupplierCode, PIN, groupCategory, isSpecialOffer, reservedAmount', 'safe', 'on'=>'search'),
 		);
 	}
  	public function relations()
@@ -106,6 +106,7 @@ class Assortment extends CActiveRecord implements IECartPosition
 			'agroup' => Yii::t('general','Group'),
 			'subgroup' => Yii::t('general','Subgroup'),
 			'availability' => Yii::t('general','Availability'),
+			'reservedAmount' => Yii::t('general','Reserved amount'),
 			'country' => Yii::t('general','Country'),
 			'MinPart' => Yii::t('general','MinPart'),
 			'YearBegin' => Yii::t('general','YearBegin'),
@@ -166,6 +167,7 @@ class Assortment extends CActiveRecord implements IECartPosition
 		$criteria->compare('manufacturer',$this->manufacturer,true);
 		$criteria->compare('agroup',$this->agroup,true);
 		$criteria->compare('availability',$this->availability);
+		$criteria->compare('reservedAmount',$this->reservedAmount);
 		$criteria->compare('country',$this->country,true);
 		$criteria->compare('MinPart',$this->MinPart);
 		$criteria->compare('YearBegin',$this->YearBegin);

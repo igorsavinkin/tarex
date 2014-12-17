@@ -42,6 +42,9 @@ class PriceListSettingController extends Controller
 		if(isset($_POST['PriceListSetting']))
 		{
 			$model->attributes=$_POST['PriceListSetting'];
+			//if (!empty($_POST['PriceListSetting']['time3']))
+			 	//$model->moreTimes .= ', ' . $_POST['PriceListSetting']['time3'];
+			
 			if (!empty($_POST['PriceListSetting']['daysOfWeek']))
 			 	$model->daysOfWeek = implode(',' , $_POST['PriceListSetting']['daysOfWeek']);
 			if (!empty($_POST['PriceListSetting']['carmakes']) && isset($_POST['use-in-reg-mailing']))
@@ -64,6 +67,9 @@ class PriceListSettingController extends Controller
 		if(isset($_POST['PriceListSetting']))
 		{
 			$model->attributes=$_POST['PriceListSetting'];
+		//	if (!empty($_POST['PriceListSetting']['time3']))
+			// 	$model->moreTimes .= ', ' . $_POST['PriceListSetting']['time3'];
+			
 		//	echo '$model->daysOfWeek = ', $model->daysOfWeek;
 			if (!empty($_POST['PriceListSetting']['daysOfWeek']) ) 
 			 	$model->daysOfWeek = implode(',' , $_POST['PriceListSetting']['daysOfWeek']);
@@ -80,6 +86,10 @@ class PriceListSettingController extends Controller
 				$this->redirect(array('admin'));
 		}
 
+		/* разбиваем параметр moreTimes на 2 параметра
+		$arr = explode(', ' , $model->moreTimes); 
+		$model->moreTimes = $arr[0];
+		$model->time3 = $arr[1];*/
 		$this->render('update',array(
 			'model'=>$model,
 		));
