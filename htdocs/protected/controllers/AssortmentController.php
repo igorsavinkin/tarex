@@ -1175,6 +1175,10 @@ class AssortmentController extends Controller
 	
 	public function actionFillInSchneiderGr($make=null)
 	{
+	
+	}
+	public function actionFillInSchneiderGr($make=null)
+	{
 		$criteria = new CDbCriteria;
 		$criteria->distinct = true;
 		$criteria->order = 'subgroup ASC';

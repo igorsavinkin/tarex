@@ -33,31 +33,44 @@ if($model->eventNumber) echo ' ', Yii::t('general','#'), $model->eventNumber; ?>
 				'view'=>'_assortment', 
 				'data'=>array('eventId'=>$model->id, 'contractorId'=>$model->contractorId,   'assortment'=>$assortment , 'pageSize'=>$pageSize),
 				//'visible'=>($CurrentStatusOrder <= 3),
-			),					
+			),	
+			'tab4'=>array(
+				'title'=>Yii::t('general', 'Selection by make and model'), //'Исполнение',
+				'view'=>'_make_model', 
+				'data'=>array('eventId'=>$model->id, 'contractorId'=>$model->contractorId,   'assortment'=>$assortment , 'pageSize'=>$pageSize), 
+			//	'visible'=>($CurrentStatusOrder <= 2),
+			),			
 		)));
 	} else {
 // Клиентам  
 		$this->widget('CTabView', array( 
 		'tabs'=>array(	 
+			'tab4'=>array(
+				'title'=>Yii::t('general', 'Selection by make and model'), //'Исполнение',
+				'view'=>'_make_model', 
+				'data'=>array('eventId'=>$model->id, 'contractorId'=>$model->contractorId,   'assortment'=>$assortment , 'pageSize'=>$pageSize), 
+			//	'visible'=>($CurrentStatusOrder <= 2),
+			),	
 			/* клиенты не видят вкладку Основное 
 			'tab1'=>array(
 				'title'=>Yii::t('general', 'Main'), //'Основное', 
 				'view'=>'_main',
 				'data'=>array('model'=>$model), 
 			 ), */
+			
+			'tab3'=>array(
+				'title'=>Yii::t('general', 'Assortment selection'), //'Исполнение',
+				'view'=>'_assortment', 
+				'data'=>array('eventId'=>$model->id, 'contractorId'=>$model->contractorId,   'assortment'=>$assortment , 'pageSize'=>$pageSize), 
+				'visible'=>($CurrentStatusOrder <= 2),
+			),
 			'tab2'=>array(
 				'title'=>Yii::t('general', 'Products / Services'), 
 				// даём редактировать заказ до тех пор пока они не отправили его на подтверждение
 				'view'=>($CurrentStatusOrder <= 2) ? '_ordercontent_client_new' : '_ordercontent_noteditable', 
 				'data'=>array('model'=>$model, 'eventId'=>$model->id, 'loadDataSetting' => $loadDataSetting),
 				'active'=>true,
-			),
-			'tab3'=>array(
-				'title'=>Yii::t('general', 'Assortment selection'), //'Исполнение',
-				'view'=>'_assortment', 
-				'data'=>array('eventId'=>$model->id, 'contractorId'=>$model->contractorId,   'assortment'=>$assortment , 'pageSize'=>$pageSize), 
-				'visible'=>($CurrentStatusOrder <= 2),
-			),			
+			),		
 		)));
 	}
 ?>

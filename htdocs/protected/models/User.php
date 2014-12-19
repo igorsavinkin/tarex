@@ -89,6 +89,8 @@ class User extends CActiveRecord
 		
 			array('password_repeat, agree, email, password, phone', 'required' , 'on'=>'register'), 
 			array('agree', 'required' , 'requiredValue' => 1, 'message' => Yii::t('general','You should agree term to use our service') , 'on'=>'register'), 
+		 	
+		//	array('password_repeat, agree, email, password, phone', 'required' , 'on'=>'cashless'), 
 			
 			 array('phone', 'phoneNumber'),
 			
@@ -104,7 +106,7 @@ class User extends CActiveRecord
 					),
 			array('PaymentMethod', 'bankDetailsRequired2', 
 					'bankDetailsFields'=>'OrganizationInfo,CorrespondentAccount,INN,KPP,BIC,CurrentAccount,Bank',
-					'on'=>'retail'
+					'on'=>'retail,cashless'
 					),
 			
 			// The following rule is used by search().

@@ -858,6 +858,8 @@ return array(
 	'cashless'=>'безналичный расчёт',
 	'With cashless payment method you must fill in Banking data to the right.'=>'При безналичном способе оплаты Вы должны заполнить банковские реквизиты справа.',
 	'With cashless payment method or if you are legal entity you must fill banking data down.'=>'При безналичном способе оплаты или если Вы - юридическое лицо Вы должны заполнить банковские реквизиты внизу.',
+	'You banking data for cashless payment are not in order'=>'Ваши банковские данные для безналичного рассчета не в порядке',
+	'Please visit your profile to fix these'=>'Пожалуйста, перейдите на ваш профиль чтобы исправить их',
 	'should not be empty'=>'не должен быть пустым',
 	'should contain between 10 and 12 digits'=>'должен содержать от 10 до 12 цифр',
 	'should contain exact 20 digits'=>'должен содержать 20 цифр',
@@ -978,6 +980,7 @@ return array(
 	
 	/* Cart */
 	'Cart'=> 'Корзина',
+	'Select'=>'Выбрать',
 	'RUB'=>'рублей', 
 	'item(s)'=>'товар(ов)',
 	'Total Sum'=> 'Общая сумма',
@@ -1019,6 +1022,7 @@ return array(
 	/*Assortment*/
 	'Assortment' => 'Номенклатура',
 	'Assortment selection' => 'Выбор номенклатуры',
+	'Selection by make and model' => 'Выбор по марке и модели',
 	'Assortment.' => 'Номенклатуру',
 	'List Assortment' => 'Посмотреть Номенклатуры',
 	'View Assortment' => 'Посмотреть Номенклатура',
