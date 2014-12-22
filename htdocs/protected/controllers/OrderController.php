@@ -74,8 +74,8 @@ class OrderController extends EventsController
 	    // если этот заказ сохраняется пользователем и он со статусом "новый" то переводим его в статус "в работе"
 		if(isset($_POST['client-save']) && isset($_POST['status-new']))
 		{
-			$order=$this->loadModel($_POST['eventId']);			 
-			$order->updateByPk($_POST['eventId'], array('StatusId'=>Events::STATUS_IN_WORK,
+			$order=$this->loadModel($_POST['eventIdent']);			 
+			$order->updateByPk($_POST['eventIdent'], array('StatusId'=>Events::STATUS_IN_WORK,
 			'PaymentType'=>$_POST['Events']['PaymentType'], 'shippingMethod'=>$_POST['Events']['shippingMethod']));		 
 		}
 		

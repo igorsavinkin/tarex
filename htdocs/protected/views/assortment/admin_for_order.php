@@ -85,7 +85,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 echo CHtml::endForm();
 
 
-/********************************** start of the Dialog box ******************************/
+/********************************** start of the Dialog box ****************************** 
 $this->beginWidget('zii.widgets.jui.CJuiDialog',array(
     'id'=>'cart',
     // additional javascript options for the dialog plugin
@@ -136,7 +136,7 @@ $this->endWidget('zii.widgets.jui.CJuiDialog');
 /******************************** end of the Dialog box *************************************/
 //********************** script for the popup Dialog **********************//
 
-Yii::app()->clientScript->registerScript('dialog', "
+Yii::app()->clientScript->registerScript('dialog3333', "
  /*
 $('.add-to-order').click(function(data){	
 	//alert('smth');	

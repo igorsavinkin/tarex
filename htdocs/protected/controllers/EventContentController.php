@@ -87,8 +87,11 @@ class EventContentController extends Controller
 	{ 
 		if ($_GET['name'] == 'delete') { 		 
 		    $ecs = EventContent::model()->findAllByPk($_POST['eventContentId']);  // несколько так как $_POST['eventContentId'] - массив
+		 	$eventId = $ecs[0]->eventId; // запоминаем id cобытия чтобы потом обновить его сумму
+			//Events::model()->findByPk()->
 			foreach($ecs as $ec)
 			{
+				//$eventId = $ec->eventId; //  // запоминаем id cобытия чтобы потом обновить его сумму
 				$item = Assortment::model()->findByPk($ec->assortmentId);						
 				if($item)
 				{
@@ -96,7 +99,11 @@ class EventContentController extends Controller
 					$item->save(false);
 				}  
 			}	
-			EventContent::model()->deleteByPk($_POST['eventContentId']);		
+			EventContent::model()->deleteByPk($_POST['eventContentId']);	
+            		
+            // вычисляем новую сумму для заказа из которого удалили что-то
+			$total= EventContent::getTotalSumByEvent($eventId);
+   			Events::model()->updateByPk($eventId, array('totalSum'=>$total));
 		} 
 	}
 	public function actionUpdateEventContent()

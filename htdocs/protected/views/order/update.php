@@ -28,12 +28,12 @@ if($model->eventNumber) echo ' ', Yii::t('general','#'), $model->eventNumber; ?>
 				),
 			//	'active'=>true,
 			), 
-			'tab3'=>array(
+		/*	'tab3'=>array(
 				'title'=>Yii::t('general', 'Assortment selection'),  
 				'view'=>'_assortment', 
 				'data'=>array('eventId'=>$model->id, 'contractorId'=>$model->contractorId,   'assortment'=>$assortment , 'pageSize'=>$pageSize),
 				//'visible'=>($CurrentStatusOrder <= 3),
-			),	
+			),	*/
 			'tab4'=>array(
 				'title'=>Yii::t('general', 'Selection by make and model'), //'Исполнение',
 				'view'=>'_make_model', 
@@ -56,14 +56,14 @@ if($model->eventNumber) echo ' ', Yii::t('general','#'), $model->eventNumber; ?>
 				'title'=>Yii::t('general', 'Main'), //'Основное', 
 				'view'=>'_main',
 				'data'=>array('model'=>$model), 
-			 ), */
+			 ), 
 			
 			'tab3'=>array(
 				'title'=>Yii::t('general', 'Assortment selection'), //'Исполнение',
 				'view'=>'_assortment', 
 				'data'=>array('eventId'=>$model->id, 'contractorId'=>$model->contractorId,   'assortment'=>$assortment , 'pageSize'=>$pageSize), 
 				'visible'=>($CurrentStatusOrder <= 2),
-			),
+			),*/
 			'tab2'=>array(
 				'title'=>Yii::t('general', 'Products / Services'), 
 				// даём редактировать заказ до тех пор пока они не отправили его на подтверждение
