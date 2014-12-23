@@ -51,8 +51,15 @@ class PriceListSetting extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('name',$this->name, true);
-		$criteria->compare('userId',$this->userId);
+		$criteria->compare('name',$this->name, true); 
+			
+	 // фильтрация по дочерним пользователям если пользоветель - менеджер
+	    if(Yii::app()->user->role == USER::ROLE_MANAGER) { 		
+			$children = Events::allChildren(Yii::app()->user->id);
+			$criteria->compare('userId', $children);	 
+		} else
+			$criteria->compare('userId', $this->userId);
+			
 		$criteria->compare('format',$this->format,true);
 		$criteria->compare('daysOfWeek',$this->daysOfWeek, true);
 		$criteria->compare('isActive', $this->isActive);

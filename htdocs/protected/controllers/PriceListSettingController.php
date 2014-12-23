@@ -17,7 +17,7 @@ class PriceListSettingController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create', 'update', 'sendPrice', 'sendPriceAttachment' , 'testPHPMailer'), 
+				'actions'=>array('create', 'update', 'sendPrice', 'sendPriceAttachment' , 'testPHPMailer', 'bulkActions'), 
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -29,6 +29,15 @@ class PriceListSettingController extends Controller
 			),
 		);
 	} 
+	public function actionBulkActions($name)
+	{ 
+		 if( 'de-activate' == $name && !empty($_POST['priceListSettingId']))
+		    $rows = PriceListSetting::model()->updateByPk($_POST['priceListSettingId'], array('isActive'=>0)); 
+		if( 'activate' == $name && !empty($_POST['priceListSettingId']))
+		    $rows = PriceListSetting::model()->updateByPk($_POST['priceListSettingId'], array('isActive'=>1)); 
+		 
+		//echo implode(',', $_POST['priceListSettingId']), '; updated ' , $rows , ' rows.' ; 
+	}
 	public function actionCreate($id=null)
 	{
 		$model=new PriceListSetting; 

@@ -12,6 +12,7 @@ class SendCommand extends CConsoleCommand
 		{
 			$criteria=new CDbCriteria;
 			$criteria->compare('daysOfWeek', getdate()['wday'] , true); // сравнение по вхождению текущего дня недели с теми днями что в модели PriceListSetting		 
+			$criteria->compare('isActive', 1); // сравнение активна ли данная запись в базе 
 			if ($i>1) {
 			    $criteria->addCondition("time{$i} < " . $now . " AND lastSentDate{$i} < '". date('Y-m-d') . "' ");
 				// условие что время посылки не первое не должно быть нулевым

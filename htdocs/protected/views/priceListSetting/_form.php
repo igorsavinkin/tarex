@@ -205,7 +205,12 @@ $('.download-link').on('click', function(e){
 		echo $form->error($model,'time3'); ?> 
 		</td></tr></table>
 	</td >
-	<td class='padding10'>	<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red')); ?>
+	<td class='padding10'>	
+		<?php echo $form->labelEx($model,'isActive'); ?> 
+		<?php echo $form->checkBox($model,'isActive'); ?>
+		<?php echo $form->error($model,'isActive'); ?>
+	<center>
+	<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red', /*'style'=>'float:right'*/)); ?></center>
 	</td> 
 </tr><tr>
 	<td colspan='5'><h4>

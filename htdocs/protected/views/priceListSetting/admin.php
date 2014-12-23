@@ -30,15 +30,17 @@ echo CHtml::Link(Yii::t('general','Download price list as Excel sheet'). '(csv)'
 */
  // добавим тег открытия формы
  echo CHtml::form(); 
+ echo CHtml::ajaxSubmitButton(Yii::t('general', 'Make Not Active'),  array('priceListSetting/bulkActions', 'name' => 'de-activate'), array('success'  => 'js:  function() { $.fn.yiiGridView.update("price-list-setting-grid");}'), array('style'=>'float:right;')); 
+ echo ' ',CHtml::ajaxSubmitButton(Yii::t('general', 'Activate'),  array('priceListSetting/bulkActions', 'name' => 'activate'), array('success'  => 'js:  function() { $.fn.yiiGridView.update("price-list-setting-grid");}'), array('style'=>'float:right;margin: 0 2px;'));
  
  $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'price-list-setting-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model, 
 	'summaryText' => Yii::t('general','Elements') . " {start} - {end} " . Yii::t('general','out of') . " {count}.",
-	'selectableRows' => 1, 
-	'selectionChanged'=>'function(id){ 		
-		location.href = "' .  $this->createUrl('update') .'/id/"+$.fn.yiiGridView.getSelection(id); }', 
+	'selectableRows' =>2, 
+/*	'selectionChanged'=>'function(id){ 		
+		location.href = "' .  $this->createUrl('update') .'/id/"+$.fn.yiiGridView.getSelection(id); }', */
 	
 	'columns'=>array(
  		array(
@@ -62,11 +64,30 @@ echo CHtml::Link(Yii::t('general','Download price list as Excel sheet'). '(csv)'
 			'name'=>'daysOfWeek',
 			'value'=>array($this, 'parsedDays'), 		
 		),
+		'isActive' => array(
+			'name' => 'isActive', 	
+			'value' => '($data->isActive == 1) ? Yii::t("general", "yes") : Yii::t("general", "no") ',
+			'filter' => array(1 => Yii::t("general", "yes") , 0 => Yii::t("general", "no")), //'нет', 'да'				   
+			),	 
 		'time',		'lastSentDate', 
 		'time2',		'lastSentDate2', 
 	 	'time3',		'lastSentDate3',
 		'carmakes',	 	
-		
+		array(
+			'class'=>'CButtonColumn',
+			'template'=>'{update1}',  
+			'buttons'=>array(
+				'update1'=>array(
+					'label'=>Yii::t('general', 'Update'),				  
+				    'url'=>'Yii::app()->createUrl("priceListSetting/update", array("id"=>$data->id))',
+					'options'=>array('class'=>'btn btn-xs btn-primary'),
+				),
+			),
+		),
+		array(
+				'class' => 'CCheckBoxColumn',
+				'id' => 'priceListSettingId',	
+			),
 		
 	 
 		array(
@@ -76,6 +97,7 @@ echo CHtml::Link(Yii::t('general','Download price list as Excel sheet'). '(csv)'
 		),
 	),
 )); 
+
 // добавим тег закрытия формы
 	echo CHtml::endForm();
 ?>

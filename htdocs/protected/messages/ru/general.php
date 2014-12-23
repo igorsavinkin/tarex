@@ -774,6 +774,7 @@ return array(
 	'Make user active and appoint him a manager'=> 'Активировать и назначить менеджера',
 	'Please, activate new users and appoint them managers'=>'Пожалуйста, активируёте новых пользователей и назначьте им менеджеров',
 	'Activate'=>'Активировать',
+	'Make Not Active'=>'Сделать неактивным', 
 	'Profile'=>'Профиль',
 	'Active Users'=>'Активные пользователи',
 	'Active Clients'=>'Активные клиенты',
