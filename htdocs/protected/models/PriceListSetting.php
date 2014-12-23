@@ -9,14 +9,14 @@ class PriceListSetting extends CActiveRecord
 	{
 		return array(
 			array('userId, format, email', 'required'),
-			array('userId', 'numerical', 'integerOnly'=>true),
+			array('userId, isActive', 'numerical', 'integerOnly'=>true),
 			array('format', 'length', 'max'=>4),
 			array('daysOfWeek, columns, name', 'length', 'max'=>255),
 			array('carmakes', 'length', 'max'=>1000),
 			array('email', 'email'),
 			//array('lastSentDate',  'type', 'type' => 'date', 'message' => '{attribute}: is not a date!', 'dateFormat'=>'Y-m-d'),
 		 	array('time, time2, time3',  'match', 'pattern' => '/^(\d{1,2}:)?\d{2}:\d{2}$/', 'message' => '{attribute}: '.  Yii::t('general','does not match time format!') ),
-			array('id, userId, format, daysOfWeek, time, email, carmakes, lastSentDate, lastSentDate2, lastSentDate3, columns, name, time2, time3', 'safe', 'on'=>'search'),
+			array('id, userId, format, daysOfWeek, isActive, time, email, carmakes, lastSentDate, lastSentDate2, lastSentDate3, columns, name, time2, time3', 'safe', 'on'=>'search'),
 		);
 	}
 	public function relations()
@@ -32,6 +32,7 @@ class PriceListSetting extends CActiveRecord
 			'name' => Yii::t('general','Name'),
 			'format' => Yii::t('general','File Format'),
 			'daysOfWeek' => Yii::t('general','Days Of Week'),
+			'isActive' => Yii::t('general','is Active'),
 			'time' => Yii::t('general','Time'),
 			'time2' => Yii::t('general','Time') . ' 2',
 			'time3' => Yii::t('general','Time') . ' 3',
@@ -54,6 +55,7 @@ class PriceListSetting extends CActiveRecord
 		$criteria->compare('userId',$this->userId);
 		$criteria->compare('format',$this->format,true);
 		$criteria->compare('daysOfWeek',$this->daysOfWeek, true);
+		$criteria->compare('isActive', $this->isActive);
 		$criteria->compare('time',$this->time,true);
 		$criteria->compare('time2',$this->time2,true);
 		$criteria->compare('time3',$this->time3,true);
