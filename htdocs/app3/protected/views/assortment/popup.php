@@ -1,8 +1,10 @@
 <?php 
    $arr = explode('-', $data); 
    // подключаем EMagnificPopup если эта карта товара с изображением
-   if('image'==$arr[0]) 
-	   $this->widget("ext.magnific-popup.EMagnificPopup", array('target' => '.test-popup-link'));
+   if('image'==$arr[0]) {
+	  // if(!Yii::app()->clientScript->isScriptFileRegistered('jquery.magnific-popup.js')) 
+			 $this->widget("ext.magnific-popup.EMagnificPopup", array('target' => '.test-popup-link'));
+	  } 
    $item = Assortment::model()->findByPk((int)$arr[1]); 
 ?>
 
@@ -68,7 +70,7 @@
 		 
 	</td></tr><tr class='odd-row'><td> 	
 		<b><?php echo $item->getAttributeLabel('availability') ?>:</b></td><td> 
-		<?php echo $item->availability ?>
+		<?php echo $item->availability - $item->reservedAmount; ?>
 		
 	 </td></tr><tr><td> 
 		<b><?php echo $item->getAttributeLabel('country') ?>:</b></td><td> 

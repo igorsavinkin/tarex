@@ -1,6 +1,11 @@
 <?php
 return array( 
-    /* Spare parts for cars */
+	'Define payment & shipping methods'=>'Определите методы оплаты и посылки',
+	'Shipping method'=>'Метод посылки',
+	'Form the order'=>'Оформить заказ',
+	
+	
+   /* Spare parts for cars */
 	'for cars'=>'для автомобилей',
 	'Spare parts for cars'=>'Детали для автомобилей',
 	
@@ -236,7 +241,7 @@ return array(
 	'Request to cancel' =>'Запрос на отмену', 
 	'Request to the reserve' =>'Запрос в резерв', 
 	'Request to the delivery' =>'Запрос на доставку',
-	'Confirmed to reserve'=>'Подтверждён в резерв',
+	'Confirmed'=>'Подтверждён',
 	'Confirmed to delivery'=>'Подтверждён на доставку',
 	'Confirmed to delivery with changes'=>'Подтверждён на доставку с изменениями',
 	'Confirmed with changes'=>'Подтверждён с изменениями', 
@@ -769,6 +774,7 @@ return array(
 	'Make user active and appoint him a manager'=> 'Активировать и назначить менеджера',
 	'Please, activate new users and appoint them managers'=>'Пожалуйста, активируёте новых пользователей и назначьте им менеджеров',
 	'Activate'=>'Активировать',
+	'Make Not Active'=>'Сделать неактивным', 
 	'Profile'=>'Профиль',
 	'Active Users'=>'Активные пользователи',
 	'Active Clients'=>'Активные клиенты',
@@ -853,6 +859,8 @@ return array(
 	'cashless'=>'безналичный расчёт',
 	'With cashless payment method you must fill in Banking data to the right.'=>'При безналичном способе оплаты Вы должны заполнить банковские реквизиты справа.',
 	'With cashless payment method or if you are legal entity you must fill banking data down.'=>'При безналичном способе оплаты или если Вы - юридическое лицо Вы должны заполнить банковские реквизиты внизу.',
+	'You banking data for cashless payment are not in order'=>'Ваши банковские данные для безналичного расчета не в порядке',
+	'Please fix these in your profile'=>'Пожалуйста исправьте их в вашем профиле',
 	'should not be empty'=>'не должен быть пустым',
 	'should contain between 10 and 12 digits'=>'должен содержать от 10 до 12 цифр',
 	'should contain exact 20 digits'=>'должен содержать 20 цифр',
@@ -973,6 +981,7 @@ return array(
 	
 	/* Cart */
 	'Cart'=> 'Корзина',
+	'Select'=>'Выбрать',
 	'RUB'=>'рублей', 
 	'item(s)'=>'товар(ов)',
 	'Total Sum'=> 'Общая сумма',
@@ -1014,6 +1023,7 @@ return array(
 	/*Assortment*/
 	'Assortment' => 'Номенклатура',
 	'Assortment selection' => 'Выбор номенклатуры',
+	'Selection by make and model' => 'Выбор по марке и модели',
 	'Assortment.' => 'Номенклатуру',
 	'List Assortment' => 'Посмотреть Номенклатуры',
 	'View Assortment' => 'Посмотреть Номенклатура',
@@ -1058,6 +1068,7 @@ return array(
 	'Price with discount'=>'Цена со скидкой',
 	//'Availability'=>'Доступность',
 	'Availability'=>'Наличие',
+	'Reserved amount'=>'Зарезервировано',
 	'Assortment id'=>'id номенклатуры',
 	'Current Price'=>'Текущая цена', // (рублей) <br />цена$ * курс рубль/доллару ',
 	'add to cart'=>'в корзину',
@@ -1142,7 +1153,7 @@ return array(
 	'Create Event' => 'Создать событие',
 	'Date & time for delivery'=>'дата и время когда ставить статус "Доставка"',
 	'Date & time for payment'=>'время и дата для оплаты. Если не было оплаты, то высылаются письма с уведомлением',
-	'Payment Type' =>'Тип Оплаты',
+	'Payment Type' =>'Тип оплаты',
 	'Client price cost'=>'Стоимость по цене клиента',
 	'Client Price'=>'Цена клиента',
 	'Create new event'=>'Создать новое событие',

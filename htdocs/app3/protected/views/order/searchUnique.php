@@ -279,10 +279,15 @@ if ($dataProvider->itemCount)
 			//	'value'=>'$data->getPrice('.Yii::app()->user->id.')',  
 				'header' => Yii::t('general', 'Price'),
 			),	 
-			'availability'=>array(
+			/*'availability'=>array(
 				'name'=>'availability', 
 			    'htmlOptions'=>array('style'=>'text-align:center'),
-			  ), 	
+			  ), */	
+		    'availability-reserved'=>array(
+		       'header' =>Yii::t('general','Availability'),
+		       'value'=>'$data->availability - $data->reservedAmount',
+			   'htmlOptions'=>array('style'=>'text-align:center'),
+		    ),
 			'infoPopup'=>array(
 				'header'=>Yii::t("general",'Info'),
 				 'type'=>'html',
@@ -335,19 +340,12 @@ if ($dataProvider->itemCount)
 	));  
 	echo CHtml::endForm();
 }  
-if (isset($dataProviderAnalog) && isset($dataProviderAnalog->itemCount) )
+if (isset($dataProviderAnalog) && !empty($dataProviderAnalog->itemCount) )
 {
-	//echo 'analogs';
-	/*
-	$show_msg = Yii::t('general', 'Show analogs');// will be used in 
-	$hide_msg = Yii::t('general', 'Hide analogs');
-	echo '<h3>', CHtml::Link($show_msg, '' , array('id'=>'show-analogs', 'class'=>'btn-win', 'style'=>'float:right;')); 
-*/
 ?> 
-	<div class="analogs-form" style="display:block">
-	<?php $this->renderPartial('_analogs',array('model'=>$model,  'dataProviderAnalog'=>$dataProviderAnalog )); 		
-	?></div>
-	<!--/div><!-- search-form -->
+<div class="analogs-form" style="display:block">
+<?php $this->renderPartial('_analogs',array('model'=>$model,  'dataProviderAnalog'=>$dataProviderAnalog )); 	 	
+?></div><!-- analogs-form -->
 <?php 
 } 
 ?>

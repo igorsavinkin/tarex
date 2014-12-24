@@ -36,11 +36,55 @@ class OrderController extends EventsController
 	
 	public function actiontest1()
 	{
-		echo 'test1';
+	//	echo 'test1';
+		$total=0;
+		foreach(Events::model()->findAll() as $event)
+		{
+		     //echo '<br>'; print_r($event);
+			 $total+=$event->totalSum;
+			 
+		}
+		echo'<br>Общая сумма по всем заказам = ', $total;
+		$totalCost=0;
+		$presentTotalCost=0;
+		$i=1;
+		echo '<h3>Содержимое заказов</h3><table border=1><th>#</th><th>заказ номер</th><th>артикул</th><th>assortment id</th><th>есть ли в номенклатуре</th><th>количество</th><th>количество зарезервировано</th><tr>';
+		foreach(EventContent::model()->findAll() as $eventContent)
+		{
+		    $presentInOrder = Assortment::model()->count('id='.$eventContent->assortmentId);
+		 /*   $item = Assortment::model()->findByPK($eventContent->assortmentId);
+			if ($item) 
+			{
+				$item->reservedAmount += $eventContent->assortmentAmount;
+				$item->save(false);
+			}*/
+
+			//echo '<br>'; print_r($event);
+			 $totalCost+=$eventContent->cost;
+			if($presentInOrder)  
+				$presentTotalCost+=$eventContent->cost;
+			 echo '<tr><td>', $i++, '</td><td>', $eventContent->eventId, ' </td><td>', $eventContent->assortmentArticle, ' </td><td>', $eventContent->assortmentId, ' </td><td>', $presentInOrder ? 'да' : 'нет' , ' </td><td>',  $eventContent->assortmentAmount, '</td><td>', ($item) ? $item->reservedAmount : '', '</td></tr>';
+		}
+		echo'</tr></table><br> all eventContent totalCost = ', $totalCost;
+		echo' <br>present in Order eventContent totalCost = ', $presentTotalCost;
 	}
 	
-	public function actionAdmin()
-	{ 
+	public function actionAdmin($id=null)
+	{   
+	    // если этот заказ сохраняется пользователем и он со статусом "новый" то переводим его в статус "в работе"
+		if(isset($id) && '1'==$_GET['new']  )
+		{ 
+		 	// проверяем содержимое заказа
+			if (!EventContent::model()->count('eventId='.$id))  
+			     Events::model()->deleteByPk($id); // удаляем заказ потому что он новый и у него нет содержимого
+		}	 	
+		if(isset($_POST['client-save']) && isset($_POST['event_identificator']))
+		{
+		    $order=$this->loadModel($_POST['event_identificator']);			 
+			$order->updateByPk($_POST['event_identificator'], array('StatusId'=>Events::STATUS_IN_WORK,
+			'PaymentType'=>$_POST['Events']['PaymentType'], 'shippingMethod'=>$_POST['Events']['shippingMethod']));
+		} 
+		
 		if(isset($_GET['quickOpen']))
 			$this->redirect(array('update', 'id'=>$_GET['quickOpen']));
 		
@@ -51,9 +95,7 @@ class OrderController extends EventsController
 
 		$this->render('admin',array(
 			'model'=>$model,
-		));
-		
-		
+		)); 
 	} 	
  
 	public function actionIndex()
@@ -263,13 +305,14 @@ class OrderController extends EventsController
 						'params'=>array(':eventId' =>$eventId, ':assortmentId'=>$Assortment->id)
 					));
 					if (0 && !empty($EventContent) ) {
-			//Добавляем кол-во в существующее содержимое
+			  //Добавляем кол-во в существующее содержимое
 						$EventContent->assortmentAmount += $Amount; 
 						$EventContent->assortmentArticle = $Assortment->article2; 
 				 // Заносим дополнительные цены для менеджеров
 						$EventContent->RecommendedPrice = $Assortment->getPriceOptMax(); // минимальная оптовая цена (согласно оптовой максимальной скидке)
 						$EventContent->basePrice = $Assortment->getCurrentPrice(); // - цена базовая (цена до всех скидок) 
-						$EventContent->price = $Assortment->getPrice($model->contractorId);		
+						//$EventContent->price = $Assortment->getPrice($model->contractorId);	если цену берем согласно номенклатуре из базы и группам скидок
+						$EventContent->price = $Price;		// цену берем из из прайса Excel
 						$EventContent->discount = round(($EventContent->price - $EventContent->basePrice) * 100  / $EventContent->basePrice, 2);						
 						$EventContent->cost = $EventContent->price * $EventContent->assortmentAmount; 
 					}else{
@@ -284,13 +327,19 @@ class OrderController extends EventsController
 					// Заносим дополнительные цены для менеджеров
 						$EventContent->RecommendedPrice = $Assortment->getPriceOptMax(); // минимальная оптовая цена (согласно оптовой максимальной скидке)
 						$EventContent->basePrice = $Assortment->getCurrentPrice(); // - цена базовая (цена до всех скидок) 
-						$EventContent->price = $Assortment->getPrice($model->contractorId);	
+						//$EventContent->price = $Assortment->getPrice($model->contractorId);	если цену берем согласно номенклатуре из базы и группам скидок
+						$EventContent->price = $Price ? $Price : $Assortment->getPrice($model->contractorId);		// цену берем из из прайса Excel
 						$EventContent->discount = round(($EventContent->price - $EventContent->basePrice) * 100  / $EventContent->basePrice, 2);
 						$EventContent->cost = $EventContent->price * $EventContent->assortmentAmount; 
 						//print_r($EventContent);
 					} // конец нового состава заказа				 	
 					if (!$EventContent->save(false)) $error .= Yii::t('general', 'Failure saving assortment item located at row #') . $startRow . '<br />';	
-					 
+					else 
+					{
+					// мы добавили эту позицию из номенклатуры, поэтому нам надо добавить количество в зарезервированное поле модели Assortment (поле reservedAmount)		
+						$Assortment->reservedAmount += $Amount;
+						$Assortment->save(false); 
+					} 
 				} // end "if ($Assortment==null)"			
 			}
 			$model->totalSum = EventContent::getTotalSumByEvent($model->id);
@@ -318,6 +367,9 @@ class OrderController extends EventsController
 		
 		$model->EventTypeId = Events::TYPE_ORDER;  
 		$model->StatusId = Events::STATUS_NEW;  
+		$contractor=User::model()->findByPk($model->contractorId);
+		$model->PaymentType = $contractor->PaymentMethod;  
+		$model->shippingMethod = $contractor->ShippingMethod;  
 	
 
     	$model->save();  
@@ -332,6 +384,28 @@ class OrderController extends EventsController
 	// задаём настройку шаблона либо из настроек контрагента либо из настроек залогиненного пользователя
 		$contractorId = ($model->contractorId) ? $model->contractorId : Yii::app()->user->id;
 		$user = User::model()->findByPk($contractorId);
+		if (!$model->PaymentType) 
+			$model->PaymentType = $user->PaymentMethod;  
+		if (!$model->shippingMethod)
+			$model->shippingMethod = $user->ShippingMethod;
+		
+		
+	/*	if(Yii::app()->user->checkAccess(User::ROLE_USER)) 
+        {		
+		    $user=User::model()->findByPk(Yii::app()->user->id); 
+			echo 'user id: ', $user->id;
+			echo '<br>payment method id: ', $user->PaymentMethod;
+	        if (!$user->validate(array('PaymentMethod', 'OrganizationInfo','CorrespondentAccount','INN','KPP','BIC','CurrentAccount','Bank')))  
+		       $notValid=1; 
+			else 
+		       $notValid=0;   
+	    } 
+		else 
+		    $notValid=0; 
+		echo '<br> not valid: ', $notValid;
+	*/	
+		//echo '$model->PaymentType = ', $model->PaymentType; 
+		//echo '<br>$model->shippingMethod = ', $model->shippingMethod;
 	//	echo '$user = '; print_r($user);
 		$loadDataSetting = (LoadDataSettings::model()->findByPk($user->ShablonId)) ? LoadDataSettings::model()->findByPk($user->ShablonId) : LoadDataSettings::model()->findByPk(1); // если всё же не нашли шаблон, то тогда берём первую настройку - findByPk(1)	 
 		
@@ -354,11 +428,12 @@ class OrderController extends EventsController
 				}
 
 
-			   if ($user->PaymentMethod) 
-					$model->PaymentType = $user->PaymentMethod;
+			/*   if ($user->PaymentMethod) 
+					$model->PaymentType = $user->PaymentMethod;*/
 				if ($user->ShablonId) 
 			        $loadDataSetting->id = $user->ShablonId;
-			}	/**/
+					
+			}	
 			if($model->save()) 
 			{
 				if (isset($_POST['OK'])) 
@@ -378,10 +453,7 @@ class OrderController extends EventsController
 		$assortment->unsetAttributes();  // clear any default values
 		if(isset($_GET['Assortment'])) {					
 			$assortment->attributes=$_GET['Assortment'];
-		}  		 
-		
-		
-		
+		}  	 
 // если что-то из ассортимента добавляется в событие
 		if (isset($_POST['add-to-event']) && isset($_POST['Assortment']))
 		{
@@ -392,7 +464,12 @@ class OrderController extends EventsController
 			$eventContent->assortmentTitle = $item->title;
 			$eventContent->assortmentArticle = $item->article2;
 			$eventContent->eventId = $id;
-			$eventContent->assortmentAmount = $_POST['Assortment']['amount'];			
+// добавляем в заказ количество и заносим это количество в резервацию в номенклатуре
+			$eventContent->assortmentAmount = $_POST['Assortment']['amount'];		
+// вычитаем это количество из соответствующей позиции модели Assortment (поле reservedAmount)		
+		    $item->reservedAmount += $_POST['Assortment']['amount'];
+			$item->save(false);
+			
 			$eventContent->price = $item->getPrice($model->contractorId);	 
 		// считаем скидку исходя из скидок по группам.
 			$discGroupId = DiscountGroup::getDiscountGroup($item->article2);
@@ -425,7 +502,7 @@ class OrderController extends EventsController
 	//	echo '<br><br>$loadDataSetting = '; print_r($loadDataSetting);
 		
 		$this->render('update' ,array(
-			'model'=>$model, 'assortment'=>$assortment,  'pageSize' =>$pageSize, 'loadDataSetting' => $loadDataSetting
+			'model'=>$model, 'assortment'=>$assortment,  'pageSize' =>$pageSize, 'loadDataSetting' => $loadDataSetting, 'notValid'=>$notValid,
 		));
 	} 
 	

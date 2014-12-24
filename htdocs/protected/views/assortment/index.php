@@ -11,7 +11,7 @@ Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/in.css');
 <?php // скрипт для вызова popup картинки с описанием: действие itemInfo вызывает через renderPartial представление 'popup'
 $ajaxUrl = $this->createUrl('itemInfo');
 Yii::app()->clientScript->registerScript('info-popup-script', "
-jQuery('.info-link').on('click', function(){ jQuery.ajax({'data':{id: this.id },'url':'{$ajaxUrl}','cache':false,'success':function(html){jQuery('#info-popup').html(html)}});return false;});
+jQuery(document).on('click','.info-link', function(){ jQuery.ajax({'data':{id: this.id },'url':'{$ajaxUrl}','cache':false,'success':function(html){jQuery('#info-popup').html(html)}});return false;});
 ", CClientScript::POS_END); /**/
 
 /* @var $this AssortmentController */

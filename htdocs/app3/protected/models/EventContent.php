@@ -170,4 +170,15 @@ class EventContent extends CActiveRecord
 		}
 		return Yii::t('general', 'no contractor given'); 
 	}
+	public function beforeDelete()
+	{ 
+	/*	 //print_r($this);
+		$item = Assortment::model()->findByPk($this->assortmentId);
+		if($item)
+		{
+			$item->reservedAmount += $this->assortmentAmount;
+			$item->save(false);
+		} */
+		parent::beforeDelete();
+	}
 }

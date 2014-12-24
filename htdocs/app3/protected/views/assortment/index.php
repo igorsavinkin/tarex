@@ -4,19 +4,14 @@ $ST = new Seotools;
  
 // подгрузка css для вывода картинки с описанием
 Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/in.css');  
-
 ?>
 <!-- Окно для вывода картинки с описанием -->
 <div id="info-popup"></div> 
 <?php // скрипт для вызова popup картинки с описанием: действие itemInfo вызывает через renderPartial представление 'popup'
 $ajaxUrl = $this->createUrl('itemInfo');
 Yii::app()->clientScript->registerScript('info-popup-script', "
-jQuery('.info-link').on('click', function(){ jQuery.ajax({'data':{id: this.id },'url':'{$ajaxUrl}','cache':false,'success':function(html){jQuery('#info-popup').html(html)}});return false;});
-", CClientScript::POS_END); /**/
-
-/* @var $this AssortmentController */
-/* @var $model Assortment */ 
-//$this->widget("ext.magnific-popup.EMagnificPopup", array('target' => '.test-popup-link'));
+jQuery(document).on('click','.info-link', function(){ jQuery.ajax({'data':{id: this.id },'url':'{$ajaxUrl}','cache':false,'success':function(html){jQuery('#info-popup').html(html)}});return false;});
+", CClientScript::POS_END);  
 
 /********************************** start of the Dialog box ******************************/
 ?>
@@ -259,10 +254,15 @@ if ($dataProvider->itemCount)
 			//	'value'=>'$data->getPrice('.Yii::app()->user->id.')',  
 				'header' => Yii::t('general', 'Price'),
 			),	 
-			'availability'=>array(
+		/*	'availability'=>array(
 				'name'=>'availability', 
 			    'htmlOptions'=>array('style'=>'text-align:center'),
-			  ),
+			  ),*/
+		    'availability2'=>array(
+				'header' =>Yii::t('general','Availability'),
+				'value'=>'$data->availability - $data->reservedAmount',
+				'htmlOptions'=>array('style'=>'text-align:center'),
+			),
 		/*	'information'=>array(
 				'header'=>Yii::t("general",'Foto'),
 				'type'=>'html',

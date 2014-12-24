@@ -58,7 +58,7 @@ $('.search-form form').submit(function(){
                     $this->grid->dataProvider->pagination->currentPage
                     * $this->grid->dataProvider->pagination->pageSize',
             ),
-		// 'id',
+		'id',
 		'eventId',/* =>array( 
 			'name'=>'eventId',
 			//'value'=>'Events::model()->findByPk($data->eventId)->Subject',

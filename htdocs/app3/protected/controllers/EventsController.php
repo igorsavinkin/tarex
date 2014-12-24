@@ -50,9 +50,17 @@ class EventsController extends Controller
 	{ 
 		// print_r($_POST);
 		if ($_GET['name'] == 'delete-bulk') {			
-			Events::model()->deleteByPk($_POST['itemId']); 
-			// удаляем и содержимое этого заказа
-			EventContent::model()->deleteAllByAttributes(array('eventId'=> $_POST['itemId'] )); 
+			Events::model()->deleteByPk($_POST['itemId']);  
+			// отменить резервацию
+			$ecs = EventContent::model()->findAllByAttributes(array('eventId'=>$_POST['itemId']));   
+			foreach($ecs as $ec)
+			{
+				$item = Assortment::model()->findByPk($ec->assortmentId);						
+				if($item) 
+					$item->reserve((-1)*$ec->assortmentAmount);  
+			} 
+			// удаляем всё содержимое
+			EventContent::model()->deleteAllByAttributes(array('eventId'=>$_POST['itemId']));
 		} 
 	}
 	

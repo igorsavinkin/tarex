@@ -54,6 +54,21 @@ return array(
 	
 	// application components
 	'components'=>array(
+		'clientScript'=>array(
+		  'packages'=>array(
+			'jquery'=>array(
+			  'baseUrl'=>'//ajax.googleapis.com/ajax/libs/jquery/1.8/',
+			  'js'=>array('jquery.min.js'),
+			  'coreScriptPosition'=>CClientScript::POS_HEAD
+			),
+			'jquery.ui'=>array(
+			  'baseUrl'=>'//ajax.googleapis.com/ajax/libs/jqueryui/1.8/',
+			  'js'=>array('jquery-ui.min.js'),
+			  'depends'=>array('jquery'),
+			  'coreScriptPosition'=>CClientScript::POS_BEGIN
+			)
+		  ),
+		), 	
 		'formatter' => [
 		  'class' => 'yii\i18n\Formatter'
 		],

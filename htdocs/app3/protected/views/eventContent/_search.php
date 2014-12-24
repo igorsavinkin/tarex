@@ -56,6 +56,7 @@
 		<?php echo $form->label($model,'cost'); ?>
 		<?php echo $form->textField($model,'cost'); ?>
 	</td> 
+
 </tr><tr>	
 	<td>
 		<?php echo $form->label($model,'RecommendedPrice'); ?>

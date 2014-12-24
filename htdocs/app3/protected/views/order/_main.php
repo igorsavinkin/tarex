@@ -5,7 +5,7 @@
 Yii::app()->clientScript->registerScript('some-code', "
 // привязываем отправку формы когда элементы с классом 'notes' теряют фокус
 $('.notes').bind('blur', function(e) {
-	   setTimeout(function() { e.target.form.submit(); /*console.dir(e.target.value);*/  } , 40);   
+	   setTimeout(function() { e.target.form.submit(); /* console.dir(e.target.value); */  } , 40);   
 }); 
 ", CClientScript::POS_END);  
       

@@ -96,7 +96,7 @@
 										{
 											$criteria=new CDbCriteria;
 											$criteria->compare('EventTypeId', Events::TYPE_ORDER); // ищем заказы среди других событий
-											$criteria->compare('StatusId', array( Events::STATUS_NEW, /**/ Events::STATUS_REQUEST_TO_RESERVE, Events::STATUS_REQUEST_TO_DELIVERY ) ); // новый, запрос в резерв, запрос на доствку
+											$criteria->compare('StatusId', array( Events::STATUS_NEW,Events::STATUS_IN_WORK /*, Events::STATUS_REQUEST_TO_DELIVERY */ ) ); // новый, запрос в резерв, запрос на доствку
 											$criteria->addInCondition('contractorId', $children); 
 											$newOrdersCount = Events::model()->count($criteria); 
 											if ($newOrdersCount) 											
@@ -279,8 +279,8 @@
 						</div> 
 						<div class='carmakes' style="display: <?php echo $display; ?>;"><?php $this->renderPartial('//layouts/_carmakes'); ?></div>
 					</div><!-- row -->
-                    <div class="row print">
-                        <div class="col-md-12"><!--Категории -->
+                    <div class="row print"> <?php echo $content; ?>
+                        <!--div class="col-md-12"><!--Категории  >
                             <div class="tar_category_vis tar_panel tar_open">
                                 <div class="tar_badge_vis"> 
                                     <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_category.png" alt="">
@@ -305,10 +305,10 @@
 									} 	 									
 									?>
                                     <div class="pad"></div>
-                                </div><!-- tar_cat_invis -->
+                                </div><!-- tar_cat_invis  >
                                 <div class="pad"></div>
-                            </div>
-                            <div class="tar_category">
+                            </div><!-- end of  Категории -->
+                            <!--div class="tar_category">
                                 <div class="tar_badge">
                                     <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_category.png" alt="" />
                                 </div>
@@ -361,10 +361,10 @@
                                     </span>
                                 </a>
                                 <div class="pad"></div>
-                            </div>
+                            </div-->
                             <div class="tar_component">
                                 <?php // содержимое из cоответствующего view style='float:right;z-index:1000;position:fixed; bottom: 20px; right:20px'
-																 echo $content; 
+																// echo $content; 
 															?> 
 								<a class='no-print' href='#' id='btn-up' ><img src='<?php echo Yii::app()->baseUrl; ?>/../images/btn-up.png' width='35px' alt="" /></a>							
 								<!--div class="tar_pathway">                                  
@@ -381,8 +381,8 @@
                                 </div-->
                                 <!--div class="tar_component_body">
 									
-                                </div-->
-                            </div>
+                                </div>
+                            </div-->
                         </div>
                     </div><!-- row -->
                 </div>
@@ -689,15 +689,15 @@ $('.submenu-button').click(function(){
 	return false;
 });", CClientScript::POS_END);	
 ?>
-<script>
+<script>/*
     $('select').each(function(){
     $(this).siblings('p.simply').text( $(this).children('option:selected').text() );
     });
     $('select').change(function(){
     $(this).siblings('p.simply').text( $(this).children('option:selected').text() );
-    });
+    });*/
 </script>
-<script>
+<script>/*
     if($(window).width() >= 1200){
         $(function(){
             $('.tar_badge_vis').on('click',function(){
@@ -741,7 +741,7 @@ $('.submenu-button').click(function(){
             });
             $('.tar_badge_vis').trigger('click');
         });
-    };
+    };*/
 </script>
 
 </body>

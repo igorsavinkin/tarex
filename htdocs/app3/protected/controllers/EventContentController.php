@@ -85,8 +85,25 @@ class EventContentController extends Controller
 	}
 	public function actionBulkActions($name = null)
 	{ 
-		if ($_GET['name'] == 'delete') {
-			EventContent::model()->deleteByPk($_POST['eventContentId']); 
+		if ($_GET['name'] == 'delete') { 		 
+		    $ecs = EventContent::model()->findAllByPk($_POST['eventContentId']);  // несколько так как $_POST['eventContentId'] - массив
+		 	$eventId = $ecs[0]->eventId; // запоминаем id cобытия чтобы потом обновить его сумму
+			//Events::model()->findByPk()->
+			foreach($ecs as $ec)
+			{
+				//$eventId = $ec->eventId; //  // запоминаем id cобытия чтобы потом обновить его сумму
+				$item = Assortment::model()->findByPk($ec->assortmentId);						
+				if($item)
+				{
+					$item->reservedAmount -= $ec->assortmentAmount;
+					$item->save(false);
+				}  
+			}	
+			EventContent::model()->deleteByPk($_POST['eventContentId']);	
+            		
+            // вычисляем новую сумму для заказа из которого удалили что-то
+			$total= EventContent::getTotalSumByEvent($eventId);
+   			Events::model()->updateByPk($eventId, array('totalSum'=>$total));
 		} 
 	}
 	public function actionUpdateEventContent()
@@ -121,11 +138,15 @@ class EventContentController extends Controller
 				$content->save(); 
 			}
 		} 
-		else 	
+		else 	// при изменении количества
 		{ 
 			$id = $_POST['eventContentId'][0];
 			$content = EventContent::model()->findByPk($id); 
-			$content->assortmentAmount = $_POST['EventContent']['assortmentAmount'][$id];
+			$deltaAmount =  $_POST['EventContent']['assortmentAmount'][$id] - $content->assortmentAmount; // save difference amount
+			$content->assortmentAmount = $_POST['EventContent']['assortmentAmount'][$id]; // chage for the new content
+			$item = Assortment::model()->findByPk($content->assortmentId);						
+			if($item) 
+				$item->reserve($deltaAmount); 
 		}
 		$content->cost = $content->assortmentAmount * $content->price;
 
@@ -171,30 +192,7 @@ class EventContentController extends Controller
 			'model'=>$model,
 		));
 	}
-	public function actionUpdate_old($id)
-	{
-		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['EventContent']))
-		{
-			$model->attributes=$_POST['EventContent'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
-
-		$this->render('update_old',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
+	 
 	public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();

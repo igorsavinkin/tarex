@@ -24,7 +24,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('register', 'captcha', 'returnUsername' ,'ReturnShablonIdPaymentMethod' , 'test1' , 'test2', 'operationcondition', 'pricelist', 'pricelistCSV'),
+				'actions'=>array('register', 'captcha', 'returnUsername' ,'ReturnShablonIdPaymentMethod' , 'test1' , 'test2', 'operationcondition', 'pricelist', 'pricelistCSV', 'cashlessUser'), 
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'update' actions
@@ -111,8 +111,8 @@ class UserController extends Controller
 		// Save Excel 2007 file 
 		$filename='ТАРЕКС прайс лист на '. date('d-m-Y'). '.xls'; 
 
-		//$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
-		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
+		//$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel); // xlsx
+		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);  // xls
 		ob_end_clean(); 
 		header('Content-Type: application/vnd.ms-excel');
 		header('Content-Disposition: attachment;filename="'.$filename.'"');
@@ -624,5 +624,19 @@ EOF;
 	  
 		return false;
 	}
-	
+	public function actionCashlessUser($id=null)
+	{
+	    if(1!=$_GET['PaymentMethod']) {
+		   echo 1; Yii::app()->end();
+		} 
+		$user=$this->loadModel($id);
+		$user->scenario = 'cashless';
+		$user->PaymentMethod=$_GET['PaymentMethod'];
+		if ($user->validate(array('PaymentMethod', 'OrganizationInfo','CorrespondentAccount','INN','KPP','BIC','CurrentAccount','Bank'))) /* валидация только этих атрибутов */
+		   echo 1; //'validation is ok';
+		else {
+		   echo 0; //'validation failed '; print_r($user->errors); 
+		}
+		Yii::app()->end();
+	}
 }

@@ -2,7 +2,7 @@
 /* @var $this EventsController */
 /* @var $model Events */
 $UserRole=Yii::app()->user->role;
-$CurrentStatusOrder=EventStatus::model()->FindByPk($model->StatusId)->Order1;
+$CurrentStatusOrder=EventStatus::model()->findByPk($model->StatusId)->Order1;
 //echo '<br>$loadDataSetting (in view) = '; print_r($loadDataSetting); 
 ?> 
 <h3 style='margin-bottom: 10px;'><?php  
@@ -19,45 +19,59 @@ if($model->eventNumber) echo ' ', Yii::t('general','#'), $model->eventNumber; ?>
 				'view'=>'_main',
 				'data'=>array('model'=>$model), 
 			 ), 
-	 	'tab2'=>array(
+	    	'tab2'=>array(
 				'title'=>Yii::t('general', 'Products / Services'), //'Доступ', 
 				//даём редактировать заказ до тех пор, пока он в работе или подтверждение доставки / заказа не пройдено
-				'view'=> $CurrentStatusOrder <= 3   ? '_ordercontent_manager_new' : '_ordercontent_manager_noteditable',  
+				'view'=> $CurrentStatusOrder <= 3   ? '_ordercontent_manager' : '_ordercontent_manager_noteditable',  
 				'data'=>array('model'=>$model, 'eventId'=>$model->id ,
 				      'loadDataSetting' => $loadDataSetting
 				),
 			//	'active'=>true,
 			), 
-			'tab3'=>array(
+		/*	'tab3'=>array(
 				'title'=>Yii::t('general', 'Assortment selection'),  
 				'view'=>'_assortment', 
 				'data'=>array('eventId'=>$model->id, 'contractorId'=>$model->contractorId,   'assortment'=>$assortment , 'pageSize'=>$pageSize),
 				//'visible'=>($CurrentStatusOrder <= 3),
-			),					
+			),	*/
+			'tab4'=>array(
+				'title'=>Yii::t('general', 'Selection by make and model'), //'Исполнение',
+				'view'=>'_make_model', 
+				'data'=>array('eventId'=>$model->id, 'contractorId'=>$model->contractorId,   'assortment'=>$assortment , 'pageSize'=>$pageSize), 
+			//	'visible'=>($CurrentStatusOrder <= 2),
+			),			
 		)));
 	} else {
 // Клиентам  
 		$this->widget('CTabView', array( 
 		'tabs'=>array(	 
+			
+		 	'tab4'=>array(
+				'title'=>Yii::t('general', 'Selection by make and model'), //'Исполнение',
+				'view'=>'_make_model', 
+				'data'=>array('eventId'=>$model->id, 'contractorId'=>$model->contractorId,   'assortment'=>$assortment , 'pageSize'=>$pageSize), 
+			//	'visible'=>($CurrentStatusOrder <= 2),
+			), 
+			'tab2'=>array(
+				'title'=>Yii::t('general', 'Products / Services'), 
+				// даём редактировать заказ до тех пор пока они не отправили его на подтверждение
+				'view'=>($CurrentStatusOrder <= 2) ? '_ordercontent_client' : '_ordercontent_noteditable', 
+				'data'=>array('model'=>$model, 'eventId'=>$model->id, 'loadDataSetting' => $loadDataSetting, 'notValid'=>$notValid,),				 
+			), 
 			/* клиенты не видят вкладку Основное 
 			'tab1'=>array(
 				'title'=>Yii::t('general', 'Main'), //'Основное', 
 				'view'=>'_main',
 				'data'=>array('model'=>$model), 
-			 ), */
-			'tab2'=>array(
-				'title'=>Yii::t('general', 'Products / Services'), 
-				// даём редактировать заказ до тех пор пока они не отправили его на подтверждение
-				'view'=>($CurrentStatusOrder <= 2) ? '_ordercontent_client_new' : '_ordercontent_noteditable', 
-				'data'=>array('model'=>$model, 'eventId'=>$model->id, 'loadDataSetting' => $loadDataSetting),
-				'active'=>true,
-			),
+			 ), 
+			// эта вкладка устарела, вместо неё _make_model  
 			'tab3'=>array(
 				'title'=>Yii::t('general', 'Assortment selection'), //'Исполнение',
 				'view'=>'_assortment', 
 				'data'=>array('eventId'=>$model->id, 'contractorId'=>$model->contractorId,   'assortment'=>$assortment , 'pageSize'=>$pageSize), 
 				'visible'=>($CurrentStatusOrder <= 2),
-			),			
+			),*/
+				
 		)));
 	}
 ?>

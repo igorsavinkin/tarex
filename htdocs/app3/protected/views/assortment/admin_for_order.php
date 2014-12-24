@@ -7,7 +7,7 @@
 	if (Yii::app()->controller->id == 'assortment' && Yii::app()->user->checkAccess(User::ROLE_MANAGER)) 
 	{
 		echo CHtml::link(Yii::t('general','Create Assortment'), array('assortment/create'), array('class'=>'btn-win'));
-	   $selectionChanged = 'function(id){ location.href = "'.$this->createUrl('view').'/id/"+$.fn.yiiGridView.getSelection(id);}';
+	    $selectionChanged = 'function(id){ location.href = "'.$this->createUrl('view').'/id/"+$.fn.yiiGridView.getSelection(id);}';
 	}
 echo CHtml::form(array('action'=>'assortment/index'));
 
@@ -27,19 +27,24 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		'model',
 		'make',
 	 	'article',
-		'article2', 
+		//'article2', 
 		//'priceS',
 		/*	'currentPrice'=>array(
 				'name'=>'currentPrice', 
 				'header' => Yii::t('general', 'Current Price'),
 			),*/
 		array(
-				'value'=>'$data->getPrice2('.$contractorId.')',
+				'value'=>'$data->getPrice()',
 				'header' => Yii::t('general', 'Price'),
 		),	 
 		'oem',
 		'manufacturer',
-		'availability',
+	/*	'availability', 
+		'reservedAmount',*/
+		'availability-reserved'=>array(
+		    'header' =>Yii::t('general','Availability'),
+		    'value'=>'$data->availability - $data->reservedAmount',
+		),
 		array(
 			'class'=>'ButtonColumn', 
 			'evaluateID'=>true,
@@ -80,7 +85,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 echo CHtml::endForm();
 
 
-/********************************** start of the Dialog box ******************************/
+/********************************** start of the Dialog box ****************************** 
 $this->beginWidget('zii.widgets.jui.CJuiDialog',array(
     'id'=>'cart',
     // additional javascript options for the dialog plugin
@@ -131,7 +136,7 @@ $this->endWidget('zii.widgets.jui.CJuiDialog');
 /******************************** end of the Dialog box *************************************/
 //********************** script for the popup Dialog **********************//
 
-Yii::app()->clientScript->registerScript('dialog', "
+Yii::app()->clientScript->registerScript('dialog3333', "
  /*
 $('.add-to-order').click(function(data){	
 	//alert('smth');	

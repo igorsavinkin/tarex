@@ -996,12 +996,12 @@ div.tar_adv_second .tar_cat_top_lists li
 
 
 
-/***page3.html********************************/
+/***page4.html********************************/
 .tar_bluemenu_block
 {
     background: #344756;
-    padding: 5px 5px;/*10px 10px;*/
-  /*  margin-bottom: 10px;*/
+    padding: 1px 1px;/*10px 10px;*/
+    margin-bottom: 5px;  
     overflow: hidden;
 }
 .tar_bluemenu_block ul
@@ -1013,7 +1013,7 @@ div.tar_adv_second .tar_cat_top_lists li
 .tar_bluemenu_block ul li
 {
     margin: 0;
-    padding: 1px 0;
+   /* padding: 1px 0;*/
     list-style: none;
 }
 .tar_bluemenu_block ul li a

@@ -39,15 +39,26 @@ $this->renderPartial('_search_field', array('model'=>$model));
      			echo CHtml::hiddenField( 'status-new', 1);  ?> 
 	<div class="row"> 
 		<?php  echo $form->labelEx($model,'PaymentType');  
+		Yii::app()->clientScript->registerScript('some-script', "
+		jQuery('#s2id_Events_PaymentType').on('select2-open', function(e) { console.log('open'); });
+ 	    ");
+		
 		    $this->widget('ext.select2.ESelect2', array(
 				'model'=> $model,
 				'attribute'=> 'PaymentType',//'open'=>'js:{alert("init");}',
 				'data' => CHtml::listData(PaymentMethod::model()->findall(), 'id','name'),
+				//'id'=> 'js:function(){console.log("Select2 initialized over");} ',
+				
 				'htmlOptions'=>array( 
-					'initSelection'=>CHtml::ajax(array('type'=>'GET',
+				/*	'initSelection'=>CHtml::ajax(array('type'=>'GET',
 				    	'url'=>$this->createUrl('user/cashlessUser', array ('id'=>Yii::app()->user->id)),
 				    	'data'=>'js:{PaymentMethod: this.value }',
-					)),
+					)), 'init'=> 'console.log("smth")',
+			        'select2-opening'=> 'js: console.log("smth"); ',
+			        'select2-opening'=> ' console.log("smth"); ',
+			        'select2-opening'=> ' alert("smth"); ',
+			        's2id_Events_PaymentType.open'=> 'js: console.log("open"); ',
+			        'onFocus'=> 'js: console.log("smth"); ',*/
 					'onChange'=>CHtml::ajax(array('type'=>'GET',
 					'url'=>$this->createUrl('user/cashlessUser', array ('id'=>Yii::app()->user->id)),
 					'data'=>'js:{PaymentMethod: this.value }',
@@ -178,4 +189,7 @@ $this->endWidget(); ?>
 .blue { background-color: #3399FF;} 
 .redbgcolor { background-color: #FF717E;} 
 </style>
-
+<!--script>
+$("#s2id_Events_PaymentType")
+   .on("select2-open", function(e) { console.log("open"); });
+</script-->

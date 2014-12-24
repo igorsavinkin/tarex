@@ -31,13 +31,19 @@ if (!Yii::app()->shoppingCart->isEmpty())
 			'title', 
 			'measure_unit',
 			'article',  
-			'availability', 
+			//'availability', 
+			'availability2'=>array(
+				'header' =>Yii::t('general','Availability'),
+				'value'=>'$data->availability - $data->reservedAmount',
+				'htmlOptions'=>array('style'=>'text-align:center'),
+			),
 			'price'=>array(
 				'value'=>'$data->getPrice()',
 				'header'=>Yii::t('general', 'Price with discount'),
 			), 
 			'amount'=>array(
 				'name'=>'amount', 
+				'htmlOptions'=>array('style'=>'text-align:center'),
 				'value'=>'Yii::app()->shoppingCart->itemAt($data->id)->getQuantity()',
 			), 
 			array(
