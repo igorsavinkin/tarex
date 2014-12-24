@@ -6,7 +6,7 @@
 ?>
 <h2><?php echo Yii::t('general', 'Order\'s content'); //Содержание заказа ?></h2>
 <!--div class="form"-->
- 
+<?php echo CHtml::button(Yii::t('general','Back to orders'), array(/*'style'=>'float:right;'*/ 'class'=>'red', 'onclick' => 'js:document.location.href="'. $this->createUrl('admin') . '"'));?>
 <div class='print' >
 
 <h4 class='print' style='font-color:grey;'><?php// echo Yii::t('general','Order\'s Assortment'); //Номенклатура заказа: ?></h4>

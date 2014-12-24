@@ -3,6 +3,25 @@
 /* @var $content Eventcontent */
 /* @var $form CActiveForm */
 ?>
+
+<div class="search-field" style="display:block">
+	<?php  // включаем поле с формой для поиска
+	$this->renderPartial('_search_field', array('model'=>$model)); 
+
+	echo CHtml::Form(array('admin')); ?> 
+	<div class='form padding10side' > 
+		<span class='paddingSpecial1'> 
+		<?php echo CHtml::submitButton( Yii::t('general','Back to orders'), array( 'class'=>'red'));
+		?></span>
+	</div><!-- form -->
+	<?php echo CHtml::endForm(); ?>
+
+</div><!-- search-field -->
+<?php
+// если поисковый параметр установлен то включаем view 'searchUnique' где мы обсчитываем/ищем и выводим найденные позиции включая аналоги
+if(isset($_POST['search-value'])) 
+		$this->renderPartial('searchUnique');
+?>
 <h2><?php echo Yii::t('general', 'Order\'s content'); ?></h2>
 <div class='print' >  
 <?php // сетка с номенклатурой для данного заказа

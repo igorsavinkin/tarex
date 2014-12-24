@@ -210,7 +210,7 @@ $('.download-link').on('click', function(e){
 		<?php echo $form->checkBox($model,'isActive'); ?>
 		<?php echo $form->error($model,'isActive'); ?>
 	<center>
-	<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red', /*'style'=>'float:right'*/)); ?></center>
+	<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('general','Create') : Yii::t('general','Save'), array('class'=>'red')); ?></center>
 	</td> 
 </tr><tr>
 	<td colspan='5'><h4>

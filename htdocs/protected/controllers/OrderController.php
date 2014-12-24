@@ -72,12 +72,18 @@ class OrderController extends EventsController
 	public function actionAdmin($id=null)
 	{   
 	    // если этот заказ сохраняется пользователем и он со статусом "новый" то переводим его в статус "в работе"
-		if(isset($_POST['client-save']) && isset($_POST['status-new']))
+		if(isset($id) && '1'==$_GET['new']  )
+		{ 
+		 	// проверяем содержимое заказа
+			if (!EventContent::model()->count('eventId='.$id))  
+			     Events::model()->deleteByPk($id); // удаляем заказ потому что он новый и у него нет содержимого
+		}	 	
+		if(isset($_POST['client-save']) && isset($_POST['event_identificator']))
 		{
-			$order=$this->loadModel($_POST['eventIdent']);			 
-			$order->updateByPk($_POST['eventIdent'], array('StatusId'=>Events::STATUS_IN_WORK,
-			'PaymentType'=>$_POST['Events']['PaymentType'], 'shippingMethod'=>$_POST['Events']['shippingMethod']));		 
-		}
+		    $order=$this->loadModel($_POST['event_identificator']);			 
+			$order->updateByPk($_POST['event_identificator'], array('StatusId'=>Events::STATUS_IN_WORK,
+			'PaymentType'=>$_POST['Events']['PaymentType'], 'shippingMethod'=>$_POST['Events']['shippingMethod']));
+		} 
 		
 		if(isset($_GET['quickOpen']))
 			$this->redirect(array('update', 'id'=>$_GET['quickOpen']));
@@ -382,6 +388,22 @@ class OrderController extends EventsController
 			$model->PaymentType = $user->PaymentMethod;  
 		if (!$model->shippingMethod)
 			$model->shippingMethod = $user->ShippingMethod;
+		
+		
+	/*	if(Yii::app()->user->checkAccess(User::ROLE_USER)) 
+        {		
+		    $user=User::model()->findByPk(Yii::app()->user->id); 
+			echo 'user id: ', $user->id;
+			echo '<br>payment method id: ', $user->PaymentMethod;
+	        if (!$user->validate(array('PaymentMethod', 'OrganizationInfo','CorrespondentAccount','INN','KPP','BIC','CurrentAccount','Bank')))  
+		       $notValid=1; 
+			else 
+		       $notValid=0;   
+	    } 
+		else 
+		    $notValid=0; 
+		echo '<br> not valid: ', $notValid;
+	*/	
 		//echo '$model->PaymentType = ', $model->PaymentType; 
 		//echo '<br>$model->shippingMethod = ', $model->shippingMethod;
 	//	echo '$user = '; print_r($user);
@@ -480,7 +502,7 @@ class OrderController extends EventsController
 	//	echo '<br><br>$loadDataSetting = '; print_r($loadDataSetting);
 		
 		$this->render('update' ,array(
-			'model'=>$model, 'assortment'=>$assortment,  'pageSize' =>$pageSize, 'loadDataSetting' => $loadDataSetting
+			'model'=>$model, 'assortment'=>$assortment,  'pageSize' =>$pageSize, 'loadDataSetting' => $loadDataSetting, 'notValid'=>$notValid,
 		));
 	} 
 	

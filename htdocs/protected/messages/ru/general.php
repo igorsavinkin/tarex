@@ -859,7 +859,7 @@ return array(
 	'cashless'=>'безналичный расчёт',
 	'With cashless payment method you must fill in Banking data to the right.'=>'При безналичном способе оплаты Вы должны заполнить банковские реквизиты справа.',
 	'With cashless payment method or if you are legal entity you must fill banking data down.'=>'При безналичном способе оплаты или если Вы - юридическое лицо Вы должны заполнить банковские реквизиты внизу.',
-	'You banking data for cashless payment are not in order'=>'Ваши банковские данные для безналичного рассчета не в порядке',
+	'You banking data for cashless payment are not in order'=>'Ваши банковские данные для безналичного расчета не в порядке',
 	'Please fix these in your profile'=>'Пожалуйста исправьте их в вашем профиле',
 	'should not be empty'=>'не должен быть пустым',
 	'should contain between 10 and 12 digits'=>'должен содержать от 10 до 12 цифр',
