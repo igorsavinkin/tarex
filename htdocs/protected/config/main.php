@@ -22,6 +22,7 @@ return array(
 	'sourceLanguage'=> 'en_US',
 	// preloading 'log' component
 	'preload'=>array('log'),
+	// for gzip http requests compressing
 	'onBeginRequest'=>create_function('$event', 'return ob_start("ob_gzhandler");'),
 	'onEndRequest'=>create_function('$event', 'return ob_end_flush();'),
 	// autoloading model and component classes
@@ -54,6 +55,12 @@ return array(
 	
 	// application components
 	'components'=>array(
+		'cache'=>array(
+			'class'=>'system.caching.CFileCache',
+				//	'connectionID'=>'db',
+				//	'autoCreateCacheTable'=>false,
+				//	'cacheTableName'=>'cache',
+				),
 		'formatter' => [
 		  'class' => 'yii\i18n\Formatter'
 		],

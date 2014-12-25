@@ -42,6 +42,7 @@ class Assortment extends CActiveRecord implements IECartPosition
 {
 	public $amount; 		   // additional amount variable
 	public $Price; 		   // additional price variable
+	public $series;          // additional series variable
 	public $itemSearch, $modelMake;    // additional variable for search purpose 
 	public $warehousesArray= array();
 	/**
@@ -63,13 +64,13 @@ class Assortment extends CActiveRecord implements IECartPosition
 		    array('title, article, priceS, oem, organizationId, availability', 'required'),
 			array('parent_id, price, discount, isService, isSpecialOffer, depth, organizationId,  LeadTime, RealLeadTime, availability, MinPart, YearBegin, YearEnd, userId, SupplierCode, groupCategory, reservedAmount', 'numerical', 'integerOnly'=>true),
 			array('priceS, FOBCost', 'numerical'),	
-			array('subgroup, make, agroup,CostCalculation,ItemOrigin, PurchaseCurrency, Currency, ItemCategory', 'length', 'max'=>50), 		 
+			array('subgroup, make, agroup,CostCalculation,ItemOrigin, PurchaseCurrency, Currency, ItemCategory, series', 'length', 'max'=>50), 		 
 			array('title, imageUrl, notes, fileUrl, Barcode, Misc, PartN, COF, itemSearch, specialDescription,ItemPosition,warehouse,Photos, techInfo', 'length', 'max'=>1000),
 			array('Analogi','length', 'max'=>65355),
 			
-			array('model, article, article2,  manufacturer, country, specialDescription,SchneiderN,SchneiderOldN,TradeN, PartN, ItemCode', 'length', 'max'=>200),
+			array('model, article, article2,manufacturer, country, specialDescription,SchneiderN,SchneiderOldN,TradeN, PartN, ItemCode', 'length', 'max'=>200),
 			array('measure_unit, PIN, ItemFamily, ItemOrigin', 'length', 'max'=>20),
-	 		array('id, parent_id, subgroup, title, model, make, measure_unit, price, discount, imageUrl, fileUrl, isService, depth, article, article2, priceS, oem, organizationId, manufacturer, agroup, availability, country, MinPart, YearBegin, YearEnd, Currency, Analogi, Barcode, Misc, PartN, COF, ItemCategory, warehouseId, itemSearch, specialDescription, notes, Photos, userId, ItemCode, FOBCost, PurchaseCurrency,   LeadTime , RealLeadTime, CostCalculation, ItemOrigin, ItemFamily, techInfo, SupplierCode, PIN, groupCategory, isSpecialOffer, reservedAmount', 'safe', 'on'=>'search'),
+	 		array('id, parent_id, subgroup, title, model, make, measure_unit, price, discount, imageUrl, fileUrl, isService, depth, article, article2, priceS, oem, organizationId, manufacturer, agroup, availability, country, MinPart, YearBegin, YearEnd, Currency, Analogi, Barcode, Misc, PartN, COF, ItemCategory, warehouseId, itemSearch, specialDescription, notes, Photos, userId, ItemCode, FOBCost, PurchaseCurrency,   LeadTime , RealLeadTime, CostCalculation, ItemOrigin, ItemFamily, techInfo, SupplierCode, PIN, groupCategory, isSpecialOffer, reservedAmount, series', 'safe', 'on'=>'search'),
 		);
 	}
  	public function relations()
@@ -140,9 +141,14 @@ class Assortment extends CActiveRecord implements IECartPosition
 		$criteria->compare('subgroup',$this->subgroup,true);
 		$criteria->compare('groupCategory', $this->groupCategory);
 		$criteria->compare('title',$this->title,true);
-		$criteria->compare('warehouseId',$this->warehouseId);
-		$criteria->compare('model',$this->model,true);
+		$criteria->compare('warehouseId',$this->warehouseId); 
+		
 		$criteria->compare('make',$this->make,true);
+		if (empty($this->model) && $this->series && ($this->make!='BMW') && ($this->make!='MERCEDES'))
+		     $criteria->compare('model', $this->series, true);
+		else
+		     $criteria->compare('model',$this->model,true);
+			 
 		$criteria->compare('measure_unit',$this->measure_unit,true);
 		$criteria->compare('price',$this->price);
 		$criteria->compare('discount',$this->discount);

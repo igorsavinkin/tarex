@@ -1,5 +1,4 @@
-<?
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/seotools/seotools.class.php');
+<? require_once ($_SERVER['DOCUMENT_ROOT'] . '/seotools/seotools.class.php');
 $ST = new Seotools; 
  
 // подгрузка css для вывода картинки с описанием

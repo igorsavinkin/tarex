@@ -100,7 +100,7 @@ class Controller extends CController
 		if (Yii::app()->user->isGuest) 
 			$this->layout='//layouts/index_new'; 
 		else 
-			$this->layout='//layouts/page4'; 
+			$this->layout='//layouts/page4';  
 
 		if ($this->getIsMobile()) {
 			//echo '<br>Mobile device<br />'; // it works
