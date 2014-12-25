@@ -77,6 +77,8 @@ class OrderController extends EventsController
 		 	// проверяем содержимое заказа
 			if (!EventContent::model()->count('eventId='.$id))  
 			     Events::model()->deleteByPk($id); // удаляем заказ потому что он новый и у него нет содержимого
+		    else // ставим заказ в работу
+			     Events::model()->updateByPk($id, array('StatusId'=>Events::STATUS_IN_WORK));
 		}	 	
 		if(isset($_POST['client-save']) && isset($_POST['event_identificator']))
 		{
@@ -453,6 +455,10 @@ class OrderController extends EventsController
 		$assortment->unsetAttributes();  // clear any default values
 		if(isset($_GET['Assortment'])) {					
 			$assortment->attributes=$_GET['Assortment'];
+			//$assortment->series=$_GET['Assortment']['series'];
+			//print_r($assortment->attributes);
+			//echo '<br>series = ', $assortment->series;
+			//echo '<br>get series = ', $_GET['Assortment']['series'];
 		}  	 
 // если что-то из ассортимента добавляется в событие
 		if (isset($_POST['add-to-event']) && isset($_POST['Assortment']))

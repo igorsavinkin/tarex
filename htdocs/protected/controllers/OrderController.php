@@ -77,6 +77,8 @@ class OrderController extends EventsController
 		 	// проверяем содержимое заказа
 			if (!EventContent::model()->count('eventId='.$id))  
 			     Events::model()->deleteByPk($id); // удаляем заказ потому что он новый и у него нет содержимого
+			else // ставим заказ в статус  "в работе"
+			     Events::model()->updateByPk($id, array('StatusId'=>Events::STATUS_IN_WORK));
 		}	 	
 		if(isset($_POST['client-save']) && isset($_POST['event_identificator']))
 		{
