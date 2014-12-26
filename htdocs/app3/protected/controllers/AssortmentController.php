@@ -387,6 +387,9 @@ class AssortmentController extends Controller
 	// главный справочник номенклатуры
 	public function actionIndex($id = null, $assort=null, $subgroup=null, $category=null, $groupCategory=null) 	
 	{ 		
+	    Yii::beginProfile('assortment/index');
+
+	
 	 //echo 'beginning groupCategory = ', $_GET['groupCategory'];
 	
 		$model=new Assortment('search');
@@ -801,6 +804,7 @@ class AssortmentController extends Controller
 				'dataProvider' => $dataProvider, // $DPAnalog, //
 				'dataProviderAnalog' => isset($dataProviderAnalog) ? $dataProviderAnalog : '',		
 		));
+		Yii::endProfile('assortment/index');
 	}
 	public function actionAdminbulk()
 	{ 

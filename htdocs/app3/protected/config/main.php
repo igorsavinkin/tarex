@@ -123,31 +123,18 @@ return array(
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',  
 			),  
-		), 
-		/*'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),*/
-		// uncomment the following to use a MySQL database
-		/*
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
-			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
-			'charset' => 'utf8',
-		),
-		*/
+		),  
 		'db'=>array(			
-                // настройки для конфигурации в производство 
-			'connectionString' => 
-			'mysql:host=localhost;dbname=srv50213_tarex',
+            // настройки для конфигурации в производство 
+			'connectionString' =>'mysql:host=localhost;dbname=srv50213_tarex',
 			'emulatePrepare' => true,
 			'schemaCachingDuration' => 3600,
 			'username' => 'srv50213_admin',
 			'password' => 'NNK8tvx1',
 			'charset' => 'utf8',
 			'tablePrefix' => 'tarex_', 
-			'class'         => 'CDbConnection'   
+			'class'         => 'CDbConnection'  ,
+			'enableProfiling'=>true, // turn it off для конфигурации в производство 
 		),
 		'otherDb'=>array(			
                 // настройки для конфигурации 217.28.212.98 '; 
@@ -173,12 +160,18 @@ return array(
 					'class'=>'CFileLogRoute',
 					'levels'=>'error, warning',
 				),
-				// uncomment the following to show log messages on web pages
-				/*
-				array(
+			/*	array( //  to show log messages on web pages
 					'class'=>'CWebLogRoute',
-				),
-				*/
+					'categories'=>'system.db.*',
+					//'except'=>'system.db.ar.*', // показываем всё, что касается базы данных, но не касается AR
+				),*/
+				array(
+                    'class'=>'CProfileLogRoute',
+                    'report'=>'summary',
+					'filter'=>'CLogFilter',
+                    // Показывает время выполнения каждого отмеченного блока кода.
+                    // Значение "report" также можно указать как "callstack".
+                ),
 			),
 		),
 	),

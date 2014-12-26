@@ -245,7 +245,7 @@
 									 echo $content; 
 								?>
 							
-								<a href='#' id='btn-up' ><img src='<?php echo Yii::app()->baseUrl; ?>/../images/btn-up.png' width='35px' alt="" /></a>
+								<a class='no-print hidden' href='#' id='btn-up' ><img src='<?php echo Yii::app()->baseUrl; ?>/../images/btn-up.png' width='35px' alt="" /></a>
 								<!--/div><!--tar_cat_top_regular-->
 								<div class="pad"></div>
 							</div><!-- tar_catalog_goods -->
@@ -733,6 +733,13 @@ $('.carmakes-button').click(function(){
 		img.removeClass('arrow-down').addClass('arrow-up');
 	}
 	return false;
+});
+$(document).on( 'scroll', function(){ 
+	if ($(window).scrollTop() > 100) {
+		$('#btn-up').removeClass('hidden');
+	} else {
+		$('#btn-up').addClass('hidden');
+	}
 });", CClientScript::POS_END);	 
 /*
 Yii::app()->clientScript->registerScript('hide-for-assortment', "

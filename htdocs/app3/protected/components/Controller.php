@@ -93,6 +93,7 @@ class Controller extends CController
 	function init()
     {
         parent::init();   
+	//	Yii::app()->db->enableProfiling=true;
 		Yii::app()->clientScript->registerMetaTag("Автозапчасти для иномарок оптом по выгодным ценам, доставка в регионы - Тарекс тел. +7 (495) 785-88-50", 'description');
 		Yii::app()->clientScript->registerMetaTag('запчасти, опт, spare parts, wholesales, Russia, Россия', 'keywords');
 		// page size for the gridview
@@ -113,7 +114,7 @@ class Controller extends CController
 		if (Yii::app()->user->isGuest) 
 			$this->layout='//layouts/index_new'; 
 		else 
-			$this->layout='//layouts/page3'; 
+			$this->layout='//layouts/page4'; 
 
 		if ($this->getIsMobile()) {
 			//echo '<br>Mobile device<br />'; // it works

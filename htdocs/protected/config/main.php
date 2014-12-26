@@ -158,14 +158,13 @@ return array(
 			'routes'=>array(
 				array(
 					'class'=>'CFileLogRoute',
-					'levels'=>'error, warning',
+					'levels'=>'error, warning, info',
 				),
-				// uncomment the following to show log messages on web pages
-				/*
-				array(
+			/*	 array( //  to show log messages on web pages
 					'class'=>'CWebLogRoute',
-				),
-				*/
+					'categories'=>'system.db.*',
+					//'except'=>'system.db.ar.*', // показываем всё, что касается базы данных, но не касается AR
+				), */
 			),
 		),
 	),

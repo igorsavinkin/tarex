@@ -118,7 +118,11 @@ class SiteController extends Controller
 	
 	public function actionIndex($page=null, $id=null)
 	{		 
-		$this->render($page ? $page : 'index');  
+		Yii::beginProfile('site/index');
+		
+		$this->render($page ? $page : 'index'); 
+		
+		Yii::endProfile('site/index');
 	}
 	
 	public function actionBackend()

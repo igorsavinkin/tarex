@@ -58,7 +58,7 @@
                         <div class="col-md-12">
                             <div class="tar_left_top_head">
                                 <div class="tar_top_logo">
-                                    <a href="/">
+                                    <a href="<?php echo Yii::app()->baseUrl; ?>">
                                         <img src="<?php echo Yii::app()->baseUrl; ?>/images/tar_top_logo.png" alt="" />
                                     </a>
                                 </div>
