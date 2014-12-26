@@ -35,6 +35,7 @@ return array(
 	'Renew prices'=>'Обновить цены',
 	'Price columns'=>'Колонки в прайсе',
 	'items in the order have been renewed'=>'позиций в заказе были обновлены',
+	'Choose brand first'=>'Выберите бренд для скачивания',
 	
 	'Submenu hide'=>'Скрыть подменю',
 	'Submenu show'=>'Показать подменю',

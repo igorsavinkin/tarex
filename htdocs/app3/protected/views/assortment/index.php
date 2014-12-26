@@ -274,6 +274,11 @@ if ($dataProvider->itemCount)
 				 'type'=>'html',
 				'value'=>array($this, 'infoPopup'), 
 			 ),	
+			 array(	 
+				'class'=>'CButtonColumn', 
+				'template'=>'{update}', 
+				'visible'=>Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER), // для старшего менеджера и выше
+			 ),
 	    /*	'info'=>array(
 				'header'=>Yii::t("general",'Info'),
 				 'type'=>'html',

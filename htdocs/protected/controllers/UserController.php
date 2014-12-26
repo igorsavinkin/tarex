@@ -91,6 +91,8 @@ class UserController extends Controller
 		$criteria->order =   'make, manufacturer'; // сортировка по марке и производителю
 		if ($_GET['carmakes']) 
 			$criteria->addInCondition('make', explode(',' , $_GET['carmakes']));
+		if ($_GET['manufacturers']) 
+			$criteria->addInCondition('manufacturer', explode(',' , $_GET['manufacturers']));
 		$counter=2;
 		foreach( Assortment::model()->findAll($criteria ) as $item)
 		{			 

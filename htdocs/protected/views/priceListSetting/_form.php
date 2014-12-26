@@ -3,16 +3,29 @@
 /* @var $model PriceListSetting */
 /* @var $form CActiveForm  */ 
 $msg = Yii::t('general', 'Wait several seconds till the server composes and sends you personalized price list'); 
+$alarmMsg = Yii::t('general', 'Choose brand first'); 
 Yii::app()->clientScript->registerScript('download-checked-makes', "
 $('.column-button').click(function(){
 	$('.column-form').toggle();
 	return false;
 }); 
-$('.download-link').on('click', function(e){  
+$('.download-link').on('click', function(e){ 
+	var selected = $('input.carmake:checked').map(function(i,el){return el.value;}).get().join(','); 
 	setTimeout(function(){ alert('{$msg}')},500);
-	var selected = $('input.carmake:checked').map(function(i,el){return el.value;}).get().join(',');  
 	// console.log(selected);
  	location.href = $(this).attr('href') + '?carmakes=' + selected; 
+	
+	return false; // return false from within a jQuery event handler is effectively the same as calling both e.preventDefault and e.stopPropagation on the passed jQuery.Event object.
+});
+$('.download-link-brand').on('click', function(e){  
+	var selected = $('input.manufacturer:checked').map(function(i,el){return el.value;}).get().join(',');  // console.log(selected);
+	if(''==selected) {
+		alert('{$alarmMsg}');
+	    return false;
+	}
+	setTimeout(function(){ alert('{$msg}')},500);
+	
+ 	location.href = $(this).attr('href') + '?manufacturers=' + selected; 
 	
 	return false; // return false from within a jQuery event handler is effectively the same as calling both e.preventDefault and e.stopPropagation on the passed jQuery.Event object.
 });", CClientScript::POS_END);
@@ -255,6 +268,30 @@ $('.download-link').on('click', function(e){
 	 <td colspan='5' class='padding10'>
 	 <?php		
 	     echo CHtml::Link(Yii::t('general','Скачать по маркам XLS') , array('user/pricelist') , array('class'=>'download-link btn-win', 'style'=>"float:right;")); ?>
+	 </td>
+</tr><tr>	
+	<td colspan='5'><h3><center><?php echo 'Скачать по производителю (бренду)';?></center></h3></td>
+</tr><tr> 
+	<td colspan='5' class='padding10'> 
+	   
+	<?php 
+			$criteria2 = new CDbCriteria; 
+			$criteria2->order = 'manufacturer ASC';			
+			$criteria2->select = 'manufacturer';			
+			$criteria2->condition = 'manufacturer<>"" ';			
+			$criteria2->distinct = true;			
+			$manufact = Assortment::model()->findAll($criteria2);
+			$manufactArr=array();
+			foreach($manufact as $m) { 
+                echo  ' <div style="float:left;" class="padding10"><b>', $m->manufacturer, '</b>&nbsp;&nbsp;';			   
+			    echo CHtml::checkBox($m->manufacturer, 0, array('class'=>'manufacturer',  'value'=>$m->manufacturer));
+				echo '</div>';
+			}?> 
+	 </td>
+</tr><tr>
+	 <td colspan='5' class='padding10'>
+	 <?php		
+	     echo CHtml::Link(Yii::t('general','Скачать по бренду XLS') , array('user/pricelist') , array('class'=>'download-link-brand btn-win', 'style'=>"float:right;")); ?>
 	 </td>
 </tr></table> 
 <?php $this->endWidget(); ?> 

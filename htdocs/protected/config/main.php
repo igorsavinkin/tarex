@@ -61,6 +61,9 @@ return array(
 				//	'autoCreateCacheTable'=>false,
 				//	'cacheTableName'=>'cache',
 				),
+		'memcache'=>array(
+		   'class'=>'system.caching.CMemCache',
+		 ),
 		'formatter' => [
 		  'class' => 'yii\i18n\Formatter'
 		],

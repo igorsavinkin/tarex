@@ -98,7 +98,8 @@ $('input[id^=\"series_\"]').on('change', function() {
 	if(isset($_GET['id'])) 	
 	{
 	    echo "<input name='id' type='hidden' value='{$_GET['id']}'>";  	
-	    $nodes = Assortment::model()->findAllByAttributes(array('depth'=>3, 'parent_id'=>$_GET['id'], 'measure_unit'=>''));
+	    $nodes = Assortment::model()->findAllByAttributes(array('depth'=>3, 'parent_id'=>$_GET['id'], 'measure_unit'=>'')); 
+	//	print_r($nodes);
 	}
 	$seriesnodes = array();
 	$simplenodes = array();
@@ -107,6 +108,7 @@ $('input[id^=\"series_\"]').on('change', function() {
 	{
 		foreach($nodes as $ser)
 		{
+		 //   echo $ser->title, ' ';
 			$subs = Assortment::model()->findAllByAttributes(array('depth'=>4, 'parent_id'=>$ser->id, 'measure_unit'=>'')); 
 			if ($subs) 
 				$seriesnodes[] = $ser; 

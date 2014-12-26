@@ -7,11 +7,11 @@ class AssortmentController extends Controller
 		return array(
 			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
-			array(
+	/*		array(
                 'COutputCache',
                 'duration'=>1000,
                 'varyByParam'=>array('id'),
-            ),
+            ),*/
 		);
 	} 
 	public function accessRules()  

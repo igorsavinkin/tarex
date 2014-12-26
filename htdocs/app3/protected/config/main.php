@@ -48,12 +48,20 @@ return array(
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			//'ipFilters'=>array('127.0.0.1','::1'), 
 			'ipFilters'=>array('*.*.*.*','::1'),
-		),
-		
+		), 
 	),
 	
 	// application components
 	'components'=>array(
+		'cache'=>array(
+			'class'=>'system.caching.CFileCache',
+				//	'connectionID'=>'db',
+				//	'autoCreateCacheTable'=>false,
+				//	'cacheTableName'=>'cache',
+		),
+		'memcache'=>array(
+		   'class'=>'system.caching.CMemCache',
+		 ),
 		'clientScript'=>array(
 		  'packages'=>array(
 			'jquery'=>array(
