@@ -24,7 +24,7 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','index2', 'contact', 'login','login2', 'logout' , 'frontendpavel'),
+				'actions'=>array('error', 'index','index2', 'contact', 'login','login2', 'logout' , 'frontendpavel'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -144,8 +144,10 @@ class SiteController extends Controller
 			if(Yii::app()->request->isAjaxRequest)
 				echo $error['message'];
 			else
-				$this->render('error', $error);
-		}
+				$this->render('error'/*, $error*/ );
+		} else {
+			//$this->render('error');
+		} 
 	}
 
 	public function actionContact()
@@ -205,7 +207,7 @@ class SiteController extends Controller
 			}
 		}
 		
-		if ( ( isset($_GET['email']) OR isset($_GET['name']) ) && isset($_GET['p'])) 
+	/*	if ( ( isset($_GET['email']) OR isset($_GET['name']) ) && isset($_GET['p'])) 
 		{
 			if (isset($_GET['name'])) $model->username = $_GET['name'];
 			if (isset($_GET['email']))  $model->email = $_GET['email'];
@@ -220,7 +222,7 @@ class SiteController extends Controller
 					$this->redirect(isset($_GET['returnUrl']) ? $_GET['returnUrl'] : Yii::app()->user->returnUrl); 
 					//$this->redirect(Yii::app()->request->requestUri); 
 				}
-		}
+		}*/
 		
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')

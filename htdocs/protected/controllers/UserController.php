@@ -213,16 +213,16 @@ class UserController extends Controller
 			$model->attributes=$_POST['User'];
 			// работа с городом для пользователя (если новый город - заносим его в модель )
 			if (!empty($_POST['User']['city_new'])) 
-			{
-				$model->city = $_POST['User']['city_new'] ; /// $model->city_new;
+			{ 
+				$model->city = $_POST['User']['city_new']; 
 			// добавление нового города в модель Cityes
 				$newcity = new Cityes;
-				$newcity->Name = $_POST['User']['city_new']; // $model->city_new;
+				$newcity->Name = $_POST['User']['city_new']; 
 				$newcity->save(false);
 				//echo 'city saved: ', $_POST['User']['city_new']; //$model->city_new;
 			} else 
 			{ // присваивание существующего города модели User  
-				$model->city = $_POST['Cityes']['Name']; 
+			//	$model->city = $_POST['Cityes']['Name']; 
 			}
 			if (!$model->role)
 				$model->role = User::ROLE_USER_RETAIL; // it might be taken from settings model/table	
@@ -313,6 +313,20 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User']; 			
+			// работа с городом для пользователя (если новый город - заносим его в модель )
+			if (!empty($_POST['User']['city_new'])) 
+			{ 
+				$model->city = $_POST['User']['city_new'] ; 
+			// добавление нового города в модель Cityes
+				$newcity = new Cityes;
+				$newcity->Name = $_POST['User']['city_new'];  
+				$newcity->save(false);
+				//echo 'city saved: ', $_POST['User']['city_new']; //$model->city_new;
+			} else 
+			{ // присваивание существующего города модели User  
+				// $model->city = $_POST['User']['city']; 
+			}
+			//exit();
 			$model->carMakes = implode(',', $_POST['User']['carMakes']);//echo '$model->carMakes = ', $model->carMakes, '<br>';
 			
 		/*	if ($model->isEmployee==1) 

@@ -789,8 +789,10 @@ class AssortmentController extends Controller
 				'criteria' => $criteria, 
 				'CriteriaAnalog' => $CriteriaAnalog,  	
 		));*/
-		
-		$this->render('index', array(
+		/*echo 'admin';
+		echo '<br>admin';
+		echo '<br>admin';*/
+		$this->render('index' /* 'admin'*/ , array(
 				'model'=>$model,  
 				'parent' => isset($id) ? $id : '', 
 				'criteria' => isset($criteria) ? $criteria : '', 

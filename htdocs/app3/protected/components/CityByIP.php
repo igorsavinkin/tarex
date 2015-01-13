@@ -22,11 +22,10 @@ class CityByIP extends CWidget
 		    <p class="simply"></p>
 			<p class="tar_border"></p>
 			<p class="tar_location"></p>
-		<?	$this->widget('ext.select2.ESelect2',array(
+		<? $this->widget('ext.select2.ESelect2',array(
 				'model'=> $cities,
-				'attribute'=> 'Name', 
-			
-				'data'=>CHtml::listData(Cityes::model()->findAll(array('order'=>'Name ASC')), 'Name','Name'),
+				'attribute'=> 'Name',  
+				'data'=>CHtml::listData(Cityes::model()->findAll(array('order'=>'Name ASC')), 'Name', 'Name'),
 				'options'=> array( 
 					'allowClear'=>false,
 					'width' => '200', 

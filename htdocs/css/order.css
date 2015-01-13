@@ -236,6 +236,17 @@ border-color: #09f; text-decoration: none;
 {
     min-height: 55px;
     background: #c40000;
+    position: -webkit-sticky;
+}
+ .sticky 
+{
+    background: rgba(196, 0, 0, 0.79);
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    border-top: 0;
 }
 .tar_search
 {
@@ -564,6 +575,7 @@ border-color: #09f; text-decoration: none;
     font-size: 12px;
     padding: 6px 0 16px 0;
     height: 60px;
+    background-color: white;
 }
 .tar_price:hover
 {
@@ -926,15 +938,17 @@ div.tar_adv_second
 }
 div.tar_catalog_goods_second
 {
-    margin-left: 505px;
+    margin-left: 505px; 
 }
 div.tar_catalog_goods_second .tar_cat_top,
 div.tar_adv_second .tar_cat_top
 {
      width: auto;
      height: auto;
-     background: #344756;
-     margin: 0 0 17px 0;
+     background: rgba(52, 71, 86, 0.71);
+     margin: 0 0 0px 0;
+     border: solid black 1px;
+     padding: 0px 0px 47px 0px;
 }
 div.tar_catalog_goods_second .tar_cat_top_in,
 div.tar_adv_second .tar_cat_top_in
@@ -942,10 +956,11 @@ div.tar_adv_second .tar_cat_top_in
      height: auto;
 }
 div.tar_catalog_goods_second .tar_cat_bot {
-    width: 821px;
-    background: #f0f3f5;
+    width: 901px;
+    background: rgba(255, 255, 255, 0.73);
     margin-left: 0;
     padding: 16px 0 0 22px;
+    border: solid black 1px;
 }
 .tar_cat_bot2
 {
@@ -954,6 +969,8 @@ div.tar_catalog_goods_second .tar_cat_bot {
     margin-left: 0;
 	padding: 0 0 6px 6px;
 	/*border-top: 1px dotted #344756;*/
+    margin-top: 6px;
+    border: solid black 1px;
 }
 .tar_cat_bot2 ul li a
 {
@@ -1000,10 +1017,11 @@ div.tar_adv_second .tar_cat_top_lists li
 /***page3.html********************************/
 .tar_bluemenu_block
 {
-    background: #344756;
+    background: rgba(52, 71, 86, 0.71);
     padding: 2px 2px;/*10px 10px;*/
     margin-bottom: 5px; 
     overflow: hidden;
+    border: solid black 1px;
 }
 .tar_bluemenu_block ul
 {
@@ -1125,7 +1143,7 @@ div.tar_component_body
 	width:600px; 
 	left: 35%;  
 } 
-.shift-right40
+.shift-right0
 {
 	margin-left:40px;
 }

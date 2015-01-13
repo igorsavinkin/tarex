@@ -1,4 +1,4 @@
-﻿<?require_once ($_SERVER['DOCUMENT_ROOT'] .'/redirect.php');?>
+<!-- index_new.php ?php require_once($_SERVER['DOCUMENT_ROOT'] .'/redirect.php'); ?-->
 <!DOCTYPE html>
 <html>
 <head>

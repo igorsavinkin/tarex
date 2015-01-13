@@ -315,11 +315,12 @@ div.search-form {
 	margin-top: 10px;
 	background: #eee;
 	overflow: hidden;
+	border: solid black 1px;
 }
 div.form {
 	padding: 5px;
 	/*margin-top: 10px;*/
-	background: #eee;
+	background: rgba(237, 237, 237, 0.84);
 	overflow: hidden;
 }
 div.hidden {  display: none !important; }

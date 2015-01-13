@@ -16,7 +16,7 @@ Yii::setPathOfAlias('XSelect2', dirname(__FILE__).'/../extensions/widgets/select
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'"Тарекс" - автозапчасти для иномарок оптом. Доставка запчастей оптом в регионы', //'Tarex v.3.4',	
+	'name'=>'"Тарекс" - автозапчасти для иномарок оптом. Доставка запчастей оптом в регионы',  
 	//'defaultController' => 'MyFrontend',
 	'language'=>'ru',
 	'sourceLanguage'=> 'en_US',

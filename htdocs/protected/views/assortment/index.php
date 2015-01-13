@@ -1,6 +1,20 @@
-<? require_once ($_SERVER['DOCUMENT_ROOT'] . '/seotools/seotools.class.php');
+<?php require_once ($_SERVER['DOCUMENT_ROOT'] . '/seotools/seotools.class.php');
 $ST = new Seotools; 
+// ставим каноническую ссылку для этих типов ссылок, так как они присутствуют в sitemap.xml 
+// (1) http://tarex.ru/assortment/index/193 ( или 2 http://tarex.ru/assortment/index/ пусто после index) - только BMW она даёт ajax ccылку:
+// http://tarex.ru/app3/assortment/index/193?Assortment_page=9 
+
+// (3) http://tarex.ru/assortment/1/193  категория - оптика и BMW она даёт ajax ccылку http://tarex.ru/app3/assortment/1?Assortment_page=3&id=193 
+// в которой надо поставить rel=canonical
  
+if (isset($_GET['Assortment_page']) && '1'!=$_GET['Assortment_page'] )  { 
+    $groupCategory = Yii::app()->request->getQuery('groupCategory');
+    $id = Yii::app()->request->getQuery('id');
+	if(!isset($groupCategory)) // case (1) (2)
+	    Yii::app()->clientScript->registerLinkTag('canonical', null, Yii::app()->request->getHostInfo() . '/' . Yii::app()->request->getPathInfo() );  
+	else  // case (3)
+	    Yii::app()->clientScript->registerLinkTag('canonical', null, Yii::app()->request->getHostInfo() . '/' . Yii::app()->request->getPathInfo(). '/' .  $id);  
+	}
 // подгрузка css для вывода картинки с описанием
 Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/in.css');  
 
@@ -117,7 +131,7 @@ echo Yii::t('general', 'Enter the amount of this assortment item');?>
 <?php $this->endWidget();  
 
 $this->endWidget('zii.widgets.jui.CJuiDialog');*/
-/******************************** end of the Dialog box *************************************/
+/******************************** end of the Dialog box ********************************/
 $item = Assortment::model()->findByPk($parent);
 $grcategory = isset($_GET['Assortment']['groupCategory']) ? $_GET['Assortment']['groupCategory'] : 0;
 if ( $item OR $grcategory) { 

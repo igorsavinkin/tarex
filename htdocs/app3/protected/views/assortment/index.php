@@ -1,9 +1,23 @@
-<?
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/seotools/seotools.class.php');
+<? require_once ($_SERVER['DOCUMENT_ROOT'] . '/seotools/seotools.class.php');
 $ST = new Seotools; 
+// ставим каноническую ссылку для этих типов ссылок, так как они присутствуют в sitemap.xml 
+// (1) http://tarex.ru/assortment/index/193 ( или 2 http://tarex.ru/assortment/index/ пусто после index) - только BMW она даёт ajax ccылку:
+// http://tarex.ru/app3/assortment/index/193?Assortment_page=9 
+
+// (3) http://tarex.ru/assortment/1/193  категория - оптика и BMW она даёт ajax ccылку http://tarex.ru/app3/assortment/1?Assortment_page=3&id=193 
+// в которой надо поставить rel=canonical
  
+if (isset($_GET['Assortment_page']) && '1'!=$_GET['Assortment_page'] )  { 
+    $groupCategory = Yii::app()->request->getQuery('groupCategory');
+    $id = Yii::app()->request->getQuery('id');
+	if(!isset($groupCategory)) // (1) (2)
+	    Yii::app()->clientScript->registerLinkTag('canonical', null, Yii::app()->request->getHostInfo() . '/' . Yii::app()->request->getPathInfo() );  
+	else  // (3)
+	    Yii::app()->clientScript->registerLinkTag('canonical', null, Yii::app()->request->getHostInfo() . '/' . Yii::app()->request->getPathInfo(). '/' .  $id);  
+	}
 // подгрузка css для вывода картинки с описанием
 Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/in.css');  
+
 ?>
 <!-- Окно для вывода картинки с описанием -->
 <div id="info-popup"></div> 
@@ -11,7 +25,11 @@ Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/in.css');
 $ajaxUrl = $this->createUrl('itemInfo');
 Yii::app()->clientScript->registerScript('info-popup-script', "
 jQuery(document).on('click','.info-link', function(){ jQuery.ajax({'data':{id: this.id },'url':'{$ajaxUrl}','cache':false,'success':function(html){jQuery('#info-popup').html(html)}});return false;});
-", CClientScript::POS_END);  
+", CClientScript::POS_END); /**/
+
+/* @var $this AssortmentController */
+/* @var $model Assortment */ 
+//$this->widget("ext.magnific-popup.EMagnificPopup", array('target' => '.test-popup-link'));
 
 /********************************** start of the Dialog box ******************************/
 ?>
@@ -277,6 +295,7 @@ if ($dataProvider->itemCount)
 			 array(	 
 				'class'=>'CButtonColumn', 
 				'template'=>'{update}', 
+				'header'=>Yii::t('general', 'Edit'),
 				'visible'=>Yii::app()->user->checkAccess(User::ROLE_SENIOR_MANAGER), // для старшего менеджера и выше
 			 ),
 	    /*	'info'=>array(
