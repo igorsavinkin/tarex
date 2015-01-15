@@ -53,7 +53,7 @@ class ScrapeDataController extends Controller
 		echo 'header:<br>';
 		print_r($header);    
 	}
-	public function actionScrapelinks( $limit=2, $model=null)
+	public function actionScrapelinks( $limit=2, $offset=0, $model=null)
 	{
 		//$url = $this->base_url_spb . ScrapeData::model()->find()->link;
 	// получим все ссылки на audi по моделям
@@ -63,39 +63,31 @@ class ScrapeDataController extends Controller
 		    $criteria->addCondition( 't.model="' . $model .'" ');
 		$criteria->select=array('link');
 		$criteria->limit = $limit;
+		$criteria->offset = $offset;
 		
 		$audiLinks = ScrapeData::model()->findAll($criteria);
 		$i=1;
 		// minimum delay between two executions
 		$mindelay=1000000;
 		// maxium delay between two executions
-		$maxdelay=3000000;
+		$maxdelay=2000000;
+		$xpath_query='//a[@class="sales-link"]/@href'; 
 		foreach($audiLinks as $modellink)
 		{
    		     $link = $this->base_url_spb . $modellink->link;
 			 echo $i, '. ', $link,' --- ',   date('h:i:s') ,'<br>';
 			 $header = $this->get_web_page($link); 
 	      	 print_r($header['headers']);
+		 // получаем ссылки на этой странице по xpath
+			 $links = $this->get_links_by_xpath($header['content'], $xpath_query);
+             foreach($links as $link)
+    		     $this->insert($link);	
+			  //print_r($links);
 			 echo '<hr>';
 			 $i++;	
 			 usleep(rand($mindelay,$maxdelay)); 	 // delay in microseconds
 		}
-		//echo 'audi links = '; print_r($audiLinks);
-		//echo 'url from db = ', $url, '<br>'; 
-		//$url = /**/ $url ? $url : $this->base_url_spb . '/cars/audi/q3/all/';  // ' http://spb.auto.ru/cars/audi/all'; //echo 'url  = ', $url, '<br>';
-	/*	
-	 	$header = $this->get_web_page($url);
-		echo 'HEADER: <br>';
-		print_r($header);  
-		preg_match_all($this->patternUsed, $header['content'], $matches); 
-		$i=1;
-		foreach($matches[0] as $link)
-		{
-			echo '<br>', $i++, '. ',  $link; 
-			if ($this->insert($link)) 
-			   echo ' - saving succeded';
-		} 
-		*/
+		
 		/* GET параметры для дополнительной фильтрации
 		
 			search[mark][0]:15 // код марки
@@ -146,25 +138,7 @@ class ScrapeDataController extends Controller
 			'model'=>$model,
 		));
 	}
-	public function actionCreate_old()
-	{
-		$model=new ScrapeData;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['ScrapeData']))
-		{
-			$model->attributes=$_POST['ScrapeData'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
-
-		$this->render('create_old',array(
-			'model'=>$model,
-		));
-	}
- 
+  
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
@@ -324,10 +298,41 @@ class ScrapeDataController extends Controller
         $header['cookies'] = $cookiesOut;
 		return $header;
 	}
-	protected function get_links_by_pattern()
+	protected function get_links_by_xpath($html=null, $xpath_query='//a[@class="sales-link"]/@href')
 	{
-	     
-	
+	     if($html)
+		 {
+			$html = str_replace('&nbsp;', ' ', $html);
+			$html = str_replace('<br/>', ' ', $html);  
+			$html = str_replace('<noindex>', '', $html);  
+			$html = str_replace('</noindex>', '', $html);
+			$html = str_replace('noindex', '', $html);
+			//echo $html;
+		// we suppress libxml internal errors 
+			libxml_use_internal_errors(true);
+		// Getting the text into the DOM Document for further parse 
+			$DOM = new DOMDocument('1.0', 'UTF-8');
+			$DOM->loadHTML('<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />' . $html);
+				
+		// Initiating DOM XPath Document for parse 
+			$xpath = new DOMXPath($DOM);
+			$xpath->registerNamespace("php", "http://php.net/xpath");
+			$xpath->registerPHPFunctions(); 
+
+	        $links = $xpath->query($xpath_query); 
+			$i=0; 
+			$arr=array();
+			while($links->item($i)->nodeValue)
+			{
+                 echo $links->item($i)->nodeValue, "<br>";
+				 $arr[]=$links->item($i)->nodeValue;
+				// $this->insert($links->item($i)->nodeValue);		
+			     $i++;
+			} 
+     		return $arr;
+		 } 	
+		 else 
+		    return false;  		
 	}
 	protected function insert($item)
 	{ 		 
