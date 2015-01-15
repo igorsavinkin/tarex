@@ -44,13 +44,46 @@ class ScrapeDataController extends Controller
 	  //  $this->insert('http://auto.ru/cars/used/sale/1005842487-cdc807/');
 	  //  $this->insert('http://special.auto.ru/crane/used/sale/386328-02aa2.html');
 	}
-	
-	public function actionScrapelinks()
+	public function actionScrape($url=null)
 	{
-		$url = $this->base_url_spb . ScrapeData::model()->find()->link;
-		echo 'url from db = ', $url, '<br>'; 
-		//$url = /**/ $url ? $url : $this->base_url_spb . '/cars/audi/q3/all/';  // ' http://spb.auto.ru/cars/audi/all'; //echo 'url  = ', $url, '<br>';
+		//echo 'cookie file = ', $this->get_cookie_file(), '<br>';
+		$url = $url ? $url : $this->base_url_spb . '/cars/audi/a4/all/';  // 'http://spb.auto.ru/cars/audi/all';
+		echo 'request url = ', $url, '<br>';
+		$header = $this->get_web_page($url);
+		echo 'header:<br>';
+		print_r($header);    
+	}
+	public function actionScrapelinks( $limit=2, $model=null)
+	{
+		//$url = $this->base_url_spb . ScrapeData::model()->find()->link;
+	// получим все ссылки на audi по моделям
+	    $criteria= new CDbCriteria;
+		$criteria->condition='t.link=t.marker';
+		if ($model) 
+		    $criteria->addCondition( 't.model="' . $model .'" ');
+		$criteria->select=array('link');
+		$criteria->limit = $limit;
 		
+		$audiLinks = ScrapeData::model()->findAll($criteria);
+		$i=1;
+		// minimum delay between two executions
+		$mindelay=1000000;
+		// maxium delay between two executions
+		$maxdelay=3000000;
+		foreach($audiLinks as $modellink)
+		{
+   		     $link = $this->base_url_spb . $modellink->link;
+			 echo $i, '. ', $link,' --- ',   date('h:i:s') ,'<br>';
+			 $header = $this->get_web_page($link); 
+	      	 print_r($header['headers']);
+			 echo '<hr>';
+			 $i++;	
+			 usleep(rand($mindelay,$maxdelay)); 	 // delay in microseconds
+		}
+		//echo 'audi links = '; print_r($audiLinks);
+		//echo 'url from db = ', $url, '<br>'; 
+		//$url = /**/ $url ? $url : $this->base_url_spb . '/cars/audi/q3/all/';  // ' http://spb.auto.ru/cars/audi/all'; //echo 'url  = ', $url, '<br>';
+	/*	
 	 	$header = $this->get_web_page($url);
 		echo 'HEADER: <br>';
 		print_r($header);  
@@ -62,6 +95,7 @@ class ScrapeDataController extends Controller
 			if ($this->insert($link)) 
 			   echo ' - saving succeded';
 		} 
+		*/
 		/* GET параметры для дополнительной фильтрации
 		
 			search[mark][0]:15 // код марки
@@ -73,14 +107,7 @@ class ScrapeDataController extends Controller
 		*/ 
 	 
 	}
-	public function actionScrape($url=null)
-	{
-		echo 'cookie file = ', $this->get_cookie_file(), '<br>';
-		$url = $url ? $url : $this->base_url_spb . '/cars/audi/a4/all/';  // 'http://spb.auto.ru/cars/audi/all';
-		$header = $this->get_web_page($url);
-		echo 'header:<br>';
-		print_r($header);    
-	}
+	
 	public function actionView($id)
 	{
 		$this->render('view',array(
@@ -185,6 +212,7 @@ class ScrapeDataController extends Controller
 			'model'=>$model,
 		));
 	} 
+/*********************** FUNCTIONS ************************/
 	public function loadModel($id)
 	{
 		$model=ScrapeData::model()->findByPk($id);
@@ -248,6 +276,58 @@ class ScrapeDataController extends Controller
         $header['content'] = $body_content;
         $header['cookies'] = $cookiesOut;
 		return $header;
+	}
+	function get_web_page_post( $url, $postParams=NULL)
+	{
+        $options = array(
+		// the 2 lines pertaining to POST request
+            CURLOPT_POSTFIELDS => $postParams ? http_build_query($postParams) : '',
+       	    CURLOPT_POST => true, 
+			
+		    CURLOPT_RETURNTRANSFER => true,     // return web page
+            CURLOPT_HEADER         => true,     //return headers in addition to content
+            CURLOPT_FOLLOWLOCATION => true,     // follow redirects
+            CURLOPT_ENCODING       => "",       // handle all encodings
+            CURLOPT_AUTOREFERER    => true,     // set referer on redirect
+            CURLOPT_CONNECTTIMEOUT => 120,      // timeout on connect
+            CURLOPT_TIMEOUT        => 120,      // timeout on response
+            CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
+            CURLINFO_HEADER_OUT    => true,
+            CURLOPT_SSL_VERIFYPEER => false,     // Disabled SSL Cert checks
+            CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
+         //   CURLOPT_COOKIE         => $cookiesIn
+        );
+
+        $ch      = curl_init( $url );
+        curl_setopt_array( $ch, $options );
+		
+		// дополнительно для сохранения cookie 
+		$tmpfname = dirname(__FILE__).'/cookie.txt';
+		curl_setopt($ch, CURLOPT_COOKIEJAR, $tmpfname);
+		curl_setopt($ch, CURLOPT_COOKIEFILE, $tmpfname);
+        $rough_content = curl_exec( $ch );
+        $err     = curl_errno( $ch );
+        $errmsg  = curl_error( $ch );
+        $header  = curl_getinfo( $ch ); 
+        curl_close( $ch );
+ 
+        $header_content = substr($rough_content, 0, $header['header_size']);
+        $body_content = trim(str_replace($header_content, '', $rough_content));
+        $pattern = "#Set-Cookie:\\s+(?<cookie>[^=]+=[^;]+)#m"; 
+        preg_match_all($pattern, $header_content, $matches); 
+        $cookiesOut = implode("; ", $matches['cookie']);
+
+        $header['errno']   = $err;
+        $header['errmsg']  = $errmsg;
+        $header['headers']  = $header_content;
+        $header['content'] = $body_content;
+        $header['cookies'] = $cookiesOut;
+		return $header;
+	}
+	protected function get_links_by_pattern()
+	{
+	     
+	
 	}
 	protected function insert($item)
 	{ 		 

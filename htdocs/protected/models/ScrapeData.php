@@ -83,6 +83,7 @@ class ScrapeData extends CActiveRecord
 		$criteria->compare('isChecked',$this->isChecked);
 		$criteria->compare('isPaid',$this->isPaid);
 		$criteria->compare('link',$this->link,true);
+		$criteria->order='id DESC';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
